@@ -1,0 +1,2 @@
+# strona-ai
+strona www
