@@ -13,6 +13,7 @@ modeli AI) oraz roboty wyszukiwarek.
 /szkolenia-ai/                        szkolenia z AI
 /szkolenie-dla-managera/              szkolenie dla managera
 /odpornosc-psychiczna/                odporność psychiczna zespołów
+/komunikacja-i-wspolpraca/            komunikacja i współpraca w zespole
 /szkolenia-dla-biura/                 szkolenie dla asystentki (Akademia Asystentek)
 /o-firmie/                            o firmie
 /eksperci/agnieszka-korach/           profil eksperta
@@ -172,6 +173,21 @@ Kod ogranicza ryzyko tam, gdzie może — reszta zależy od konfiguracji konta:
   strukturalnych i dokumentach prawnych. Imię i nazwisko Agnieszki Korach
   i Romualda Koracha nadal pojawiają się tam, gdzie chodzi o konkretną
   osobę (profile ekspertów, dane kontaktowe, podpisy pod artykułami).
-- **Terminy szkoleń otwartych** na stronie głównej są przykładowe
-  (dopasowane do daty wdrożenia) — do podmiany na rzeczywisty kalendarz.
+- **Terminy szkoleń otwartych** na stronie głównej są oznaczone jako
+  „Termin do ustalenia" — do podmiany na rzeczywisty kalendarz.
 - **Zdjęcia** — patrz `IMAGES-NEEDED.md`.
+- **Strona główna — nowa treść (2026-08-17)**: strona główna została
+  przebudowana od podstaw wg treści przesłanej przez właściciela
+  (pozycjonowanie „najpierw diagnoza problemu, potem szkolenie").
+  Odpowiedź na trzecie pytanie FAQ („Jak rozpoznać, że problem leży
+  w kompetencjach ludzi?") nie została podana w treści źródłowej —
+  napisałem ją samodzielnie w tym samym tonie; warto ją zweryfikować
+  i ewentualnie poprawić. Sekcja „Obszary współpracy" dodaje nowy,
+  czwarty temat — **Komunikacja i współpraca w zespole** — z nową
+  podstroną `/komunikacja-i-wspolpraca/` (program szkolenia napisany
+  przeze mnie, do weryfikacji merytorycznej). Sekcja „Co mówią klienci"
+  używa prawdziwych, wcześniej zebranych referencji zamiast pól
+  „Treść referencji / Imię Nazwisko" z przesłanego szkicu — uznałem,
+  że prawdziwe opinie klientów lepiej pasują do premium strony niż
+  puste pola. Link „Zobacz wszystkie referencje" ze szkicu został
+  pominięty, bo nie ma osobnej podstrony z referencjami.

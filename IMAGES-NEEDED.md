@@ -22,6 +22,8 @@ strona działa poprawnie także bez nich):
 | `og-szkolenie-managera.jpg` | 1200×630 px | Podgląd linku — strona „Szkolenie dla managera" | Grafika tematyczna zarządzanie zespołem |
 | `og-akademia-asystentek.jpg` | 1200×630 px | Podgląd linku — Akademia Asystentek i powiązany artykuł na blogu | Grafika tematyczna praca asystentki/biura |
 | `og-odpornosc-psychiczna.jpg` | 1200×630 px | Podgląd linku — strona „Odporność psychiczna" | Grafika tematyczna dobrostan/psychologia |
+| `karta-ai-codzienna-praca.jpg` | min. 640×360 px (proporcja 16:9) | Strona główna — karta „AI w codziennej pracy" w sekcji szkoleń otwartych | Zdjęcie ze szkolenia z AI (laptop, warsztat, praca zespołowa) |
+| `karta-odpornosc-psychiczna.jpg` | min. 640×360 px (proporcja 16:9) | Strona główna — karta „Odporność psychiczna pod presją" w sekcji szkoleń otwartych | Zdjęcie ze szkolenia z odporności psychicznej |
 
 ## Favicon
 Plik `assets/img/favicon.svg` już istnieje (prosty, wektorowy znak marki) —
