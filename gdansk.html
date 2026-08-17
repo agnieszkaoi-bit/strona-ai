@@ -52,10 +52,10 @@
         "@type": "Audience",
         "audienceType": "Osoba odpowiedzialna za kontakt z klientami i proces ofertowy przy projektach inwestycyjnych"
       },
-      "description": "Program indywidualny łączący rozwój profesjonalnej komunikacji, wdrożenie standardu pracy z klientem inwestycyjnym (Karta Klienta Inwestycyjnego, checklisty, follow-up) oraz praktyczne wykorzystanie Microsoft Copilot dla M365. 3 sesje online po 90 minut.",
+      "description": "Program indywidualny łączący rozwój profesjonalnej komunikacji, wdrożenie standardu pracy z klientem inwestycyjnym (Karta Klienta Inwestycyjnego, checklisty, follow-up) oraz praktyczne wykorzystanie Microsoft Copilot dla M365. 3 sesje online po 2h + sesja follow-up 60 min.",
       "offers": {
         "@type": "Offer",
-        "price": "4900",
+        "price": "5900",
         "priceCurrency": "PLN",
         "priceValidUntil": "2026-12-31",
         "availability": "https://schema.org/InStock"
@@ -67,8 +67,8 @@
 
     <nav class="sticky top-0 z-50 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
         <div class="backdrop-blur-xl bg-white/70 border border-slate-200/50 rounded-2xl shadow-sm px-6 py-4 flex items-center justify-between">
-            <a href="gdansk.html" class="flex items-center">
-                <img src="logo-ark-consulting.svg" alt="ARK Consulting" class="h-10 w-auto">
+            <a href="gdansk.html" class="flex items-center shrink-0">
+                <img src="logo-ark-consulting.svg" alt="ARK Consulting" class="h-9 sm:h-10 w-auto">
             </a>
             <div class="hidden md:flex space-x-8 font-medium text-sm text-slate-600">
                 <a href="#program" class="hover:text-blue-600 transition-colors">Program</a>
@@ -77,6 +77,16 @@
                 <a href="#inwestycja" class="hover:text-blue-600 transition-colors">Inwestycja</a>
                 <a href="#kontakt" class="hover:text-blue-600 transition-colors">Kontakt</a>
             </div>
+            <button id="mobile-menu-btn" type="button" class="md:hidden text-slate-700 p-1" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobile-menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden mt-2 bg-white/95 backdrop-blur-xl border border-slate-200/50 rounded-2xl shadow-sm px-6 py-4 flex flex-col gap-4 text-sm font-medium text-slate-600">
+            <a href="#program" class="hover:text-blue-600 transition-colors">Program</a>
+            <a href="#sesje" class="hover:text-blue-600 transition-colors">Sesje</a>
+            <a href="#narzedzia" class="hover:text-blue-600 transition-colors">Narzędzia</a>
+            <a href="#inwestycja" class="hover:text-blue-600 transition-colors">Inwestycja</a>
+            <a href="#kontakt" class="hover:text-blue-600 transition-colors">Kontakt</a>
         </div>
     </nav>
 
@@ -279,7 +289,7 @@
             </div>
 
             <div class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white p-8 md:p-10 rounded-3xl shadow-xl text-center max-w-3xl mx-auto space-y-2">
-                <p class="text-lg font-bold">3 sesje online po 90 min. + sesja follow-up 60 min. (3 tygodnie później)</p>
+                <p class="text-lg font-bold">3 sesje online po 2h + sesja follow-up 60 min. (3 tygodnie później)</p>
                 <p class="text-slate-300 text-sm">Praca na realnych przypadkach firmy.</p>
                 <p class="text-slate-300 text-sm">Gotowe szablony i standardy do wykorzystania od następnego dnia.</p>
                 <p class="text-slate-300 text-sm pt-2 border-t border-white/10 mt-2">Terminy do ustalenia indywidualnie — sesje najlepiej planować co 2–3 dni.</p>
@@ -331,11 +341,12 @@
 
             <div class="max-w-2xl mx-auto bg-white border-2 border-blue-600 rounded-3xl shadow-xl p-8 md:p-10 text-center space-y-6">
                 <div>
-                    <p class="text-5xl font-extrabold text-slate-900">4 900 zł <span class="text-lg font-medium text-slate-400">netto (+23% VAT)</span></p>
+                    <p class="text-4xl sm:text-5xl font-extrabold text-slate-900">5 900 zł <span class="text-base sm:text-lg font-medium text-slate-400">netto (+23% VAT)</span></p>
                     <p class="text-sm text-slate-500 mt-2">Program indywidualny online dla jednej osoby.</p>
                 </div>
                 <ul class="text-left space-y-3 text-sm text-slate-600 max-w-md mx-auto">
-                    <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5 shrink-0 mt-0.5"></i> 3 sesje warsztatowe po 90 min.</li>
+                    <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5 shrink-0 mt-0.5"></i> 3 sesje warsztatowe po 2h</li>
+                    <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5 shrink-0 mt-0.5"></i> sesja follow-up 60 min. (3 tygodnie później)</li>
                     <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5 shrink-0 mt-0.5"></i> analiza realnych sytuacji uczestniczki</li>
                     <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5 shrink-0 mt-0.5"></i> wdrożenie standardu rozmów i spotkań</li>
                     <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="text-emerald-500 w-5 h-5 shrink-0 mt-0.5"></i> wdrożenie Karty Klienta Inwestycyjnego</li>
@@ -383,11 +394,11 @@
             <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-blue-600/20 rounded-full blur-3xl"></div>
 
             <div class="max-w-xl mx-auto text-center space-y-6">
-                <div class="space-y-4 text-sm text-slate-300 inline-flex flex-col items-start mx-auto">
-                    <div class="flex items-center gap-3"><i data-lucide="user" class="text-blue-400 w-5 h-5"></i> Agnieszka Korach</div>
-                    <div class="flex items-center gap-3"><i data-lucide="phone" class="text-blue-400 w-5 h-5"></i> <a href="tel:+48504243881" class="hover:text-white transition-colors">504 243 881</a></div>
-                    <div class="flex items-center gap-3"><i data-lucide="mail" class="text-blue-400 w-5 h-5"></i> <a href="mailto:agnieszka.korach@arkconsulting.com.pl" class="hover:text-white transition-colors">agnieszka.korach@arkconsulting.com.pl</a></div>
-                    <div class="flex items-center gap-3"><i data-lucide="map-pin" class="text-blue-400 w-5 h-5"></i> Cała Polska (Sesje online / Zoom / Teams)</div>
+                <div class="space-y-4 text-sm text-slate-300 flex flex-col items-start w-full max-w-xs sm:max-w-sm mx-auto">
+                    <div class="flex items-center gap-3"><i data-lucide="user" class="text-blue-400 w-5 h-5 shrink-0"></i> Agnieszka Korach</div>
+                    <div class="flex items-center gap-3"><i data-lucide="phone" class="text-blue-400 w-5 h-5 shrink-0"></i> <a href="tel:+48504243881" class="hover:text-white transition-colors">504 243 881</a></div>
+                    <div class="flex items-center gap-3"><i data-lucide="mail" class="text-blue-400 w-5 h-5 shrink-0"></i> <a href="mailto:agnieszka.korach@arkconsulting.com.pl" class="hover:text-white transition-colors break-all text-left">agnieszka.korach@arkconsulting.com.pl</a></div>
+                    <div class="flex items-center gap-3"><i data-lucide="map-pin" class="text-blue-400 w-5 h-5 shrink-0"></i> Cała Polska (Sesje online / Zoom / Teams)</div>
                 </div>
                 <a href="mailto:agnieszka.korach@arkconsulting.com.pl" class="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-6 py-3.5 rounded-xl hover:bg-blue-700 transition-all shadow-md shadow-blue-500/10">
                     <i data-lucide="mail" class="w-4 h-4"></i> Napisz e-mail
@@ -407,6 +418,21 @@
 
     <script>
         lucide.createIcons();
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
+            });
+            mobileMenu.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
     </script>
 </body>
 </html>
