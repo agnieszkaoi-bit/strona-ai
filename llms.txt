@@ -5,7 +5,7 @@
 ## Szkolenia
 - [Szkolenie z AI dla pracowników](https://arkconsulting.com.pl/szkolenia-ai/): jednodniowe, praktyczne szkolenie z ChatGPT, Microsoft 365 Copilot i Google Gemini bez wymogu programowania.
 - [Szkolenie dla managera](https://arkconsulting.com.pl/szkolenie-dla-managera/): zarządzanie zespołem, delegowanie, trudne rozmowy, decyzje wsparte AI.
-- [Szkolenie dla asystentki — Akademia Asystentek](https://arkconsulting.com.pl/akademia-asystentek/): 4-tygodniowy program kohortowy Executive Support Master Formula™ dla asystentek, sekretarek i office managerów.
+- [Szkolenie dla asystentki — Akademia Asystentek](https://arkconsulting.com.pl/szkolenia-dla-biura/): 4-tygodniowy program kohortowy Executive Support Master Formula™ dla asystentek, sekretarek i office managerów.
 - [Odporność psychiczna i dobrostan zespołów](https://arkconsulting.com.pl/odpornosc-psychiczna/): szkolenie resilience oparte na psychologii społecznej.
 - [Pełna oferta szkoleń pracowników](https://arkconsulting.com.pl/szkolenia/)
 

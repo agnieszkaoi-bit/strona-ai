@@ -13,7 +13,7 @@ modeli AI) oraz roboty wyszukiwarek.
 /szkolenia-ai/                        szkolenia z AI
 /szkolenie-dla-managera/              szkolenie dla managera
 /odpornosc-psychiczna/                odporność psychiczna zespołów
-/akademia-asystentek/                 szkolenie dla asystentki (Akademia Asystentek)
+/szkolenia-dla-biura/                 szkolenie dla asystentki (Akademia Asystentek)
 /o-firmie/                            o firmie
 /eksperci/agnieszka-korach/           profil eksperta
 /eksperci/romuald-korach/             profil eksperta

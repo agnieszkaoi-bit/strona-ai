@@ -46,6 +46,9 @@ DirectoryIndex index.html index.php
   Redirect 301 /szkolenia/odpornosc-psychiczna.html /odpornosc-psychiczna/
   Redirect 301 /blog/szkolenie-ai-dla-pracownikow-jak-wyglada.html /blog/szkolenie-ai-dla-pracownikow-jak-wyglada/
   Redirect 301 /blog/jak-wybrac-szkolenie-dla-asystentki.html /blog/jak-wybrac-szkolenie-dla-asystentki/
+
+  # Zmiana adresu: akademia-asystentek -> szkolenia-dla-biura
+  Redirect 301 /akademia-asystentek/ /szkolenia-dla-biura/
 </IfModule>
 
 # --- Strona błędu 404 ---
