@@ -151,6 +151,7 @@ p{color:var(--ink);line-height:1.8}
 .logo-mark{width:30px;height:30px;border-radius:var(--r-sm);background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background var(--t)}
 .logo:hover .logo-mark{background:var(--blue)}
 .logo-text{font-size:.9rem;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.logo-img{height:30px;width:auto;max-width:220px;display:block;object-fit:contain}
 .nav-links{display:flex;align-items:center;gap:1.6rem}
 .nav-links a{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);position:relative;padding-bottom:3px;transition:color var(--t)}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--blue);border-radius:2px;transition:width var(--t)}
@@ -492,6 +493,7 @@ footer{background:var(--paper);border-top:1px solid var(--rule);padding:clamp(3r
 .fl-logo{display:flex;align-items:center;gap:.6rem;margin-bottom:.85rem}
 .fl-mark{width:28px;height:28px;border-radius:var(--r-sm);background:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .fl-name{font-size:.88rem;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.fl-logo-img{height:22px;width:auto;max-width:180px;display:block;object-fit:contain}
 .fa p{font-size:.83rem;max-width:260px;line-height:1.75;margin-bottom:.75rem}
 .fa-contacts{display:flex;flex-direction:column;gap:.32rem}
 .fa-contacts a{font-size:.77rem;color:var(--muted);transition:color var(--t)}
