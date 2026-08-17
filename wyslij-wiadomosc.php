@@ -35,8 +35,8 @@ header('Content-Type: text/html; charset=UTF-8');
 header('X-Content-Type-Options: nosniff');
 
 $odbiorca     = 'szkolenia@arkconsulting.com.pl';
-$stronaBledu  = '/kontakt.html?blad=1';
-$stronaSukcesu = '/dziekujemy.html';
+$stronaBledu  = '/kontakt/?blad=1';
+$stronaSukcesu = '/dziekujemy/';
 
 $dozwoloneTematy = [
     'Szkolenie z AI dla pracowników',

@@ -30,6 +30,24 @@ DirectoryIndex index.html index.php
   RewriteRule ^wp-config(-sample)?\.php$ - [F,L]
 </IfModule>
 
+# --- Przekierowania 301 ze starych adresów z ".html" na nowe, czyste adresy ---
+# (na wypadek starych zakładek/linków/wyników w Google sprzed zmiany struktury URL)
+<IfModule mod_alias.c>
+  Redirect 301 /o-firmie.html /o-firmie/
+  Redirect 301 /kontakt.html /kontakt/
+  Redirect 301 /polityka-prywatnosci.html /polityka-prywatnosci/
+  Redirect 301 /regulamin.html /regulamin/
+  Redirect 301 /cookies.html /cookies/
+  Redirect 301 /dziekujemy.html /dziekujemy/
+  Redirect 301 /eksperci/agnieszka-korach.html /eksperci/agnieszka-korach/
+  Redirect 301 /eksperci/romuald-korach.html /eksperci/romuald-korach/
+  Redirect 301 /szkolenia/szkolenia-ai-dla-pracownikow.html /szkolenia-ai/
+  Redirect 301 /szkolenia/szkolenie-dla-managera.html /szkolenie-dla-managera/
+  Redirect 301 /szkolenia/odpornosc-psychiczna.html /odpornosc-psychiczna/
+  Redirect 301 /blog/szkolenie-ai-dla-pracownikow-jak-wyglada.html /blog/szkolenie-ai-dla-pracownikow-jak-wyglada/
+  Redirect 301 /blog/jak-wybrac-szkolenie-dla-asystentki.html /blog/jak-wybrac-szkolenie-dla-asystentki/
+</IfModule>
+
 # --- Strona błędu 404 ---
 ErrorDocument 404 /404.html
 

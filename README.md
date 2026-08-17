@@ -8,32 +8,38 @@ modeli AI) oraz roboty wyszukiwarek.
 ## Struktura serwisu
 
 ```
-/                                    strona główna
+/                                     strona główna
 /szkolenia/                          hub — pełna oferta szkoleń pracowników
-/szkolenia/szkolenia-ai-dla-pracownikow.html   szkolenia z AI
-/szkolenia/szkolenie-dla-managera.html         szkolenie dla managera
-/szkolenia/odpornosc-psychiczna.html           odporność psychiczna zespołów
-/akademia-asystentek/                szkolenie dla asystentki (Akademia Asystentek)
-/o-firmie.html                       o firmie
-/eksperci/agnieszka-korach.html      profil eksperta
-/eksperci/romuald-korach.html        profil eksperta
-/blog/                               blog (artykuły eksperckie)
-/kontakt.html                        formularz kontaktowy + dane
-/polityka-prywatnosci.html           polityka prywatności (RODO)
-/regulamin.html                      regulamin szkoleń i serwisu
-/cookies.html                        polityka cookies
-/dziekujemy.html                     strona po wysłaniu formularza (noindex)
-/404.html                            strona błędu 404
-/wyslij-wiadomosc.php                obsługa formularza kontaktowego (PHP + mail())
-/robots.txt, /sitemap.xml, /llms.txt pliki dla robotów i crawlerów AI
-/.well-known/security.txt            kontakt do zgłaszania luk bezpieczeństwa
-/.htaccess                           konfiguracja Apache/LiteSpeed (Zenbox) + nagłówki bezpieczeństwa
-/assets/.htaccess                    blokada wykonywania PHP w folderze zasobów
-/assets/css/style.css                wspólny arkusz stylów
-/assets/js/main.js                   nawigacja, animacje, FAQ, karuzela
-/assets/js/cookie-consent.js         baner zgody na cookies (RODO)
-/assets/img/                         grafiki — patrz IMAGES-NEEDED.md
+/szkolenia-ai/                        szkolenia z AI
+/szkolenie-dla-managera/              szkolenie dla managera
+/odpornosc-psychiczna/                odporność psychiczna zespołów
+/akademia-asystentek/                 szkolenie dla asystentki (Akademia Asystentek)
+/o-firmie/                            o firmie
+/eksperci/agnieszka-korach/           profil eksperta
+/eksperci/romuald-korach/             profil eksperta
+/blog/                                blog (artykuły eksperckie)
+/kontakt/                             formularz kontaktowy + dane
+/polityka-prywatnosci/                polityka prywatności (RODO)
+/regulamin/                           regulamin szkoleń i serwisu
+/cookies/                             polityka cookies
+/dziekujemy/                          strona po wysłaniu formularza (noindex)
+/404.html                             strona błędu 404
+/wyslij-wiadomosc.php                 obsługa formularza kontaktowego (PHP + mail())
+/robots.txt, /sitemap.xml, /llms.txt  pliki dla robotów i crawlerów AI
+/.well-known/security.txt             kontakt do zgłaszania luk bezpieczeństwa
+/.htaccess                            konfiguracja Apache/LiteSpeed (Zenbox) + nagłówki bezpieczeństwa
+/assets/.htaccess                     blokada wykonywania PHP w folderze zasobów
+/assets/css/style.css                 wspólny arkusz stylów
+/assets/js/main.js                    nawigacja, animacje, FAQ, karuzela
+/assets/js/cookie-consent.js          baner zgody na cookies (RODO)
+/assets/img/                          grafiki — patrz IMAGES-NEEDED.md
 ```
+
+Wszystkie adresy podstron są „czyste" (bez `.html`, ze slashem na końcu) —
+każda podstrona to fizycznie plik `index.html` w folderze o nazwie
+odpowiadającej adresowi (np. `/o-firmie/` = plik `o-firmie/index.html`).
+Stare adresy z `.html` (np. `/o-firmie.html`) przekierowują na nowe (301)
+dzięki regułom w `.htaccess`.
 
 ## Optymalizacja SEO / GEO / AEO
 
