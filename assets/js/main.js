@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
 
+  /* Znacznik czasu antyspamowy dla formularza kontaktowego (patrz wyslij-wiadomosc.php) */
+  var formTs = document.getElementById('formTs');
+  if (formTs) formTs.value = String(Date.now());
+
   /* Nav scroll — passive listener */
   var nav = document.getElementById('nav');
   if (nav) {

@@ -1,0 +1,4 @@
+Contact: mailto:szkolenia@arkconsulting.com.pl
+Expires: 2027-08-17T00:00:00.000Z
+Preferred-Languages: pl, en
+Canonical: https://arkconsulting.com.pl/.well-known/security.txt

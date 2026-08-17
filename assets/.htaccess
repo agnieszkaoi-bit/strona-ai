@@ -1,0 +1,8 @@
+# Folder z zasobami statycznymi (CSS/JS/obrazy) nie powinien nigdy
+# wykonywać kodu PHP — nawet gdyby ktoś kiedyś wgrał tu przez pomyłkę
+# (albo w wyniku ataku) plik .php, serwer odmówi jego uruchomienia.
+<FilesMatch "\.(php|phtml|php\d|phar|cgi|pl|py|sh)$">
+  Require all denied
+</FilesMatch>
+
+Options -Indexes -ExecCGI

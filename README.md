@@ -16,7 +16,6 @@ modeli AI) oraz roboty wyszukiwarek.
 /akademia-asystentek/                szkolenie dla asystentki (Akademia Asystentek)
 /o-firmie.html                       o firmie
 /eksperci/agnieszka-korach.html      profil eksperta
-/eksperci/romuald-korach.html        profil eksperta
 /blog/                               blog (artykuły eksperckie)
 /kontakt.html                        formularz kontaktowy + dane
 /polityka-prywatnosci.html           polityka prywatności (RODO)
@@ -26,7 +25,9 @@ modeli AI) oraz roboty wyszukiwarek.
 /404.html                            strona błędu 404
 /wyslij-wiadomosc.php                obsługa formularza kontaktowego (PHP + mail())
 /robots.txt, /sitemap.xml, /llms.txt pliki dla robotów i crawlerów AI
-/.htaccess                           konfiguracja Apache/LiteSpeed (Zenbox)
+/.well-known/security.txt            kontakt do zgłaszania luk bezpieczeństwa
+/.htaccess                           konfiguracja Apache/LiteSpeed (Zenbox) + nagłówki bezpieczeństwa
+/assets/.htaccess                    blokada wykonywania PHP w folderze zasobów
 /assets/css/style.css                wspólny arkusz stylów
 /assets/js/main.js                   nawigacja, animacje, FAQ, karuzela
 /assets/js/cookie-consent.js         baner zgody na cookies (RODO)
@@ -62,6 +63,78 @@ analityczne i marketingowe, zapisuje decyzję w `localStorage` i integruje się
 z Google Consent Mode v2 (gotowe pod przyszłe dodanie GA4/Google Ads — samo
 w sobie niczego nie ładuje). Ustawienia można zmienić w dowolnym momencie
 linkiem „Ustawienia cookies" w stopce.
+
+## Bezpieczeństwo
+
+Strona jest statyczna (brak bazy danych, brak panelu logowania, brak
+WordPressa), więc powierzchnia ataku jest z natury bardzo mała. Jedyny
+fragment kodu wykonywanego po stronie serwera to `wyslij-wiadomosc.php`
+(obsługa formularza kontaktowego) — to na nim skupiają się poniższe
+zabezpieczenia:
+
+- **Ochrona przed header/email injection**: wszystkie pola trafiające do
+  nagłówków e-maila mają usuwane znaki CR/LF i inne znaki sterujące, więc
+  nie da się przez formularz wstrzyknąć dodatkowych nagłówków (np. `Bcc:`)
+  i wykorzystać go do wysyłki spamu.
+- **Stały nadawca**: nagłówek `From` zawsze wskazuje Twoją domenę — dane od
+  użytkownika trafiają wyłącznie do `Reply-To`. Zmniejsza to ryzyko
+  podszywania się i trafiania maili do SPAM-u.
+- **Honeypot + test czasowy**: niewidoczne dla człowieka pole `website` oraz
+  odrzucanie zgłoszeń wysłanych błyskawicznie (< 3 s od załadowania strony)
+  odsiewają większość botów bez potrzeby CAPTCHA. Brak JavaScriptu nie
+  blokuje wysyłki — degraduje się bezpiecznie.
+- **Limity długości i lista dozwolonych tematów**: pola mają twarde limity
+  znaków, a pole „Temat" akceptuje tylko wartości z zamkniętej listy.
+- **Błędy PHP nigdy nie trafiają na ekran** (`display_errors` wyłączone) —
+  brak ryzyka ujawnienia ścieżek serwera w komunikacie błędu.
+- **Tylko metoda POST** jest akceptowana przez skrypt.
+
+Na poziomie całego serwisu (`.htaccess`):
+
+- **Wymuszone HTTPS** oraz nagłówek `Strict-Transport-Security` (HSTS).
+- **Content-Security-Policy** dopuszczająca wyłącznie zasoby faktycznie
+  używane przez stronę (Google Fonts, MailerLite) — blokuje ładowanie
+  skryptów/stylów z dowolnych obcych domen, nawet gdyby ktoś zdołał
+  wstrzyknąć taki tag w treść strony.
+- **X-Content-Type-Options, X-Frame-Options, Referrer-Policy,
+  Permissions-Policy** — standardowy zestaw nagłówków ograniczających
+  clickjacking, MIME-sniffing i dostęp do kamery/mikrofonu/lokalizacji.
+- **Blokada wykonywania plików PHP w `/assets/`** (`assets/.htaccess`) — na
+  wypadek gdyby ktoś kiedyś wgrał tam złośliwy plik, serwer odmówi jego
+  uruchomienia.
+- **Blokada bezpośredniego dostępu** do `.htaccess`, `.env`, `.git*`,
+  `README.md`, `IMAGES-NEEDED.md` i podobnych plików.
+- **Blokada metod TRACE/TRACK/CONNECT** (ochrona przed Cross-Site Tracing).
+- **Blokada typowych pozostałości po WordPressie** (`wp-admin/`,
+  `wp-login.php`, `xmlrpc.php`, `wp-config.php`) na wypadek, gdyby stare
+  pliki nadal fizycznie leżały na serwerze.
+- **`/.well-known/security.txt`** — standardowy (RFC 9116) adres do
+  zgłaszania luk bezpieczeństwa przez badaczy.
+
+### To, co musisz zrobić Ty (poza kodem)
+
+Kod ogranicza ryzyko tam, gdzie może — reszta zależy od konfiguracji konta:
+
+1. **Usuń stare pliki WordPressa z serwera Zenbox** (`wp-admin/`,
+   `wp-content/`, `wp-includes/`, `wp-login.php`, `xmlrpc.php`,
+   `wp-config.php` itd.), jeśli nadal tam są — to najważniejszy krok. Same
+   reguły w `.htaccess` blokują dostęp do najbardziej newralgicznych plików,
+   ale usunięcie ich fizycznie jest jedynym pewnym zabezpieczeniem.
+2. **Zmień hasło do panelu Zenbox i do FTP/SFTP** na nowe, unikalne, jeśli
+   było używane wcześniej przy WordPressie — a jeśli Zenbox oferuje 2FA
+   (weryfikację dwuetapową) do panelu klienta, włącz ją.
+   Stare hasło administratora WordPressa nie ma już zastosowania po
+   migracji, ale warto też je unieważnić (np. zmieniając/usuwając konto
+   admina), jeśli baza danych WP nadal istnieje na serwerze.
+3. **Włącz certyfikat SSL** (patrz sekcja „Wdrożenie" niżej) — bez niego
+   nagłówek HSTS i wymuszenie HTTPS w `.htaccess` nie zadziałają poprawnie.
+4. **Rób kopie zapasowe** — Zenbox zwykle oferuje automatyczne backupy w
+   panelu; upewnij się, że są włączone.
+5. Jeśli po wdrożeniu przestanie działać formularz zapisu do newslettera,
+   sprawdź w konsoli przeglądarki (F12) komunikaty `Content-Security-Policy`
+   — oznacza to, że MailerLite ładuje zasób z domeny, której nie ma na
+   liście dozwolonych w `.htaccess`; wystarczy dopisać tę domenę do
+   odpowiedniej dyrektywy (`script-src` / `connect-src` / `form-action`).
 
 ## Wdrożenie na Zenbox
 
