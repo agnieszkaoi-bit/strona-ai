@@ -1,7 +1,7 @@
 # arkconsulting.com.pl — statyczna strona ARK Consulting
 
-Statyczna (poza WordPress) wersja strony firmy szkoleniowej **ARK Consulting
-Agnieszka Korach**, przygotowana pod hosting **Zenbox** oraz maksymalnie
+Statyczna (poza WordPress) wersja strony firmy szkoleniowej **ARK
+Consulting**, przygotowana pod hosting **Zenbox** oraz maksymalnie
 zoptymalizowana pod SEO, GEO/AEO (widoczność w Google i w odpowiedziach
 modeli AI) oraz roboty wyszukiwarek.
 
@@ -16,6 +16,7 @@ modeli AI) oraz roboty wyszukiwarek.
 /akademia-asystentek/                szkolenie dla asystentki (Akademia Asystentek)
 /o-firmie.html                       o firmie
 /eksperci/agnieszka-korach.html      profil eksperta
+/eksperci/romuald-korach.html        profil eksperta
 /blog/                               blog (artykuły eksperckie)
 /kontakt.html                        formularz kontaktowy + dane
 /polityka-prywatnosci.html           polityka prywatności (RODO)
@@ -157,10 +158,14 @@ Kod ogranicza ryzyko tam, gdzie może — reszta zależy od konfiguracji konta:
 
 ## Do weryfikacji przez właściciela strony
 
-- **NIP w danych firmy**: na starej stronie pojawiały się dwie różne wartości
-  (`529-132-74-05` w stopce i `5291466035` w zgodzie na newsletter). W tej
-  wersji ujednolicono do `529-132-74-05` — proszę potwierdzić, że to
-  poprawny numer.
+- **NIP w danych firmy**: ustawiony na `529-146-60-35` (potwierdzone),
+  spójnie w każdym miejscu na stronie (stopki, dane strukturalne, polityka
+  prywatności, regulamin, zgoda na newsletter).
+- **Nazwa firmy**: wszędzie występuje jako „ARK Consulting" (bez imienia
+  i nazwiska) — dotyczy to nazwy firmy/marki w stopkach, danych
+  strukturalnych i dokumentach prawnych. Imię i nazwisko Agnieszki Korach
+  i Romualda Koracha nadal pojawiają się tam, gdzie chodzi o konkretną
+  osobę (profile ekspertów, dane kontaktowe, podpisy pod artykułami).
 - **Terminy szkoleń otwartych** na stronie głównej są przykładowe
   (dopasowane do daty wdrożenia) — do podmiany na rzeczywisty kalendarz.
 - **Zdjęcia** — patrz `IMAGES-NEEDED.md`.
