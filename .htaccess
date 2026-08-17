@@ -1,0 +1,58 @@
+# ═══════════════════════════════════════════════════════════════
+# ARK Consulting — arkconsulting.com.pl — konfiguracja Apache/LiteSpeed (Zenbox)
+# ═══════════════════════════════════════════════════════════════
+
+# --- Domyślny dokument ---
+DirectoryIndex index.html index.php
+
+# --- Wymuszenie HTTPS i domeny bez "www" (kanoniczny adres: https://arkconsulting.com.pl) ---
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1) HTTP -> HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # 2) www.arkconsulting.com.pl -> arkconsulting.com.pl
+  RewriteCond %{HTTP_HOST} ^www\.arkconsulting\.com\.pl$ [NC]
+  RewriteRule ^ https://arkconsulting.com.pl%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# --- Strona błędu 404 ---
+ErrorDocument 404 /404.html
+
+# --- Wyłączenie listowania katalogów ---
+Options -Indexes
+
+# --- Kompresja GZIP ---
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript text/javascript
+  AddOutputFilterByType DEFLATE application/json image/svg+xml
+</IfModule>
+
+# --- Cache przeglądarki dla zasobów statycznych ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# --- Nagłówki bezpieczeństwa ---
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# --- Blokada bezpośredniego dostępu do plików wrażliwych ---
+<FilesMatch "^(\.htaccess|\.htpasswd|README\.md)$">
+  Require all denied
+</FilesMatch>

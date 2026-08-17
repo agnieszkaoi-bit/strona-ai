@@ -1,0 +1,65 @@
+# ARK Consulting — arkconsulting.com.pl
+# Strona jest w pełni otwarta dla wyszukiwarek i crawlerów AI.
+# Nie blokujemy botów treningowych ani wyszukiwania AI — świadoma decyzja,
+# ponieważ zależy nam na obecności marki zarówno w Google, jak i w
+# odpowiedziach asystentów AI (ChatGPT, Perplexity, Claude, Gemini, Copilot).
+
+User-agent: *
+Allow: /
+Disallow: /wyslij-wiadomosc.php
+
+# Wyszukiwarki
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawlery AI — wyszukiwanie / cytowania na żywo
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Crawlery AI — trening modeli
+User-agent: GPTBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+Sitemap: https://arkconsulting.com.pl/sitemap.xml
