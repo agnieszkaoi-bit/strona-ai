@@ -1,4 +1,4 @@
-# SYSTEM — współpracy z CEO napędzany AI i psychologią biznesu
+# SYSTEM współpracy z CEO napędzany AI i psychologią biznesu
 
 Landing page programu, docelowy adres:
 `https://officeinfluencers.pl/executive-assistant-system-ceo`
@@ -15,7 +15,7 @@ build-preview.py               skleja całość w jeden plik do podglądu
 podglad/system-ceo-preview.html   wynik powyższego skryptu
 ```
 
-Strona nie pobiera niczego z zewnętrznych serwerów — fonty są hostowane
+Strona nie pobiera niczego z zewnętrznych serwerów. Fonty są hostowane
 razem z nią (subsety `latin` + `latin-ext`, konieczne dla polskich znaków).
 
 ## Wdrożenie
@@ -25,7 +25,7 @@ do katalogu odpowiadającego adresowi `/executive-assistant-system-ceo`.
 Ścieżki są względne, więc nic nie trzeba zmieniać.
 
 Jeżeli `officeinfluencers.pl` stoi na WordPressie, ta strona nie wejdzie
-w istniejący motyw jako zwykły wpis — trzeba ją albo wgrać jako statyczny
+w istniejący motyw jako zwykły wpis. Trzeba ją albo wgrać jako statyczny
 katalog obok WordPressa, albo przepisać na szablon motywu.
 
 ## Do uzupełnienia przed publikacją
@@ -55,8 +55,8 @@ Braki według sekcji:
 | Newsletter | nazwa, opis, link zapisu |
 | Stopka | nazwa organizatora, adres, NIP, e-mail, telefon, regulamin, polityka prywatności, zasady płatności |
 
-Formularze e-mail (lekcja próbna, newsletter) mają dziś `onsubmit="return false;"`
-— po podpięciu narzędzia mailingowego trzeba podmienić je na właściwy `action`.
+Formularze e-mail (lekcja próbna, newsletter) mają dziś `onsubmit="return false;"`.
+Po podpięciu narzędzia mailingowego trzeba podmienić je na właściwy `action`.
 
 ## Podgląd jednoplikowy
 

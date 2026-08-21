@@ -1,7 +1,7 @@
 'use strict';
 
 /* =========================================================
-   SYSTEM — officeinfluencers.pl/executive-assistant-system-ceo
+   SYSTEM, officeinfluencers.pl/executive-assistant-system-ceo
    1. Zakreślacz: kluczowe zdania „zakreślają się" przy scrollu
    2. Delikatne wejście sekcji
    3. Przewijanie do kotwic z uwzględnieniem paska górnego

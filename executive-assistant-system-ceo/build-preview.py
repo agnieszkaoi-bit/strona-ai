@@ -4,8 +4,8 @@ Buduje jednoplikowy podgląd strony (podgląd/system-ceo-preview.html).
 
 Wszystko ląduje w jednym pliku HTML: CSS, JS i fonty jako data URI.
 Dzięki temu podgląd działa też tam, gdzie zablokowane są zapytania
-do zewnętrznych hostów. Źródłem prawdy pozostają index.html, css/ i js/ —
-ten skrypt niczego nie modyfikuje, tylko skleja.
+do zewnętrznych hostów. Źródłem prawdy pozostają index.html, css/ i js/.
+Ten skrypt niczego nie modyfikuje, tylko skleja.
 
 Użycie:  python3 build-preview.py
 """
@@ -54,7 +54,7 @@ def main() -> None:
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(html, encoding="utf-8")
-    print(f"{OUT.relative_to(ROOT)} — {OUT.stat().st_size / 1024:.0f} KB")
+    print(f"{OUT.relative_to(ROOT)}: {OUT.stat().st_size / 1024:.0f} KB")
 
 
 if __name__ == "__main__":
