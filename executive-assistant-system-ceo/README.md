@@ -69,6 +69,11 @@ treści, inaczej strona zacznie sprzedawać to, co ma sprzedać kurs.
 
 Strona nie podaje limitu miejsc i nie nazywa tej edycji pierwszą kohortą.
 
+Trzy wątki przewijają się przez moduły i przez listę „Czego się nauczysz":
+wypracowywanie gotowych rozwiązań (moduł 02), komunikacja dopasowana do
+osobowości i stylu pracy CEO (moduł 03, także 02 przy formacie dokumentu)
+oraz praca w tempie na wysokich obrotach (moduły 01 i 04).
+
 **Warunki zespołowe:** od 3 do 5 osób 5% rabatu, od 6 do 8 osób 10%,
 od 9 osób 15%. Wartości występują w dwóch miejscach: karta „Zespół"
 w sekcji Cena oraz odpowiedź w FAQ. Przy zmianie popraw oba.
