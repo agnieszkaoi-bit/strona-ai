@@ -11,7 +11,7 @@ css/style.css                     style
 css/fonts.css                     deklaracje @font-face
 fonts/inter-var-*.woff2           Inter, self-hosted (font zmienny, 2 pliki)
 js/script.js                      zdjęcie, kotwice, zapas dla starszych przeglądarek
-zdjecie/                          tu wgraj zdjęcie prowadzącej
+zdjecie/agnieszka-korach.jpg      zdjęcie prowadzącej w hero
 build-preview.py                  skleja całość w jeden plik do podglądu
 podglad/system-ceo-preview.html   wynik powyższego skryptu
 ```
@@ -20,13 +20,15 @@ Strona nie pobiera niczego z zewnętrznych serwerów.
 
 ## Zdjęcie w hero
 
-Wgraj plik jako `zdjecie/agnieszka-korach.jpg`. Zalecenia:
+`zdjecie/agnieszka-korach.jpg` jest już na miejscu (763 x 1024 px, 124 KB).
+Hero ma układ: nagłówek po lewej, zdjęcie po prawej. Kadr ma czarną krawędź
+i żółte przesunięcie, czyli ten sam zabieg co przyciski po najechaniu.
 
-- proporcje 4:5 (pionowe), np. 1200 x 1500 px,
-- twarz w górnej części kadru, bo strona kadruje od góry,
-- do 300 KB, JPG lub WebP (przy WebP zmień rozszerzenie w `index.html`).
+Podmiana zdjęcia: wgraj plik pod tą samą nazwą. Jeżeli zmieniają się
+proporcje, popraw `aspect-ratio` w regule `.photo__frame` w `css/style.css`,
+bo teraz jest ustawione na `763 / 1024`.
 
-Dopóki pliku nie ma, w tym miejscu pokazuje się ramka z instrukcją.
+Gdyby pliku zabrakło, w tym miejscu pokaże się ramka z instrukcją.
 
 ## Design
 
