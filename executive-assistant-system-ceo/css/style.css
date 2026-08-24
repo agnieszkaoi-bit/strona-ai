@@ -195,8 +195,8 @@ strong, b { font-weight: 700; }
 /* ---------- HERO ---------- */
 .hero { padding-block: clamp(2.5rem, 6vw, 4rem) clamp(3rem, 7vw, 5.5rem); }
 .hero__meta {
-    display: flex; flex-wrap: wrap; gap: 0.5rem 2.5rem;
-    padding-bottom: 1rem; border-bottom: 3px solid var(--black); margin-bottom: clamp(2rem, 4vw, 3.25rem);
+    display: flex; flex-wrap: wrap; gap: 0.4rem 2rem;
+    padding-bottom: 0.9rem; border-bottom: 3px solid var(--black); margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem);
 }
 .hero__meta span { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--grey); font-variant-numeric: tabular-nums; }
 .hero__meta span:first-child { color: var(--black); font-weight: 700; }
@@ -208,12 +208,11 @@ strong, b { font-weight: 700; }
     row-gap: clamp(2rem, 4vw, 2.75rem); column-gap: clamp(2.5rem, 5vw, 4rem);
 }
 @media (min-width: 64rem) {
+    /* Cały tekst hero w jednej kolumnie po lewej, zdjęcie po prawej.
+       Druga wartość trzyma zdjęcie poniżej zadanego limitu 40% szerokości. */
     .hero__grid { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: start; }
-    .hero__head  { grid-column: 1; grid-row: 1; }
-    .hero__claim { grid-column: 1; grid-row: 2; }
-    .photo       { grid-column: 2; grid-row: 1 / span 2; align-self: start; }
 }
-.hero__claim { max-width: 46ch; }
+.hero__claim { max-width: 46ch; margin-top: clamp(1.75rem, 3.5vw, 2.5rem); }
 .hero__claim > * + * { margin-top: 1.05rem; }
 
 /* zdjęcie prowadzącej */

@@ -26,6 +26,10 @@ Sylwetka jest wycięta z tła (WebP z przezroczystością, 900 x 1071 px, 83 KB)
 i stoi na żółtej płycie z czarną krawędzią. Kadr obejmuje głowę i tors,
 do splecionych rąk.
 
+Hero ma dwie kolumny: **cały tekst po lewej** (pasek dat, nadtytuł, nagłówek,
+akapity, przyciski), **zdjęcie po prawej**. Na wąskim ekranie kolumny układają
+się jedna pod drugą, najpierw tekst, potem zdjęcie.
+
 Zdjęcie zajmuje **34% szerokości hero**, przy zadanym limicie 40%. Steruje
 tym proporcja kolumn w regule `.hero__grid` (`1.5fr` na tekst, `1fr` na
 zdjęcie). Zwiększenie drugiej wartości przekroczy limit.
