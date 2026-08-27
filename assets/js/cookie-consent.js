@@ -46,7 +46,7 @@
         '<div class="cookie-inner">' +
           '<div class="cookie-text">' +
             '<h4>Ta strona używa plików cookies</h4>' +
-            '<p>Korzystamy z cookies niezbędnych do działania serwisu oraz — za Twoją zgodą — analitycznych i marketingowych, aby lepiej dopasować ofertę szkoleń. Szczegóły w <a href="/cookies.html">Polityce cookies</a> i <a href="/polityka-prywatnosci.html">Polityce prywatności</a>.</p>' +
+            '<p>Korzystamy z cookies niezbędnych do działania serwisu oraz — za Twoją zgodą — analitycznych i marketingowych, aby lepiej dopasować ofertę szkoleń. Szczegóły w <a href="/cookies/">Polityce cookies</a> i <a href="/polityka-prywatnosci/">Polityce prywatności</a>.</p>' +
           '</div>' +
           '<div class="cookie-actions">' +
             '<button type="button" class="cookie-btn cookie-settings" id="cookieSettingsBtn">Ustawienia</button>' +
