@@ -24,6 +24,8 @@ strona działa poprawnie także bez nich):
 | `og-odpornosc-psychiczna.jpg` | 1200×630 px | Podgląd linku — strona „Odporność psychiczna" | Grafika tematyczna dobrostan/psychologia |
 | `karta-ai-codzienna-praca.jpg` | min. 640×360 px (proporcja 16:9) | Strona główna — karta „AI w codziennej pracy" w sekcji szkoleń otwartych | Zdjęcie ze szkolenia z AI (laptop, warsztat, praca zespołowa) |
 | `karta-odpornosc-psychiczna.jpg` | min. 640×360 px (proporcja 16:9) | Strona główna — karta „Odporność psychiczna pod presją" w sekcji szkoleń otwartych | Zdjęcie ze szkolenia z odporności psychicznej |
+| `blog-szkolenie-ai.jpg` | min. 640×360 px (proporcja 16:9) | Blog — miniatura wyróżnionego artykułu o szkoleniu z AI | Zdjęcie z warsztatu z AI |
+| `blog-szkolenie-asystentki.jpg` | min. 640×360 px (proporcja 16:9) | Blog — miniatura artykułu o wyborze szkolenia dla asystentki | Zdjęcie z pracy sekretariatu/biura |
 
 ## Favicon
 Plik `assets/img/favicon.svg` już istnieje (prosty, wektorowy znak marki) —

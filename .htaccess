@@ -92,7 +92,7 @@ Options -Indexes
   # z atrybutów style="" oraz onload/onerror na obrazkach (odporne ładowanie logo/zdjęć)
   # i danych strukturalnych JSON-LD — nadal blokuje to ładowanie skryptów/stylów
   # z dowolnych obcych, niezaufanych domen.
-  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://assets.mailerlite.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://groot.mailerlite.com; connect-src 'self' https://assets.mailerlite.com"
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; frame-src https://www.google.com; form-action 'self' https://assets.mailerlite.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://groot.mailerlite.com; connect-src 'self' https://assets.mailerlite.com"
 
   # Usuń nagłówek zdradzający wersję PHP (jeśli serwer go dodaje)
   Header unset X-Powered-By

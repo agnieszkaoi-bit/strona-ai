@@ -167,4 +167,46 @@ document.addEventListener('DOMContentLoaded', function () {
     els.forEach(function (el) { obs.observe(el); });
   })();
 
+
+  /* ── Filtry kategorii na blogu ── */
+  (function () {
+    var grid = document.getElementById('blogGrid');
+    var pills = document.querySelectorAll('.filter-pill');
+    if (!grid || !pills.length) return;
+    var cards = grid.querySelectorAll('.post-card');
+    var empty = document.getElementById('blogEmpty');
+
+    pills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        var cat = pill.dataset.filter;
+        pills.forEach(function (p) { p.classList.toggle('active', p === pill); });
+        var visible = 0;
+        cards.forEach(function (card) {
+          var show = cat === 'all' || card.dataset.cat === cat;
+          card.hidden = !show;
+          if (show) visible++;
+        });
+        if (empty) empty.hidden = visible !== 0;
+      });
+    });
+  })();
+
+
+  /* ── Mapa Google wczytywana dopiero po kliknięciu (bez cookies do tego czasu) ── */
+  (function () {
+    var btn = document.getElementById('mapLoad');
+    var box = document.getElementById('mapBox');
+    if (!btn || !box) return;
+    btn.addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = 'https://www.google.com/maps?q=Marsza%C5%82kowska%2080,%2000-517%20Warszawa&output=embed';
+      f.title = 'Mapa — ul. Marszałkowska 80, 00-517 Warszawa';
+      f.loading = 'lazy';
+      f.referrerPolicy = 'no-referrer-when-downgrade';
+      f.setAttribute('allowfullscreen', '');
+      box.innerHTML = '';
+      box.appendChild(f);
+    });
+  })();
+
 });

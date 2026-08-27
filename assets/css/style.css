@@ -108,7 +108,8 @@ p{color:var(--ink);line-height:1.8}
    BREADCRUMBS
 ═══════════════════════════════════════════ */
 .crumbs{padding:1.1rem 0 0}
-.crumbs ol{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;font-size:.74rem;color:var(--dim)}
+.crumbs ol{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;font-size:.74rem;color:var(--dim);list-style:none}
+.crumbs li{list-style:none}
 .crumbs a{color:var(--muted);transition:color var(--t)}
 .crumbs a:hover{color:var(--blue)}
 .crumbs li:not(:last-child)::after{content:'/';margin-left:.4rem;color:var(--faint)}
@@ -640,3 +641,150 @@ footer{background:var(--paper);border-top:1px solid var(--rule);padding:clamp(3r
 /* Skip link */
 .skip-link{position:absolute;top:-99px;left:1rem;z-index:999;background:var(--blue);color:#fff;padding:.5rem 1rem;border-radius:var(--r-pill);font-weight:700;font-size:.8rem;transition:top .2s;text-decoration:none}
 .skip-link:focus{top:1rem}
+
+/* ═══════════════════════════════════════════
+   PAGE: o-firmie — oś czasu
+═══════════════════════════════════════════ */
+.timeline{position:relative;max-width:760px;margin:3rem 0 0;padding-left:2.5rem}
+.timeline::before{content:'';position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--accent),var(--blue),transparent);border-radius:2px}
+.tl-item{position:relative;padding-bottom:2.25rem}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:'';position:absolute;left:-2.5rem;top:6px;width:18px;height:18px;border-radius:50%;background:var(--white);border:3px solid var(--blue);box-shadow:0 0 0 4px rgba(0,71,171,.1)}
+.tl-item:first-child::before{border-color:var(--accent);box-shadow:0 0 0 4px rgba(240,221,88,.28)}
+.tl-year{font-size:1.5rem;font-weight:800;color:var(--blue);line-height:1;letter-spacing:-.03em;margin-bottom:.3rem}
+.tl-item:first-child .tl-year{color:var(--navy)}
+.tl-title{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:.4rem}
+.tl-desc{font-size:.88rem;color:var(--ink);line-height:1.75}
+
+/* ═══════════════════════════════════════════
+   TRENERZY — karty osób
+═══════════════════════════════════════════ */
+.trainer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:3rem}
+.trainer-card{padding:2rem;border-radius:var(--r-xl);border:1px solid var(--rule);background:var(--white);box-shadow:var(--sh);display:flex;flex-direction:column;gap:1rem;transition:transform var(--t),box-shadow var(--t)}
+.trainer-card:hover{transform:translateY(-3px);box-shadow:var(--sh-h)}
+.trainer-head{display:flex;align-items:center;gap:1.1rem}
+.trainer-photo{width:88px;height:88px;border-radius:50%;overflow:hidden;flex-shrink:0;border:4px solid var(--white);box-shadow:0 0 0 1px var(--rule),0 6px 18px rgba(0,31,63,.12);background:var(--blue-lt)}
+.trainer-photo img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.trainer-name{font-size:1.02rem;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+.trainer-role{font-size:.76rem;color:var(--muted);font-weight:600;margin-top:.15rem}
+.trainer-card p{font-size:.86rem;line-height:1.75}
+.trainer-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.trainer-links{display:flex;gap:1rem;align-items:center;margin-top:auto;padding-top:.4rem}
+.trainer-links a{font-size:.76rem;font-weight:700;color:var(--blue);display:inline-flex;align-items:center;gap:.35rem;transition:gap var(--t)}
+.trainer-links a:hover{gap:.6rem}
+
+/* ═══════════════════════════════════════════
+   PROBLEM → REZULTAT (Znasz to? / Po szkoleniu)
+═══════════════════════════════════════════ */
+.compare-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2.5rem}
+.cmp{padding:1.9rem;border-radius:var(--r-xl);border:1px solid var(--rule);background:var(--white);box-shadow:var(--sh)}
+.cmp-good{background:linear-gradient(135deg,#002366,#001F3F);border-color:transparent}
+.cmp h3{font-size:1rem;margin-bottom:1.1rem}
+.cmp-good h3{color:#fff}
+.cmp-list{display:flex;flex-direction:column;gap:.8rem}
+.cmp-list li{display:flex;align-items:flex-start;gap:.65rem;font-size:.88rem;line-height:1.6;color:var(--ink)}
+.cmp-good .cmp-list li{color:rgba(255,255,255,.82)}
+.cmp-mark{flex-shrink:0;width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.cmp-bad .cmp-mark{background:var(--blue-lt);color:var(--muted);border:1.5px solid var(--blue-md)}
+.cmp-good .cmp-mark{background:var(--accent);color:var(--navy)}
+
+/* ═══════════════════════════════════════════
+   MODUŁY — czas + zagadnienia
+═══════════════════════════════════════════ */
+.module-head{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:.5rem}
+.module-head h3{margin:0}
+.module-time{font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-lt);border:1px solid var(--blue-md);border-radius:var(--r-pill);padding:.2rem .65rem;flex-shrink:0}
+.module-topics{display:flex;flex-wrap:wrap;gap:.4rem .75rem;margin-top:.35rem}
+.module-topics li{position:relative;padding-left:.85rem;font-size:.81rem;color:var(--ink);line-height:1.55}
+.module-topics li::before{content:'';position:absolute;left:0;top:.6rem;width:4px;height:4px;border-radius:50%;background:var(--accent)}
+
+/* ═══════════════════════════════════════════
+   CO DOSTAJECIE
+═══════════════════════════════════════════ */
+.deliver-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+.deliver-item{display:flex;align-items:flex-start;gap:.8rem;padding:1.25rem 1.35rem;border-radius:var(--r-lg);border:1px solid var(--rule);background:var(--white);box-shadow:var(--sh)}
+.deliver-ico{flex-shrink:0;width:34px;height:34px;border-radius:var(--r-sm);background:var(--blue-lt);display:flex;align-items:center;justify-content:center}
+.deliver-ico svg{color:var(--blue)}
+.deliver-item span{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.5}
+
+/* ═══════════════════════════════════════════
+   PROGRAM KOHORTOWY — wyróżniony blok
+═══════════════════════════════════════════ */
+.cohort-box{margin-top:2.5rem;padding:clamp(1.9rem,4vw,3rem);border-radius:var(--r-2xl);background:linear-gradient(135deg,#002366,#001F3F);position:relative;overflow:hidden}
+.cohort-box::after{content:'';position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(240,221,88,.14),transparent 65%);top:-40%;right:-6%;pointer-events:none}
+.cohort-inner{position:relative;z-index:1;max-width:680px}
+.cohort-box h3{color:#fff;font-size:clamp(1.15rem,2.4vw,1.5rem);margin:.7rem 0 .8rem}
+.cohort-box p{color:rgba(255,255,255,.72);font-size:.9rem;font-weight:300}
+.cohort-meta{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;margin:1.25rem 0 1.5rem}
+.cohort-meta span{display:flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:600;color:var(--accent)}
+
+/* ═══════════════════════════════════════════
+   PAGE: blog — filtry + siatka wpisów
+═══════════════════════════════════════════ */
+.blog-filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+.filter-pill{font-family:inherit;font-size:.76rem;font-weight:700;padding:.5rem 1.15rem;border-radius:var(--r-pill);border:1.5px solid var(--rule);background:var(--white);color:var(--muted);cursor:pointer;transition:background var(--t),border-color var(--t),color var(--t)}
+.filter-pill:hover{border-color:var(--blue);color:var(--blue)}
+.filter-pill.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.post-card{border-radius:var(--r-xl);border:1px solid var(--rule);background:var(--white);box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column;transition:transform var(--t),box-shadow var(--t)}
+.post-card:hover{transform:translateY(-4px);box-shadow:var(--sh-h)}
+.post-card[hidden]{display:none}
+.post-thumb{aspect-ratio:16/9;background:linear-gradient(135deg,var(--blue-lt),var(--warm-lt));position:relative;overflow:hidden}
+.post-thumb img{width:100%;height:100%;object-fit:cover}
+.post-body{padding:1.5rem;display:flex;flex-direction:column;gap:.6rem;flex:1}
+.post-meta{display:flex;gap:.75rem;font-size:.72rem;color:var(--dim);font-weight:500}
+.post-title{font-size:1rem;font-weight:700;color:var(--navy);line-height:1.35}
+.post-excerpt{font-size:.85rem;color:var(--ink);line-height:1.7;flex:1}
+.post-link{font-size:.76rem;font-weight:700;color:var(--blue);display:inline-flex;gap:.35rem;align-items:center;transition:gap var(--t);margin-top:auto}
+.post-link:hover{gap:.6rem}
+.post-card--featured{grid-column:span 2}
+.post-card--featured .post-title{font-size:1.3rem}
+
+/* ═══════════════════════════════════════════
+   PAGE: kontakt — panel boczny + mapa
+═══════════════════════════════════════════ */
+.contact-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:3.5rem;align-items:start}
+.contact-side{display:flex;flex-direction:column;gap:1rem}
+.contact-block{padding:1.5rem;border-radius:var(--r-xl);border:1px solid var(--rule);background:var(--paper)}
+.contact-block h3{font-size:.9rem;margin-bottom:.85rem}
+.contact-block--dark{background:linear-gradient(135deg,#002366,#001F3F);border-color:transparent}
+.contact-block--dark h3{color:#fff}
+.contact-block--dark .contact-line{color:rgba(255,255,255,.72)}
+.contact-block--dark .contact-line strong{color:#fff}
+.contact-line{display:block;font-size:.83rem;color:var(--ink);line-height:1.75}
+.contact-line strong{color:var(--navy);font-weight:700}
+.contact-person{padding-bottom:.9rem;margin-bottom:.9rem;border-bottom:1px solid var(--rule)}
+.contact-person:last-child{padding-bottom:0;margin-bottom:0;border-bottom:none}
+.contact-person a{color:var(--blue);font-weight:600}
+.contact-person a:hover{text-decoration:underline}
+.map-embed{border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--rule);box-shadow:var(--sh);line-height:0}
+.map-embed iframe{width:100%;height:400px;border:0;display:block}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — komponenty podstron
+═══════════════════════════════════════════ */
+@media(max-width:900px){
+  .trainer-grid{grid-template-columns:1fr}
+  .compare-grid{grid-template-columns:1fr}
+  .deliver-grid{grid-template-columns:repeat(2,1fr)}
+  .blog-grid{grid-template-columns:repeat(2,1fr)}
+  .post-card--featured{grid-column:span 2}
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
+}
+@media(max-width:640px){
+  .timeline{padding-left:2rem}
+  .tl-item::before{left:-2rem;width:15px;height:15px}
+  .deliver-grid{grid-template-columns:1fr}
+  .blog-grid{grid-template-columns:1fr}
+  .post-card--featured{grid-column:span 1}
+  .post-card--featured .post-title{font-size:1.05rem}
+  .trainer-head{flex-direction:column;align-items:flex-start;gap:.85rem}
+  .map-embed iframe{height:300px}
+}
+
+/* ═══════════════════════════════════════════
+   PASEK META POD HERO PODSTRONY SZKOLENIA
+═══════════════════════════════════════════ */
+.hero-meta{display:flex;flex-wrap:wrap;gap:.6rem 1.75rem;margin-top:1.75rem;padding-top:1.35rem;border-top:1px solid var(--rule)}
+.hero-meta span{display:flex;align-items:center;gap:.45rem;font-size:.8rem;font-weight:600;color:var(--ink)}
+.hero-meta svg{flex-shrink:0;color:var(--blue)}

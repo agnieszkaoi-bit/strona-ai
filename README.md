@@ -176,6 +176,47 @@ Kod ogranicza ryzyko tam, gdzie może — reszta zależy od konfiguracji konta:
 - **Terminy szkoleń otwartych** na stronie głównej są oznaczone jako
   „Termin do ustalenia" — do podmiany na rzeczywisty kalendarz.
 - **Zdjęcia** — patrz `IMAGES-NEEDED.md`.
+
+### Rozbudowa podstron wg briefu (2026-08-27)
+
+Podstrony zostały wzbogacone o treść z briefu przesłanego przez
+właściciela. Brief opisywał starą wersję serwisu (adresy z `.html`,
+poprzednia paleta, pliki `ark.css`/`ark.js`), dlatego przeniesiona
+została **treść i struktura sekcji**, a nie warstwa techniczna —
+serwis zachowuje czyste adresy URL, wspólny `assets/css/style.css`
+i aktualną paletę.
+
+Zmiany świadomie różniące się od briefu:
+
+- **NIP** — brief podawał `529-132-74-05`; w serwisie jest
+  potwierdzony wcześniej `529-146-60-35`.
+- **Nazwa firmy** — brief używał „ARK Consulting Agnieszka Korach";
+  w serwisie konsekwentnie „ARK Consulting".
+- **Adresy podstron** — zamiast `szkolenia/ai-w-pracy.html` itd.
+  rozbudowane zostały istniejące `/szkolenia-ai/`,
+  `/odpornosc-psychiczna/` i `/szkolenia-dla-biura/`.
+- **Terminy szkoleń** — brief podawał konkretne daty (16 maja,
+  4 września, 14 czerwca). Ponieważ nie ma potwierdzonego kalendarza,
+  w serwisie jest „Termin do ustalenia" — **do podmiany**.
+- **Mapa na stronie kontaktu** — zamiast zwykłego `<iframe>` Google
+  Maps jest mapa wczytywana dopiero po kliknięciu. Osadzona na stałe
+  ustawiałaby cookies Google przed wyrażeniem zgody, co kłóciłoby się
+  z banerem RODO na stronie.
+- **Blog** — dodane zostały filtry kategorii i nowy układ kart, ale
+  wyświetlane są tylko dwa realnie istniejące artykuły. Pozostałe
+  pięć tytułów z briefu wymaga napisania treści.
+
+Do weryfikacji merytorycznej: liczby godzin przy modułach szkoleń,
+deklaracja „30 dni wsparcia mailowego", „powtórne badanie po
+8 tygodniach" oraz zapis o prowadzeniu szkoleń dla administracji
+biura nieprzerwanie od 2006 roku — wszystkie pochodzą z briefu
+i nie były przeze mnie weryfikowane.
+
+Przy okazji poprawione zostały dwa realne błędy zastane w kodzie:
+okruszki nawigacyjne renderowały się jako lista numerowana
+(„1. Strona główna 2. Kontakt") na każdej podstronie, a baner cookies
+linkował do nieistniejących już adresów `/cookies.html`
+i `/polityka-prywatnosci.html`.
 - **Strona główna — nowa treść (2026-08-17)**: strona główna została
   przebudowana od podstaw wg treści przesłanej przez właściciela
   (pozycjonowanie „najpierw diagnoza problemu, potem szkolenie").

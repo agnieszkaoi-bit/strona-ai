@@ -25,14 +25,7 @@
 <link rel="stylesheet" href="/assets/css/style.css">
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-  {"@type":"Blog","name":"Blog ARK Consulting","url":"https://arkconsulting.com.pl/blog/","publisher":{"@id":"https://arkconsulting.com.pl/#organization"},"inLanguage":"pl"},
-  {"@type":"EducationalOrganization","@id":"https://arkconsulting.com.pl/#organization","name":"ARK Consulting","url":"https://arkconsulting.com.pl/","logo":"https://arkconsulting.com.pl/assets/img/logo.png"},
-  {"@type":"BreadcrumbList","itemListElement":[
-    {"@type":"ListItem","position":1,"name":"Strona główna","item":"https://arkconsulting.com.pl/"},
-    {"@type":"ListItem","position":2,"name":"Blog","item":"https://arkconsulting.com.pl/blog/"}
-  ]}
-]}
+{"@context":"https://schema.org","@graph":[{"@type":"Blog","name":"Blog ARK Consulting","url":"https://arkconsulting.com.pl/blog/","publisher":{"@id":"https://arkconsulting.com.pl/#organization"},"inLanguage":"pl"},{"@type":"EducationalOrganization","@id":"https://arkconsulting.com.pl/#organization","name":"ARK Consulting","url":"https://arkconsulting.com.pl/","logo":"https://arkconsulting.com.pl/assets/img/logo.png"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Strona główna","item":"https://arkconsulting.com.pl/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://arkconsulting.com.pl/blog/"}]}]}
 </script>
 </head>
 <body>
@@ -68,32 +61,54 @@
 <section class="page-hero" style="padding-bottom:1rem;">
   <div class="wrap">
     <nav class="crumbs" aria-label="Okruszki nawigacyjne"><ol><li><a href="/">Strona główna</a></li><li aria-current="page">Blog</li></ol></nav>
-    <h1 class="r d1" style="margin-top:1.5rem;">Blog ARK Consulting</h1>
+    <h1 class="r d1" style="margin-top:1.5rem;">Wiedza, którą<br><span class="accent-italic">możesz wdrożyć jutro.</span></h1>
     <p class="hero-sub r d2">Praktyczna wiedza o szkoleniach z AI, zarządzaniu zespołem, pracy asystentek i odporności psychicznej — z 23-letnim doświadczeniem w tle.</p>
   </div>
 </section>
 
-<section class="section s-white cv-auto" style="padding-top:1rem;">
+<section class="section s-white cv-auto" style="padding-top:1rem;" aria-labelledby="wpisy-h">
   <div class="wrap">
-    <div class="why-grid" style="grid-template-columns:repeat(2,1fr);">
+    <h2 id="wpisy-h" class="sr-only">Artykuły</h2>
 
-      <article class="wc r d1">
-        <span class="tag tag-blue" style="margin-bottom:.85rem;">Szkolenia z AI</span>
-        <h2 style="font-size:1.15rem;margin-bottom:.6rem;"><a href="/blog/szkolenie-ai-dla-pracownikow-jak-wyglada/" style="color:var(--navy);">Szkolenie z AI dla pracowników — jak wygląda w praktyce?</a></h2>
-        <p style="margin-bottom:1rem;">Program krok po kroku, czas trwania i realne efekty — na podstawie ponad 1000 zrealizowanych szkoleń.</p>
-        <p style="font-size:.75rem;color:var(--dim);margin-bottom:1rem;">10 sierpnia 2026 · 6 min czytania</p>
-        <a href="/blog/szkolenie-ai-dla-pracownikow-jak-wyglada/" class="bc-cta">Czytaj artykuł<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <div class="blog-filters r" role="group" aria-label="Filtruj artykuły według kategorii">
+      <button type="button" class="filter-pill active" data-filter="all">Wszystkie</button>
+      <button type="button" class="filter-pill" data-filter="ai">AI w pracy</button>
+      <button type="button" class="filter-pill" data-filter="psychologia">Psychologia biznesu</button>
+      <button type="button" class="filter-pill" data-filter="biuro">Administracja biura</button>
+      <button type="button" class="filter-pill" data-filter="antymobbing">Antymobbing</button>
+    </div>
+
+    <div class="blog-grid" id="blogGrid">
+
+      <article class="post-card post-card--featured r d1" data-cat="ai">
+        <div class="post-thumb">
+          <img src="/assets/img/blog-szkolenie-ai.jpg" alt="Szkolenie z AI dla pracowników — warsztat w biurze" width="640" height="360" loading="lazy" decoding="async"
+            onerror="this.parentElement.innerHTML='&lt;div class=&quot;photo-placeholder&quot;&gt;&lt;svg width=&quot;32&quot; height=&quot;32&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;&gt;&lt;rect x=&quot;3&quot; y=&quot;3&quot; width=&quot;18&quot; height=&quot;18&quot; rx=&quot;2&quot;/&gt;&lt;circle cx=&quot;8.5&quot; cy=&quot;8.5&quot; r=&quot;1.5&quot;/&gt;&lt;polyline points=&quot;21,15 16,10 5,21&quot;/&gt;&lt;/svg&gt;&lt;/div&gt;'">
+        </div>
+        <div class="post-body">
+          <div class="post-meta"><span class="tag tag-blue">AI w pracy</span><span>8 min czytania</span></div>
+          <h3 class="post-title"><a href="/blog/szkolenie-ai-dla-pracownikow-jak-wyglada/">Szkolenie z AI dla pracowników — jak wygląda w praktyce?</a></h3>
+          <p class="post-excerpt">Krok po kroku: od audytu zadań zespołu, przez warsztaty z ChatGPT, M365 Copilot i Gemini, po matrycę Human-AI i plan wdrożenia. Bez programowania i bez teorii oderwanej od codziennej pracy.</p>
+          <a href="/blog/szkolenie-ai-dla-pracownikow-jak-wyglada/" class="post-link">Czytaj artykuł<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
       </article>
 
-      <article class="wc r d2">
-        <span class="tag tag-blue" style="margin-bottom:.85rem;">Szkolenie dla asystentki</span>
-        <h2 style="font-size:1.15rem;margin-bottom:.6rem;"><a href="/blog/jak-wybrac-szkolenie-dla-asystentki/" style="color:var(--navy);">Jak wybrać szkolenie dla asystentki? 7 pytań przed zapisem</a></h2>
-        <p style="margin-bottom:1rem;">Na co zwrócić uwagę przy wyborze programu dla asystentki, sekretarki lub office managera.</p>
-        <p style="font-size:.75rem;color:var(--dim);margin-bottom:1rem;">22 lipca 2026 · 5 min czytania</p>
-        <a href="/blog/jak-wybrac-szkolenie-dla-asystentki/" class="bc-cta">Czytaj artykuł<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <article class="post-card r d2" data-cat="biuro">
+        <div class="post-thumb">
+          <img src="/assets/img/blog-szkolenie-asystentki.jpg" alt="Szkolenie dla asystentki — praca w sekretariacie" width="640" height="360" loading="lazy" decoding="async"
+            onerror="this.parentElement.innerHTML='&lt;div class=&quot;photo-placeholder&quot;&gt;&lt;svg width=&quot;32&quot; height=&quot;32&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.5&quot;&gt;&lt;rect x=&quot;3&quot; y=&quot;3&quot; width=&quot;18&quot; height=&quot;18&quot; rx=&quot;2&quot;/&gt;&lt;circle cx=&quot;8.5&quot; cy=&quot;8.5&quot; r=&quot;1.5&quot;/&gt;&lt;polyline points=&quot;21,15 16,10 5,21&quot;/&gt;&lt;/svg&gt;&lt;/div&gt;'">
+        </div>
+        <div class="post-body">
+          <div class="post-meta"><span class="tag tag-blue">Administracja biura</span><span>5 min czytania</span></div>
+          <h3 class="post-title"><a href="/blog/jak-wybrac-szkolenie-dla-asystentki/">Jak wybrać szkolenie dla asystentki? 7 pytań przed zapisem</a></h3>
+          <p class="post-excerpt">Zanim wybierzesz program dla asystentki lub office managera, zadaj te siedem pytań. Pokażą, czy szkolenie realnie zmieni sposób pracy biura, czy tylko wypełni budżet szkoleniowy.</p>
+          <a href="/blog/jak-wybrac-szkolenie-dla-asystentki/" class="post-link">Czytaj artykuł<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        </div>
       </article>
 
     </div>
+
+    <p class="r d3" id="blogEmpty" hidden style="margin-top:1.5rem;font-size:.88rem;color:var(--muted);">W tej kategorii nie ma jeszcze artykułów. Kolejne teksty publikujemy regularnie — zajrzyj tu wkrótce albo <a href="/kontakt/" style="color:var(--blue);font-weight:600;">napisz do nas</a> z pytaniem.</p>
   </div>
 </section>
 

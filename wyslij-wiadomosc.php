@@ -42,8 +42,19 @@ $dozwoloneTematy = [
     'Szkolenie z AI dla pracowników',
     'Szkolenie dla managera',
     'Szkolenie dla asystentki (Akademia Asystentek)',
+    'Komunikacja i współpraca w zespole',
     'Odporność psychiczna zespołu',
+    'Antymobbing i przeciwdziałanie dyskryminacji',
     'Inne / nie wiem jeszcze',
+];
+
+// Liczba uczestników — także zamknięta lista wartości
+$dozwoloneLiczby = [
+    'Jeszcze nie wiem',
+    'do 12 osób',
+    '13–25 osób',
+    '26–50 osób',
+    'powyżej 50 osób',
 ];
 
 // --- Tylko POST ---
@@ -94,6 +105,7 @@ $firma   = oczysc($_POST['firma'] ?? '', 150);
 $email   = oczysc($_POST['email'] ?? '', 190);
 $telefon = oczysc($_POST['telefon'] ?? '', 40);
 $temat   = oczysc($_POST['temat'] ?? '', 120);
+$liczba  = oczysc($_POST['uczestnicy'] ?? '', 40);
 $zgoda   = isset($_POST['zgoda']);
 
 // Wiadomość: bez CR/LF-stripping (wieloliniowa), ale z limitem długości i
@@ -114,6 +126,11 @@ if (!in_array($temat, $dozwoloneTematy, true)) {
     $temat = 'Inne / nie wiem jeszcze';
 }
 
+// --- Liczba uczestników: tylko wartości z zamkniętej listy ---
+if (!in_array($liczba, $dozwoloneLiczby, true)) {
+    $liczba = 'Jeszcze nie wiem';
+}
+
 $tytul = '[Formularz kontaktowy] ' . $temat . ' — ' . $imie;
 
 $tresc  = "Nowe zapytanie ze strony arkconsulting.com.pl\n\n";
@@ -121,7 +138,8 @@ $tresc .= "Imię i nazwisko: {$imie}\n";
 $tresc .= "Firma / instytucja: {$firma}\n";
 $tresc .= "E-mail: {$email}\n";
 $tresc .= "Telefon: {$telefon}\n";
-$tresc .= "Temat: {$temat}\n\n";
+$tresc .= "Temat: {$temat}\n";
+$tresc .= "Liczba uczestników: {$liczba}\n\n";
 $tresc .= "Wiadomość:\n{$wiadomosc}\n";
 
 // Nadawca ("From") jest zawsze stały i należy do Twojej domeny — dane od

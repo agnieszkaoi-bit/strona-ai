@@ -27,13 +27,7 @@
 <link rel="stylesheet" href="/assets/css/style.css">
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-  {"@type":"EducationalOrganization","@id":"https://arkconsulting.com.pl/#organization","name":"ARK Consulting","legalName":"ARK Consulting","url":"https://arkconsulting.com.pl/","logo":"https://arkconsulting.com.pl/assets/img/logo.png","email":"szkolenia@arkconsulting.com.pl","telephone":"+48-22-435-70-02","address":{"@type":"PostalAddress","streetAddress":"ul. Marszałkowska 80","addressLocality":"Warszawa","postalCode":"00-517","addressCountry":"PL"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"}},
-  {"@type":"BreadcrumbList","itemListElement":[
-    {"@type":"ListItem","position":1,"name":"Strona główna","item":"https://arkconsulting.com.pl/"},
-    {"@type":"ListItem","position":2,"name":"Kontakt","item":"https://arkconsulting.com.pl/kontakt/"}
-  ]}
-]}
+{"@context":"https://schema.org","@graph":[{"@type":"EducationalOrganization","@id":"https://arkconsulting.com.pl/#organization","name":"ARK Consulting","legalName":"ARK Consulting","url":"https://arkconsulting.com.pl/","logo":"https://arkconsulting.com.pl/assets/img/logo.png","email":"szkolenia@arkconsulting.com.pl","telephone":"+48-22-435-70-02","address":{"@type":"PostalAddress","streetAddress":"ul. Marszałkowska 80","addressLocality":"Warszawa","postalCode":"00-517","addressCountry":"PL"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Strona główna","item":"https://arkconsulting.com.pl/"},{"@type":"ListItem","position":2,"name":"Kontakt","item":"https://arkconsulting.com.pl/kontakt/"}]},{"@type":"ContactPage","@id":"https://arkconsulting.com.pl/kontakt/#contactpage","url":"https://arkconsulting.com.pl/kontakt/","name":"Kontakt — ARK Consulting","inLanguage":"pl-PL","about":{"@id":"https://arkconsulting.com.pl/#organization"}},{"@type":"LocalBusiness","@id":"https://arkconsulting.com.pl/#localbusiness","name":"ARK Consulting","url":"https://arkconsulting.com.pl/","image":"https://arkconsulting.com.pl/assets/img/og-cover.jpg","email":"szkolenia@arkconsulting.com.pl","telephone":"+48-22-435-70-02","address":{"@type":"PostalAddress","streetAddress":"ul. Marszałkowska 80","addressLocality":"Warszawa","postalCode":"00-517","addressCountry":"PL"},"areaServed":{"@type":"Country","name":"Polska"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Ile kosztuje szkolenie?","acceptedAnswer":{"@type":"Answer","text":"Cena zależy od liczby uczestników, formatu i długości programu. Po bezpłatnej konsultacji przygotowujemy wycenę w ciągu 48 godzin. Szkolenia zamknięte startują od 12 uczestników."}},{"@type":"Question","name":"Jak szybko możecie zrealizować szkolenie?","acceptedAnswer":{"@type":"Answer","text":"Standardowy czas od pierwszej rozmowy do realizacji to 3–4 tygodnie. W pilnych przypadkach potrafimy zejść do 10 dni roboczych."}},{"@type":"Question","name":"Czy prowadzicie szkolenia poza Warszawą?","acceptedAnswer":{"@type":"Answer","text":"Tak, realizujemy szkolenia w całej Polsce — w siedzibie klienta lub w wybranej lokalizacji. Prowadzimy też szkolenia online na żywo."}},{"@type":"Question","name":"Czy dostanę program przed decyzją?","acceptedAnswer":{"@type":"Answer","text":"Tak. Po konsultacji otrzymujesz szczegółowy program w PDF, który możesz przedstawić zarządowi lub działowi HR."}}]}]}
 </script>
 </head>
 <body>
@@ -83,7 +77,7 @@
       <ol><li><a href="/">Strona główna</a></li><li aria-current="page">Kontakt</li></ol>
     </nav>
     <div class="hero-kicker r" style="margin-top:1.5rem;"><span class="kicker-dot" aria-hidden="true"></span><span class="kicker-text">Odpowiadamy w 24h</span></div>
-    <h1 class="r d1">Porozmawiajmy o szkoleniu dla Waszego zespołu</h1>
+    <h1 class="r d1">Porozmawiajmy o Waszych<br><span class="accent-italic">potrzebach i wyzwaniach.</span></h1>
     <p class="hero-sub r d2">Wypełnij formularz lub zadzwoń — pierwsza, 30-minutowa konsultacja jest bezpłatna i niezobowiązująca.</p>
   </div>
 </section>
@@ -117,8 +111,20 @@
             <option>Szkolenie z AI dla pracowników</option>
             <option>Szkolenie dla managera</option>
             <option>Szkolenie dla asystentki (Akademia Asystentek)</option>
+            <option>Komunikacja i współpraca w zespole</option>
             <option>Odporność psychiczna zespołu</option>
+            <option>Antymobbing i przeciwdziałanie dyskryminacji</option>
             <option>Inne / nie wiem jeszcze</option>
+          </select>
+        </div>
+        <div class="form-field full">
+          <label for="uczestnicy">Liczba uczestników</label>
+          <select id="uczestnicy" name="uczestnicy">
+            <option>Jeszcze nie wiem</option>
+            <option>do 12 osób</option>
+            <option>13–25 osób</option>
+            <option>26–50 osób</option>
+            <option>powyżej 50 osób</option>
           </select>
         </div>
         <div class="form-field full">
@@ -165,6 +171,60 @@
         <div class="contact-row">
           <div class="contact-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
           <div><h4>Godziny pracy biura</h4><p>Pon–Pt: 9:00–17:00</p></div>
+        </div>
+      </div>
+
+      <div class="contact-block contact-block--dark">
+        <h3>Dane firmy</h3>
+        <span class="contact-line"><strong>ARK Consulting</strong></span>
+        <span class="contact-line">ul. Marszałkowska 80, 00-517 Warszawa</span>
+        <span class="contact-line">NIP: 529-146-60-35</span>
+        <span class="contact-line">REGON: 014945758</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section s-paper cv-auto" aria-labelledby="mapa-h">
+  <div class="wrap">
+    <span class="label r">Jak do nas trafić</span>
+    <h2 id="mapa-h" class="r d1" style="margin:.9rem 0 1.5rem;">ul. Marszałkowska 80, Warszawa</h2>
+    <div class="map-embed r d1" id="mapBox">
+      <div style="height:400px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;text-align:center;padding:2rem;background:linear-gradient(135deg,var(--blue-lt),var(--warm-lt));">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" style="color:var(--blue);" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <p style="font-size:.86rem;color:var(--muted);max-width:400px;">Mapa Google ustawia własne pliki cookies. Kliknij, aby ją wczytać, albo otwórz lokalizację bezpośrednio w Mapach Google.</p>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;">
+          <button type="button" class="btn btn-solid" id="mapLoad">Wczytaj mapę</button>
+          <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&amp;query=Marsza%C5%82kowska+80,+00-517+Warszawa" target="_blank" rel="noopener noreferrer">Otwórz w Mapach Google</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section s-white cv-auto" aria-labelledby="faqk-h">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div class="faq-side">
+        <span class="label r">FAQ</span>
+        <h2 id="faqk-h" class="r d1">Zanim napiszesz</h2>
+      </div>
+      <div class="r d1">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Ile kosztuje szkolenie?<span class="faq-ic"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M3 8h10"/></svg></span></button>
+          <div class="faq-a">Cena zależy od liczby uczestników, formatu i długości programu. Po bezpłatnej konsultacji przygotowujemy wycenę w ciągu 48 godzin. Szkolenia zamknięte startują od 12 uczestników.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Jak szybko możecie zrealizować szkolenie?<span class="faq-ic"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M3 8h10"/></svg></span></button>
+          <div class="faq-a">Standardowy czas od pierwszej rozmowy do realizacji to 3–4 tygodnie. W pilnych przypadkach potrafimy zejść do 10 dni roboczych.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Czy prowadzicie szkolenia poza Warszawą?<span class="faq-ic"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M3 8h10"/></svg></span></button>
+          <div class="faq-a">Tak, realizujemy szkolenia w całej Polsce — w siedzibie klienta lub w wybranej lokalizacji. Prowadzimy też szkolenia online na żywo.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Czy dostanę program przed decyzją?<span class="faq-ic"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M3 8h10"/></svg></span></button>
+          <div class="faq-a">Tak. Po konsultacji otrzymujesz szczegółowy program w PDF, który możesz przedstawić zarządowi lub działowi HR.</div>
         </div>
       </div>
     </div>
