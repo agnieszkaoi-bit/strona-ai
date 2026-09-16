@@ -72,24 +72,12 @@ a{color:inherit}
 .section{padding-block:var(--section);border-top:1px solid var(--rule)}
 .section--paper{background:var(--white)}
 .section--navy{
-  background:var(--navy);color:#fff;border-top:0;
-  position:relative;overflow:hidden;isolation:isolate;
-}
-/* poświata u góry, pogłębienie u dołu */
-.section--navy::before{
-  content:"";position:absolute;inset:0;z-index:-2;
+  color:#fff;border-top:0;position:relative;overflow:hidden;
+  /* światło schodzi z góry w dół, bez wyraźnej plamy */
   background:
-    radial-gradient(64% 86% at 50% -12%, #1E5090 0%, rgba(30,80,144,0) 62%),
-    radial-gradient(46% 58% at 86% 108%, #143E71 0%, rgba(20,62,113,0) 60%),
-    linear-gradient(180deg, #0B2545 0%, #071A33 100%);
-}
-/* delikatna siatka punktów, wygaszona ku brzegom */
-.section--navy::after{
-  content:"";position:absolute;inset:0;z-index:-1;
-  background-image:radial-gradient(rgba(255,255,255,.075) 1px, transparent 1px);
-  background-size:24px 24px;
-  -webkit-mask-image:radial-gradient(68% 68% at 50% 38%, #000 0%, transparent 76%);
-  mask-image:radial-gradient(68% 68% at 50% 38%, #000 0%, transparent 76%);
+    radial-gradient(120% 90% at 50% -20%, rgba(255,255,255,.07) 0%, rgba(255,255,255,0) 58%),
+    linear-gradient(180deg, #0D2A4F 0%, #0B2545 52%, #081F3A 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09);
 }
 
 .progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:90;pointer-events:none}
@@ -522,20 +510,15 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 /* ---------- zamkniecie ---------- */
 .closing{text-align:center}
 .closing h2{font-size:clamp(2.1rem,5.4vw,4rem);color:#fff;margin-bottom:24px;letter-spacing:-.04em}
-.closing h2 em{font-style:normal;color:var(--yellow)}
-.section--navy .btn--yellow{box-shadow:0 20px 42px -20px rgba(255,208,94,.6)}
-.section--navy .btn--yellow:hover{box-shadow:0 24px 48px -18px rgba(255,208,94,.75)}
+.section--navy .btn--yellow{box-shadow:0 14px 30px -20px rgba(255,208,94,.4)}
+.section--navy .btn--yellow:hover{box-shadow:0 18px 34px -18px rgba(255,208,94,.5)}
 .closing .lede{margin-inline:auto;text-align:center}
 .closing .btn-row{justify-content:center}
 .facts{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;
-  margin-top:clamp(52px,5.5vw,80px);text-align:left;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:clamp(24px,3vw,40px);
+  margin-top:clamp(56px,6vw,88px);text-align:left;
 }
-.fact{
-  background:rgba(255,255,255,.055);
-  border:1px solid rgba(255,255,255,.13);
-  border-radius:var(--r-md);padding:22px 24px;
-}
+.fact{padding-top:20px;border-top:1px solid rgba(255,255,255,.17)}
 .fact b{display:block;font-size:.8125rem;letter-spacing:.06em;color:var(--yellow);margin-bottom:9px;font-weight:600}
 .fact span{font-size:.9375rem;color:#DCE6F2}
 
@@ -1166,7 +1149,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 <section class="section section--navy">
   <div class="wrap closing">
     <div class="eyebrow" style="justify-content:center">Termin szkolenia: 19–20.11.2026</div>
-    <h2>Dwa dni. Sześć modułów.<br><em>Dwanaście narzędzi.</em></h2>
+    <h2>Dwa dni. Sześć modułów.<br>Dwanaście narzędzi.</h2>
     <p class="lede">Wychodzisz z własną mapą celów i planem wdrożenia na 90 dni.</p>
     <div class="btn-row"><a class="btn btn--yellow" href="#zapis">Dołącz teraz</a></div>
     <div class="facts">
