@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Asystentka – Partner w Zarządzaniu. Myśl jak szef | Office Influencers</title>
+<title>Asystentka – Partner w Zarządzaniu. Myśl jak Szef™ | Office Influencers</title>
 <meta name="description" content="Dwa dni warsztatów dla doświadczonych asystentek zarządu. Poznasz sposób myślenia osób zarządzających, zwiększysz wpływ i sprawczość. 19–20.11.2026, Warszawa.">
 <link rel="canonical" href="https://www.officeinfluencers.pl/asystentka-partner-w-zarzadzaniu-i-mysl-jak-szef/">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:site_name" content="Office Influencers">
-<meta property="og:title" content="Asystentka – Partner w Zarządzaniu. Myśl jak szef">
+<meta property="og:title" content="Asystentka – Partner w Zarządzaniu. Myśl jak Szef™">
 <meta property="og:description" content="Dwa dni warsztatów dla doświadczonych asystentek zarządu. Siedem modułów, dwanaście narzędzi, wsparcie we wdrożeniu.">
 <meta property="og:url" content="https://www.officeinfluencers.pl/asystentka-partner-w-zarzadzaniu-i-mysl-jak-szef/">
 <meta property="og:image" content="https://www.officeinfluencers.pl/img/agnieszka-korach-hero.jpg">
@@ -116,6 +116,7 @@ a{color:inherit}
   animation:draw .9s cubic-bezier(.22,.61,.36,1) .45s forwards;
 }
 @keyframes draw{to{background-size:100% 100%}}
+.hero h1 .tm{font-size:.3em;font-weight:600;letter-spacing:0;vertical-align:1.7em;margin-left:.1em}
 .hero__lede{margin-top:24px;font-size:clamp(1.0625rem,1.7vw,1.1875rem);color:var(--muted);max-width:54ch}
 .hero__meta{
   margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;
@@ -418,7 +419,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   <div class="wrap hero__grid">
     <div>
       <div class="eyebrow">Szkolenie stacjonarne · 2 dni</div>
-      <h1>Asystentka&nbsp;– Partner w&nbsp;zarządzaniu.<br><span class="mark">Myśl jak szef.</span></h1>
+      <h1>Asystentka&nbsp;– Partner w&nbsp;Zarządzaniu.<br><span class="mark">Myśl jak Szef</span><span class="tm">™</span></h1>
       <p class="hero__lede">Dwa dni warsztatów dla doświadczonych asystentek zarządu. Poznasz sposób myślenia osób zarządzających, zwiększysz swój wpływ i sprawczość. Każdą z tych kompetencji wzmocnisz narzędziami AI.</p>
       <div class="hero__meta">
         <span>Startujemy 19–20.11.2026</span>
@@ -880,23 +881,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
               <input type="text" id="f-role" name="stanowisko" autocomplete="organization-title">
             </div>
 
-            <div class="field">
-              <label for="f-count">Liczba zgłaszanych osób<span class="req" aria-hidden="true">*</span></label>
-              <select id="f-count" name="liczba_osob" required>
-                <option value="1" selected>1 osoba</option>
-                <option value="2">2 osoby</option>
-                <option value="3">3 osoby</option>
-                <option value="4">4 osoby</option>
-                <option value="5">5 osób i więcej</option>
-              </select>
-            </div>
-
-            <div class="field field--full" id="wrap-others" hidden>
-              <label for="f-others">Dane pozostałych uczestniczek/uczestników</label>
-              <textarea id="f-others" name="pozostali_uczestnicy" aria-describedby="h-others"></textarea>
-              <p class="hint" id="h-others">Imię, nazwisko i e-mail każdej osoby – po jednej w wierszu.</p>
-            </div>
-
             <div class="field field--full">
               <fieldset>
                 <legend class="legend">Kto opłaca udział?<span class="req" aria-hidden="true">*</span></legend>
@@ -915,20 +899,15 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
             <div class="field" id="wrap-nip">
               <label for="f-nip">NIP<span class="req" aria-hidden="true">*</span></label>
-              <input type="text" id="f-nip" name="nip" inputmode="numeric" maxlength="15" aria-describedby="e-nip">
+              <input type="text" id="f-nip" name="nip" inputmode="numeric" maxlength="15" aria-describedby="e-nip h-nip">
               <p class="err" id="e-nip" role="alert"></p>
+              <p class="hint" id="h-nip" role="status" aria-live="polite">Wpisz 10 cyfr – nazwę i adres pobierzemy z rejestru.</p>
             </div>
 
             <div class="field field--full" id="wrap-address">
               <label for="f-address">Adres do faktury<span class="req" aria-hidden="true">*</span></label>
               <textarea id="f-address" name="adres_faktury" autocomplete="street-address" aria-describedby="e-address"></textarea>
               <p class="err" id="e-address" role="alert"></p>
-            </div>
-
-            <div class="field field--full">
-              <label for="f-diet">Preferencje żywieniowe</label>
-              <input type="text" id="f-diet" name="preferencje_zywieniowe" aria-describedby="h-diet">
-              <p class="hint" id="h-diet">W cenie jest lunch – napisz, jeśli masz dietę lub alergię.</p>
             </div>
 
             <div class="field field--full">
@@ -945,7 +924,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
           <div class="consents">
             <label class="consent">
               <input type="checkbox" id="f-rodo" name="zgoda_rodo" value="tak" required aria-describedby="e-rodo">
-              <span>Akceptuję regulamin szkolenia i wiem, że moje dane będą przetwarzane w celu obsługi zgłoszenia, zgodnie z <a href="/polityka-prywatnosci/">polityką prywatności</a>. Administratorem danych jest Office Influencers.<span class="req" aria-hidden="true">*</span></span>
+              <span>Akceptuję regulamin szkolenia i wiem, że moje dane będą przetwarzane w celu obsługi zgłoszenia, zgodnie z <a href="https://officeinfluencers.pl/polityka-prywatnosci" target="_blank" rel="noopener">polityką prywatności</a>. Administratorem danych jest Office Influencers.<span class="req" aria-hidden="true">*</span></span>
             </label>
             <p class="err" id="e-rodo" role="alert"></p>
             <label class="consent">
@@ -973,11 +952,10 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
           <div class="row"><dt>Termin</dt><dd>19–20.11.2026</dd></div>
           <div class="row"><dt>Miejsce</dt><dd>Warszawa, Ogrodowa 58</dd></div>
           <div class="row"><dt>Godziny</dt><dd>I dzień 10.00–17.00<br>II dzień 9.00–16.00</dd></div>
-          <div class="row"><dt>Osoby</dt><dd id="s-count">1</dd></div>
         </dl>
         <div class="total">
-          <b id="s-total">2100 zł</b>
-          <span>netto · 2100 zł netto za osobę</span>
+          <b>2100 zł</b>
+          <span>netto za osobę</span>
         </div>
         <div class="help">
           Masz pytanie przed zapisem?<br>
@@ -1065,7 +1043,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     {
       "@type":"Course",
       "@id":"https://www.officeinfluencers.pl/asystentka-partner-w-zarzadzaniu-i-mysl-jak-szef/#course",
-      "name":"Asystentka – Partner w Zarządzaniu. Myśl jak szef",
+      "name":"Asystentka – Partner w Zarządzaniu. Myśl jak Szef™",
       "description":"Dwa dni warsztatów dla doświadczonych asystentek zarządu. Siedem modułów: styl pracy szefa, komunikacja, wpływ, asertywność, delegowanie, decyzje i standard współpracy. Każda kompetencja wzmocniona narzędziami AI.",
       "inLanguage":"pl",
       "url":"https://www.officeinfluencers.pl/asystentka-partner-w-zarzadzaniu-i-mysl-jak-szef/",
@@ -1108,6 +1086,12 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 (function(){
   var root=document.documentElement;
   root.classList.add('js');
+  // dopóki zdjęcia nie ma, pokazujemy stylizowany placeholder zamiast tekstu alt
+  [].forEach.call(document.querySelectorAll('.portrait__frame img'),function(img){
+    img.addEventListener('error',function(){img.hidden=true});
+    if(img.complete&&img.naturalWidth===0)img.hidden=true;
+  });
+
   var items=[].slice.call(document.querySelectorAll('.reveal'));
   function showAll(){items.forEach(function(el){el.classList.add('in')})}
   if(!('IntersectionObserver'in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){showAll();return}
@@ -1125,12 +1109,9 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 (function(){
   var form=document.getElementById('zapis-form');
   if(!form)return;
-  var PRICE=2100;
   var done=document.getElementById('zapis-done');
   var status=document.getElementById('f-status');
   var submit=document.getElementById('f-submit');
-  var count=document.getElementById('f-count');
-  var others=document.getElementById('wrap-others');
   var payerCompany=document.getElementById('f-payer-company');
   var companyBlocks=['wrap-company','wrap-nip','wrap-address'].map(function(id){return document.getElementById(id)});
 
@@ -1144,14 +1125,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     if(!input)return;
     var ev=input.type==='checkbox'?'change':'input';
     input.addEventListener(ev,function(){setErr(input,errId,'')});
-  }
-
-  function refreshSummary(){
-    var n=parseInt(count.value,10)||1;
-    var many=count.value==='5';
-    q('s-count').textContent=many?'5 i więcej':String(n);
-    q('s-total').textContent=(many?'od ':'')+(n*PRICE).toLocaleString('pl-PL')+' zł';
-    others.hidden=n<2;
   }
 
   function refreshPayer(){
@@ -1195,12 +1168,46 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
    ['f-nip','e-nip'],['f-address','e-address'],['f-rodo','e-rodo']]
     .forEach(function(pair){clearOn(q(pair[0]),pair[1])});
 
-  count.addEventListener('change',refreshSummary);
   form.addEventListener('change',function(e){
     if(e.target.name==='platnik')refreshPayer();
   });
-  refreshSummary();
   refreshPayer();
+
+  // Nazwę i adres pobieramy z Wykazu podatników VAT Ministerstwa Finansów.
+  // Rejestr KRS wyszukuje po numerze KRS, nie po NIP, więc tu się nie nada.
+  var nip=q('f-nip'),nipHint=q('h-nip'),lastNip='';
+  var NIP_HINT=nipHint.textContent;
+
+  function lookupNip(){
+    var digits=nip.value.replace(/\D/g,'');
+    if(digits.length!==10||digits===lastNip)return;
+    lastNip=digits;
+    nipHint.textContent='Szukam danych firmy…';
+    var ctrl=new AbortController();
+    var timer=setTimeout(function(){ctrl.abort()},6000);
+    fetch('https://wl-api.mf.gov.pl/api/search/nip/'+digits+'?date='+new Date().toISOString().slice(0,10),
+      {signal:ctrl.signal,headers:{'Accept':'application/json'}})
+      .then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
+      .then(function(data){
+        var subject=data&&data.result&&data.result.subject;
+        if(!subject)throw new Error('brak danych');
+        var company=q('f-company'),address=q('f-address');
+        if(subject.name&&!company.value.trim()){company.value=subject.name;setErr(company,'e-company','')}
+        var addr=subject.workingAddress||subject.residenceAddress||'';
+        if(addr&&!address.value.trim()){address.value=addr;setErr(address,'e-address','')}
+        nipHint.textContent='Dane pobrane z rejestru. Sprawdź je i popraw, jeśli trzeba.';
+      })
+      .catch(function(){
+        nipHint.textContent='Nie udało się pobrać danych. Wpisz nazwę i adres ręcznie.';
+      })
+      .then(function(){clearTimeout(timer)});
+  }
+
+  nip.addEventListener('blur',lookupNip);
+  nip.addEventListener('input',function(){
+    if(nip.value.replace(/\D/g,'').length===10)lookupNip();
+    else nipHint.textContent=NIP_HINT;
+  });
 
   form.addEventListener('submit',function(e){
     e.preventDefault();
