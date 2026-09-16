@@ -476,6 +476,9 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .inhouse__icon{width:54px;height:54px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;flex:none}
 .inhouse__icon svg{width:23px;height:23px;fill:none;stroke:var(--navy);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .inhouse__card>span:not(.inhouse__icon){min-width:0;flex:1}
+.inhouse__card a{color:var(--navy);text-decoration:none}
+.inhouse__card a:hover{text-decoration:underline}
+.inhouse__tel{display:flex;flex-wrap:wrap;gap:2px 18px}
 .inhouse__card b{display:block;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 .inhouse__card b+span{display:block;font-size:1rem;font-weight:600;color:var(--navy);overflow-wrap:break-word}
 
@@ -942,11 +945,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       </div>
       <div class="reveal">
         <div class="side-card">
-          <h3>Dla zespołów i firm</h3>
-          <p>Szkolenie dla Asystentek z jednej firmy (szkolenie zamknięte).</p>
-          <button type="button" class="btn btn--ghost" id="oferta-open">Zapytaj o ofertę</button>
-        </div>
-        <div class="side-card">
           <h3>Płaci firma?</h3>
           <p>Pobierz gotową notatkę dla przełożonego lub HR – z uzasadnieniem i mierzalnymi efektami szkolenia.</p>
           <a class="btn btn--yellow" href="#">Pobierz notatkę</a>
@@ -1050,7 +1048,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
           <div class="consents">
             <label class="consent">
               <input type="checkbox" id="f-rodo" name="zgoda_rodo" value="tak" required aria-describedby="e-rodo">
-              <span>Akceptuję regulamin szkolenia i wiem, że moje dane będą przetwarzane w celu obsługi zgłoszenia, zgodnie z <a href="https://officeinfluencers.pl/polityka-prywatnosci" target="_blank" rel="noopener">polityką prywatności</a>. Administratorem danych jest Office Influencers.<span class="req" aria-hidden="true">*</span></span>
+              <span>Akceptuję regulamin szkolenia i wiem, że moje dane będą przetwarzane w celu obsługi zgłoszenia, zgodnie z <a href="https://officeinfluencers.pl/polityka-prywatnosci" target="_blank" rel="noopener">polityką prywatności</a>. Administratorem danych jest ARK Consulting Agnieszka Korach.<span class="req" aria-hidden="true">*</span></span>
             </label>
             <p class="err" id="e-rodo" role="alert"></p>
             <label class="consent">
@@ -1160,21 +1158,21 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   <div class="wrap">
     <div class="eyebrow">Szkolenia zamknięte · in-house</div>
     <h2 class="h2">Planujesz szkolenie dla zespołu Asystentek<br>w <em>swojej firmie?</em></h2>
-    <p class="inhouse__lede">Realizujemy dedykowane programy dla zespołów <b>od 6 do 20 osób</b> &mdash; w siedzibie Klienta lub online. Program dostosowujemy do specyfiki branży i kultury organizacji.</p>
+    <p class="inhouse__lede">Szkolenia dedykowane realizujemy w miejscu wskazanym przez Klienta lub online. Program dostosowujemy do specyfiki branży i kultury organizacji.</p>
     <p class="inhouse__trust">Zaufały nam zespoły m.in.: Mercedes-Benz, ABB, 3M Poland, Grupa Maspex, Bosch, Polska Akademia Nauk.</p>
     <div class="inhouse__cards">
-      <a class="inhouse__card" href="mailto:agnieszka.korach@arkconsulting.com.pl?subject=Zapytanie%20dot.%20szkolenia%20APZ">
+      <div class="inhouse__card">
         <span class="inhouse__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg>
         </span>
-        <span><b>Napisz do nas</b><span>agnieszka.korach@arkconsulting.com.pl</span></span>
-      </a>
-      <a class="inhouse__card" href="tel:+48504243881">
+        <span><b>Napisz do nas</b><span><a id="oferta-open" href="mailto:agnieszka.korach@arkconsulting.com.pl?subject=Zapytanie%20dot.%20szkolenia%20APZ">agnieszka.korach@arkconsulting.com.pl</a></span></span>
+      </div>
+      <div class="inhouse__card">
         <span class="inhouse__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M6.5 3h3L11 7l-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4 7.2 2 2 0 0 1 6.5 3Z"/></svg>
         </span>
-        <span><b>Zadzwoń</b><span>+48 504 243 881</span></span>
-      </a>
+        <span><b>Zadzwoń</b><span class="inhouse__tel"><a href="tel:+48224357002">+48 22 435 70 02</a><a href="tel:+48504243881">+48 504 243 881</a></span></span>
+      </div>
     </div>
   </div>
 </section>
@@ -1450,8 +1448,8 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   refreshSummary();
   refreshPayer();
 
-  // Nazwę i adres pobieramy z Wykazu podatników VAT Ministerstwa Finansów.
-  // Rejestr KRS wyszukuje po numerze KRS, nie po NIP, więc tu się nie nada.
+  // Odpytujemy własny skrypt nip.php, a ten pyta wykaz VAT i CEIDG.
+  // Pośrednik jest potrzebny, bo token CEIDG nie może trafić do kodu strony.
   var nip=q('f-nip'),nipHint=q('h-nip'),lastNip='';
   var NIP_HINT=nipHint.textContent;
 
@@ -1461,21 +1459,20 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     lastNip=digits;
     nipHint.textContent='Szukam danych firmy…';
     var ctrl=new AbortController();
-    var timer=setTimeout(function(){ctrl.abort()},6000);
-    fetch('https://wl-api.mf.gov.pl/api/search/nip/'+digits+'?date='+new Date().toISOString().slice(0,10),
-      {signal:ctrl.signal,headers:{'Accept':'application/json'}})
-      .then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
-      .then(function(data){
-        var subject=data&&data.result&&data.result.subject;
-        if(!subject)throw new Error('brak danych');
+    var timer=setTimeout(function(){ctrl.abort()},8000);
+    fetch('/nip.php?nip='+digits,{signal:ctrl.signal,headers:{'Accept':'application/json'}})
+      .then(function(r){return r.json()})
+      .then(function(dane){
+        if(!dane||!dane.ok)throw new Error(dane&&dane.komunikat||'');
         var company=q('f-company'),address=q('f-address');
-        if(subject.name&&!company.value.trim()){company.value=subject.name;setErr(company,'e-company','')}
-        var addr=subject.workingAddress||subject.residenceAddress||'';
-        if(addr&&!address.value.trim()){address.value=addr;setErr(address,'e-address','')}
-        nipHint.textContent='Dane pobrane z rejestru. Sprawdź je i popraw, jeśli trzeba.';
+        if(dane.nazwa&&!company.value.trim()){company.value=dane.nazwa;setErr(company,'e-company','')}
+        if(dane.adres&&!address.value.trim()){address.value=dane.adres;setErr(address,'e-address','')}
+        nipHint.textContent='Dane z '+(dane.zrodlo||'rejestru')+'. Sprawdź je i popraw, jeśli trzeba.';
       })
-      .catch(function(){
-        nipHint.textContent='Nie udało się pobrać danych. Wpisz nazwę i adres ręcznie.';
+      .catch(function(err){
+        nipHint.textContent=(err&&err.message)
+          ? err.message+' Wpisz nazwę i adres ręcznie.'
+          : 'Nie udało się pobrać danych. Wpisz nazwę i adres ręcznie.';
       })
       .then(function(){clearTimeout(timer)});
   }
@@ -1559,7 +1556,10 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     else dlg.removeAttribute('open');
     if(openBtn)openBtn.focus();
   }
-  if(openBtn)openBtn.addEventListener('click',openModal);
+  if(openBtn)openBtn.addEventListener('click',function(e){
+    e.preventDefault();   // bez JS odsyłacz nadal otwiera pocztę
+    openModal();
+  });
   closeBtn.addEventListener('click',closeModal);
   dlg.addEventListener('click',function(e){if(e.target===dlg)closeModal()});
 
