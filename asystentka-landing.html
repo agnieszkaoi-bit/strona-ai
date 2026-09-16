@@ -218,25 +218,11 @@ a{color:inherit}
 
 /* ---------- klienci ---------- */
 .clients__grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  border:1px solid var(--rule);border-radius:var(--r-md);overflow:hidden;
+  display:flex;flex-wrap:wrap;align-items:center;
+  gap:18px clamp(24px,3.6vw,52px);
+  padding-top:26px;border-top:1px solid var(--rule);
 }
-@media(max-width:780px){.clients__grid{grid-template-columns:repeat(2,1fr)}}
-.client{
-  display:flex;align-items:center;justify-content:center;text-align:center;
-  padding:30px 16px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule);
-  font-weight:500;font-size:.9375rem;color:var(--navy);
-  transition:background-color .25s ease;
-}
-.client:nth-child(4n){border-right:0}
-.client:nth-last-child(-n+4){border-bottom:0}
-@media(max-width:780px){
-  .client:nth-child(4n){border-right:1px solid var(--rule)}
-  .client:nth-child(2n){border-right:0}
-  .client:nth-last-child(-n+4){border-bottom:1px solid var(--rule)}
-  .client:nth-last-child(-n+2){border-bottom:0}
-}
-.client:hover{background:var(--tint)}
+.client{font-size:.8125rem;font-weight:500;letter-spacing:.02em;color:#97A1B1}
 
 /* ---------- liczby ---------- */
 .stats{
@@ -600,7 +586,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       <h2 class="h2">Asystentki z tych firm pracują z naszymi narzędziami</h2>
       <p class="lede">Projekty otwarte i zamknięte prowadzimy dla zespołów asystenckich w organizacjach o różnej skali – od przemysłu po ubezpieczenia i FMCG.</p>
     </div>
-    <div class="clients__grid reveal" role="list">
+    <div class="clients__grid reveal">
       <div class="client">Mercedes-Benz</div>
       <div class="client">Bosch</div>
       <div class="client">3M</div>
