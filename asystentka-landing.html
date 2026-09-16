@@ -325,7 +325,28 @@ a{color:inherit}
 .price-card .amount{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
 .price-card .amount b{font-size:clamp(2.9rem,6vw,4.25rem);font-weight:800;letter-spacing:-.055em;line-height:.9;color:var(--navy);font-variant-numeric:tabular-nums}
 .price-card .amount i{font-style:normal;font-size:1rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.price-card .vat{font-size:.875rem;color:var(--muted);margin-bottom:26px;padding-bottom:24px;border-bottom:1px solid var(--rule)}
+.price-card .vat{font-size:.875rem;color:var(--muted);margin-bottom:14px}
+.price-note{
+  display:flex;align-items:flex-start;gap:11px;font-size:.9375rem;font-weight:700;color:var(--navy);
+  margin-bottom:26px;padding-bottom:24px;border-bottom:1px solid var(--rule);
+}
+.price-note::before{content:"";width:16px;height:16px;background:var(--yellow);flex:none;margin-top:3px}
+
+.modal{
+  border:2px solid var(--navy);padding:clamp(26px,3.4vw,44px);background:var(--white);color:var(--ink);
+  max-width:520px;width:calc(100% - 32px);margin:auto;
+}
+.modal::backdrop{background:rgba(8,17,31,.58)}
+.modal__head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:12px}
+.modal__head h2{font-size:clamp(1.6rem,3.4vw,2.1rem);color:var(--navy)}
+.modal__x{
+  background:none;border:0;cursor:pointer;color:var(--muted);flex:none;
+  font-size:1.75rem;line-height:1;padding:4px 8px;min-height:44px;min-width:44px;
+}
+.modal__x:hover{color:var(--navy)}
+.modal__lede{font-size:.9375rem;color:var(--muted);margin-bottom:28px}
+.modal .fields{grid-template-columns:1fr}
+.modal .form-done{margin-top:0}
 .incl{list-style:none;margin:0 0 30px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 24px}
 @media(max-width:520px){.incl{grid-template-columns:1fr}}
 .incl li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;font-size:.9375rem;color:var(--ink)}
@@ -866,6 +887,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       <div class="price-card reveal">
         <div class="amount"><b>2100 zł</b><i>netto</i></div>
         <p class="vat">[DO UZUPEŁNIENIA] zł brutto</p>
+        <p class="price-note">Od 3. osoby z tej samej firmy &ndash; 5% rabatu.</p>
         <ul class="incl" role="list">
           <li><span class="tick"></span>2 dni warsztatów</li>
           <li><span class="tick"></span>12 narzędzi</li>
@@ -881,7 +903,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
         <div class="side-card">
           <h3>Dla zespołów i firm</h3>
           <p>Szkolenie dla Asystentek z jednej firmy (szkolenie zamknięte).</p>
-          <a class="btn btn--ghost" href="#">Zapytaj o ofertę</a>
+          <button type="button" class="btn btn--ghost" id="oferta-open">Zapytaj o ofertę</button>
         </div>
         <div class="side-card">
           <h3>Płaci firma?</h3>
@@ -934,13 +956,14 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
             <div class="field">
               <label for="f-count">Liczba zgłaszanych osób<span class="req" aria-hidden="true">*</span></label>
-              <select id="f-count" name="liczba_osob" required>
+              <select id="f-count" name="liczba_osob" required aria-describedby="h-count">
                 <option value="1" selected>1 osoba</option>
                 <option value="2">2 osoby</option>
                 <option value="3">3 osoby</option>
                 <option value="4">4 osoby</option>
                 <option value="5">5 osób i więcej</option>
               </select>
+              <p class="hint" id="h-count">Od 3. osoby z tej samej firmy &ndash; 5% rabatu.</p>
             </div>
 
             <div class="field field--full">
@@ -1018,7 +1041,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
         </dl>
         <div class="total">
           <b id="s-total">2100 zł</b>
-          <span>netto · 2100 zł netto za osobę</span>
+          <span id="s-note">netto · 2100 zł netto za osobę</span>
         </div>
         <div class="help">
           Masz pytanie przed zapisem?<br>
@@ -1091,6 +1114,50 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 </section>
 
 </main>
+
+<dialog class="modal" id="oferta" aria-labelledby="oferta-title">
+  <div class="modal__head">
+    <h2 id="oferta-title">Zapytaj o ofertę</h2>
+    <button type="button" class="modal__x" id="oferta-close" aria-label="Zamknij okno">&times;</button>
+  </div>
+  <p class="modal__lede">Szkolenie zamknięte dla Asystentek z jednej firmy. Odpowiadamy w ciągu jednego dnia roboczego.</p>
+
+  <!-- WDROŻENIE: w atrybucie action wpisz adres, który przyjmie zapytanie i wyśle je na
+       agnieszka.korach@arkconsulting.com.pl. Dopóki action jest puste, formularz otwiera
+       program pocztowy z gotową wiadomością. -->
+  <form id="oferta-form" method="post" action="" novalidate
+        data-odbiorca="agnieszka.korach@arkconsulting.com.pl"
+        data-temat="Zapytanie dot. szkolenia APZ">
+    <input type="hidden" name="odbiorca" value="agnieszka.korach@arkconsulting.com.pl">
+    <input type="hidden" name="temat" value="Zapytanie dot. szkolenia APZ">
+    <div class="fields">
+      <div class="field field--full">
+        <label for="o-name">Imię<span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="o-name" name="imie" autocomplete="given-name" required aria-describedby="o-e-name">
+        <p class="err" id="o-e-name" role="alert"></p>
+      </div>
+      <div class="field field--full">
+        <label for="o-email">Adres e-mail<span class="req" aria-hidden="true">*</span></label>
+        <input type="email" id="o-email" name="email" autocomplete="email" required aria-describedby="o-e-email">
+        <p class="err" id="o-e-email" role="alert"></p>
+      </div>
+    </div>
+    <div class="hp" aria-hidden="true">
+      <label for="o-www">Nie wypełniaj tego pola</label>
+      <input type="text" id="o-www" name="www" tabindex="-1" autocomplete="off">
+    </div>
+    <div class="form-foot">
+      <button type="submit" class="btn btn--primary" id="o-submit">Wyślij zapytanie</button>
+      <p class="form-status" id="o-status" role="status" aria-live="polite"></p>
+    </div>
+  </form>
+
+  <div class="form-done" id="oferta-done" hidden tabindex="-1">
+    <h3>Zapytanie wysłane</h3>
+    <p>Dziękujemy. Odezwiemy się na podany adres w ciągu jednego dnia roboczego.</p>
+  </div>
+</dialog>
+
 
 <footer class="site-footer">
   <div class="wrap bar">
@@ -1251,12 +1318,24 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     input.addEventListener(ev,function(){setErr(input,errId,'')});
   }
 
+  var DISCOUNT=.05;
+  var FULL_SEATS=2;
+
+  function totalFor(n){
+    var full=Math.min(n,FULL_SEATS);
+    var reduced=Math.max(0,n-FULL_SEATS);
+    return full*PRICE+reduced*PRICE*(1-DISCOUNT);
+  }
+
   function refreshSummary(){
     var count=q('f-count');
     var n=parseInt(count.value,10)||1;
     var many=count.value==='5';
     q('s-count').textContent=many?'5 i więcej':String(n);
-    q('s-total').textContent=(many?'od ':'')+(n*PRICE).toLocaleString('pl-PL')+' zł';
+    q('s-total').textContent=(many?'od ':'')+totalFor(n).toLocaleString('pl-PL')+' zł';
+    q('s-note').textContent=n>FULL_SEATS
+      ? 'netto · 2100 zł za 1. i 2. osobę, 1995 zł za każdą kolejną'
+      : 'netto · 2100 zł netto za osobę';
   }
 
   function refreshPayer(){
@@ -1375,6 +1454,82 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
         submit.disabled=false;
         submit.textContent='Wyślij zgłoszenie';
         status.textContent='Nie udało się wysłać zgłoszenia. Spróbuj ponownie albo napisz na office@officeinfluencers.pl.';
+      });
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var dlg=document.getElementById('oferta');
+  var form=document.getElementById('oferta-form');
+  if(!dlg||!form)return;
+  var openBtn=document.getElementById('oferta-open');
+  var closeBtn=document.getElementById('oferta-close');
+  var done=document.getElementById('oferta-done');
+  var status=document.getElementById('o-status');
+  var submit=document.getElementById('o-submit');
+  var name=document.getElementById('o-name');
+  var email=document.getElementById('o-email');
+
+  function setErr(input,errId,msg){
+    document.getElementById(errId).textContent=msg||'';
+    input.setAttribute('aria-invalid',msg?'true':'false');
+  }
+  name.addEventListener('input',function(){setErr(name,'o-e-name','')});
+  email.addEventListener('input',function(){setErr(email,'o-e-email','')});
+
+  function openModal(){
+    status.textContent='';
+    if(typeof dlg.showModal==='function')dlg.showModal();
+    else dlg.setAttribute('open','');
+    name.focus();
+  }
+  function closeModal(){
+    if(typeof dlg.close==='function'&&dlg.open)dlg.close();
+    else dlg.removeAttribute('open');
+    if(openBtn)openBtn.focus();
+  }
+  if(openBtn)openBtn.addEventListener('click',openModal);
+  closeBtn.addEventListener('click',closeModal);
+  dlg.addEventListener('click',function(e){if(e.target===dlg)closeModal()});
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    status.textContent='';
+    if(document.getElementById('o-www').value){form.hidden=true;done.hidden=false;return}
+
+    var bad=null;
+    if(name.value.trim().length<2){setErr(name,'o-e-name','Podaj imię.');bad=bad||name}
+    else setErr(name,'o-e-name','');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())){setErr(email,'o-e-email','Podaj poprawny adres e-mail.');bad=bad||email}
+    else setErr(email,'o-e-email','');
+    if(bad){bad.focus();return}
+
+    var finish=function(){
+      form.hidden=true;
+      done.hidden=false;
+      done.focus();
+    };
+
+    var endpoint=(form.getAttribute('action')||'').trim();
+    if(!endpoint){
+      var to=form.getAttribute('data-odbiorca');
+      var subject=form.getAttribute('data-temat');
+      var body='Imię: '+name.value.trim()+'\nAdres e-mail: '+email.value.trim();
+      location.href='mailto:'+to+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+      finish();
+      return;
+    }
+    submit.disabled=true;
+    submit.textContent='Wysyłam…';
+    fetch(endpoint,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+      .then(function(r){if(!r.ok)throw new Error(r.status);finish()})
+      .catch(function(){
+        submit.disabled=false;
+        submit.textContent='Wyślij zapytanie';
+        status.textContent='Nie udało się wysłać. Napisz na office@officeinfluencers.pl.';
       });
   });
 })();
