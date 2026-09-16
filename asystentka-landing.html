@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Asystentka-Partner w Zarządzaniu</title>
+    <meta name="description" content="Szkolenie dla doświadczonych asystentek zarządu. Nauczysz się myśleć jak szef i zwiększysz swój wpływ. 19-20.11.2026 w Warszawie.">
+    <meta name="keywords" content="szkolenie asystentka zarządu, executive assistant, myśli strategiczne, wpływ w biurze, kompetencje miękkie">
+    <meta name="author" content="Office Influencers">
+    <meta property="og:title" content="Asystentka-Partner w Zarządzaniu - Szkolenie">
+    <meta property="og:description" content="Dwudniowe szkolenie dla doświadczonych asystentek. Efekt widoczny od razu po powrocie do pracy.">
+    <meta property="og:url" content="https://www.officeinfluencers.pl/asystentka-partner-w-zarzadzaniu-i-mysl-jak-szef/">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        :root {
+            --bg-main: #F8F7F5;
+            --bg-section: #F0EEEA;
+            --bg-card: #FFFFFF;
+            --text-primary: #2C2C2C;
+            --text-secondary: #5A5A5A;
+            --navy: #1F3A5F;
+            --navy-light: #2D4A6F;
+            --accent: #C4A57B;
+            --border: #E8E5E0;
+            --success: #4CAF50;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg-main: #1A1A1A;
+                --bg-section: #242422;
+                --bg-card: #2D2D2D;
+                --text-primary: #F5F5F5;
+                --text-secondary: #B8B8B8;
+                --navy: #5B7FA6;
+                --navy-light: #7291B8;
+                --border: #3D3D3D;
+            }
+        }
+
+        :root[data-theme="dark"] {
+            --bg-main: #1A1A1A;
+            --bg-section: #242422;
+            --bg-card: #2D2D2D;
+            --text-primary: #F5F5F5;
+            --text-secondary: #B8B8B8;
+            --navy: #5B7FA6;
+            --navy-light: #7291B8;
+            --border: #3D3D3D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 0 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--bg-main);
+            padding: 32px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            margin-left: 32px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--navy);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 8vw, 56px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            color: var(--navy);
+            text-wrap: balance;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 4vw, 24px);
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-wrap: balance;
+        }
+
+        .hero-meta {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--navy);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--navy-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--navy);
+            border: 2px solid var(--navy);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--navy);
+            color: white;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background-color: var(--bg-section);
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--navy);
+            text-wrap: balance;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .benefit-card {
+            background-color: var(--bg-card);
+            padding: 32px;
+            border-radius: 8px;
+            border-left: 4px solid var(--navy);
+        }
+
+        .benefit-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--navy);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .benefit-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--navy);
+        }
+
+        .benefit-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* For Whom Section */
+        .for-whom {
+            padding: 80px 0;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .for-whom h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--navy);
+        }
+
+        .for-whom ul {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .for-whom li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        .for-whom li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .column-not-for h3 {
+            color: var(--text-secondary);
+        }
+
+        .column-not-for li:before {
+            content: "–";
+            color: var(--text-secondary);
+        }
+
+        /* Program Section */
+        .program {
+            padding: 80px 0;
+            background-color: var(--bg-section);
+        }
+
+        .program-intro {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .program-intro p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .day-header {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-top: 48px;
+            margin-bottom: 32px;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .module-card {
+            background-color: var(--bg-card);
+            padding: 28px;
+            border-radius: 8px;
+            border-top: 4px solid var(--navy);
+        }
+
+        .module-number {
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .module-card h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .module-section {
+            margin-bottom: 16px;
+        }
+
+        .module-section-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .module-section p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 4px 0;
+        }
+
+        /* Why Section */
+        .why {
+            padding: 80px 0;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .why-item h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .why-item p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .why-counter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background-color: var(--navy);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        /* Instructor Section */
+        .instructor {
+            padding: 80px 0;
+            background-color: var(--bg-section);
+        }
+
+        .instructor-card {
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .instructor-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 24px;
+        }
+
+        .instructor-bio {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .instructor-bio {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .instructor-bio li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            list-style: none;
+            padding-left: 24px;
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .instructor-bio li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        /* Bonuses Section */
+        .bonuses {
+            padding: 80px 0;
+        }
+
+        .bonuses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .bonus-item {
+            background-color: var(--bg-section);
+            padding: 28px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .bonus-item h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .bonus-item p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background-color: var(--bg-section);
+        }
+
+        .pricing-card {
+            background-color: var(--bg-card);
+            padding: 48px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+            border: 2px solid var(--navy);
+        }
+
+        .price-amount {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .price-currency {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .pricing-list {
+            text-align: left;
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-list li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .pricing-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .pricing-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+        }
+
+        .faq-item {
+            background-color: var(--bg-section);
+            padding: 24px;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            background-color: var(--border);
+        }
+
+        .faq-question {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--navy);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            color: var(--navy);
+        }
+
+        .faq-answer {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 16px;
+            line-height: 1.7;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--navy);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 40px;
+        }
+
+        .footer-cta {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .footer-details {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .footer-details strong {
+            color: white;
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .btn-white {
+            background-color: white;
+            color: var(--navy);
+        }
+
+        .btn-white:hover {
+            background-color: #F5F5F5;
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .benefits, .program, .why, .instructor, .bonuses, .pricing, .faq {
+                padding: 60px 0;
+            }
+
+            .pricing-card {
+                padding: 32px;
+            }
+
+            .instructor-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">Office Influencers</a>
+                <nav>
+                    <a href="#program">Program</a>
+                    <a href="#why">Dlaczego warto</a>
+                    <a href="#pricing">Cena</a>
+                    <a href="#faq">FAQ</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Asystentka–Partner w Zarządzaniu</h1>
+            <p class="hero-subtitle">Myśl jak szef. Zwiększ swój wpływ i sprawczość.</p>
+            <p class="hero-meta">Szkolenie dla doświadczonych asystentek zarządu<br>19-20 listopada 2026 · Warszawa</p>
+            <div class="cta-group">
+                <button class="btn btn-primary" onclick="alert('Wkrótce będzie możliwość rejestracji')">Dołącz teraz</button>
+                <button class="btn btn-secondary" onclick="document.getElementById('program').scrollIntoView()">Poznaj program</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Szkolenie, które odczuje cały zarząd</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-number">01</div>
+                    <h3>Mniej spraw na biurku szefa</h3>
+                    <p>Uzgodniony zakres samodzielnych decyzji oznacza, że przejmujesz i zamykasz część spraw samodzielnie.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">02</div>
+                    <h3>Rekomendacje zamiast pytań</h3>
+                    <p>Przychodzisz do szefa z propozycją rozwiązań. Podejmuje decyzje szybciej, bez obciążenia poznawczego.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">03</div>
+                    <h3>Skuteczniejsza komunikacja</h3>
+                    <p>Przygotowujesz informacje w imieniu zarządu, które doprowadzają do konkretnego działania.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">04</div>
+                    <h3>Jasne zasady w sprawach pilnych</h3>
+                    <p>Szef wie, kiedy i jak do niego trafią sprawy, które naprawdę wymagają jego uwagi czy decyzji.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">05</div>
+                    <h3>Bezpieczne AI w biurze</h3>
+                    <p>Korzystasz z AI świadomie i bezpiecznie w pracy z zarządem.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-number">06</div>
+                    <h3>Efekt od razu po powrocie</h3>
+                    <p>Wdrażasz gotowy standard i widzisz rezultaty w pierwszych tygodniach.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Whom Section -->
+    <section class="for-whom">
+        <div class="container">
+            <h2 class="section-title">Dla kogo jest to szkolenie?</h2>
+            <div class="two-columns">
+                <div>
+                    <h3>Idealne dla:</h3>
+                    <ul>
+                        <li><strong>Asystentki/Asystentów osoby zarządzającej</strong> – zbudujesz współpracę opartą na zaufaniu i jasnym mandacie</li>
+                        <li><strong>Asystentki/Asystentów Zarządu</strong> – sprawnie połączysz priorytety kilku członków zarządu</li>
+                        <li><strong>Executive Assistant</strong> – zbudujesz wpływ i sprawczość</li>
+                    </ul>
+                </div>
+                <div class="column-not-for">
+                    <h3>Nie jest dla:</h3>
+                    <ul>
+                        <li>Osób na początku kariery – pracujemy w gronie doświadczonych</li>
+                        <li>Szukających kursu obsługi programów – uczymy myślenia i działania</li>
+                        <li>Szukających strategii i finansów – to nie są główne tematy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Section -->
+    <section class="program" id="program">
+        <div class="container">
+            <h2 class="section-title">Program szkolenia</h2>
+            <div class="program-intro">
+                <p><strong>Dwa dni warsztatów.</strong> Siedem modułów. Dwanaście gotowych narzędzi do użycia od razu po szkoleniu.</p>
+            </div>
+
+            <h3 class="day-header">Dzień 1: Myśl jak Szef</h3>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-number">Moduł 1</div>
+                    <h4>Styl pracy i wartości szefa</h4>
+                    <div class="module-section">
+                        <div class="module-section-title">Nauczysz się</div>
+                        <p>• Patrzeć na sprawy z perspektywy zarządzającego</p>
+                        <p>• Dopasowywać współpracę do stylu i osobowości szefa</p>
+                        <p>• Rozpoznawać wartości po decyzjach</p>
+                    </div>
+                    <div class="module-section">
+                        <div class="module-section-title">Przygotowujesz</div>
+                        <p>Profil współpracy z szefem</p>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">Moduł 2</div>
+                    <h4>Komunikacja z szefem i w jego imieniu</h4>
+                    <div class="module-section">
+                        <div class="module-section-title">Nauczysz się</div>
+                        <p>• Przekazywać kluczowe informacje krótko</p>
+                        <p>• Pisać w imieniu zarządu we właściwym tonie</p>
+                        <p>• Komunikować trudne wiadomości</p>
+                    </div>
+                    <div class="module-section">
+                        <div class="module-section-title">Przygotowujesz</div>
+                        <p>Ściągawkę komunikacji i szablon dla szefa</p>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">Moduł 3</div>
+                    <h4>Wpływ i prezencja</h4>
+                    <div class="module-section">
+                        <div class="module-section-title">Nauczysz się</div>
+                        <p>• Budować autorytet wśród kadry zarządzającej</p>
+                        <p>• Przedstawiać szefowi propozycje działań</p>
+                        <p>• Mówić z przekonaniem</p>
+                    </div>
+                    <div class="module-section">
+                        <div class="module-section-title">Przygotowujesz</div>
+                        <p>Mapę relacji i plan wpływu</p>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">Moduł 4</div>
+                    <h4>Asertywność i skuteczność</h4>
+                    <div class="module-section">
+                        <div class="module-section-title">Nauczysz się</div>
+                        <p>• Chronić czas zarządu bez psuwania relacji</p>
+                        <p>• Zgłaszać ryzyka i zastrzeżenia</p>
+                        <p>• Zachować jakość pracy pod presją</p>
+                    </div>
+                    <div class="module-section">
+                        <div class="module-section-title">Przygotowujesz</div>
+                        <p>Zestaw technik asertywnych</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="day-header">Dzień 2: Działaj jak Partner</h3>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-number">Moduł 5</div>
+                    <h4>Delegowanie</h4>
+                    <div class="module-section">
+                        <div class="module-section-title">Nauczysz się</div>
+                        <p>• Poziomów delegowania zadań</p>
+                        <p>• Przyjmować zadania z jasnym celem i zakresem</p>
+                        <p>• Zwiększać samodzielność stopniowo</p>
+                    </div>
+                    <div class="module-section">
+                        <div class="module-section-title">Przygotowujesz</div>
+                        <p>Mapę moich decyzji</p>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">Moduł 6</div>
+                    <h4>Podejmowanie decyzji</h4>
+                    <div class="module-section">
+                        <div class="module-section-title">Nauczysz się</div>
+                        <p>• Jak podejmuje decyzje szef</p>
+                        <p>• Przygotowywać właściwe rekomendacje</p>
+                        <p>• Argumentować skutecznie</p>
+                    </div>
+                    <div class="module-section">
+                        <div class="module-section-title">Przygotowujesz</div>
+                        <p>Szablon rekomendacji dla szefa</p>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-number">Moduł 7</div>
+                    <h4>Standard współpracy z szefem</h4>
+                    <div class="module-section">
+                        <div class="module-section-title">Nauczysz się</div>
+                        <p>• Ustalić mandat decyzyjny i rytm kontaktu</p>
+                        <p>• Określić zasady AI we współpracy</p>
+                        <p>• Wdrożyć zmiany</p>
+                    </div>
+                    <div class="module-section">
+                        <div class="module-section-title">Przygotowujesz</div>
+                        <p>Standard współpracy i plan na 90 dni</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Section -->
+    <section class="why" id="why">
+        <div class="container">
+            <h2 class="section-title">Dlaczego warto</h2>
+            <div class="why-grid">
+                <div class="why-item">
+                    <h4><span class="why-counter">1</span>Program dla dzisiejszych zarządów</h4>
+                    <p>Samodzielność, krytyczne myślenie, wpływ i sprawna komunikacja – to dokładnie to, czego dziś oczekują zarządy.</p>
+                </div>
+                <div class="why-item">
+                    <h4><span class="why-counter">2</span>Kompetencje i AI razem</h4>
+                    <p>W każdym module sprawdzasz, jak AI przyspiesza pracę i gdzie decyduje ludzki osąd i doświadczenie.</p>
+                </div>
+                <div class="why-item">
+                    <h4><span class="why-counter">3</span>12 gotowych narzędzi</h4>
+                    <p>Wszystkie szablony ze szkolenia do edycji. Zaczynasz pracę od razu po powrocie do biura.</p>
+                </div>
+                <div class="why-item">
+                    <h4><span class="why-counter">4</span>Praktyka zamiast teorii</h4>
+                    <p>Trzy czwarte czasu to symulacje, ćwiczenia i praca na Twoich rzeczywistych sytuacjach.</p>
+                </div>
+                <div class="why-item">
+                    <h4><span class="why-counter">5</span>Wsparcie we wdrożeniu</h4>
+                    <p>Dwie sesje online po 30 i 60 dniach w grupie absolwentek szkolenia. Nie zostajesz sama.</p>
+                </div>
+                <div class="why-item">
+                    <h4><span class="why-counter">6</span>Doświadczone grono</h4>
+                    <p>Pracujesz z innymi doświadczonymi asystentkami. Uczysz się od nich, tworzysz sieć wsparcia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section class="instructor">
+        <div class="container">
+            <h2 class="section-title">Poznaj prowadzącą</h2>
+            <div class="instructor-card">
+                <div class="instructor-name">[Imię i nazwisko – do uzupełnienia]</div>
+                <ul class="instructor-bio">
+                    <li>Doświadczenie: [szczegóły – do uzupełnienia]</li>
+                    <li>Przeszkolona: [liczba osób – do uzupełnienia]</li>
+                    <li>Projekty: [informacje – do uzupełnienia]</li>
+                    <li>Kwalifikacje: [szczegóły – do uzupełnienia]</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonuses Section -->
+    <section class="bonuses">
+        <div class="container">
+            <h2 class="section-title">Bonusy do szkolenia</h2>
+            <div class="bonuses-grid">
+                <div class="bonus-item">
+                    <h4>12 gotowych narzędzi</h4>
+                    <p>Wszystkie szablony ze szkolenia w wersji do edycji. Zaczynasz pracę od razu.</p>
+                </div>
+                <div class="bonus-item">
+                    <h4>Biblioteka promptów AI</h4>
+                    <p>Gotowe polecenia dla asystentek zarządu z zasadami bezpiecznego korzystania z AI.</p>
+                </div>
+                <div class="bonus-item">
+                    <h4>Dwie sesje online</h4>
+                    <p>Spotkania po 30 i 60 dniach (45 minut każda) w gronie absolwentek do wspólnego sprawdzenia postępów.</p>
+                </div>
+                <div class="bonus-item">
+                    <h4>Certyfikat</h4>
+                    <p>Zaświadczenie o ukończeniu szkolenia do Twojego CV i profilu zawodowego.</p>
+                </div>
+                <div class="bonus-item">
+                    <h4>Przerwy kawowe</h4>
+                    <p>Doskonałe do rozmów z innymi uczestniczkami i wymiany doświadczeń.</p>
+                </div>
+                <div class="bonus-item">
+                    <h4>Lunch</h4>
+                    <p>Pyszne posiłki przez całe szkolenie. Jesteś w dobrych rękach.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Cena udziału w szkoleniu</h2>
+            <div class="pricing-card">
+                <div class="price-amount">2100 zł</div>
+                <div class="price-currency">netto (za 1 osobę)</div>
+                <ul class="pricing-list">
+                    <li>2 dni warsztatów</li>
+                    <li>12 narzędzi i szablonów</li>
+                    <li>Biblioteka promptów AI</li>
+                    <li>2 sesje online (2×45 min)</li>
+                    <li>Certyfikat ukończenia</li>
+                    <li>Przerwy kawowe</li>
+                    <li>Lunch</li>
+                </ul>
+                <button class="btn btn-primary" onclick="alert('Wkrótce będzie możliwość rejestracji')">Dołącz teraz</button>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="color: var(--text-secondary); font-size: 14px;">Płaci firma? <button class="btn btn-secondary" style="margin-left: 12px;">Pobierz notatkę dla przełożonego</button></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Najczęściej zadawane pytania</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <span>Mam wieloletnie doświadczenie. Czy to szkolenie jest dla mnie?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">Tak, zdecydowanie. Program powstał dedykowany dla doświadczonych Asystentek Zarządu i Executive Assistant. Pracujemy w gronie osób z wieloletnim doświadczeniem, co pozwala na głębszą dyskusję i lepsze zrozumienie kontekstu.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Jak firma sprawdzi efekt szkolenia?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">Proponujemy porównanie oceny szefa/szefowej przed szkoleniem i po 60 dniach, samoocenę asystentki oraz implementację planu wdrożenia na 90 dni. To rzeczywiste, mierzalne rezultaty.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Nie korzystam z AI. Czy dam radę?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">Tak, bez problemu. Wszystko pokazujemy krok po kroku. AI to wsparcie, a najważniejsze są kompetencje: komunikacja, wpływ, delegowanie i podejmowanie decyzji. Nauczysz się AI od podstaw.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Moja firma ogranicza korzystanie z AI. Czy szkolenie ma sens?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">Tak. AI to tylko narzędzie wspierające. Najważniejsze są kompetencje miękkie: komunikacja, wpływ, delegowanie, podejmowanie decyzji. Program skupia się przede wszystkim na tych kompetencjach.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Czy dostanę certyfikat?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">Tak, certyfikat ukończenia szkolenia otrzymasz po 60 dniach wdrażania i zrealizowaniu warunków programu. Jest to uznawany dokument do Twojego CV.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Czy firma może zapłacić za szkolenie?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">Tak, oczywiście. Wystawiamy fakturę VAT. Możesz pobrać gotową notatkę dla pracodawcy, która wyjaśnia wartość szkolenia dla firmy.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Czy jest dofinansowanie?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">Szkolenie nie ma dofinansowania. Cena jest ustaloną kwotą za wszystkie elementy programu, narzędzia, wsparcie i sesje online.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Gdzie i w jakich godzinach szkolenie się odbywa?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">Szkolenie odbywa się w Warszawie, w Centrum Biznesowym Ogrodowa 58.<br>
+                    <strong>Dzień 1:</strong> 19.11.2026, godz. 10.00–17.00<br>
+                    <strong>Dzień 2:</strong> 20.11.2026, godz. 9.00–16.00<br>
+                    Przerwy kawowe i lunch są zapewniane.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-cta">Gotowa na zmianę?</div>
+                <button class="btn btn-white" onclick="alert('Wkrótce będzie możliwość rejestracji')">Dołącz do szkolenia</button>
+            </div>
+            <div class="footer-details">
+                <strong>Termin:</strong> 19–20 listopada 2026<br>
+                <strong>Miejsce:</strong> Warszawa, Centrum Biznesowe Ogrodowa 58<br>
+                <strong>Godziny:</strong> I dzień 10.00–17.00, II dzień 9.00–16.00<br>
+                <strong>Cena:</strong> 2100 zł netto
+            </div>
+            <div class="footer-bottom">
+                © 2026 Office Influencers. Wszystkie prawa zastrzeżone. | <a href="#" style="color: rgba(255,255,255,0.8); text-decoration: none;">Polityka prywatności</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
