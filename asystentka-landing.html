@@ -881,6 +881,17 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
               <input type="text" id="f-role" name="stanowisko" autocomplete="organization-title">
             </div>
 
+            <div class="field">
+              <label for="f-count">Liczba zgłaszanych osób<span class="req" aria-hidden="true">*</span></label>
+              <select id="f-count" name="liczba_osob" required>
+                <option value="1" selected>1 osoba</option>
+                <option value="2">2 osoby</option>
+                <option value="3">3 osoby</option>
+                <option value="4">4 osoby</option>
+                <option value="5">5 osób i więcej</option>
+              </select>
+            </div>
+
             <div class="field field--full">
               <fieldset>
                 <legend class="legend">Kto opłaca udział?<span class="req" aria-hidden="true">*</span></legend>
@@ -952,10 +963,11 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
           <div class="row"><dt>Termin</dt><dd>19–20.11.2026</dd></div>
           <div class="row"><dt>Miejsce</dt><dd>Warszawa, Ogrodowa 58</dd></div>
           <div class="row"><dt>Godziny</dt><dd>I dzień 10.00–17.00<br>II dzień 9.00–16.00</dd></div>
+          <div class="row"><dt>Osoby</dt><dd id="s-count">1</dd></div>
         </dl>
         <div class="total">
-          <b>2100 zł</b>
-          <span>netto za osobę</span>
+          <b id="s-total">2100 zł</b>
+          <span>netto · 2100 zł netto za osobę</span>
         </div>
         <div class="help">
           Masz pytanie przed zapisem?<br>
@@ -1109,6 +1121,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 (function(){
   var form=document.getElementById('zapis-form');
   if(!form)return;
+  var PRICE=2100;
   var done=document.getElementById('zapis-done');
   var status=document.getElementById('f-status');
   var submit=document.getElementById('f-submit');
@@ -1125,6 +1138,14 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     if(!input)return;
     var ev=input.type==='checkbox'?'change':'input';
     input.addEventListener(ev,function(){setErr(input,errId,'')});
+  }
+
+  function refreshSummary(){
+    var count=q('f-count');
+    var n=parseInt(count.value,10)||1;
+    var many=count.value==='5';
+    q('s-count').textContent=many?'5 i więcej':String(n);
+    q('s-total').textContent=(many?'od ':'')+(n*PRICE).toLocaleString('pl-PL')+' zł';
   }
 
   function refreshPayer(){
@@ -1168,9 +1189,11 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
    ['f-nip','e-nip'],['f-address','e-address'],['f-rodo','e-rodo']]
     .forEach(function(pair){clearOn(q(pair[0]),pair[1])});
 
+  q('f-count').addEventListener('change',refreshSummary);
   form.addEventListener('change',function(e){
     if(e.target.name==='platnik')refreshPayer();
   });
+  refreshSummary();
   refreshPayer();
 
   // Nazwę i adres pobieramy z Wykazu podatników VAT Ministerstwa Finansów.
