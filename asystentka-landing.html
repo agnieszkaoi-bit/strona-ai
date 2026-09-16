@@ -31,7 +31,7 @@
   --muted:#616C7E;
   --yellow:#FFD75E;
   --yellow-deep:#F0C231;
-  --yellow-soft:#FFF7E3;
+  --tint:#EBF2FA;
   --gold:#A8803C;
   --rule:#E5E9F0;
   --rule-soft:#F0F3F7;
@@ -141,7 +141,7 @@ a{color:inherit}
     display:flex;align-items:center;min-height:46px;padding:12px 16px;
     border-radius:var(--r-sm);color:var(--ink);
   }
-  .has-js .nav-wrap>.site-nav a:hover{background:var(--yellow-soft)}
+  .has-js .nav-wrap>.site-nav a:hover{background:var(--tint)}
 }
 
 /* ---------- przyciski ---------- */
@@ -155,7 +155,7 @@ a{color:inherit}
 .btn--primary{background:var(--navy);color:#fff;box-shadow:var(--shadow-sm)}
 .btn--primary:hover{background:#123A6B;transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(11,37,69,.5)}
 .btn--ghost{background:transparent;color:var(--navy);border-color:var(--rule)}
-.btn--ghost:hover{border-color:var(--navy);background:var(--yellow-soft);transform:translateY(-2px)}
+.btn--ghost:hover{border-color:var(--navy);background:var(--tint);transform:translateY(-2px)}
 .btn--yellow{background:var(--yellow);color:var(--navy)}
 .btn--yellow:hover{background:#FFE083;transform:translateY(-2px);box-shadow:0 12px 26px -14px rgba(240,194,49,.9)}
 .btn--sm{padding:11px 20px;font-size:.875rem}
@@ -230,7 +230,7 @@ a{color:inherit}
   .client:nth-last-child(-n+4){border-bottom:1px solid var(--rule)}
   .client:nth-last-child(-n+2){border-bottom:0}
 }
-.client:hover{background:var(--yellow-soft)}
+.client:hover{background:var(--tint)}
 
 /* ---------- liczby ---------- */
 .stats{
@@ -328,9 +328,9 @@ a{color:inherit}
 
 /* ---------- bonusy ---------- */
 .bonuses{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:clamp(22px,2.6vw,32px)}
-.bonus{padding:clamp(26px,2.6vw,32px);background:var(--yellow-soft);border-radius:var(--r-md)}
+.bonus{padding:clamp(26px,2.6vw,32px);background:var(--tint);border-radius:var(--r-md)}
 .bonus h3{font-size:1.125rem;color:var(--navy);margin-bottom:11px}
-.bonus p{font-size:.9375rem;color:#6B6142}
+.bonus p{font-size:.9375rem;color:var(--muted)}
 
 /* ---------- cena ---------- */
 .pricing{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,2.8vw,40px);align-items:start}
@@ -342,7 +342,7 @@ a{color:inherit}
 .price-card .vat{font-size:.875rem;color:var(--muted);margin-bottom:18px}
 .price-note{
   display:flex;align-items:center;gap:11px;font-size:.9375rem;font-weight:500;color:var(--navy);
-  background:var(--yellow-soft);border-radius:var(--r-sm);padding:13px 16px;margin-bottom:26px;
+  background:var(--tint);border-radius:var(--r-sm);padding:13px 16px;margin-bottom:26px;
 }
 .price-note::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--yellow-deep);flex:none}
 .incl{list-style:none;margin:0 0 30px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 24px}
@@ -407,7 +407,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 }
 .choice:hover{border-color:var(--navy-400)}
 .choice input{accent-color:var(--navy);width:17px;height:17px;flex:none;margin:0}
-.choice.is-on,.choice:has(input:checked){border-color:var(--navy-600);background:var(--yellow-soft)}
+.choice.is-on,.choice:has(input:checked){border-color:var(--navy-600);background:var(--tint)}
 .choice:has(input:focus-visible){box-shadow:0 0 0 3.5px rgba(27,83,144,.15)}
 .consents{display:grid;gap:16px;margin-top:28px;padding-top:26px;border-top:1px solid var(--rule)}
 .consent{display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:start;cursor:pointer}
@@ -419,9 +419,9 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .form-foot .btn{flex:none}
 .form-status{font-size:.875rem;color:#B3261E;font-weight:500}
 .form-status:empty{display:none}
-.form-done{border:1px solid var(--rule);border-radius:var(--r-lg);padding:clamp(28px,3.4vw,46px);background:var(--yellow-soft)}
+.form-done{border:1px solid var(--rule);border-radius:var(--r-lg);padding:clamp(28px,3.4vw,46px);background:var(--tint)}
 .form-done h3{font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:14px}
-.form-done p{font-size:.9875rem;color:#6B6142;max-width:56ch}
+.form-done p{font-size:.9875rem;color:var(--muted);max-width:56ch}
 .form-done p+p{margin-top:13px}
 .summary{border:1px solid var(--rule);border-radius:var(--r-lg);padding:clamp(26px,2.8vw,36px);background:var(--paper)}
 .summary h3{font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:22px}
@@ -455,14 +455,14 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .modal .form-done{margin-top:0}
 
 /* ---------- szkolenia zamkniete ---------- */
-.inhouse{background:var(--yellow-soft);border-top:0;text-align:center}
-.inhouse .eyebrow{justify-content:center;color:#8A6A2F}
+.inhouse{background:var(--tint);border-top:0;text-align:center}
+.inhouse .eyebrow{justify-content:center;color:var(--navy-600)}
 .inhouse .eyebrow::before{width:8px;height:8px;border-radius:50%;background:var(--gold)}
 .inhouse h2{font-size:clamp(1.9rem,4.6vw,3.3rem);color:var(--navy);margin-bottom:26px}
 .inhouse h2 em{font-style:italic;color:var(--gold)}
-.inhouse__lede{font-size:clamp(1.0625rem,1.6vw,1.1875rem);color:#5F5535;max-width:60ch;margin:0 auto;line-height:1.62}
+.inhouse__lede{font-size:clamp(1.0625rem,1.6vw,1.1875rem);color:#4F5C6E;max-width:60ch;margin:0 auto;line-height:1.62}
 .inhouse__lede b{color:var(--navy);font-weight:600}
-.inhouse__trust{margin:22px auto 0;font-size:.9375rem;font-style:italic;color:#7C6D48;max-width:58ch}
+.inhouse__trust{margin:22px auto 0;font-size:.9375rem;font-style:italic;color:#6A7689;max-width:58ch}
 .inhouse__cards{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:22px;
   margin:clamp(40px,5vw,60px) auto 0;max-width:900px;
@@ -478,7 +478,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .inhouse__card>span:not(.inhouse__icon){min-width:0;flex:1}
 .inhouse__card a{color:var(--navy);text-decoration:none}
 .inhouse__card a:hover{text-decoration:underline}
-.inhouse__tel{display:flex;flex-wrap:wrap;gap:2px 18px}
+.inhouse__card b+span.inhouse__tel{display:flex;flex-wrap:wrap;gap:2px 20px}
 .inhouse__card b{display:block;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 .inhouse__card b+span{display:block;font-size:1rem;font-weight:600;color:var(--navy);overflow-wrap:break-word}
 
