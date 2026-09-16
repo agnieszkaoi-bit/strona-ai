@@ -233,7 +233,8 @@ a{color:inherit}
   display:block;font-size:clamp(2.5rem,5.4vw,4.25rem);font-weight:700;
   letter-spacing:-.045em;line-height:.96;color:var(--navy);font-variant-numeric:tabular-nums;
 }
-.stat span{display:block;margin-top:14px;font-size:.9375rem;color:var(--muted);max-width:30ch}
+.stat span{display:block;margin-top:14px;font-size:.9375rem;color:var(--muted);max-width:32ch}
+.stat span i{display:block;margin-top:4px;font-size:.8125rem;font-style:normal;color:#8A93A3}
 .section--navy .stat b{color:var(--yellow)}
 .section--navy .stat span{color:#BFD0E6}
 
@@ -285,17 +286,13 @@ a{color:inherit}
 .trainer__list b{color:var(--navy);font-weight:600}
 
 /* ---------- miejsce ---------- */
-.venue{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(36px,4.5vw,72px);align-items:center}
-@media(max-width:880px){.venue{grid-template-columns:1fr}}
-.venue__frame{aspect-ratio:16/10}
-.venue__list{margin:30px 0 0;display:grid;gap:0}
-.venue__list .row{
-  display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:baseline;
-  padding:15px 0;border-bottom:1px solid var(--rule);
+.venue{
+  margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:clamp(24px,3vw,44px);
 }
-.venue__list .row:first-child{border-top:1px solid var(--rule)}
-.venue__list dt{font-size:.8125rem;color:var(--muted);min-width:72px}
-.venue__list dd{margin:0;font-size:.9875rem;color:var(--ink)}
+.venue__item{padding-top:22px;border-top:1px solid var(--rule)}
+.venue__item dt{font-size:.8125rem;color:var(--muted);margin-bottom:8px}
+.venue__item dd{margin:0;font-size:1rem;color:var(--ink)}
 
 /* ---------- program ---------- */
 .day{margin-top:clamp(52px,5.5vw,88px)}
@@ -584,7 +581,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     <div class="portrait">
       <div class="portrait__frame">
         <div class="portrait__fallback">Miejsce na zdjęcie<br>img/agnieszka-korach-hero.jpg</div>
-        <img src="img/agnieszka-korach-hero.jpg" alt="Agnieszka Korach, prowadząca szkolenie Asystentka – Partner w Zarządzaniu" width="800" height="1000">
+        <img src="img/agnieszka-korach-hero.jpg" alt="Agnieszka Korach, prowadząca szkolenie Asystentka – Partner w Zarządzaniu" width="800" height="1000" fetchpriority="high" decoding="async">
       </div>
       <p class="portrait__cap"><b>Agnieszka Korach</b><span>Office Influencers</span></p>
     </div>
@@ -610,8 +607,8 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       <div class="client">ABB</div>
     </div>
     <div class="stats reveal">
-      <div class="stat"><b>10 000+</b><span>przeszkolonych asystentek, office managerek i recepcjonistek</span></div>
-      <div class="stat"><b>23 lata</b><span>doświadczenia w rozwijaniu kompetencji Executive Assistants</span></div>
+      <div class="stat"><b>10 000+</b><span>przeszkolonych asystentek, office managerek i recepcjonistek <i>(dane Office Influencers, wrzesień 2026)</i></span></div>
+      <div class="stat"><b>23 lata</b><span>doświadczenia w rozwijaniu kompetencji Executive Assistants <i>(od 2003 roku)</i></span></div>
       <div class="stat"><b>12</b><span>gotowych narzędzi, które zabierasz ze szkolenia</span></div>
     </div>
   </div>
@@ -759,7 +756,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     <div class="portrait reveal">
       <div class="portrait__frame">
         <div class="portrait__fallback">Miejsce na zdjęcie<br>img/agnieszka-korach-bio.jpg</div>
-        <img src="img/agnieszka-korach-bio.jpg" alt="Agnieszka Korach podczas wystąpienia na konferencji Operacje na otwartym biurze" width="800" height="1000">
+        <img src="img/agnieszka-korach-bio.jpg" alt="Agnieszka Korach podczas wystąpienia na konferencji Operacje na otwartym biurze" width="800" height="1000" loading="lazy" decoding="async">
       </div>
     </div>
     <div>
@@ -1149,25 +1146,19 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <!-- MIEJSCE -->
 <section class="section" id="miejsce">
-  <div class="wrap venue">
-    <div class="reveal">
-      <div class="portrait__frame venue__frame">
-        <div class="portrait__fallback">Miejsce na zdjęcie<br>img/ogrodowa-58.jpg</div>
-        <img src="img/ogrodowa-58.jpg" alt="Centrum Biznesowe Ogrodowa 58 w Warszawie" width="1200" height="750" loading="lazy">
-      </div>
-    </div>
-    <div>
+  <div class="wrap">
+    <div class="head">
       <div class="eyebrow">Miejsce</div>
       <h2 class="h2">Centrum Biznesowe Ogrodowa 58</h2>
       <p class="lede">Szkolenie odbywa się w Warszawie, przy ul. Ogrodowej 58.</p>
-      <dl class="venue__list">
-        <div class="row"><dt>Adres</dt><dd>ul. Ogrodowa 58, Warszawa</dd></div>
-        <div class="row"><dt>Termin</dt><dd>19–20 listopada 2026</dd></div>
-        <div class="row"><dt>Godziny</dt><dd>I dzień 10.00–17.00<br>II dzień 9.00–16.00</dd></div>
-      </dl>
-      <div class="btn-row">
-        <a class="btn btn--ghost" href="https://ogrodowa58.com.pl/lokalizacja/" target="_blank" rel="noopener">Dojazd i parking</a>
-      </div>
+    </div>
+    <dl class="venue reveal">
+      <div class="venue__item"><dt>Adres</dt><dd>ul. Ogrodowa 58<br>Warszawa</dd></div>
+      <div class="venue__item"><dt>Termin</dt><dd>19–20 listopada 2026</dd></div>
+      <div class="venue__item"><dt>Godziny</dt><dd>I dzień 10.00–17.00<br>II dzień 9.00–16.00</dd></div>
+    </dl>
+    <div class="btn-row">
+      <a class="btn btn--ghost" href="https://ogrodowa58.com.pl/lokalizacja/" target="_blank" rel="noopener">Dojazd i parking</a>
     </div>
   </div>
 </section>
@@ -1259,7 +1250,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <footer class="site-footer">
   <div class="wrap bar">
-    <span>© 2026 Office Influencers · Agnieszka Korach</span>
+    <span>© 2026 Office Influencers · Agnieszka Korach · aktualizacja: <time datetime="2026-09-16">16 września 2026</time></span>
     <span><a href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a> · <a href="tel:+48224357002">+48 22 435 70 02</a> · <a href="https://officeinfluencers.pl/polityka-prywatnosci">Polityka prywatności</a></span>
   </div>
 </footer>
@@ -1274,6 +1265,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       "name":"Asystentka – Partner w Zarządzaniu. Myśl jak Szef™",
       "description":"Dwa dni warsztatów dla doświadczonych asystentek zarządu. Sześć modułów: styl pracy szefa, określanie celów, komunikacja, asertywność, delegowanie z poszerzaniem wpływu i decyzje. Każda kompetencja wzmocniona narzędziami AI.",
       "inLanguage":"pl",
+      "dateModified":"2026-09-16",
       "url":"https://www.officeinfluencers.pl/asystentka-partner-w-zarzadzaniu-i-mysl-jak-szef/",
       "image":"https://www.officeinfluencers.pl/img/agnieszka-korach-hero.jpg",
       "provider":{"@id":"https://www.officeinfluencers.pl/#organizacja"},
@@ -1291,7 +1283,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
           "address":{"@type":"PostalAddress","streetAddress":"Ogrodowa 58","addressLocality":"Warszawa","addressCountry":"PL"}
         },
         "instructor":{"@id":"https://www.officeinfluencers.pl/#agnieszka-korach"},
-        "offers":{"@type":"Offer","price":"2100","priceCurrency":"PLN","category":"netto","availability":"https://schema.org/InStock","url":"https://www.officeinfluencers.pl/asystentka-partner-w-zarzadzaniu-i-mysl-jak-szef/"}
+        "offers":{"@type":"Offer","price":"2100","priceCurrency":"PLN","category":"netto","availability":"https://schema.org/InStock","validFrom":"2026-09-16","priceValidUntil":"2026-11-18","url":"https://www.officeinfluencers.pl/asystentka-partner-w-zarzadzaniu-i-mysl-jak-szef/"}
       }
     },
     {
