@@ -80,9 +80,8 @@ a{color:inherit}
   background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(14px);
   border-bottom:1px solid var(--line-soft);
 }
-.site-header .bar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:70px}
-.brand{font-weight:800;letter-spacing:-.02em;font-size:.95rem;text-decoration:none;color:var(--navy);display:flex;align-items:center;gap:9px}
-.brand .dot{width:9px;height:9px;border-radius:50%;background:var(--yellow);flex:none}
+.site-header .bar{display:flex;align-items:center;gap:24px;height:70px}
+.site-header .bar>.btn{margin-left:auto}
 .site-nav{display:flex;align-items:center;gap:30px}
 .site-nav a{font-size:.875rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s}
 .site-nav a:hover{color:var(--navy)}
@@ -259,10 +258,10 @@ a{color:inherit}
 .price-card .amount{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
 .price-card .amount b{font-size:clamp(2.6rem,5vw,3.5rem);font-weight:800;letter-spacing:-.04em;color:var(--navy);font-variant-numeric:tabular-nums}
 .price-card .amount i{font-style:normal;font-size:1rem;font-weight:600;color:var(--muted)}
-.price-card .vat{font-size:.875rem;color:var(--muted);margin-bottom:26px}
-.incl{list-style:none;margin:0 0 30px;padding:0;display:grid;gap:12px}
-.incl li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;font-size:.9375rem;color:var(--ink);padding-bottom:12px;border-bottom:1px solid var(--line-soft)}
-.incl li:last-child{border-bottom:0;padding-bottom:0}
+.price-card .vat{font-size:.875rem;color:var(--muted);margin-bottom:24px;padding-bottom:22px;border-bottom:1px solid var(--line-soft)}
+.incl{list-style:none;margin:0 0 26px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:13px 24px}
+@media(max-width:520px){.incl{grid-template-columns:1fr}}
+.incl li{display:grid;grid-template-columns:auto 1fr;gap:11px;align-items:center;font-size:.9375rem;color:var(--ink)}
 .incl .tick{width:18px;height:18px;margin-top:0}
 .incl .tick::after{left:6px;top:4px;width:4px;height:7px}
 .side-card{border:1px solid var(--line);border-radius:18px;padding:clamp(28px,3vw,36px);background:var(--paper)}
@@ -398,7 +397,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <header class="site-header">
   <div class="wrap bar">
-    <a class="brand" href="/"><span class="dot"></span>OFFICE INFLUENCERS</a>
     <nav class="site-nav">
       <a href="#efekty">Efekty</a>
       <a href="#program">Program</a>
@@ -477,7 +475,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       <div class="eyebrow">Po co to szkolenie</div>
       <h2 class="h2">Po szkoleniu nie tylko zrozumiesz swojego szefa/swoją szefową. Zaczniesz skutecznie przewidywać, czego potrzebuje.</h2>
       <p class="lede">AI przejmuje coraz więcej rutynowych administracyjnych zadań. Coraz większe znaczenie zyskują kompetencje, których nie da się zautomatyzować: rozumienie ludzi, wpływ, krytyczne myślenie, znajomość i rozumienie kontekstu, samodzielność w decyzjach.</p>
-      <p class="lede" style="margin-top:18px">Na tym skupia się szkolenie. W każdym module dostajesz gotowe praktyczne narzędzia. Na koniec wychodzisz z gotowym standardem, który wdrażasz po powrocie do biura.</p>
+      <p class="lede" style="margin-top:18px">Na tym skupia się szkolenie. W każdym module dostajesz gotowe praktyczne narzędzia. Na koniec wychodzisz z własnym planem wdrożenia, który uruchamiasz po powrocie do biura.</p>
       <div class="btn-row"><a class="btn btn--primary" href="#zapis">Dołącz teraz</a></div>
     </div>
   </div>
@@ -519,7 +517,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       <article class="effect">
         <div class="effect__n">06</div>
         <h3>Efekt, który widać od razu po Twoim powrocie do pracy</h3>
-        <p>Wychodzisz z gotowym standardem współpracy i planem wdrożenia na 90 dni.</p>
+        <p>Wychodzisz z własną mapą celów i planem wdrożenia na 90 dni.</p>
       </article>
     </div>
   </div>
@@ -574,7 +572,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       <article class="reason">
         <div class="reason__n">03</div>
         <h3>12 gotowych narzędzi</h3>
-        <p>Mapa moich decyzji, szablon rekomendacji, standard współpracy z szefem/szefową i inne. Do użycia od razu.</p>
+        <p>Mapa moich decyzji, mapa celów, szablon rekomendacji i inne. Do użycia od razu.</p>
       </article>
       <article class="reason">
         <div class="reason__n">04</div>
@@ -662,9 +660,25 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
           </div>
           <div class="module__ai"><b>AI w tym module:</b> porządkowanie preferencji szefa_owej i analiza dylematów.</div>
         </article>
-
         <article class="module">
-          <div class="module__top"><span class="module__n">2</span><h4>Komunikacja z szefem_ową i w jego/jej imieniu</h4></div>
+          <div class="module__top"><span class="module__n">2</span><h4>Określanie i definiowanie celu</h4></div>
+          <div class="module__block">
+            <h5>Czego się nauczysz</h5>
+            <ul>
+              <li>odróżniać cel od zadania i od życzenia;</li>
+              <li>opisywać cel przez rezultat i kryteria sukcesu;</li>
+              <li>przekładać cele zarządu na własne priorytety;</li>
+              <li>uzgadniać z szefem_ową, po czym poznacie, że cel jest osiągnięty.</li>
+            </ul>
+          </div>
+          <div class="module__block">
+            <h5>Co przygotujesz</h5>
+            <p>Mapę celów na najbliższy kwartał.</p>
+          </div>
+          <div class="module__ai"><b>AI w tym module:</b> sprawdzanie, czy cel jest mierzalny, i rozbijanie go na kroki.</div>
+        </article>
+        <article class="module">
+          <div class="module__top"><span class="module__n">3</span><h4>Komunikacja z szefem_ową i w jego/jej imieniu</h4></div>
           <div class="module__block">
             <h5>Czego się nauczysz</h5>
             <ul>
@@ -680,9 +694,8 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
           </div>
           <div class="module__ai"><b>AI w tym module:</b> szkice, zmiana tonu, sprawdzenie odbioru komunikatu, symulacje rozmów.</div>
         </article>
-
         <article class="module">
-          <div class="module__top"><span class="module__n">3</span><h4>Wpływ i prezencja</h4></div>
+          <div class="module__top"><span class="module__n">4</span><h4>Wpływ i prezencja</h4></div>
           <div class="module__block">
             <h5>Czego się nauczysz</h5>
             <ul>
@@ -696,9 +709,17 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
           </div>
           <div class="module__ai"><b>AI w tym module:</b> m.in. argumentacja i przewidywanie zastrzeżeń.</div>
         </article>
+      </div>
+    </div>
 
+    <div class="day">
+      <div class="day__head">
+        <span class="day__tag">Dzień 2</span>
+        <h3>Działaj jak Partner</h3>
+      </div>
+      <div class="modules reveal">
         <article class="module">
-          <div class="module__top"><span class="module__n">4</span><h4>Asertywność i skuteczność pod presją</h4></div>
+          <div class="module__top"><span class="module__n">5</span><h4>Asertywność i skuteczność pod presją</h4></div>
           <div class="module__block">
             <h5>Czego się nauczysz</h5>
             <ul>
@@ -713,17 +734,8 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
           </div>
           <div class="module__ai"><b>AI w tym module:</b> m.in. trening trudnej rozmowy.</div>
         </article>
-      </div>
-    </div>
-
-    <div class="day">
-      <div class="day__head">
-        <span class="day__tag">Dzień 2</span>
-        <h3>Działaj jak Partner</h3>
-      </div>
-      <div class="modules reveal">
         <article class="module">
-          <div class="module__top"><span class="module__n">5</span><h4>Delegowanie</h4></div>
+          <div class="module__top"><span class="module__n">6</span><h4>Delegowanie</h4></div>
           <div class="module__block">
             <h5>Czego się nauczysz</h5>
             <ul>
@@ -738,9 +750,8 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
           </div>
           <div class="module__ai"><b>AI w tym module:</b> delegowanie zadań AI z kontrolą wyniku.</div>
         </article>
-
         <article class="module">
-          <div class="module__top"><span class="module__n">6</span><h4>Podejmowanie decyzji</h4></div>
+          <div class="module__top"><span class="module__n">7</span><h4>Podejmowanie decyzji</h4></div>
           <div class="module__block">
             <h5>Czego się nauczysz</h5>
             <ul>
@@ -750,26 +761,9 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
           </div>
           <div class="module__block">
             <h5>Co przygotujesz</h5>
-            <p>M.in. szablon rekomendacji dla szefa/szefowej.</p>
+            <p>Szablon rekomendacji dla szefa/szefowej i plan wdrożenia na 90 dni.</p>
           </div>
           <div class="module__ai"><b>AI w tym module:</b> generowanie opcji i sprawdzanie, co mogło umknąć.</div>
-        </article>
-
-        <article class="module">
-          <div class="module__top"><span class="module__n">7</span><h4>Standard współpracy z szefem</h4></div>
-          <div class="module__block">
-            <h5>Czego się nauczysz</h5>
-            <ul>
-              <li>ustalać mandat decyzyjny, rytm kontaktu i zasady eskalacji;</li>
-              <li>określać zasady korzystania z AI we współpracy z szefem;</li>
-              <li>przedstawiać szefowi zmiany językiem korzyści.</li>
-            </ul>
-          </div>
-          <div class="module__block">
-            <h5>Co przygotujesz</h5>
-            <p>Standard współpracy z szefem/szefową i plan wdrożenia na 90 dni.</p>
-          </div>
-          <div class="module__ai"><b>AI w tym module:</b> zasady bezpiecznego korzystania z AI w biurze zarządu.</div>
         </article>
       </div>
       <div class="btn-row"><a class="btn btn--primary" href="#zapis">Dołącz teraz</a></div>
@@ -1025,7 +1019,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   <div class="wrap closing">
     <div class="eyebrow" style="justify-content:center">Termin szkolenia: 19–20.11.2026</div>
     <h2>Dwa dni. Siedem modułów.<br>Dwanaście narzędzi.</h2>
-    <p class="lede">Wychodzisz z gotowym standardem współpracy i planem wdrożenia na 90 dni.</p>
+    <p class="lede">Wychodzisz z własną mapą celów i planem wdrożenia na 90 dni.</p>
     <div class="btn-row"><a class="btn btn--yellow" href="#zapis">Dołącz teraz</a></div>
     <div class="facts">
       <div class="fact"><b>Termin</b><span>19–20 listopada 2026</span></div>
@@ -1041,7 +1035,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 <footer class="site-footer">
   <div class="wrap bar">
     <span>© 2026 Office Influencers · Agnieszka Korach</span>
-    <span><a href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a> · <a href="tel:+48224357002">+48 22 435 70 02</a></span>
+    <span><a href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a> · <a href="tel:+48224357002">+48 22 435 70 02</a> · <a href="https://officeinfluencers.pl/polityka-prywatnosci">Polityka prywatności</a></span>
   </div>
 </footer>
 
@@ -1053,11 +1047,11 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       "@type":"Course",
       "@id":"https://www.officeinfluencers.pl/asystentka-partner-w-zarzadzaniu-i-mysl-jak-szef/#course",
       "name":"Asystentka – Partner w Zarządzaniu. Myśl jak Szef™",
-      "description":"Dwa dni warsztatów dla doświadczonych asystentek zarządu. Siedem modułów: styl pracy szefa, komunikacja, wpływ, asertywność, delegowanie, decyzje i standard współpracy. Każda kompetencja wzmocniona narzędziami AI.",
+      "description":"Dwa dni warsztatów dla doświadczonych asystentek zarządu. Siedem modułów: styl pracy szefa, określanie celów, komunikacja, wpływ, asertywność, delegowanie i decyzje. Każda kompetencja wzmocniona narzędziami AI.",
       "inLanguage":"pl",
       "url":"https://www.officeinfluencers.pl/asystentka-partner-w-zarzadzaniu-i-mysl-jak-szef/",
       "provider":{"@type":"Organization","name":"Office Influencers","url":"https://www.officeinfluencers.pl/"},
-      "teaches":["Myślenie z perspektywy osoby zarządzającej","Komunikacja w imieniu zarządu","Wpływ i prezencja","Asertywność pod presją","Delegowanie","Przygotowanie rekomendacji decyzyjnych","Bezpieczne korzystanie z AI w biurze zarządu"],
+      "teaches":["Myślenie z perspektywy osoby zarządzającej","Określanie i definiowanie celu","Komunikacja w imieniu zarządu","Wpływ i prezencja","Asertywność pod presją","Delegowanie","Przygotowanie rekomendacji decyzyjnych","Bezpieczne korzystanie z AI w biurze zarządu"],
       "hasCourseInstance":{
         "@type":"CourseInstance",
         "courseMode":"onsite",
