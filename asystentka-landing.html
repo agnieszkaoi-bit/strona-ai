@@ -284,6 +284,19 @@ a{color:inherit}
 .trainer__list li::before{content:"";width:8px;height:1.5px;border-radius:1px;background:var(--navy-400);margin-top:12px}
 .trainer__list b{color:var(--navy);font-weight:600}
 
+/* ---------- miejsce ---------- */
+.venue{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(36px,4.5vw,72px);align-items:center}
+@media(max-width:880px){.venue{grid-template-columns:1fr}}
+.venue__frame{aspect-ratio:16/10}
+.venue__list{margin:30px 0 0;display:grid;gap:0}
+.venue__list .row{
+  display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:baseline;
+  padding:15px 0;border-bottom:1px solid var(--rule);
+}
+.venue__list .row:first-child{border-top:1px solid var(--rule)}
+.venue__list dt{font-size:.8125rem;color:var(--muted);min-width:72px}
+.venue__list dd{margin:0;font-size:.9875rem;color:var(--ink)}
+
 /* ---------- program ---------- */
 .day{margin-top:clamp(52px,5.5vw,88px)}
 .day:first-of-type{margin-top:0}
@@ -1128,8 +1141,33 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       </details>
       <details>
         <summary>Gdzie i w jakich godzinach szkolenie się odbywa?</summary>
-        <div class="answer">Szkolenie „Asystentka – Partner w Zarządzaniu” odbywa się w Warszawie, w Centrum Biznesowym Ogrodowa 58, <b>19–20.11.2026</b>, godz. 10.00–17.00 (I dzień), 9.00–16.00 (II dzień).</div>
+        <div class="answer">Szkolenie „Asystentka – Partner w Zarządzaniu” odbywa się w Warszawie, w Centrum Biznesowym Ogrodowa 58, <b>19–20.11.2026</b>, godz. 10.00–17.00 (I dzień), 9.00–16.00 (II dzień).<br><a href="https://ogrodowa58.com.pl/lokalizacja/" target="_blank" rel="noopener">Dojazd i parking – strona budynku</a></div>
       </details>
+    </div>
+  </div>
+</section>
+
+<!-- MIEJSCE -->
+<section class="section" id="miejsce">
+  <div class="wrap venue">
+    <div class="reveal">
+      <div class="portrait__frame venue__frame">
+        <div class="portrait__fallback">Miejsce na zdjęcie<br>img/ogrodowa-58.jpg</div>
+        <img src="img/ogrodowa-58.jpg" alt="Centrum Biznesowe Ogrodowa 58 w Warszawie" width="1200" height="750" loading="lazy">
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">Miejsce</div>
+      <h2 class="h2">Centrum Biznesowe Ogrodowa 58</h2>
+      <p class="lede">Szkolenie odbywa się w Warszawie, przy ul. Ogrodowej 58.</p>
+      <dl class="venue__list">
+        <div class="row"><dt>Adres</dt><dd>ul. Ogrodowa 58, Warszawa</dd></div>
+        <div class="row"><dt>Termin</dt><dd>19–20 listopada 2026</dd></div>
+        <div class="row"><dt>Godziny</dt><dd>I dzień 10.00–17.00<br>II dzień 9.00–16.00</dd></div>
+      </dl>
+      <div class="btn-row">
+        <a class="btn btn--ghost" href="https://ogrodowa58.com.pl/lokalizacja/" target="_blank" rel="noopener">Dojazd i parking</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1249,6 +1287,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
         "location":{
           "@type":"Place",
           "name":"Centrum Biznesowe Ogrodowa 58",
+          "url":"https://ogrodowa58.com.pl/lokalizacja/",
           "address":{"@type":"PostalAddress","streetAddress":"Ogrodowa 58","addressLocality":"Warszawa","addressCountry":"PL"}
         },
         "instructor":{"@id":"https://www.officeinfluencers.pl/#agnieszka-korach"},
