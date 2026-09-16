@@ -941,10 +941,10 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
     <div class="signup">
       <div>
-        <!-- WDROŻENIE: w atrybucie action wpisz adres, który przyjmie zgłoszenie
-             (endpoint WordPressa, Contact Form 7, webhook CRM itp.).
-             Dopóki action jest puste, formularz nie wysyła i pokazuje kontakt zapasowy. -->
-        <form class="form-card" id="zapis-form" method="post" action="" novalidate>
+        <!-- Wysyłką zajmuje się formularz.php w katalogu głównym strony.
+             Odbiorca i temat są ustalone po stronie serwera. -->
+        <form class="form-card" id="zapis-form" method="post" action="/formularz.php" novalidate>
+          <input type="hidden" name="formularz" value="zgloszenie">
           <div class="fields">
             <div class="field field--full">
               <label for="f-name">Imię i nazwisko<span class="req" aria-hidden="true">*</span></label>
@@ -1137,14 +1137,12 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   </div>
   <p class="modal__lede">Szkolenie zamknięte dla Asystentek z jednej firmy. Odpowiadamy w ciągu jednego dnia roboczego.</p>
 
-  <!-- WDROŻENIE: w atrybucie action wpisz adres, który przyjmie zapytanie i wyśle je na
-       agnieszka.korach@arkconsulting.com.pl. Dopóki action jest puste, formularz otwiera
-       program pocztowy z gotową wiadomością. -->
-  <form id="oferta-form" method="post" action="" novalidate
+  <!-- Wysyłką zajmuje się formularz.php w katalogu głównym strony.
+       Adres odbiorcy trzyma serwer; atrybuty data-* obsługują tylko zapas przez pocztę. -->
+  <form id="oferta-form" method="post" action="/formularz.php" novalidate
         data-odbiorca="agnieszka.korach@arkconsulting.com.pl"
         data-temat="Zapytanie dot. szkolenia APZ">
-    <input type="hidden" name="odbiorca" value="agnieszka.korach@arkconsulting.com.pl">
-    <input type="hidden" name="temat" value="Zapytanie dot. szkolenia APZ">
+    <input type="hidden" name="formularz" value="oferta">
     <div class="fields">
       <div class="field field--full">
         <label for="o-name">Imię<span class="req" aria-hidden="true">*</span></label>
@@ -1462,13 +1460,17 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     submit.textContent='Wysyłam…';
     fetch(endpoint,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
       .then(function(r){
-        if(!r.ok)throw new Error(r.status);
-        showDone();
+        return r.json().catch(function(){return {}}).then(function(dane){
+          if(!r.ok)throw new Error(dane.komunikat||'');
+          showDone();
+        });
       })
-      .catch(function(){
+      .catch(function(err){
         submit.disabled=false;
         submit.textContent='Wyślij zgłoszenie';
-        status.textContent='Nie udało się wysłać zgłoszenia. Spróbuj ponownie albo napisz na office@officeinfluencers.pl.';
+        status.textContent=(err&&err.message)
+          ? err.message
+          : 'Nie udało się wysłać zgłoszenia. Spróbuj ponownie albo napisz na office@officeinfluencers.pl.';
       });
   });
 })();
@@ -1540,11 +1542,16 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     submit.disabled=true;
     submit.textContent='Wysyłam…';
     fetch(endpoint,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-      .then(function(r){if(!r.ok)throw new Error(r.status);finish()})
-      .catch(function(){
+      .then(function(r){
+        return r.json().catch(function(){return {}}).then(function(dane){
+          if(!r.ok)throw new Error(dane.komunikat||'');
+          finish();
+        });
+      })
+      .catch(function(err){
         submit.disabled=false;
         submit.textContent='Wyślij zapytanie';
-        status.textContent='Nie udało się wysłać. Napisz na office@officeinfluencers.pl.';
+        status.textContent=(err&&err.message)?err.message:'Nie udało się wysłać. Napisz na office@officeinfluencers.pl.';
       });
   });
 })();
