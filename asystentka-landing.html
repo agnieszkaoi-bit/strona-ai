@@ -32,6 +32,7 @@
   --yellow:#FFD75E;
   --yellow-deep:#F0C231;
   --yellow-soft:#FFF7E3;
+  --gold:#A8803C;
   --rule:#E5E9F0;
   --rule-soft:#F0F3F7;
   --r-sm:7px;
@@ -452,6 +453,31 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .modal__lede{font-size:.9375rem;color:var(--muted);margin-bottom:26px}
 .modal .fields{grid-template-columns:1fr}
 .modal .form-done{margin-top:0}
+
+/* ---------- szkolenia zamkniete ---------- */
+.inhouse{background:var(--yellow-soft);border-top:0;text-align:center}
+.inhouse .eyebrow{justify-content:center;color:#8A6A2F}
+.inhouse .eyebrow::before{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.inhouse h2{font-size:clamp(1.9rem,4.6vw,3.3rem);color:var(--navy);margin-bottom:26px}
+.inhouse h2 em{font-style:italic;color:var(--gold)}
+.inhouse__lede{font-size:clamp(1.0625rem,1.6vw,1.1875rem);color:#5F5535;max-width:60ch;margin:0 auto;line-height:1.62}
+.inhouse__lede b{color:var(--navy);font-weight:600}
+.inhouse__trust{margin:22px auto 0;font-size:.9375rem;font-style:italic;color:#7C6D48;max-width:58ch}
+.inhouse__cards{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:22px;
+  margin:clamp(40px,5vw,60px) auto 0;max-width:900px;
+}
+.inhouse__card{
+  display:flex;align-items:center;gap:18px;text-align:left;text-decoration:none;
+  background:var(--white);border-radius:var(--r-md);padding:24px 26px;
+  box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease;
+}
+.inhouse__card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.inhouse__icon{width:54px;height:54px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;flex:none}
+.inhouse__icon svg{width:23px;height:23px;fill:none;stroke:var(--navy);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.inhouse__card>span:not(.inhouse__icon){min-width:0;flex:1}
+.inhouse__card b{display:block;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.inhouse__card b+span{display:block;font-size:1rem;font-weight:600;color:var(--navy);overflow-wrap:break-word}
 
 /* ---------- faq ---------- */
 .faq{max-width:900px}
@@ -1124,6 +1150,31 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       <div class="fact"><b>Miejsce</b><span>Warszawa, Centrum Biznesowe Ogrodowa 58</span></div>
       <div class="fact"><b>Godziny</b><span>I dzień 10.00–17.00<br>II dzień 9.00–16.00</span></div>
       <div class="fact"><b>Cena</b><span>2100 zł netto / os.</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SZKOLENIA ZAMKNIĘTE -->
+<section class="section inhouse" id="in-house">
+  <div class="wrap">
+    <div class="eyebrow">Szkolenia zamknięte · in-house</div>
+    <h2 class="h2">Planujesz szkolenie dla zespołu Asystentek<br>w <em>swojej firmie?</em></h2>
+    <p class="inhouse__lede">Realizujemy dedykowane programy dla zespołów <b>od 6 do 20 osób</b> &mdash; w siedzibie Klienta lub online. Program dostosowujemy do specyfiki branży i kultury organizacji.</p>
+    <p class="inhouse__trust">Zaufały nam zespoły m.in.: Mercedes-Benz, ABB, 3M Poland, Grupa Maspex, Bosch, Polska Akademia Nauk.</p>
+    <div class="inhouse__cards">
+      <a class="inhouse__card" href="mailto:agnieszka.korach@arkconsulting.com.pl?subject=Zapytanie%20dot.%20szkolenia%20APZ">
+        <span class="inhouse__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 7.5 9 6 9-6"/></svg>
+        </span>
+        <span><b>Napisz do nas</b><span>agnieszka.korach@arkconsulting.com.pl</span></span>
+      </a>
+      <a class="inhouse__card" href="tel:+48504243881">
+        <span class="inhouse__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M6.5 3h3L11 7l-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4 7.2 2 2 0 0 1 6.5 3Z"/></svg>
+        </span>
+        <span><b>Zadzwoń</b><span>+48 504 243 881</span></span>
+      </a>
     </div>
   </div>
 </section>
