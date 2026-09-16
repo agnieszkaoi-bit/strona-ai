@@ -36,7 +36,7 @@
   --rule-soft:#F0F3F7;
   --r-sm:7px;
   --r-md:12px;
-  --r-lg:16px;
+  --r-lg:14px;
   --shadow-sm:0 1px 2px rgba(11,37,69,.06);
   --shadow-md:0 16px 38px -24px rgba(11,37,69,.3);
   --gutter:clamp(20px,5vw,56px);
@@ -261,21 +261,20 @@ a{color:inherit}
 }
 
 .effects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,3.6vw,56px)}
-.effect{padding:28px 28px 30px;background:var(--paper);border:1px solid var(--rule);border-radius:var(--r-md);transition:box-shadow .25s ease,transform .25s ease}
-.effect:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.effect{padding-top:24px;border-top:1px solid var(--rule)}
 .effect h3{font-size:1.25rem;margin-bottom:12px;color:var(--navy)}
 .effect p{font-size:.9375rem;color:var(--muted)}
 
 .reasons{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(32px,3.6vw,56px)}
-.reason{padding-top:24px;border-top:2px solid var(--yellow)}
+.reason{padding-top:24px;border-top:1px solid var(--rule)}
 .reason h3{font-size:1.125rem;margin-bottom:11px;color:var(--navy)}
 .reason p{font-size:.9375rem;color:var(--muted)}
 
 /* ---------- dla kogo ---------- */
 .audience{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,3.4vw,44px)}
 @media(max-width:880px){.audience{grid-template-columns:1fr}}
-.aud-card{padding:clamp(28px,3vw,38px);border:1px solid var(--rule);border-radius:var(--r-md);background:var(--white)}
-.aud-card--no{background:var(--paper)}
+.aud-card{padding-top:24px;border-top:1px solid var(--navy)}
+.aud-card--no{border-top-color:var(--rule)}
 .aud-card h3{font-size:1.25rem;color:var(--navy);margin-bottom:26px}
 .aud-card--no h3{color:var(--muted)}
 .aud-list{list-style:none;margin:0;padding:0;display:grid;gap:22px}
@@ -296,7 +295,7 @@ a{color:inherit}
   font-size:.9875rem;color:var(--muted);padding:15px 0;border-bottom:1px solid var(--rule);
 }
 .trainer__list li:first-child{border-top:1px solid var(--rule)}
-.trainer__list li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--yellow);margin-top:9px}
+.trainer__list li::before{content:"";width:8px;height:1.5px;border-radius:1px;background:var(--navy-400);margin-top:12px}
 .trainer__list b{color:var(--navy);font-weight:600}
 
 /* ---------- program ---------- */
@@ -313,12 +312,12 @@ a{color:inherit}
   display:flex;flex-direction:column;gap:22px;
   padding:clamp(26px,2.6vw,32px);background:var(--white);
   border:1px solid var(--rule);border-radius:var(--r-md);
-  transition:transform .22s ease,box-shadow .22s ease;
+  transition:border-color .22s ease;
 }
-.module:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.module:hover{border-color:var(--navy-400)}
 .module__top{display:flex;align-items:baseline;gap:14px}
 .module__n{
-  font-size:1.5rem;font-weight:700;letter-spacing:-.04em;color:var(--yellow-deep);flex:none;
+  font-size:1.5rem;font-weight:700;letter-spacing:-.04em;color:var(--navy-400);flex:none;
   font-variant-numeric:tabular-nums;line-height:1;
 }
 .module h4{font-size:1.125rem;color:var(--navy)}
@@ -334,14 +333,13 @@ a{color:inherit}
 
 /* ---------- bonusy ---------- */
 .bonuses{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:clamp(22px,2.6vw,32px)}
-.bonus{padding:clamp(26px,2.6vw,32px);background:var(--tint);border-radius:var(--r-md)}
+.bonus{padding-top:24px;border-top:1px solid var(--rule)}
 .bonus h3{font-size:1.125rem;color:var(--navy);margin-bottom:11px}
 .bonus p{font-size:.9375rem;color:var(--muted)}
 
 /* ---------- cena ---------- */
-.pricing{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,2.8vw,40px);align-items:start}
-@media(max-width:880px){.pricing{grid-template-columns:1fr}}
-.price-card{background:var(--white);border:1.5px solid var(--navy);border-radius:var(--r-lg);padding:clamp(30px,3.4vw,46px);box-shadow:var(--shadow-sm)}
+.pricing{display:grid;grid-template-columns:1fr;gap:22px;max-width:760px}
+.price-card{background:var(--white);border:1px solid var(--navy);border-radius:var(--r-lg);padding:clamp(30px,3.4vw,46px);box-shadow:var(--shadow-sm)}
 .price-card .amount{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
 .price-card .amount b{font-size:clamp(2.75rem,5.6vw,4rem);font-weight:700;letter-spacing:-.045em;line-height:.95;color:var(--navy);font-variant-numeric:tabular-nums}
 .price-card .amount i{font-style:normal;font-size:1rem;font-weight:500;color:var(--muted)}
@@ -356,14 +354,18 @@ a{color:inherit}
 .incl li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;font-size:.9375rem;color:var(--ink)}
 .incl .tick{width:18px;height:18px;margin-top:0}
 .incl .tick::after{left:6px;top:4px;width:4px;height:7px}
-.side-card{border:1px solid var(--rule);border-radius:var(--r-md);padding:clamp(26px,3vw,36px);background:var(--paper)}
-.side-card+.side-card{margin-top:22px}
+.side-card{
+  border:1px solid var(--rule);border-radius:var(--r-md);padding:clamp(24px,2.6vw,30px);background:var(--paper);
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.side-card>div{min-width:0}
+.side-card .btn{flex:none}
 .side-card h3{font-size:1.125rem;color:var(--navy);margin-bottom:11px}
-.side-card p{font-size:.9375rem;color:var(--muted);margin-bottom:22px}
+.side-card p{font-size:.9375rem;color:var(--muted);max-width:46ch}
 
 /* ---------- opinie ---------- */
 .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(22px,2.6vw,32px)}
-.quote{padding:clamp(26px,2.6vw,32px);background:var(--paper);border-radius:var(--r-md);margin:0}
+.quote{margin:0;padding-top:24px;border-top:1px solid var(--rule)}
 .quote p{font-size:1.0625rem;color:var(--muted);font-style:italic;line-height:1.58}
 .quote footer{margin-top:18px;font-size:.875rem;color:var(--navy);font-weight:600;font-style:normal}
 
@@ -463,7 +465,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 /* ---------- szkolenia zamkniete ---------- */
 .inhouse{background:var(--tint);border-top:0;text-align:center}
 .inhouse .eyebrow{justify-content:center;color:var(--navy-600)}
-.inhouse .eyebrow::before{width:8px;height:8px;border-radius:50%;background:var(--yellow)}
 .inhouse h2{font-size:clamp(1.9rem,4.6vw,3.3rem);color:var(--navy);margin-bottom:26px}
 .inhouse h2 em{font-style:italic;color:var(--navy-600)}
 .inhouse__lede{font-size:clamp(1.0625rem,1.6vw,1.1875rem);color:#4F5C6E;max-width:60ch;margin:0 auto;line-height:1.62}
@@ -954,8 +955,10 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       </div>
       <div class="reveal">
         <div class="side-card">
-          <h3>Płaci firma?</h3>
-          <p>Pobierz gotową notatkę dla przełożonego lub HR – z uzasadnieniem i mierzalnymi efektami szkolenia.</p>
+          <div>
+            <h3>Płaci firma?</h3>
+            <p>Pobierz gotową notatkę dla przełożonego lub HR – z uzasadnieniem i mierzalnymi efektami szkolenia.</p>
+          </div>
           <a class="btn btn--yellow" href="#">Pobierz notatkę</a>
         </div>
       </div>
