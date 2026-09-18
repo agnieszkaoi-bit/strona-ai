@@ -11,12 +11,15 @@ declare(strict_types=1);
  *    Adres nadawcy MUSI być na tej domenie, inaczej SPF i DMARC odrzucą wiadomość
  *    i maile będą lądować w spamie. Adres osoby zgłaszającej idzie w Reply-To,
  *    więc odpowiadasz jej zwykłym „Odpowiedz”.
- * 3. Jeśli Zenbox blokuje funkcję mail(), przełącz się na SMTP tej samej skrzynki
+ * 3. Obok wgraj bezpieczenstwo.php – bez niego ten skrypt się nie uruchomi.
+ * 4. Jeśli Zenbox blokuje funkcję mail(), przełącz się na SMTP tej samej skrzynki
  *    (dane logowania znajdziesz w panelu, w sekcji Poczta).
  *
  * Adresy odbiorców są tu na sztywno. Nie bierzemy ich z formularza, bo inaczej
  * dowolna osoba mogłaby użyć tego skryptu do rozsyłania poczty na cudze adresy.
  */
+
+require __DIR__ . '/bezpieczenstwo.php';
 
 const ODBIORCY = [
     'zgloszenie' => 'office@officeinfluencers.pl',
@@ -70,8 +73,29 @@ const MAILERLITE_GRUPA = '';
 
 const MAX_DLUGOSC = 2000;
 
+/*
+ * Dwa limity na godzinę, liczone osobno dla każdego adresu IP.
+ *
+ * LIMIT_WYSLANYCH dotyczy wiadomości, które faktycznie poszły na Twoją
+ * skrzynkę. LIMIT_ZADAN jest wyższy i obejmuje wszystkie próby, także te
+ * odrzucone. Dzięki temu ktoś, kto poprawia literówkę w e-mailu albo wraca
+ * do formularza po zastanowieniu, nie zostaje zablokowany, a skrypt
+ * wysyłający zgłoszenia w pętli zatrzymuje się po chwili.
+ */
+const LIMIT_WYSLANYCH = 5;
+const LIMIT_ZADAN     = 30;
+const OKNO_LIMITU     = 3600;
+
+// Krótszy czas wypełniania oznacza, że formularz wysłał skrypt, nie człowiek.
+const MIN_CZAS_MS = 3000;
+
+// Wartości, których spodziewamy się w polach wyboru. Cokolwiek innego
+// oznacza żądanie spreparowane poza formularzem.
+const PLATNICY      = ['firma', 'osoba_prywatna'];
+const MAX_UCZESTNIKOW = 20;
+
 header('Content-Type: application/json; charset=utf-8');
-header('X-Content-Type-Options: nosniff');
+naglowkiBezpieczenstwa();
 
 function odpowiedz(int $kod, string $komunikat): void
 {
@@ -95,7 +119,7 @@ function wartosc(string $klucz): string
     if (!is_string($surowa)) {
         return '';
     }
-    return trim(mb_substr($surowa, 0, MAX_DLUGOSC));
+    return trim(bezZnakowSterujacych(mb_substr($surowa, 0, MAX_DLUGOSC)));
 }
 
 /** Rozbija „Anna Kowalska” na imię i nazwisko dla pól MailerLite. */
@@ -135,6 +159,10 @@ function doMailerLite(string $email, string $pelneImie): void
         CURLOPT_POSTFIELDS     => json_encode(daneDoMailerLite($email, $pelneImie), JSON_UNESCAPED_UNICODE),
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_TIMEOUT        => 5,
+        CURLOPT_SSL_VERIFYPEER => true,
+        CURLOPT_SSL_VERIFYHOST => 2,
+        CURLOPT_FOLLOWLOCATION => false,
+        CURLOPT_PROTOCOLS      => CURLPROTO_HTTPS,
         CURLOPT_HTTPHEADER     => [
             'Authorization: Bearer ' . MAILERLITE_TOKEN,
             'Content-Type: application/json',
@@ -154,8 +182,26 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     odpowiedz(405, 'Dozwolona jest tylko metoda POST.');
 }
 
-// Pole-pułapka: wypełniają je boty, ludzie go nie widzą.
+// Zgłoszenie ma przyjść z formularza na naszej stronie, nie z cudzej.
+sprawdzPochodzenie(true, static function (): void {
+    odpowiedz(403, 'Żądanie spoza strony officeinfluencers.pl.');
+});
+
+// Górny sufit na samo dobijanie się do skryptu.
+limitZadan('formularz-proby', LIMIT_ZADAN, OKNO_LIMITU, static function (): void {
+    odpowiedz(429, 'Zbyt wiele prób z tego adresu. Spróbuj za godzinę lub napisz na office@officeinfluencers.pl.');
+});
+
+/*
+ * Boty rozpoznajemy po dwóch rzeczach: wypełniają ukryte pole, którego
+ * człowiek nie widzi, i wysyłają formularz w ułamku sekundy. W obu wypadkach
+ * odpowiadamy uprzejmie i nie wysyłamy nic dalej – niech skrypt spamerski
+ * myśli, że się udało, i nie próbuje ponownie.
+ */
 if (wartosc('www') !== '') {
+    odpowiedz(200, 'Dziękuję.');
+}
+if ((int)wartosc('czas') < MIN_CZAS_MS) {
     odpowiedz(200, 'Dziękuję.');
 }
 
@@ -177,6 +223,13 @@ if (mb_strlen(wartosc($poleImienia)) < 2) {
 if ($typ === 'zgloszenie') {
     if (wartosc('zgoda_rodo') === '') {
         odpowiedz(400, 'Brak zgody na przetwarzanie danych.');
+    }
+    if (!in_array(wartosc('platnik'), PLATNICY, true)) {
+        odpowiedz(400, 'Wskaż, kto opłaca udział.');
+    }
+    $osoby = (int)wartosc('liczba_osob');
+    if ($osoby < 1 || $osoby > MAX_UCZESTNIKOW) {
+        odpowiedz(400, 'Podaj liczbę osób od 1 do ' . MAX_UCZESTNIKOW . '.');
     }
     if (wartosc('platnik') === 'firma') {
         $nip = preg_replace('/\D/', '', wartosc('nip')) ?? '';
@@ -207,6 +260,11 @@ $naglowki = implode("\r\n", [
     'Content-Type: text/plain; charset=UTF-8',
     'Content-Transfer-Encoding: 8bit',
 ]);
+
+// Dopiero tu, gdy zgłoszenie jest kompletne, liczymy je do limitu wysyłek.
+limitZadan('formularz-wyslane', LIMIT_WYSLANYCH, OKNO_LIMITU, static function (): void {
+    odpowiedz(429, 'Z tego adresu wysłano już kilka zgłoszeń. Napisz na office@officeinfluencers.pl, a dopiszę pozostałe osoby.');
+});
 
 $wyslano = mail(
     ODBIORCY[$typ],

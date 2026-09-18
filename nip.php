@@ -18,14 +18,23 @@ declare(strict_types=1);
  *    Bez tokenu skrypt działa dalej, tylko pomija CEIDG i korzysta z wykazu MF.
  * 3. Token trzymamy po stronie serwera. W kodzie strony nie może się pojawić,
  *    bo każdy odwiedzający mógłby go odczytać i wykorzystać.
+ * 4. Obok wgraj bezpieczenstwo.php – bez niego ten skrypt się nie uruchomi.
  */
+
+require __DIR__ . '/bezpieczenstwo.php';
 
 const CEIDG_TOKEN = '';           // <- tutaj wklej token z dane.biznes.gov.pl
 const LIMIT_CZASU = 6;            // sekundy na odpowiedź rejestru
 
+// Najwyżej tyle odpytań rejestru na godzinę z jednego adresu IP. Wypełniając
+// formularz sprawdza się jeden numer, więc zapas jest spory, ale skrypt
+// przepisujący całą bazę firm zatrzyma się po chwili. Bez tego limitu
+// rejestr mógłby uznać nasz serwer za nadużywający i odciąć go wszystkim.
+const LIMIT_ZAPYTAN = 40;
+const OKNO_LIMITU   = 3600;
+
 header('Content-Type: application/json; charset=utf-8');
-header('X-Content-Type-Options: nosniff');
-header('Cache-Control: no-store');
+naglowkiBezpieczenstwa();
 
 function odpowiedz(array $dane, int $kod = 200): void
 {
@@ -45,6 +54,9 @@ function pobierz(string $url, array $naglowki = []): ?array
             CURLOPT_TIMEOUT        => LIMIT_CZASU,
             CURLOPT_HTTPHEADER     => $naglowki,
             CURLOPT_SSL_VERIFYPEER => true,
+            CURLOPT_SSL_VERIFYHOST => 2,
+            CURLOPT_FOLLOWLOCATION => false,
+            CURLOPT_PROTOCOLS      => CURLPROTO_HTTPS,
         ]);
         $tresc = curl_exec($ch);
         $kod   = (int)curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
@@ -121,6 +133,21 @@ function zCeidg(string $nip): ?array
 
     return ['nazwa' => $nazwa, 'adres' => $adres, 'zrodlo' => 'CEIDG'];
 }
+
+if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'GET') {
+    odpowiedz(['ok' => false, 'komunikat' => 'Dozwolona jest tylko metoda GET.'], 405);
+}
+
+// Przy zwykłym pobraniu danych przeglądarka nie wysyła nagłówka Origin,
+// więc brak informacji o pochodzeniu puszczamy dalej – przed nadużyciem
+// broni wtedy limit poniżej. Obcą domenę odrzucamy od razu.
+sprawdzPochodzenie(false, static function (): void {
+    odpowiedz(['ok' => false, 'komunikat' => 'Żądanie spoza strony officeinfluencers.pl.'], 403);
+});
+
+limitZadan('nip', LIMIT_ZAPYTAN, OKNO_LIMITU, static function (): void {
+    odpowiedz(['ok' => false, 'komunikat' => 'Zbyt wiele zapytań. Wpisz nazwę i adres ręcznie.'], 429);
+});
 
 $nip = preg_replace('/\D/', '', (string)($_GET['nip'] ?? '')) ?? '';
 if (strlen($nip) !== 10) {

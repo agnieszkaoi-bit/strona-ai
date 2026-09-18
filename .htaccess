@@ -1,0 +1,66 @@
+# Zabezpieczenia katalogu z landing page.
+#
+# WGRANIE NA ZENBOX
+# Ten plik wrzuć do katalogu z index.html, czyli do
+#   asystentka-partner-w-zarzadzaniu-i-mysl-jak-szef/
+# NIE podmieniaj nim pliku .htaccess z katalogu głównego – tam siedzą reguły
+# WordPressa i ich nadpisanie wyłączy całą stronę.
+#
+# Przekierowania z http na https tu nie ma celowo. Robi to już WordPress
+# w katalogu głównym, a druga taka reguła potrafi wpędzić stronę w pętlę
+# przekierowań, jeśli hosting kończy szyfrowanie na swoim serwerze pośrednim.
+
+# --- Nagłówki, którymi przeglądarka chroni odwiedzającego -------------------
+<IfModule mod_headers.c>
+  # Przez rok łącz się z tą domeną wyłącznie po https, nawet gdy ktoś wpisze
+  # adres bez „s”. Zdejmuje to ryzyko podsłuchania danych z formularza
+  # w otwartej sieci wi-fi.
+  Header always set Strict-Transport-Security "max-age=31536000"
+
+  # Nie zgaduj typu pliku po zawartości. Blokuje sztuczkę polegającą na
+  # wgraniu obrazka, który przeglądarka wykona jak skrypt.
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Strony nie wolno osadzić w ramce na cudzej witrynie. Bez tego można ją
+  # przykryć przezroczystą warstwą i zbierać kliknięcia odwiedzających.
+  Header always set X-Frame-Options "DENY"
+  Header always set Content-Security-Policy "frame-ancestors 'none'"
+
+  # Do obcych serwisów wysyłamy najwyżej nazwę domeny, nigdy pełnego adresu.
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Strona nie potrzebuje kamery, mikrofonu ani lokalizacji, więc odbieramy
+  # jej do nich dostęp z góry.
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+
+  # Okno strony nie dzieli pamięci z innymi kartami otwartymi z tej strony.
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+
+  # Serwer nie musi się przedstawiać z wersją oprogramowania.
+  Header always unset X-Powered-By
+  Header always unset Server
+</IfModule>
+
+# --- Co wolno pobrać z tego katalogu ---------------------------------------
+# Bez tego wejście na adres katalogu bez nazwy pliku pokazuje spis wszystkich
+# plików, razem z kopiami roboczymi.
+Options -Indexes
+
+# Pliki zaczynające się od kropki (.htaccess, .git, .env) są niedostępne.
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# Kopie zapasowe i pliki robocze edytorów bywają zostawiane przez przypadek,
+# a potrafią zawierać hasła. Nikt nie ma prawa ich pobrać.
+<FilesMatch "\.(bak|old|orig|save|swp|sql|log|ini|sh)$">
+  Require all denied
+</FilesMatch>
+
+# --- Cache ------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png  "access plus 1 year"
+  ExpiresByType text/html  "access plus 0 seconds"
+</IfModule>
