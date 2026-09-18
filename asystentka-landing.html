@@ -1015,7 +1015,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
             <div class="field">
               <label for="f-phone">Telefon</label>
               <input type="tel" id="f-phone" name="telefon" autocomplete="tel" inputmode="tel" aria-describedby="h-phone">
-              <p class="hint" id="h-phone">Dzwonimy tylko w sprawie tego zgłoszenia.</p>
+              <p class="hint" id="h-phone">Dzwonię tylko w sprawie tego zgłoszenia.</p>
             </div>
 
             <div class="field">
@@ -1055,7 +1055,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
               <label for="f-nip">NIP<span class="req" aria-hidden="true">*</span></label>
               <input type="text" id="f-nip" name="nip" inputmode="numeric" maxlength="15" aria-describedby="e-nip h-nip">
               <p class="err" id="e-nip" role="alert"></p>
-              <p class="hint" id="h-nip" role="status" aria-live="polite">Wpisz 10 cyfr – nazwę i adres pobierzemy z rejestru.</p>
+              <p class="hint" id="h-nip" role="status" aria-live="polite">10 cyfr, z myślnikami lub bez, np. 123-456-78-90. Nazwę i adres pobiorę z rejestru.</p>
             </div>
 
             <div class="field field--full" id="wrap-address">
@@ -1485,7 +1485,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       check(nip,'e-nip',nip.value.replace(/\D/g,'').length===10,'NIP ma 10 cyfr.');
       check(address,'e-address',address.value.trim().length>5,'Podaj adres do faktury.');
     }
-    check(rodo,'e-rodo',rodo.checked,'Bez tej zgody nie możemy przyjąć zgłoszenia.');
+    check(rodo,'e-rodo',rodo.checked,'Bez tej zgody nie mogę przyjąć zgłoszenia.');
     if(bad){bad.focus();return false}
     return true;
   }
@@ -1517,9 +1517,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   // Odpowiedź bywa stroną błędu serwera, a nie JSON-em. Zwracamy null zamiast
   // pozwolić, żeby komunikat parsera trafił do pola pod formularzem.
   function odczytajJson(r){
-    return r.json().then(function(dane){
-      return (r.ok && dane) ? dane : null;
-    }, function(){ return null; });
+    return r.json().then(function(dane){ return dane || null; }, function(){ return null; });
   }
 
   function lookupNip(){
@@ -1532,7 +1530,8 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     fetch('/nip.php?nip='+digits,{signal:ctrl.signal,headers:{'Accept':'application/json'}})
       .then(function(r){return odczytajJson(r)})
       .then(function(dane){
-        if(!dane||!dane.ok){nipHint.textContent=NIP_BLAD;return}
+        if(!dane){nipHint.textContent=NIP_BLAD;return}
+        if(!dane.ok){nipHint.textContent=dane.komunikat+' Wpisz nazwę i adres ręcznie.';return}
         var company=q('f-company'),address=q('f-address');
         if(dane.nazwa&&!company.value.trim()){company.value=dane.nazwa;setErr(company,'e-company','')}
         if(dane.adres&&!address.value.trim()){address.value=dane.adres;setErr(address,'e-address','')}
