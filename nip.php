@@ -5,9 +5,9 @@ declare(strict_types=1);
  * Zwraca nazwę i adres firmy dla podanego numeru NIP.
  *
  * Pyta po kolei dwa rejestry:
- *   1. Wykaz podatników VAT Ministerstwa Finansów — bez klucza, obejmuje spółki
+ *   1. Wykaz podatników VAT Ministerstwa Finansów – bez klucza, obejmuje spółki
  *      i jednoosobowe działalności zarejestrowane do VAT.
- *   2. CEIDG — jednoosobowe działalności, także te zwolnione z VAT, których
+ *   2. CEIDG – jednoosobowe działalności, także te zwolnione z VAT, których
  *      w wykazie MF nie ma.
  *
  * WGRANIE NA ZENBOX
@@ -20,7 +20,7 @@ declare(strict_types=1);
  *    bo każdy odwiedzający mógłby go odczytać i wykorzystać.
  */
 
-const CEIDG_TOKEN = '';           // <— tutaj wklej token z dane.biznes.gov.pl
+const CEIDG_TOKEN = '';           // <- tutaj wklej token z dane.biznes.gov.pl
 const LIMIT_CZASU = 6;            // sekundy na odpowiedź rejestru
 
 header('Content-Type: application/json; charset=utf-8');

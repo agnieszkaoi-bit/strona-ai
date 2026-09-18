@@ -14,7 +14,7 @@ declare(strict_types=1);
  * 3. Jeśli Zenbox blokuje funkcję mail(), przełącz się na SMTP tej samej skrzynki
  *    (dane logowania znajdziesz w panelu, w sekcji Poczta).
  *
- * Adresy odbiorców są tu na sztywno. Nie bierzemy ich z formularza — inaczej
+ * Adresy odbiorców są tu na sztywno. Nie bierzemy ich z formularza, bo inaczej
  * dowolna osoba mogłaby użyć tego skryptu do rozsyłania poczty na cudze adresy.
  */
 
@@ -131,7 +131,7 @@ foreach (POLA[$typ] as $klucz => $etykieta) {
 }
 $linie[] = '';
 $linie[] = 'Wysłano: ' . date('Y-m-d H:i:s');
-$linie[] = 'Strona: ' . bezNaglowkow((string)($_SERVER['HTTP_REFERER'] ?? '—'));
+$linie[] = 'Strona: ' . bezNaglowkow((string)($_SERVER['HTTP_REFERER'] ?? 'brak'));
 
 $naglowki = implode("\r\n", [
     'From: ' . mb_encode_mimeheader(NAZWA_NADAWCY, 'UTF-8') . ' <' . NADAWCA . '>',
