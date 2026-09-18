@@ -53,6 +53,21 @@ const POLA = [
     ],
 ];
 
+/*
+ * MAILERLITE
+ * Token: MailerLite → Integrations → API → Generate new token (uprawnienie do subskrybentów).
+ * ID grupy: MailerLite → Subscribers → Groups → wejdź w grupę, numer jest w adresie strony.
+ * Puste pole grupy = zapis do ogólnej listy.
+ *
+ * Token zostaje tutaj, po stronie serwera. W kodzie strony nie może się pojawić,
+ * bo każdy odwiedzający mógłby go odczytać i wykorzystać do Twojego konta.
+ *
+ * Na listę trafia wyłącznie osoba, która zaznaczyła zgodę marketingową.
+ * Zgoda RODO dotyczy obsługi zgłoszenia i do zapisu na listę nie wystarcza.
+ */
+const MAILERLITE_TOKEN = '';
+const MAILERLITE_GRUPA = '';
+
 const MAX_DLUGOSC = 2000;
 
 header('Content-Type: application/json; charset=utf-8');
@@ -81,6 +96,58 @@ function wartosc(string $klucz): string
         return '';
     }
     return trim(mb_substr($surowa, 0, MAX_DLUGOSC));
+}
+
+/** Rozbija „Anna Kowalska” na imię i nazwisko dla pól MailerLite. */
+function rozbijImie(string $pelne): array
+{
+    $czesci = preg_split('/\s+/', trim($pelne), 2) ?: [];
+    return [$czesci[0] ?? '', $czesci[1] ?? ''];
+}
+
+function daneDoMailerLite(string $email, string $pelneImie): array
+{
+    [$imie, $nazwisko] = rozbijImie($pelneImie);
+    $dane = ['email' => $email, 'fields' => ['name' => $imie]];
+    if ($nazwisko !== '') {
+        $dane['fields']['last_name'] = $nazwisko;
+    }
+    if (MAILERLITE_GRUPA !== '') {
+        $dane['groups'] = [MAILERLITE_GRUPA];
+    }
+    return $dane;
+}
+
+/*
+ * Zapis jest dodatkiem do zgłoszenia, nie warunkiem. Gdy MailerLite nie
+ * odpowie, zgłoszenie i tak jest przyjęte, a ślad trafia do logu serwera.
+ * Statusu subskrypcji nie narzucamy, żeby zadziałało ustawienie double opt-in
+ * z Twojego konta.
+ */
+function doMailerLite(string $email, string $pelneImie): void
+{
+    if (MAILERLITE_TOKEN === '' || !function_exists('curl_init')) {
+        return;
+    }
+    $ch = curl_init('https://connect.mailerlite.com/api/subscribers');
+    curl_setopt_array($ch, [
+        CURLOPT_POST           => true,
+        CURLOPT_POSTFIELDS     => json_encode(daneDoMailerLite($email, $pelneImie), JSON_UNESCAPED_UNICODE),
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT        => 5,
+        CURLOPT_HTTPHEADER     => [
+            'Authorization: Bearer ' . MAILERLITE_TOKEN,
+            'Content-Type: application/json',
+            'Accept: application/json',
+        ],
+    ]);
+    $odpowiedz = curl_exec($ch);
+    $kod = (int)curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+    curl_close($ch);
+
+    if ($kod < 200 || $kod > 299) {
+        error_log('MailerLite odrzucil zapis (' . $kod . '): ' . substr((string)$odpowiedz, 0, 300));
+    }
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -151,6 +218,10 @@ $wyslano = mail(
 
 if (!$wyslano) {
     odpowiedz(500, 'Serwer pocztowy odrzucił wiadomość.');
+}
+
+if ($typ === 'zgloszenie' && wartosc('zgoda_marketing') !== '') {
+    doMailerLite($email, wartosc('imie_nazwisko'));
 }
 
 odpowiedz(200, 'Dziękuję, wiadomość została wysłana.');
