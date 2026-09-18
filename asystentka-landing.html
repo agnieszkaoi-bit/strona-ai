@@ -1763,12 +1763,29 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <script>
 (function(){
-  /* WŁĄCZENIE STATYSTYK
-     Wklej swój kod Google Analytics do funkcji wlaczStatystyki poniżej.
-     Uruchomi się dopiero po kliknięciu „Zgoda na statystyki”, nigdy wcześniej —
-     na tym polega zgodność z RODO, więc nie przenoś go do <head>.        */
+  /* GOOGLE ANALYTICS
+     Wpisz niżej identyfikator pomiaru GA4 (format G-XXXXXXXXXX). Znajdziesz go
+     w WordPressie: Site Kit → Ustawienia → Analytics, albo w Google Analytics:
+     Administracja → Strumienie danych → Twoja strona.
+
+     Puste pole = statystyki wyłączone, strona działa normalnie.
+     Skrypt Google wczytuje się dopiero po kliknięciu „Zgoda na statystyki”.
+     Nie przenoś go do <head> — ruszyłby przed zgodą i cały baner byłby fikcją. */
+  var ID_ANALYTICS = '';
+
   function wlaczStatystyki(){
-    // np. identyfikator G-XXXXXXXXXX z Google Site Kit
+    if (!ID_ANALYTICS || window.__gaWlaczone) return;
+    window.__gaWlaczone = true;
+
+    var skrypt = document.createElement('script');
+    skrypt.async = true;
+    skrypt.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID_ANALYTICS;
+    document.head.appendChild(skrypt);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', ID_ANALYTICS);
   }
 
   var KLUCZ = 'oi-zgoda-statystyki';
