@@ -542,6 +542,29 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .site-footer a{color:#C9D9EC;text-decoration:none}
 .site-footer a:hover{color:#fff}
 
+/* ---------- cookies ---------- */
+.cookies{
+  position:fixed;left:0;right:0;bottom:0;z-index:120;
+  padding:16px var(--gutter);
+  padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  background:var(--white);border-top:1px solid var(--rule);
+  box-shadow:0 -14px 34px -26px rgba(11,37,69,.4);
+}
+.cookies__in{
+  max-width:var(--maxw);margin-inline:auto;
+  display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;
+}
+.cookies__txt{flex:1 1 320px;min-width:0;font-size:.875rem;color:var(--muted);line-height:1.55}
+.cookies__txt a{color:var(--navy);font-weight:500}
+.cookies__btns{display:flex;flex-wrap:wrap;gap:10px;flex:none}
+.cookies .btn{padding:11px 20px;font-size:.875rem}
+@media(max-width:560px){
+  .cookies__btns{width:100%}
+  .cookies__btns .btn{flex:1 1 auto}
+}
+.cookies-link{background:none;border:0;padding:0;font:inherit;color:#C9D9EC;cursor:pointer;text-decoration:none}
+.cookies-link:hover{color:#fff}
+
 /* ---------- animacje ---------- */
 .js .reveal{opacity:0;transform:translateY(24px)}
 .js .reveal.in{opacity:1;transform:none;transition:opacity .75s cubic-bezier(.22,.61,.36,1),transform .75s cubic-bezier(.22,.61,.36,1)}
@@ -1282,7 +1305,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 <footer class="site-footer">
   <div class="wrap bar">
     <span>© 2026 <a href="https://www.officeinfluencers.pl/">Office Influencers</a> · Agnieszka Korach · aktualizacja: <time datetime="2026-09-17">17 września 2026</time></span>
-    <span><a href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a> · <a href="tel:+48224357002">+48 22 435 70 02</a> · <a href="https://officeinfluencers.pl/polityka-prywatnosci">Polityka prywatności</a></span>
+    <span><a href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a> · <a href="tel:+48224357002">+48 22 435 70 02</a> · <a href="https://officeinfluencers.pl/polityka-prywatnosci">Polityka prywatności</a> · <button type="button" class="cookies-link" id="cookies-open">Cookies</button></span>
   </div>
 </footer>
 
@@ -1719,6 +1742,56 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   if (tik()) {
     var zegar = setInterval(function(){ if (!tik()) clearInterval(zegar); }, 1000);
   }
+})();
+</script>
+
+
+<aside class="cookies" id="cookies" role="region" aria-label="Zgoda na statystyki" hidden>
+  <div class="cookies__in">
+    <p class="cookies__txt">
+      Ta strona działa bez plików cookies. Chciałabym tylko liczyć odwiedziny, żeby wiedzieć,
+      które treści są przydatne &ndash; uruchomię to wyłącznie za Twoją zgodą.
+      Szczegóły w <a href="https://officeinfluencers.pl/polityka-prywatnosci" target="_blank" rel="noopener">polityce prywatności</a>.
+    </p>
+    <div class="cookies__btns">
+      <button type="button" class="btn btn--ghost" id="cookies-nie">Tylko niezbędne</button>
+      <button type="button" class="btn btn--primary" id="cookies-tak">Zgoda na statystyki</button>
+    </div>
+  </div>
+</aside>
+
+
+<script>
+(function(){
+  /* WŁĄCZENIE STATYSTYK
+     Wklej swój kod Google Analytics do funkcji wlaczStatystyki poniżej.
+     Uruchomi się dopiero po kliknięciu „Zgoda na statystyki”, nigdy wcześniej —
+     na tym polega zgodność z RODO, więc nie przenoś go do <head>.        */
+  function wlaczStatystyki(){
+    // np. identyfikator G-XXXXXXXXXX z Google Site Kit
+  }
+
+  var KLUCZ = 'oi-zgoda-statystyki';
+  var pasek = document.getElementById('cookies');
+  var tak   = document.getElementById('cookies-tak');
+  var nie   = document.getElementById('cookies-nie');
+  var wroc  = document.getElementById('cookies-open');
+  if (!pasek || !tak || !nie) return;
+
+  // Pamięć przeglądarki bywa niedostępna w trybie prywatnym; wtedy pytamy za każdym razem.
+  function zapisz(v){ try { localStorage.setItem(KLUCZ, v); } catch (e) {} }
+  function odczytaj(){ try { return localStorage.getItem(KLUCZ); } catch (e) { return null; } }
+
+  function pokaz(){ pasek.hidden = false; }
+  function schowaj(){ pasek.hidden = true; }
+
+  tak.addEventListener('click', function(){ zapisz('tak'); schowaj(); wlaczStatystyki(); });
+  nie.addEventListener('click', function(){ zapisz('nie'); schowaj(); });
+  if (wroc) wroc.addEventListener('click', function(){ pokaz(); tak.focus(); });
+
+  var wybor = odczytaj();
+  if (wybor === 'tak') { wlaczStatystyki(); }
+  else if (wybor !== 'nie') { pokaz(); }
 })();
 </script>
 
