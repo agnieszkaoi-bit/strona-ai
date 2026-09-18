@@ -183,6 +183,7 @@ a{color:inherit}
   animation:draw 1s cubic-bezier(.22,.61,.36,1) .35s forwards;
 }
 @keyframes draw{to{background-size:100% 100%}}
+.hl{background:linear-gradient(transparent 56%,var(--yellow) 56%);padding-inline:.06em}
 .hero h1 .tm{font-size:.26em;font-weight:500;letter-spacing:0;vertical-align:1.75em;margin-left:.34em}
 .hero__lede{margin-top:30px;font-size:clamp(1.0625rem,1.6vw,1.1875rem);color:var(--muted);max-width:52ch;line-height:1.62}
 .hero__meta{
@@ -241,11 +242,8 @@ a{color:inherit}
 
 /* ---------- numerowane bloki ---------- */
 .idx,.effect__n,.reason__n{
-  font-size:clamp(2.25rem,4.2vw,3.25rem);font-weight:700;letter-spacing:-.045em;line-height:1;
-  color:var(--rule);margin-bottom:18px;font-variant-numeric:tabular-nums;
-}
-@supports (-webkit-text-stroke:1px #000){
-  .idx,.effect__n,.reason__n{color:transparent;-webkit-text-stroke:1.5px var(--navy-400)}
+  font-size:clamp(2.25rem,4.2vw,3.25rem);font-weight:600;letter-spacing:-.04em;line-height:1;
+  color:#A8C0DC;margin-bottom:18px;font-variant-numeric:tabular-nums;
 }
 
 .effects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,3.6vw,56px)}
@@ -464,7 +462,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .inhouse{background:var(--tint);border-top:0;text-align:center}
 .inhouse .eyebrow{justify-content:center;color:var(--navy-600)}
 .inhouse h2{font-size:clamp(1.9rem,4.6vw,3.3rem);color:var(--navy);margin-bottom:26px}
-.inhouse h2 em{font-style:italic;color:var(--navy-600)}
 .inhouse__lede{font-size:clamp(1.0625rem,1.6vw,1.1875rem);color:#4F5C6E;max-width:60ch;margin:0 auto;line-height:1.62}
 .inhouse__lede b{color:var(--navy);font-weight:600}
 .inhouse__trust{margin:22px auto 0;font-size:.9375rem;font-style:italic;color:#6A7689;max-width:58ch}
@@ -643,7 +640,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   <div class="wrap">
     <div class="head" style="max-width:860px">
       <div class="eyebrow">Po co to szkolenie</div>
-      <h2 class="h2">Po szkoleniu nie tylko zrozumiesz swojego szefa/swoją szefową. Zaczniesz skutecznie przewidywać, czego potrzebuje.</h2>
+      <h2 class="h2">Po szkoleniu nie tylko zrozumiesz swojego szefa/swoją szefową. Zaczniesz skutecznie <span class="hl">przewidywać</span>, czego potrzebuje.</h2>
       <p class="lede">AI przejmuje coraz więcej rutynowych administracyjnych zadań. Coraz większe znaczenie zyskują kompetencje, których nie da się zautomatyzować: rozumienie ludzi, wpływ, krytyczne myślenie, znajomość i rozumienie kontekstu, samodzielność w decyzjach.</p>
       <p class="lede" style="margin-top:18px">Na tym skupia się szkolenie. W każdym module dostajesz gotowe praktyczne narzędzia. Na koniec wychodzisz z własnym planem wdrożenia, który uruchamiasz po powrocie do biura.</p>
       <div class="btn-row"><a class="btn btn--primary" href="#zapis">Dołącz teraz</a></div>
@@ -656,7 +653,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   <div class="wrap">
     <div class="head">
       <div class="eyebrow">Efekty</div>
-      <h2 class="h2">Szkolenie, które odczuje cały zarząd</h2>
+      <h2 class="h2">Szkolenie, które odczuje <span class="hl">cały zarząd</span></h2>
     </div>
     <div class="effects reveal">
       <article class="effect">
@@ -727,7 +724,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   <div class="wrap">
     <div class="head">
       <div class="eyebrow">Dlaczego warto</div>
-      <h2 class="h2">Pięć powodów, dla których ten program działa</h2>
+      <h2 class="h2">Pięć powodów, dla których ten program <span class="hl">działa</span></h2>
     </div>
     <div class="reasons reveal">
       <article class="reason">
@@ -1218,7 +1215,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 <section class="section inhouse" id="in-house">
   <div class="wrap">
     <div class="eyebrow">Szkolenia zamknięte · in-house</div>
-    <h2 class="h2">Planujesz szkolenie dla zespołu Asystentek<br>w <em>swojej firmie?</em></h2>
+    <h2 class="h2">Planujesz szkolenie dla zespołu Asystentek<br>w <span class="hl">swojej firmie?</span></h2>
     <p class="inhouse__lede">Szkolenia dedykowane realizuję w miejscu wskazanym przez Klienta lub online. Program dostosowuję do specyfiki branży i kultury organizacji.</p>
     <p class="inhouse__trust">Zaufały mi zespoły m.in.: Mercedes-Benz, ABB, 3M Poland, Grupa Maspex, Bosch, Polska Akademia Nauk.</p>
     <div class="inhouse__cards">
