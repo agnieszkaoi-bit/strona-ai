@@ -89,7 +89,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
 
 // Pole-pułapka: wypełniają je boty, ludzie go nie widzą.
 if (wartosc('www') !== '') {
-    odpowiedz(200, 'Dziękujemy.');
+    odpowiedz(200, 'Dziękuję.');
 }
 
 $typ = wartosc('formularz');
@@ -153,4 +153,4 @@ if (!$wyslano) {
     odpowiedz(500, 'Serwer pocztowy odrzucił wiadomość.');
 }
 
-odpowiedz(200, 'Dziękujemy, wiadomość została wysłana.');
+odpowiedz(200, 'Dziękuję, wiadomość została wysłana.');

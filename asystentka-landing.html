@@ -174,7 +174,7 @@ a{color:inherit}
 
 /* ---------- hero ---------- */
 .hero{padding-block:clamp(52px,7vw,100px) clamp(60px,8vw,108px);border-top:0;overflow:hidden}
-.hero__grid{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(36px,4.5vw,72px);align-items:center}
+.hero__grid{display:grid;grid-template-columns:1.5fr .5fr;gap:clamp(32px,4vw,60px);align-items:center}
 @media(max-width:920px){.hero__grid{grid-template-columns:1fr;gap:48px}}
 .hero h1{font-size:clamp(2.6rem,6.8vw,5rem);font-weight:700;letter-spacing:-.04em;line-height:1.03}
 .hero h1 .mark{
@@ -193,12 +193,9 @@ a{color:inherit}
 .hero__note{margin-top:18px;font-size:.875rem;color:var(--muted)}
 
 .portrait{position:relative;isolation:isolate}
-@media(min-width:921px){
-  .hero .portrait{margin-right:calc(50% - 50vw);padding-right:0}
-  .hero .portrait__frame{aspect-ratio:auto;height:clamp(440px,64vh,640px);border-radius:var(--r-lg) 0 0 var(--r-lg)}
-}
+.hero .portrait{max-width:286px}
 .hero .portrait::before,.hero .portrait::after{content:none}
-.hero .portrait__frame{border-right:0}
+@media(max-width:920px){.hero .portrait{margin-inline:auto}}
 .portrait::before{
   content:"";position:absolute;inset:auto -16px -16px auto;width:56%;height:58%;
   background:var(--yellow);border-radius:var(--r-lg);z-index:-1;
@@ -278,8 +275,9 @@ a{color:inherit}
 .aud-list p{font-size:.9375rem;color:var(--muted);margin-top:4px}
 
 /* ---------- prowadzaca ---------- */
-.trainer{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,5vw,84px);align-items:center}
-@media(max-width:880px){.trainer{grid-template-columns:1fr}}
+.trainer{display:grid;grid-template-columns:.42fr 1.58fr;gap:clamp(36px,4.5vw,64px);align-items:center}
+.trainer .portrait{max-width:300px}
+@media(max-width:880px){.trainer{grid-template-columns:1fr}.trainer .portrait{margin-inline:auto}}
 .trainer__list{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:0}
 .trainer__list li{
   display:grid;grid-template-columns:auto 1fr;gap:15px;align-items:start;
@@ -618,9 +616,9 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 <section class="section section--paper" id="klienci">
   <div class="wrap">
     <div class="head">
-      <div class="eyebrow">Nasi klienci</div>
-      <h2 class="h2">Asystentki z tych firm pracują z naszymi narzędziami</h2>
-      <p class="lede">Projekty otwarte i zamknięte prowadzimy dla zespołów asystenckich w organizacjach o różnej skali – od przemysłu po ubezpieczenia i FMCG.</p>
+      <div class="eyebrow">Moi klienci</div>
+      <h2 class="h2">Asystentki z tych firm pracują z moimi narzędziami</h2>
+      <p class="lede">Projekty otwarte i zamknięte prowadzę dla zespołów asystenckich w organizacjach o różnej skali – od przemysłu po ubezpieczenia i FMCG.</p>
     </div>
     <div class="clients__grid reveal">
       <div class="client">Mercedes-Benz</div>
@@ -715,8 +713,8 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       <div class="aud-card aud-card--no reveal">
         <h3>Dla kogo nie jest</h3>
         <ul class="aud-list">
-          <li><span class="dash"></span><div><b>Dla osób na początku kariery</b><p>Pracujemy w gronie doświadczonych Asystentek/Asystentów.</p></div></li>
-          <li><span class="dash"></span><div><b>Dla szukających kursu obsługi programów</b><p>Uczymy myślenia i działania. Narzędzia są wsparciem.</p></div></li>
+          <li><span class="dash"></span><div><b>Dla osób na początku kariery</b><p>Pracuję w gronie doświadczonych Asystentek/Asystentów.</p></div></li>
+          <li><span class="dash"></span><div><b>Dla szukających kursu obsługi programów</b><p>Uczę myślenia i działania. Narzędzia są wsparciem.</p></div></li>
           <li><span class="dash"></span><div><b>Dla szukających strategii i finansów</b><p>To nie są tematy tego programu.</p></div></li>
         </ul>
       </div>
@@ -947,7 +945,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       </article>
       <article class="bonus">
         <h3>Dwie sesje grupowe online po szkoleniu</h3>
-        <p>Po 30 i 60 dniach sprawdzamy postępy wdrożenia.</p>
+        <p>Po 30 i 60 dniach sprawdzam postępy wdrożenia.</p>
       </article>
     </div>
   </div>
@@ -995,7 +993,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     <div class="head">
       <div class="eyebrow">Zgłoszenie</div>
       <h2 class="h2">Zapisz się na szkolenie</h2>
-      <p class="lede">Wypełnij formularz, a w ciągu jednego dnia roboczego dostaniesz potwierdzenie miejsca i fakturę pro forma. Zgłoszenie nie jest zobowiązaniem do zapłaty do czasu potwierdzenia z naszej strony.</p>
+      <p class="lede">Wypełnij formularz, a w ciągu jednego dnia roboczego dostaniesz potwierdzenie miejsca i fakturę pro forma. Zgłoszenie nie jest zobowiązaniem do zapłaty do czasu potwierdzenia z mojej strony.</p>
     </div>
 
     <div class="signup">
@@ -1100,7 +1098,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
         <div class="form-done" id="zapis-done" hidden tabindex="-1">
           <h3>Zgłoszenie przyjęte</h3>
-          <p>Dziękujemy. Potwierdzenie trafi na Twój adres e-mail w ciągu jednego dnia roboczego, razem z fakturą pro forma i szczegółami dojazdu.</p>
+          <p>Dziękuję. Potwierdzenie trafi na Twój adres e-mail w ciągu jednego dnia roboczego, razem z fakturą pro forma i szczegółami dojazdu.</p>
           <p>Jeśli wiadomość nie dotrze, sprawdź folder spam albo napisz na <a href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a>.</p>
         </div>
       </div>
@@ -1145,7 +1143,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       </details>
       <details>
         <summary>Nie korzystam z AI. Czy dam radę?</summary>
-        <div class="answer">Tak, wszystko pokazujemy krok po kroku.</div>
+        <div class="answer">Tak, wszystko pokazuję krok po kroku.</div>
       </details>
       <details>
         <summary>Moja firma ogranicza korzystanie z AI. Czy szkolenie ma sens?</summary>
@@ -1157,7 +1155,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       </details>
       <details>
         <summary>Czy firma może zapłacić?</summary>
-        <div class="answer">Tak. Wystawiamy fakturę VAT. Możesz pobrać notatkę dla pracodawcy.</div>
+        <div class="answer">Tak. Wystawiam fakturę VAT. Możesz pobrać notatkę dla pracodawcy.</div>
       </details>
       <details>
         <summary>Czy jest dofinansowanie?</summary>
@@ -1221,8 +1219,8 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   <div class="wrap">
     <div class="eyebrow">Szkolenia zamknięte · in-house</div>
     <h2 class="h2">Planujesz szkolenie dla zespołu Asystentek<br>w <em>swojej firmie?</em></h2>
-    <p class="inhouse__lede">Szkolenia dedykowane realizujemy w miejscu wskazanym przez Klienta lub online. Program dostosowujemy do specyfiki branży i kultury organizacji.</p>
-    <p class="inhouse__trust">Zaufały nam zespoły m.in.: Mercedes-Benz, ABB, 3M Poland, Grupa Maspex, Bosch, Polska Akademia Nauk.</p>
+    <p class="inhouse__lede">Szkolenia dedykowane realizuję w miejscu wskazanym przez Klienta lub online. Program dostosowuję do specyfiki branży i kultury organizacji.</p>
+    <p class="inhouse__trust">Zaufały mi zespoły m.in.: Mercedes-Benz, ABB, 3M Poland, Grupa Maspex, Bosch, Polska Akademia Nauk.</p>
     <div class="inhouse__cards">
       <div class="inhouse__card">
         <span class="inhouse__icon" aria-hidden="true">
@@ -1247,7 +1245,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     <h2 id="oferta-title">Zapytaj o ofertę</h2>
     <button type="button" class="modal__x" id="oferta-close" aria-label="Zamknij okno">&times;</button>
   </div>
-  <p class="modal__lede">Szkolenie zamknięte dla Asystentek z jednej firmy. Odpowiadamy w ciągu jednego dnia roboczego.</p>
+  <p class="modal__lede">Szkolenie zamknięte dla Asystentek z jednej firmy. Odpowiadam w ciągu jednego dnia roboczego.</p>
 
   <!-- Wysyłką zajmuje się formularz.php w katalogu głównym strony.
        Adres odbiorcy trzyma serwer; atrybuty data-* obsługują tylko zapas przez pocztę. -->
@@ -1279,7 +1277,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
   <div class="form-done" id="oferta-done" hidden tabindex="-1">
     <h3>Zapytanie wysłane</h3>
-    <p>Dziękujemy. Odezwiemy się na podany adres w ciągu jednego dnia roboczego.</p>
+    <p>Dziękuję. Odezwę się na podany adres w ciągu jednego dnia roboczego.</p>
   </div>
 </dialog>
 
@@ -1356,10 +1354,10 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       "mainEntity":[
         {"@type":"Question","name":"Mam wieloletnie doświadczenie. Czy to szkolenie jest dla mnie?","acceptedAnswer":{"@type":"Answer","text":"Tak. Program powstał dla doświadczonych Asystentek Zarządu/Executive Assistant."}},
         {"@type":"Question","name":"Jak firma sprawdzi efekt szkolenia?","acceptedAnswer":{"@type":"Answer","text":"Przez porównanie oceny szefa/szefowej przed szkoleniem i po 60 dniach, samoocenę Asystentki i wdrożenie planu na 90 dni."}},
-        {"@type":"Question","name":"Nie korzystam z AI. Czy dam radę?","acceptedAnswer":{"@type":"Answer","text":"Tak, wszystko pokazujemy krok po kroku."}},
+        {"@type":"Question","name":"Nie korzystam z AI. Czy dam radę?","acceptedAnswer":{"@type":"Answer","text":"Tak, wszystko pokazuję krok po kroku."}},
         {"@type":"Question","name":"Moja firma ogranicza korzystanie z AI. Czy szkolenie ma sens?","acceptedAnswer":{"@type":"Answer","text":"Tak. AI to wsparcie. Najważniejsze są kompetencje: komunikacja, wpływ, delegowanie i decyzje."}},
         {"@type":"Question","name":"Czy dostanę certyfikat?","acceptedAnswer":{"@type":"Answer","text":"Tak."}},
-        {"@type":"Question","name":"Czy firma może zapłacić?","acceptedAnswer":{"@type":"Answer","text":"Tak. Wystawiamy fakturę VAT. Możesz pobrać notatkę dla pracodawcy."}},
+        {"@type":"Question","name":"Czy firma może zapłacić?","acceptedAnswer":{"@type":"Answer","text":"Tak. Wystawiam fakturę VAT. Możesz pobrać notatkę dla pracodawcy."}},
         {"@type":"Question","name":"Czy jest dofinansowanie?","acceptedAnswer":{"@type":"Answer","text":"Szkolenie nie ma dofinansowania."}},
         {"@type":"Question","name":"Gdzie i w jakich godzinach szkolenie się odbywa?","acceptedAnswer":{"@type":"Answer","text":"Szkolenie odbywa się w Warszawie, w Centrum Biznesowym Ogrodowa 58, 19-20.11.2026, godz. 10.00-17.00 (I dzień), 9.00-16.00 (II dzień)."}}
       ]
