@@ -116,8 +116,11 @@ a{color:inherit}
   }
 }
 @media(prefers-reduced-transparency:reduce){.site-header{background:var(--white)}}
-.site-header .bar{display:flex;align-items:center;gap:24px;height:72px}
+.site-header .bar{display:flex;align-items:center;gap:clamp(14px,2.5vw,32px);height:72px}
 .site-header .bar>.btn{margin-left:auto}
+.brand{display:flex;align-items:center;flex:none;line-height:0}
+.brand img{width:clamp(104px,14vw,148px);height:auto}
+@media(max-width:400px){.brand img{width:96px}}
 .nav-wrap{position:relative;display:flex;align-items:center;min-width:0}
 .nav-toggle{
   display:none;align-items:center;gap:9px;cursor:pointer;border-radius:var(--r-sm);
@@ -544,6 +547,9 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <header class="site-header">
   <div class="wrap bar">
+    <a class="brand" href="https://www.officeinfluencers.pl/" aria-label="Office Influencers – strona główna">
+      <img src="/img/office-influencers-logo.png" alt="Office Influencers" width="400" height="130">
+    </a>
     <div class="nav-wrap">
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" hidden><span class="nav-toggle__bars" aria-hidden="true"></span>Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Nawigacja strony">
