@@ -508,6 +508,25 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .faq .answer{padding:0 0 28px;font-size:1rem;color:var(--muted);max-width:66ch}
 .faq .answer b{color:var(--navy);font-weight:600}
 
+/* ---------- odliczanie ---------- */
+.countdown{margin-top:clamp(36px,4vw,52px)}
+.countdown__label{
+  font-size:.8125rem;letter-spacing:.06em;color:#BFD0E6;margin-bottom:16px;
+}
+.countdown__grid{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(10px,1.4vw,16px);max-width:520px;margin-inline:auto;
+}
+.countdown__cell{
+  background:rgba(255,255,255,.06);border-radius:var(--r-md);
+  padding:clamp(16px,2vw,22px) 8px;
+}
+.countdown__cell b{
+  display:block;font-size:clamp(1.75rem,4.4vw,2.75rem);font-weight:700;
+  letter-spacing:-.04em;line-height:1;color:var(--yellow);font-variant-numeric:tabular-nums;
+}
+.countdown__cell span{display:block;margin-top:8px;font-size:.8125rem;color:#BFD0E6}
+
 /* ---------- zamkniecie ---------- */
 .closing{text-align:center}
 .closing h2{font-size:clamp(2.1rem,5.4vw,4rem);color:#fff;margin-bottom:24px;letter-spacing:-.04em}
@@ -1177,6 +1196,15 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     <div class="eyebrow" style="justify-content:center">Termin szkolenia: 19–20.11.2026</div>
     <h2>Dwa dni. Sześć modułów.<br>Dwanaście narzędzi.</h2>
     <p class="lede">Wychodzisz z własną mapą celów i planem wdrożenia na 90 dni.</p>
+    <div class="countdown" id="countdown" hidden>
+      <p class="countdown__label" id="countdown-label">Do startu szkolenia zostało</p>
+      <div class="countdown__grid" aria-hidden="true">
+        <div class="countdown__cell"><b id="cd-dni">0</b><span id="cd-dni-l">dni</span></div>
+        <div class="countdown__cell"><b id="cd-godz">0</b><span id="cd-godz-l">godzin</span></div>
+        <div class="countdown__cell"><b id="cd-min">0</b><span id="cd-min-l">minut</span></div>
+        <div class="countdown__cell"><b id="cd-sek">0</b><span id="cd-sek-l">sekund</span></div>
+      </div>
+    </div>
     <div class="btn-row"><a class="btn btn--yellow" href="#zapis">Dołącz teraz</a></div>
     <div class="facts">
       <div class="fact"><b>Termin</b><span>19–20 listopada 2026</span></div>
@@ -1642,6 +1670,53 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
         status.textContent=(err&&err.message)?err.message:'Nie udało się wysłać. Napisz na office@officeinfluencers.pl.';
       });
   });
+})();
+</script>
+
+
+<script>
+(function(){
+  // ZMIANA TERMINU: jeśli odliczasz do zamknięcia zapisów, a nie do startu szkolenia,
+  // podmień datę poniżej i tekst w elemencie #countdown-label.
+  var DO_KIEDY = new Date('2026-11-19T10:00:00+01:00');
+
+  var box = document.getElementById('countdown');
+  if (!box) return;
+
+  var pola = {
+    dni:  {b: document.getElementById('cd-dni'),  l: document.getElementById('cd-dni-l'),  formy: ['dzień', 'dni', 'dni']},
+    godz: {b: document.getElementById('cd-godz'), l: document.getElementById('cd-godz-l'), formy: ['godzina', 'godziny', 'godzin']},
+    min:  {b: document.getElementById('cd-min'),  l: document.getElementById('cd-min-l'),  formy: ['minuta', 'minuty', 'minut']},
+    sek:  {b: document.getElementById('cd-sek'),  l: document.getElementById('cd-sek-l'),  formy: ['sekunda', 'sekundy', 'sekund']}
+  };
+
+  // polska odmiana: 1 dzień, 2 dni, 5 dni, ale 12 dni i 22 dni
+  function odmien(n, formy){
+    if (n === 1) return formy[0];
+    var reszta = n % 10, setki = n % 100;
+    return (reszta >= 2 && reszta <= 4 && (setki < 12 || setki > 14)) ? formy[1] : formy[2];
+  }
+
+  function ustaw(pole, n){
+    pole.b.textContent = n;
+    pole.l.textContent = odmien(n, pole.formy);
+  }
+
+  function tik(){
+    var zostalo = DO_KIEDY - new Date();
+    if (zostalo <= 0){ box.hidden = true; return false; }
+    var sek = Math.floor(zostalo / 1000);
+    ustaw(pola.dni,  Math.floor(sek / 86400));
+    ustaw(pola.godz, Math.floor(sek % 86400 / 3600));
+    ustaw(pola.min,  Math.floor(sek % 3600 / 60));
+    ustaw(pola.sek,  sek % 60);
+    box.hidden = false;
+    return true;
+  }
+
+  if (tik()) {
+    var zegar = setInterval(function(){ if (!tik()) clearInterval(zegar); }, 1000);
+  }
 })();
 </script>
 
