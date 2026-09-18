@@ -29,7 +29,7 @@ const TEMATY = [
 ];
 
 // Skrzynka na domenie officeinfluencers.pl, z której wychodzi wiadomość.
-const NADAWCA      = 'strona@officeinfluencers.pl';
+const NADAWCA      = 'office@officeinfluencers.pl';
 const NAZWA_NADAWCY = 'Formularz officeinfluencers.pl';
 
 const POLA = [
