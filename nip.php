@@ -1,35 +1,11 @@
 <?php
 declare(strict_types=1);
 
-/*
- * Zwraca nazwę i adres firmy dla podanego numeru NIP.
- *
- * Pyta po kolei dwa rejestry:
- *   1. Wykaz podatników VAT Ministerstwa Finansów – bez klucza, obejmuje spółki
- *      i jednoosobowe działalności zarejestrowane do VAT.
- *   2. CEIDG – jednoosobowe działalności, także te zwolnione z VAT, których
- *      w wykazie MF nie ma.
- *
- * WGRANIE NA ZENBOX
- * 1. Wrzuć plik obok formularz.php, tak żeby działał pod
- *    https://www.officeinfluencers.pl/nip.php
- * 2. CEIDG wymaga własnego tokenu. Załóż konto na https://dane.biznes.gov.pl,
- *    wygeneruj token i wklej go w stałą CEIDG_TOKEN poniżej.
- *    Bez tokenu skrypt działa dalej, tylko pomija CEIDG i korzysta z wykazu MF.
- * 3. Token trzymamy po stronie serwera. W kodzie strony nie może się pojawić,
- *    bo każdy odwiedzający mógłby go odczytać i wykorzystać.
- * 4. Obok wgraj bezpieczenstwo.php – bez niego ten skrypt się nie uruchomi.
- */
-
 require __DIR__ . '/bezpieczenstwo.php';
 
-const CEIDG_TOKEN = '';           // <- tutaj wklej token z dane.biznes.gov.pl
-const LIMIT_CZASU = 6;            // sekundy na odpowiedź rejestru
+const CEIDG_TOKEN = '';
+const LIMIT_CZASU = 6;
 
-// Najwyżej tyle odpytań rejestru na godzinę z jednego adresu IP. Wypełniając
-// formularz sprawdza się jeden numer, więc zapas jest spory, ale skrypt
-// przepisujący całą bazę firm zatrzyma się po chwili. Bez tego limitu
-// rejestr mógłby uznać nasz serwer za nadużywający i odciąć go wszystkim.
 const LIMIT_ZAPYTAN = 40;
 const OKNO_LIMITU   = 3600;
 
@@ -84,7 +60,6 @@ function pobierz(string $url, array $naglowki = []): ?array
     return is_array($dane) ? $dane : null;
 }
 
-/** Wykaz podatników VAT: zwraca nazwę i adres prowadzenia działalności. */
 function zMinisterstwaFinansow(string $nip): ?array
 {
     $dane = pobierz(sprintf(
@@ -103,7 +78,6 @@ function zMinisterstwaFinansow(string $nip): ?array
     ];
 }
 
-/** CEIDG: jednoosobowe działalności; wymaga tokenu. */
 function zCeidg(string $nip): ?array
 {
     if (CEIDG_TOKEN === '') {
@@ -138,9 +112,6 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'GET') {
     odpowiedz(['ok' => false, 'komunikat' => 'Dozwolona jest tylko metoda GET.'], 405);
 }
 
-// Przy zwykłym pobraniu danych przeglądarka nie wysyła nagłówka Origin,
-// więc brak informacji o pochodzeniu puszczamy dalej – przed nadużyciem
-// broni wtedy limit poniżej. Obcą domenę odrzucamy od razu.
 sprawdzPochodzenie(false, static function (): void {
     odpowiedz(['ok' => false, 'komunikat' => 'Żądanie spoza strony officeinfluencers.pl.'], 403);
 });

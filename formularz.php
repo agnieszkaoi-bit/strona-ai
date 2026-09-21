@@ -1,24 +1,6 @@
 <?php
 declare(strict_types=1);
 
-/*
- * Odbiera zgłoszenia z landing page i wysyła je mailem.
- *
- * WGRANIE NA ZENBOX
- * 1. Wrzuć ten plik do katalogu głównego strony (tam, gdzie index.php WordPressa),
- *    tak żeby był dostępny pod https://www.officeinfluencers.pl/formularz.php
- * 2. W stałej NADAWCA ustaw istniejącą skrzynkę na domenie officeinfluencers.pl.
- *    Adres nadawcy MUSI być na tej domenie, inaczej SPF i DMARC odrzucą wiadomość
- *    i maile będą lądować w spamie. Adres osoby zgłaszającej idzie w Reply-To,
- *    więc odpowiadasz jej zwykłym „Odpowiedz”.
- * 3. Obok wgraj bezpieczenstwo.php – bez niego ten skrypt się nie uruchomi.
- * 4. Jeśli Zenbox blokuje funkcję mail(), przełącz się na SMTP tej samej skrzynki
- *    (dane logowania znajdziesz w panelu, w sekcji Poczta).
- *
- * Adresy odbiorców są tu na sztywno. Nie bierzemy ich z formularza, bo inaczej
- * dowolna osoba mogłaby użyć tego skryptu do rozsyłania poczty na cudze adresy.
- */
-
 require __DIR__ . '/bezpieczenstwo.php';
 
 const ODBIORCY = [
@@ -31,7 +13,6 @@ const TEMATY = [
     'oferta'     => 'Zapytanie dot. szkolenia APZ',
 ];
 
-// Skrzynka na domenie officeinfluencers.pl, z której wychodzi wiadomość.
 const NADAWCA      = 'office@officeinfluencers.pl';
 const NAZWA_NADAWCY = 'Formularz officeinfluencers.pl';
 
@@ -56,41 +37,17 @@ const POLA = [
     ],
 ];
 
-/*
- * MAILERLITE
- * Token: MailerLite → Integrations → API → Generate new token (uprawnienie do subskrybentów).
- * ID grupy: MailerLite → Subscribers → Groups → wejdź w grupę, numer jest w adresie strony.
- * Puste pole grupy = zapis do ogólnej listy.
- *
- * Token zostaje tutaj, po stronie serwera. W kodzie strony nie może się pojawić,
- * bo każdy odwiedzający mógłby go odczytać i wykorzystać do Twojego konta.
- *
- * Na listę trafia wyłącznie osoba, która zaznaczyła zgodę marketingową.
- * Zgoda RODO dotyczy obsługi zgłoszenia i do zapisu na listę nie wystarcza.
- */
 const MAILERLITE_TOKEN = '';
 const MAILERLITE_GRUPA = '';
 
 const MAX_DLUGOSC = 2000;
 
-/*
- * Dwa limity na godzinę, liczone osobno dla każdego adresu IP.
- *
- * LIMIT_WYSLANYCH dotyczy wiadomości, które faktycznie poszły na Twoją
- * skrzynkę. LIMIT_ZADAN jest wyższy i obejmuje wszystkie próby, także te
- * odrzucone. Dzięki temu ktoś, kto poprawia literówkę w e-mailu albo wraca
- * do formularza po zastanowieniu, nie zostaje zablokowany, a skrypt
- * wysyłający zgłoszenia w pętli zatrzymuje się po chwili.
- */
 const LIMIT_WYSLANYCH = 5;
 const LIMIT_ZADAN     = 30;
 const OKNO_LIMITU     = 3600;
 
-// Krótszy czas wypełniania oznacza, że formularz wysłał skrypt, nie człowiek.
 const MIN_CZAS_MS = 3000;
 
-// Wartości, których spodziewamy się w polach wyboru. Cokolwiek innego
-// oznacza żądanie spreparowane poza formularzem.
 const PLATNICY      = ['firma', 'osoba_prywatna'];
 const MAX_UCZESTNIKOW = 20;
 
@@ -107,7 +64,6 @@ function odpowiedz(int $kod, string $komunikat): void
     exit;
 }
 
-/** Usuwa znaki, którymi dałoby się dopisać własne nagłówki wiadomości. */
 function bezNaglowkow(string $wartosc): string
 {
     return trim(str_replace(["\r", "\n", "\0"], ' ', $wartosc));
@@ -122,7 +78,6 @@ function wartosc(string $klucz): string
     return trim(bezZnakowSterujacych(mb_substr($surowa, 0, MAX_DLUGOSC)));
 }
 
-/** Rozbija „Anna Kowalska” na imię i nazwisko dla pól MailerLite. */
 function rozbijImie(string $pelne): array
 {
     $czesci = preg_split('/\s+/', trim($pelne), 2) ?: [];
@@ -142,12 +97,6 @@ function daneDoMailerLite(string $email, string $pelneImie): array
     return $dane;
 }
 
-/*
- * Zapis jest dodatkiem do zgłoszenia, nie warunkiem. Gdy MailerLite nie
- * odpowie, zgłoszenie i tak jest przyjęte, a ślad trafia do logu serwera.
- * Statusu subskrypcji nie narzucamy, żeby zadziałało ustawienie double opt-in
- * z Twojego konta.
- */
 function doMailerLite(string $email, string $pelneImie): void
 {
     if (MAILERLITE_TOKEN === '' || !function_exists('curl_init')) {
@@ -182,22 +131,14 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     odpowiedz(405, 'Dozwolona jest tylko metoda POST.');
 }
 
-// Zgłoszenie ma przyjść z formularza na naszej stronie, nie z cudzej.
 sprawdzPochodzenie(true, static function (): void {
     odpowiedz(403, 'Żądanie spoza strony officeinfluencers.pl.');
 });
 
-// Górny sufit na samo dobijanie się do skryptu.
 limitZadan('formularz-proby', LIMIT_ZADAN, OKNO_LIMITU, static function (): void {
     odpowiedz(429, 'Zbyt wiele prób z tego adresu. Spróbuj za godzinę lub napisz na office@officeinfluencers.pl.');
 });
 
-/*
- * Boty rozpoznajemy po dwóch rzeczach: wypełniają ukryte pole, którego
- * człowiek nie widzi, i wysyłają formularz w ułamku sekundy. W obu wypadkach
- * odpowiadamy uprzejmie i nie wysyłamy nic dalej – niech skrypt spamerski
- * myśli, że się udało, i nie próbuje ponownie.
- */
 if (wartosc('www') !== '') {
     odpowiedz(200, 'Dziękuję.');
 }
@@ -261,7 +202,6 @@ $naglowki = implode("\r\n", [
     'Content-Transfer-Encoding: 8bit',
 ]);
 
-// Dopiero tu, gdy zgłoszenie jest kompletne, liczymy je do limitu wysyłek.
 limitZadan('formularz-wyslane', LIMIT_WYSLANYCH, OKNO_LIMITU, static function (): void {
     odpowiedz(429, 'Z tego adresu wysłano już kilka zgłoszeń. Napisz na office@officeinfluencers.pl, a dopiszę pozostałe osoby.');
 });

@@ -3,14 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<!--
-  Polityka bezpieczeństwa treści: przeglądarka wykona tylko to, co jest tu
-  wymienione. Gdyby ktoś wstrzyknął na stronę obcy skrypt albo ramkę,
-  przeglądarka je zablokuje. Dodając nowe narzędzie zewnętrzne (piksel,
-  czat, mapę) trzeba dopisać jego adres do właściwej linii, inaczej
-  przestanie działać. Nagłówki frame-ancestors i HSTS są w pliku .htaccess,
-  bo w znaczniku meta przeglądarki je pomijają.
--->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Asystentka – Partner w Zarządzaniu I. Myśl jak Szef™ | Szkolenie</title>
@@ -84,7 +76,6 @@ a{color:inherit}
 .section--paper{background:var(--white)}
 .section--navy{
   color:#fff;border-top:0;position:relative;overflow:hidden;
-  /* światło schodzi z góry w dół, bez wyraźnej plamy */
   background:
     radial-gradient(120% 90% at 50% -20%, rgba(255,255,255,.07) 0%, rgba(255,255,255,0) 58%),
     linear-gradient(180deg, #0D2A4F 0%, #0B2545 52%, #081F3A 100%);
@@ -94,7 +85,6 @@ a{color:inherit}
 .progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:90;pointer-events:none}
 .progress span{display:block;height:100%;width:0;background:var(--yellow)}
 
-/* ---------- naglowki sekcji ---------- */
 .eyebrow{
   font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
   color:var(--navy-600);margin-bottom:22px;display:flex;align-items:center;gap:12px;
@@ -107,7 +97,6 @@ a{color:inherit}
 .section--navy .lede{color:#BFD0E6}
 .head{max-width:880px;margin-bottom:clamp(44px,5.5vw,80px)}
 
-/* ---------- naglowek strony ---------- */
 .skip{
   position:absolute;left:-9999px;top:0;z-index:200;
   background:var(--navy);color:#fff;padding:13px 20px;border-radius:0 0 var(--r-sm) 0;
@@ -164,7 +153,6 @@ a{color:inherit}
   .has-js .nav-wrap>.site-nav a:hover{background:var(--tint)}
 }
 
-/* ---------- przyciski ---------- */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
   font:inherit;font-weight:600;font-size:.9375rem;letter-spacing:-.005em;
@@ -182,7 +170,6 @@ a{color:inherit}
 .btn-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:38px}
 @media(max-width:520px){.btn-row .btn{width:100%}}
 
-/* ---------- hero ---------- */
 .hero{padding-block:clamp(52px,7vw,100px) clamp(60px,8vw,108px);border-top:0;overflow:hidden}
 .hero__grid{display:grid;grid-template-columns:1.5fr .5fr;gap:clamp(32px,4vw,60px);align-items:center}
 @media(max-width:920px){.hero__grid{grid-template-columns:1fr;gap:48px}}
@@ -228,7 +215,6 @@ a{color:inherit}
 .portrait__cap{margin-top:18px;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;font-size:.9375rem;color:var(--muted)}
 .portrait__cap b{font-weight:600;color:var(--navy)}
 
-/* ---------- klienci ---------- */
 .clients__grid{
   display:flex;flex-wrap:wrap;align-items:center;
   gap:18px clamp(24px,3.6vw,52px);
@@ -236,7 +222,6 @@ a{color:inherit}
 }
 .client{font-size:.8125rem;font-weight:500;letter-spacing:.02em;color:#97A1B1}
 
-/* ---------- liczby ---------- */
 .stats{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
   gap:clamp(28px,3vw,52px);margin-top:clamp(44px,5vw,72px);
@@ -250,7 +235,6 @@ a{color:inherit}
 .section--navy .stat b{color:var(--yellow)}
 .section--navy .stat span{color:#BFD0E6}
 
-/* ---------- numerowane bloki ---------- */
 .idx,.effect__n,.reason__n{
   font-size:clamp(2.25rem,4.2vw,3.25rem);font-weight:600;letter-spacing:-.04em;line-height:1;
   color:#A8C0DC;margin-bottom:18px;font-variant-numeric:tabular-nums;
@@ -266,7 +250,6 @@ a{color:inherit}
 .reason h3{font-size:1.125rem;margin-bottom:11px;color:var(--navy)}
 .reason p{font-size:.9375rem;color:var(--muted)}
 
-/* ---------- dla kogo ---------- */
 .audience{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,3.4vw,44px)}
 @media(max-width:880px){.audience{grid-template-columns:1fr}}
 .aud-card{padding-top:24px;border-top:1px solid var(--navy)}
@@ -282,7 +265,6 @@ a{color:inherit}
 .aud-list b{display:block;color:var(--navy);font-weight:600;font-size:1.0625rem}
 .aud-list p{font-size:.9375rem;color:var(--muted);margin-top:4px}
 
-/* ---------- prowadzaca ---------- */
 .trainer{display:grid;grid-template-columns:.42fr 1.58fr;gap:clamp(36px,4.5vw,64px);align-items:center}
 .trainer .portrait{max-width:300px}
 @media(max-width:880px){.trainer{grid-template-columns:1fr}.trainer .portrait{margin-inline:auto}}
@@ -295,7 +277,6 @@ a{color:inherit}
 .trainer__list li::before{content:"";width:8px;height:1.5px;border-radius:1px;background:var(--navy-400);margin-top:12px}
 .trainer__list b{color:var(--navy);font-weight:600}
 
-/* ---------- miejsce ---------- */
 .venue{
   margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
   gap:clamp(24px,3vw,44px);
@@ -304,7 +285,6 @@ a{color:inherit}
 .venue__item dt{font-size:.8125rem;color:var(--muted);margin-bottom:8px}
 .venue__item dd{margin:0;font-size:1rem;color:var(--ink)}
 
-/* ---------- program ---------- */
 .day{margin-top:clamp(52px,5.5vw,88px)}
 .day:first-of-type{margin-top:0}
 .day__head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;padding-bottom:22px;border-bottom:1px solid var(--rule);margin-bottom:clamp(32px,3.6vw,48px)}
@@ -337,13 +317,11 @@ a{color:inherit}
 .module__ai{margin-top:auto;padding-top:18px;border-top:1px solid var(--rule-soft);font-size:.875rem;color:var(--muted)}
 .module__ai b{color:var(--navy);font-weight:600}
 
-/* ---------- bonusy ---------- */
 .bonuses{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:clamp(22px,2.6vw,32px)}
 .bonus{padding-top:24px;border-top:1px solid var(--rule)}
 .bonus h3{font-size:1.125rem;color:var(--navy);margin-bottom:11px}
 .bonus p{font-size:.9375rem;color:var(--muted)}
 
-/* ---------- cena ---------- */
 .pricing{display:grid;grid-template-columns:1fr;gap:22px;max-width:760px}
 .price-card{background:var(--white);border:1px solid var(--navy);border-radius:var(--r-lg);padding:clamp(30px,3.4vw,46px);box-shadow:var(--shadow-sm)}
 .price-card .amount{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
@@ -370,7 +348,6 @@ a{color:inherit}
 .side-card p{font-size:.9375rem;color:var(--muted);max-width:46ch}
 
 
-/* ---------- formularz ---------- */
 .signup{display:grid;grid-template-columns:1.3fr .7fr;gap:clamp(24px,3vw,44px);align-items:start}
 @media(max-width:920px){.signup{grid-template-columns:1fr}}
 .form-card{background:var(--white);border:1px solid var(--rule);border-radius:var(--r-lg);padding:clamp(26px,3.2vw,46px);box-shadow:var(--shadow-sm)}
@@ -445,7 +422,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .summary .help a{color:var(--navy);font-weight:500;text-decoration:none}
 .summary .help a:hover{text-decoration:underline}
 
-/* ---------- okno zapytania ---------- */
 .modal{
   border:0;border-radius:var(--r-lg);padding:clamp(26px,3.4vw,42px);
   background:var(--white);color:var(--ink);box-shadow:0 30px 70px -30px rgba(11,37,69,.55);
@@ -463,7 +439,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .modal .fields{grid-template-columns:1fr}
 .modal .form-done{margin-top:0}
 
-/* ---------- szkolenia zamkniete ---------- */
 .inhouse{background:var(--tint);border-top:0;text-align:center}
 .inhouse .eyebrow{justify-content:center;color:var(--navy-600)}
 .inhouse h2{font-size:clamp(1.9rem,4.6vw,3.3rem);color:var(--navy);margin-bottom:26px}
@@ -489,7 +464,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .inhouse__card b{display:block;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 .inhouse__card b+span{display:block;font-size:1rem;font-weight:600;color:var(--navy);overflow-wrap:break-word}
 
-/* ---------- faq ---------- */
 .faq{max-width:900px}
 .faq details{border-bottom:1px solid var(--rule)}
 .faq details:first-of-type{border-top:1px solid var(--rule)}
@@ -508,7 +482,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .faq .answer{padding:0 0 28px;font-size:1rem;color:var(--muted);max-width:66ch}
 .faq .answer b{color:var(--navy);font-weight:600}
 
-/* ---------- odliczanie ---------- */
 .countdown{margin-top:clamp(36px,4vw,52px)}
 .countdown__label{
   font-size:.8125rem;letter-spacing:.06em;color:#BFD0E6;margin-bottom:16px;
@@ -527,7 +500,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 }
 .countdown__cell span{display:block;margin-top:8px;font-size:.8125rem;color:#BFD0E6}
 
-/* ---------- zamkniecie ---------- */
 .closing{text-align:center}
 .closing h2{font-size:clamp(2.1rem,5.4vw,4rem);color:#fff;margin-bottom:24px;letter-spacing:-.04em}
 .section--navy .btn--yellow{box-shadow:0 14px 30px -20px rgba(255,208,94,.4)}
@@ -547,7 +519,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .site-footer a{color:#C9D9EC;text-decoration:none}
 .site-footer a:hover{color:#fff}
 
-/* ---------- cookies ---------- */
 .cookies{
   position:fixed;left:0;right:0;bottom:0;z-index:120;
   padding:16px var(--gutter);
@@ -570,7 +541,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .cookies-link{background:none;border:0;padding:0;font:inherit;color:#C9D9EC;cursor:pointer;text-decoration:none}
 .cookies-link:hover{color:#fff}
 
-/* ---------- animacje ---------- */
 .js .reveal{opacity:0;transform:translateY(24px)}
 .js .reveal.in{opacity:1;transform:none;transition:opacity .75s cubic-bezier(.22,.61,.36,1),transform .75s cubic-bezier(.22,.61,.36,1)}
 @media(prefers-reduced-motion:reduce){
@@ -608,7 +578,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <main id="main">
 
-<!-- HERO -->
 <section class="hero">
   <div class="wrap hero__grid">
     <div>
@@ -636,7 +605,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   </div>
 </section>
 
-<!-- KLIENCI -->
 <section class="section section--paper" id="klienci">
   <div class="wrap">
     <div class="head">
@@ -662,7 +630,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   </div>
 </section>
 
-<!-- OBIETNICA -->
 <section class="section">
   <div class="wrap">
     <div class="head" style="max-width:860px">
@@ -675,7 +642,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   </div>
 </section>
 
-<!-- EFEKTY -->
 <section class="section section--paper" id="efekty">
   <div class="wrap">
     <div class="head">
@@ -717,7 +683,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   </div>
 </section>
 
-<!-- DLA KOGO -->
 <section class="section" id="dla-kogo">
   <div class="wrap">
     <div class="head">
@@ -746,7 +711,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   </div>
 </section>
 
-<!-- DLACZEGO WARTO -->
 <section class="section section--paper" id="dlaczego">
   <div class="wrap">
     <div class="head">
@@ -783,7 +747,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   </div>
 </section>
 
-<!-- PROWADZĄCA -->
 <section class="section section--paper" id="prowadzaca">
   <div class="wrap trainer">
     <div class="portrait reveal">
@@ -807,7 +770,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   </div>
 </section>
 
-<!-- PROGRAM -->
 <section class="section" id="program">
   <div class="wrap">
     <div class="head">
@@ -935,7 +897,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   </div>
 </section>
 
-<!-- BONUSY -->
 <section class="section section--paper" id="bonusy">
   <div class="wrap">
     <div class="head">
@@ -959,7 +920,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   </div>
 </section>
 
-<!-- CENA -->
 <section class="section" id="cena">
   <div class="wrap">
     <div class="head">
@@ -995,7 +955,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   </div>
 </section>
 
-<!-- ZGŁOSZENIE -->
 <section class="section section--paper" id="zapis">
   <div class="wrap">
     <div class="head">
@@ -1006,8 +965,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
     <div class="signup">
       <div>
-        <!-- Wysyłką zajmuje się formularz.php w katalogu głównym strony.
-             Odbiorca i temat są ustalone po stronie serwera. -->
         <form class="form-card" id="zapis-form" method="post" action="/formularz.php" novalidate>
           <input type="hidden" name="formularz" value="zgloszenie">
           <div class="fields">
@@ -1138,7 +1095,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   </div>
 </section>
 
-<!-- FAQ -->
 <section class="section section--paper" id="faq">
   <div class="wrap">
     <div class="head">
@@ -1182,7 +1138,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   </div>
 </section>
 
-<!-- MIEJSCE -->
 <section class="section" id="miejsce">
   <div class="wrap">
     <div class="head">
@@ -1201,7 +1156,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   </div>
 </section>
 
-<!-- ZAMKNIĘCIE -->
 <section class="section section--navy">
   <div class="wrap closing">
     <div class="eyebrow" style="justify-content:center">Termin szkolenia: 19–20.11.2026</div>
@@ -1227,7 +1181,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 </section>
 
 
-<!-- SZKOLENIA ZAMKNIĘTE -->
 <section class="section inhouse" id="in-house">
   <div class="wrap">
     <div class="eyebrow">Szkolenia zamknięte · in-house</div>
@@ -1260,11 +1213,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   </div>
   <p class="modal__lede">Szkolenie zamknięte dla Asystentek z jednej firmy. Odpowiadam w ciągu jednego dnia roboczego.</p>
 
-  <!-- Wysyłką zajmuje się formularz.php w katalogu głównym strony.
-       Adres odbiorcy trzyma serwer; atrybuty data-* obsługują tylko zapas przez pocztę. -->
-  <form id="oferta-form" method="post" action="/formularz.php" novalidate
-        data-odbiorca="agnieszka.korach@arkconsulting.com.pl"
-        data-temat="Zapytanie dot. szkolenia APZ">
+  <form id="oferta-form" method="post" action="/formularz.php" novalidate>
     <input type="hidden" name="formularz" value="oferta">
     <div class="fields">
       <div class="field field--full">
@@ -1385,9 +1334,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   var root=document.documentElement;
   root.classList.add('js');
 
-  /* Ile czasu minęło od otwarcia strony do wysyłki. Człowiek potrzebuje
-     kilkunastu sekund na wypełnienie pól, skrypt spamerski wysyła od razu.
-     Serwer odrzuca zgłoszenia szybsze niż trzy sekundy. */
   var otwarto=Date.now();
   [].forEach.call(document.querySelectorAll('form'),function(form){
     form.addEventListener('submit',function(){
@@ -1396,7 +1342,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       });
     },true);
   });
-  // dopóki zdjęcia nie ma, pokazujemy stylizowany placeholder zamiast tekstu alt
   [].forEach.call(document.querySelectorAll('.portrait__frame img'),function(img){
     img.addEventListener('error',function(){img.hidden=true});
     if(img.complete&&img.naturalWidth===0)img.hidden=true;
@@ -1537,14 +1482,10 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   refreshSummary();
   refreshPayer();
 
-  // Odpytujemy własny skrypt nip.php, a ten pyta wykaz VAT i CEIDG.
-  // Pośrednik jest potrzebny, bo token CEIDG nie może trafić do kodu strony.
   var nip=q('f-nip'),nipHint=q('h-nip'),lastNip='';
   var NIP_HINT=nipHint.textContent;
   var NIP_BLAD='Nie można teraz pobrać danych \u2013 wpisz nazwę i adres ręcznie.';
 
-  // Odpowiedź bywa stroną błędu serwera, a nie JSON-em. Zwracamy null zamiast
-  // pozwolić, żeby komunikat parsera trafił do pola pod formularzem.
   function odczytajJson(r){
     return r.json().then(function(dane){ return dane || null; }, function(){ return null; });
   }
@@ -1593,10 +1534,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     if(!validate())return;
 
     var endpoint=(form.getAttribute('action')||'').trim();
-    if(!endpoint){
-      status.textContent='Formularz nie jest jeszcze podłączony. Napisz na office@officeinfluencers.pl lub zadzwoń: +48 22 435 70 02.';
-      return;
-    }
     submit.disabled=true;
     submit.textContent='Wysyłam…';
     fetch(endpoint,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
@@ -1649,7 +1586,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     if(openBtn)openBtn.focus();
   }
   if(openBtn)openBtn.addEventListener('click',function(e){
-    e.preventDefault();   // bez JS odsyłacz nadal otwiera pocztę
+    e.preventDefault();
     openModal();
   });
   closeBtn.addEventListener('click',closeModal);
@@ -1674,19 +1611,10 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     };
 
     var endpoint=(form.getAttribute('action')||'').trim();
-    if(!endpoint){
-      var to=form.getAttribute('data-odbiorca');
-      var subject=form.getAttribute('data-temat');
-      var body='Imię: '+name.value.trim()+'\nAdres e-mail: '+email.value.trim();
-      location.href='mailto:'+to+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
-      finish();
-      return;
-    }
     submit.disabled=true;
     submit.textContent='Wysyłam…';
     fetch(endpoint,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
       .then(function(r){
-        // strona błędu serwera nie jest JSON-em; nie wypuszczamy błędu parsera do interfejsu
         return r.json().then(function(d){return r.ok&&d?d:null}, function(){return null});
       })
       .then(function(dane){
@@ -1707,8 +1635,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <script>
 (function(){
-  // ZMIANA TERMINU: jeśli odliczasz do zamknięcia zapisów, a nie do startu szkolenia,
-  // podmień datę poniżej i tekst w elemencie #countdown-label.
   var DO_KIEDY = new Date('2026-11-19T10:00:00+01:00');
 
   var box = document.getElementById('countdown');
@@ -1721,7 +1647,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     sek:  {b: document.getElementById('cd-sek'),  l: document.getElementById('cd-sek-l'),  formy: ['sekunda', 'sekundy', 'sekund']}
   };
 
-  // polska odmiana: 1 dzień, 2 dni, 5 dni, ale 12 dni i 22 dni
   function odmien(n, formy){
     if (n === 1) return formy[0];
     var reszta = n % 10, setki = n % 100;
@@ -1769,14 +1694,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <script>
 (function(){
-  /* GOOGLE ANALYTICS
-     Wpisz niżej identyfikator pomiaru GA4 (format G-XXXXXXXXXX). Znajdziesz go
-     w WordPressie: Site Kit → Ustawienia → Analytics, albo w Google Analytics:
-     Administracja → Strumienie danych → Twoja strona.
-
-     Puste pole = statystyki wyłączone, strona działa normalnie.
-     Skrypt Google wczytuje się dopiero po kliknięciu „Zgoda na statystyki”.
-     Nie przenoś go do <head> — ruszyłby przed zgodą i cały baner byłby fikcją. */
   var ID_ANALYTICS = 'G-FZFSJTSN1B';
 
   function wlaczStatystyki(){
@@ -1801,7 +1718,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   var wroc  = document.getElementById('cookies-open');
   if (!pasek || !tak || !nie) return;
 
-  // Pamięć przeglądarki bywa niedostępna w trybie prywatnym; wtedy pytamy za każdym razem.
   function zapisz(v){ try { localStorage.setItem(KLUCZ, v); } catch (e) {} }
   function odczytaj(){ try { return localStorage.getItem(KLUCZ); } catch (e) { return null; } }
 
