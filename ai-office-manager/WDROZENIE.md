@@ -6,8 +6,10 @@ na PHP, reszta to zwykły HTML.
 ```
 ai-office-manager/
 ├── index.html    ← cała strona (HTML + CSS + JS w jednym pliku)
-├── wyslij.php    ← obsługa formularza, wysyłka maila
-└── .htaccess     ← kodowanie, kompresja, cache, nagłówki
+├── wyslij.php    ← obsługa formularza: zapis do CSV + wysyłka maila
+├── sprawdz.php   ← jednorazowa diagnostyka, USUŃ PO SPRAWDZENIU
+├── .htaccess     ← kodowanie, kompresja, cache, nagłówki, blokada plików .csv
+└── dane/         ← powstaje sam: zgloszenia.csv + własny .htaccess
 ```
 
 Poza Google Fonts (Plus Jakarta Sans) strona nie ma żadnych zależności
@@ -26,7 +28,14 @@ zewnętrznych — żadnych bibliotek, frameworków ani buildu.
      (teraz: `formularz@officeinfluencers.pl`). Załóż tę skrzynkę albo alias
      w panelu Zenbox. Jeśli zostawisz tu adres zgłaszającego, poczta odbiorcy
      odrzuci wiadomość lub wrzuci ją do spamu (SPF/DKIM).
-5. Wyślij testowe zgłoszenie i sprawdź, czy mail dotarł.
+5. Otwórz **`sprawdz.php`** w przeglądarce
+   (`https://twoja-domena.pl/ai-office-manager/sprawdz.php`). Skrypt sprawdzi
+   wersję PHP, dostępność `mail()`, prawa zapisu, zgodność domeny nadawcy
+   oraz — najważniejsze — **czy plik CSV ze zgłoszeniami nie jest do pobrania
+   z internetu**. Napraw, co pokaże na czerwono.
+6. Wyślij testowe zgłoszenie i sprawdź, czy mail dotarł i czy wiersz wpadł
+   do `dane/zgloszenia.csv`.
+7. **Usuń `sprawdz.php` z serwera.**
 
 ### Adres strony w metadanych
 
@@ -73,9 +82,46 @@ serwera (nie tylko w przeglądarce), usuwanie znaków nowej linii z nagłówków
 (ochrona przed wstrzyknięciem nagłówków), limit 1–10 osób.
 
 **Czego formularz nie robi:** nie przyjmuje płatności i nie rezerwuje miejsca —
-jest to napisane wprost pod przyciskiem. Zgłoszenia nie zapisują się do bazy;
-jedynym śladem jest mail. Jeśli chcesz mieć je też w panelu, trzeba dołożyć
-zapis do pliku CSV albo bazy.
+jest to napisane wprost pod przyciskiem.
+
+## Zapis zgłoszeń do CSV
+
+Każde zgłoszenie trafia w dwa miejsca: na maila **i** do pliku
+`dane/zgloszenia.csv`. Zapis do pliku idzie pierwszy, więc nawet gdy wysyłka
+maila padnie, zgłoszenie nie przepada.
+
+**Kolumny:** Data zgłoszenia, Imię i nazwisko, Stanowisko, Firma, E-mail,
+Telefon, Liczba osób, Wiadomość, Zgoda, Program, IP.
+
+Plik otwiera się w Excelu dwuklikiem — separatorem jest średnik, a na początku
+pliku jest znacznik BOM, więc polskie znaki wyświetlają się poprawnie.
+Wiadomości wieloliniowe i średniki w treści są poprawnie cytowane.
+
+Równoległe zgłoszenia nie nadpiszą się nawzajem (blokada pliku `flock`).
+
+### Dane osobowe — przeczytaj, zanim zbierzesz pierwsze zgłoszenie
+
+Plik CSV zawiera dane osobowe. **Nie może być dostępny z przeglądarki.**
+Zabezpieczenia są trzy, warstwowo:
+
+1. `.htaccess` w katalogu strony blokuje pobieranie plików `.csv`,
+2. `wyslij.php` zakłada w katalogu `dane/` własny `.htaccess` z `Require all denied`,
+3. plik dostaje uprawnienia `0640`, a katalog `0750`.
+
+**Najbezpieczniej jest jednak trzymać dane poza katalogiem publicznym** — wtedy
+żadna konfiguracja serwera nie ma znaczenia. W `wyslij.php` zmień jedną linię:
+
+```php
+const KATALOG_DANYCH = __DIR__ . '/../../dane-zgloszenia';
+```
+
+Przy układzie `public_html/ai-office-manager/` wskazuje to katalog obok
+`public_html`, czyli poza zasięgiem WWW. `sprawdz.php` potwierdzi wtedy:
+„katalog z danymi leży poza katalogiem strony".
+
+Poza tym: plik rośnie bez limitu i nikt go sam nie skasuje — ustal, jak długo
+przechowujesz zgłoszenia, i kasuj stare zgodnie z własną polityką RODO.
+Katalog `dane/` jest w `.gitignore`, więc zgłoszenia nigdy nie trafią do repozytorium.
 
 ## Do uzupełnienia przed publikacją
 
@@ -88,6 +134,8 @@ zapis do pliku CSV albo bazy.
 | Logotypy klientów | pasek wiarygodności | Opcjonalnie zamień nazwy tekstowe (`<span class="omai-logo">`) na pliki logotypów. |
 | Polityka prywatności | checkbox zgody | Link prowadzi do `/polityka-prywatnosci/`. Popraw adres i uzupełnij klauzulę informacyjną RODO. |
 | Adres strony | `index.html`, 4 miejsca | Podmień, jeśli landing stanie pod innym adresem niż `officeinfluencers.pl/ai-office-manager/`. |
+| Katalog na dane | `wyslij.php`, stała `KATALOG_DANYCH` | Rozważ przeniesienie poza `public_html` (patrz wyżej). |
+| `sprawdz.php` | serwer | Usuń po sprawdzeniu konfiguracji. |
 
 ## Źródła danych użytych na stronie
 
@@ -108,6 +156,13 @@ Ustawione bezpośrednio w `index.html`, nic nie trzeba dopisywać:
 - jeden `<h1>`: `OFFICE MANAGER AI OPERATIONS`
 - Open Graph + dane strukturalne `Course` ze schema.org
 
+## Czego NIE dałem rady sprawdzić
+
+Blokady `.htaccess` nie da się przetestować poza docelowym serwerem —
+wbudowany serwer PHP ignoruje ten plik, a w środowisku, w którym powstawał
+landing, nie było Apache'a. Dlatego powstał `sprawdz.php`: uruchom go na
+Zenboxie, zanim zbierzesz pierwsze zgłoszenie.
+
 ## Sprawdzone w przeglądarce
 
 - brak poziomego przewijania przy 390 px i 1440 px,
@@ -117,7 +172,11 @@ Ustawione bezpośrednio w `index.html`, nic nie trzeba dopisywać:
   zarówno w przeglądarce, jak i po stronie PHP,
 - wysyłka maila działa (przetestowana na lokalnym serwerze PHP z przechwytem
   poczty): poprawny odbiorca, temat, `Reply-To` i polskie znaki,
+- zapis do CSV: 11 kolumn, polskie znaki, wiadomości wieloliniowe, średniki
+  i cudzysłowy w treści — wszystko wraca poprawnie przy odczycie parserem,
 - ścieżka bez JavaScriptu działa i kończy się potwierdzeniem na stronie,
 - pułapka na boty i próba wstrzyknięcia nagłówka w pole e-mail — zablokowane,
+- `sprawdz.php` poprawnie rozpoznaje obie konfiguracje katalogu danych
+  (wewnątrz i poza katalogiem strony),
 - accordion FAQ działa bez JS (`<details>`),
 - sticky CTA na mobile pojawia się po hero i chowa przy formularzu.
