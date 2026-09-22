@@ -144,12 +144,27 @@ W katalogu `img/` są dwa kadry z tej samej sesji, każdy w jpg i webp, w wersji
 
 | Plik | Gdzie | Kadr |
 |---|---|---|
-| `agnieszka-korach-hero` | hero, prawa kolumna | 4:5, sylwetka z mikrofonem |
+| `agnieszka-korach-hero` | hero, prawa kolumna | 4:5, ujęcie z mikrofonem i gestem |
 | `agnieszka-korach-portret` | sekcja „Prowadzi Agnieszka Korach" | 4:5, ciaśniejszy portret |
 
-Z oryginału wycięta została rozmyta ciemna plama po prawej stronie (głowa osoby
-na pierwszym planie). Jeśli będziesz podmieniać zdjęcia, zachowaj proporcje 4:5
-i te same nazwy plików — wtedy nie trzeba ruszać HTML-a.
+Jeśli będziesz podmieniać zdjęcia, zachowaj proporcje 4:5 i te same nazwy
+plików — wtedy nie trzeba ruszać HTML-a.
+
+## Animacje
+
+Sekcje i karty pojawiają się przy przewijaniu (przesunięcie o 16 px i
+rozjaśnienie, 0,6 s), karty w jednej siatce z niewielkim opóźnieniem po kolei.
+Do tego drobne reakcje na najechanie: uniesienie karty, delikatne powiększenie
+zdjęcia w hero, podświetlenie otwartego pytania w FAQ.
+
+Dwa zabezpieczenia, żeby treść nigdy nie zniknęła:
+- klasę uruchamiającą animacje dodaje JavaScript, więc **bez JS wszystko jest
+  po prostu widoczne**,
+- przy ustawieniu „ogranicz ruch" w systemie animacje w ogóle się nie włączają.
+
+Sprawdzone: po przewinięciu całej strony żaden z 55 animowanych elementów nie
+zostaje ukryty; wejście prosto na `#zapisy`, `#cena` i powrót z `wyslij.php`
+pokazuje właściwą sekcję od razu.
 
 ## Źródła danych użytych na stronie
 
@@ -167,6 +182,8 @@ Ustawione bezpośrednio w `index.html`, nic nie trzeba dopisywać:
 
 - **title:** `AI dla Office Managera – 4-tygodniowy program | Office Influencers`
 - **meta description:** `Praktyczny 4-tygodniowy program AI dla Office Managerów. Własny Asystent AI, workflow, weryfikacja informacji, podstawy automatyzacji i sesja z prawnikiem.`
+
+Cena na stronie: **1490 zł netto + 23% VAT**.
 - jeden `<h1>`: `OFFICE MANAGER AI OPERATIONS`
 - Open Graph + dane strukturalne `Course` ze schema.org
 

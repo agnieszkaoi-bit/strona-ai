@@ -113,10 +113,11 @@
 .omai-ico{width:22px;height:22px;flex:0 0 auto;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .omai-ico--sm{width:18px;height:18px}
 .omai-icobox{
-  width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;
-  background:var(--magenta-soft);color:var(--magenta);margin-bottom:18px;
+  display:flex;align-items:center;justify-content:center;width:26px;height:26px;
+  color:var(--magenta);margin-bottom:16px;
 }
-.omai-icobox--silver{background:var(--silver-soft);color:var(--graphite)}
+.omai-icobox .omai-ico{width:26px;height:26px;stroke-width:1.5}
+.omai-icobox--silver{color:var(--graphite)}
 
 /* ---------- karty ---------- */
 .omai-grid{display:grid;gap:18px}
@@ -129,12 +130,7 @@
 }
 .omai-card h3,.omai-card h4{margin-bottom:10px}
 .omai-card p{font-size:15.5px;color:var(--muted);line-height:1.6}
-.omai-card--glass{
-  background:linear-gradient(140deg,rgba(255,255,255,.82),rgba(255,255,255,.55));
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,.9);
-  box-shadow:var(--shadow-md);
-}
+.omai-card--glass{background:#fff;border:1px solid var(--silver);box-shadow:var(--shadow-sm)}
 .omai-card--accent{border-color:rgba(214,0,110,.28)}
 
 /* listy z ptaszkiem */
@@ -170,30 +166,20 @@
 /* ---------- HERO ---------- */
 .omai-hero{
   position:relative;overflow:hidden;
-  background:
-    radial-gradient(900px 420px at 12% -8%,rgba(214,0,110,.09),transparent 62%),
-    radial-gradient(760px 420px at 92% 6%,rgba(64,120,220,.09),transparent 60%),
-    #fff;
+  background:#fff;
   padding:clamp(44px,6vw,80px) 0 clamp(52px,6vw,88px);
 }
 .omai-hero__grid{display:grid;gap:clamp(32px,5vw,56px);grid-template-columns:1fr;align-items:center}
 .omai-hero__inner{max-width:880px}
 .omai-hero__photo{position:relative;margin:0;max-width:420px}
-.omai-hero__photo::before{
-  content:"";position:absolute;inset:-20px -20px -12px;border-radius:38px;z-index:0;
-  background:linear-gradient(150deg,rgba(214,0,110,.12),rgba(64,120,220,.12));
-  filter:blur(22px);
-}
 .omai-hero__photo img{
   position:relative;z-index:1;width:100%;height:auto;display:block;
   border-radius:var(--radius-lg);box-shadow:var(--shadow-md);
 }
 .omai-hero__photo figcaption{
   position:absolute;z-index:2;left:14px;bottom:14px;
-  background:linear-gradient(140deg,rgba(255,255,255,.92),rgba(255,255,255,.74));
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,.95);box-shadow:var(--shadow-sm);
-  border-radius:14px;padding:10px 16px;
+  background:#fff;border:1px solid var(--silver);box-shadow:var(--shadow-sm);
+  border-radius:12px;padding:10px 16px;
   font-size:14px;font-weight:700;color:var(--ink);line-height:1.25;letter-spacing:-.01em;
 }
 .omai-hero__photo figcaption span{
@@ -211,10 +197,8 @@
   margin:34px 0 32px;max-width:720px;
 }
 .omai-fact{
-  background:linear-gradient(140deg,rgba(255,255,255,.85),rgba(255,255,255,.5));
-  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.95);box-shadow:var(--shadow-sm);
-  border-radius:15px;padding:16px 18px;
+  background:#fff;border:1px solid var(--silver);
+  border-radius:12px;padding:16px 18px;
   font-size:15px;font-weight:600;color:var(--ink);line-height:1.35;
   display:flex;align-items:center;gap:11px;
 }
@@ -234,14 +218,14 @@
 }
 .omai-logo{
   font-size:13px;font-weight:600;letter-spacing:.05em;color:#7b7b88;
-  background:#fff;border:1px solid var(--silver);border-radius:999px;padding:8px 16px;white-space:nowrap;
+  background:#fff;border:1px solid var(--silver);border-radius:8px;padding:8px 16px;white-space:nowrap;
 }
 .omai-proof__cap{font-size:12.5px;color:var(--muted-soft)}
 
 /* ---------- rezultaty (duże karty) ---------- */
 .omai-result{
   border-radius:var(--radius-lg);padding:32px 28px;border:1px solid var(--silver);
-  background:linear-gradient(150deg,#fff, #fcfcfe);box-shadow:var(--shadow-sm);
+  background:#fff;box-shadow:var(--shadow-sm);
   display:flex;flex-direction:column;gap:12px;
 }
 .omai-result__num{
@@ -274,22 +258,19 @@
 /* ---------- prawnik ---------- */
 .omai-legal{
   border-radius:var(--radius-lg);padding:clamp(30px,4.4vw,52px);
-  background:
-    radial-gradient(620px 280px at 8% 0%,rgba(214,0,110,.1),transparent 65%),
-    radial-gradient(620px 300px at 100% 100%,rgba(64,120,220,.1),transparent 62%),
-    #fbfbfd;
+  background:var(--silver-soft);
   border:1px solid var(--silver);
 }
 .omai-legal__grid{display:grid;gap:30px;grid-template-columns:1fr;margin-top:30px}
 .omai-qa{
   display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--silver);
-  border-radius:999px;padding:11px 22px;font-weight:600;color:var(--ink);font-size:15px;
+  border-radius:8px;padding:11px 22px;font-weight:600;color:var(--ink);font-size:15px;
 }
 
 /* ---------- proces ---------- */
 .omai-flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-start}
 .omai-flow__step{
-  background:#fff;border:1px solid var(--silver);border-radius:999px;padding:12px 22px;
+  background:#fff;border:1px solid var(--silver);border-radius:8px;padding:12px 22px;
   font-size:13.5px;font-weight:600;letter-spacing:.08em;color:var(--ink);white-space:nowrap;
   box-shadow:var(--shadow-sm);
 }
@@ -300,8 +281,8 @@
 .omai-bigfig{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   border-radius:var(--radius-lg);padding:44px 28px;text-align:center;
-  background:linear-gradient(150deg,var(--magenta-soft),#fff 70%);
-  border:1px solid rgba(214,0,110,.2);
+  background:var(--magenta-soft);
+  border:1px solid rgba(214,0,110,.18);
 }
 .omai-bigfig b{font-size:clamp(50px,9vw,80px);line-height:1;letter-spacing:-.04em;color:var(--magenta);font-weight:700}
 .omai-bigfig span{margin-top:10px;font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
@@ -321,7 +302,7 @@
 .omai-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
 .omai-tag{
   font-size:13px;font-weight:500;color:var(--graphite);background:#fff;
-  border:1px solid var(--silver);border-radius:999px;padding:7px 15px;
+  border:1px solid var(--silver);border-radius:8px;padding:7px 15px;
 }
 
 /* ---------- opinie ---------- */
@@ -337,11 +318,8 @@
 /* ---------- cena ---------- */
 .omai-price{
   border-radius:var(--radius-lg);border:1px solid rgba(214,0,110,.26);
-  background:
-    radial-gradient(700px 300px at 0% 0%,rgba(214,0,110,.08),transparent 60%),
-    radial-gradient(700px 320px at 100% 100%,rgba(64,120,220,.08),transparent 60%),
-    #fff;
-  box-shadow:var(--shadow-md);padding:clamp(30px,4.4vw,52px);
+  background:#fff;
+  box-shadow:var(--shadow-sm);padding:clamp(30px,4.4vw,52px);
 }
 .omai-price__grid{display:grid;gap:34px;grid-template-columns:1fr;margin-top:26px}
 .omai-price__fig{font-size:clamp(42px,7.6vw,64px);font-weight:700;letter-spacing:-.04em;color:var(--ink);line-height:1}
@@ -378,14 +356,11 @@
 
 /* ---------- finalne CTA ---------- */
 .omai-final{
-  background:
-    radial-gradient(800px 380px at 50% 0%,rgba(214,0,110,.08),transparent 62%),
-    radial-gradient(760px 380px at 90% 100%,rgba(64,120,220,.08),transparent 60%),
-    #fff;
+  background:var(--silver-soft);border-top:1px solid var(--silver);
 }
 .omai-final__chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 34px}
 .omai-chip{
-  background:#fff;border:1px solid var(--silver);border-radius:999px;padding:10px 20px;
+  background:#fff;border:1px solid var(--silver);border-radius:8px;padding:10px 20px;
   font-size:14.5px;font-weight:600;color:var(--ink);box-shadow:var(--shadow-sm);
 }
 .omai-chip--accent{border-color:rgba(214,0,110,.35);color:var(--magenta)}
@@ -443,7 +418,7 @@
 /* ---------- sticky CTA (mobile) ---------- */
 .omai-sticky{
   position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom));
-  background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  background:#fff;
   border-top:1px solid var(--silver);display:none;
   transform:translateY(130%);transition:transform .25s ease;
 }
@@ -478,8 +453,29 @@
   .omai-author{grid-template-columns:340px 1fr;gap:48px}
   .omai-price__grid{grid-template-columns:1fr 1fr;gap:56px}
 }
+/* ---------- delikatne animacje ---------- */
+/* Klasa js-anim jest dodawana przez JS, więc bez skryptu treść jest widoczna. */
+.js-anim .omai-reveal{
+  opacity:0;transform:translateY(16px);
+  transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1);
+  transition-delay:var(--opoznienie,0ms);
+  will-change:opacity,transform;
+}
+.js-anim .omai-reveal.is-widoczne{opacity:1;transform:none}
+
+.omai-card,.omai-week,.omai-result,.omai-testi{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.omai-card:hover,.omai-result:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.omai-week:hover{box-shadow:var(--shadow-md)}
+.omai-hero__photo img{transition:transform .5s cubic-bezier(.22,.61,.36,1)}
+.omai-hero__photo:hover img{transform:scale(1.012)}
+.omai-faq details summary{transition:color .18s ease}
+.omai-faq details[open] summary{color:var(--magenta)}
+.omai-logo{transition:border-color .2s ease,color .2s ease}
+.omai-logo:hover{border-color:var(--muted-soft);color:var(--graphite)}
+
 @media (prefers-reduced-motion:reduce){
-  .omai *{transition:none!important;animation:none!important}
+  .omai *,.js-anim .omai-reveal{transition:none!important;animation:none!important}
+  .js-anim .omai-reveal{opacity:1!important;transform:none!important}
 }
 </style>
 </head>
@@ -508,7 +504,7 @@
     <symbol id="omai-i-map" viewBox="0 0 24 24"><path d="M9 3 3 5.6v15L9 18l6 3 6-2.6v-15L15 6z"/><path d="M9 3v15M15 6v15"/></symbol>
     <symbol id="omai-i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-8 8H8l-5 2 1.6-4.4A8 8 0 1 1 21 12z"/></symbol>
     <symbol id="omai-i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-    <symbol id="omai-i-spark" viewBox="0 0 24 24"><path d="M12 3.5 13.7 9l5.5 1.7-5.5 1.7L12 18l-1.7-5.6L4.8 10.7 10.3 9z"/><path d="M18.5 16.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+    <symbol id="omai-i-case" viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="13" rx="2"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7"/><path d="M2.5 12.5h19M10.5 12.5v2h3v-2"/></symbol>
   </defs>
 </svg>
 
@@ -534,7 +530,7 @@
       <div class="omai-cta-row">
         <a class="omai-btn omai-btn--primary" href="#zapisy">Rezerwuję miejsce</a>
       </div>
-      <p class="omai-small omai-hero__fine">Możliwość finansowania udziału przez pracodawcę &bull; Faktura VAT</p>
+      <p class="omai-small omai-hero__fine">Faktura VAT</p>
     </div>
 
     <figure class="omai-hero__photo">
@@ -664,7 +660,7 @@
         <p>powtarzalne sposoby pracy.</p>
       </div>
       <div class="omai-card omai-card--glass">
-        <div class="omai-icobox"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-spark"></use></svg></div>
+        <div class="omai-icobox"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-case"></use></svg></div>
         <h4>Zastosujesz</h4>
         <p>AI w realnych zadaniach Office Managera.</p>
       </div>
@@ -1059,13 +1055,13 @@
       <div class="omai-price__grid">
         <div>
           <p class="omai-price__fig">1490 zł <span style="font-size:.46em;font-weight:600">netto</span>
-            <small>VAT zgodnie z obowiązującymi przepisami.</small>
+            <small>+ 23% VAT</small>
           </p>
 
           <div class="omai-cta-row" style="margin-top:30px">
             <a class="omai-btn omai-btn--primary" href="#zapisy">Rezerwuję miejsce</a>
           </div>
-          <p class="omai-small" style="margin-top:16px">Możliwy zakup przez pracodawcę &bull; Faktura VAT</p>
+          <p class="omai-small" style="margin-top:16px">Faktura VAT</p>
 
           <!-- TERMINY: uzupełnij po ustaleniu dat edycji -->
           <div class="omai-dates">
@@ -1211,7 +1207,7 @@
         </div>
 
         <p class="omai-form__subject">
-          <svg class="omai-ico omai-ico--sm" aria-hidden="true"><use href="#omai-i-spark"></use></svg>
+          <svg class="omai-ico omai-ico--sm" aria-hidden="true"><use href="#omai-i-file"></use></svg>
           <span>Zgłoszenie na program <b>OFFICE MANAGER AI OPERATIONS</b> — 4 tygodnie online, 4 × 2h LIVE + 1h z prawnikiem.</span>
         </p>
 
@@ -1333,6 +1329,49 @@
       history.replaceState(null, "", link.getAttribute("href"));
     });
   });
+
+  /* Delikatne pojawianie się sekcji przy przewijaniu.
+     Klasa js-anim leci dopiero tutaj, więc bez JS wszystko jest widoczne,
+     a przy prefers-reduced-motion CSS wyłącza ruch. */
+  var ruchOk = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (ruchOk && "IntersectionObserver" in window) {
+    var doAnimacji = document.querySelectorAll(
+      ".omai-section > .omai-wrap > .omai-head," +
+      ".omai-grid > *,.omai-week,.omai-result,.omai-legal,.omai-price," +
+      ".omai-author > *,.omai-bigfig,.omai-flow,.omai-form,.omai-faq," +
+      ".omai-final__chips,.omai-hero__photo,.omai-todo"
+    );
+
+    if (doAnimacji.length) {
+      document.documentElement.classList.add("js-anim");
+
+      doAnimacji.forEach(function (el) {
+        el.classList.add("omai-reveal");
+        /* stopniowanie tylko wewnątrz jednej siatki kart */
+        var rodzenstwo = el.parentElement && el.parentElement.classList.contains("omai-grid")
+          ? [].indexOf.call(el.parentElement.children, el)
+          : 0;
+        el.style.setProperty("--opoznienie", Math.min(rodzenstwo, 5) * 60 + "ms");
+      });
+
+      var obserwator = new IntersectionObserver(function (wpisy) {
+        wpisy.forEach(function (w) {
+          if (!w.isIntersecting) return;
+          w.target.classList.add("is-widoczne");
+          obserwator.unobserve(w.target);
+        });
+      }, { rootMargin: "0px 0px -8% 0px", threshold: 0.06 });
+
+      doAnimacji.forEach(function (el) { obserwator.observe(el); });
+
+      /* hero widoczne od razu, bez czekania na scroll */
+      requestAnimationFrame(function () {
+        document.querySelectorAll(".omai-hero .omai-reveal")
+          .forEach(function (el) { el.classList.add("is-widoczne"); });
+      });
+    }
+  }
 
   /* Sticky CTA na mobile: pokazuje się dopiero po hero i chowa nad formularzem,
      żeby nie dublować przycisku, który i tak jest na ekranie. */
