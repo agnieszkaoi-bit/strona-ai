@@ -52,7 +52,7 @@
 .omai *,.omai *::before,.omai *::after{box-sizing:border-box}
 .omai img{max-width:100%;height:auto;display:block}
 .omai h1,.omai h2,.omai h3,.omai h4{
-  color:var(--ink);margin:0;line-height:1.18;letter-spacing:-.015em;font-weight:800;
+  color:var(--ink);margin:0;line-height:1.18;letter-spacing:-.015em;font-weight:700;
   text-wrap:balance;
 }
 .omai p{margin:0}
@@ -69,14 +69,14 @@
 
 /* ---------- typografia ---------- */
 .omai-eyebrow{
-  display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;
+  display:inline-block;font-size:12px;font-weight:600;letter-spacing:.14em;
   text-transform:uppercase;color:var(--magenta);margin-bottom:18px;
 }
 .omai-eyebrow--muted{color:var(--muted-soft)}
 .omai h1{font-size:clamp(34px,6.4vw,58px);letter-spacing:-.022em}
 .omai h2{font-size:clamp(27px,3.9vw,40px)}
-.omai h3{font-size:clamp(19px,2.2vw,23px)}
-.omai h4{font-size:17px;font-weight:700}
+.omai h3{font-size:clamp(19px,2.2vw,23px);font-weight:600}
+.omai h4{font-size:17px;font-weight:600}
 .omai-lead{font-size:clamp(17px,2vw,20px);color:var(--muted);line-height:1.6}
 .omai-body{color:var(--muted)}
 .omai-small{font-size:14px;color:var(--muted-soft);line-height:1.6}
@@ -87,7 +87,7 @@
 /* ---------- przyciski ---------- */
 .omai .omai-btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  font-family:inherit;font-size:15px;font-weight:700;letter-spacing:.07em;
+  font-family:inherit;font-size:15px;font-weight:600;letter-spacing:.07em;
   text-transform:uppercase;
   padding:17px 34px;border-radius:999px;border:1px solid transparent;cursor:pointer;
   transition:background-color .18s ease,color .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease;
@@ -157,7 +157,7 @@
 .omai-note{
   margin-top:30px;padding:24px 26px;border-radius:var(--radius);
   background:var(--silver-soft);border-left:3px solid var(--magenta);
-  font-size:16.5px;color:var(--ink);font-weight:600;line-height:1.55;
+  font-size:16.5px;color:var(--ink);font-weight:500;line-height:1.55;
 }
 
 /* placeholder redakcyjny (do usunięcia po uzupełnieniu treści) */
@@ -194,15 +194,15 @@
   -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
   border:1px solid rgba(255,255,255,.95);box-shadow:var(--shadow-sm);
   border-radius:14px;padding:10px 16px;
-  font-size:14px;font-weight:800;color:var(--ink);line-height:1.25;letter-spacing:-.01em;
+  font-size:14px;font-weight:700;color:var(--ink);line-height:1.25;letter-spacing:-.01em;
 }
 .omai-hero__photo figcaption span{
-  display:block;font-size:11.5px;font-weight:700;color:var(--magenta);
+  display:block;font-size:11.5px;font-weight:600;color:var(--magenta);
   letter-spacing:.1em;text-transform:uppercase;margin-top:3px;
 }
 .omai-hero h1{margin-bottom:20px}
 .omai-hero__sub{
-  font-size:clamp(18px,2.3vw,23px);font-weight:600;color:var(--ink);
+  font-size:clamp(18px,2.3vw,23px);font-weight:500;color:var(--ink);
   line-height:1.45;margin-bottom:20px;max-width:760px;
 }
 .omai-hero__desc{max-width:700px}
@@ -215,7 +215,7 @@
   -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
   border:1px solid rgba(255,255,255,.95);box-shadow:var(--shadow-sm);
   border-radius:15px;padding:16px 18px;
-  font-size:15px;font-weight:700;color:var(--ink);line-height:1.35;
+  font-size:15px;font-weight:600;color:var(--ink);line-height:1.35;
   display:flex;align-items:center;gap:11px;
 }
 .omai-fact .omai-ico{color:var(--magenta)}
@@ -227,13 +227,13 @@
   padding:26px 0;display:flex;flex-direction:column;gap:22px;align-items:center;text-align:center;
 }
 .omai-proof__stats{display:flex;flex-wrap:wrap;gap:12px 34px;justify-content:center}
-.omai-proof__stat b{display:block;font-size:clamp(22px,3vw,27px);color:var(--ink);line-height:1.1;letter-spacing:-.02em}
+.omai-proof__stat b{display:block;font-weight:700;font-size:clamp(22px,3vw,27px);color:var(--ink);line-height:1.1;letter-spacing:-.02em}
 .omai-proof__stat span{font-size:13px;color:var(--muted);letter-spacing:.04em}
 .omai-proof__logos{
   display:flex;flex-wrap:wrap;gap:10px 12px;justify-content:center;align-items:center;
 }
 .omai-logo{
-  font-size:13px;font-weight:700;letter-spacing:.05em;color:#7b7b88;
+  font-size:13px;font-weight:600;letter-spacing:.05em;color:#7b7b88;
   background:#fff;border:1px solid var(--silver);border-radius:999px;padding:8px 16px;white-space:nowrap;
 }
 .omai-proof__cap{font-size:12.5px;color:var(--muted-soft)}
@@ -245,7 +245,7 @@
   display:flex;flex-direction:column;gap:12px;
 }
 .omai-result__num{
-  font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--magenta);text-transform:uppercase;
+  font-size:13px;font-weight:600;letter-spacing:.12em;color:var(--magenta);text-transform:uppercase;
 }
 .omai-result h3{font-size:clamp(20px,2.3vw,24px)}
 
@@ -258,14 +258,14 @@
   padding:28px 26px 4px;display:flex;flex-direction:column;gap:6px;
   border-top:3px solid var(--magenta);
 }
-.omai-week__label{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--magenta);text-transform:uppercase}
+.omai-week__label{font-size:12px;font-weight:600;letter-spacing:.16em;color:var(--magenta);text-transform:uppercase}
 .omai-week__body{padding:20px 26px 26px;flex:1 0 auto}
-.omai-week__body h4{margin:0 0 12px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-soft);font-weight:700}
+.omai-week__body h4{margin:0 0 12px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-soft);font-weight:600}
 .omai-week__out{
   margin:20px 26px 26px;padding:18px 20px;border-radius:14px;
-  background:var(--magenta-soft);font-size:15px;color:var(--ink);line-height:1.55;font-weight:600;
+  background:var(--magenta-soft);font-size:15px;color:var(--ink);line-height:1.55;font-weight:500;
 }
-.omai-week__out span{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);font-weight:800;margin-bottom:6px}
+.omai-week__out span{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);font-weight:600;margin-bottom:6px}
 .omai-week__meta{
   margin:0 26px 26px;padding:16px 18px;border-radius:14px;background:var(--silver-soft);
   font-size:14px;color:var(--muted);line-height:1.6;
@@ -283,14 +283,14 @@
 .omai-legal__grid{display:grid;gap:30px;grid-template-columns:1fr;margin-top:30px}
 .omai-qa{
   display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--silver);
-  border-radius:999px;padding:11px 22px;font-weight:700;color:var(--ink);font-size:15px;
+  border-radius:999px;padding:11px 22px;font-weight:600;color:var(--ink);font-size:15px;
 }
 
 /* ---------- proces ---------- */
 .omai-flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-start}
 .omai-flow__step{
   background:#fff;border:1px solid var(--silver);border-radius:999px;padding:12px 22px;
-  font-size:13.5px;font-weight:800;letter-spacing:.08em;color:var(--ink);white-space:nowrap;
+  font-size:13.5px;font-weight:600;letter-spacing:.08em;color:var(--ink);white-space:nowrap;
   box-shadow:var(--shadow-sm);
 }
 .omai-flow__step:last-of-type{border-color:rgba(214,0,110,.4);color:var(--magenta)}
@@ -303,8 +303,8 @@
   background:linear-gradient(150deg,var(--magenta-soft),#fff 70%);
   border:1px solid rgba(214,0,110,.2);
 }
-.omai-bigfig b{font-size:clamp(50px,9vw,80px);line-height:1;letter-spacing:-.04em;color:var(--magenta);font-weight:800}
-.omai-bigfig span{margin-top:10px;font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.omai-bigfig b{font-size:clamp(50px,9vw,80px);line-height:1;letter-spacing:-.04em;color:var(--magenta);font-weight:700}
+.omai-bigfig span{margin-top:10px;font-size:13px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
 
 /* ---------- prowadząca ---------- */
 .omai-author{display:grid;gap:32px;grid-template-columns:1fr;align-items:start}
@@ -316,11 +316,11 @@
 .omai-quote{
   margin-top:26px;padding:26px 28px;border-radius:var(--radius);
   background:var(--silver-soft);font-size:clamp(17px,2vw,19px);line-height:1.55;
-  color:var(--ink);font-weight:600;font-style:italic;
+  color:var(--ink);font-weight:500;font-style:italic;
 }
 .omai-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
 .omai-tag{
-  font-size:13px;font-weight:600;color:var(--graphite);background:#fff;
+  font-size:13px;font-weight:500;color:var(--graphite);background:#fff;
   border:1px solid var(--silver);border-radius:999px;padding:7px 15px;
 }
 
@@ -329,10 +329,10 @@
   background:#fff;border:1px solid var(--silver);border-radius:var(--radius);
   padding:28px 26px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:16px;
 }
-.omai-testi__mark{color:var(--magenta);font-size:34px;line-height:.6;font-weight:800}
+.omai-testi__mark{color:var(--magenta);font-size:34px;line-height:.6;font-weight:700}
 .omai-testi p{font-size:15.5px;color:var(--graphite);line-height:1.65}
 .omai-testi__who{font-size:14px;color:var(--muted);line-height:1.45;margin-top:auto}
-.omai-testi__who b{display:block;color:var(--ink);font-size:15px}
+.omai-testi__who b{display:block;color:var(--ink);font-size:15px;font-weight:600}
 
 /* ---------- cena ---------- */
 .omai-price{
@@ -344,20 +344,20 @@
   box-shadow:var(--shadow-md);padding:clamp(30px,4.4vw,52px);
 }
 .omai-price__grid{display:grid;gap:34px;grid-template-columns:1fr;margin-top:26px}
-.omai-price__fig{font-size:clamp(42px,7.6vw,64px);font-weight:800;letter-spacing:-.04em;color:var(--ink);line-height:1}
-.omai-price__fig small{display:block;font-size:15px;font-weight:600;color:var(--muted);letter-spacing:0;margin-top:10px}
+.omai-price__fig{font-size:clamp(42px,7.6vw,64px);font-weight:700;letter-spacing:-.04em;color:var(--ink);line-height:1}
+.omai-price__fig small{display:block;font-size:15px;font-weight:500;color:var(--muted);letter-spacing:0;margin-top:10px}
 .omai-dates{
   margin-top:22px;padding:18px 20px;border-radius:14px;border:1px dashed #c8c8d4;background:#fafafc;
   font-size:14.5px;color:var(--muted);line-height:1.6;
 }
-.omai-dates b{display:block;color:var(--ink);font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.omai-dates b{display:block;font-weight:600;color:var(--ink);font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
 .omai-dates p{margin:0}
 .omai-dates__list{margin:12px 0;border-top:1px solid var(--silver)}
 .omai-dates__list li{
   display:flex;justify-content:space-between;gap:16px;align-items:baseline;
   padding:8px 0;border-bottom:1px solid var(--silver);font-size:14px;
 }
-.omai-dates__list span{font-weight:700;color:var(--ink)}
+.omai-dates__list span{font-weight:600;color:var(--ink)}
 .omai-dates__list em{font-style:normal;color:var(--muted-soft)}
 
 /* ---------- FAQ ---------- */
@@ -365,7 +365,7 @@
 .omai-faq details{border-bottom:1px solid var(--silver)}
 .omai-faq summary{
   list-style:none;cursor:pointer;padding:22px 44px 22px 0;position:relative;
-  font-size:17px;font-weight:700;color:var(--ink);line-height:1.45;
+  font-size:17px;font-weight:600;color:var(--ink);line-height:1.45;
 }
 .omai-faq summary::-webkit-details-marker{display:none}
 .omai-faq summary::after{
@@ -386,7 +386,7 @@
 .omai-final__chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 34px}
 .omai-chip{
   background:#fff;border:1px solid var(--silver);border-radius:999px;padding:10px 20px;
-  font-size:14.5px;font-weight:700;color:var(--ink);box-shadow:var(--shadow-sm);
+  font-size:14.5px;font-weight:600;color:var(--ink);box-shadow:var(--shadow-sm);
 }
 .omai-chip--accent{border-color:rgba(214,0,110,.35);color:var(--magenta)}
 
@@ -396,7 +396,7 @@
   padding:clamp(26px,4vw,44px);box-shadow:var(--shadow-md);
 }
 .omai-field{margin-bottom:18px}
-.omai-field label{display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:7px}
+.omai-field label{display:block;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:7px}
 .omai-field label span{font-weight:500;color:var(--muted-soft)}
 .omai-field input[type=text],.omai-field input[type=email],.omai-field input[type=tel],
 .omai-field input[type=number],.omai-field textarea{
@@ -416,13 +416,13 @@
   font-size:14.5px;line-height:1.5;color:var(--graphite);
 }
 .omai-form__subject .omai-ico{color:var(--magenta);margin-top:2px}
-.omai-form__subject b{color:var(--ink)}
-.omai-form__ok-mail{font-weight:600;color:var(--ink)!important}
+.omai-form__subject b{color:var(--ink);font-weight:600}
+.omai-form__ok-mail{font-weight:500;color:var(--ink)!important}
 .omai-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .omai-form__error{
   display:none;margin-bottom:18px;padding:14px 16px;border-radius:13px;
   background:var(--magenta-soft);border:1px solid rgba(214,0,110,.3);
-  color:var(--magenta-dark);font-size:14.5px;line-height:1.55;font-weight:600;
+  color:var(--magenta-dark);font-size:14.5px;line-height:1.55;font-weight:500;
 }
 .omai-form__error.is-on{display:block}
 .omai-form.is-sending .omai-btn--primary{opacity:.65;pointer-events:none}
@@ -1058,7 +1058,7 @@
 
       <div class="omai-price__grid">
         <div>
-          <p class="omai-price__fig">1490 zł <span style="font-size:.46em;font-weight:700">netto</span>
+          <p class="omai-price__fig">1490 zł <span style="font-size:.46em;font-weight:600">netto</span>
             <small>VAT zgodnie z obowiązującymi przepisami.</small>
           </p>
 
