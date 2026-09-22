@@ -394,6 +394,14 @@
 .omai-form__subject .omai-ico{color:var(--magenta);margin-top:2px}
 .omai-form__subject b{color:var(--ink)}
 .omai-form__ok-mail{font-weight:600;color:var(--ink)!important}
+.omai-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.omai-form__error{
+  display:none;margin-bottom:18px;padding:14px 16px;border-radius:13px;
+  background:var(--magenta-soft);border:1px solid rgba(214,0,110,.3);
+  color:var(--magenta-dark);font-size:14.5px;line-height:1.55;font-weight:600;
+}
+.omai-form__error.is-on{display:block}
+.omai-form.is-sending .omai-btn--primary{opacity:.65;pointer-events:none}
 .omai-consent{display:flex;gap:12px;align-items:flex-start;margin:24px 0 22px}
 .omai-consent input{width:20px;height:20px;flex:0 0 auto;margin-top:2px;accent-color:var(--magenta)}
 .omai-consent label{font-size:14px;color:var(--muted);line-height:1.55;font-weight:500}
@@ -1138,18 +1146,11 @@
 
 <!-- =========================================================
      19. FORMULARZ ZGŁOSZENIOWY
-     ADRES ODBIORCY: atrybut data-mailto na <form> -> office@officeinfluencers.pl
-     Zmiana adresu = zmiana tej jednej wartości.
-
-     UWAGA WDROŻENIOWA: formularz nie ma podpiętego backendu. Bez niego
-     zgłoszenie jest składane w JS i otwierane w programie pocztowym
-     użytkownika (mailto), więc trafia na powyższy adres, ale wymaga
-     skonfigurowanego klienta poczty.
-     ZALECANE: w WordPressie podmień <form id="omai-form"> na formularz
-     wtyczki (Contact Form 7 / WPForms / Gravity Forms) i ustaw w niej
-     odbiorcę office@officeinfluencers.pl oraz temat
-     "Zgłoszenie: OFFICE MANAGER AI OPERATIONS".
-     Formularz nie obiecuje płatności ani rezerwacji miejsca.
+     Zgłoszenia trafiają na office@officeinfluencers.pl przez wyslij.php
+     (PHP mail() – Zenbox). Adres odbiorcy, adres nadawcy i limit osób
+     ustawiasz na górze pliku wyslij.php.
+     Formularz działa też bez JavaScriptu: zwykły POST na wyslij.php,
+     a skrypt przekierowuje z powrotem na index.html?wyslano=1#zapisy.
      ========================================================= -->
 <section class="omai-section" id="zapisy">
   <div class="omai-wrap omai-wrap--narrow">
@@ -1159,10 +1160,16 @@
       <p class="omai-lead">Zgłoszenie dotyczy programu <strong>OFFICE MANAGER AI OPERATIONS</strong> – 4-tygodniowego programu online dla Office Managerów. Wypełnij formularz, a wrócimy do Ciebie z potwierdzeniem, terminami najbliższej edycji i szczegółami zapisu.</p>
     </div>
 
-    <form class="omai-form" id="omai-form" novalidate
+    <form class="omai-form" id="omai-form" method="post" action="wyslij.php" novalidate
           data-program="OFFICE MANAGER AI OPERATIONS"
-          data-mailto="office@officeinfluencers.pl">
+          data-mail="office@officeinfluencers.pl">
       <div class="omai-form__fields">
+        <!-- pułapka na boty: ukryta, człowiek jej nie wypełni -->
+        <div class="omai-hp" aria-hidden="true">
+          <label for="omai-hp">Nie wypełniaj tego pola</label>
+          <input type="text" id="omai-hp" name="strona_www" tabindex="-1" autocomplete="off">
+        </div>
+
         <p class="omai-form__subject">
           <svg class="omai-ico omai-ico--sm" aria-hidden="true"><use href="#omai-i-spark"></use></svg>
           <span>Zgłoszenie na program <b>OFFICE MANAGER AI OPERATIONS</b> — 4 tygodnie online, 4 × 2h LIVE + 1h z prawnikiem.</span>
@@ -1203,13 +1210,15 @@
           <label for="omai-consent">Wyrażam zgodę na kontakt w sprawie zgłoszenia na program OFFICE MANAGER AI OPERATIONS oraz na przetwarzanie moich danych osobowych w tym celu. Zgoda jest wymagana. Szczegóły znajdziesz w <a href="/polityka-prywatnosci/">polityce prywatności</a>.</label>
         </div>
 
+        <p class="omai-form__error" id="omai-error" role="alert"></p>
+
         <button type="submit" class="omai-btn omai-btn--primary">Rezerwuję miejsce</button>
         <p class="omai-small" style="margin-top:14px;text-align:center">Zgłoszenie trafia na adres <a href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a>. Wysłanie formularza nie jest równoznaczne z płatnością – to zgłoszenie chęci udziału, potwierdzenie miejsca wysyłamy mailem.</p>
       </div>
 
       <div class="omai-form__ok" role="status" aria-live="polite">
         <h3>Dziękujemy, mamy Twoje zgłoszenie</h3>
-        <p class="omai-form__ok-mail"></p>
+        <p class="omai-form__ok-mail">Zgłoszenie trafiło na adres <b>office@officeinfluencers.pl</b>.</p>
         <p>Grupa liczy maksymalnie 10 osób, więc każde zgłoszenie przeglądamy indywidualnie.</p>
         <p><strong>Co dalej:</strong></p>
         <ol>
@@ -1314,66 +1323,76 @@
   var form = document.getElementById("omai-form");
   if (!form) return;
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+  var errorBox = document.getElementById("omai-error");
+  var mailAddr = form.getAttribute("data-mail");
 
+  var pokazBlad = function (tekst) {
+    if (!errorBox) return;
+    errorBox.textContent = tekst;
+    errorBox.classList.add("is-on");
+    errorBox.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
+  var pokazPotwierdzenie = function () {
+    form.classList.add("is-sent");
+    form.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
+  /* Powrót z wyslij.php bez JavaScriptu (?wyslano=1 / ?blad=1). */
+  if (/[?&]wyslano=1/.test(window.location.search)) {
+    pokazPotwierdzenie();
+  } else if (/[?&]blad=1/.test(window.location.search)) {
+    pokazBlad("Nie udało się wysłać zgłoszenia. Napisz bezpośrednio na " + mailAddr + ".");
+  }
+
+  form.addEventListener("submit", function (e) {
     var missing = null;
     form.querySelectorAll("[required]").forEach(function (field) {
-      var ok = field.type === "checkbox" ? field.checked : field.value.trim() !== "" && field.checkValidity();
+      var ok = field.type === "checkbox"
+        ? field.checked
+        : field.value.trim() !== "" && field.checkValidity();
       field.setAttribute("aria-invalid", ok ? "false" : "true");
       if (!ok && !missing) missing = field;
     });
 
     if (missing) {
+      e.preventDefault();
+      pokazBlad(missing.type === "checkbox"
+        ? "Zaznacz zgodę na przetwarzanie danych – bez niej nie możemy obsłużyć zgłoszenia."
+        : "Uzupełnij zaznaczone pole, żebyśmy mogli wrócić do Ciebie ze szczegółami.");
       missing.focus();
-      missing.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
 
-    /* Zgłoszenie idzie na adres podany w data-mailto. Dopóki nie ma backendu,
-       wiadomość jest składana tutaj i otwierana w programie pocztowym
-       użytkownika – dzięki temu trafia pod właściwy adres bez wtyczki. */
-    var to = form.getAttribute("data-mailto");
-    var program = form.getAttribute("data-program");
-    var v = function (id) {
-      var el = document.getElementById(id);
-      return el ? el.value.trim() : "";
-    };
+    /* Bez fetch (bardzo stara przeglądarka) zostawiamy zwykły POST na wyslij.php. */
+    if (!window.fetch || !window.FormData) return;
 
-    var subject = "Zgłoszenie: " + program + (v("omai-company") ? " – " + v("omai-company") : "");
-    var lines = [
-      "Zgłoszenie na program: " + program,
-      "(4 tygodnie online, 4 × 2h LIVE + 1h z prawnikiem)",
-      "",
-      "Imię i nazwisko: " + v("omai-name"),
-      "Stanowisko: " + v("omai-role"),
-      "Firma: " + v("omai-company"),
-      "E-mail: " + v("omai-email"),
-      "Telefon: " + (v("omai-phone") || "nie podano"),
-      "Liczba zgłaszanych osób: " + v("omai-people"),
-      "",
-      "Wiadomość:",
-      v("omai-message") || "(brak)",
-      "",
-      "---",
-      "Zgoda na kontakt i przetwarzanie danych w celu obsługi zgłoszenia: TAK",
-      "Zgłoszenie wysłane ze strony: " + window.location.href.split("#")[0]
-    ];
+    e.preventDefault();
+    if (errorBox) errorBox.classList.remove("is-on");
+    form.classList.add("is-sending");
 
-    var href = "mailto:" + to +
-      "?subject=" + encodeURIComponent(subject) +
-      "&body=" + encodeURIComponent(lines.join("\n"));
-
-    var info = form.querySelector(".omai-form__ok-mail");
-    if (info) {
-      info.innerHTML = "Otwieramy Twój program pocztowy z gotową wiadomością do <b>" + to +
-        "</b>. Jeśli okno się nie pojawiło, <a href=\"" + href +
-        "\">kliknij tutaj</a> albo wyślij zgłoszenie bezpośrednio na ten adres.";
-    }
-
-    form.classList.add("is-sent");
-    form.scrollIntoView({ behavior: "smooth", block: "center" });
-    window.location.href = href;
+    fetch(form.getAttribute("action"), {
+      method: "POST",
+      body: new FormData(form),
+      headers: { "X-Requested-With": "XMLHttpRequest" }
+    })
+      .then(function (res) {
+        return res.json().catch(function () { return { ok: res.ok }; });
+      })
+      .then(function (data) {
+        if (data && data.ok) {
+          pokazPotwierdzenie();
+        } else {
+          pokazBlad((data && data.komunikat) ||
+            "Nie udało się wysłać zgłoszenia. Napisz bezpośrednio na " + mailAddr + ".");
+        }
+      })
+      .catch(function () {
+        pokazBlad("Nie udało się wysłać zgłoszenia. Sprawdź połączenie albo napisz na " + mailAddr + ".");
+      })
+      .then(function () {
+        form.classList.remove("is-sending");
+      });
   });
 })();
 </script>

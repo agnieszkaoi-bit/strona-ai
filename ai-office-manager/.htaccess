@@ -1,0 +1,45 @@
+# ============================================================
+# OFFICE MANAGER AI OPERATIONS – landing (Zenbox, bez WordPressa)
+# Plik wgrywasz razem z index.html i wyslij.php.
+# ============================================================
+
+DirectoryIndex index.html
+
+# Kodowanie – bez tego polskie znaki mogą się sypać na części serwerów
+AddDefaultCharset UTF-8
+<IfModule mod_mime.c>
+  AddCharset UTF-8 .html .css .js
+</IfModule>
+
+# Nie pokazuj listy plików, gdyby zabrakło index.html
+Options -Indexes
+
+# Kompresja
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain application/javascript image/svg+xml
+</IfModule>
+
+# Cache statyków (HTML krótko, żeby poprawki były widoczne od razu)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css            "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/jpeg          "access plus 1 month"
+  ExpiresByType image/png           "access plus 1 month"
+  ExpiresByType image/webp          "access plus 1 month"
+  ExpiresByType image/svg+xml       "access plus 1 month"
+  ExpiresByType text/html           "access plus 10 minutes"
+</IfModule>
+
+# Podstawowe nagłówki bezpieczeństwa
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Wymuszenie HTTPS – odkomentuj, jeśli Zenbox nie robi tego w panelu
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} !=on
+#   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+# </IfModule>
