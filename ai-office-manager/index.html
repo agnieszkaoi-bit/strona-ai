@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI dla Office Managera – 4-tygodniowy program | Office Influencers</title>
+<meta name="description" content="Praktyczny 4-tygodniowy program AI dla Office Managerów. Własny Asystent AI, workflow, weryfikacja informacji, podstawy automatyzacji i sesja z prawnikiem.">
+<link rel="canonical" href="https://www.officeinfluencers.pl/ai-office-manager/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:title" content="AI dla Office Managera – 4-tygodniowy program | Office Influencers">
+<meta property="og:description" content="Praktyczny 4-tygodniowy program AI dla Office Managerów. Własny Asystent AI, workflow, weryfikacja informacji, podstawy automatyzacji i sesja z prawnikiem.">
+<meta property="og:url" content="https://www.officeinfluencers.pl/ai-office-manager/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   OFFICE MANAGER AI OPERATIONS — landing /ai-office-manager
+   Wszystkie style są zamknięte w .omai, żeby nie kolidowały
+   z motywem WordPress.
+   ============================================================ */
+.omai{
+  --ink:#16161a;
+  --graphite:#2e2e36;
+  --muted:#63636e;
+  --muted-soft:#8b8b96;
+  --silver:#e4e4ec;
+  --silver-soft:#f4f4f8;
+  --white:#fff;
+  --magenta:#d6006e;
+  --magenta-dark:#a80057;
+  --magenta-soft:#fdf1f7;
+  --blue-soft:#eef3fd;
+  --radius:18px;
+  --radius-lg:26px;
+  --shadow-sm:0 1px 2px rgba(22,22,26,.04),0 6px 18px rgba(22,22,26,.05);
+  --shadow-md:0 2px 4px rgba(22,22,26,.04),0 18px 46px rgba(22,22,26,.08);
+  --pad:clamp(56px,8vw,104px);
+  font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  color:var(--graphite);
+  background:var(--white);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.omai *,.omai *::before,.omai *::after{box-sizing:border-box}
+.omai img{max-width:100%;height:auto;display:block}
+.omai h1,.omai h2,.omai h3,.omai h4{
+  color:var(--ink);margin:0;line-height:1.18;letter-spacing:-.02em;font-weight:800;
+  text-wrap:balance;
+}
+.omai p{margin:0}
+.omai ul{margin:0;padding:0;list-style:none}
+.omai a{color:var(--magenta);text-decoration:none}
+.omai a:hover{text-decoration:underline}
+
+/* ---------- layout ---------- */
+.omai-wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.omai-wrap--narrow{max-width:800px}
+.omai-section{padding:var(--pad) 0;scroll-margin-top:24px}
+.omai-section--tight{padding:calc(var(--pad)*.6) 0}
+.omai-rule{border:0;border-top:1px solid var(--silver);margin:0}
+
+/* ---------- typografia ---------- */
+.omai-eyebrow{
+  display:inline-block;font-size:12px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--magenta);margin-bottom:18px;
+}
+.omai-eyebrow--muted{color:var(--muted-soft)}
+.omai h1{font-size:clamp(34px,6.4vw,58px);letter-spacing:-.035em}
+.omai h2{font-size:clamp(27px,3.9vw,40px)}
+.omai h3{font-size:clamp(19px,2.2vw,23px)}
+.omai h4{font-size:17px;font-weight:700}
+.omai-lead{font-size:clamp(17px,2vw,20px);color:var(--muted);line-height:1.6}
+.omai-body{color:var(--muted)}
+.omai-small{font-size:14px;color:var(--muted-soft);line-height:1.6}
+.omai-head{max-width:720px;margin-bottom:clamp(36px,4.6vw,56px)}
+.omai-head--center{margin-left:auto;margin-right:auto;text-align:center}
+.omai-head p{margin-top:18px}
+
+/* ---------- przyciski ---------- */
+.omai .omai-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:inherit;font-size:15px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;
+  padding:17px 34px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  transition:background-color .18s ease,color .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease;
+  text-align:center;line-height:1.2;
+}
+.omai .omai-btn:hover{text-decoration:none}
+.omai .omai-btn--primary{
+  background:var(--magenta);color:#fff;
+  box-shadow:0 10px 26px rgba(214,0,110,.22);
+}
+.omai .omai-btn--primary:hover{background:var(--magenta-dark);transform:translateY(-1px);box-shadow:0 14px 32px rgba(214,0,110,.26)}
+.omai .omai-btn--ghost{background:#fff;color:var(--ink);border-color:var(--silver)}
+.omai .omai-btn--ghost:hover{border-color:var(--magenta);color:var(--magenta)}
+.omai .omai-btn--small{padding:13px 26px;font-size:13.5px}
+.omai .omai-btn:focus-visible,.omai a:focus-visible,.omai button:focus-visible,
+.omai input:focus-visible,.omai summary:focus-visible{
+  outline:2px solid var(--magenta);outline-offset:3px;border-radius:8px;
+}
+.omai-cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.omai-cta-row--center{justify-content:center}
+
+/* ---------- ikony ---------- */
+.omai-ico{width:22px;height:22px;flex:0 0 auto;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.omai-ico--sm{width:18px;height:18px}
+.omai-icobox{
+  width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+  background:var(--magenta-soft);color:var(--magenta);margin-bottom:18px;
+}
+.omai-icobox--silver{background:var(--silver-soft);color:var(--graphite)}
+
+/* ---------- karty ---------- */
+.omai-grid{display:grid;gap:18px}
+.omai-grid--2{grid-template-columns:1fr}
+.omai-grid--3{grid-template-columns:1fr}
+.omai-grid--4{grid-template-columns:1fr}
+.omai-card{
+  background:#fff;border:1px solid var(--silver);border-radius:var(--radius);
+  padding:28px 26px;box-shadow:var(--shadow-sm);
+}
+.omai-card h3,.omai-card h4{margin-bottom:10px}
+.omai-card p{font-size:15.5px;color:var(--muted);line-height:1.6}
+.omai-card--glass{
+  background:linear-gradient(140deg,rgba(255,255,255,.82),rgba(255,255,255,.55));
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:var(--shadow-md);
+}
+.omai-card--accent{border-color:rgba(214,0,110,.28)}
+
+/* listy z ptaszkiem */
+.omai-list li{
+  position:relative;padding-left:30px;margin-bottom:11px;font-size:15.5px;color:var(--muted);line-height:1.55;
+}
+.omai-list li:last-child{margin-bottom:0}
+.omai-list li::before{
+  content:"";position:absolute;left:0;top:.45em;width:16px;height:16px;border-radius:50%;
+  background:var(--magenta-soft);
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d6006e' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  background-size:11px 11px;background-repeat:no-repeat;background-position:center;
+}
+.omai-list--plain li::before{
+  background-color:var(--silver-soft);
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232e2e36' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+}
+
+/* wyróżnione zdanie-podsumowanie */
+.omai-note{
+  margin-top:30px;padding:24px 26px;border-radius:var(--radius);
+  background:var(--silver-soft);border-left:3px solid var(--magenta);
+  font-size:16.5px;color:var(--ink);font-weight:600;line-height:1.55;
+}
+
+/* placeholder redakcyjny (do usunięcia po uzupełnieniu treści) */
+.omai-todo{
+  border:1px dashed #c8c8d4;border-radius:var(--radius);background:#fafafc;
+  padding:22px 24px;color:var(--muted);font-size:14.5px;line-height:1.6;
+}
+.omai-todo strong{color:var(--ink);display:block;margin-bottom:6px;font-size:15px}
+
+/* ---------- HERO ---------- */
+.omai-hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 420px at 12% -8%,rgba(214,0,110,.09),transparent 62%),
+    radial-gradient(760px 420px at 92% 6%,rgba(64,120,220,.09),transparent 60%),
+    #fff;
+  padding:clamp(44px,6vw,80px) 0 clamp(52px,6vw,88px);
+}
+.omai-hero__inner{max-width:880px}
+.omai-hero h1{margin-bottom:20px}
+.omai-hero__sub{
+  font-size:clamp(18px,2.3vw,23px);font-weight:600;color:var(--ink);
+  line-height:1.45;margin-bottom:20px;max-width:760px;
+}
+.omai-hero__desc{max-width:700px}
+.omai-facts{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;
+  margin:34px 0 32px;max-width:720px;
+}
+.omai-fact{
+  background:linear-gradient(140deg,rgba(255,255,255,.85),rgba(255,255,255,.5));
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.95);box-shadow:var(--shadow-sm);
+  border-radius:15px;padding:16px 18px;
+  font-size:15px;font-weight:700;color:var(--ink);line-height:1.35;
+  display:flex;align-items:center;gap:11px;
+}
+.omai-fact .omai-ico{color:var(--magenta)}
+.omai-hero__fine{margin-top:22px}
+
+/* ---------- pasek wiarygodności ---------- */
+.omai-proof{background:var(--silver-soft);border-top:1px solid var(--silver);border-bottom:1px solid var(--silver)}
+.omai-proof__inner{
+  padding:26px 0;display:flex;flex-direction:column;gap:22px;align-items:center;text-align:center;
+}
+.omai-proof__stats{display:flex;flex-wrap:wrap;gap:12px 34px;justify-content:center}
+.omai-proof__stat b{display:block;font-size:clamp(22px,3vw,27px);color:var(--ink);line-height:1.1;letter-spacing:-.02em}
+.omai-proof__stat span{font-size:13px;color:var(--muted);letter-spacing:.04em}
+.omai-proof__logos{
+  display:flex;flex-wrap:wrap;gap:10px 12px;justify-content:center;align-items:center;
+}
+.omai-logo{
+  font-size:13px;font-weight:700;letter-spacing:.05em;color:#7b7b88;
+  background:#fff;border:1px solid var(--silver);border-radius:999px;padding:8px 16px;white-space:nowrap;
+}
+.omai-proof__cap{font-size:12.5px;color:var(--muted-soft)}
+
+/* ---------- rezultaty (duże karty) ---------- */
+.omai-result{
+  border-radius:var(--radius-lg);padding:32px 28px;border:1px solid var(--silver);
+  background:linear-gradient(150deg,#fff, #fcfcfe);box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;gap:12px;
+}
+.omai-result__num{
+  font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--magenta);text-transform:uppercase;
+}
+.omai-result h3{font-size:clamp(20px,2.3vw,24px)}
+
+/* ---------- program ---------- */
+.omai-week{
+  border:1px solid var(--silver);border-radius:var(--radius-lg);overflow:hidden;background:#fff;
+  box-shadow:var(--shadow-sm);display:flex;flex-direction:column;
+}
+.omai-week__top{
+  padding:28px 26px 4px;display:flex;flex-direction:column;gap:6px;
+  border-top:3px solid var(--magenta);
+}
+.omai-week__label{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--magenta);text-transform:uppercase}
+.omai-week__body{padding:20px 26px 26px;flex:1 0 auto}
+.omai-week__body h4{margin:0 0 12px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-soft);font-weight:700}
+.omai-week__out{
+  margin:20px 26px 26px;padding:18px 20px;border-radius:14px;
+  background:var(--magenta-soft);font-size:15px;color:var(--ink);line-height:1.55;font-weight:600;
+}
+.omai-week__out span{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--magenta);font-weight:800;margin-bottom:6px}
+.omai-week__meta{
+  margin:0 26px 26px;padding:16px 18px;border-radius:14px;background:var(--silver-soft);
+  font-size:14px;color:var(--muted);line-height:1.6;
+}
+
+/* ---------- prawnik ---------- */
+.omai-legal{
+  border-radius:var(--radius-lg);padding:clamp(30px,4.4vw,52px);
+  background:
+    radial-gradient(620px 280px at 8% 0%,rgba(214,0,110,.1),transparent 65%),
+    radial-gradient(620px 300px at 100% 100%,rgba(64,120,220,.1),transparent 62%),
+    #fbfbfd;
+  border:1px solid var(--silver);
+}
+.omai-legal__grid{display:grid;gap:30px;grid-template-columns:1fr;margin-top:30px}
+.omai-qa{
+  display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--silver);
+  border-radius:999px;padding:11px 22px;font-weight:700;color:var(--ink);font-size:15px;
+}
+
+/* ---------- proces ---------- */
+.omai-flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-start}
+.omai-flow__step{
+  background:#fff;border:1px solid var(--silver);border-radius:999px;padding:12px 22px;
+  font-size:13.5px;font-weight:800;letter-spacing:.08em;color:var(--ink);white-space:nowrap;
+  box-shadow:var(--shadow-sm);
+}
+.omai-flow__step:last-of-type{border-color:rgba(214,0,110,.4);color:var(--magenta)}
+.omai-flow__arrow{color:#bdbdca;display:flex;align-items:center}
+
+/* ---------- liczba 10 ---------- */
+.omai-bigfig{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border-radius:var(--radius-lg);padding:44px 28px;text-align:center;
+  background:linear-gradient(150deg,var(--magenta-soft),#fff 70%);
+  border:1px solid rgba(214,0,110,.2);
+}
+.omai-bigfig b{font-size:clamp(50px,9vw,80px);line-height:1;letter-spacing:-.04em;color:var(--magenta);font-weight:800}
+.omai-bigfig span{margin-top:10px;font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+
+/* ---------- prowadząca ---------- */
+.omai-author{display:grid;gap:32px;grid-template-columns:1fr;align-items:start}
+.omai-author__photo{
+  border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--silver);
+  background:var(--silver-soft);box-shadow:var(--shadow-sm);
+}
+.omai-author__photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.omai-quote{
+  margin-top:26px;padding:26px 28px;border-radius:var(--radius);
+  background:var(--silver-soft);font-size:clamp(17px,2vw,19px);line-height:1.55;
+  color:var(--ink);font-weight:600;font-style:italic;
+}
+.omai-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.omai-tag{
+  font-size:13px;font-weight:600;color:var(--graphite);background:#fff;
+  border:1px solid var(--silver);border-radius:999px;padding:7px 15px;
+}
+
+/* ---------- opinie ---------- */
+.omai-testi{
+  background:#fff;border:1px solid var(--silver);border-radius:var(--radius);
+  padding:28px 26px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:16px;
+}
+.omai-testi__mark{color:var(--magenta);font-size:34px;line-height:.6;font-weight:800}
+.omai-testi p{font-size:15.5px;color:var(--graphite);line-height:1.65}
+.omai-testi__who{font-size:14px;color:var(--muted);line-height:1.45;margin-top:auto}
+.omai-testi__who b{display:block;color:var(--ink);font-size:15px}
+
+/* ---------- cena ---------- */
+.omai-price{
+  border-radius:var(--radius-lg);border:1px solid rgba(214,0,110,.26);
+  background:
+    radial-gradient(700px 300px at 0% 0%,rgba(214,0,110,.08),transparent 60%),
+    radial-gradient(700px 320px at 100% 100%,rgba(64,120,220,.08),transparent 60%),
+    #fff;
+  box-shadow:var(--shadow-md);padding:clamp(30px,4.4vw,52px);
+}
+.omai-price__grid{display:grid;gap:34px;grid-template-columns:1fr;margin-top:26px}
+.omai-price__fig{font-size:clamp(42px,7.6vw,64px);font-weight:800;letter-spacing:-.04em;color:var(--ink);line-height:1}
+.omai-price__fig small{display:block;font-size:15px;font-weight:600;color:var(--muted);letter-spacing:0;margin-top:10px}
+.omai-dates{
+  margin-top:22px;padding:18px 20px;border-radius:14px;border:1px dashed #c8c8d4;background:#fafafc;
+  font-size:14.5px;color:var(--muted);line-height:1.6;
+}
+.omai-dates b{display:block;color:var(--ink);font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.omai-dates p{margin:0}
+.omai-dates__list{margin:12px 0;border-top:1px solid var(--silver)}
+.omai-dates__list li{
+  display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  padding:8px 0;border-bottom:1px solid var(--silver);font-size:14px;
+}
+.omai-dates__list span{font-weight:700;color:var(--ink)}
+.omai-dates__list em{font-style:normal;color:var(--muted-soft)}
+
+/* ---------- FAQ ---------- */
+.omai-faq{border-top:1px solid var(--silver)}
+.omai-faq details{border-bottom:1px solid var(--silver)}
+.omai-faq summary{
+  list-style:none;cursor:pointer;padding:22px 44px 22px 0;position:relative;
+  font-size:17px;font-weight:700;color:var(--ink);line-height:1.45;
+}
+.omai-faq summary::-webkit-details-marker{display:none}
+.omai-faq summary::after{
+  content:"";position:absolute;right:8px;top:26px;width:14px;height:14px;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d6006e' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
+  background-size:contain;background-repeat:no-repeat;transition:transform .2s ease;
+}
+.omai-faq details[open] summary::after{transform:rotate(45deg)}
+.omai-faq__a{padding:0 40px 24px 0;color:var(--muted);font-size:16px;line-height:1.65}
+
+/* ---------- finalne CTA ---------- */
+.omai-final{
+  background:
+    radial-gradient(800px 380px at 50% 0%,rgba(214,0,110,.08),transparent 62%),
+    radial-gradient(760px 380px at 90% 100%,rgba(64,120,220,.08),transparent 60%),
+    #fff;
+}
+.omai-final__chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:30px 0 34px}
+.omai-chip{
+  background:#fff;border:1px solid var(--silver);border-radius:999px;padding:10px 20px;
+  font-size:14.5px;font-weight:700;color:var(--ink);box-shadow:var(--shadow-sm);
+}
+.omai-chip--accent{border-color:rgba(214,0,110,.35);color:var(--magenta)}
+
+/* ---------- formularz ---------- */
+.omai-form{
+  background:#fff;border:1px solid var(--silver);border-radius:var(--radius-lg);
+  padding:clamp(26px,4vw,44px);box-shadow:var(--shadow-md);
+}
+.omai-field{margin-bottom:18px}
+.omai-field label{display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:7px}
+.omai-field label span{font-weight:500;color:var(--muted-soft)}
+.omai-field input[type=text],.omai-field input[type=email],.omai-field input[type=tel]{
+  width:100%;font-family:inherit;font-size:16px;color:var(--ink);background:#fff;
+  border:1px solid var(--silver);border-radius:13px;padding:14px 16px;
+  transition:border-color .18s ease,box-shadow .18s ease;
+}
+.omai-field input:focus{outline:none;border-color:var(--magenta);box-shadow:0 0 0 3px rgba(214,0,110,.12)}
+.omai-field input::placeholder{color:#b3b3c0}
+.omai-consent{display:flex;gap:12px;align-items:flex-start;margin:24px 0 22px}
+.omai-consent input{width:20px;height:20px;flex:0 0 auto;margin-top:2px;accent-color:var(--magenta)}
+.omai-consent label{font-size:14px;color:var(--muted);line-height:1.55;font-weight:500}
+.omai-form .omai-btn{width:100%}
+.omai-form__ok{
+  display:none;border-radius:var(--radius);background:var(--magenta-soft);
+  border:1px solid rgba(214,0,110,.25);padding:28px 26px;
+}
+.omai-form__ok h3{margin-bottom:12px}
+.omai-form__ok p{color:var(--muted);font-size:15.5px;margin-bottom:10px}
+.omai-form__ok ol{margin:14px 0 0;padding-left:20px;color:var(--muted);font-size:15px;line-height:1.7}
+.omai-form.is-sent .omai-form__fields{display:none}
+.omai-form.is-sent .omai-form__ok{display:block}
+
+/* ---------- sticky CTA (mobile) ---------- */
+.omai-sticky{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-top:1px solid var(--silver);display:none;
+  transform:translateY(130%);transition:transform .25s ease;
+}
+.omai-sticky.is-on{transform:none}
+.omai-sticky .omai-btn{width:100%;padding:15px 20px}
+
+/* ---------- breakpointy ---------- */
+@media (max-width:719px){
+  .omai .omai-btn{width:100%}
+  .omai-dates__list li{flex-direction:column;gap:2px;align-items:flex-start}
+  .omai-cta-row{flex-direction:column;align-items:stretch}
+  .omai-sticky{display:block}
+  body.omai-has-sticky{padding-bottom:78px}
+}
+@media (min-width:600px){
+  .omai-grid--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .omai-grid--3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .omai-grid--4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .omai-facts{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .omai-fact{flex-direction:column;align-items:flex-start;gap:9px}
+}
+@media (min-width:860px){
+  .omai-grid{gap:22px}
+  .omai-grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .omai-grid--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .omai-legal__grid{grid-template-columns:1.05fr .95fr;gap:44px}
+  .omai-author{grid-template-columns:340px 1fr;gap:48px}
+  .omai-price__grid{grid-template-columns:1fr 1fr;gap:56px}
+}
+@media (prefers-reduced-motion:reduce){
+  .omai *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<main class="omai" id="omai-top">
+
+<!-- ===== sprite ikon (line icons, bez grafik „AI") ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="omai-i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="omai-i-scale" viewBox="0 0 24 24"><circle cx="12" cy="3.2" r="1.4"/><path d="M12 5v16M8.5 21h7M4 6.5h16"/><path d="M1.5 12 4 6.5 6.5 12"/><path d="M1.5 12a2.5 2.5 0 0 0 5 0"/><path d="M17.5 12 20 6.5 22.5 12"/><path d="M17.5 12a2.5 2.5 0 0 0 5 0"/></symbol>
+    <symbol id="omai-i-users" viewBox="0 0 24 24"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.5"/><path d="M22 20v-2a4 4 0 0 0-3-3.9M16 3.6a4 4 0 0 1 0 7"/></symbol>
+    <symbol id="omai-i-tag" viewBox="0 0 24 24"><path d="M3 12V5a2 2 0 0 1 2-2h7l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.3"/></symbol>
+    <symbol id="omai-i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+    <symbol id="omai-i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></symbol>
+    <symbol id="omai-i-repeat" viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
+    <symbol id="omai-i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></symbol>
+    <symbol id="omai-i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.6 2.6 0 0 1 5 .9c0 1.7-2.5 2.2-2.5 3.9"/><path d="M12 17.2h.01"/></symbol>
+    <symbol id="omai-i-flow" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="6" rx="1.5"/><rect x="14" y="15" width="7" height="6" rx="1.5"/><path d="M6.5 9v5a4 4 0 0 0 4 4H14"/></symbol>
+    <symbol id="omai-i-shield" viewBox="0 0 24 24"><path d="M12 21s7.5-3.6 7.5-9.4V5.6L12 2.8 4.5 5.6v6c0 5.8 7.5 9.4 7.5 9.4z"/><path d="M9.2 11.8l2 2 3.6-3.8"/></symbol>
+    <symbol id="omai-i-layers" viewBox="0 0 24 24"><path d="M12 3 3 7.5l9 4.5 9-4.5z"/><path d="M3 12.5 12 17l9-4.5"/><path d="M3 17 12 21.5 21 17"/></symbol>
+    <symbol id="omai-i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol>
+    <symbol id="omai-i-assistant" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="12" rx="2.5"/><path d="M8 20h8M12 16.5V20M8.5 9.5h.01M15.5 9.5h.01M9.5 12.8a3.6 3.6 0 0 0 5 0"/></symbol>
+    <symbol id="omai-i-book" viewBox="0 0 24 24"><path d="M3 4.8A2 2 0 0 1 5 3h5v16H5a2 2 0 0 0-2 2z"/><path d="M21 4.8A2 2 0 0 0 19 3h-5v16h5a2 2 0 0 1 2 2z"/></symbol>
+    <symbol id="omai-i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 1.8-2M4 12l1 1 1.8-2M4 18l1 1 1.8-2"/></symbol>
+    <symbol id="omai-i-map" viewBox="0 0 24 24"><path d="M9 3 3 5.6v15L9 18l6 3 6-2.6v-15L15 6z"/><path d="M9 3v15M15 6v15"/></symbol>
+    <symbol id="omai-i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-8 8H8l-5 2 1.6-4.4A8 8 0 1 1 21 12z"/></symbol>
+    <symbol id="omai-i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="omai-i-spark" viewBox="0 0 24 24"><path d="M12 3.5 13.7 9l5.5 1.7-5.5 1.7L12 18l-1.7-5.6L4.8 10.7 10.3 9z"/><path d="M18.5 16.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+  </defs>
+</svg>
+
+<!-- =========================================================
+     3. HERO
+     ========================================================= -->
+<header class="omai-hero">
+  <div class="omai-wrap">
+    <div class="omai-hero__inner">
+      <p class="omai-eyebrow">Program online &bull; 4 tygodnie &bull; tylko dla Office Managerów</p>
+      <h1>OFFICE MANAGER<br>AI OPERATIONS</h1>
+      <p class="omai-hero__sub">Od pojedynczych promptów do własnego Asystenta AI, sprawniejszych workflow i pierwszych automatyzacji.</p>
+      <p class="omai-lead omai-hero__desc">Przez 4 tygodnie nauczysz się świadomie wykorzystywać AI w codziennej pracy Office Managera. Dowiesz się, jak pracować z informacją i dokumentami, ograniczać ryzyko błędnych odpowiedzi AI, zbudujesz własnego Asystenta AI i nauczysz się rozpoznawać procesy, które warto automatyzować.</p>
+
+      <div class="omai-facts">
+        <div class="omai-fact"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-clock"></use></svg>4 &times; 2h LIVE</div>
+        <div class="omai-fact"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-scale"></use></svg>+ 1h z prawnikiem</div>
+        <div class="omai-fact"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-users"></use></svg>maks. 10 osób</div>
+        <div class="omai-fact"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-tag"></use></svg>1490 zł netto</div>
+      </div>
+
+      <div class="omai-cta-row">
+        <a class="omai-btn omai-btn--primary" href="#zapisy">Rezerwuję miejsce</a>
+      </div>
+      <p class="omai-small omai-hero__fine">Możliwość finansowania udziału przez pracodawcę &bull; Faktura VAT</p>
+    </div>
+  </div>
+</header>
+
+<!-- =========================================================
+     4. SOCIAL PROOF
+     Dane i klienci pochodzą z officeinfluencers.pl/o-mnie/.
+     Aby pokazać logotypy graficzne zamiast nazw tekstowych,
+     podmień <span class="omai-logo">NAZWA</span> na
+     <img src="URL_Z_BIBLIOTEKI_MEDIÓW" alt="NAZWA" height="28">
+     ========================================================= -->
+<section class="omai-proof" aria-label="Doświadczenie Office Influencers">
+  <div class="omai-wrap">
+    <div class="omai-proof__inner">
+      <div class="omai-proof__stats">
+        <div class="omai-proof__stat"><b>25+ lat</b><span>doświadczenia</span></div>
+        <div class="omai-proof__stat"><b>10 000+</b><span>przeszkolonych osób</span></div>
+        <div class="omai-proof__stat"><b>Office Influencers</b><span>szkolenia dla Office Managerów i Asystentek</span></div>
+      </div>
+      <div class="omai-proof__logos">
+        <span class="omai-logo">Mercedes-Benz</span>
+        <span class="omai-logo">Bosch</span>
+        <span class="omai-logo">3M</span>
+        <span class="omai-logo">Allen &amp; Overy</span>
+        <span class="omai-logo">Geberit</span>
+        <span class="omai-logo">ERGO Hestia</span>
+        <span class="omai-logo">Maspex</span>
+        <span class="omai-logo">ABB</span>
+        <span class="omai-logo">Solid Security</span>
+      </div>
+      <p class="omai-proof__cap">Wybrani klienci projektów otwartych i zamkniętych Office Influencers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     5. PROBLEM
+     ========================================================= -->
+<section class="omai-section">
+  <div class="omai-wrap">
+    <div class="omai-head">
+      <h2>Używasz AI. Ale czy naprawdę zmieniło sposób, w jaki pracujesz?</h2>
+      <p class="omai-lead">Być może ChatGPT, Copilot albo Gemini pomaga Ci już pisać maile, poprawiać teksty czy robić research. To dobry początek. Ale potencjał AI w pracy Office Managera zaczyna się dużo dalej.</p>
+    </div>
+
+    <div class="omai-grid omai-grid--3">
+      <div class="omai-card">
+        <div class="omai-icobox omai-icobox--silver"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-file"></use></svg></div>
+        <h4>Zaczynasz od zera</h4>
+        <p>Nadal tworzysz podobne materiały od początku.</p>
+      </div>
+      <div class="omai-card">
+        <div class="omai-icobox omai-icobox--silver"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-search"></use></svg></div>
+        <h4>Ręczna analiza</h4>
+        <p>Ręcznie analizujesz dokumenty i oferty.</p>
+      </div>
+      <div class="omai-card">
+        <div class="omai-icobox omai-icobox--silver"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-copy"></use></svg></div>
+        <h4>Kopiuj – wklej</h4>
+        <p>Przeklejasz informacje między narzędziami.</p>
+      </div>
+      <div class="omai-card">
+        <div class="omai-icobox omai-icobox--silver"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-repeat"></use></svg></div>
+        <h4>Te same czynności</h4>
+        <p>Powtarzasz te same czynności każdego tygodnia.</p>
+      </div>
+      <div class="omai-card">
+        <div class="omai-icobox omai-icobox--silver"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-help"></use></svg></div>
+        <h4>Niepewna odpowiedź</h4>
+        <p>Nie zawsze wiesz, czy odpowiedź AI jest wiarygodna.</p>
+      </div>
+      <div class="omai-card">
+        <div class="omai-icobox omai-icobox--silver"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-flow"></use></svg></div>
+        <h4>Brak punktu startu</h4>
+        <p>Widzisz możliwości automatyzacji, ale nie wiesz, od czego zacząć.</p>
+      </div>
+    </div>
+
+    <p class="omai-note">Ten program pomoże Ci przejść od okazjonalnego korzystania z AI do świadomego wykorzystania go w codziennej pracy Office Managera.</p>
+  </div>
+</section>
+
+<hr class="omai-rule">
+
+<!-- =========================================================
+     6. WYRÓŻNIK PROGRAMU
+     ========================================================= -->
+<section class="omai-section">
+  <div class="omai-wrap">
+    <div class="omai-head">
+      <h2>To nie jest kolejne szkolenie z pisania promptów</h2>
+      <p class="omai-lead">Zakładamy, że potrafisz już rozmawiać z AI i przygotować prosty prompt. Teraz zrobimy kolejny krok.</p>
+    </div>
+
+    <div class="omai-grid omai-grid--3">
+      <div class="omai-card omai-card--glass">
+        <div class="omai-icobox"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-target"></use></svg></div>
+        <h4>Dobierzesz</h4>
+        <p>właściwe narzędzie AI do konkretnego zadania.</p>
+      </div>
+      <div class="omai-card omai-card--glass">
+        <div class="omai-icobox"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-shield"></use></svg></div>
+        <h4>Zweryfikujesz</h4>
+        <p>informacje i ograniczysz ryzyko halucynacji.</p>
+      </div>
+      <div class="omai-card omai-card--glass">
+        <div class="omai-icobox"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-assistant"></use></svg></div>
+        <h4>Zbudujesz</h4>
+        <p>własnego Asystenta AI.</p>
+      </div>
+      <div class="omai-card omai-card--glass">
+        <div class="omai-icobox"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-layers"></use></svg></div>
+        <h4>Uporządkujesz</h4>
+        <p>powtarzalne sposoby pracy.</p>
+      </div>
+      <div class="omai-card omai-card--glass">
+        <div class="omai-icobox"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-spark"></use></svg></div>
+        <h4>Zastosujesz</h4>
+        <p>AI w realnych zadaniach Office Managera.</p>
+      </div>
+      <div class="omai-card omai-card--glass">
+        <div class="omai-icobox"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-flow"></use></svg></div>
+        <h4>Rozpoznasz</h4>
+        <p>procesy, które warto automatyzować.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="omai-rule">
+
+<!-- =========================================================
+     7. KLUCZOWY REZULTAT
+     ========================================================= -->
+<section class="omai-section">
+  <div class="omai-wrap">
+    <div class="omai-head omai-head--center">
+      <p class="omai-eyebrow">Efekt programu</p>
+      <h2>Po 4 tygodniach nie zostajesz tylko z wiedzą</h2>
+    </div>
+
+    <div class="omai-grid omai-grid--2">
+      <div class="omai-result">
+        <span class="omai-result__num">1</span>
+        <h3>Własny Asystent AI</h3>
+        <p class="omai-body">Dopasowany do wybranych zadań Office Managera.</p>
+      </div>
+      <div class="omai-result">
+        <span class="omai-result__num">2–3</span>
+        <h3>Własne workflow</h3>
+        <p class="omai-body">Do powtarzalnych zadań, które wykonujesz w pracy.</p>
+      </div>
+      <div class="omai-result">
+        <span class="omai-result__num">System</span>
+        <h3>System weryfikacji AI</h3>
+        <p class="omai-body">Będziesz wiedzieć, jak ograniczać ryzyko błędów i sprawdzać informacje.</p>
+      </div>
+      <div class="omai-result">
+        <span class="omai-result__num">1</span>
+        <h3>Proces do automatyzacji</h3>
+        <p class="omai-body">Z jasnym planem, co możesz zrobić dalej.</p>
+      </div>
+    </div>
+
+    <p class="omai-note">Mniej przypadkowego testowania AI. Więcej świadomego wykorzystania go w pracy.</p>
+  </div>
+</section>
+
+<hr class="omai-rule">
+
+<!-- =========================================================
+     8. PROGRAM – 4 TYGODNIE
+     ========================================================= -->
+<section class="omai-section" id="program">
+  <div class="omai-wrap">
+    <div class="omai-head">
+      <p class="omai-eyebrow">Program</p>
+      <h2>4 tygodnie, 4 spotkania LIVE</h2>
+      <p class="omai-lead">Każde spotkanie trwa 2 godziny. Między spotkaniami testujesz nowe rozwiązania w swojej pracy.</p>
+    </div>
+
+    <div class="omai-grid omai-grid--2">
+
+      <article class="omai-week">
+        <div class="omai-week__top">
+          <span class="omai-week__label">Tydzień 1</span>
+          <h3>AI w pracy Office Managera – solidne fundamenty</h3>
+        </div>
+        <div class="omai-week__body">
+          <h4>Dowiesz się</h4>
+          <ul class="omai-list">
+            <li>czym różnią się ChatGPT, Copilot, Claude i Gemini,</li>
+            <li>kiedy używać którego rozwiązania,</li>
+            <li>jak pracować z dokumentami i plikami,</li>
+            <li>czym są halucynacje AI,</li>
+            <li>jak ograniczać ryzyko błędnych odpowiedzi,</li>
+            <li>jak weryfikować fakty, źródła, liczby i aktualność informacji,</li>
+            <li>kiedy odpowiedź AI wymaga niezależnego sprawdzenia,</li>
+            <li>jak bezpiecznie pracować z informacją.</li>
+          </ul>
+        </div>
+        <p class="omai-week__out"><span>Rezultat</span>Będziesz wiedzieć nie tylko, jak korzystać z AI, ale również kiedy możesz zaufać rezultatowi, a kiedy trzeba go sprawdzić.</p>
+      </article>
+
+      <article class="omai-week">
+        <div class="omai-week__top">
+          <span class="omai-week__label">Tydzień 2</span>
+          <h3>Zbuduj własnego Asystenta AI</h3>
+        </div>
+        <div class="omai-week__body">
+          <h4>Dowiesz się</h4>
+          <ul class="omai-list">
+            <li>czym Asystent AI różni się od zwykłego czatu,</li>
+            <li>jak określić jego rolę,</li>
+            <li>jak stworzyć instrukcje,</li>
+            <li>jak dostarczyć kontekst i wiedzę,</li>
+            <li>jak pracować z własnymi materiałami,</li>
+            <li>jak określić zasady jakości i weryfikacji.</li>
+          </ul>
+        </div>
+        <p class="omai-week__out"><span>Rezultat</span>Zbudujesz własnego Asystenta AI dopasowanego do pracy Office Managera.</p>
+      </article>
+
+      <article class="omai-week">
+        <div class="omai-week__top">
+          <span class="omai-week__label">Tydzień 3</span>
+          <h3>AI w codziennej pracy Office Managera</h3>
+        </div>
+        <div class="omai-week__body">
+          <h4>Pracujemy na wybranych przykładach z realnej pracy Office Managerów, np.</h4>
+          <ul class="omai-list omai-list--plain">
+            <li>dokumenty,</li>
+            <li>dostawcy i oferty,</li>
+            <li>komunikacja wewnętrzna,</li>
+            <li>onboarding,</li>
+            <li>wydarzenia,</li>
+            <li>procedury,</li>
+            <li>raportowanie.</li>
+          </ul>
+        </div>
+        <p class="omai-week__meta">Przed startem uczestnicy wypełnią krótką ankietę. Najważniejsze przykłady i case studies zostaną dopasowane do potrzeb konkretnej grupy.</p>
+        <p class="omai-week__out"><span>Rezultat</span>Przygotujesz 2–3 sposoby pracy z AI, które możesz wykorzystać w swojej codziennej pracy.</p>
+      </article>
+
+      <article class="omai-week">
+        <div class="omai-week__top">
+          <span class="omai-week__label">Tydzień 4</span>
+          <h3>Pierwszy krok do automatyzacji</h3>
+        </div>
+        <div class="omai-week__body">
+          <h4>Dowiesz się</h4>
+          <ul class="omai-list">
+            <li>czym różni się AI od automatyzacji,</li>
+            <li>jak rozpoznawać powtarzalny proces,</li>
+            <li>co warto automatyzować,</li>
+            <li>jak wygląda logika prostej automatyzacji,</li>
+            <li>czym są trigger, akcja i warunek,</li>
+            <li>gdzie w procesie nadal potrzebny jest człowiek,</li>
+            <li>kiedy automatyzacja nie ma sensu.</li>
+          </ul>
+        </div>
+        <p class="omai-week__meta">To nie jest techniczny kurs Make, n8n ani Power Automate. Pracujemy na logice procesu, nie na konfiguracji narzędzi.</p>
+        <p class="omai-week__out"><span>Rezultat</span>Wybierzesz jeden proces, który może być kolejnym krokiem do automatyzacji.</p>
+      </article>
+
+    </div>
+
+    <div class="omai-cta-row omai-cta-row--center" style="margin-top:44px">
+      <a class="omai-btn omai-btn--primary" href="#zapisy">Rezerwuję miejsce</a>
+      <a class="omai-btn omai-btn--ghost" href="#zapisy">Chcę wziąć udział</a>
+    </div>
+  </div>
+</section>
+
+<hr class="omai-rule">
+
+<!-- =========================================================
+     9. SESJA Z PRAWNIKIEM
+     ========================================================= -->
+<section class="omai-section">
+  <div class="omai-wrap">
+    <div class="omai-legal">
+      <p class="omai-eyebrow">W cenie programu</p>
+      <h2>+ 60 minut LIVE z prawnikiem</h2>
+      <p class="omai-hero__sub" style="margin-top:14px;margin-bottom:0">AI w biurze: dane, poufność, odpowiedzialność</p>
+
+      <div class="omai-legal__grid">
+        <div>
+          <p class="omai-lead">Praktyczna sesja poświęcona pytaniom, które pojawiają się, gdy AI zaczyna być wykorzystywane w codziennej pracy firmy.</p>
+          <div class="omai-qa" style="margin-top:26px">
+            <svg class="omai-ico omai-ico--sm" aria-hidden="true"><use href="#omai-i-chat"></use></svg>
+            Q&amp;A z prawnikiem
+          </div>
+          <p class="omai-small" style="margin-top:18px">Sesja ma charakter edukacyjny i nie zastępuje indywidualnej porady prawnej.</p>
+        </div>
+
+        <div class="omai-card omai-card--glass">
+          <h4 style="margin-bottom:16px">Tematy</h4>
+          <ul class="omai-list">
+            <li>dane osobowe,</li>
+            <li>informacje poufne,</li>
+            <li>dokumenty firmowe,</li>
+            <li>prywatne i firmowe konta AI,</li>
+            <li>prawa autorskie,</li>
+            <li>odpowiedzialność za treści przygotowane przy użyciu AI,</li>
+            <li>podstawowe zasady korzystania z AI w organizacji.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="omai-rule">
+
+<!-- =========================================================
+     10. DLACZEGO 4 TYGODNIE  +  11. DLACZEGO 10 OSÓB
+     ========================================================= -->
+<section class="omai-section">
+  <div class="omai-wrap">
+    <div class="omai-head">
+      <p class="omai-eyebrow">Dlaczego 4 tygodnie</p>
+      <h2>Bo wdrożenie nie dzieje się podczas jednego webinaru</h2>
+    </div>
+
+    <div class="omai-flow" aria-label="Poznaj, przetestuj, sprawdź, wróć z pytaniami, popraw, wdróż">
+      <span class="omai-flow__step">Poznaj</span>
+      <span class="omai-flow__arrow" aria-hidden="true"><svg class="omai-ico omai-ico--sm"><use href="#omai-i-arrow"></use></svg></span>
+      <span class="omai-flow__step">Przetestuj</span>
+      <span class="omai-flow__arrow" aria-hidden="true"><svg class="omai-ico omai-ico--sm"><use href="#omai-i-arrow"></use></svg></span>
+      <span class="omai-flow__step">Sprawdź</span>
+      <span class="omai-flow__arrow" aria-hidden="true"><svg class="omai-ico omai-ico--sm"><use href="#omai-i-arrow"></use></svg></span>
+      <span class="omai-flow__step">Wróć z pytaniami</span>
+      <span class="omai-flow__arrow" aria-hidden="true"><svg class="omai-ico omai-ico--sm"><use href="#omai-i-arrow"></use></svg></span>
+      <span class="omai-flow__step">Popraw</span>
+      <span class="omai-flow__arrow" aria-hidden="true"><svg class="omai-ico omai-ico--sm"><use href="#omai-i-arrow"></use></svg></span>
+      <span class="omai-flow__step">Wdróż</span>
+    </div>
+
+    <p class="omai-lead" style="margin-top:32px;max-width:760px">Tydzień pomiędzy spotkaniami daje Ci czas, żeby sprawdzić nowe rozwiązania w swojej prawdziwej pracy, a na kolejnym spotkaniu wrócić z konkretnymi pytaniami.</p>
+
+    <div class="omai-grid omai-grid--2" style="margin-top:clamp(44px,6vw,72px);align-items:center">
+      <div>
+        <p class="omai-eyebrow">Dlaczego tylko 10 osób</p>
+        <h2 style="font-size:clamp(24px,3.2vw,33px)">To ma być grupa robocza, nie webinar</h2>
+        <p class="omai-lead" style="margin-top:18px">Maksymalnie 10 osób oznacza przestrzeń na pytania, rzeczywiste przykłady, dyskusję i pracę na potrzebach konkretnej grupy.</p>
+      </div>
+      <div class="omai-bigfig">
+        <b>10</b>
+        <span>miejsc</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="omai-rule">
+
+<!-- =========================================================
+     12. CO ZYSKUJE PRACODAWCA
+     ========================================================= -->
+<section class="omai-section">
+  <div class="omai-wrap">
+    <div class="omai-head">
+      <p class="omai-eyebrow">Dla pracodawcy</p>
+      <h2>Co zyska Twoja firma?</h2>
+      <p class="omai-lead">Program pomaga przełożyć AI na konkretną pracę operacyjną Office Managera.</p>
+    </div>
+
+    <div class="omai-grid omai-grid--3">
+      <div class="omai-card"><h4>Świadome narzędzia</h4><p>Bardziej świadome wykorzystanie narzędzi AI.</p></div>
+      <div class="omai-card"><h4>Praca z informacją</h4><p>Sprawniejsza praca z dokumentami i informacją.</p></div>
+      <div class="omai-card"><h4>Kontrola jakości</h4><p>Ograniczanie ryzyka bezkrytycznego korzystania z odpowiedzi AI.</p></div>
+      <div class="omai-card"><h4>Powtarzalność</h4><p>Powtarzalne sposoby pracy zamiast każdorazowego zaczynania od zera.</p></div>
+      <div class="omai-card"><h4>Mapa usprawnień</h4><p>Identyfikacja procesów możliwych do usprawnienia.</p></div>
+      <div class="omai-card"><h4>Start automatyzacji</h4><p>Pierwszy krok do automatyzacji pracy administracyjnej.</p></div>
+    </div>
+
+    <p class="omai-note">Po programie uczestnik wskazuje co najmniej jeden proces, który może zostać usprawniony dzięki AI lub automatyzacji.</p>
+
+    <div class="omai-cta-row" style="margin-top:26px">
+      <a class="omai-btn omai-btn--ghost omai-btn--small" href="#cena">Pokażę to przełożonemu</a>
+    </div>
+  </div>
+</section>
+
+<hr class="omai-rule">
+
+<!-- =========================================================
+     13. PROWADZĄCA
+     ZDJĘCIE: podmień poniższy blok .omai-todo na:
+     <div class="omai-author__photo">
+       <img src="https://www.officeinfluencers.pl/wp-content/uploads/…/agnieszka-korach.jpg"
+            alt="Agnieszka Korach – trenerka biznesu i psycholog, prowadząca program AI dla Office Managera"
+            width="680" height="850" loading="lazy">
+     </div>
+     (użyj istniejącego pliku z Biblioteki mediów WordPress)
+     ========================================================= -->
+<section class="omai-section">
+  <div class="omai-wrap">
+    <div class="omai-author">
+      <div>
+        <div class="omai-todo" style="aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:center">
+          <strong>Miejsce na zdjęcie Agnieszki Korach</strong>
+          Wstaw istniejące zdjęcie z Biblioteki mediów Office Influencers (proporcje 4:5). Gotowy kod <code>&lt;img&gt;</code> znajduje się w komentarzu HTML nad tą sekcją.
+        </div>
+      </div>
+
+      <div>
+        <p class="omai-eyebrow">Prowadząca</p>
+        <h2>Prowadzi Agnieszka Korach</h2>
+        <p class="omai-lead" style="margin-top:20px">Psycholog biznesu, trenerka i konsultantka. Od ponad 25 lat rozwija kompetencje osób pracujących w administracji, Executive Support i Office Management.</p>
+        <p class="omai-lead" style="margin-top:16px">Łączy wiedzę o realnej pracy biura z praktycznym wykorzystaniem AI, narzędzi no-code i automatyzacji.</p>
+
+        <div class="omai-tags">
+          <span class="omai-tag">Psycholog społeczny (SWPS)</span>
+          <span class="omai-tag">Certyfikowana AI Educator (CampusAI)</span>
+          <span class="omai-tag">10 000+ przeszkolonych osób</span>
+          <span class="omai-tag">Twórczyni Office Influencers</span>
+        </div>
+
+        <blockquote class="omai-quote">„Nie uczę technologii dla technologii. Pokazuję, jak wykorzystać ją do sprawniejszej i bardziej świadomej pracy.”</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="omai-rule">
+
+<!-- =========================================================
+     14. OPINIE
+     WAŻNE: nie wstawiono tu żadnych treści wygenerowanych.
+     Wklej 2–3 PRAWDZIWE opinie z istniejących stron Office Influencers,
+     zachowując dokładnie imię, nazwisko, stanowisko i firmę.
+     Szablon jednej karty:
+
+     <figure class="omai-testi">
+       <span class="omai-testi__mark" aria-hidden="true">&rdquo;</span>
+       <blockquote><p>TREŚĆ OPINII DOKŁADNIE JAK NA STRONIE ŹRÓDŁOWEJ</p></blockquote>
+       <figcaption class="omai-testi__who"><b>Imię Nazwisko</b>Stanowisko, Firma</figcaption>
+     </figure>
+     ========================================================= -->
+<section class="omai-section">
+  <div class="omai-wrap">
+    <div class="omai-head">
+      <p class="omai-eyebrow">Opinie</p>
+      <h2>Co mówią uczestniczki szkoleń Office Influencers</h2>
+    </div>
+
+    <div class="omai-todo">
+      <strong>Do uzupełnienia przed publikacją: 2–3 prawdziwe opinie</strong>
+      Skopiuj opinie z istniejących podstron Office Influencers – najlepiej dotyczące AI, Office Managementu, praktycznego charakteru szkoleń lub wdrażania wiedzy do pracy. Zachowaj dokładnie imię, nazwisko, stanowisko i firmę. Gotowy szablon karty znajduje się w komentarzu HTML nad tą sekcją. Nie dodawaj opinii, których nie ma na stronie.
+    </div>
+  </div>
+</section>
+
+<hr class="omai-rule">
+
+<!-- =========================================================
+     15. CO OTRZYMUJESZ
+     ========================================================= -->
+<section class="omai-section">
+  <div class="omai-wrap">
+    <div class="omai-head">
+      <p class="omai-eyebrow">Co otrzymujesz</p>
+      <h2>W ramach udziału</h2>
+    </div>
+
+    <div class="omai-grid omai-grid--4">
+      <div class="omai-card">
+        <div class="omai-icobox"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-clock"></use></svg></div>
+        <h4>8 godzin programu LIVE</h4><p>4 spotkania po 2 godziny.</p>
+      </div>
+      <div class="omai-card">
+        <div class="omai-icobox"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-scale"></use></svg></div>
+        <h4>1 godzina z prawnikiem</h4><p>Praktyczna sesja + Q&amp;A.</p>
+      </div>
+      <div class="omai-card">
+        <div class="omai-icobox"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-assistant"></use></svg></div>
+        <h4>Własny Asystent AI</h4><p>Budowany podczas programu.</p>
+      </div>
+      <div class="omai-card">
+        <div class="omai-icobox"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-book"></use></svg></div>
+        <h4>Materiały i workbook</h4><p>Do pracy podczas programu i po jego zakończeniu.</p>
+      </div>
+      <div class="omai-card">
+        <div class="omai-icobox"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-layers"></use></svg></div>
+        <h4>Szablony workflow</h4><p>Do uporządkowania powtarzalnych zadań.</p>
+      </div>
+      <div class="omai-card">
+        <div class="omai-icobox"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-list"></use></svg></div>
+        <h4>Checklista weryfikacji AI</h4><p>Do kontroli jakości i wiarygodności odpowiedzi.</p>
+      </div>
+      <div class="omai-card">
+        <div class="omai-icobox"><svg class="omai-ico" aria-hidden="true"><use href="#omai-i-map"></use></svg></div>
+        <h4>Plan dalszych działań</h4><p>Żeby po czwartym tygodniu wiedzieć, co zrobić dalej.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="omai-rule">
+
+<!-- =========================================================
+     16. CENA / OFFER BOX
+     ========================================================= -->
+<section class="omai-section" id="cena">
+  <div class="omai-wrap">
+    <div class="omai-price">
+      <p class="omai-eyebrow">Pierwsza edycja</p>
+      <h2>OFFICE MANAGER AI OPERATIONS</h2>
+
+      <div class="omai-price__grid">
+        <div>
+          <p class="omai-price__fig">1490 zł <span style="font-size:.46em;font-weight:700">netto</span>
+            <small>VAT zgodnie z obowiązującymi przepisami.</small>
+          </p>
+
+          <div class="omai-cta-row" style="margin-top:30px">
+            <a class="omai-btn omai-btn--primary" href="#zapisy">Rezerwuję miejsce</a>
+          </div>
+          <p class="omai-small" style="margin-top:16px">Możliwy zakup przez pracodawcę &bull; Faktura VAT</p>
+
+          <!-- TERMINY: uzupełnij po ustaleniu dat edycji -->
+          <div class="omai-dates">
+            <b>Terminy</b>
+            <p>Daty spotkań pierwszej edycji zostaną podane wkrótce.</p>
+            <ul class="omai-dates__list">
+              <li><span>Spotkanie 1</span><em>termin do potwierdzenia</em></li>
+              <li><span>Spotkanie 2</span><em>termin do potwierdzenia</em></li>
+              <li><span>Spotkanie 3</span><em>termin do potwierdzenia</em></li>
+              <li><span>Spotkanie 4</span><em>termin do potwierdzenia</em></li>
+              <li><span>Sesja z prawnikiem</span><em>termin do potwierdzenia</em></li>
+            </ul>
+            <p>Zostaw zgłoszenie, a poinformujemy Cię o terminach w pierwszej kolejności.</p>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="margin-bottom:16px">W cenie</h4>
+          <ul class="omai-list">
+            <li>4 × 2h programu LIVE,</li>
+            <li>1h LIVE z prawnikiem,</li>
+            <li>materiały i workbook,</li>
+            <li>własny Asystent AI,</li>
+            <li>szablony workflow,</li>
+            <li>checklista weryfikacji odpowiedzi AI,</li>
+            <li>maksymalnie 10 uczestników.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="omai-rule">
+
+<!-- =========================================================
+     17. FAQ
+     ========================================================= -->
+<section class="omai-section">
+  <div class="omai-wrap omai-wrap--narrow">
+    <div class="omai-head">
+      <p class="omai-eyebrow">FAQ</p>
+      <h2>Najczęstsze pytania</h2>
+    </div>
+
+    <div class="omai-faq">
+      <details>
+        <summary>Czy program jest dla osób początkujących?</summary>
+        <div class="omai-faq__a">Tak, jeśli korzystasz już choćby podstawowo z ChatGPT, Copilota, Gemini, Claude lub podobnego narzędzia. Nie będziemy zaczynać od nauki pisania prostego promptu.</div>
+      </details>
+      <details>
+        <summary>Czy muszę mieć płatny ChatGPT?</summary>
+        <div class="omai-faq__a">Nie. Program nie jest uzależniony od jednego narzędzia.</div>
+      </details>
+      <details>
+        <summary>Czy nauczę się weryfikować odpowiedzi AI?</summary>
+        <div class="omai-faq__a">Tak. Już od pierwszego spotkania pracujemy nad ograniczaniem ryzyka halucynacji, weryfikowaniem informacji, źródeł, aktualności danych i rozpoznawaniem sytuacji wymagających niezależnego sprawdzenia.</div>
+      </details>
+      <details>
+        <summary>Czy można całkowicie wyeliminować halucynacje AI?</summary>
+        <div class="omai-faq__a">Nie. Można jednak znacząco ograniczać ryzyko błędów i stosować procedury weryfikacji.</div>
+      </details>
+      <details>
+        <summary>Czy muszę znać automatyzacje?</summary>
+        <div class="omai-faq__a">Nie. Program wprowadza w ich logikę od podstaw.</div>
+      </details>
+      <details>
+        <summary>Czy będziemy programować?</summary>
+        <div class="omai-faq__a">Nie.</div>
+      </details>
+      <details>
+        <summary>Czy podczas programu zbuduję automatyzację?</summary>
+        <div class="omai-faq__a">Program pokazuje podstawy i pomaga wybrać proces do automatyzacji. Nie jest to techniczny kurs Make, n8n ani Power Automate.</div>
+      </details>
+      <details>
+        <summary>Czy program jest tylko dla Office Managerów?</summary>
+        <div class="omai-faq__a">Tak. Ta edycja została przygotowana specjalnie dla Office Managerów i osób pełniących równoważną rolę operacyjną w biurze.</div>
+      </details>
+      <details>
+        <summary>Czy sesja z prawnikiem jest w cenie?</summary>
+        <div class="omai-faq__a">Tak.</div>
+      </details>
+      <details>
+        <summary>Czy mogę kupić udział na firmę?</summary>
+        <div class="omai-faq__a">Tak. Wystawiana jest faktura VAT.</div>
+      </details>
+      <details>
+        <summary>Ilu uczestników będzie w grupie?</summary>
+        <div class="omai-faq__a">Maksymalnie 10.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     18. FINALNE CTA
+     ========================================================= -->
+<section class="omai-section omai-final">
+  <div class="omai-wrap omai-wrap--narrow" style="text-align:center">
+    <h2>Nie potrzebujesz kolejnych 20 narzędzi AI. Potrzebujesz wiedzieć, jak dobrze wykorzystać te, które mogą realnie pomóc Ci w pracy.</h2>
+    <p class="omai-lead" style="margin-top:22px">Przejdź od pojedynczych promptów do własnego Asystenta AI, powtarzalnych workflow i świadomego wyboru procesów do automatyzacji.</p>
+
+    <p class="omai-eyebrow" style="margin-top:36px;margin-bottom:0">Office Manager AI Operations</p>
+    <div class="omai-final__chips">
+      <span class="omai-chip">4 tygodnie</span>
+      <span class="omai-chip">4 × 2h LIVE</span>
+      <span class="omai-chip">+ 1h z prawnikiem</span>
+      <span class="omai-chip">maksymalnie 10 osób</span>
+      <span class="omai-chip omai-chip--accent">1490 zł netto</span>
+    </div>
+
+    <div class="omai-cta-row omai-cta-row--center">
+      <a class="omai-btn omai-btn--primary" href="#zapisy">Rezerwuję miejsce</a>
+      <a class="omai-btn omai-btn--ghost" href="#zapisy">Chcę wziąć udział</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     19. FORMULARZ ZGŁOSZENIOWY
+     UWAGA WDROŻENIOWA: formularz nie ma podpiętego backendu.
+     W WordPressie podmień <form id="omai-form"> na shortcode
+     używanego wtyczki (np. Contact Form 7 / WPForms / Gravity Forms)
+     albo ustaw action="" na własny endpoint. Dopóki backend nie jest
+     podłączony, formularz wyświetla wyłącznie potwierdzenie kolejnego
+     kroku – nie obiecuje płatności ani rezerwacji miejsca.
+     ========================================================= -->
+<section class="omai-section" id="zapisy">
+  <div class="omai-wrap omai-wrap--narrow">
+    <div class="omai-head omai-head--center">
+      <p class="omai-eyebrow">Zgłoszenie</p>
+      <h2>Zarezerwuj miejsce</h2>
+      <p class="omai-lead">Wypełnij formularz, a wrócimy do Ciebie z potwierdzeniem, terminami najbliższej edycji i szczegółami zapisu.</p>
+    </div>
+
+    <form class="omai-form" id="omai-form" novalidate>
+      <div class="omai-form__fields">
+        <div class="omai-field">
+          <label for="omai-name">Imię i nazwisko</label>
+          <input type="text" id="omai-name" name="imie_nazwisko" autocomplete="name" required placeholder="Anna Kowalska">
+        </div>
+        <div class="omai-field">
+          <label for="omai-role">Stanowisko</label>
+          <input type="text" id="omai-role" name="stanowisko" autocomplete="organization-title" required placeholder="Office Manager">
+        </div>
+        <div class="omai-field">
+          <label for="omai-company">Firma</label>
+          <input type="text" id="omai-company" name="firma" autocomplete="organization" required placeholder="Nazwa firmy">
+        </div>
+        <div class="omai-field">
+          <label for="omai-email">E-mail</label>
+          <input type="email" id="omai-email" name="email" autocomplete="email" required placeholder="anna.kowalska@firma.pl">
+        </div>
+        <div class="omai-field">
+          <label for="omai-phone">Telefon <span>(opcjonalnie)</span></label>
+          <input type="tel" id="omai-phone" name="telefon" autocomplete="tel" placeholder="+48 600 000 000">
+        </div>
+        <div class="omai-field">
+          <label for="omai-nip">NIP firmy <span>(opcjonalnie – potrzebny dopiero przy fakturze)</span></label>
+          <input type="text" id="omai-nip" name="nip" inputmode="numeric" placeholder="0000000000">
+        </div>
+
+        <div class="omai-consent">
+          <input type="checkbox" id="omai-consent" name="zgoda" required>
+          <label for="omai-consent">Wyrażam zgodę na kontakt w sprawie zgłoszenia na program OFFICE MANAGER AI OPERATIONS oraz na przetwarzanie moich danych osobowych w tym celu. Zgoda jest wymagana. Szczegóły znajdziesz w <a href="/polityka-prywatnosci/">polityce prywatności</a>.</label>
+        </div>
+
+        <button type="submit" class="omai-btn omai-btn--primary">Rezerwuję miejsce</button>
+        <p class="omai-small" style="margin-top:14px;text-align:center">Wysłanie formularza nie jest równoznaczne z płatnością. To zgłoszenie chęci udziału – potwierdzenie miejsca wysyłamy mailem.</p>
+      </div>
+
+      <div class="omai-form__ok" role="status" aria-live="polite">
+        <h3>Dziękujemy, mamy Twoje zgłoszenie</h3>
+        <p>Grupa liczy maksymalnie 10 osób, więc każde zgłoszenie przeglądamy indywidualnie.</p>
+        <p><strong>Co dalej:</strong></p>
+        <ol>
+          <li>Odzywamy się mailowo z potwierdzeniem zgłoszenia.</li>
+          <li>Przesyłamy terminy najbliższej edycji i szczegóły płatności oraz faktury.</li>
+          <li>Po potwierdzeniu miejsca otrzymasz krótką ankietę, dzięki której dopasujemy przykłady do Twojej pracy.</li>
+        </ol>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- stopka sekcji: SEO-owe podsumowanie w naturalnym języku -->
+<section class="omai-section omai-section--tight">
+  <div class="omai-wrap omai-wrap--narrow" style="text-align:center">
+    <p class="omai-small">OFFICE MANAGER AI OPERATIONS to szkolenie AI dla Office Managera prowadzone online przez Office Influencers. Program pokazuje, jak wygląda sztuczna inteligencja w administracji i automatyzacja pracy biurowej w praktyce — bez technicznego żargonu.</p>
+  </div>
+</section>
+
+<!-- sticky CTA – tylko mobile -->
+<div class="omai-sticky">
+  <a class="omai-btn omai-btn--primary" href="#zapisy">Rezerwuję miejsce</a>
+</div>
+
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "OFFICE MANAGER AI OPERATIONS",
+  "description": "Praktyczny 4-tygodniowy program AI dla Office Managerów. Własny Asystent AI, workflow, weryfikacja informacji, podstawy automatyzacji i sesja z prawnikiem.",
+  "inLanguage": "pl",
+  "url": "https://www.officeinfluencers.pl/ai-office-manager/",
+  "provider": {
+    "@type": "Organization",
+    "name": "Office Influencers",
+    "url": "https://www.officeinfluencers.pl/"
+  },
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Office Manager"
+  },
+  "teaches": [
+    "AI w pracy Office Managera",
+    "Budowa własnego Asystenta AI",
+    "Weryfikacja informacji i ograniczanie ryzyka halucynacji AI",
+    "Podstawy automatyzacji pracy biurowej"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "1490",
+    "priceCurrency": "PLN",
+    "category": "netto",
+    "availability": "https://schema.org/LimitedAvailability",
+    "url": "https://www.officeinfluencers.pl/ai-office-manager/#zapisy"
+  }
+}
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  /* płynne przewijanie do formularza / sekcji na tej samej stronie */
+  document.querySelectorAll('.omai a[href^="#"]').forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      var target = document.querySelector(link.getAttribute("href"));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      history.replaceState(null, "", link.getAttribute("href"));
+    });
+  });
+
+  /* Sticky CTA na mobile: pokazuje się dopiero po hero i chowa nad formularzem,
+     żeby nie dublować przycisku, który i tak jest na ekranie. */
+  document.body.classList.add("omai-has-sticky");
+  var sticky = document.querySelector(".omai-sticky");
+  var hero = document.querySelector(".omai-hero");
+  var signup = document.getElementById("zapisy");
+
+  if (sticky && hero && signup && "IntersectionObserver" in window) {
+    var pastHero = false, atForm = false;
+    var sync = function () {
+      sticky.classList.toggle("is-on", pastHero && !atForm);
+    };
+    new IntersectionObserver(function (entries) {
+      pastHero = !entries[0].isIntersecting;
+      sync();
+    }, { threshold: 0 }).observe(hero);
+    new IntersectionObserver(function (entries) {
+      atForm = entries[0].isIntersecting;
+      sync();
+    }, { threshold: 0 }).observe(signup);
+  } else if (sticky) {
+    sticky.classList.add("is-on");
+  }
+
+  /* obsługa formularza – bez podpiętego backendu pokazuje potwierdzenie
+     kolejnego kroku, nie potwierdza płatności ani rezerwacji */
+  var form = document.getElementById("omai-form");
+  if (!form) return;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    var missing = null;
+    form.querySelectorAll("[required]").forEach(function (field) {
+      var ok = field.type === "checkbox" ? field.checked : field.value.trim() !== "" && field.checkValidity();
+      field.setAttribute("aria-invalid", ok ? "false" : "true");
+      if (!ok && !missing) missing = field;
+    });
+
+    if (missing) {
+      missing.focus();
+      missing.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    form.classList.add("is-sent");
+    form.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+})();
+</script>
+</body>
+</html>
