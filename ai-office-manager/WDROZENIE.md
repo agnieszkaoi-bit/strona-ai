@@ -13,7 +13,7 @@ ai-office-manager/
 └── dane/         ← powstaje sam: zgloszenia.csv + własny .htaccess
 ```
 
-Poza Google Fonts (Plus Jakarta Sans) strona nie ma żadnych zależności
+Poza Google Fonts (Inter) strona nie ma żadnych zależności
 zewnętrznych — żadnych bibliotek, frameworków ani buildu.
 
 ## Publikacja na Zenboxie
