@@ -175,7 +175,30 @@
     #fff;
   padding:clamp(44px,6vw,80px) 0 clamp(52px,6vw,88px);
 }
+.omai-hero__grid{display:grid;gap:clamp(32px,5vw,56px);grid-template-columns:1fr;align-items:center}
 .omai-hero__inner{max-width:880px}
+.omai-hero__photo{position:relative;margin:0;max-width:420px}
+.omai-hero__photo::before{
+  content:"";position:absolute;inset:-20px -20px -12px;border-radius:38px;z-index:0;
+  background:linear-gradient(150deg,rgba(214,0,110,.12),rgba(64,120,220,.12));
+  filter:blur(22px);
+}
+.omai-hero__photo img{
+  position:relative;z-index:1;width:100%;height:auto;display:block;
+  border-radius:var(--radius-lg);box-shadow:var(--shadow-md);
+}
+.omai-hero__photo figcaption{
+  position:absolute;z-index:2;left:14px;bottom:14px;
+  background:linear-gradient(140deg,rgba(255,255,255,.92),rgba(255,255,255,.74));
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.95);box-shadow:var(--shadow-sm);
+  border-radius:14px;padding:10px 16px;
+  font-size:14px;font-weight:800;color:var(--ink);line-height:1.25;letter-spacing:-.01em;
+}
+.omai-hero__photo figcaption span{
+  display:block;font-size:11.5px;font-weight:700;color:var(--magenta);
+  letter-spacing:.1em;text-transform:uppercase;margin-top:3px;
+}
 .omai-hero h1{margin-bottom:20px}
 .omai-hero__sub{
   font-size:clamp(18px,2.3vw,23px);font-weight:600;color:var(--ink);
@@ -285,10 +308,10 @@
 /* ---------- prowadząca ---------- */
 .omai-author{display:grid;gap:32px;grid-template-columns:1fr;align-items:start}
 .omai-author__photo{
-  border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--silver);
+  margin:0;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--silver);
   background:var(--silver-soft);box-shadow:var(--shadow-sm);
 }
-.omai-author__photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.omai-author__photo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;display:block}
 .omai-quote{
   margin-top:26px;padding:26px 28px;border-radius:var(--radius);
   background:var(--silver-soft);font-size:clamp(17px,2vw,19px);line-height:1.55;
@@ -441,6 +464,11 @@
   .omai-facts{grid-template-columns:repeat(4,minmax(0,1fr))}
   .omai-fact{flex-direction:column;align-items:flex-start;gap:9px}
 }
+@media (min-width:900px){
+  .omai-hero__grid{grid-template-columns:minmax(0,1fr) 400px}
+  .omai-hero__inner{max-width:none}
+  .omai-facts{grid-template-columns:repeat(2,minmax(0,1fr));max-width:520px}
+}
 @media (min-width:860px){
   .omai-grid{gap:22px}
   .omai-grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -488,6 +516,7 @@
      ========================================================= -->
 <header class="omai-hero">
   <div class="omai-wrap">
+   <div class="omai-hero__grid">
     <div class="omai-hero__inner">
       <p class="omai-eyebrow">Program online &bull; 4 tygodnie &bull; tylko dla Office Managerów</p>
       <h1>OFFICE MANAGER<br>AI OPERATIONS</h1>
@@ -506,6 +535,19 @@
       </div>
       <p class="omai-small omai-hero__fine">Możliwość finansowania udziału przez pracodawcę &bull; Faktura VAT</p>
     </div>
+
+    <figure class="omai-hero__photo">
+      <picture>
+        <source type="image/webp"
+                srcset="img/agnieszka-korach-hero.webp 1x, img/agnieszka-korach-hero@2x.webp 2x">
+        <img src="img/agnieszka-korach-hero.jpg"
+             srcset="img/agnieszka-korach-hero.jpg 1x, img/agnieszka-korach-hero@2x.jpg 2x"
+             width="410" height="513" fetchpriority="high" decoding="async"
+             alt="Agnieszka Korach – trenerka biznesu i psycholog, prowadząca program OFFICE MANAGER AI OPERATIONS, podczas wystąpienia na konferencji">
+      </picture>
+      <figcaption>Agnieszka Korach<span>prowadzi program</span></figcaption>
+    </figure>
+   </div>
   </div>
 </header>
 
@@ -894,23 +936,20 @@
 
 <!-- =========================================================
      13. PROWADZĄCA
-     ZDJĘCIE: podmień poniższy blok .omai-todo na:
-     <div class="omai-author__photo">
-       <img src="https://www.officeinfluencers.pl/wp-content/uploads/…/agnieszka-korach.jpg"
-            alt="Agnieszka Korach – trenerka biznesu i psycholog, prowadząca program AI dla Office Managera"
-            width="680" height="850" loading="lazy">
-     </div>
-     (użyj istniejącego pliku z Biblioteki mediów WordPress)
      ========================================================= -->
 <section class="omai-section">
   <div class="omai-wrap">
     <div class="omai-author">
-      <div>
-        <div class="omai-todo" style="aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:center">
-          <strong>Miejsce na zdjęcie Agnieszki Korach</strong>
-          Wstaw istniejące zdjęcie z Biblioteki mediów Office Influencers (proporcje 4:5). Gotowy kod <code>&lt;img&gt;</code> znajduje się w komentarzu HTML nad tą sekcją.
-        </div>
-      </div>
+      <figure class="omai-author__photo">
+        <picture>
+          <source type="image/webp"
+                  srcset="img/agnieszka-korach-portret.webp 1x, img/agnieszka-korach-portret@2x.webp 2x">
+          <img src="img/agnieszka-korach-portret.jpg"
+               srcset="img/agnieszka-korach-portret.jpg 1x, img/agnieszka-korach-portret@2x.jpg 2x"
+               width="340" height="425" loading="lazy" decoding="async"
+               alt="Agnieszka Korach – trenerka biznesu i psycholog, prowadząca program OFFICE MANAGER AI OPERATIONS, podczas wystąpienia na konferencji">
+        </picture>
+      </figure>
 
       <div>
         <p class="omai-eyebrow">Prowadząca</p>

@@ -7,6 +7,7 @@ na PHP, reszta to zwykły HTML.
 ai-office-manager/
 ├── index.html    ← cała strona (HTML + CSS + JS w jednym pliku)
 ├── wyslij.php    ← obsługa formularza: zapis do CSV + wysyłka maila
+├── img/          ← zdjęcia Agnieszki (hero + portret), jpg i webp, 1x i 2x
 ├── sprawdz.php   ← jednorazowa diagnostyka, USUŃ PO SPRAWDZENIU
 ├── .htaccess     ← kodowanie, kompresja, cache, nagłówki, blokada plików .csv
 └── dane/         ← powstaje sam: zgloszenia.csv + własny .htaccess
@@ -128,7 +129,6 @@ Katalog `dane/` jest w `.gitignore`, więc zgłoszenia nigdy nie trafią do repo
 | Element | Gdzie | Co zrobić |
 |---|---|---|
 | Adres nadawcy | `wyslij.php`, stała `NADAWCA` | Załóż skrzynkę/alias w domenie strony i wpisz tutaj. Bez tego maile mogą nie docierać. |
-| Zdjęcie Agnieszki Korach | sekcja „Prowadzi Agnieszka Korach" | Wgraj plik obok `index.html` i podmień blok `.omai-todo` na `<img>`. Gotowy kod jest w komentarzu HTML nad sekcją. |
 | Opinie | sekcja „Co mówią uczestniczki…" | Wklej 2–3 **prawdziwe** opinie z istniejących stron Office Influencers. Szablon karty w komentarzu HTML nad sekcją. Zachowaj dokładnie imię, nazwisko, stanowisko i firmę. |
 | Terminy edycji | sekcja cenowa, blok „Terminy" | Wstaw daty 4 spotkań i sesji z prawnikiem w miejsce „termin do potwierdzenia". |
 | Logotypy klientów | pasek wiarygodności | Opcjonalnie zamień nazwy tekstowe (`<span class="omai-logo">`) na pliki logotypów. |
@@ -136,6 +136,20 @@ Katalog `dane/` jest w `.gitignore`, więc zgłoszenia nigdy nie trafią do repo
 | Adres strony | `index.html`, 4 miejsca | Podmień, jeśli landing stanie pod innym adresem niż `officeinfluencers.pl/ai-office-manager/`. |
 | Katalog na dane | `wyslij.php`, stała `KATALOG_DANYCH` | Rozważ przeniesienie poza `public_html` (patrz wyżej). |
 | `sprawdz.php` | serwer | Usuń po sprawdzeniu konfiguracji. |
+
+## Zdjęcia
+
+W katalogu `img/` są dwa kadry z tej samej sesji, każdy w jpg i webp, w wersji
+1x i 2x (`srcset`, przeglądarka sama wybiera):
+
+| Plik | Gdzie | Kadr |
+|---|---|---|
+| `agnieszka-korach-hero` | hero, prawa kolumna | 4:5, sylwetka z mikrofonem |
+| `agnieszka-korach-portret` | sekcja „Prowadzi Agnieszka Korach" | 4:5, ciaśniejszy portret |
+
+Z oryginału wycięta została rozmyta ciemna plama po prawej stronie (głowa osoby
+na pierwszym planie). Jeśli będziesz podmieniać zdjęcia, zachowaj proporcje 4:5
+i te same nazwy plików — wtedy nie trzeba ruszać HTML-a.
 
 ## Źródła danych użytych na stronie
 
