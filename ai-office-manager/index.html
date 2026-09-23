@@ -57,6 +57,7 @@
 }
 .omai p{margin:0}
 .omai ul{margin:0;padding:0;list-style:none}
+.omai blockquote,.omai figure{margin:0}
 .omai a{color:var(--magenta);text-decoration:none}
 .omai a:hover{text-decoration:underline}
 
@@ -177,14 +178,15 @@
   border-radius:var(--radius-lg);box-shadow:var(--shadow-md);
 }
 .omai-hero__photo figcaption{
-  position:absolute;z-index:2;left:14px;bottom:14px;
+  position:absolute;z-index:2;left:clamp(10px,2.5%,14px);bottom:clamp(10px,2.5%,14px);
+  max-width:calc(100% - 20px);
   background:#fff;border:1px solid var(--silver);box-shadow:var(--shadow-sm);
-  border-radius:12px;padding:10px 16px;
-  font-size:14px;font-weight:700;color:var(--ink);line-height:1.25;letter-spacing:-.01em;
+  border-radius:12px;padding:clamp(8px,1.6vw,10px) clamp(12px,2.4vw,16px);
+  font-size:clamp(12.5px,1.4vw,14px);font-weight:700;color:var(--ink);line-height:1.25;letter-spacing:-.01em;
 }
 .omai-hero__photo figcaption span{
-  display:block;font-size:11.5px;font-weight:600;color:var(--magenta);
-  letter-spacing:.1em;text-transform:uppercase;margin-top:3px;
+  display:block;font-size:clamp(10.5px,1.2vw,11.5px);font-weight:600;color:var(--magenta);
+  letter-spacing:.09em;text-transform:uppercase;margin-top:3px;
 }
 .omai-hero h1{margin-bottom:20px}
 .omai-hero__sub{
@@ -433,6 +435,10 @@
   .omai-sticky{display:block}
   body.omai-has-sticky{padding-bottom:78px}
 }
+@media (min-width:640px){
+  /* zdjecie prowadzacej obok tekstu juz na waskich ekranach i w panelach podgladu */
+  .omai-author{grid-template-columns:minmax(170px,300px) 1fr;gap:clamp(24px,4vw,44px)}
+}
 @media (min-width:600px){
   .omai-grid--2{grid-template-columns:repeat(2,minmax(0,1fr))}
   .omai-grid--3{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -440,10 +446,11 @@
   .omai-facts{grid-template-columns:repeat(4,minmax(0,1fr))}
   .omai-fact{flex-direction:column;align-items:flex-start;gap:9px}
 }
-@media (min-width:900px){
-  .omai-hero__grid{grid-template-columns:minmax(0,1fr) 400px}
+@media (min-width:760px){
+  .omai-hero__grid{grid-template-columns:minmax(0,1fr) clamp(250px,32vw,400px);align-items:center}
   .omai-hero__inner{max-width:none}
   .omai-facts{grid-template-columns:repeat(2,minmax(0,1fr));max-width:520px}
+  .omai-hero__photo{max-width:none}
 }
 @media (min-width:860px){
   .omai-grid{gap:22px}
