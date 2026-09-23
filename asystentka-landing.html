@@ -48,7 +48,7 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
-[id]{scroll-margin-top:96px}
+[id]{scroll-margin-top:128px}
 html{scroll-behavior:smooth}
 body{
   margin:0;
@@ -103,9 +103,26 @@ a{color:inherit}
   font-size:1rem;font-weight:600;text-decoration:none;
 }
 .skip:focus{left:0}
-.site-header{
-  position:sticky;top:env(safe-area-inset-top,0px);z-index:60;
-  background:var(--white);border-bottom:1px solid var(--rule);
+.przyklejone{position:sticky;top:env(safe-area-inset-top,0px);z-index:60}
+.site-header{background:var(--white);border-bottom:1px solid var(--rule)}
+
+/* pasek z terminem zapisów: widoczny przez cały czas, żeby nie trzeba
+   było wracać na górę po decyzji */
+.topbar{background:var(--navy);color:#fff}
+.topbar__in{
+  display:flex;align-items:center;justify-content:center;gap:8px 18px;flex-wrap:wrap;
+  padding:9px var(--gutter);font-size:.9375rem;line-height:1.3
+}
+.topbar__label{color:rgba(255,255,255,.78)}
+.topbar__czas{font-weight:600;color:var(--yellow);font-variant-numeric:tabular-nums}
+.topbar__cta{
+  color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px;
+  text-decoration-color:rgba(255,255,255,.45)
+}
+.topbar__cta:hover{text-decoration-color:var(--yellow)}
+@media(max-width:560px){
+  .topbar__in{gap:6px 12px;padding:8px 16px;font-size:.875rem}
+  .topbar__label{width:100%;text-align:center}
 }
 @supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .site-header{
@@ -802,6 +819,14 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 <a class="skip" href="#main">Przejdź do treści</a>
 <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
 
+<div class="przyklejone">
+<div class="topbar">
+  <div class="topbar__in">
+    <span class="topbar__label">Zapisy do 18 listopada 2026</span>
+    <span class="topbar__czas" id="tb-czas" aria-live="off">&nbsp;</span>
+    <a class="topbar__cta" href="#zapis">Zapisz się</a>
+  </div>
+</div>
 <header class="site-header">
   <div class="wrap bar">
     <a class="brand" href="https://www.officeinfluencers.pl/" aria-label="Office Influencers, strona główna">
@@ -815,11 +840,13 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
         <a href="#prowadzaca">Prowadząca</a>
         <a href="#cena">Cena</a>
         <a href="#faq">FAQ</a>
+        <a href="#in-house">Dla zespołów</a>
       </nav>
     </div>
     <a class="btn btn--primary btn--sm" href="#zapis">Zapisz się</a>
   </div>
 </header>
+</div>
 
 <main id="main">
 
@@ -2068,14 +2095,15 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   var DO_KIEDY = new Date('2026-11-18T23:59:59+01:00');
 
   var box = document.getElementById('countdown');
-  if (!box) return;
+  var pasek = document.getElementById('tb-czas');
+  if (!box && !pasek) return;
 
-  var pola = {
+  var pola = box ? {
     dni:  {b: document.getElementById('cd-dni'),  l: document.getElementById('cd-dni-l'),  formy: ['dzień', 'dni', 'dni']},
     godz: {b: document.getElementById('cd-godz'), l: document.getElementById('cd-godz-l'), formy: ['godzina', 'godziny', 'godzin']},
     min:  {b: document.getElementById('cd-min'),  l: document.getElementById('cd-min-l'),  formy: ['minuta', 'minuty', 'minut']},
     sek:  {b: document.getElementById('cd-sek'),  l: document.getElementById('cd-sek-l'),  formy: ['sekunda', 'sekundy', 'sekund']}
-  };
+  } : null;
 
   function odmien(n, formy){
     if (n === 1) return formy[0];
@@ -2090,13 +2118,28 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
   function tik(){
     var zostalo = DO_KIEDY - new Date();
-    if (zostalo <= 0){ box.hidden = true; return false; }
+    if (zostalo <= 0){
+      if (box) box.hidden = true;
+      if (pasek) pasek.textContent = 'zapisy zamknięte';
+      return false;
+    }
     var sek = Math.floor(zostalo / 1000);
-    ustaw(pola.dni,  Math.floor(sek / 86400));
-    ustaw(pola.godz, Math.floor(sek % 86400 / 3600));
-    ustaw(pola.min,  Math.floor(sek % 3600 / 60));
-    ustaw(pola.sek,  sek % 60);
-    box.hidden = false;
+    var dni  = Math.floor(sek / 86400);
+    var godz = Math.floor(sek % 86400 / 3600);
+    var min  = Math.floor(sek % 3600 / 60);
+
+    if (box){
+      ustaw(pola.dni,  dni);
+      ustaw(pola.godz, godz);
+      ustaw(pola.min,  min);
+      ustaw(pola.sek,  sek % 60);
+      box.hidden = false;
+    }
+    // w pasku bez sekund: mruganie co sekundę na górze ekranu męczy wzrok
+    if (pasek){
+      pasek.textContent = 'zostało ' + dni + ' ' + odmien(dni, ['dzień','dni','dni'])
+        + ' ' + godz + ' godz. ' + min + ' min.';
+    }
     return true;
   }
 
