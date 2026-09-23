@@ -43,7 +43,7 @@
   --shadow-sm:0 1px 2px rgba(11,37,69,.06);
   --shadow-md:0 16px 38px -24px rgba(11,37,69,.3);
   --gutter:clamp(20px,5vw,56px);
-  --section:clamp(52px,6vw,92px);
+  --section:clamp(42px,4.8vw,74px);
   --maxw:1240px;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -204,6 +204,8 @@ a{color:inherit}
 .hero__karta dd{margin:0;font-size:1rem;color:var(--ink);line-height:1.45}
 .hero__karta .cena{font-size:1.25rem;font-weight:700;color:var(--navy);letter-spacing:-.02em}
 .hero__karta .cena small{display:block;margin-top:3px;font-size:1rem;font-weight:400;color:var(--muted)}
+.hero__dojazd{margin-top:14px;font-size:.9375rem}
+.hero__dojazd a{color:var(--navy-600);text-underline-offset:3px}
 .hero__incl{
   margin-top:20px;padding-top:18px;border-top:1px solid var(--rule);
   font-size:1rem;color:var(--muted);line-height:1.6
@@ -305,7 +307,7 @@ a{color:inherit}
 .venue__item dt{font-size:.9375rem;color:var(--muted);margin-bottom:8px}
 .venue__item dd{margin:0;font-size:1rem;color:var(--ink)}
 
-.day{margin-top:clamp(36px,3.8vw,58px)}
+.day{margin-top:clamp(28px,3vw,44px)}
 .day:first-of-type{margin-top:0}
 .day__head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;padding-bottom:22px;border-bottom:1px solid var(--rule);margin-bottom:clamp(32px,3.6vw,48px)}
 .day__tag{
@@ -315,8 +317,8 @@ a{color:inherit}
 .day__head h3{font-size:clamp(1.5rem,3.1vw,2.35rem);font-weight:700;letter-spacing:-.03em;color:var(--navy)}
 .modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(310px,100%),1fr));gap:clamp(22px,2.6vw,32px)}
 .module{
-  display:flex;flex-direction:column;gap:22px;
-  padding:clamp(26px,2.6vw,32px);background:var(--white);
+  display:flex;flex-direction:column;gap:14px;
+  padding:clamp(18px,2vw,26px);background:var(--white);
   border:1px solid var(--rule);border-radius:var(--r-md);
   transition:border-color .22s ease;
 }
@@ -378,9 +380,9 @@ a{color:inherit}
     .choices{grid-template-columns:1fr}
   }
 }
-.fields{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}
 @media(max-width:620px){.fields{grid-template-columns:1fr}}
-.field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
 .field--full{grid-column:1/-1}
 .field label,.legend{font-size:1.0625rem;font-weight:500;color:var(--navy)}
 .req{color:#B3261E;margin-left:3px}
@@ -597,7 +599,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .demo h3{font-size:1.25rem;color:var(--navy);margin-bottom:10px}
 .demo__note{margin-top:22px;padding-top:18px;border-top:1px solid var(--rule-soft);font-size:1rem;color:var(--muted)}
 
-.steps{list-style:none;margin:0;padding:0;display:grid;gap:26px;counter-reset:krok;max-width:880px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:18px;counter-reset:krok;max-width:880px}
 .steps li{counter-increment:krok;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
 .steps li::before{
   content:counter(krok);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;
@@ -606,7 +608,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .steps b{display:block;color:var(--navy);font-weight:600;font-size:1.0625rem;margin-bottom:5px}
 .steps p{font-size:1.0625rem;color:var(--muted)}
 
-.hr-note{margin-top:clamp(40px,4vw,60px);padding:clamp(26px,3vw,38px);background:var(--tint);border-radius:var(--r-lg)}
+.hr-note{margin-top:clamp(28px,3vw,44px);padding:clamp(20px,2.4vw,30px);background:var(--tint);border-radius:var(--r-lg)}
 .hr-note h3{font-size:1.1875rem;color:var(--navy);margin-bottom:14px}
 .hr-note p{font-size:1.0625rem;color:var(--muted);line-height:1.6}
 .hr-note p+p{margin-top:12px}
@@ -650,7 +652,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 .card{
   background:var(--white);border:1px solid var(--rule);border-radius:var(--r-lg);
-  padding:clamp(22px,2.3vw,30px);display:flex;flex-direction:column;gap:12px;
+  padding:clamp(18px,1.9vw,24px);display:flex;flex-direction:column;gap:10px;
   transition:border-color .25s ease,transform .25s ease
 }
 .card:hover{border-color:var(--navy-400);transform:translateY(-2px)}
@@ -703,9 +705,9 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 /* ---------- przepływ: sytuacja → szkolenie → efekt ---------- */
 .flow{display:grid;gap:clamp(14px,1.6vw,22px)}
 .flow__row{
-  display:grid;gap:12px;align-items:stretch;
+  display:grid;gap:10px;align-items:stretch;
   grid-template-columns:1fr;
-  padding:clamp(18px,2vw,26px);
+  padding:clamp(15px,1.7vw,22px);
   border:1px solid var(--rule);border-radius:var(--r-lg);background:var(--white);
   transition:border-color .3s ease
 }
@@ -722,7 +724,8 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .flow__stage--teraz p{color:var(--ink)}
 .flow__stage--efekt .flow__tag{color:var(--navy)}
 .flow__stage--efekt p{color:var(--navy);font-weight:500}
-.flow__arrow{display:grid;place-items:center;color:var(--rule)}
+.flow__arrow{display:none;place-items:center;color:var(--rule)}
+@media(min-width:900px){.flow__arrow{display:grid}}
 .flow__arrow svg{width:22px;height:22px;transform:rotate(90deg)}
 @media(min-width:900px){.flow__arrow svg{transform:none}}
 .js .flow__row .flow__stage,.js .flow__row .flow__arrow{opacity:0;transform:translateY(10px)}
@@ -840,6 +843,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
         <div class="rzad"><dt>Godziny</dt><dd>I dzień 10.00–17.00<br>II dzień 9.00–16.00</dd></div>
         <div class="rzad"><dt>Cena</dt><dd class="cena">2 100 zł netto<small>2 583 zł brutto za osobę</small></dd></div>
       </dl>
+      <p class="hero__dojazd"><a href="https://ogrodowa58.com.pl/lokalizacja/" target="_blank" rel="noopener">Dojazd i parking</a></p>
       <p class="hero__incl"><b>W cenie:</b> warsztaty, 12 edytowalnych narzędzi, biblioteka promptów AI i 60-minutowy grupowy follow-up online po około 30 dniach.</p>
     </aside>
   </div>
@@ -1241,13 +1245,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
             <p>Skopiuj gotowe uzasadnienie z terminem, kosztem i tym, co wnosisz po szkoleniu.</p>
           </div>
           <a class="btn btn--yellow" href="#uzasadnienie">Zobacz uzasadnienie</a>
-        </div>
-        <dl class="venue reveal" style="margin-top:clamp(28px,3vw,40px)">
-          <div class="venue__item"><dt>Termin</dt><dd>19–20 listopada 2026 r.</dd></div>
-          <div class="venue__item"><dt>Miejsce</dt><dd>Centrum Biznesowe Ogrodowa 58<br>ul. Ogrodowa 58, Warszawa</dd></div>
-          <div class="venue__item"><dt>Godziny</dt><dd>pierwszy dzień 10.00–17.00<br>drugi dzień 9.00–16.00</dd></div>
-        </dl>
-      </div>
+        </div>      </div>
     </div>
   </div>
 </section>
@@ -1287,12 +1285,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       </div>
     </div>
     <div class="btn-row"><a class="btn btn--yellow" href="#zapis">Zapisz się</a></div>
-    <div class="facts">
-      <div class="fact"><b>Termin</b><span>19–20 listopada 2026</span></div>
-      <div class="fact"><b>Miejsce</b><span>Warszawa, Centrum Biznesowe Ogrodowa 58</span></div>
-      <div class="fact"><b>Godziny</b><span>I dzień 10.00–17.00<br>II dzień 9.00–16.00</span></div>
-      <div class="fact"><b>Cena</b><span>2 100 zł netto / os.</span></div>
-    </div>
   </div>
 </section>
 
@@ -1476,24 +1468,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
         <summary>Czy otrzymam wsparcie po szkoleniu?</summary>
         <div class="answer">Tak. Po około 30 dniach odbędzie się grupowy follow-up online trwający 60 minut. Omówimy postępy, pytania i trudności związane z wdrażaniem rozwiązań. Spotkanie jest wliczone w cenę szkolenia.</div>
       </details>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="miejsce">
-  <div class="wrap">
-    <div class="head">
-      <div class="eyebrow">Miejsce</div>
-      <h2 class="h2">Centrum Biznesowe Ogrodowa 58</h2>
-      <p class="lede">Szkolenie odbywa się w Warszawie, przy ul. Ogrodowej 58.</p>
-    </div>
-    <dl class="venue reveal">
-      <div class="venue__item"><dt>Adres</dt><dd>ul. Ogrodowa 58<br>Warszawa</dd></div>
-      <div class="venue__item"><dt>Termin</dt><dd>19–20 listopada 2026</dd></div>
-      <div class="venue__item"><dt>Godziny</dt><dd>I dzień 10.00–17.00<br>II dzień 9.00–16.00</dd></div>
-    </dl>
-    <div class="btn-row">
-      <a class="btn btn--ghost" href="https://ogrodowa58.com.pl/lokalizacja/" target="_blank" rel="noopener">Dojazd i parking</a>
     </div>
   </div>
 </section>
