@@ -295,7 +295,7 @@ const wierszeCen = [1, 2, 3, 4, 5].map((n) => {
   return new TableRow({
     children: [
       komTekst(n === 5 ? '5 osób i więcej' : (n === 1 ? '1 osoba' : n + ' osoby'), { szer: 2600 }),
-      komTekst((n >= 3 ? 'tak, 5% od 3. osoby' : '—'), { szer: 2760, color: n >= 3 ? GRANAT_JASNY : SZARY }),
+      komTekst((n >= 3 ? 'tak, 5% od 3. osoby' : 'brak'), { szer: 2760, color: n >= 3 ? GRANAT_JASNY : SZARY }),
       komTekst((n === 5 ? 'od ' : '') + zl(netto), { szer: 2000, align: AlignmentType.RIGHT, bold: true }),
       komTekst((n === 5 ? 'od ' : '') + zl(brutto), { szer: 2000, align: AlignmentType.RIGHT, color: SZARY }),
     ],
