@@ -63,7 +63,13 @@ const OKNO_LIMITU     = 3600;
 
 const LIMIT_POWTOR = 2;
 
-const MIN_CZAS_MS = 3000;
+/*
+ * Bot, który nie wykonuje JavaScriptu, zostawia w tym polu zero i wpada
+ * w pułapkę przy każdym progu. Próg powyżej zera dotyczy więc wyłącznie
+ * prawdziwych przeglądarek oraz agentów wypełniających formularz za
+ * człowieka, a ci bywają szybsi od niego.
+ */
+const MIN_CZAS_MS = 1500;
 
 const PLATNICY      = ['firma', 'osoba_prywatna'];
 
