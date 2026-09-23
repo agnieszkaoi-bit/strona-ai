@@ -669,6 +669,17 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .card--plain{background:transparent;border:0;border-top:1px solid var(--rule);border-radius:0;padding:22px 0 0}
 .card--plain:hover{transform:none;border-color:var(--rule);border-top-color:var(--navy-400)}
 .card--slim{padding-block:clamp(18px,1.8vw,22px);justify-content:center}
+
+/* kafelek, w którym liczba jest treścią, nie podpisem */
+.card--liczba{gap:6px}
+.card--liczba .liczba{
+  display:block;font-size:clamp(2.6rem,5.2vw,3.9rem);font-weight:700;
+  line-height:1;letter-spacing:-.04em;color:var(--navy);
+  font-variant-numeric:tabular-nums
+}
+.card--liczba .liczba small{font-size:.44em;font-weight:600;letter-spacing:-.01em;margin-left:.06em}
+.card--liczba h3{font-size:1.125rem;margin-top:2px}
+.card--navy.card--liczba .liczba{color:var(--yellow)}
 .card--slim h3{font-size:1rem}
 
 /* zdanie prowadzące w kafelku, większe od reszty */
@@ -1156,24 +1167,24 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       </div>
     </div>
     <div class="bento reveal">
-      <article class="card span-4">
-        <span class="card__n">75%</span>
+      <article class="card card--liczba span-4">
+        <span class="liczba">75<small>%</small></span>
         <h3>czasu na praktykę</h3>
         <p>Symulacje, ćwiczenia z AI i praca na sytuacjach uczestniczek i uczestników.</p>
       </article>
-      <article class="card span-4">
-        <span class="card__n">12</span>
+      <article class="card card--liczba span-4">
+        <span class="liczba">12</span>
         <h3>narzędzi w wersji do edycji</h3>
         <p>Materiały, które dostosujesz do swojej pracy, m.in. mapa celów, mapa decyzji i szablon rekomendacji.</p>
       </article>
-      <article class="card span-4">
-        <span class="card__n">90 DNI</span>
+      <article class="card card--liczba span-4">
+        <span class="liczba">90<small> dni</small></span>
         <h3>plan działania</h3>
         <p>Wybierzesz zmiany do omówienia z przełożonym i zaplanujesz kolejność ich wdrażania. Nie musisz zmieniać wszystkich zasad współpracy jednocześnie.</p>
       </article>
-      <article class="card card--navy span-12">
-        <span class="card__n">PO 30 DNIACH · 60 MINUT</span>
-        <h3>Grupowy follow-up online</h3>
+      <article class="card card--navy card--liczba span-12">
+        <span class="liczba">60<small> minut</small></span>
+        <h3>Grupowy follow-up online, po około 30 dniach</h3>
         <p>Omówimy, co udało się wdrożyć, gdzie pojawiły się trudności i co warto skorygować. Będzie czas na pytania i wymianę doświadczeń. Spotkanie jest wliczone w cenę szkolenia.</p>
       </article>
     </div>
@@ -1312,8 +1323,9 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
             <div class="field">
               <label for="f-phone">Telefon</label>
-              <input type="tel" id="f-phone" name="telefon" autocomplete="tel" inputmode="tel" aria-describedby="h-phone">
+              <input type="tel" id="f-phone" name="telefon" autocomplete="tel" inputmode="tel" aria-describedby="h-phone e-phone">
               <p class="hint" id="h-phone">Dzwonię tylko w sprawie tego zgłoszenia.</p>
+              <p class="err" id="e-phone" role="alert"></p>
             </div>
 
             <div class="field">
@@ -1838,6 +1850,31 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     });
   }
 
+  /* NIP ma cyfrę kontrolną. Suma dziewięciu pierwszych cyfr pomnożonych
+     przez wagi, modulo 11, musi dać cyfrę dziesiątą. Dzięki temu literówkę
+     widać od razu, bez pytania rejestru. */
+  var WAGI_NIP=[6,5,7,2,3,4,5,6,7];
+  function nipPoprawny(cyfry){
+    if(cyfry.length!==10) return false;
+    if(/^(\d)\1{9}$/.test(cyfry)) return false;
+    var suma=0;
+    for(var i=0;i<9;i++) suma+=WAGI_NIP[i]*(+cyfry[i]);
+    var kontrolna=suma%11;
+    return kontrolna!==10 && kontrolna===(+cyfry[9]);
+  }
+
+  /* Najczęstsze literówki w polskich domenach pocztowych. */
+  var LITEROWKI={
+    'gmial.com':'gmail.com','gmail.pl':'gmail.com','gmai.com':'gmail.com',
+    'gmail.con':'gmail.com','gmail.co':'gmail.com','gnail.com':'gmail.com',
+    'wp.p':'wp.pl','wp.com':'wp.pl','onet.p':'onet.pl','o2.p':'o2.pl',
+    'interia.p':'interia.pl','outlook.p':'outlook.com','hotmai.com':'hotmail.com'
+  };
+  function podpowiedzDomeny(adres){
+    var domena=(adres.split('@')[1]||'').toLowerCase();
+    return LITEROWKI[domena]||'';
+  }
+
   function validate(){
     var bad=null;
     function check(input,errId,ok,msg){
@@ -1846,13 +1883,37 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       if(!bad)bad=input;
     }
     var name=q('f-name'),email=q('f-email'),rodo=q('f-rodo');
-    check(name,'e-name',name.value.trim().length>2,'Podaj imię i nazwisko.');
-    check(email,'e-email',/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim()),'Podaj poprawny adres e-mail.');
+
+    var imie=name.value.trim().replace(/\s+/g,' ');
+    check(name,'e-name',
+      imie.length>2 && /\s/.test(imie) && /^[\p{L}][\p{L}\s.'-]*$/u.test(imie),
+      imie.length&&!/\s/.test(imie)
+        ? 'Podaj imię i nazwisko, nie samo imię.'
+        : 'Wpisz imię i nazwisko, bez cyfr i adresów.');
+
+    var adres=email.value.trim();
+    var literowka=podpowiedzDomeny(adres);
+    check(email,'e-email',
+      /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(adres) && !literowka,
+      literowka
+        ? 'Czy chodziło o adres w domenie ' + literowka + '?'
+        : 'Wpisz adres w formacie imie@firma.pl.');
+
+    var telefon=q('f-phone');
+    if(telefon && telefon.value.trim()!==''){
+      var cyfry=telefon.value.replace(/[^\d]/g,'').replace(/^48/,'');
+      check(telefon,'e-phone',cyfry.length===9,'Numer ma dziewięć cyfr, bez numeru kierunkowego kraju.');
+    } else if(telefon) setErr(telefon,'e-phone','');
+
     if(payerCompany.checked){
       var company=q('f-company'),nip=q('f-nip'),address=q('f-address');
-      check(company,'e-company',company.value.trim().length>1,'Podaj nazwę firmy.');
-      check(nip,'e-nip',nip.value.replace(/\D/g,'').length===10,'NIP ma 10 cyfr.');
-      check(address,'e-address',address.value.trim().length>5,'Podaj adres do faktury.');
+      check(company,'e-company',company.value.trim().length>1,'Wpisz nazwę firmy tak, jak ma być na fakturze.');
+      var cyfryNip=nip.value.replace(/\D/g,'');
+      check(nip,'e-nip',nipPoprawny(cyfryNip),
+        cyfryNip.length!==10
+          ? 'NIP ma dziesięć cyfr, bez myślników i spacji.'
+          : 'Ten numer nie jest poprawnym NIP-em. Sprawdź, czy cyfry się zgadzają.');
+      check(address,'e-address',address.value.trim().length>5,'Wpisz ulicę, kod pocztowy i miasto.');
     }
     check(rodo,'e-rodo',rodo.checked,'Bez tej zgody nie mogę przyjąć zgłoszenia.');
     if(bad){bad.focus();return false}
@@ -1867,7 +1928,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   }
 
   [['f-name','e-name'],['f-email','e-email'],['f-company','e-company'],
-   ['f-nip','e-nip'],['f-address','e-address'],['f-rodo','e-rodo']]
+   ['f-nip','e-nip'],['f-address','e-address'],['f-rodo','e-rodo'],['f-phone','e-phone']]
     .forEach(function(pair){clearOn(q(pair[0]),pair[1])});
 
   q('f-count').addEventListener('change',refreshSummary);

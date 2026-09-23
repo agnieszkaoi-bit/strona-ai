@@ -49,6 +49,15 @@ const OKNO_LIMITU     = 3600;
 const MIN_CZAS_MS = 3000;
 
 const PLATNICY      = ['firma', 'osoba_prywatna'];
+
+const DOMENY_JEDNORAZOWE = [
+    'mailinator.com', 'guerrillamail.com', 'guerrillamail.info', '10minutemail.com',
+    'tempmail.com', 'temp-mail.org', 'yopmail.com', 'trashmail.com', 'getnada.com',
+    'sharklasers.com', 'throwawaymail.com', 'maildrop.cc', 'dispostable.com',
+    'fakeinbox.com', 'mailnesia.com', 'mohmal.com', 'tempr.email', 'emailondeck.com',
+];
+
+const WAGI_NIP = [6, 5, 7, 2, 3, 4, 5, 6, 7];
 const MAX_UCZESTNIKOW = 20;
 
 header('Content-Type: application/json; charset=utf-8');
@@ -67,6 +76,62 @@ function odpowiedz(int $kod, string $komunikat): void
 function bezNaglowkow(string $wartosc): string
 {
     return trim(str_replace(["\r", "\n", "\0"], ' ', $wartosc));
+}
+
+/*
+ * NIP ma cyfrę kontrolną. Sprawdzenie jej wyłapuje literówkę bez pytania
+ * rejestru i odsiewa numery wpisane na chybił trafił.
+ */
+function nipPoprawny(string $cyfry): bool
+{
+    if (strlen($cyfry) !== 10 || preg_match('/^(\d)\1{9}$/', $cyfry)) {
+        return false;
+    }
+    $suma = 0;
+    for ($i = 0; $i < 9; $i++) {
+        $suma += WAGI_NIP[$i] * (int)$cyfry[$i];
+    }
+    $kontrolna = $suma % 11;
+    return $kontrolna !== 10 && $kontrolna === (int)$cyfry[9];
+}
+
+/** Ile adresów internetowych siedzi w tekście. */
+function ileOdnosnikow(string $tekst): int
+{
+    return preg_match_all('#(https?://|www\.|\[url|\bhref\s*=)#i', $tekst);
+}
+
+/*
+ * Pole na imię ma zawierać imię. Adres internetowy albo pismo spoza alfabetu
+ * łacińskiego oznacza wpis maszynowy, nie osobę zgłaszającą się na szkolenie
+ * prowadzone po polsku.
+ */
+function imieWygladaNaSpam(string $imie): bool
+{
+    if (ileOdnosnikow($imie) > 0) {
+        return true;
+    }
+    return (bool)preg_match('/[\p{Cyrillic}\p{Han}\p{Arabic}\p{Hebrew}\p{Hiragana}\p{Katakana}]/u', $imie);
+}
+
+/*
+ * Czy domena adresu ma serwer pocztowy. Wyłapuje literówki i domeny zmyślone.
+ *
+ * Najpierw upewniamy się, że odpytywanie DNS w ogóle na tym serwerze działa.
+ * Gdyby padło, sprawdzenie odrzucałoby każdy adres i formularz przestałby
+ * przyjmować zgłoszenia. W razie wątpliwości przepuszczamy.
+ */
+function domenaPrzyjmujePoczte(string $email): bool
+{
+    $domena = substr(strrchr($email, '@') ?: '', 1);
+    if ($domena === '' || !function_exists('checkdnsrr')) {
+        return true;
+    }
+    if (!checkdnsrr('gmail.com', 'MX')) {
+        error_log('Sprawdzanie DNS nie dziala, pomijam kontrole domeny adresu.');
+        return true;
+    }
+    return checkdnsrr($domena, 'MX') || checkdnsrr($domena, 'A');
 }
 
 function wartosc(string $klucz): string
@@ -153,12 +218,28 @@ if (!isset(ODBIORCY[$typ])) {
 
 $email = bezNaglowkow(wartosc('email'));
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    odpowiedz(400, 'Podaj poprawny adres e-mail.');
+    odpowiedz(400, 'Wpisz adres w formacie imie@firma.pl.');
+}
+
+$domena = strtolower(substr(strrchr($email, '@') ?: '', 1));
+if (in_array($domena, DOMENY_JEDNORAZOWE, true)) {
+    odpowiedz(400, 'Na ten adres nie wyślę potwierdzenia. Podaj adres, z którego korzystasz na co dzień.');
+}
+if (!domenaPrzyjmujePoczte($email)) {
+    odpowiedz(400, 'Nie znalazłam serwera pocztowego domeny ' . $domena . '. Sprawdź, czy adres nie ma literówki.');
 }
 
 $poleImienia = $typ === 'zgloszenie' ? 'imie_nazwisko' : 'imie';
-if (mb_strlen(wartosc($poleImienia)) < 2) {
-    odpowiedz(400, 'Podaj imię i nazwisko.');
+$imie = wartosc($poleImienia);
+if (mb_strlen($imie) < 2) {
+    odpowiedz(400, 'Wpisz imię i nazwisko.');
+}
+// Wpis maszynowy kwitujemy uprzejmie i nie wysyłamy nic dalej.
+if (imieWygladaNaSpam($imie)) {
+    odpowiedz(200, 'Dziękuję.');
+}
+if ($typ === 'zgloszenie' && !preg_match('/\s/', trim($imie))) {
+    odpowiedz(400, 'Wpisz imię i nazwisko, nie samo imię.');
 }
 
 if ($typ === 'zgloszenie') {
@@ -175,12 +256,20 @@ if ($typ === 'zgloszenie') {
     if (wartosc('platnik') === 'firma') {
         $nip = preg_replace('/\D/', '', wartosc('nip')) ?? '';
         if (strlen($nip) !== 10) {
-            odpowiedz(400, 'NIP ma 10 cyfr.');
+            odpowiedz(400, 'NIP ma dziesięć cyfr, bez myślników i spacji.');
+        }
+        if (!nipPoprawny($nip)) {
+            odpowiedz(400, 'Ten numer nie jest poprawnym NIP-em. Sprawdź, czy cyfry się zgadzają.');
         }
         if (wartosc('firma') === '' || wartosc('adres_faktury') === '') {
-            odpowiedz(400, 'Uzupełnij dane do faktury.');
+            odpowiedz(400, 'Uzupełnij nazwę firmy i adres do faktury.');
         }
     }
+}
+
+// Jeden odnośnik w uwagach bywa uzasadniony, kilka to rozsyłka reklamowa.
+if (ileOdnosnikow(wartosc('uwagi')) > 1) {
+    odpowiedz(200, 'Dziękuję.');
 }
 
 $linie = [];
