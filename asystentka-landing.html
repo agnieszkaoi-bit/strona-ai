@@ -171,8 +171,8 @@ a{color:inherit}
 @media(max-width:520px){.btn-row .btn{width:100%}}
 
 .hero{padding-block:clamp(52px,7vw,100px) clamp(60px,8vw,108px);border-top:0;overflow:hidden}
-.hero__grid{display:grid;grid-template-columns:1.5fr .5fr;gap:clamp(32px,4vw,60px);align-items:center}
-@media(max-width:920px){.hero__grid{grid-template-columns:1fr;gap:48px}}
+.hero__grid{display:grid;grid-template-columns:1fr;gap:clamp(32px,4vw,60px)}
+.hero__grid>div{max-width:52rem}
 .hero h1{font-size:clamp(2.6rem,6.8vw,5rem);font-weight:700;letter-spacing:-.04em;line-height:1.03}
 .hero h1 .mark{
   background:linear-gradient(transparent 56%,var(--yellow) 56%);
@@ -809,14 +809,6 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
         <a class="btn btn--ghost" href="#program">Zobacz program</a>
       </div>
       <p class="hero__note">W cenie: warsztaty, 12 edytowalnych narzędzi, biblioteka promptów AI i 60-minutowy grupowy follow-up online po około 30 dniach.</p>
-    </div>
-
-    <div class="portrait">
-      <div class="portrait__frame">
-        <div class="portrait__fallback">Miejsce na zdjęcie<br>/img/agnieszka-korach-hero.jpg</div>
-        <img src="img/agnieszka-korach-hero.jpg" alt="Agnieszka Korach, prowadząca szkolenie Asystentka – Partner w Zarządzaniu" width="800" height="1000" fetchpriority="high" decoding="async">
-      </div>
-      <p class="portrait__cap"><b>Agnieszka Korach</b><span>Office Influencers</span></p>
     </div>
   </div>
 </section>
