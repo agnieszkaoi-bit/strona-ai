@@ -171,11 +171,13 @@ a{color:inherit}
 @media(max-width:520px){.btn-row .btn{width:100%}}
 
 .hero{padding-block:clamp(52px,7vw,100px) clamp(60px,8vw,108px);border-top:0;overflow:hidden}
-.hero__grid{display:grid;grid-template-columns:1fr;gap:clamp(32px,4vw,60px)}
-.hero__grid>div{max-width:52rem}
-.hero h1{font-size:clamp(2.6rem,6.8vw,5rem);font-weight:700;letter-spacing:-.04em;line-height:1.03}
+.hero__grid{display:grid;grid-template-columns:1fr;gap:clamp(36px,4vw,56px);align-items:start}
+@media(min-width:1000px){
+  .hero__grid{grid-template-columns:1.32fr .68fr;gap:clamp(48px,5vw,88px)}
+}
+.hero h1{font-size:clamp(2.35rem,5vw,4rem);font-weight:700;letter-spacing:-.035em;line-height:1.06}
 .hero h1 .mark{
-  background:linear-gradient(transparent 56%,var(--yellow) 56%);
+  background:linear-gradient(transparent 70%,var(--yellow) 70%,var(--yellow) 93%,transparent 93%);
   background-size:0% 100%;background-repeat:no-repeat;
   animation:draw 1s cubic-bezier(.22,.61,.36,1) .35s forwards;
 }
@@ -184,14 +186,29 @@ a{color:inherit}
   background:linear-gradient(transparent 70%,var(--yellow) 70%,var(--yellow) 93%,transparent 93%);
   padding-inline:.06em
 }
-.hero h1 .tm{font-size:.26em;font-weight:500;letter-spacing:0;vertical-align:1.75em;margin-left:.34em}
-.hero__lede{margin-top:30px;font-size:clamp(1.0625rem,1.6vw,1.1875rem);color:var(--muted);max-width:52ch;line-height:1.62}
-.hero__meta{
-  margin-top:34px;padding-top:24px;border-top:1px solid var(--rule);
-  display:flex;flex-wrap:wrap;gap:8px 30px;
-  font-size:.9375rem;font-weight:500;color:var(--navy);
+.hero h1 .tm{font-size:.28em;font-weight:500;letter-spacing:0;vertical-align:1.1em;margin-left:.22em}
+.hero__lede{margin-top:26px;font-size:clamp(1.0625rem,1.5vw,1.1875rem);color:var(--muted);max-width:54ch;line-height:1.62}
+.hero__lede--mocny{color:var(--navy);font-weight:600;margin-top:30px}
+.hero .btn-row{margin-top:clamp(30px,3.4vw,42px)}
+
+/* karta z faktami wypełnia prawą kolumnę, na telefonie idzie pod treść */
+.hero__karta{
+  border:1px solid var(--rule);border-radius:var(--r-lg);background:var(--white);
+  padding:clamp(24px,2.6vw,32px);box-shadow:var(--shadow-sm)
 }
-.hero__note{margin-top:18px;font-size:.875rem;color:var(--muted)}
+@media(min-width:1000px){.hero__karta{margin-top:6px}}
+.hero__karta dl{margin:0;display:grid;gap:0}
+.hero__karta .rzad{padding:15px 0;border-top:1px solid var(--rule-soft);display:grid;gap:4px}
+.hero__karta .rzad:first-child{border-top:0;padding-top:0}
+.hero__karta dt{font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-400)}
+.hero__karta dd{margin:0;font-size:1rem;color:var(--ink);line-height:1.45}
+.hero__karta .cena{font-size:1.25rem;font-weight:700;color:var(--navy);letter-spacing:-.02em}
+.hero__karta .cena small{display:block;margin-top:3px;font-size:.875rem;font-weight:400;color:var(--muted)}
+.hero__incl{
+  margin-top:20px;padding-top:18px;border-top:1px solid var(--rule);
+  font-size:.875rem;color:var(--muted);line-height:1.6
+}
+.hero__incl b{color:var(--navy);font-weight:600}
 
 .portrait{position:relative;isolation:isolate}
 .hero .portrait{max-width:286px}
@@ -797,19 +814,23 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     <div>
       <div class="eyebrow">Szkolenie stacjonarne · 2 dni</div>
       <h1>Asystentka&nbsp;– Partner w&nbsp;Zarządzaniu&nbsp;I<br><span class="mark">Myśl jak Szef</span><span class="tm">™</span></h1>
-      <p class="hero__lede"><b style="font-weight:600;color:var(--navy)">Uzgodnij większą samodzielność. Odciążaj zarząd w codziennych decyzjach.</b></p>
+      <p class="hero__lede hero__lede--mocny">Uzgodnij większą samodzielność. Odciążaj zarząd w codziennych decyzjach.</p>
       <p class="hero__lede">Naucz się przejmować sprawy z jasno określonym zakresem odpowiedzialności, rozstrzygać sprzeczne priorytety i przedstawiać rekomendacje, na podstawie których łatwiej podjąć decyzję.</p>
-      <div class="hero__meta">
-        <span>19–20 listopada 2026</span>
-        <span>Warszawa</span>
-        <span>2 100 zł netto / 2 583 zł brutto</span>
-      </div>
       <div class="btn-row">
         <a class="btn btn--primary" href="#zapis">Zapisz się</a>
         <a class="btn btn--ghost" href="#program">Zobacz program</a>
       </div>
-      <p class="hero__note">W cenie: warsztaty, 12 edytowalnych narzędzi, biblioteka promptów AI i 60-minutowy grupowy follow-up online po około 30 dniach.</p>
     </div>
+
+    <aside class="hero__karta" aria-label="Termin, miejsce i cena">
+      <dl>
+        <div class="rzad"><dt>Termin</dt><dd>19–20 listopada 2026</dd></div>
+        <div class="rzad"><dt>Miejsce</dt><dd>Warszawa<br>Centrum Biznesowe Ogrodowa 58</dd></div>
+        <div class="rzad"><dt>Godziny</dt><dd>I dzień 10.00–17.00<br>II dzień 9.00–16.00</dd></div>
+        <div class="rzad"><dt>Cena</dt><dd class="cena">2 100 zł netto<small>2 583 zł brutto za osobę</small></dd></div>
+      </dl>
+      <p class="hero__incl"><b>W cenie:</b> warsztaty, 12 edytowalnych narzędzi, biblioteka promptów AI i 60-minutowy grupowy follow-up online po około 30 dniach.</p>
+    </aside>
   </div>
 </section>
 
