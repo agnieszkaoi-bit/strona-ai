@@ -183,7 +183,7 @@ Ustawione bezpośrednio w `index.html`, nic nie trzeba dopisywać:
 - **title:** `AI dla Office Managera – 4-tygodniowy program | Office Influencers`
 - **meta description:** `Praktyczny 4-tygodniowy program AI dla Office Managerów. Własny Asystent AI, workflow, weryfikacja informacji, podstawy automatyzacji i sesja z prawnikiem.`
 
-Cena na stronie: **1490 zł netto + 23% VAT**.
+Cena na stronie: **1790 zł netto + 23% VAT**.
 - jeden `<h1>`: `OFFICE MANAGER AI OPERATIONS`
 - Open Graph + dane strukturalne `Course` ze schema.org
 

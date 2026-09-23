@@ -188,7 +188,7 @@ $temat = 'Zgłoszenie: ' . PROGRAM . ($firma !== '' ? ' – ' . $firma : '');
 
 $tresc = implode("\n", [
     'Zgłoszenie na program: ' . PROGRAM,
-    '(4 tygodnie online, 4 × 2h LIVE + 1h z prawnikiem)',
+    '(4 tygodnie online, 4 × 2h LIVE + 2h z prawnikiem)',
     '',
     'Imię i nazwisko: ' . $imie,
     'Stanowisko: ' . $stanowisko,
