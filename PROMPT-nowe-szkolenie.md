@@ -138,10 +138,73 @@ zamkniętych. Zapas dla starszych przeglądarek: `setAttribute('open')`.
 - `bezpieczenstwo.php`, wspólne dla obu: błędy do logu zamiast na ekran,
   sprawdzanie domeny nadawcy żądania, limit żądań na adres IP.
 
-Zabezpieczenia: pułapka na boty (ukryte pole plus odrzucanie wysyłek
-szybszych niż trzy sekundy), limity 30 prób i 5 wysłanych wiadomości na
-godzinę, wycinanie znaków sterujących, wymuszone https przy połączeniach
-wychodzących.
+### Zabezpieczenia backendu (odtwórz co do jednego)
+
+**Przed spamem**
+- Pułapka na boty: ukryte pole `www` plus odrzucanie wysyłek szybszych
+  niż trzy sekundy. Jedno i drugie kwitujemy „Dziękuję" i kodem 200,
+  żeby bot nie wiedział, że go rozpoznano.
+- Limity na adres IP: 30 prób i 5 wysłanych wiadomości na godzinę.
+  **Liczone osobno.** Gdyby liczyć razem, dziesięć literówek zamknęłoby
+  formularz przed prawdziwym klientem. Limity krótkookresowe (kilka prób
+  na dwie minuty) też potrafią zablokować kogoś, kto poprawia wpisy,
+  więc w formularzu ich nie ma.
+- Ta sama treść uwag (co najmniej 40 znaków) najwyżej dwa razy na
+  godzinę, licząc po odcisku treści, nie po IP. To łapie rozsyłkę
+  prowadzoną z wielu adresów naraz.
+- Odrzucane po cichu: adresy internetowe w polu imienia, na stanowisku
+  i w nazwie firmy, więcej niż jeden odnośnik w uwagach, znaczniki HTML
+  w którymkolwiek polu, pismo spoza alfabetu łacińskiego w imieniu,
+  uwagach i nazwie firmy.
+- Domeny jednorazowe z listy oraz domeny bez serwera pocztowego.
+  **Kontrola MX musi mieć zabezpieczenie**: najpierw sprawdź gmail.com,
+  a gdy odpytywanie DNS nie działa, przepuść zgłoszenie i zapisz to
+  w logu. Inaczej awaria DNS odcina wszystkie zgłoszenia.
+- Suma kontrolna NIP-u po obu stronach, lista dozwolonych płatników,
+  liczba osób od 1 do 20, długość każdego pola sprawdzana osobno,
+  a `maxlength` na stronie równy limitowi w PHP.
+
+**Przed podszywaniem się pod formularz**
+- Nagłówki `Sec-Fetch-Site` i `Sec-Fetch-Mode`: przepuszczaj tylko
+  `same-origin`, odrzucaj wysyłkę formularzem z obcej strony
+  (`Sec-Fetch-Mode: navigate` przy metodzie POST). Brak tych nagłówków
+  przepuszczaj, bo starsze przeglądarki ich nie wysyłają.
+- Lista dozwolonych domen dla `Origin` i `Referer`.
+- Górna granica rozmiaru żądania i liczby pól.
+- `bezpieczenstwo.php` sam odmawia, gdy ktoś wywoła go wprost z adresu.
+
+**Przed prompt injection**
+Treść z formularza trafia do skrzynki, a stamtąd bywa wklejana
+asystentowi AI. Dlatego:
+- wycinaj znaki niewidoczne: sterujące, znaczniki kierunku pisma,
+  spacje zerowej szerokości i blok Unicode Tags (`\p{Cf}`), bo służą
+  do ukrywania tekstu, który zobaczy dopiero program;
+- wycinaj znaczniki, którymi modele oddzielają polecenia od danych:
+  `` ``` ``, `<|...|>`, `[INST]`, `<<SYS>>`, `<system>`;
+- każdy wiersz tekstu wpisanego przez odwiedzającego poprzedzaj kreską
+  `| `, żeby żaden wiersz nie mógł udawać nagłówka ani nowej sekcji
+  wiadomości;
+- na górze wiadomości zapisz, że wszystko poniżej to dane, nie polecenia;
+- gdy tekst przypomina polecenie dla programu (wzorce po polsku
+  i po angielsku), **dopisz ostrzeżenie, ale wyślij zgłoszenie**.
+  Zdanie w rodzaju „proszę zignorować poprzednie zgłoszenie" jest
+  zupełnie zwyczajne, więc odrzucanie takich wiadomości kosztowałoby
+  prawdziwych klientów.
+
+**Przed wyciekiem danych**
+- Nic z formularza nie jest zapisywane na serwerze ani odsyłane z
+  powrotem. Skrypt nigdy nie powtarza w odpowiedzi tego, co dostał.
+- Adresy odbiorców i tematy wiadomości na sztywno w kodzie. Gdyby dało
+  się je podać z formularza, skrypt rozsyłałby pocztę na cudze adresy.
+- `nip.php` ma dwa liczniki (6 zapytań na dwie minuty, 25 na godzinę)
+  i sprawdza sumę kontrolną, zanim zapyta rejestr, żeby nikt nie
+  przepisał sobie przez niego rejestru firm. Dane wracające z rejestru
+  też czyść i przycinaj.
+- Odpowiedzi obu skryptów: `X-Robots-Tag: noindex`, `Cache-Control:
+  no-store`, `Content-Security-Policy: default-src 'none'`, komunikaty
+  o błędach do logu, nigdy na ekran.
+- Wymuszone https przy połączeniach wychodzących, bez podążania za
+  przekierowaniami.
 
 ### Zgoda na ciasteczka
 Baner na dole. Google Analytics wczytuje się **dopiero po kliknięciu
@@ -261,6 +324,13 @@ Sprawdź w przeglądarce, nie na oko:
 - [ ] zero błędów w konsoli i zero naruszeń polityki bezpieczeństwa
 - [ ] najmniejszy tekst na stronie nie mniejszy niż 12 px
 - [ ] w widocznym tekście nie ma pauz ani myślników
+- [ ] po dziesięciu błędnych próbach poprawne zgłoszenie nadal przechodzi
+- [ ] zgłoszenie z poleceniem dla AI w uwagach dochodzi, ale z ostrzeżeniem,
+      a zwykła prośba o fakturę ostrzeżenia nie dostaje
+- [ ] znaki niewidoczne wklejone w uwagi nie docierają do wiadomości
+- [ ] wysyłka z obcej domeny i wysyłka formularzem spoza strony: 403
+- [ ] prawdziwa przeglądarka wysyła `Sec-Fetch-Site: same-origin`
+      i formularz przechodzi (sprawdź, bo to najłatwiej zepsuć)
 
 Napisz wprost, czego **nie** dało się sprawdzić. Testy na silniku
 Chromium nie zastępują Safari ani prawdziwego telefonu.

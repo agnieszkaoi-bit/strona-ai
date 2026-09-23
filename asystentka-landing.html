@@ -1330,26 +1330,26 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
           <div class="fields">
             <div class="field field--full">
               <label for="f-name">Imię i nazwisko<span class="req" aria-hidden="true">*</span></label>
-              <input type="text" id="f-name" name="imie_nazwisko" autocomplete="name" required aria-describedby="e-name">
+              <input type="text" id="f-name" name="imie_nazwisko" autocomplete="name" maxlength="80" required aria-describedby="e-name">
               <p class="err" id="e-name" role="alert"></p>
             </div>
 
             <div class="field">
               <label for="f-email">Służbowy e-mail<span class="req" aria-hidden="true">*</span></label>
-              <input type="email" id="f-email" name="email" autocomplete="email" required aria-describedby="e-email">
+              <input type="email" id="f-email" name="email" autocomplete="email" maxlength="120" required aria-describedby="e-email">
               <p class="err" id="e-email" role="alert"></p>
             </div>
 
             <div class="field">
               <label for="f-phone">Telefon</label>
-              <input type="tel" id="f-phone" name="telefon" autocomplete="tel" inputmode="tel" aria-describedby="h-phone e-phone">
+              <input type="tel" id="f-phone" name="telefon" autocomplete="tel" inputmode="tel" maxlength="25" aria-describedby="h-phone e-phone">
               <p class="hint" id="h-phone">Dzwonię tylko w sprawie tego zgłoszenia.</p>
               <p class="err" id="e-phone" role="alert"></p>
             </div>
 
             <div class="field">
               <label for="f-role">Stanowisko</label>
-              <input type="text" id="f-role" name="stanowisko" autocomplete="organization-title">
+              <input type="text" id="f-role" name="stanowisko" autocomplete="organization-title" maxlength="80">
             </div>
 
             <div class="field">
@@ -1376,7 +1376,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
             <div class="field" id="wrap-company">
               <label for="f-company">Nazwa firmy<span class="req" aria-hidden="true">*</span></label>
-              <input type="text" id="f-company" name="firma" autocomplete="organization" aria-describedby="e-company">
+              <input type="text" id="f-company" name="firma" autocomplete="organization" maxlength="160" aria-describedby="e-company">
               <p class="err" id="e-company" role="alert"></p>
             </div>
 
@@ -1389,13 +1389,14 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
             <div class="field field--full" id="wrap-address">
               <label for="f-address">Adres do faktury<span class="req" aria-hidden="true">*</span></label>
-              <textarea id="f-address" name="adres_faktury" autocomplete="street-address" aria-describedby="e-address"></textarea>
+              <textarea id="f-address" name="adres_faktury" autocomplete="street-address" maxlength="300" aria-describedby="e-address"></textarea>
               <p class="err" id="e-address" role="alert"></p>
             </div>
 
             <div class="field field--full">
               <label for="f-notes">Uwagi</label>
-              <textarea id="f-notes" name="uwagi"></textarea>
+              <textarea id="f-notes" name="uwagi" maxlength="2000" aria-describedby="h-notes"></textarea>
+              <p class="hint" id="h-notes">Dieta, faktura, dojazd, cokolwiek mam wiedzieć wcześniej.</p>
             </div>
           </div>
 
@@ -1536,12 +1537,12 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     <div class="fields">
       <div class="field field--full">
         <label for="o-name">Imię<span class="req" aria-hidden="true">*</span></label>
-        <input type="text" id="o-name" name="imie" autocomplete="given-name" required aria-describedby="o-e-name">
+        <input type="text" id="o-name" name="imie" autocomplete="given-name" maxlength="80" required aria-describedby="o-e-name">
         <p class="err" id="o-e-name" role="alert"></p>
       </div>
       <div class="field field--full">
         <label for="o-email">Adres e-mail<span class="req" aria-hidden="true">*</span></label>
-        <input type="email" id="o-email" name="email" autocomplete="email" required aria-describedby="o-e-email">
+        <input type="email" id="o-email" name="email" autocomplete="email" maxlength="120" required aria-describedby="o-e-email">
         <p class="err" id="o-e-email" role="alert"></p>
       </div>
     </div>

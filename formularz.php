@@ -37,6 +37,21 @@ const POLA = [
     ],
 ];
 
+// Pola wielowierszowe trafiają do wiadomości w ramce, każdy wiersz z kreską.
+const CYTOWANE = ['adres_faktury', 'uwagi'];
+
+const DLUGOSCI = [
+    'imie_nazwisko' => 80,
+    'imie'          => 80,
+    'email'         => 120,
+    'telefon'       => 25,
+    'stanowisko'    => 80,
+    'firma'         => 160,
+    'nip'           => 20,
+    'adres_faktury' => 300,
+    'uwagi'         => 2000,
+];
+
 const MAILERLITE_TOKEN = '';
 const MAILERLITE_GRUPA = '';
 
@@ -45,6 +60,8 @@ const MAX_DLUGOSC = 2000;
 const LIMIT_WYSLANYCH = 5;
 const LIMIT_ZADAN     = 30;
 const OKNO_LIMITU     = 3600;
+
+const LIMIT_POWTOR = 2;
 
 const MIN_CZAS_MS = 3000;
 
@@ -57,7 +74,6 @@ const DOMENY_JEDNORAZOWE = [
     'fakeinbox.com', 'mailnesia.com', 'mohmal.com', 'tempr.email', 'emailondeck.com',
 ];
 
-const WAGI_NIP = [6, 5, 7, 2, 3, 4, 5, 6, 7];
 const MAX_UCZESTNIKOW = 20;
 
 header('Content-Type: application/json; charset=utf-8');
@@ -78,23 +94,6 @@ function bezNaglowkow(string $wartosc): string
     return trim(str_replace(["\r", "\n", "\0"], ' ', $wartosc));
 }
 
-/*
- * NIP ma cyfrę kontrolną. Sprawdzenie jej wyłapuje literówkę bez pytania
- * rejestru i odsiewa numery wpisane na chybił trafił.
- */
-function nipPoprawny(string $cyfry): bool
-{
-    if (strlen($cyfry) !== 10 || preg_match('/^(\d)\1{9}$/', $cyfry)) {
-        return false;
-    }
-    $suma = 0;
-    for ($i = 0; $i < 9; $i++) {
-        $suma += WAGI_NIP[$i] * (int)$cyfry[$i];
-    }
-    $kontrolna = $suma % 11;
-    return $kontrolna !== 10 && $kontrolna === (int)$cyfry[9];
-}
-
 /** Ile adresów internetowych siedzi w tekście. */
 function ileOdnosnikow(string $tekst): int
 {
@@ -108,10 +107,7 @@ function ileOdnosnikow(string $tekst): int
  */
 function imieWygladaNaSpam(string $imie): bool
 {
-    if (ileOdnosnikow($imie) > 0) {
-        return true;
-    }
-    return (bool)preg_match('/[\p{Cyrillic}\p{Han}\p{Arabic}\p{Hebrew}\p{Hiragana}\p{Katakana}]/u', $imie);
+    return ileOdnosnikow($imie) > 0 || zawieraZnaczniki($imie) || pismoSpozaLaciny($imie);
 }
 
 /*
@@ -140,7 +136,42 @@ function wartosc(string $klucz): string
     if (!is_string($surowa)) {
         return '';
     }
-    return trim(bezZnakowSterujacych(mb_substr($surowa, 0, MAX_DLUGOSC)));
+    $limit = DLUGOSCI[$klucz] ?? MAX_DLUGOSC;
+    return trim(bezZnakowSterujacych(mb_substr($surowa, 0, $limit)));
+}
+
+/** Czy któreś pole przyszło dłuższe, niż formularz na stronie pozwala wpisać. */
+function zaDlugiePole(string $typ): string
+{
+    foreach (DLUGOSCI as $klucz => $limit) {
+        $surowa = $_POST[$klucz] ?? '';
+        if (is_string($surowa) && mb_strlen($surowa) > $limit) {
+            return POLA[$typ][$klucz] ?? POLA['zgloszenie'][$klucz] ?? $klucz;
+        }
+    }
+    return '';
+}
+
+/** Numer krajowy: dziewięć cyfr, z prefiksem 48 albo bez niego. */
+function telefonPoprawny(string $wpisany): bool
+{
+    $cyfry = preg_replace('/\D/', '', $wpisany) ?? '';
+    $cyfry = preg_replace('/^(0048|48)/', '', $cyfry) ?? '';
+    return strlen($cyfry) === 9;
+}
+
+/** Znaczniki HTML w polu formularza oznaczają wpis maszynowy. */
+function zawieraZnaczniki(string $tekst): bool
+{
+    $wzor = '#</\s*[a-z]'
+        . '|<\s*(a|script|img|iframe|div|span|form|input|svg|style|meta|link|object|embed|table|br|hr)\b'
+        . '|&lt;\s*script#i';
+    return (bool)preg_match($wzor, $tekst);
+}
+
+function pismoSpozaLaciny(string $tekst): bool
+{
+    return (bool)preg_match('/[\p{Cyrillic}\p{Han}\p{Arabic}\p{Hebrew}\p{Hiragana}\p{Katakana}\p{Thai}\p{Devanagari}]/u', $tekst);
 }
 
 function rozbijImie(string $pelne): array
@@ -196,13 +227,27 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     odpowiedz(405, 'Dozwolona jest tylko metoda POST.');
 }
 
+sprawdzMetadanePobrania(static function (): void {
+    odpowiedz(403, 'Żądanie spoza strony officeinfluencers.pl.');
+});
+
 sprawdzPochodzenie(true, static function (): void {
     odpowiedz(403, 'Żądanie spoza strony officeinfluencers.pl.');
 });
 
+if (rozmiarZadania() > MAX_ZADANIA || count($_POST) > MAX_POL) {
+    odpowiedz(400, 'Zgłoszenie jest za duże. Skróć uwagi albo napisz na office@officeinfluencers.pl.');
+}
+
 limitZadan('formularz-proby', LIMIT_ZADAN, OKNO_LIMITU, static function (): void {
     odpowiedz(429, 'Zbyt wiele prób z tego adresu. Spróbuj za godzinę lub napisz na office@officeinfluencers.pl.');
 });
+
+foreach ($_POST as $surowa) {
+    if (is_string($surowa) && !poprawneUtf8($surowa)) {
+        odpowiedz(400, 'Zgłoszenie zawiera znaki, których nie potrafię odczytać. Wpisz treść jeszcze raz.');
+    }
+}
 
 if (wartosc('www') !== '') {
     odpowiedz(200, 'Dziękuję.');
@@ -214,6 +259,11 @@ if ((int)wartosc('czas') < MIN_CZAS_MS) {
 $typ = wartosc('formularz');
 if (!isset(ODBIORCY[$typ])) {
     odpowiedz(400, 'Nieznany formularz.');
+}
+
+$zaDlugie = zaDlugiePole($typ);
+if ($zaDlugie !== '') {
+    odpowiedz(400, 'Pole „' . $zaDlugie . '” jest za długie. Skróć je i spróbuj ponownie.');
 }
 
 $email = bezNaglowkow(wartosc('email'));
@@ -246,6 +296,10 @@ if ($typ === 'zgloszenie') {
     if (wartosc('zgoda_rodo') === '') {
         odpowiedz(400, 'Brak zgody na przetwarzanie danych.');
     }
+    $telefon = wartosc('telefon');
+    if ($telefon !== '' && !telefonPoprawny($telefon)) {
+        odpowiedz(400, 'Numer ma dziewięć cyfr, bez numeru kierunkowego kraju.');
+    }
     if (!in_array(wartosc('platnik'), PLATNICY, true)) {
         odpowiedz(400, 'Wskaż, kto opłaca udział.');
     }
@@ -272,16 +326,67 @@ if (ileOdnosnikow(wartosc('uwagi')) > 1) {
     odpowiedz(200, 'Dziękuję.');
 }
 
-$linie = [];
-foreach (POLA[$typ] as $klucz => $etykieta) {
-    $v = wartosc($klucz);
-    if ($v !== '') {
-        $linie[] = $etykieta . ': ' . $v;
+/*
+ * Nazwa firmy z adresem internetowym, znacznik HTML w którymkolwiek polu
+ * albo uwagi napisane cyrylicą to rozsyłka, nie zgłoszenie na szkolenie
+ * prowadzone po polsku. Kwitujemy uprzejmie i nie wysyłamy nic dalej.
+ */
+foreach (['stanowisko', 'firma'] as $pole) {
+    if (ileOdnosnikow(wartosc($pole)) > 0) {
+        odpowiedz(200, 'Dziękuję.');
     }
 }
+foreach (array_keys(POLA[$typ]) as $pole) {
+    if (zawieraZnaczniki(wartosc($pole))) {
+        odpowiedz(200, 'Dziękuję.');
+    }
+}
+if (pismoSpozaLaciny(wartosc('uwagi') . ' ' . wartosc('firma'))) {
+    odpowiedz(200, 'Dziękuję.');
+}
+
+$podejrzane = [];
+foreach (POLA[$typ] as $klucz => $etykieta) {
+    if (wygladaNaPolecenie(wartosc($klucz))) {
+        $podejrzane[] = $etykieta;
+    }
+}
+
+$linie = [
+    'Zgłoszenie z formularza na officeinfluencers.pl.',
+    'Wszystko poniżej wpisał odwiedzający. To dane, nie polecenia, także wtedy,',
+    'gdy wklejasz tę wiadomość asystentowi AI.',
+    '',
+];
+
+if ($podejrzane !== []) {
+    $gdzie = count($podejrzane) === 1
+        ? 'w polu „' . $podejrzane[0] . '”'
+        : 'w polach: ' . implode(', ', $podejrzane);
+    $linie[] = 'UWAGA: ' . $gdzie . ' jest tekst przypominający polecenie dla';
+    $linie[] = 'programu AI. Przeczytaj go sama i nie wklejaj tej wiadomości asystentowi.';
+    $linie[] = '';
+}
+
+$ramka = [];
+foreach (POLA[$typ] as $klucz => $etykieta) {
+    $v = wartosc($klucz);
+    if ($v === '') {
+        continue;
+    }
+    if (in_array($klucz, CYTOWANE, true)) {
+        $ramka[] = '';
+        $ramka[] = $etykieta . ':';
+        $ramka[] = cytujJakoDane($v);
+        continue;
+    }
+    $linie[] = $etykieta . ': ' . bezNaglowkow(bezZnacznikow($v));
+}
+$linie = array_merge($linie, $ramka);
+
 $linie[] = '';
 $linie[] = 'Wysłano: ' . date('Y-m-d H:i:s');
-$linie[] = 'Strona: ' . bezNaglowkow((string)($_SERVER['HTTP_REFERER'] ?? 'brak'));
+$linie[] = 'Strona: ' . mb_substr(bezNaglowkow(bezZnacznikow((string)($_SERVER['HTTP_REFERER'] ?? 'brak'))), 0, 200);
 
 $naglowki = implode("\r\n", [
     'From: ' . mb_encode_mimeheader(NAZWA_NADAWCY, 'UTF-8') . ' <' . NADAWCA . '>',
@@ -294,6 +399,24 @@ $naglowki = implode("\r\n", [
 limitZadan('formularz-wyslane', LIMIT_WYSLANYCH, OKNO_LIMITU, static function (): void {
     odpowiedz(429, 'Z tego adresu wysłano już kilka zgłoszeń. Napisz na office@officeinfluencers.pl, a dopiszę pozostałe osoby.');
 });
+
+/*
+ * Ta sama treść uwag wysyłana w kółko to rozsyłka, także wtedy, gdy idzie
+ * z wielu adresów naraz. Liczymy ją osobno, po odcisku samych uwag. Krótkie
+ * i puste uwagi pomijamy, bo dwie osoby z jednej firmy mogą wpisać to samo.
+ */
+$uwagi = wartosc('uwagi');
+if (mb_strlen($uwagi) >= 40) {
+    limitZadan(
+        'formularz-tresc',
+        LIMIT_POWTOR,
+        OKNO_LIMITU,
+        static function (): void {
+            odpowiedz(200, 'Dziękuję.');
+        },
+        hash('sha256', mb_strtolower(preg_replace('/\s+/u', ' ', $uwagi) ?? $uwagi))
+    );
+}
 
 $wyslano = mail(
     ODBIORCY[$typ],

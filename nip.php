@@ -6,8 +6,11 @@ require __DIR__ . '/bezpieczenstwo.php';
 const CEIDG_TOKEN = '';
 const LIMIT_CZASU = 6;
 
-const LIMIT_ZAPYTAN = 40;
+const LIMIT_ZAPYTAN = 25;
 const OKNO_LIMITU   = 3600;
+
+const LIMIT_SERII = 6;
+const OKNO_SERII  = 120;
 
 header('Content-Type: application/json; charset=utf-8');
 naglowkiBezpieczenstwa();
@@ -60,6 +63,15 @@ function pobierz(string $url, array $naglowki = []): ?array
     return is_array($dane) ? $dane : null;
 }
 
+/*
+ * Dane z rejestru trafiają prosto w pola formularza i dalej w wiadomość.
+ * Obcinamy je do rozsądnej długości i czyścimy ze znaków, których nie widać.
+ */
+function zRejestru(string $wartosc, int $limit): string
+{
+    return trim(mb_substr(bezZnacznikow(bezZnakowSterujacych($wartosc)), 0, $limit));
+}
+
 function zMinisterstwaFinansow(string $nip): ?array
 {
     $dane = pobierz(sprintf(
@@ -72,8 +84,8 @@ function zMinisterstwaFinansow(string $nip): ?array
         return null;
     }
     return [
-        'nazwa'  => (string)$podmiot['name'],
-        'adres'  => (string)($podmiot['workingAddress'] ?? $podmiot['residenceAddress'] ?? ''),
+        'nazwa'  => zRejestru((string)$podmiot['name'], 160),
+        'adres'  => zRejestru((string)($podmiot['workingAddress'] ?? $podmiot['residenceAddress'] ?? ''), 300),
         'zrodlo' => 'wykazu podatników VAT',
     ];
 }
@@ -105,15 +117,35 @@ function zCeidg(string $nip): ?array
     $miasto = trim((string)($a['kod'] ?? '') . ' ' . (string)($a['miasto'] ?? ''));
     $adres  = trim(implode(', ', array_filter([$ulica, $miasto])), ', ');
 
-    return ['nazwa' => $nazwa, 'adres' => $adres, 'zrodlo' => 'CEIDG'];
+    return [
+        'nazwa'  => zRejestru($nazwa, 160),
+        'adres'  => zRejestru($adres, 300),
+        'zrodlo' => 'CEIDG',
+    ];
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'GET') {
     odpowiedz(['ok' => false, 'komunikat' => 'Dozwolona jest tylko metoda GET.'], 405);
 }
 
+sprawdzMetadanePobrania(static function (): void {
+    odpowiedz(['ok' => false, 'komunikat' => 'Żądanie spoza strony officeinfluencers.pl.'], 403);
+});
+
 sprawdzPochodzenie(false, static function (): void {
     odpowiedz(['ok' => false, 'komunikat' => 'Żądanie spoza strony officeinfluencers.pl.'], 403);
+});
+
+if (count($_GET) > 2) {
+    odpowiedz(['ok' => false, 'komunikat' => 'Nieznane zapytanie.'], 400);
+}
+
+/*
+ * Dwa liczniki, żeby nikt nie przepisał sobie rejestru firm przez ten
+ * skrypt. Wypełniając formularz, pyta się raz, może dwa razy.
+ */
+limitZadan('nip-seria', LIMIT_SERII, OKNO_SERII, static function (): void {
+    odpowiedz(['ok' => false, 'komunikat' => 'Zbyt wiele zapytań. Wpisz nazwę i adres ręcznie.'], 429);
 });
 
 limitZadan('nip', LIMIT_ZAPYTAN, OKNO_LIMITU, static function (): void {
@@ -121,7 +153,7 @@ limitZadan('nip', LIMIT_ZAPYTAN, OKNO_LIMITU, static function (): void {
 });
 
 $nip = preg_replace('/\D/', '', (string)($_GET['nip'] ?? '')) ?? '';
-if (strlen($nip) !== 10) {
+if (strlen($nip) !== 10 || !nipPoprawny($nip)) {
     odpowiedz(['ok' => false, 'komunikat' => 'NIP ma 10 cyfr.'], 400);
 }
 
