@@ -180,7 +180,10 @@ a{color:inherit}
   animation:draw 1s cubic-bezier(.22,.61,.36,1) .35s forwards;
 }
 @keyframes draw{to{background-size:100% 100%}}
-.hl{background:linear-gradient(transparent 56%,var(--yellow) 56%);padding-inline:.06em}
+.hl{
+  background:linear-gradient(transparent 70%,var(--yellow) 70%,var(--yellow) 93%,transparent 93%);
+  padding-inline:.06em
+}
 .hero h1 .tm{font-size:.26em;font-weight:500;letter-spacing:0;vertical-align:1.75em;margin-left:.34em}
 .hero__lede{margin-top:30px;font-size:clamp(1.0625rem,1.6vw,1.1875rem);color:var(--muted);max-width:52ch;line-height:1.62}
 .hero__meta{
@@ -599,6 +602,75 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .quote p{font-size:.9375rem;color:var(--ink);line-height:1.65}
 .copy-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:26px}
 .copy-row .status{font-size:.875rem;color:var(--navy-400)}
+
+/* nagłówek sekcji rozłożony na dwie kolumny: podpis i tytuł po lewej, wprowadzenie po prawej */
+.head--split{max-width:none}
+@media(min-width:960px){
+  .head--split{
+    display:grid;grid-template-columns:1.15fr .85fr;
+    gap:clamp(40px,5vw,90px);align-items:end
+  }
+  .head--split .h2{margin-bottom:0}
+  .head--split .lede{max-width:46ch;padding-bottom:6px}
+}
+
+/* siatka kafelków o zmiennej szerokości */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,1.5vw,20px)}
+.bento>*{grid-column:span 12}
+@media(min-width:720px){
+  .bento>*{grid-column:span 6}
+  .bento>.span-3{grid-column:span 6}
+  .bento>.span-4{grid-column:span 6}
+  .bento>.span-8{grid-column:span 6}
+}
+@media(min-width:1040px){
+  .bento>.span-3{grid-column:span 3}
+  .bento>.span-4{grid-column:span 4}
+  .bento>.span-6{grid-column:span 6}
+  .bento>.span-8{grid-column:span 8}
+  .bento>.span-12{grid-column:span 12}
+}
+
+.card{
+  background:var(--white);border:1px solid var(--rule);border-radius:var(--r-lg);
+  padding:clamp(22px,2.3vw,30px);display:flex;flex-direction:column;gap:12px;
+  transition:border-color .25s ease,transform .25s ease
+}
+.card:hover{border-color:var(--navy-400);transform:translateY(-2px)}
+.card__n{
+  font-size:.75rem;font-weight:600;letter-spacing:.08em;color:var(--navy-400);
+  font-variant-numeric:tabular-nums
+}
+.card h3{font-size:1.0625rem;color:var(--navy);line-height:1.35}
+.card p{font-size:.9375rem;color:var(--muted);line-height:1.6}
+.card--tint{background:var(--tint);border-color:transparent}
+.card--tint p{color:#4A5668}
+.card--navy{background:var(--navy);border-color:transparent}
+.card--navy h3,.card--navy .card__n{color:#fff}
+.card--navy .card__n{color:var(--yellow)}
+.card--navy p{color:rgba(255,255,255,.76)}
+.card--plain{background:transparent;border:0;border-top:1px solid var(--rule);border-radius:0;padding:22px 0 0}
+.card--plain:hover{transform:none;border-color:var(--rule);border-top-color:var(--navy-400)}
+.card--slim{padding-block:clamp(18px,1.8vw,22px);justify-content:center}
+.card--slim h3{font-size:1rem}
+
+/* zdanie prowadzące w kafelku, większe od reszty */
+.card__lead{font-size:1.0625rem;color:var(--ink);line-height:1.5}
+
+/* pasek z pojedynczymi faktami */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(26px,3vw,38px)}
+.chip{
+  display:inline-flex;align-items:center;gap:9px;padding:9px 16px;
+  border:1px solid var(--rule);border-radius:999px;background:var(--white);
+  font-size:.875rem;color:var(--ink)
+}
+.chip b{color:var(--navy);font-weight:600}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--yellow-deep);flex:none}
+
+.module__desc{font-size:.9375rem;font-weight:400;color:var(--muted);line-height:1.6}
+
+/* kolumna z tekstem nie rozlewa się na całą szerokość ekranu */
+.answer,.demo__note,.hr-note p{max-width:74ch}
 </style>
 </head>
 <body>
@@ -686,22 +758,26 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       <div class="eyebrow">Punkt wyjścia</div>
       <h2 class="h2">Dużo zależy od Ciebie. Czy masz <span class="hl">wpływ</span> na to, jak pracujesz?</h2>
     </div>
-    <ul class="pains reveal" role="list">
-      <li>Odpowiadasz za doprowadzenie spraw do końca, ale nie zawsze wiesz, co możesz zdecydować samodzielnie.</li>
-      <li>Kilka osób oczekuje działania „na już”, a ustalenie priorytetów zostaje po Twojej stronie.</li>
-      <li>Dostrzegasz ryzyko lub lepsze rozwiązanie, lecz trudno Ci przekonać do niego przełożonego.</li>
-      <li>Chronisz czas zarządu, jednocześnie mierząc się z presją i oczekiwaniami innych osób.</li>
-      <li>Chcesz przejmować bardziej odpowiedzialne zadania i potrzebujesz uzgodnić warunki, które to umożliwią.</li>
-    </ul>
-    <p class="lede">Na szkoleniu przećwiczysz te sytuacje i przygotujesz konkretne propozycje zmian w codziennej współpracy.</p>
+    <div class="bento reveal">
+      <article class="card span-4"><span class="card__n">01</span><p class="card__lead">Odpowiadasz za doprowadzenie spraw do końca, ale nie zawsze wiesz, co możesz zdecydować samodzielnie.</p></article>
+      <article class="card span-4"><span class="card__n">02</span><p class="card__lead">Kilka osób oczekuje działania „na już”, a ustalenie priorytetów zostaje po Twojej stronie.</p></article>
+      <article class="card span-4"><span class="card__n">03</span><p class="card__lead">Dostrzegasz ryzyko lub lepsze rozwiązanie, lecz trudno Ci przekonać do niego przełożonego.</p></article>
+      <article class="card span-6"><span class="card__n">04</span><p class="card__lead">Chronisz czas zarządu, jednocześnie mierząc się z presją i oczekiwaniami innych osób.</p></article>
+      <article class="card span-6"><span class="card__n">05</span><p class="card__lead">Chcesz przejmować bardziej odpowiedzialne zadania i potrzebujesz uzgodnić warunki, które to umożliwią.</p></article>
+      <article class="card card--navy span-12">
+        <p class="card__lead" style="color:#fff">Na szkoleniu przećwiczysz te sytuacje i przygotujesz konkretne propozycje zmian w codziennej współpracy.</p>
+      </article>
+    </div>
   </div>
 </section>
 
 <section class="section section--paper" id="efekty">
   <div class="wrap">
     <div class="head">
-      <div class="eyebrow">Co się zmieni</div>
-      <h2 class="h2">Co ma się zmienić w <span class="hl">codziennej pracy</span></h2>
+      <div>
+        <div class="eyebrow">Co się zmieni</div>
+        <h2 class="h2">Co ma się zmienić w <span class="hl">codziennej pracy</span></h2>
+      </div>
     </div>
     <div class="reveal">
       <table class="grid-table">
@@ -796,7 +872,12 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     <div class="hr-note reveal">
       <h3>Dla przełożonego i HR</h3>
       <p>Warto rozważyć udział, gdy doświadczona asystentka może przejąć więcej odpowiedzialności, ale potrzebuje uporządkować zasady współpracy i rozwinąć umiejętność przygotowywania rekomendacji. Punktem odniesienia po szkoleniu będzie uzgodniony zakres decyzji i plan jego wdrożenia.</p>
-      <p>Postępy możecie oceniać po tym, czy wybrane sprawy są zamykane bez ponownych konsultacji, czy rekomendacje zawierają informacje potrzebne do decyzji oraz czy konflikty priorytetów są rozstrzygane według wspólnych zasad.</p>
+      <p style="margin-top:20px;font-weight:500;color:var(--navy)">Postępy możecie oceniać po tym, czy:</p>
+      <div class="bento" style="margin-top:14px">
+        <article class="card span-4"><p>wybrane sprawy są zamykane bez ponownych konsultacji;</p></article>
+        <article class="card span-4"><p>rekomendacje zawierają informacje potrzebne do decyzji;</p></article>
+        <article class="card span-4"><p>konflikty priorytetów są rozstrzygane według wspólnych zasad.</p></article>
+      </div>
       <div class="btn-row">
         <a class="btn btn--primary" href="#zapis">Zapisz się</a>
         <a class="btn btn--ghost" href="#uzasadnienie">Zobacz uzasadnienie dla przełożonego</a>
@@ -807,11 +888,22 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <section class="section" id="dla-kogo">
   <div class="wrap">
-    <div class="head" style="max-width:880px">
-      <div class="eyebrow">Uczestniczki</div>
-      <h2 class="h2">Dla kogo jest ten program</h2>
-      <p class="lede">Dla Asystentek i Asystentów Zarządu oraz Executive Assistants z kilkuletnim doświadczeniem, wspierających jedną osobę zarządzającą lub kilku członków zarządu.</p>
-      <p class="lede" style="margin-top:18px">Skorzystasz z niego, jeśli chcesz rozwijać samodzielność, lepiej rozumieć sposób myślenia przełożonego i zwiększać swój udział w rozwiązywaniu problemów. Program zakłada znajomość codziennej pracy asystenckiej.</p>
+    <div class="head head--split">
+      <div>
+        <div class="eyebrow">Uczestniczki</div>
+        <h2 class="h2">Dla kogo jest ten program</h2>
+      </div>
+      <p class="lede">Program zakłada znajomość codziennej pracy asystenckiej.</p>
+    </div>
+    <div class="bento reveal">
+      <article class="card card--tint span-6">
+        <h3>Twoja rola</h3>
+        <p>Asystentki i Asystenci Zarządu oraz Executive Assistants z kilkuletnim doświadczeniem, wspierający jedną osobę zarządzającą lub kilku członków zarządu.</p>
+      </article>
+      <article class="card card--tint span-6">
+        <h3>Czego szukasz</h3>
+        <p>Chcesz rozwijać samodzielność, lepiej rozumieć sposób myślenia przełożonego i zwiększać swój udział w rozwiązywaniu problemów.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -819,8 +911,10 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 <section class="section section--paper" id="program">
   <div class="wrap">
     <div class="head">
-      <div class="eyebrow">Program szkolenia</div>
-      <h2 class="h2">Dwa dni pracy nad Twoją współpracą z <span class="hl">zarządem</span></h2>
+      <div>
+        <div class="eyebrow">Program szkolenia</div>
+        <h2 class="h2">Dwa dni pracy nad Twoją współpracą z <span class="hl">zarządem</span></h2>
+      </div>
     </div>
     <div class="day">
       <div class="day__head">
@@ -831,17 +925,17 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       <div class="modules reveal">
         <article class="module">
           <div class="module__top"><span class="module__n">1</span><h4>Zrozum styl pracy i priorytety przełożonego</h4></div>
-          <div class="module__block"><p style="font-weight:400;color:var(--muted)">Dowiesz się, jak rozpoznawać oczekiwania i wartości osoby zarządzającej, dopasowywać komunikację oraz działać w sytuacjach wymagających dyskrecji i wyczucia.</p></div>
+          <div class="module__block"><p class="module__desc">Dowiesz się, jak rozpoznawać oczekiwania i wartości osoby zarządzającej, dopasowywać komunikację oraz działać w sytuacjach wymagających dyskrecji i wyczucia.</p></div>
           <div class="module__ai"><b>Przygotujesz:</b> profil współpracy z przełożonym.</div>
         </article>
         <article class="module">
           <div class="module__top"><span class="module__n">2</span><h4>Przełóż cele zarządu na własne priorytety</h4></div>
-          <div class="module__block"><p style="font-weight:400;color:var(--muted)">Nauczysz się odróżniać cel od zadania, określać oczekiwany rezultat i uzgadniać kryteria sukcesu. Uporządkujesz to, na czym warto skoncentrować uwagę w kolejnym kwartale.</p></div>
+          <div class="module__block"><p class="module__desc">Nauczysz się odróżniać cel od zadania, określać oczekiwany rezultat i uzgadniać kryteria sukcesu. Uporządkujesz to, na czym warto skoncentrować uwagę w kolejnym kwartale.</p></div>
           <div class="module__ai"><b>Przygotujesz:</b> mapę celów.</div>
         </article>
         <article class="module">
           <div class="module__top"><span class="module__n">3</span><h4>Komunikuj się tak, aby ułatwiać działanie</h4></div>
-          <div class="module__block"><p style="font-weight:400;color:var(--muted)">Przećwiczysz zwięzłe przekazywanie informacji, konstruktywny feedback oraz pisanie w imieniu zarządu z uwzględnieniem odbiorcy i celu wiadomości.</p></div>
+          <div class="module__block"><p class="module__desc">Przećwiczysz zwięzłe przekazywanie informacji, konstruktywny feedback oraz pisanie w imieniu zarządu z uwzględnieniem odbiorcy i celu wiadomości.</p></div>
           <div class="module__ai"><b>Przygotujesz:</b> ściągawkę komunikacji i szablon informacji dla przełożonego.</div>
         </article>
       </div>
@@ -855,17 +949,17 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       <div class="modules reveal">
         <article class="module">
           <div class="module__top"><span class="module__n">4</span><h4>Zachowaj skuteczność pod presją</h4></div>
-          <div class="module__block"><p style="font-weight:400;color:var(--muted)">Przećwiczysz stawianie granic, zgłaszanie ryzyk i ochronę czasu zarządu. Poznasz sposoby reagowania w sytuacjach, w których emocje utrudniają porozumienie.</p></div>
+          <div class="module__block"><p class="module__desc">Przećwiczysz stawianie granic, zgłaszanie ryzyk i ochronę czasu zarządu. Poznasz sposoby reagowania w sytuacjach, w których emocje utrudniają porozumienie.</p></div>
           <div class="module__ai"><b>Przygotujesz:</b> zestaw technik asertywnych do swojej pracy.</div>
         </article>
         <article class="module">
           <div class="module__top"><span class="module__n">5</span><h4>Uzgodnij większą samodzielność</h4></div>
-          <div class="module__block"><p style="font-weight:400;color:var(--muted)">Dowiesz się, jak przyjmować zadania z jasnym zakresem uprawnień, korzystać z poziomów delegowania i rozmawiać o przejęciu kolejnych spraw.</p></div>
+          <div class="module__block"><p class="module__desc">Dowiesz się, jak przyjmować zadania z jasnym zakresem uprawnień, korzystać z poziomów delegowania i rozmawiać o przejęciu kolejnych spraw.</p></div>
           <div class="module__ai"><b>Przygotujesz:</b> mapę swoich decyzji i plan poszerzania wpływu.</div>
         </article>
         <article class="module">
           <div class="module__top"><span class="module__n">6</span><h4>Przedstawiaj przemyślane rekomendacje</h4></div>
-          <div class="module__block"><p style="font-weight:400;color:var(--muted)">Nauczysz się uwzględniać sposób podejmowania decyzji przez przełożonego. Przećwiczysz analizowanie możliwości, ich konsekwencji i argumentów za proponowanym rozwiązaniem.</p></div>
+          <div class="module__block"><p class="module__desc">Nauczysz się uwzględniać sposób podejmowania decyzji przez przełożonego. Przećwiczysz analizowanie możliwości, ich konsekwencji i argumentów za proponowanym rozwiązaniem.</p></div>
           <div class="module__ai"><b>Przygotujesz:</b> szablon rekomendacji i plan wdrożenia na 90 dni.</div>
         </article>
       </div>
@@ -876,11 +970,21 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <section class="section" id="ai">
   <div class="wrap">
-    <div class="head" style="max-width:880px">
-      <div class="eyebrow">AI w programie</div>
-      <h2 class="h2">AI jako wsparcie Twojego <span class="hl">myślenia i działania</span></h2>
-      <p class="lede">W każdym module sprawdzisz, jak wykorzystać AI w zadaniach asystentki zarządu: do porządkowania celów, przygotowania wiadomości, treningu trudnej rozmowy i analizowania możliwych rozwiązań.</p>
-      <p class="lede" style="margin-top:18px">Dowiesz się, gdzie potrzebna jest weryfikacja odpowiedzi i Twój osąd. Otrzymasz bibliotekę promptów z zasadami bezpiecznego korzystania z AI.</p>
+    <div class="head head--split">
+      <div>
+        <div class="eyebrow">AI w programie</div>
+        <h2 class="h2">AI jako wsparcie Twojego <span class="hl">myślenia i działania</span></h2>
+      </div>
+      <p class="lede">W każdym module sprawdzisz, jak wykorzystać AI w zadaniach asystentki zarządu.</p>
+    </div>
+    <div class="bento reveal">
+      <article class="card card--slim span-3"><h3>Porządkowanie celów</h3></article>
+      <article class="card card--slim span-3"><h3>Przygotowanie wiadomości</h3></article>
+      <article class="card card--slim span-3"><h3>Trening trudnej rozmowy</h3></article>
+      <article class="card card--slim span-3"><h3>Analizowanie możliwych rozwiązań</h3></article>
+      <article class="card card--tint span-12">
+        <p class="card__lead">Dowiesz się, gdzie potrzebna jest weryfikacja odpowiedzi i Twój osąd. Otrzymasz bibliotekę promptów z zasadami bezpiecznego korzystania z AI.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -888,24 +992,30 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 <section class="section section--paper" id="wsparcie">
   <div class="wrap">
     <div class="head">
-      <div class="eyebrow">Zakres wsparcia</div>
-      <h2 class="h2">Wsparcie obejmuje również <span class="hl">powrót do codziennej pracy</span></h2>
+      <div>
+        <div class="eyebrow">Zakres wsparcia</div>
+        <h2 class="h2">Wsparcie obejmuje również <span class="hl">powrót do codziennej pracy</span></h2>
+      </div>
     </div>
-    <div class="bonuses reveal">
-      <article class="bonus">
-        <h3>Około 75% czasu na praktykę</h3>
+    <div class="bento reveal">
+      <article class="card span-4">
+        <span class="card__n">75%</span>
+        <h3>czasu na praktykę</h3>
         <p>Symulacje, ćwiczenia z AI i praca na sytuacjach uczestniczek i uczestników.</p>
       </article>
-      <article class="bonus">
-        <h3>12 narzędzi w wersji do edycji</h3>
+      <article class="card span-4">
+        <span class="card__n">12</span>
+        <h3>narzędzi w wersji do edycji</h3>
         <p>Materiały, które dostosujesz do swojej pracy, m.in. mapa celów, mapa decyzji i szablon rekomendacji.</p>
       </article>
-      <article class="bonus">
-        <h3>Plan działania na 90 dni</h3>
+      <article class="card span-4">
+        <span class="card__n">90 DNI</span>
+        <h3>plan działania</h3>
         <p>Wybierzesz zmiany do omówienia z przełożonym i zaplanujesz kolejność ich wdrażania. Nie musisz zmieniać wszystkich zasad współpracy jednocześnie.</p>
       </article>
-      <article class="bonus">
-        <h3>Grupowy follow-up online po około 30 dniach – 60 minut</h3>
+      <article class="card card--navy span-12">
+        <span class="card__n">PO 30 DNIACH · 60 MINUT</span>
+        <h3>Grupowy follow-up online</h3>
         <p>Omówimy, co udało się wdrożyć, gdzie pojawiły się trudności i co warto skorygować. Będzie czas na pytania i wymianę doświadczeń. Spotkanie jest wliczone w cenę szkolenia.</p>
       </article>
     </div>
@@ -924,12 +1034,12 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
       <div class="eyebrow">Prowadząca</div>
       <h2 class="h2">Agnieszka Korach</h2>
       <p class="lede">Jestem psycholożką (Uniwersytet SWPS), trenerką biznesu, certyfikowaną AI Educator i twórczynią Office Influencers.</p>
-      <ul class="trainer__list" role="list">
-        <li><div>Od <b>23 lat</b> rozwijam kompetencje asystentek i asystentów zarządu oraz zespołów administracyjnych.</div></li>
-        <li><div>Przeszkoliłam <b>ponad 10 000 osób</b>.</div></li>
-        <li><div>Program „Asystentka – Partner w Zarządzaniu” prowadzę nieprzerwanie <b>od 2008 roku</b>.</div></li>
-        <li><div>Realizowałam projekty m.in. dla <b>Mercedes-Benz, Bosch, 3M, Geberit, ERGO Hestia, Maspex i ABB</b>.</div></li>
-      </ul>
+      <div class="chips">
+        <span class="chip"><b>23 lata</b> z zespołami asystenckimi</span>
+        <span class="chip"><b>10 000+</b> przeszkolonych osób</span>
+        <span class="chip">program prowadzę <b>od 2008 roku</b></span>
+      </div>
+      <p class="lede" style="margin-top:26px;font-size:.9375rem">Realizowałam projekty m.in. dla Mercedes-Benz, Bosch, 3M, Geberit, ERGO Hestia, Maspex i ABB.</p>
     </div>
   </div>
 </section>
