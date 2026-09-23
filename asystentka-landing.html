@@ -822,7 +822,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 <div class="przyklejone">
 <div class="topbar">
   <div class="topbar__in">
-    <span class="topbar__label">Zapisy do 10 listopada 2026</span>
+    <span class="topbar__label" id="tb-etykieta">Szkolenie 19–20 listopada 2026</span>
     <span class="topbar__czas" id="tb-czas" aria-live="off">&nbsp;</span>
     <a class="topbar__cta" href="#zapis">Zapisz się</a>
   </div>
@@ -1303,7 +1303,7 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     <h2>Czy warto czekać<br>z tą decyzją</h2>
     <p class="lede">Jeśli regularnie wracają te same niejasności dotyczące priorytetów, odpowiedzialności i konsultowania spraw, warto ustalić, co chcecie zmienić we współpracy już teraz. Sprawdź termin z przełożonym i zaplanuj dwa dni poza biurem.</p>
     <div class="countdown" id="countdown" hidden>
-      <p class="countdown__label" id="countdown-label">Do zamknięcia zapisów zostało</p>
+      <p class="countdown__label" id="countdown-label">Do rozpoczęcia szkolenia zostało</p>
       <div class="countdown__grid" aria-hidden="true">
         <div class="countdown__cell"><b id="cd-dni">0</b><span id="cd-dni-l">dni</span></div>
         <div class="countdown__cell"><b id="cd-godz">0</b><span id="cd-godz-l">godzin</span></div>
@@ -2092,10 +2092,13 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 
 <script>
 (function(){
-  var DO_KIEDY = new Date('2026-11-10T23:59:59+01:00');
+  var DO_STARTU  = new Date('2026-11-19T10:00:00+01:00');
+  var DO_ZAPISOW = new Date('2026-11-10T23:59:59+01:00');
+  var DO_KONCA   = new Date('2026-11-20T16:00:00+01:00');
 
   var box = document.getElementById('countdown');
   var pasek = document.getElementById('tb-czas');
+  var etykieta = document.getElementById('tb-etykieta');
   if (!box && !pasek) return;
 
   var pola = box ? {
@@ -2117,10 +2120,15 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   }
 
   function tik(){
-    var zostalo = DO_KIEDY - new Date();
+    var zostalo = DO_STARTU - new Date();
     if (zostalo <= 0){
       if (box) box.hidden = true;
-      if (pasek) pasek.textContent = 'zapisy zamknięte';
+      if (pasek) pasek.textContent = '';
+      if (etykieta){
+        etykieta.textContent = new Date() < DO_KONCA
+          ? 'Szkolenie trwa'
+          : 'Szkolenie już się odbyło';
+      }
       return false;
     }
     var sek = Math.floor(zostalo / 1000);
@@ -2139,6 +2147,10 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
     if (pasek){
       pasek.textContent = 'zostało ' + dni + ' ' + odmien(dni, ['dzień','dni','dni'])
         + ' ' + godz + ' godz. ' + min + ' min.';
+    }
+    // między zamknięciem zapisów a startem pasek przestaje zachęcać do zapisu
+    if (etykieta && new Date() > DO_ZAPISOW){
+      etykieta.textContent = 'Zapisy zamknięte 10 listopada';
     }
     return true;
   }
