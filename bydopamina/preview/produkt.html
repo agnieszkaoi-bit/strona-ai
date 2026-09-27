@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>bydopamina – podgląd karty produktu</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../theme/bydopamina-child/assets/css/fonts.css">
+<link rel="stylesheet" href="../theme/bydopamina-child/assets/css/tokens.css">
+<link rel="stylesheet" href="../theme/bydopamina-child/assets/css/main.css">
+<style>
+	body { margin: 0; }
+	.wrap { max-width: var(--bd-max); margin-inline: auto; padding-inline: var(--bd-gutter); box-sizing: border-box; }
+	h1, h2, h3, p { margin: 0; }
+	.hdr { position: sticky; top: 0; z-index: 100; height: var(--bd-header-h); padding-inline: var(--bd-gutter); }
+	.logo { font: 400 32px/1 var(--bd-font-display); letter-spacing: -.02em; text-decoration: none; justify-self: center; }
+	.pdp { display: flex; flex-wrap: wrap; gap: 32px; padding-top: 24px; padding-bottom: 96px; align-items: flex-start; }
+	.gal { flex: 1 1 58%; min-width: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+	.gal > :first-child { grid-column: 1 / -1; }
+	.sum { flex: 1 1 36%; min-width: 300px; display: flex; flex-direction: column; gap: 16px; padding-left: 24px; box-sizing: border-box; }
+	.crumb { font-family: var(--bd-font-mono); font-size: var(--bd-fs-2xs); letter-spacing: .08em; text-transform: uppercase; color: var(--bd-ink-2); }
+	.opts { display: grid; gap: 10px; }
+	.sizes { display: flex; flex-wrap: wrap; gap: 6px; }
+	.sizes button { min-width: 48px; min-height: 44px; border: 1px solid var(--bd-line); background: transparent; font: 400 var(--bd-fs-sm) var(--bd-font-body); cursor: pointer; }
+	.sizes button[aria-pressed="true"] { border-color: var(--bd-ink); box-shadow: inset 0 0 0 1px var(--bd-ink); }
+	.sizes button:disabled { color: var(--bd-ink-3); text-decoration: line-through; cursor: not-allowed; }
+	.metal { display: flex; gap: 8px; }
+	.metal button { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border: 1px solid var(--bd-line); background: transparent; font: 400 var(--bd-fs-sm) var(--bd-font-body); cursor: pointer; }
+	.metal button[aria-pressed="true"] { border-color: var(--bd-ink); }
+	.metal i { width: 16px; height: 16px; border-radius: 50%; }
+	.optrow { display: flex; justify-content: space-between; align-items: center; }
+	@media (max-width: 1024px) { .sum { padding-left: 0; flex-basis: 100%; } .gal { flex-basis: 100%; } }
+	@media (max-width: 767px) { .gal { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 4px; margin-inline: calc(var(--bd-gutter) * -1); } .gal > * { flex: 0 0 88%; scroll-snap-align: start; } .pdp { padding-top: 0; } }
+</style>
+</head>
+<body>
+<header class="bd-header hdr">
+	<div></div>
+	<a class="logo" href="index.html">bydopamina</a>
+	<div class="bd-header-icons" style="display:flex"><a href="#" aria-label="Koszyk" style="width:44px;height:44px;display:grid;place-items:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></a></div>
+</header>
+
+<main id="bd-main" class="wrap">
+	<section class="pdp">
+		<div class="gal" aria-label="Galeria produktu">
+			<div class="bd-media"><span data-art="model" data-bg="#D9C9B6" data-ratio="5 / 4"></span></div>
+			<div class="bd-media"><span data-art="necklace" data-bg="#EDE6DC"></span></div>
+			<div class="bd-media"><span data-art="layered" data-bg="#E6DCCD"></span></div>
+		</div>
+
+		<div class="sum bd-sticky-col">
+			<nav class="crumb" aria-label="Okruszki">Sklep / Naszyjniki</nav>
+			<ul class="bd-claims"><li class="is-new">Nowość</li><li>18K złoto</li><li>Stal 316L</li><li>Wodoodporna</li></ul>
+			<h1 class="bd-pdp-title"><span class="product_title" style="font-size:var(--bd-fs-xl);line-height:1.05">Naszyjnik Aura z pierścieniem</span></h1>
+			<div class="woocommerce-product-rating"><span class="bd-stars" role="img" aria-label="Ocena 4,9 na 5">★★★★★</span><a href="#reviews">128 opinii</a></div>
+			<div class="bd-pdp-price"><p class="price"><del>149,00 zł</del> <ins>119,00 zł</ins></p><p class="bd-omnibus">Najniższa cena z 30 dni przed obniżką: 149,00 zł</p></div>
+			<p class="bd-muted">Delikatny łańcuszek z pierścieniem, który układa się tuż pod obojczykami. Świetny solo i jako baza do warstw.</p>
+
+			<div class="opts">
+				<div class="optrow"><span class="bd-label">Kolor: Złoty</span></div>
+				<div class="metal" role="group" aria-label="Kolor"><button aria-pressed="true"><i style="background:linear-gradient(135deg,#F2DC9C,#B38B45)"></i>Złoty</button><button aria-pressed="false"><i style="background:linear-gradient(135deg,#F2F2F2,#A7A7A7)"></i>Srebrny</button></div>
+				<div class="optrow" style="margin-top:8px"><span class="bd-label">Długość: 45 cm</span>
+					<button type="button" class="bd-textlink" data-bd-dialog="bd-size-guide"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><rect x="2.5" y="8" width="19" height="8" rx="1"/><path d="M6 8v3M9.5 8v4M13 8v3M16.5 8v4"/></svg>Rozmiarówka</button></div>
+				<div class="sizes" role="group" aria-label="Długość"><button aria-pressed="false">40 cm</button><button aria-pressed="true">45 cm</button><button aria-pressed="false">50 cm</button><button disabled aria-disabled="true">60 cm</button></div>
+			</div>
+
+			<div class="woocommerce"><div class="product"><form class="cart" onsubmit="return false"><div class="quantity"><label class="screen-reader-text" for="q">Ilość</label><input id="q" class="qty" type="number" value="1" min="1"></div><button class="single_add_to_cart_button button" type="submit">Dodaj do koszyka · 119 zł</button></form></div></div>
+
+			<p class="bd-eta"><span class="bd-eta__dot" aria-hidden="true"></span>Zamów w ciągu 3 h 12 min – wyślemy dziś</p>
+			<div class="bd-freeship" role="status"><p class="bd-freeship__label">Brakuje Ci 80,00 zł do darmowej dostawy</p><div class="bd-freeship__track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60" aria-label="Postęp do darmowej dostawy"><span class="bd-freeship__fill" style="width:60%"></span></div></div>
+
+			<ul class="bd-features bd-features--list" aria-label="Cechy biżuterii">
+				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><circle cx="12" cy="14" r="6.5"/><path d="m9.5 5 2.5-2.5L14.5 5 12 7.5z"/></svg><span><strong>Złoto 18K na stali 316L</strong><small>Powłoka PVD</small></span></li>
+				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span><strong>Hipoalergiczna</strong><small>Bez niklu i ołowiu</small></span></li>
+				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M12 3s6 6.6 6 11a6 6 0 0 1-12 0c0-4.4 6-11 6-11z"/></svg><span><strong>Wodoodporna</strong><small>Prysznic, basen, siłownia</small></span></li>
+				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M3.5 9h17v11.5h-17zM2.5 9h19M12 9v11.5"/></svg><span><strong>Pudełko w cenie</strong><small>Gotowe do wręczenia</small></span></li>
+			</ul>
+
+			<div class="bd-accordion">
+				<details open><summary>Opis</summary><p>Łańcuszek ankier 1,5 mm z pierścieniem Ø 12 mm. Zapięcie typu karabińczyk z przedłużką 5 cm – dopasujesz długość bez zmiany rozmiaru.</p></details>
+				<details><summary>Materiał i pielęgnacja</summary><p>Stal 316L ze złoceniem PVD nie boi się wody ani potu. Perfumy nakładaj przed założeniem biżuterii, czyść miękką ściereczką.</p></details>
+				<details><summary>Wymiary i szczegóły</summary><p>Długość: 45 cm + 5 cm przedłużki · Pierścień: 12 mm · Waga: 4 g</p></details>
+				<details><summary>Dostawa i zwroty</summary><p>InPost Paczkomat i kurier DPD – 1–2 dni robocze. Darmowa dostawa od 199 zł. 30 dni na zwrot.</p></details>
+				<details><summary>Bezpieczeństwo produktu</summary><p>Producent: [nazwa, adres, e-mail]. Zawiera małe elementy – nie dla dzieci poniżej 3 lat.</p></details>
+				<details id="reviews"><summary>Opinie (128)</summary><p>[lista opinii i formularz WooCommerce]</p></details>
+			</div>
+		</div>
+	</section>
+</main>
+
+<div class="bd-sticky-atc" hidden><div class="bd-sticky-atc__info"><span class="bd-sticky-atc__title">Naszyjnik Aura z pierścieniem</span><span class="bd-sticky-atc__price"><del>149,00 zł</del> <ins>119,00 zł</ins></span></div><button type="button" class="bd-btn bd-sticky-atc__btn" data-bd-scroll-atc>Dodaj do koszyka</button></div>
+
+<dialog id="bd-size-guide" class="bd-dialog" aria-labelledby="bd-size-guide-title">
+	<div class="bd-dialog__head"><h2 id="bd-size-guide-title">Rozmiarówka</h2><button type="button" class="bd-dialog__close" data-bd-dialog-close aria-label="Zamknij"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+	<div class="bd-dialog__body">
+		<h3>Długość łańcuszka</h3>
+		<dl class="bd-lengths"><div><dt>38–40 cm</dt><dd>Choker – u podstawy szyi</dd></div><div><dt>42–45 cm</dt><dd>Na obojczykach – wybierana najczęściej</dd></div><div><dt>50 cm</dt><dd>Poniżej obojczyków – do warstw</dd></div><div><dt>60 cm</dt><dd>Na mostku – do golfów i dekoltów V</dd></div></dl>
+		<h3>Pierścionki</h3>
+		<ol class="bd-howto"><li>Owiń pasek papieru wokół palca – najlepiej wieczorem.</li><li>Zaznacz miejsce styku i zmierz długość – to obwód.</li><li>Odczytaj rozmiar z tabeli. Jesteś pomiędzy? Wybierz większy.</li></ol>
+		<table class="bd-table"><thead><tr><th scope="col">Rozmiar</th><th scope="col">Obwód</th><th scope="col">Średnica</th></tr></thead>
+		<tbody><tr><th scope="row">11</th><td>51 mm</td><td>16,2 mm</td></tr><tr><th scope="row">12</th><td>52 mm</td><td>16,6 mm</td></tr><tr><th scope="row">13</th><td>53 mm</td><td>16,9 mm</td></tr><tr><th scope="row">14</th><td>54 mm</td><td>17,2 mm</td></tr><tr><th scope="row">15</th><td>55 mm</td><td>17,5 mm</td></tr><tr><th scope="row">16</th><td>56 mm</td><td>17,8 mm</td></tr></tbody></table>
+	</div>
+</dialog>
+
+<script>
+	// Tylko podgląd: przełączanie wariantów (w sklepie robi to WooCommerce + wtyczka Variation Swatches).
+	document.querySelectorAll('.sizes, .metal').forEach(g => g.addEventListener('click', e => {
+		const b = e.target.closest('button'); if (!b || b.disabled) return;
+		g.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+	}));
+</script>
+<script src="art.js"></script>
+<script src="../theme/bydopamina-child/assets/js/main.js" defer></script>
+</body>
+</html>

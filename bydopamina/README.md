@@ -1,8 +1,16 @@
-# bydopamina.pl — szablon sklepu (Elementor Pro + WooCommerce)
+# bydopamina.pl — sklep z biżuterią (Elementor Pro + WooCommerce)
 
-Minimalistyczny, mobile-first sklep pod trendy e-commerce 2026/2027: spokojna, ciepła baza
-z „dopaminowymi” akcentami, duża typografia, siatka bento, szybki checkout, dostępność
-WCAG 2.2 AA (wymóg European Accessibility Act od 28.06.2025) i utwardzone bezpieczeństwo.
+Szablon sklepu z biżuterią (złoto 18K na stali 316L) w kierunku **editorial 2026/27**: zamiast typowego
+„szablonu AI” (kafle bento, gradienty, kropki nad nagłówkami, trzy identyczne karty opinii) — układ jak
+w magazynie modowym: asymetryczna siatka, duży szeryf *Instrument Serif* z kursywą, etykiety w *Geist Mono*,
+numerowane sekcje, kąty proste, cienkie linie. Kolor robi fotografia; interfejs jest cichy, a „dopamina”
+to jeden akcent — wiśnia `#9C1C33` (promocje, licznik koszyka, hover przycisków).
+
+Najważniejsze elementy UX dla biżuterii: kategorie w łukach, zakładki Bestsellery/Nowości/Promocje,
+druga fotka (na modelce) po najechaniu, **shop the look** z punktami na zdjęciu, **rozmiarówka** w panelu
+(pierścionki + długości łańcuszków), sekcja o materiale (316L / 18K / 0 niklu), prezent wg budżetu,
+**pakowanie na prezent** w checkoutcie, prawdziwe opinie z WooCommerce z automatyczną średnią,
+dolna nawigacja i przyklejony „Dodaj do koszyka” na telefonie. Dostępność WCAG 2.2 AA (wymóg EAA od 28.06.2025).
 
 ```
 bydopamina/
@@ -12,12 +20,12 @@ bydopamina/
 │   ├── inc/woocommerce.php     UX sklepu: pasek darmowej dostawy, ETA wysyłki, sticky „Dodaj do koszyka”, checkout
 │   ├── inc/shortcodes.php      krótkie kody używane w szablonach
 │   ├── inc/performance.php     Core Web Vitals
-│   └── assets/                 tokens.css (design system), main.css, main.js
+│   └── assets/                 tokens.css (design system), main.css, main.js, fonts/ (lokalne woff2)
 ├── elementor-templates/        10 szablonów JSON do importu
 ├── server/                     .htaccess, nginx, wp-config, robots.txt
 ├── docs/ARCHITEKTURA-UX.md     mapa strony, układy, decyzje UX, trendy
 ├── docs/BEZPIECZENSTWO.md      checklista bezpieczeństwa przed i po starcie
-├── preview/index.html          statyczny podgląd strony głównej (desktop + mobile)
+├── preview/                    statyczny podgląd: index.html (strona główna), produkt.html (karta produktu)
 └── tools/build_templates.py    generator szablonów (zmień → uruchom → importuj ponownie)
 ```
 
@@ -50,18 +58,20 @@ bydopamina/
 
 | Nazwa | HEX | Użycie |
 |---|---|---|
-| Primary / Tło | `#FAF8F5` | tło strony |
-| Secondary / Tekst | `#121212` | tekst, przyciski |
-| Text / Drugorzędny | `#56524C` | opisy, meta |
-| Accent / Dopamina | `#FF4F8B` | znaczniki, hover, promocje |
-| Pop / Limonka | `#D9FF50` | wyróżnienia, „Nowość” |
-| Linia | `#E6E1D9` | obramowania |
-| Powierzchnia | `#F2EEE8` | sekcje, tła zdjęć |
+| Tło — kość słoniowa | `#F6F2EC` | tło strony |
+| Tekst — espresso | `#1C1917` | tekst, przyciski, stopka |
+| Tekst drugorzędny | `#5E564E` | opisy, etykiety |
+| Wiśnia (akcent) | `#9C1C33` | promocje, licznik koszyka, hover CTA |
+| Piasek | `#EDE6DC` | tła zdjęć, sekcja prezentów |
+| Masło | `#F1E4B3` | etykieta „Nowość” |
+| Złoto (tylko grafika) | `#A8864F` | ikony, gwiazdki, linie — nigdy tekst |
+| Linia | `#DCD2C4` | obramowania |
 
-**Globalne czcionki**: Nagłówki — *Bricolage Grotesque* 600; Tekst — *Inter* 400/500.
-Elementor → Ustawienia → Wydajność → **„Ładuj Google Fonts lokalnie”: Tak** (RODO — bez połączeń z serwerami Google).
+**Czcionki**: *Instrument Serif* (nagłówki), *Geist* (tekst), *Geist Mono* (etykiety, ceny w tabelach).
+Motyw ładuje je **lokalnie** z `assets/fonts/` (RODO, CSP). W Elementorze: Ustawienia → Zaawansowane →
+**Google Fonts: Wyłącz**, a w Globalnych czcionkach zostaw „Domyślne” — style nadaje motyw.
 
-**Układ**: szerokość treści 1360 px, odstęp widżetów 16 px, punkty łamania 767 / 1024 px.
+**Układ**: szerokość treści 1520 px, odstęp widżetów 16 px, punkty łamania 767 / 1024 px.
 
 **Elementor → Ustawienia → Funkcje**: włącz *Flexbox Container*, *Inline Font Icons*, *Optimized Markup*, *Optimized Control Loading*, *Lazy Load Background Images*.
 
@@ -85,8 +95,9 @@ Szablony typu *Strona*: otwórz stronę w Elementorze → ikona folderu → Moje
 
 Po imporcie:
 - **Header** → widget *Menu nawigacyjne* → wybierz menu „Główne” (utwórz w Wygląd → Menu: Nowości, Kategorie…, O nas).
-- **Zdjęcia**: podmień placeholdery. Hero: min. 1600×2000 px, WebP/AVIF; do zdjęcia hero dodaj klasę CSS `bd-lcp` (priorytetowe ładowanie).
-- **Kafle bento**: w każdym kaflu ustaw zdjęcie tła i link kategorii.
+- **Zdjęcia**: podmień placeholdery (WebP/AVIF). Hero główne 2000×1600 px (5:4), boczne 1200×1200 px; packshoty produktów 4:5 na jednolitym, ciepłym tle (#EDE6DC) + **druga fotka na modelce** jako pierwsze zdjęcie galerii (pokazuje się po najechaniu). Zdjęcie hero ma już klasę `bd-lcp` (priorytetowe ładowanie).
+- **Kategorie w łukach**: Produkty → Kategorie → ustaw miniaturę każdej kategorii (3:4) i kolejność.
+- **Shop the look**: w shortcodzie wpisz ID zdjęcia i ID produktów z pozycją punktu, np. `products="101:34:38,102:52:30"`.
 - **Formularz newslettera**: podłącz akcję MailerLite / Mailchimp / Brevo w *Akcje po wysłaniu* i włącz double opt-in.
 - WooCommerce → Ustawienia → Zaawansowane: przypisz strony Koszyk / Zamówienie / Moje konto.
 
@@ -97,6 +108,7 @@ Po imporcie:
 | `BYDOPAMINA_FREE_SHIPPING_FROM` | `199` | próg darmowej dostawy (zł) — ustaw ten sam w WooCommerce → Wysyłka |
 | `BYDOPAMINA_SHIPPING_CUTOFF` | `14:00` | godzina graniczna wysyłki tego samego dnia |
 | `BYDOPAMINA_RETURN_DAYS` | `30` | dni na zwrot (argumenty zaufania) |
+| `BYDOPAMINA_GIFTWRAP_PRICE` | `9` | cena pakowania na prezent w checkoutcie (zł) |
 | `BYDOPAMINA_CSP_ENFORCE` | `false` | `true` = CSP wymuszany (włącz po 2 tyg. testów) |
 | `BYDOPAMINA_SEND_HEADERS` | `true` | `false`, jeśli nagłówki ustawia `.htaccess` / nginx |
 
@@ -107,13 +119,26 @@ Wykonaj **docs/BEZPIECZENSTWO.md** — w tym `.htaccess` lub `nginx`, `wp-config
 
 | Kod | Gdzie | Co robi |
 |---|---|---|
-| `[bd_free_shipping_bar]` | koszyk, produkt, mini-koszyk (auto) | pasek postępu do darmowej dostawy, odświeżany AJAX |
+| `[bd_usp variant="row\|list"]` | home, produkt | 4 cechy materiału: 18K na 316L, hipoalergiczna, wodoodporna, nie ciemnieje (filtr `bydopamina_usp`) |
+| `[bd_category_arches limit="6"]` | home | kategorie w łukach, kolejność z Produkty → Kategorie, zdjęcie = miniatura kategorii |
+| `[bd_product_tabs limit="8"]` | home, 404 | zakładki Bestsellery / Nowości / Promocje (ARIA, strzałki na klawiaturze) |
+| `[bd_shop_the_look image="ID" products="ID:x:y,…"]` | home | zdjęcie stylizacji z punktami (x, y w % od lewej/góry) + lista produktów |
+| `[bd_gift_finder]` | home | prezent wg budżetu: do 79 / 129 / 199 zł (filtr `bydopamina_gift_ranges`) |
+| `[bd_rating_summary]` | home | średnia ocena i liczba opinii liczone z WooCommerce |
+| `[bd_reviews limit="10"]` | home | ostatnie opinie 4–5★ **tylko od zweryfikowanych kupujących** |
+| `[bd_size_guide]` | produkt | link „Rozmiarówka” + panel z tabelą rozmiarów pierścionków i długości łańcuszków |
+| `[bd_product_claims]` | produkt | etykiety: Nowość (30 dni) / 18K złoto / Stal 316L / Wodoodporna (filtr `bydopamina_product_claims`) |
 | `[bd_delivery_eta]` | produkt | „Zamów w ciągu 2 h 15 min – wyślemy dziś” (pomija weekendy; święta: filtr `bydopamina_holidays`) |
-| `[bd_trust_badges variant="row\|stack"]` | home, produkt, koszyk | 4 argumenty zaufania |
-| `[bd_category_chips]` | sklep / kategorie | przewijane „chipsy” kategorii |
-| `[bd_mobile_nav]` | stopka | dolny pasek nawigacji na telefonie (strefa kciuka) |
-| `[bd_product_reviews]` | produkt | opinie + formularz |
+| `[bd_free_shipping_bar]` | koszyk, produkt, mini-koszyk (auto) | pasek do darmowej dostawy, odświeżany AJAX |
+| `[bd_trust_badges]` | koszyk | dostawa, zwroty, pudełko, płatności |
+| `[bd_category_chips]` | sklep / kategorie | podkategorie z liczbą produktów |
+| `[bd_mobile_nav]` | stopka | dolny pasek: Start · Sklep · Szukaj · Ulubione · Koszyk |
+| `[bd_product_reviews]` | produkt | opinie + formularz (w akordeonie) |
 | `[bd_year]` | stopka | bieżący rok |
+
+Automatycznie (bez shortcode'ów): druga fotka z galerii po najechaniu na kartę produktu, etykiety
+„Nowość”/„Wyprzedane”, rabat „−20%”, **pakowanie na prezent** w checkoutcie (`BYDOPAMINA_GIFTWRAP_PRICE`),
+przyklejony „Dodaj do koszyka” na telefonie, wyszukiwarka zwracająca produkty.
 
 ## Zalecane wtyczki (minimum — każda wtyczka to potencjalna luka)
 
@@ -129,7 +154,9 @@ Wykonaj **docs/BEZPIECZENSTWO.md** — w tym `.htaccess` lub `nginx`, `wp-config
 | Kopie | UpdraftPlus → zewnętrzny magazyn (S3/Drive) | lub kopie hostingu z retencją 30 dni |
 | Cache | LiteSpeed Cache (na LiteSpeed) / WP Rocket | wyklucz koszyk, zamówienie, moje konto |
 | SEO | Rank Math / Yoast + dane strukturalne Product | |
-| Warianty | Variation Swatches for WooCommerce | kolory/rozmiary jako „pigułki” |
+| Warianty | Variation Swatches for WooCommerce | kolor złoty/srebrny i rozmiary jako przyciski (style w motywie) |
+| Ulubione | TI WooCommerce Wishlist | strona `/lista-zyczen/` (ikona serca w headerze i dolnym pasku) |
+| Opinie ze zdjęciami | Customer Reviews for WooCommerce lub TrustMate | prośba o opinię po dostawie, zdjęcia klientów, weryfikacja zakupu |
 | Wyszukiwarka (opcja) | FiboSearch | podpowiedzi na żywo ze zdjęciami |
 | Faktury | integracja z Fakturownia / inFakt / wFirma + KSeF | |
 

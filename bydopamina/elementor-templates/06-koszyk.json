@@ -8,7 +8,7 @@
  },
  "content": [
   {
-   "id": "42969a5",
+   "id": "d0e8650",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -16,37 +16,38 @@
     "flex_direction": "column",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
+    "css_classes": "bd-section",
     "html_tag": "section",
     "flex_gap": {
-     "column": "24",
-     "row": "24",
+     "column": "28",
+     "row": "28",
      "isLinked": true,
      "unit": "px",
-     "size": 24
+     "size": 28
     },
     "padding": {
      "unit": "px",
-     "top": "32",
-     "right": "24",
+     "top": "40",
+     "right": "40",
      "bottom": "120",
-     "left": "24",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
-     "top": "16",
+     "top": "20",
      "right": "16",
-     "bottom": "64",
+     "bottom": "72",
      "left": "16",
      "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "ed4d19b",
+     "id": "be03dda",
      "elType": "widget",
      "widgetType": "html",
      "isInner": false,
@@ -56,19 +57,19 @@
      "elements": []
     },
     {
-     "id": "7d51055",
+     "id": "32884ed",
      "elType": "widget",
      "widgetType": "heading",
      "isInner": false,
      "settings": {
-      "title": "Twój koszyk",
+      "title": "Koszyk",
       "header_size": "h1",
       "_css_classes": "bd-h2"
      },
      "elements": []
     },
     {
-     "id": "5c24c1a",
+     "id": "76fdb3d",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
@@ -78,7 +79,7 @@
      "elements": []
     },
     {
-     "id": "ebe80fa",
+     "id": "2384396",
      "elType": "widget",
      "widgetType": "woocommerce-cart",
      "isInner": false,
@@ -90,13 +91,12 @@
        "unit": "px",
        "size": 96,
        "sizes": []
-      },
-      "apply_coupon_heading": "Masz kod rabatowy?"
+      }
      },
      "elements": []
     },
     {
-     "id": "33288e1",
+     "id": "a746712",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,

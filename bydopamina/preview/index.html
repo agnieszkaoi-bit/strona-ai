@@ -5,224 +5,239 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>bydopamina – podgląd strony głównej</title>
 <meta name="robots" content="noindex">
-<!-- Tylko podgląd: w WordPressie fonty ładuje Elementor lokalnie, a układ tworzą kontenery Elementora. -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Podgląd statyczny. Style i fonty pochodzą z motywu; układ, który w WordPressie tworzą kontenery Elementora, emuluje blok <style> poniżej. -->
+<link rel="stylesheet" href="../theme/bydopamina-child/assets/css/fonts.css">
 <link rel="stylesheet" href="../theme/bydopamina-child/assets/css/tokens.css">
 <link rel="stylesheet" href="../theme/bydopamina-child/assets/css/main.css">
 <style>
-	/* Emulacja kontenerów Elementora na potrzeby podglądu */
 	body { margin: 0; }
 	.wrap { max-width: var(--bd-max); margin-inline: auto; padding-inline: var(--bd-gutter); box-sizing: border-box; }
-	.row { display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
-	.col { flex: 1 1 420px; display: flex; flex-direction: column; gap: 24px; }
-	.head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
 	h1, h2, h3, p { margin: 0; }
-	.bd-hero-title { font-size: var(--bd-fs-hero); line-height: .95; letter-spacing: -.035em; }
-	.bd-h2 { font-size: var(--bd-fs-3xl); }
-	.bd-h3 { font-size: var(--bd-fs-xl); }
-	.ph { background: linear-gradient(135deg, #F2EEE8, #E6DFD4); }
-	.ph--pink { background: linear-gradient(160deg, #FFC2D6, #FF8FB4); }
-	.ph--lime { background: linear-gradient(160deg, #EDFFB0, #C7EE3C); }
-	.ph--sand { background: linear-gradient(160deg, #EFE4D6, #D8C6AE); }
-	.ph--ink { background: linear-gradient(160deg, #3a3a3a, #121212); }
-	.hero-img { aspect-ratio: 4/5; border-radius: var(--bd-radius-lg); position: relative; max-height: 720px; }
-	.btns { display: flex; gap: 12px; flex-wrap: wrap; }
-	.bd-btn { font-size: var(--bd-fs-sm); }
-	.bd-btn--ghost { background: transparent !important; color: var(--bd-ink) !important; }
-	/* Header */
-	.hdr { position: sticky; top: 0; z-index: 100; }
-	.hdr .wrap { display: flex; align-items: center; justify-content: space-between; height: var(--bd-header-h); gap: 16px; }
-	.logo { font: 700 26px/1 var(--bd-font-display); letter-spacing: -.8px; text-decoration: none; }
-	.menu { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; font-size: var(--bd-fs-sm); font-weight: 500; }
-	.menu a { text-decoration: none; }
-	.icons { display: flex; gap: 4px; }
-	.icons a { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; position: relative; }
-	.icons .cnt { position: absolute; top: 6px; right: 4px; background: var(--bd-accent); font-size: 10px; font-weight: 700; border-radius: 9px; min-width: 18px; height: 18px; line-height: 18px; text-align: center; }
-	.burger { display: none; }
-	@media (max-width: 1024px) { .menu { display: none; } .burger { display: grid !important; } }
-	/* Produkty */
-	.woocommerce ul.products { display: grid; grid-template-columns: repeat(4, 1fr); list-style: none; margin: 0; padding: 0; }
-	.woocommerce ul.products li.product .img { aspect-ratio: 4/5; border-radius: var(--bd-radius); margin-bottom: 14px; }
-	.woocommerce ul.products li.product h3 { font: 500 var(--bd-fs-sm)/1.35 var(--bd-font-body); letter-spacing: 0; margin-bottom: 4px; }
-	.woocommerce ul.products li.product .price { font-size: var(--bd-fs-sm); }
-	.woocommerce span.onsale { position: absolute; }
-	.bento-tile { padding: 24px; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; }
-	.bento-tile h3 { color: #fff; font-size: var(--bd-fs-xl); }
-	.bento-tile.bd-tile--pink h3, .bento-tile.bd-tile--lime h3 { color: var(--bd-ink); }
-	.bento-tile .bd-link-arrow { color: #fff; font-size: var(--bd-fs-sm); }
-	.bento-tile.bd-tile--pink .bd-link-arrow, .bento-tile.bd-tile--lime .bd-link-arrow { color: var(--bd-ink); }
-	.reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-	.nl { padding: 56px; display: flex; gap: 40px; flex-wrap: wrap; align-items: center; }
-	.nl form { flex: 1 1 360px; display: grid; gap: 12px; }
-	.nl input[type=email] { min-height: 48px; border-radius: 999px; border: 1.5px solid rgb(255 255 255 / .3); background: transparent; color: #fff; padding: 0 22px; font: inherit; }
-	.nl label { font-size: var(--bd-fs-xs); color: #CFCBC4; display: flex; gap: 8px; }
-	.nl button { min-height: 48px; border-radius: 999px; border: 0; background: var(--bd-pop); font: 700 var(--bd-fs-sm) var(--bd-font-body); cursor: pointer; }
-	details { border-bottom: 1px solid var(--bd-line); padding: 20px 0; }
-	details p { margin-top: 10px; color: var(--bd-ink-2); }
-	summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; }
-	summary::after { content: "+"; font-size: 22px; line-height: 1; }
-	details[open] summary::after { content: "−"; }
-	footer .cols { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; }
-	footer ul.l { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 10px; color: #CFCBC4; }
-	footer h2 { font: 600 var(--bd-fs-sm) var(--bd-font-body); letter-spacing: .06em; text-transform: uppercase; color: #fff; }
-	.wordmark { font: 700 clamp(3.5rem, 13.5vw, 15rem)/.8 var(--bd-font-display); white-space: nowrap; letter-spacing: -.05em; color: #fff; text-align: center; margin: 48px 0 32px; }
-	.bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; color: #9C978F; font-size: var(--bd-fs-xs); }
-	@media (max-width: 1024px) {
-		.woocommerce ul.products { grid-auto-flow: column; grid-auto-columns: 42%; grid-template-columns: none; overflow-x: auto; scroll-snap-type: x mandatory; }
-		.reviews { grid-template-columns: 1fr; }
-		footer .cols { grid-template-columns: 1fr 1fr; }
-	}
-	@media (max-width: 767px) {
-		.woocommerce ul.products { grid-auto-columns: 68%; }
-		.nl { padding: 32px 20px; }
-		.hero-row { gap: 28px; }
-		.announcement-long { display: none; }
-	}
+	.row { display: flex; flex-wrap: wrap; gap: 48px; }
+	.hdr { position: sticky; top: 0; z-index: 100; height: var(--bd-header-h); padding-inline: var(--bd-gutter); }
+	.nav { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; font-size: var(--bd-fs-sm); }
+	.nav a { display: block; padding: 22px 12px; text-decoration: none; }
+	.nav a:hover { text-decoration: underline; }
+	.ico { display: flex; }
+	.ico a, .burger { width: 44px; height: 44px; display: grid; place-items: center; position: relative; color: var(--bd-ink); }
+	.ico .cnt { position: absolute; top: 6px; right: 4px; background: var(--bd-cherry); color: #fff; font: 500 10px/16px var(--bd-font-mono); min-width: 16px; height: 16px; border-radius: 8px; text-align: center; }
+	.burger { display: none !important; }
+	.logo { font: 400 32px/1 var(--bd-font-display); letter-spacing: -.02em; text-decoration: none; justify-self: center; }
+	@media (max-width: 1024px) { .nav { display: none; } .burger { display: grid !important; } }
+	.side-img { margin-bottom: 4px; }
+	.btnrow { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+	.col { display: flex; flex-direction: column; gap: 14px; }
+	.coll { flex: 1 1 380px; }
+	.coll-meta { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0 6px; }
+	.nl { display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-end; padding-top: 56px; border-top: 1px solid var(--bd-line); }
+	.nl form { flex: 1 1 380px; display: grid; grid-template-columns: 1fr auto; gap: 16px 20px; align-items: end; }
+	.nl label.f { display: grid; gap: 8px; }
+	.nl input[type=email] { min-height: 52px; border: 0; border-bottom: 1px solid var(--bd-ink); background: transparent; font: inherit; font-size: var(--bd-fs-lg); padding: 0; }
+	.nl .acc { grid-column: 1 / -1; font-size: var(--bd-fs-xs); color: var(--bd-ink-2); display: flex; gap: 8px; }
+	.foot-cols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+	.foot-cols ul { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 10px; color: #CFC6BA; }
+	.foot-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; color: #9A9086; }
+	@media (max-width: 1024px) { .foot-cols { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
 <a class="bd-skip-link" href="#bd-main">Przejdź do treści</a>
 
-<div class="bd-announcement" style="background:#121212;text-align:center;padding:8px 16px">
-	<p>Darmowa dostawa od 199 zł · Wysyłka w 24 h<span class="announcement-long"> · 30 dni na zwrot</span></p>
-</div>
+<div class="bd-announcement"><ul><li>Darmowa dostawa od 199 zł</li><li>Wysyłka w 24 h</li><li>30 dni na zwrot</li><li>Pudełko prezentowe w cenie</li></ul></div>
 
-<header class="hdr bd-header">
-	<div class="wrap">
-		<a class="icons burger" href="#" aria-label="Menu" style="display:none"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></a>
-		<a class="logo" href="#">bydopamina</a>
-		<nav aria-label="Główne"><ul class="menu"><li><a href="#">Nowości</a></li><li><a href="#">Kategoria A</a></li><li><a href="#">Kategoria B</a></li><li><a href="#">Bestsellery</a></li><li><a href="#">O nas</a></li></ul></nav>
-		<div class="icons">
-			<a href="#" aria-label="Szukaj"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a>
-			<a href="#" aria-label="Konto" class="bd-hide-mobile-when-mnav"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
-			<a href="#" aria-label="Koszyk, 2 produkty"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="cnt">2</span></a>
-		</div>
+<header class="bd-header hdr">
+	<div>
+		<button class="burger" style="background:none;border:0" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M3 8h18M3 16h18"/></svg></button>
+		<ul class="nav"><li><a href="#">Nowości</a></li><li><a href="#">Naszyjniki</a></li><li><a href="#">Kolczyki</a></li><li><a href="#">Pierścionki</a></li><li><a href="#">Bransoletki</a></li><li><a href="#">Prezenty</a></li></ul>
+	</div>
+	<a class="logo" href="#">bydopamina</a>
+	<div class="ico bd-header-icons">
+		<a href="#" aria-label="Szukaj"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a>
+		<a href="#" aria-label="Ulubione" class="bd-hide-mobile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7.5 3c0 5.4-7.5 10-7.5 10z"/></svg></a>
+		<a href="#" aria-label="Konto" class="bd-hide-mobile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
+		<a href="#" aria-label="Koszyk, 2 produkty"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="cnt">2</span></a>
 	</div>
 </header>
 
 <main id="bd-main">
-	<section class="bd-section" style="padding-top:40px;padding-bottom:64px">
-		<div class="wrap row hero-row">
-			<div class="col">
-				<span class="bd-eyebrow">Nowa kolekcja · Jesień 2026</span>
-				<h1 class="bd-hero-title">Rzeczy, które robią Ci <span class="bd-highlight">dzień</span>.</h1>
-				<p class="bd-muted" style="font-size:var(--bd-fs-lg);max-width:34ch">Krótki opis marki w jednym zdaniu: co sprzedajesz i dlaczego u Ciebie – konkret, bez ogólników.</p>
-				<div class="btns"><a class="bd-btn elementor-button" href="#">Kup teraz</a><a class="bd-btn bd-btn--ghost elementor-button" href="#">Zobacz nowości</a></div>
-				<p class="bd-muted" style="font-size:var(--bd-fs-sm)">★ 4,9/5 · 2 300+ opinii zweryfikowanych klientów</p>
+	<!-- HERO -->
+	<section class="bd-hero">
+		<div class="wrap bd-hero__grid">
+			<h1 class="bd-hero-title bd-hero__title">Złoto, które <em>zostaje</em>.</h1>
+			<div class="bd-hero__main">
+				<div class="bd-media bd-media--hero"><span data-art="model" data-bg="#D9C9B6" data-ratio="5 / 4"></span></div>
+				<div class="bd-caption"><span class="bd-label">Kolekcja 07 — Solstice</span><a class="bd-textlink" href="#">Zobacz kolekcję <span aria-hidden="true">→</span></a></div>
 			</div>
-			<div class="col"><div class="hero-img ph--pink" role="img" aria-label="Zdjęcie hero"><span class="bd-hero__badge">Nowość ✦</span></div></div>
+			<div class="bd-hero__side">
+				<div class="bd-media bd-media--sq"><span data-art="hand" data-bg="#E6DACB" data-ratio="1 / 1"></span></div>
+				<p class="bd-lead">Biżuteria, którą zakładasz rano i zapominasz, że ją masz. Pod prysznic, na siłownię, na wesele.</p>
+				<div class="btnrow"><a class="bd-btn" href="#">Kup kolekcję</a><a class="bd-textlink" href="#">Bestsellery <span aria-hidden="true">→</span></a></div>
+				<dl class="bd-meta"><dt>Materiał</dt><dd>Stal 316L, złoto 18K (PVD)</dd><dt>Wysyłka</dt><dd>W 24 h, InPost lub kurier</dd><dt>Zwrot</dt><dd>30 dni, bez podawania przyczyny</dd></dl>
+			</div>
 		</div>
 	</section>
 
-	<section class="bd-section--tight bd-surface" style="padding-block:32px">
+	<!-- USP -->
+	<section style="padding-block:48px">
 		<div class="wrap">
-			<ul class="bd-trust bd-trust--row">
-				<li class="bd-trust__item"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg><span><strong>Darmowa dostawa od 199 zł</strong><small>InPost Paczkomat, kurier</small></span></li>
-				<li class="bd-trust__item"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg><span><strong>30 dni na zwrot</strong><small>Bez podawania przyczyny</small></span></li>
-				<li class="bd-trust__item"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h3"/></svg><span><strong>BLIK, karta, Apple Pay</strong><small>Też PayPo – płać za 30 dni</small></span></li>
-				<li class="bd-trust__item"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.2 3 7.7 7 9 4-1.3 7-4.8 7-9V6z"/><path d="m9 12 2 2 4-4"/></svg><span><strong>Bezpieczne zakupy</strong><small>Szyfrowane połączenie SSL</small></span></li>
+			<ul class="bd-features bd-features--row" aria-label="Cechy biżuterii">
+				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="14" r="6.5"/><path d="m9.5 5 2.5-2.5L14.5 5 12 7.5z"/></svg><span><strong>Złoto 18K na stali 316L</strong><small>Powłoka PVD, trwalsza niż zwykłe złocenie</small></span></li>
+				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span><strong>Hipoalergiczna</strong><small>Bez niklu i ołowiu</small></span></li>
+				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.6 6 11a6 6 0 0 1-12 0c0-4.4 6-11 6-11z"/></svg><span><strong>Wodoodporna</strong><small>Prysznic, basen, siłownia</small></span></li>
+				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v5M12 16v5M3 12h5M16 12h5M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3"/></svg><span><strong>Nie ciemnieje</strong><small>Nosisz codziennie, latami</small></span></li>
 			</ul>
 		</div>
 	</section>
 
+	<!-- KATEGORIE -->
+	<section class="bd-section" style="padding-top:64px;padding-bottom:0">
+		<div class="wrap">
+			<div class="bd-sechead"><p class="bd-label">01</p><h2 class="bd-h2">Kategorie</h2><a class="bd-textlink" href="#">Cały sklep <span aria-hidden="true">→</span></a></div>
+			<nav class="bd-arches" aria-label="Kategorie biżuterii"><ul>
+				<li><a href="#"><span class="bd-arches__img"><span data-art="necklace" data-ratio="3 / 4" data-bg="#E8DDCF"></span></span><span class="bd-arches__name"><span class="bd-mono">01</span>Naszyjniki</span></a></li>
+				<li><a href="#"><span class="bd-arches__img"><span data-art="hoops" data-ratio="3 / 4" data-bg="#E3D6C5"></span></span><span class="bd-arches__name"><span class="bd-mono">02</span>Kolczyki</span></a></li>
+				<li><a href="#"><span class="bd-arches__img"><span data-art="ring" data-ratio="3 / 4" data-bg="#EAE1D5"></span></span><span class="bd-arches__name"><span class="bd-mono">03</span>Pierścionki</span></a></li>
+				<li><a href="#"><span class="bd-arches__img"><span data-art="bracelet" data-ratio="3 / 4" data-bg="#DFD2C1"></span></span><span class="bd-arches__name"><span class="bd-mono">04</span>Bransoletki</span></a></li>
+				<li><a href="#"><span class="bd-arches__img"><span data-art="layered" data-ratio="3 / 4" data-bg="#E6DCCD"></span></span><span class="bd-arches__name"><span class="bd-mono">05</span>Zestawy</span></a></li>
+				<li><a href="#"><span class="bd-arches__img"><span data-art="box" data-ratio="3 / 4" data-bg="#E9E0D3"></span></span><span class="bd-arches__name"><span class="bd-mono">06</span>Prezenty</span></a></li>
+			</ul></nav>
+		</div>
+	</section>
+
+	<!-- ZAKŁADKI PRODUKTÓW -->
 	<section class="bd-section">
 		<div class="wrap">
-			<div class="head"><h2 class="bd-h2">Kategorie</h2><a class="bd-link-arrow" href="#">Wszystkie produkty</a></div>
-			<div class="bd-bento">
-				<a href="#" class="bd-tile bd-bento__lg bento-tile ph--ink" style="text-decoration:none"><h3>Bestsellery</h3><span class="bd-link-arrow">Kup to, co kochają inni</span></a>
-				<a href="#" class="bd-tile bd-tile--pink bento-tile" style="text-decoration:none"><h3>Nowości</h3><span class="bd-link-arrow">Zobacz</span></a>
-				<a href="#" class="bd-tile bento-tile ph--sand" style="text-decoration:none"><h3>Na prezent</h3><span class="bd-link-arrow">Zobacz</span></a>
-				<a href="#" class="bd-tile bd-bento__wide bd-tile--lime bento-tile" style="text-decoration:none"><h3>Kategoria 3</h3><span class="bd-link-arrow">Zobacz</span></a>
+			<div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:16px"><p class="bd-label">02 — Wybór redakcji</p><a class="bd-textlink" href="#">Wszystkie produkty <span aria-hidden="true">→</span></a></div>
+			<div class="bd-tabs" data-bd-tabs>
+				<div role="tablist" class="bd-tabs__list" aria-label="Wybór produktów">
+					<button type="button" role="tab" id="t1-t" aria-controls="t1" aria-selected="true" tabindex="0">Bestsellery</button>
+					<button type="button" role="tab" id="t2-t" aria-controls="t2" aria-selected="false" tabindex="-1">Nowości</button>
+					<button type="button" role="tab" id="t3-t" aria-controls="t3" aria-selected="false" tabindex="-1">Promocje</button>
+				</div>
+				<div role="tabpanel" id="t1" aria-labelledby="t1-t" class="bd-rail" tabindex="0">
+					<div class="woocommerce"><ul class="products columns-4">
+						<li class="product"><a class="woocommerce-LoopProduct-link" href="#"><span class="onsale">−20%</span><span data-art="necklace" data-bg="#EDE6DC"></span><h2 class="woocommerce-loop-product__title">Naszyjnik Aura z pierścieniem</h2><span class="price"><del>149,00 zł</del><ins>119,00 zł</ins></span></a><a class="button" href="#">Dodaj do koszyka</a></li>
+						<li class="product"><a class="woocommerce-LoopProduct-link" href="#"><span class="bd-badge">Nowość</span><span data-art="hoops" data-bg="#E9E1D6"></span><h2 class="woocommerce-loop-product__title">Kolczyki Hoop Bold 30 mm</h2><span class="price">109,00 zł</span></a><a class="button" href="#">Dodaj do koszyka</a></li>
+						<li class="product"><a class="woocommerce-LoopProduct-link" href="#"><span data-art="ring" data-bg="#EDE6DC"></span><h2 class="woocommerce-loop-product__title">Pierścionek Solitaire z cyrkonią</h2><span class="price">89,00 zł</span></a><a class="button" href="#">Wybierz rozmiar</a></li>
+						<li class="product"><a class="woocommerce-LoopProduct-link" href="#"><span data-art="bracelet" data-bg="#E9E1D6"></span><h2 class="woocommerce-loop-product__title">Bransoletka Figaro</h2><span class="price">99,00 zł</span></a><a class="button" href="#">Dodaj do koszyka</a></li>
+					</ul></div>
+				</div>
+				<div role="tabpanel" id="t2" aria-labelledby="t2-t" class="bd-rail" tabindex="0" hidden><p class="bd-muted">[produkty: Nowości]</p></div>
+				<div role="tabpanel" id="t3" aria-labelledby="t3-t" class="bd-rail" tabindex="0" hidden><p class="bd-muted">[produkty: Promocje]</p></div>
 			</div>
 		</div>
 	</section>
 
-	<section class="bd-section" style="padding-top:0">
+	<!-- MATERIAŁ -->
+	<section class="bd-section bd-dark">
 		<div class="wrap">
-			<div class="head"><h2 class="bd-h2">Bestsellery</h2><a class="bd-link-arrow" href="#">Zobacz wszystkie</a></div>
-			<div class="woocommerce bd-rail">
-				<ul class="products">
-					<li class="product"><span class="onsale">-20%</span><div class="img ph--sand"></div><h3>Nazwa produktu pierwszego</h3><span class="price"><del>159,00 zł</del> <ins>127,00 zł</ins></span><a class="button" href="#">Dodaj</a></li>
-					<li class="product"><div class="img ph--pink"></div><h3>Nazwa produktu drugiego</h3><span class="price">89,00 zł</span><a class="button" href="#">Dodaj</a></li>
-					<li class="product"><div class="img ph"></div><h3>Nazwa produktu trzeciego</h3><span class="price">129,00 zł</span><a class="button" href="#">Zobacz</a></li>
-					<li class="product"><div class="img ph--lime"></div><h3>Nazwa produktu czwartego</h3><span class="price">59,00 zł</span><a class="button" href="#">Dodaj</a></li>
-				</ul>
+			<div class="bd-sechead"><p class="bd-label">03</p><h2 class="bd-h2">Złoto, które <em>nie schodzi</em> pod prysznicem.</h2><a class="bd-textlink" href="#">O materiale <span aria-hidden="true">→</span></a></div>
+			<div class="row" style="align-items:flex-end">
+				<div class="bd-material-col" style="flex:1 1 560px"><p class="bd-lead">Tanie złocenie to kilka mikronów farby na mosiądzu – ściera się po paru tygodniach i zostawia zielony ślad. Nasze złoto jest związane ze stalą próżniowo. Dlatego kolor zostaje z Tobą na lata.</p><ul class="bd-specs">
+					<li><b>316L</b><span>Stal chirurgiczna – ta sama, z której robi się implanty. Nie rdzewieje, nie zmienia koloru.</span></li>
+					<li><b>18K</b><span>Złoto nakładane metodą PVD – warstwa wiązana z metalem, a nie tylko nim pokryta.</span></li>
+					<li><b>0</b><span>Niklu i ołowiu. Bezpieczna dla wrażliwej skóry i do noszenia 24/7.</span></li>
+				</ul></div>
+				<div class="bd-media" style="flex:1 1 360px"><span data-art="water" data-ratio="4 / 5"></span></div>
 			</div>
 		</div>
 	</section>
 
-	<div class="bd-marquee" aria-hidden="true"><ul class="bd-marquee__track"><li>Projektowane w Polsce</li><li>Wysyłka w 24 h</li><li>30 dni na zwrot</li><li>Małe serie</li><li>Opakowania bez plastiku</li><li>Projektowane w Polsce</li><li>Wysyłka w 24 h</li><li>30 dni na zwrot</li><li>Małe serie</li><li>Opakowania bez plastiku</li></ul></div>
-
+	<!-- SHOP THE LOOK -->
 	<section class="bd-section">
-		<div class="wrap row" style="gap:64px">
-			<div class="col"><div class="hero-img ph--sand" role="img" aria-label="Zdjęcie pracowni"></div></div>
-			<div class="col" style="gap:20px">
-				<span class="bd-eyebrow">Dlaczego bydopamina</span>
-				<h2 class="bd-h2">Mniej, ale lepiej. I z uśmiechem.</h2>
-				<p>2–3 zdania o historii marki i wartościach. Ludzie kupują od ludzi – pokaż twarz, pracownię, proces.</p>
-				<ul style="margin:0;padding-left:1.2em;display:grid;gap:8px"><li>Projektujemy i pakujemy w Polsce</li><li>Krótkie serie – bez nadprodukcji</li><li>Opakowania z recyklingu, bez plastiku</li></ul>
-				<div><a class="bd-btn bd-btn--ghost elementor-button" href="#">Poznaj nas</a></div>
+		<div class="wrap">
+			<div class="bd-sechead"><p class="bd-label">04</p><h2 class="bd-h2">Stylizacja <em>tygodnia</em></h2><a class="bd-textlink" href="#">Więcej stylizacji <span aria-hidden="true">→</span></a></div>
+			<div class="bd-look">
+				<figure class="bd-look__media"><span class="bd-look__img" data-art="model" data-bg="#D6C3AE"></span>
+					<button type="button" class="bd-look__dot" style="left:34%;top:30%" data-bd-look="l1" aria-describedby="l1"><span class="screen-reader-text">Łańcuszek Mini</span></button>
+					<button type="button" class="bd-look__dot" style="left:50%;top:63%" data-bd-look="l2" aria-describedby="l2"><span class="screen-reader-text">Naszyjnik Aura</span></button>
+					<button type="button" class="bd-look__dot" style="left:66%;top:44%" data-bd-look="l3" aria-describedby="l3"><span class="screen-reader-text">Łańcuch Figaro</span></button>
+				</figure>
+				<div class="bd-look__panel"><p class="bd-label">Na zdjęciu</p><ol class="bd-look__list">
+					<li id="l1" class="bd-look__item"><a href="#"><span data-art="necklace" data-bg="#EDE6DC"></span><span><span class="bd-mono">01</span><strong>Łańcuszek Mini 42 cm</strong><span class="bd-look__price">69,00 zł</span></span></a></li>
+					<li id="l2" class="bd-look__item"><a href="#"><span data-art="layered" data-bg="#EDE6DC"></span><span><span class="bd-mono">02</span><strong>Naszyjnik Aura z pierścieniem</strong><span class="bd-look__price">119,00 zł</span></span></a></li>
+					<li id="l3" class="bd-look__item"><a href="#"><span data-art="bracelet" data-bg="#EDE6DC"></span><span><span class="bd-mono">03</span><strong>Łańcuch Figaro 50 cm</strong><span class="bd-look__price">129,00 zł</span></span></a></li>
+				</ol></div>
 			</div>
 		</div>
 	</section>
 
+	<!-- KOLEKCJE -->
 	<section class="bd-section" style="padding-top:0">
 		<div class="wrap">
-			<div class="head"><h2 class="bd-h2">Co mówią klienci</h2><a class="bd-link-arrow" href="#">Wszystkie opinie</a></div>
-			<div class="reviews">
-				<article class="bd-review"><p class="bd-stars" aria-label="Ocena 5 na 5">★★★★★</p><p>„Tu wstaw prawdziwą opinię klienta – najlepiej z konkretem: co kupił, jak szybko dotarło, co go zaskoczyło.”</p><p class="bd-muted" style="margin-top:12px"><strong>Imię N.</strong> · zweryfikowany zakup</p></article>
-				<article class="bd-review"><p class="bd-stars" aria-label="Ocena 5 na 5">★★★★★</p><p>„Tu wstaw prawdziwą opinię klienta – najlepiej z konkretem: co kupił, jak szybko dotarło, co go zaskoczyło.”</p><p class="bd-muted" style="margin-top:12px"><strong>Imię N.</strong> · zweryfikowany zakup</p></article>
-				<article class="bd-review"><p class="bd-stars" aria-label="Ocena 5 na 5">★★★★★</p><p>„Tu wstaw prawdziwą opinię klienta – najlepiej z konkretem: co kupił, jak szybko dotarło, co go zaskoczyło.”</p><p class="bd-muted" style="margin-top:12px"><strong>Imię N.</strong> · zweryfikowany zakup</p></article>
+			<div class="bd-sechead"><p class="bd-label">05</p><h2 class="bd-h2">Kolekcje</h2><span></span></div>
+			<div class="row" style="gap:20px">
+				<div class="coll"><div class="bd-media"><span data-art="layered" data-bg="#DCCBB7"></span></div><div class="coll-meta"><h3 class="bd-h3">Layering — <em>noś warstwami</em></h3><span class="bd-label">32 modele</span></div><a class="bd-textlink" href="#">Odkryj <span aria-hidden="true">→</span></a></div>
+				<div class="coll"><div class="bd-media"><span data-art="studs" data-bg="#E7DCCF"></span></div><div class="coll-meta"><h3 class="bd-h3">Minimal — <em>na co dzień</em></h3><span class="bd-label">24 modele</span></div><a class="bd-textlink" href="#">Odkryj <span aria-hidden="true">→</span></a></div>
 			</div>
-			<p class="bd-muted" style="font-size:var(--bd-fs-xs);margin-top:24px">Opinie publikujemy wyłącznie od osób, które kupiły produkt w naszym sklepie – weryfikujemy je na podstawie numeru zamówienia.</p>
 		</div>
 	</section>
 
-	<section class="bd-section" style="padding-top:0">
+	<!-- PREZENTY -->
+	<section class="bd-section bd-sand">
+		<div class="wrap row" style="gap:56px;align-items:center">
+			<div class="col" style="flex:1 1 520px;gap:24px">
+				<p class="bd-label">06 — Prezenty</p>
+				<h2 class="bd-h2">Prezent, który <em>nie trafi</em> do szuflady.</h2>
+				<p class="bd-lead">Każde zamówienie pakujemy w pudełko. Chcesz więcej? Zaznacz „pakowanie na prezent” – dołożymy papier, wstążkę i liścik z Twoimi słowami. Bez paragonu w paczce.</p>
+				<ul class="bd-giftfinder"><li><a href="#"><span class="bd-mono">do</span>79 zł</a></li><li><a href="#"><span class="bd-mono">do</span>129 zł</a></li><li><a href="#"><span class="bd-mono">do</span>199 zł</a></li><li><a href="#"><span class="bd-mono">pewniak</span>Bestsellery</a></li></ul>
+			</div>
+			<div class="bd-media" style="flex:1 1 380px"><span data-art="box" data-bg="#E2D5C4"></span></div>
+		</div>
+	</section>
+
+	<!-- OPINIE -->
+	<section class="bd-section">
+		<div class="wrap" style="display:grid;gap:24px">
+			<div class="bd-sechead" style="margin-bottom:0"><p class="bd-label">07</p><h2 class="bd-h2">Opinie</h2><a class="bd-textlink" href="#">Wszystkie opinie <span aria-hidden="true">→</span></a></div>
+			<div class="bd-rating"><b>4,9</b><span><span class="bd-stars" role="img" aria-label="Średnia ocena 4,9 na 5">★★★★★</span><br><span class="bd-label">liczone automatycznie z opinii WooCommerce</span></span></div>
+			<div class="bd-reviews"><ul class="bd-reviews__list">
+				<li class="bd-review"><p class="bd-stars" role="img" aria-label="Ocena 5 na 5">★★★★★</p><blockquote><p>Tu pojawi się prawdziwa opinia klienta – shortcode pobiera ją z WooCommerce, tylko zweryfikowane zakupy.</p></blockquote><footer><span>Imię N. · <span class="bd-mono">Zweryfikowany zakup</span></span><a href="#"><span data-art="necklace" data-bg="#EDE6DC" style="width:40px"></span><span>Naszyjnik Aura</span></a></footer></li>
+				<li class="bd-review"><p class="bd-stars" role="img" aria-label="Ocena 5 na 5">★★★★★</p><blockquote><p>Druga opinia – z konkretem: jak długo nosi, czy złoto trzyma kolor, jak szybko przyszła paczka.</p></blockquote><footer><span>Imię N. · <span class="bd-mono">Zweryfikowany zakup</span></span><a href="#"><span data-art="hoops" data-bg="#EDE6DC" style="width:40px"></span><span>Kolczyki Hoop Bold</span></a></footer></li>
+				<li class="bd-review"><p class="bd-stars" role="img" aria-label="Ocena 4 na 5">★★★★☆</p><blockquote><p>Trzecia opinia. Karty przewijają się poziomo – na telefonie widać fragment następnej, więc wiadomo, że jest więcej.</p></blockquote><footer><span>Imię N. · <span class="bd-mono">Zweryfikowany zakup</span></span><a href="#"><span data-art="ring" data-bg="#EDE6DC" style="width:40px"></span><span>Pierścionek Solitaire</span></a></footer></li>
+				<li class="bd-review"><p class="bd-stars" role="img" aria-label="Ocena 5 na 5">★★★★★</p><blockquote><p>Czwarta opinia – przykład, jak wygląda dłuższa wypowiedź w tej samej karcie.</p></blockquote><footer><span>Imię N. · <span class="bd-mono">Zweryfikowany zakup</span></span><a href="#"><span data-art="bracelet" data-bg="#EDE6DC" style="width:40px"></span><span>Bransoletka Figaro</span></a></footer></li>
+			</ul><p class="bd-reviews__note">Pokazujemy wyłącznie opinie osób, które kupiły produkt w naszym sklepie (weryfikacja po numerze zamówienia).</p></div>
+		</div>
+	</section>
+
+	<!-- NEWSLETTER -->
+	<section style="padding-bottom:120px">
 		<div class="wrap">
-			<div class="bd-newsletter bd-dark nl">
-				<div style="flex:1 1 360px;display:grid;gap:12px"><h2 class="bd-h2">−10% na pierwsze zakupy</h2><p>Nowości i dropy przed wszystkimi. Maks. 2 maile w miesiącu.</p></div>
-				<form onsubmit="return false"><label for="nl-mail" style="color:#fff">Adres e-mail</label><input id="nl-mail" type="email" placeholder="twoj@email.pl" required><label><input type="checkbox" required> Zgadzam się na otrzymywanie newslettera. Wypiszesz się jednym kliknięciem.</label><button type="submit">Zapisz się i odbierz −10%</button></form>
-			</div>
-		</div>
-	</section>
-
-	<section class="bd-section" style="padding-top:0">
-		<div class="wrap row" style="align-items:flex-start">
-			<div class="col" style="flex-basis:300px;gap:12px"><h2 class="bd-h2">Pytania i odpowiedzi</h2><a class="bd-link-arrow" href="#">Wszystkie pytania</a></div>
-			<div class="col bd-accordion" style="flex-basis:520px;flex-grow:1.5;gap:0">
-				<details open><summary><strong>Ile trwa dostawa?</strong></summary><p>Zamówienia złożone do 14:00 w dni robocze wysyłamy tego samego dnia. InPost Paczkomat i kurier dostarczają zwykle w 1–2 dni robocze.</p></details>
-				<details><summary><strong>Jak mogę zapłacić?</strong></summary><p>BLIK, karta, Apple Pay, Google Pay, szybki przelew oraz PayPo.</p></details>
-				<details><summary><strong>Jak zwrócić produkt?</strong></summary><p>Masz 30 dni na zwrot bez podawania przyczyny.</p></details>
-				<details><summary><strong>Czy mogę zmienić zamówienie?</strong></summary><p>Tak, dopóki nie zostało wysłane.</p></details>
+			<div class="nl">
+				<h2 class="bd-h2" style="flex:1 1 480px">Nowe kolekcje <em>najpierw</em> u Ciebie. I −10% na start.</h2>
+				<form onsubmit="return false">
+					<label class="f"><span class="bd-label">Adres e-mail</span><input type="email" placeholder="twoj@email.pl" required></label>
+					<button class="bd-btn" type="submit">Zapisz się</button>
+					<label class="acc"><input type="checkbox" required> Chcę dostawać newsletter (maks. 2 maile w miesiącu). Polityka prywatności.</label>
+				</form>
 			</div>
 		</div>
 	</section>
 </main>
 
-<footer class="bd-footer bd-dark" style="padding:80px 0 32px">
-	<div class="wrap">
-		<div class="cols">
-			<div><p style="font:700 22px var(--bd-font-display);color:#fff">bydopamina</p><p style="color:#CFCBC4;margin-top:12px;max-width:32ch">Małe rzeczy, które robią Ci dzień. Projektujemy i wysyłamy z Polski.</p></div>
-			<div><h2>Sklep</h2><ul class="l"><li>Nowości</li><li>Bestsellery</li><li>Promocje</li><li>Karty podarunkowe</li></ul></div>
-			<div><h2>Pomoc</h2><ul class="l"><li>Dostawa i płatności</li><li>Zwroty i reklamacje</li><li>FAQ</li><li>Kontakt</li></ul></div>
-			<div><h2>Kontakt</h2><ul class="l"><li>hej@bydopamina.pl</li><li>+48 000 000 000</li><li>pn–pt 9:00–16:00</li></ul></div>
+<footer class="bd-footer bd-dark" style="padding:96px 0 32px">
+	<div class="wrap" style="display:grid;gap:48px">
+		<div class="foot-cols">
+			<p class="bd-h3" style="font-family:var(--bd-font-display);color:#F6F2EC;max-width:22ch;line-height:1.15">Biżuteria na co dzień. Złoto 18K na stali 316L – nie ciemnieje, nie uczula, nie boi się wody.</p>
+			<div><p class="bd-footer-h">Sklep</p><ul><li>Naszyjniki</li><li>Kolczyki</li><li>Pierścionki</li><li>Bransoletki</li><li>Karta podarunkowa</li></ul></div>
+			<div><p class="bd-footer-h">Pomoc</p><ul><li>Dostawa i płatności</li><li>Zwroty i reklamacje</li><li>Rozmiarówka</li><li>Pielęgnacja</li><li>Kontakt</li></ul></div>
+			<div><p class="bd-footer-h">Kontakt</p><ul><li>hej@bydopamina.pl</li><li>+48 000 000 000</li><li>pn–pt 9:00–16:00</li></ul></div>
 		</div>
-		<ul class="bd-payments" style="margin-top:40px" aria-label="Metody płatności i dostawy"><li>BLIK</li><li>Visa</li><li>Mastercard</li><li>Apple Pay</li><li>Google Pay</li><li>Przelewy24</li><li>PayPo</li><li>InPost</li><li>DPD</li></ul>
-		<div class="wordmark" aria-hidden="true">bydopamina</div>
-		<div class="bottom"><span>© 2026 bydopamina.pl</span><span>Regulamin · Polityka prywatności · Cookies · Odstąpienie od umowy</span></div>
+		<ul class="bd-payments" aria-label="Płatności i dostawa"><li>BLIK</li><li>Visa</li><li>Mastercard</li><li>Apple Pay</li><li>Google Pay</li><li>Przelewy24</li><li>PayPo</li><li>InPost</li><li>DPD</li></ul>
+		<p class="bd-footer-wordmark" aria-hidden="true">bydopamina</p>
+		<div class="foot-bottom"><span class="bd-label">© 2026 bydopamina.pl</span><span class="bd-label">Regulamin · Prywatność · Cookies · Odstąpienie od umowy · Dostępność</span></div>
 	</div>
 </footer>
 
 <nav class="bd-mnav" aria-label="Nawigacja mobilna"><ul>
-	<li><a href="#" aria-current="page"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span>Start</span></a></li>
-	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg><span>Sklep</span></a></li>
-	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Szukaj</span></a></li>
-	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span>Konto</span></a></li>
-	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Koszyk</span><span class="bd-mnav__count" data-count="2">2</span></a></li>
+	<li><a href="#" aria-current="page"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="m3 11 9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span>Start</span></a></li>
+	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg><span>Sklep</span></a></li>
+	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Szukaj</span></a></li>
+	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7.5 3c0 5.4-7.5 10-7.5 10z"/></svg><span>Ulubione</span></a></li>
+	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Koszyk</span><span class="bd-mnav__count" data-count="2">2</span></a></li>
 </ul></nav>
 
+<script src="art.js"></script>
 <script src="../theme/bydopamina-child/assets/js/main.js" defer></script>
 </body>
 </html>

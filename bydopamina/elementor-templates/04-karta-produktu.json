@@ -5,7 +5,7 @@
  "page_settings": {},
  "content": [
   {
-   "id": "33d9180",
+   "id": "bd9a894",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -13,38 +13,38 @@
     "flex_direction": "row",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
     "html_tag": "section",
     "flex_wrap": "wrap",
     "flex_gap": {
-     "column": "48",
-     "row": "48",
+     "column": "32",
+     "row": "32",
      "isLinked": true,
      "unit": "px",
-     "size": 48
+     "size": 32
     },
     "padding": {
      "unit": "px",
      "top": "24",
-     "right": "24",
-     "bottom": "80",
-     "left": "24",
+     "right": "40",
+     "bottom": "96",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
-     "top": "8",
-     "right": "16",
+     "top": "0",
+     "right": "0",
      "bottom": "48",
-     "left": "16",
+     "left": "0",
      "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "a06d7a6",
+     "id": "e6bc430",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -63,7 +63,7 @@
      },
      "elements": [
       {
-       "id": "1f3c42b",
+       "id": "2f81258",
        "elType": "widget",
        "widgetType": "woocommerce-product-images",
        "isInner": false,
@@ -76,7 +76,7 @@
      ]
     },
     {
-     "id": "6edd77d",
+     "id": "71a7aed",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -94,24 +94,52 @@
        "sizes": []
       },
       "flex_gap": {
-       "column": "18",
-       "row": "18",
+       "column": "16",
+       "row": "16",
        "isLinked": true,
        "unit": "px",
-       "size": 18
+       "size": 16
+      },
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "24",
+       "isLinked": false
+      },
+      "padding_tablet": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": true
       }
      },
      "elements": [
       {
-       "id": "b3618e1",
+       "id": "7a3e39e",
        "elType": "widget",
        "widgetType": "woocommerce-breadcrumb",
        "isInner": false,
-       "settings": {},
+       "settings": {
+        "_css_classes": "bd-label"
+       },
        "elements": []
       },
       {
-       "id": "74f09af",
+       "id": "44d9d2d",
+       "elType": "widget",
+       "widgetType": "shortcode",
+       "isInner": false,
+       "settings": {
+        "shortcode": "[bd_product_claims]"
+       },
+       "elements": []
+      },
+      {
+       "id": "3d86267",
        "elType": "widget",
        "widgetType": "woocommerce-product-title",
        "isInner": false,
@@ -122,7 +150,7 @@
        "elements": []
       },
       {
-       "id": "ac9f21d",
+       "id": "9b665a6",
        "elType": "widget",
        "widgetType": "woocommerce-product-rating",
        "isInner": false,
@@ -130,7 +158,7 @@
        "elements": []
       },
       {
-       "id": "782afe6",
+       "id": "067daf5",
        "elType": "widget",
        "widgetType": "woocommerce-product-price",
        "isInner": false,
@@ -140,7 +168,7 @@
        "elements": []
       },
       {
-       "id": "b6eafff",
+       "id": "7b3ef92",
        "elType": "widget",
        "widgetType": "woocommerce-product-short-description",
        "isInner": false,
@@ -150,7 +178,17 @@
        "elements": []
       },
       {
-       "id": "edf165d",
+       "id": "b341528",
+       "elType": "widget",
+       "widgetType": "shortcode",
+       "isInner": false,
+       "settings": {
+        "shortcode": "[bd_size_guide]"
+       },
+       "elements": []
+      },
+      {
+       "id": "c8d71c9",
        "elType": "widget",
        "widgetType": "woocommerce-product-add-to-cart",
        "isInner": false,
@@ -161,7 +199,7 @@
        "elements": []
       },
       {
-       "id": "f5a9ca5",
+       "id": "4285b5f",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
@@ -171,7 +209,7 @@
        "elements": []
       },
       {
-       "id": "fcbad16",
+       "id": "f8791ca",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
@@ -181,50 +219,54 @@
        "elements": []
       },
       {
-       "id": "fa97002",
+       "id": "a3a5d20",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
        "settings": {
-        "shortcode": "[bd_trust_badges variant=\"stack\"]"
+        "shortcode": "[bd_usp variant=\"list\"]"
        },
        "elements": []
       },
       {
-       "id": "807c7e3",
+       "id": "bf38545",
        "elType": "widget",
        "widgetType": "nested-accordion",
        "isInner": false,
        "settings": {
         "items": [
          {
-          "_id": "b2c5552",
+          "_id": "a91c062",
           "item_title": "Opis"
          },
          {
-          "_id": "7a98b9a",
-          "item_title": "Szczegóły i wymiary"
+          "_id": "a95a3d4",
+          "item_title": "Materiał i pielęgnacja"
          },
          {
-          "_id": "ce0d8d8",
+          "_id": "3b1ab8e",
+          "item_title": "Wymiary i szczegóły"
+         },
+         {
+          "_id": "18bd481",
           "item_title": "Dostawa i zwroty"
          },
          {
-          "_id": "e26b524",
+          "_id": "c8c101f",
           "item_title": "Bezpieczeństwo produktu"
          },
          {
-          "_id": "66e6112",
+          "_id": "173e6fe",
           "item_title": "Opinie"
          }
         ],
-        "default_state": "expanded",
+        "default_state": "all_collapsed",
         "max_items_expended": "one",
         "_css_classes": "bd-accordion"
        },
        "elements": [
         {
-         "id": "4041f5e",
+         "id": "4fee38f",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -234,14 +276,14 @@
            "unit": "px",
            "top": "0",
            "right": "0",
-           "bottom": "16",
+           "bottom": "20",
            "left": "0",
            "isLinked": false
           }
          },
          "elements": [
           {
-           "id": "8bae8e6",
+           "id": "aa9a75c",
            "elType": "widget",
            "widgetType": "woocommerce-product-content",
            "isInner": false,
@@ -251,7 +293,7 @@
          ]
         },
         {
-         "id": "66eebc5",
+         "id": "7f087a4",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -261,14 +303,43 @@
            "unit": "px",
            "top": "0",
            "right": "0",
-           "bottom": "16",
+           "bottom": "20",
            "left": "0",
            "isLinked": false
           }
          },
          "elements": [
           {
-           "id": "8f4ecb4",
+           "id": "968cce0",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "isInner": false,
+           "settings": {
+            "editor": "<p>Stal 316L ze złoceniem PVD nie boi się wody ani potu. Żeby złoto błyszczało latami:</p><ul><li>perfumy i balsam nakładaj przed założeniem biżuterii,</li><li>czyść miękką ściereczką, bez past i środków ściernych,</li><li>przechowuj osobno – w pudełku lub woreczku, żeby elementy się nie rysowały.</li></ul>"
+           },
+           "elements": []
+          }
+         ]
+        },
+        {
+         "id": "6db7ae1",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "20",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "8ecadd4",
            "elType": "widget",
            "widgetType": "woocommerce-product-additional-information",
            "isInner": false,
@@ -280,7 +351,7 @@
          ]
         },
         {
-         "id": "ff8b2a6",
+         "id": "23b6eeb",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -290,26 +361,26 @@
            "unit": "px",
            "top": "0",
            "right": "0",
-           "bottom": "16",
+           "bottom": "20",
            "left": "0",
            "isLinked": false
           }
          },
          "elements": [
           {
-           "id": "ab74fe5",
+           "id": "270bc04",
            "elType": "widget",
            "widgetType": "text-editor",
            "isInner": false,
            "settings": {
-            "editor": "<p><strong>InPost Paczkomat</strong> – 1–2 dni robocze · <strong>Kurier DPD</strong> – 1–2 dni robocze. Darmowa dostawa od 199 zł.</p><p>30 dni na zwrot bez podawania przyczyny. <a href=\"/zwroty/\">Jak zwrócić produkt</a></p>"
+            "editor": "<p><strong>InPost Paczkomat</strong> i <strong>kurier DPD</strong> – 1–2 dni robocze. Darmowa dostawa od 199 zł.</p><p>30 dni na zwrot bez podawania przyczyny. <a href=\"/zwroty/\">Jak zwrócić produkt</a></p>"
            },
            "elements": []
           }
          ]
         },
         {
-         "id": "8c53765",
+         "id": "aaf3ab1",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -319,26 +390,26 @@
            "unit": "px",
            "top": "0",
            "right": "0",
-           "bottom": "16",
+           "bottom": "20",
            "left": "0",
            "isLinked": false
           }
          },
          "elements": [
           {
-           "id": "4ec0a95",
+           "id": "36c3fb4",
            "elType": "widget",
            "widgetType": "text-editor",
            "isInner": false,
            "settings": {
-            "editor": "<p><strong>Producent:</strong> [nazwa, adres, e-mail]<br><strong>Podmiot odpowiedzialny w UE:</strong> [jeśli inny]<br>Ostrzeżenia i instrukcje: [zgodnie z GPSR – uzupełnij dla produktu lub użyj pola własnego].</p>"
+            "editor": "<p><strong>Producent:</strong> [nazwa, adres, e-mail]<br><strong>Podmiot odpowiedzialny w UE:</strong> [jeśli inny]<br><strong>Ostrzeżenia:</strong> zawiera małe elementy – nie dla dzieci poniżej 3 lat.</p>"
            },
            "elements": []
           }
          ]
         },
         {
-         "id": "a598d0d",
+         "id": "415124d",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -348,14 +419,14 @@
            "unit": "px",
            "top": "0",
            "right": "0",
-           "bottom": "16",
+           "bottom": "20",
            "left": "0",
            "isLinked": false
           }
          },
          "elements": [
           {
-           "id": "ccbfd2e",
+           "id": "5c87de1",
            "elType": "widget",
            "widgetType": "shortcode",
            "isInner": false,
@@ -373,7 +444,7 @@
    ]
   },
   {
-   "id": "44df8a1",
+   "id": "9b53957",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -381,50 +452,76 @@
     "flex_direction": "column",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
     "css_classes": "bd-section bd-reveal",
     "html_tag": "section",
-    "flex_gap": {
-     "column": "24",
-     "row": "24",
-     "isLinked": true,
-     "unit": "px",
-     "size": 24
-    },
     "padding": {
      "unit": "px",
      "top": "0",
-     "right": "24",
-     "bottom": "0",
-     "left": "24",
+     "right": "40",
+     "bottom": "96",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
      "top": "0",
      "right": "16",
-     "bottom": "0",
+     "bottom": "64",
      "left": "16",
      "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "4b5c1a9",
-     "elType": "widget",
-     "widgetType": "heading",
-     "isInner": false,
+     "id": "407faff",
+     "elType": "container",
+     "isInner": true,
      "settings": {
-      "title": "Pasuje do tego",
-      "header_size": "h2",
-      "_css_classes": "bd-h2"
+      "content_width": "full",
+      "flex_direction": "row",
+      "css_classes": "bd-sechead",
+      "flex_align_items": "flex-end"
      },
-     "elements": []
+     "elements": [
+      {
+       "id": "f8d25c6",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<p class=\"bd-label\">01</p>"
+       },
+       "elements": []
+      },
+      {
+       "id": "22a0d4e",
+       "elType": "widget",
+       "widgetType": "heading",
+       "isInner": false,
+       "settings": {
+        "title": "Noś <em>razem</em>",
+        "header_size": "h2",
+        "_css_classes": "bd-h2"
+       },
+       "elements": []
+      },
+      {
+       "id": "fca5222",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": ""
+       },
+       "elements": []
+      }
+     ]
     },
     {
-     "id": "d4f398e",
+     "id": "b5e284a",
      "elType": "widget",
      "widgetType": "woocommerce-product-upsell",
      "isInner": false,
@@ -439,7 +536,7 @@
    ]
   },
   {
-   "id": "265c28e",
+   "id": "ee92c2c",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -447,50 +544,76 @@
     "flex_direction": "column",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
     "css_classes": "bd-section bd-reveal",
     "html_tag": "section",
-    "flex_gap": {
-     "column": "24",
-     "row": "24",
-     "isLinked": true,
-     "unit": "px",
-     "size": 24
-    },
     "padding": {
      "unit": "px",
      "top": "0",
-     "right": "24",
+     "right": "40",
      "bottom": "120",
-     "left": "24",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
      "top": "0",
      "right": "16",
-     "bottom": "64",
+     "bottom": "72",
      "left": "16",
      "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "025ff87",
-     "elType": "widget",
-     "widgetType": "heading",
-     "isInner": false,
+     "id": "5b215d8",
+     "elType": "container",
+     "isInner": true,
      "settings": {
-      "title": "Może Ci się spodobać",
-      "header_size": "h2",
-      "_css_classes": "bd-h2"
+      "content_width": "full",
+      "flex_direction": "row",
+      "css_classes": "bd-sechead",
+      "flex_align_items": "flex-end"
      },
-     "elements": []
+     "elements": [
+      {
+       "id": "6da36f6",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<p class=\"bd-label\">02</p>"
+       },
+       "elements": []
+      },
+      {
+       "id": "454acc6",
+       "elType": "widget",
+       "widgetType": "heading",
+       "isInner": false,
+       "settings": {
+        "title": "Może Ci się <em>spodobać</em>",
+        "header_size": "h2",
+        "_css_classes": "bd-h2"
+       },
+       "elements": []
+      },
+      {
+       "id": "f2813aa",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": ""
+       },
+       "elements": []
+      }
+     ]
     },
     {
-     "id": "0879d95",
+     "id": "3de0a2e",
      "elType": "widget",
      "widgetType": "woocommerce-product-related",
      "isInner": false,

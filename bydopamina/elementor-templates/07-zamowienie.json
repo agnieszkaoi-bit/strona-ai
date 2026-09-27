@@ -8,7 +8,7 @@
  },
  "content": [
   {
-   "id": "c446ab8",
+   "id": "2692750",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -16,37 +16,38 @@
     "flex_direction": "column",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
+    "css_classes": "bd-section",
     "html_tag": "section",
     "flex_gap": {
-     "column": "24",
-     "row": "24",
+     "column": "28",
+     "row": "28",
      "isLinked": true,
      "unit": "px",
-     "size": 24
+     "size": 28
     },
     "padding": {
      "unit": "px",
-     "top": "32",
-     "right": "24",
+     "top": "40",
+     "right": "40",
      "bottom": "120",
-     "left": "24",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
-     "top": "16",
+     "top": "20",
      "right": "16",
-     "bottom": "64",
+     "bottom": "72",
      "left": "16",
      "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "b1515ff",
+     "id": "d593788",
      "elType": "widget",
      "widgetType": "html",
      "isInner": false,
@@ -56,7 +57,7 @@
      "elements": []
     },
     {
-     "id": "7c4e424",
+     "id": "4a6b4f9",
      "elType": "widget",
      "widgetType": "heading",
      "isInner": false,
@@ -68,7 +69,7 @@
      "elements": []
     },
     {
-     "id": "7776c65",
+     "id": "dc3e7e0",
      "elType": "widget",
      "widgetType": "woocommerce-checkout-page",
      "isInner": false,
@@ -85,12 +86,12 @@
      "elements": []
     },
     {
-     "id": "82e2612",
+     "id": "2be8a4a",
      "elType": "widget",
      "widgetType": "html",
      "isInner": false,
      "settings": {
-      "html": "<p class=\"bd-muted\" style=\"font-size:var(--bd-fs-xs);text-align:center\">🔒 Płatności obsługuje licencjonowany operator. Nie przechowujemy danych Twojej karty.</p>"
+      "html": "<p class=\"bd-label\" style=\"text-align:center\">Płatności obsługuje licencjonowany operator. Nie przechowujemy danych Twojej karty.</p>"
      },
      "elements": []
     }

@@ -5,7 +5,7 @@
  "page_settings": {},
  "content": [
   {
-   "id": "754e64f",
+   "id": "8568995",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -13,66 +13,90 @@
     "flex_direction": "column",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
+    "css_classes": "bd-archive-head",
     "html_tag": "section",
     "flex_gap": {
-     "column": "12",
-     "row": "12",
+     "column": "20",
+     "row": "20",
      "isLinked": true,
      "unit": "px",
-     "size": 12
+     "size": 20
     },
     "padding": {
      "unit": "px",
-     "top": "32",
-     "right": "24",
-     "bottom": "24",
-     "left": "24",
+     "top": "40",
+     "right": "40",
+     "bottom": "32",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
-     "top": "16",
+     "top": "20",
      "right": "16",
-     "bottom": "16",
+     "bottom": "20",
      "left": "16",
-     "isLinked": true
+     "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "a7d8335",
+     "id": "92e7981",
      "elType": "widget",
      "widgetType": "woocommerce-breadcrumb",
      "isInner": false,
-     "settings": {},
-     "elements": []
-    },
-    {
-     "id": "e1cd7be",
-     "elType": "widget",
-     "widgetType": "theme-archive-title",
-     "isInner": false,
      "settings": {
-      "header_size": "h1",
-      "_css_classes": "bd-h2"
+      "_css_classes": "bd-label"
      },
      "elements": []
     },
     {
-     "id": "98e6e5b",
-     "elType": "widget",
-     "widgetType": "woocommerce-archive-description",
-     "isInner": false,
+     "id": "d7f8e6e",
+     "elType": "container",
+     "isInner": true,
      "settings": {
-      "_css_classes": "bd-muted"
+      "content_width": "full",
+      "flex_direction": "row",
+      "flex_justify_content": "space-between",
+      "flex_align_items": "flex-end",
+      "flex_wrap": "wrap",
+      "flex_gap": {
+       "column": "24",
+       "row": "24",
+       "isLinked": true,
+       "unit": "px",
+       "size": 24
+      }
      },
-     "elements": []
+     "elements": [
+      {
+       "id": "87426ab",
+       "elType": "widget",
+       "widgetType": "theme-archive-title",
+       "isInner": false,
+       "settings": {
+        "header_size": "h1",
+        "_css_classes": "bd-hero-title"
+       },
+       "elements": []
+      },
+      {
+       "id": "694e1cc",
+       "elType": "widget",
+       "widgetType": "woocommerce-archive-description",
+       "isInner": false,
+       "settings": {
+        "_css_classes": "bd-lead"
+       },
+       "elements": []
+      }
+     ]
     },
     {
-     "id": "f5ee8c7",
+     "id": "a7462fb",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
@@ -84,7 +108,7 @@
    ]
   },
   {
-   "id": "85dc0a6",
+   "id": "06f4585",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -92,30 +116,31 @@
     "flex_direction": "column",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
+    "css_classes": "bd-section",
     "html_tag": "section",
     "padding": {
      "unit": "px",
      "top": "0",
-     "right": "24",
+     "right": "40",
      "bottom": "120",
-     "left": "24",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
      "top": "0",
      "right": "16",
-     "bottom": "64",
+     "bottom": "72",
      "left": "16",
      "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "cdb5408",
+     "id": "de01891",
      "elType": "widget",
      "widgetType": "woocommerce-archive-products",
      "isInner": false,
@@ -127,7 +152,7 @@
       "paginate": "yes",
       "allow_order": "yes",
       "show_result_count": "yes",
-      "nothing_found_message": "Nic tu nie ma – spróbuj innej frazy albo zobacz bestsellery."
+      "nothing_found_message": "Nic tu nie ma. Spróbuj innej frazy albo zajrzyj do bestsellerów."
      },
      "elements": []
     }

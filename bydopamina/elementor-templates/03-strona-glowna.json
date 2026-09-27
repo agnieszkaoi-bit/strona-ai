@@ -8,223 +8,199 @@
  },
  "content": [
   {
-   "id": "16f4488",
+   "id": "e1c7f14",
    "elType": "container",
    "isInner": false,
    "settings": {
     "content_width": "boxed",
-    "flex_direction": "row",
+    "flex_direction": "column",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
-    "css_classes": "bd-hero bd-section",
+    "css_classes": "bd-hero",
     "html_tag": "section",
-    "flex_wrap": "wrap",
-    "flex_align_items": "center",
-    "flex_gap": {
-     "column": "48",
-     "row": "48",
-     "isLinked": true,
-     "unit": "px",
-     "size": 48
-    },
     "padding": {
      "unit": "px",
-     "top": "40",
-     "right": "24",
-     "bottom": "64",
-     "left": "24",
+     "top": "24",
+     "right": "40",
+     "bottom": "0",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
-     "top": "16",
+     "top": "12",
      "right": "16",
-     "bottom": "48",
+     "bottom": "0",
      "left": "16",
      "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "a341738",
+     "id": "da98bd5",
      "elType": "container",
      "isInner": true,
      "settings": {
       "content_width": "full",
       "flex_direction": "column",
-      "width": {
-       "unit": "%",
-       "size": 50,
-       "sizes": []
-      },
-      "width_tablet": {
-       "unit": "%",
-       "size": 100,
-       "sizes": []
-      },
-      "flex_gap": {
-       "column": "24",
-       "row": "24",
-       "isLinked": true,
-       "unit": "px",
-       "size": 24
-      },
-      "flex_justify_content": "center"
+      "css_classes": "bd-hero__grid"
      },
      "elements": [
       {
-       "id": "ede7bd0",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
-       "settings": {
-        "html": "<span class=\"bd-eyebrow\">Nowa kolekcja · Jesień 2026</span>"
-       },
-       "elements": []
-      },
-      {
-       "id": "5b4c801",
+       "id": "ca9674c",
        "elType": "widget",
        "widgetType": "heading",
        "isInner": false,
        "settings": {
-        "title": "Rzeczy, które robią Ci <span class=\"bd-highlight\">dzień</span>.",
+        "title": "Złoto, które <em>zostaje</em>.",
         "header_size": "h1",
-        "_css_classes": "bd-hero-title"
+        "_css_classes": "bd-hero-title bd-hero__title"
        },
        "elements": []
       },
       {
-       "id": "ce1d62e",
-       "elType": "widget",
-       "widgetType": "text-editor",
-       "isInner": false,
-       "settings": {
-        "editor": "<p class=\"bd-muted\" style=\"font-size:var(--bd-fs-lg);max-width:34ch\">Krótki opis marki w jednym zdaniu: co sprzedajesz i dlaczego u Ciebie – konkret, bez ogólników.</p>"
-       },
-       "elements": []
-      },
-      {
-       "id": "bef7e26",
+       "id": "ea0e6a6",
        "elType": "container",
        "isInner": true,
        "settings": {
         "content_width": "full",
-        "flex_direction": "row",
-        "flex_wrap": "wrap",
-        "flex_gap": {
-         "column": "12",
-         "row": "12",
-         "isLinked": true,
-         "unit": "px",
-         "size": 12
-        }
+        "flex_direction": "column",
+        "css_classes": "bd-hero__main bd-media bd-media--hero"
        },
        "elements": [
         {
-         "id": "60581cc",
+         "id": "77d8baa",
          "elType": "widget",
-         "widgetType": "button",
+         "widgetType": "image",
          "isInner": false,
          "settings": {
-          "text": "Kup teraz",
-          "link": {
-           "url": "/sklep/",
-           "is_external": "",
-           "nofollow": ""
+          "image": {
+           "url": "",
+           "id": "",
+           "alt": "Modelka w naszyjnikach z kolekcji"
           },
-          "size": "lg",
-          "_css_classes": "bd-btn"
+          "image_size": "full",
+          "_css_classes": "bd-lcp"
          },
          "elements": []
         },
         {
-         "id": "ffe976a",
+         "id": "5fb5f88",
          "elType": "widget",
-         "widgetType": "button",
+         "widgetType": "html",
          "isInner": false,
          "settings": {
-          "text": "Zobacz nowości",
-          "link": {
-           "url": "/sklep/?orderby=date",
-           "is_external": "",
-           "nofollow": ""
-          },
-          "size": "lg",
-          "_css_classes": "bd-btn bd-btn--ghost"
+          "html": "<div class=\"bd-caption\"><span class=\"bd-label\">Kolekcja 07 — Solstice</span><a class=\"bd-textlink\" href=\"/kolekcja/solstice/\">Zobacz kolekcję <span aria-hidden=\"true\">→</span></a></div>"
          },
          "elements": []
         }
        ]
       },
       {
-       "id": "837a793",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
+       "id": "c50404f",
+       "elType": "container",
+       "isInner": true,
        "settings": {
-        "html": "<p class=\"bd-muted\" style=\"font-size:var(--bd-fs-sm);margin:0\">★ 4,9/5 · 2 300+ opinii zweryfikowanych klientów</p>"
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "bd-hero__side"
        },
-       "elements": []
-      }
-     ]
-    },
-    {
-     "id": "5724195",
-     "elType": "container",
-     "isInner": true,
-     "settings": {
-      "content_width": "full",
-      "flex_direction": "column",
-      "css_classes": "bd-hero__media",
-      "width": {
-       "unit": "%",
-       "size": 50,
-       "sizes": []
-      },
-      "width_tablet": {
-       "unit": "%",
-       "size": 100,
-       "sizes": []
-      },
-      "position": "relative"
-     },
-     "elements": [
-      {
-       "id": "1389b37",
-       "elType": "widget",
-       "widgetType": "image",
-       "isInner": false,
-       "settings": {
-        "image": {
-         "url": "",
-         "id": "",
-         "alt": "Zdjęcie hero – produkt w użyciu"
+       "elements": [
+        {
+         "id": "bc989b0",
+         "elType": "widget",
+         "widgetType": "image",
+         "isInner": false,
+         "settings": {
+          "image": {
+           "url": "",
+           "id": "",
+           "alt": "Zbliżenie: pierścionki na dłoni"
+          },
+          "image_size": "full",
+          "_css_classes": "bd-media bd-media--sq"
+         },
+         "elements": []
         },
-        "image_size": "large",
-        "_css_classes": "bd-lcp"
-       },
-       "elements": []
-      },
-      {
-       "id": "b91dddd",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
-       "settings": {
-        "html": "<span class=\"bd-hero__badge\">Nowość ✦</span>"
-       },
-       "elements": []
+        {
+         "id": "c9c583d",
+         "elType": "widget",
+         "widgetType": "text-editor",
+         "isInner": false,
+         "settings": {
+          "editor": "<p>Biżuteria, którą zakładasz rano i zapominasz, że ją masz. Pod prysznic, na siłownię, na wesele.</p>",
+          "_css_classes": "bd-lead"
+         },
+         "elements": []
+        },
+        {
+         "id": "d7b207f",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "row",
+          "flex_align_items": "center",
+          "flex_wrap": "wrap",
+          "flex_gap": {
+           "column": "24",
+           "row": "24",
+           "isLinked": true,
+           "unit": "px",
+           "size": 24
+          }
+         },
+         "elements": [
+          {
+           "id": "50af9c9",
+           "elType": "widget",
+           "widgetType": "button",
+           "isInner": false,
+           "settings": {
+            "text": "Kup kolekcję",
+            "link": {
+             "url": "/kolekcja/solstice/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "size": "md",
+            "_css_classes": "bd-btn"
+           },
+           "elements": []
+          },
+          {
+           "id": "9d1fecc",
+           "elType": "widget",
+           "widgetType": "html",
+           "isInner": false,
+           "settings": {
+            "html": "<a class=\"bd-textlink\" href=\"/sklep/?orderby=popularity\">Bestsellery <span aria-hidden=\"true\">→</span></a>"
+           },
+           "elements": []
+          }
+         ]
+        },
+        {
+         "id": "1fd74d1",
+         "elType": "widget",
+         "widgetType": "html",
+         "isInner": false,
+         "settings": {
+          "html": "<dl class=\"bd-meta\">\n<dt>Materiał</dt><dd>Stal 316L, złoto 18K (PVD)</dd>\n<dt>Wysyłka</dt><dd>W 24 h, InPost lub kurier</dd>\n<dt>Zwrot</dt><dd>30 dni, bez podawania przyczyny</dd>\n</dl>"
+         },
+         "elements": []
+        }
+       ]
       }
      ]
     }
    ]
   },
   {
-   "id": "89be9c1",
+   "id": "dc419ac",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -232,43 +208,43 @@
     "flex_direction": "column",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
-    "css_classes": "bd-section--tight bd-surface",
+    "css_classes": "bd-usp",
     "html_tag": "section",
     "padding": {
      "unit": "px",
-     "top": "32",
-     "right": "24",
-     "bottom": "32",
-     "left": "24",
+     "top": "48",
+     "right": "40",
+     "bottom": "48",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
-     "top": "28",
+     "top": "40",
      "right": "16",
-     "bottom": "28",
+     "bottom": "40",
      "left": "16",
      "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "8eb5140",
+     "id": "31033bb",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
      "settings": {
-      "shortcode": "[bd_trust_badges]"
+      "shortcode": "[bd_usp]"
      },
      "elements": []
     }
    ]
   },
   {
-   "id": "6c16722",
+   "id": "8670091",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -276,29 +252,22 @@
     "flex_direction": "column",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
     "css_classes": "bd-section bd-reveal",
     "html_tag": "section",
-    "flex_gap": {
-     "column": "32",
-     "row": "32",
-     "isLinked": true,
-     "unit": "px",
-     "size": 32
-    },
     "padding": {
      "unit": "px",
-     "top": "0",
-     "right": "24",
+     "top": "64",
+     "right": "40",
      "bottom": "0",
-     "left": "24",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
-     "top": "0",
+     "top": "40",
      "right": "16",
      "bottom": "0",
      "left": "16",
@@ -307,26 +276,28 @@
    },
    "elements": [
     {
-     "id": "751b4c8",
+     "id": "79d03cf",
      "elType": "container",
      "isInner": true,
      "settings": {
       "content_width": "full",
       "flex_direction": "row",
-      "flex_justify_content": "space-between",
-      "flex_align_items": "flex-end",
-      "flex_wrap": "wrap",
-      "flex_gap": {
-       "column": "16",
-       "row": "16",
-       "isLinked": true,
-       "unit": "px",
-       "size": 16
-      }
+      "css_classes": "bd-sechead",
+      "flex_align_items": "flex-end"
      },
      "elements": [
       {
-       "id": "4ac87fc",
+       "id": "c6a81ba",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<p class=\"bd-label\">01</p>"
+       },
+       "elements": []
+      },
+      {
+       "id": "0fd4f79",
        "elType": "widget",
        "widgetType": "heading",
        "isInner": false,
@@ -338,237 +309,31 @@
        "elements": []
       },
       {
-       "id": "49a047d",
+       "id": "5342af1",
        "elType": "widget",
-       "widgetType": "text-editor",
+       "widgetType": "html",
        "isInner": false,
        "settings": {
-        "editor": "<p><a class=\"bd-link-arrow\" href=\"/sklep/\">Wszystkie produkty</a></p>"
+        "html": "<a class=\"bd-textlink\" href=\"/sklep/\">Cały sklep <span aria-hidden=\"true\">→</span></a>"
        },
        "elements": []
       }
      ]
     },
     {
-     "id": "7608d94",
-     "elType": "container",
-     "isInner": true,
+     "id": "42176f8",
+     "elType": "widget",
+     "widgetType": "shortcode",
+     "isInner": false,
      "settings": {
-      "content_width": "full",
-      "flex_direction": "column",
-      "css_classes": "bd-bento"
+      "shortcode": "[bd_category_arches limit=\"6\"]"
      },
-     "elements": [
-      {
-       "id": "a51149b",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "css_classes": "bd-tile bd-bento__lg",
-        "flex_justify_content": "flex-end",
-        "padding": {
-         "unit": "px",
-         "top": "24",
-         "right": "24",
-         "bottom": "24",
-         "left": "24",
-         "isLinked": true
-        },
-        "background_background": "classic",
-        "background_color": "#F2EEE8",
-        "background_image": {
-         "url": "",
-         "id": ""
-        },
-        "background_position": "center center",
-        "background_size": "cover"
-       },
-       "elements": [
-        {
-         "id": "2411425",
-         "elType": "widget",
-         "widgetType": "heading",
-         "isInner": false,
-         "settings": {
-          "title": "Bestsellery",
-          "header_size": "h3",
-          "_css_classes": "bd-h3"
-         },
-         "elements": []
-        },
-        {
-         "id": "e060a72",
-         "elType": "widget",
-         "widgetType": "text-editor",
-         "isInner": false,
-         "settings": {
-          "editor": "<p><a class=\"bd-link-arrow\" href=\"/sklep/?orderby=popularity\">Kup to, co kochają inni</a></p>"
-         },
-         "elements": []
-        }
-       ]
-      },
-      {
-       "id": "93d2047",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "css_classes": "bd-tile bd-tile--pink",
-        "flex_justify_content": "flex-end",
-        "padding": {
-         "unit": "px",
-         "top": "24",
-         "right": "24",
-         "bottom": "24",
-         "left": "24",
-         "isLinked": true
-        },
-        "background_background": "classic",
-        "background_color": "#F2EEE8",
-        "background_image": {
-         "url": "",
-         "id": ""
-        },
-        "background_position": "center center",
-        "background_size": "cover"
-       },
-       "elements": [
-        {
-         "id": "b437bdb",
-         "elType": "widget",
-         "widgetType": "heading",
-         "isInner": false,
-         "settings": {
-          "title": "Nowości",
-          "header_size": "h3",
-          "_css_classes": "bd-h3"
-         },
-         "elements": []
-        },
-        {
-         "id": "b766ff1",
-         "elType": "widget",
-         "widgetType": "text-editor",
-         "isInner": false,
-         "settings": {
-          "editor": "<p><a class=\"bd-link-arrow\" href=\"/sklep/?orderby=date\">Zobacz</a></p>"
-         },
-         "elements": []
-        }
-       ]
-      },
-      {
-       "id": "d9090b8",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "css_classes": "bd-tile",
-        "flex_justify_content": "flex-end",
-        "padding": {
-         "unit": "px",
-         "top": "24",
-         "right": "24",
-         "bottom": "24",
-         "left": "24",
-         "isLinked": true
-        },
-        "background_background": "classic",
-        "background_color": "#F2EEE8",
-        "background_image": {
-         "url": "",
-         "id": ""
-        },
-        "background_position": "center center",
-        "background_size": "cover"
-       },
-       "elements": [
-        {
-         "id": "4f1a8a1",
-         "elType": "widget",
-         "widgetType": "heading",
-         "isInner": false,
-         "settings": {
-          "title": "Na prezent",
-          "header_size": "h3",
-          "_css_classes": "bd-h3"
-         },
-         "elements": []
-        },
-        {
-         "id": "0655509",
-         "elType": "widget",
-         "widgetType": "text-editor",
-         "isInner": false,
-         "settings": {
-          "editor": "<p><a class=\"bd-link-arrow\" href=\"/kategoria-produktu/prezenty/\">Zobacz</a></p>"
-         },
-         "elements": []
-        }
-       ]
-      },
-      {
-       "id": "5d111a9",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "css_classes": "bd-tile bd-bento__wide bd-tile--lime",
-        "flex_justify_content": "flex-end",
-        "padding": {
-         "unit": "px",
-         "top": "24",
-         "right": "24",
-         "bottom": "24",
-         "left": "24",
-         "isLinked": true
-        },
-        "background_background": "classic",
-        "background_color": "#F2EEE8",
-        "background_image": {
-         "url": "",
-         "id": ""
-        },
-        "background_position": "center center",
-        "background_size": "cover"
-       },
-       "elements": [
-        {
-         "id": "b5fb12e",
-         "elType": "widget",
-         "widgetType": "heading",
-         "isInner": false,
-         "settings": {
-          "title": "Kategoria 3",
-          "header_size": "h3",
-          "_css_classes": "bd-h3"
-         },
-         "elements": []
-        },
-        {
-         "id": "5e6c999",
-         "elType": "widget",
-         "widgetType": "text-editor",
-         "isInner": false,
-         "settings": {
-          "editor": "<p><a class=\"bd-link-arrow\" href=\"/kategoria-produktu/kategoria-3/\">Zobacz</a></p>"
-         },
-         "elements": []
-        }
-       ]
-      }
-     ]
+     "elements": []
     }
    ]
   },
   {
-   "id": "8df05f2",
+   "id": "c315604",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -576,24 +341,17 @@
     "flex_direction": "column",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
     "css_classes": "bd-section bd-reveal",
     "html_tag": "section",
-    "flex_gap": {
-     "column": "32",
-     "row": "32",
-     "isLinked": true,
-     "unit": "px",
-     "size": 32
-    },
     "padding": {
      "unit": "px",
      "top": "0",
-     "right": "24",
+     "right": "40",
      "bottom": "0",
-     "left": "24",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
@@ -607,129 +365,80 @@
    },
    "elements": [
     {
-     "id": "e41686c",
+     "id": "fc331bd",
      "elType": "container",
      "isInner": true,
      "settings": {
       "content_width": "full",
       "flex_direction": "row",
       "flex_justify_content": "space-between",
-      "flex_align_items": "flex-end",
-      "flex_wrap": "wrap",
-      "flex_gap": {
-       "column": "16",
-       "row": "16",
-       "isLinked": true,
+      "flex_align_items": "center",
+      "padding": {
        "unit": "px",
-       "size": 16
+       "top": "0",
+       "right": "0",
+       "bottom": "16",
+       "left": "0",
+       "isLinked": false
       }
      },
      "elements": [
       {
-       "id": "1737147",
+       "id": "19248ee",
        "elType": "widget",
-       "widgetType": "heading",
+       "widgetType": "html",
        "isInner": false,
        "settings": {
-        "title": "Bestsellery",
-        "header_size": "h2",
-        "_css_classes": "bd-h2"
+        "html": "<p class=\"bd-label\">02 — Wybór redakcji</p>"
        },
        "elements": []
       },
       {
-       "id": "6616022",
+       "id": "460323b",
        "elType": "widget",
-       "widgetType": "text-editor",
+       "widgetType": "html",
        "isInner": false,
        "settings": {
-        "editor": "<p><a class=\"bd-link-arrow\" href=\"/sklep/?orderby=popularity\">Zobacz wszystkie</a></p>"
+        "html": "<a class=\"bd-textlink\" href=\"/sklep/\">Wszystkie produkty <span aria-hidden=\"true\">→</span></a>"
        },
        "elements": []
       }
      ]
     },
     {
-     "id": "95f19a5",
+     "id": "ff59e1e",
      "elType": "widget",
-     "widgetType": "woocommerce-products",
+     "widgetType": "shortcode",
      "isInner": false,
      "settings": {
-      "columns": "4",
-      "columns_tablet": "3",
-      "columns_mobile": "2",
-      "rows": "1",
-      "paginate": "",
-      "query_post_type": "product",
-      "query_orderby": "popularity",
-      "query_order": "desc",
-      "query_exclude": [
-       "current_post"
-      ],
-      "_css_classes": "bd-rail"
+      "shortcode": "[bd_product_tabs limit=\"8\"]"
      },
      "elements": []
     }
    ]
   },
   {
-   "id": "de0279e",
-   "elType": "container",
-   "isInner": false,
-   "settings": {
-    "content_width": "full",
-    "flex_direction": "column",
-    "padding": {
-     "unit": "px",
-     "top": "0",
-     "right": "0",
-     "bottom": "0",
-     "left": "0",
-     "isLinked": true
-    }
-   },
-   "elements": [
-    {
-     "id": "7f9ac09",
-     "elType": "widget",
-     "widgetType": "html",
-     "isInner": false,
-     "settings": {
-      "html": "<div class=\"bd-marquee\" aria-hidden=\"true\"><ul class=\"bd-marquee__track\"><li>Projektowane w Polsce</li><li>Wysyłka w 24 h</li><li>30 dni na zwrot</li><li>Małe serie</li><li>Opakowania bez plastiku</li><li>Projektowane w Polsce</li><li>Wysyłka w 24 h</li><li>30 dni na zwrot</li><li>Małe serie</li><li>Opakowania bez plastiku</li></ul></div><p class=\"screen-reader-text\">Projektowane w Polsce, Wysyłka w 24 h, 30 dni na zwrot, Małe serie, Opakowania bez plastiku</p>"
-     },
-     "elements": []
-    }
-   ]
-  },
-  {
-   "id": "864fa3f",
+   "id": "cd91758",
    "elType": "container",
    "isInner": false,
    "settings": {
     "content_width": "boxed",
-    "flex_direction": "row",
+    "flex_direction": "column",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
-    "css_classes": "bd-section bd-reveal",
+    "css_classes": "bd-section bd-dark",
     "html_tag": "section",
-    "flex_wrap": "wrap",
-    "flex_align_items": "center",
-    "flex_gap": {
-     "column": "64",
-     "row": "64",
-     "isLinked": true,
-     "unit": "px",
-     "size": 64
-    },
+    "background_background": "classic",
+    "background_color": "#1C1917",
     "padding": {
      "unit": "px",
      "top": "0",
-     "right": "24",
+     "right": "40",
      "bottom": "0",
-     "left": "24",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
@@ -743,59 +452,327 @@
    },
    "elements": [
     {
-     "id": "6ce9da6",
+     "id": "16f4ff3",
      "elType": "container",
      "isInner": true,
      "settings": {
       "content_width": "full",
-      "flex_direction": "column",
-      "css_classes": "bd-hero__media",
-      "width": {
-       "unit": "%",
-       "size": 50,
-       "sizes": []
-      },
-      "width_tablet": {
-       "unit": "%",
-       "size": 100,
-       "sizes": []
-      }
+      "flex_direction": "row",
+      "css_classes": "bd-sechead",
+      "flex_align_items": "flex-end"
      },
      "elements": [
       {
-       "id": "1dcf884",
+       "id": "6a18f12",
        "elType": "widget",
-       "widgetType": "image",
+       "widgetType": "html",
        "isInner": false,
        "settings": {
-        "image": {
-         "url": "",
-         "id": "",
-         "alt": "Zdjęcie zespołu / pracowni"
-        },
-        "image_size": "large"
+        "html": "<p class=\"bd-label\">03</p>"
+       },
+       "elements": []
+      },
+      {
+       "id": "62c3ab7",
+       "elType": "widget",
+       "widgetType": "heading",
+       "isInner": false,
+       "settings": {
+        "title": "Złoto, które <em>nie schodzi</em> pod prysznicem.",
+        "header_size": "h2",
+        "_css_classes": "bd-h2"
+       },
+       "elements": []
+      },
+      {
+       "id": "9169211",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<a class=\"bd-textlink\" href=\"/o-materiale/\">O materiale <span aria-hidden=\"true\">→</span></a>"
        },
        "elements": []
       }
      ]
     },
     {
-     "id": "eab06e9",
+     "id": "141f6f6",
      "elType": "container",
      "isInner": true,
      "settings": {
       "content_width": "full",
-      "flex_direction": "column",
-      "width": {
-       "unit": "%",
-       "size": 50,
-       "sizes": []
+      "flex_direction": "row",
+      "flex_wrap": "wrap",
+      "flex_gap": {
+       "column": "48",
+       "row": "48",
+       "isLinked": true,
+       "unit": "px",
+       "size": 48
       },
-      "width_tablet": {
-       "unit": "%",
-       "size": 100,
-       "sizes": []
+      "flex_align_items": "flex-end"
+     },
+     "elements": [
+      {
+       "id": "45d9bf6",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "bd-material-col",
+        "width": {
+         "unit": "%",
+         "size": 58,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 100,
+         "sizes": []
+        }
+       },
+       "elements": [
+        {
+         "id": "c264979",
+         "elType": "widget",
+         "widgetType": "text-editor",
+         "isInner": false,
+         "settings": {
+          "editor": "<p>Tanie złocenie to kilka mikronów farby na mosiądzu – ściera się po paru tygodniach i zostawia zielony ślad. Nasze złoto jest związane ze stalą próżniowo. Dlatego kolor zostaje z Tobą na lata.</p>",
+          "_css_classes": "bd-lead"
+         },
+         "elements": []
+        },
+        {
+         "id": "2d644f8",
+         "elType": "widget",
+         "widgetType": "html",
+         "isInner": false,
+         "settings": {
+          "html": "<ul class=\"bd-specs\">\n<li><b>316L</b><span>Stal chirurgiczna – ta sama, z której robi się implanty. Nie rdzewieje, nie zmienia koloru.</span></li>\n<li><b>18K</b><span>Złoto nakładane metodą PVD – warstwa wiązana z metalem, a nie tylko nim pokryta.</span></li>\n<li><b>0</b><span>Niklu i ołowiu. Bezpieczna dla wrażliwej skóry i do noszenia 24/7.</span></li>\n</ul>"
+         },
+         "elements": []
+        }
+       ]
       },
+      {
+       "id": "12812d1",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "bd-media bd-media--45",
+        "width": {
+         "unit": "%",
+         "size": 42,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 100,
+         "sizes": []
+        }
+       },
+       "elements": [
+        {
+         "id": "968135e",
+         "elType": "widget",
+         "widgetType": "image",
+         "isInner": false,
+         "settings": {
+          "image": {
+           "url": "",
+           "id": "",
+           "alt": "Biżuteria w wodzie – zbliżenie"
+          },
+          "image_size": "full",
+          "_css_classes": "bd-unveil"
+         },
+         "elements": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "80b693b",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1520,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-reveal",
+    "html_tag": "section",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "40",
+     "bottom": "0",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "bf5ab53",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "css_classes": "bd-sechead",
+      "flex_align_items": "flex-end"
+     },
+     "elements": [
+      {
+       "id": "a5bb3ec",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<p class=\"bd-label\">04</p>"
+       },
+       "elements": []
+      },
+      {
+       "id": "9cbc5ab",
+       "elType": "widget",
+       "widgetType": "heading",
+       "isInner": false,
+       "settings": {
+        "title": "Stylizacja <em>tygodnia</em>",
+        "header_size": "h2",
+        "_css_classes": "bd-h2"
+       },
+       "elements": []
+      },
+      {
+       "id": "8f8b9dc",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<a class=\"bd-textlink\" href=\"/stylizacje/\">Więcej stylizacji <span aria-hidden=\"true\">→</span></a>"
+       },
+       "elements": []
+      }
+     ]
+    },
+    {
+     "id": "c4931a5",
+     "elType": "widget",
+     "widgetType": "shortcode",
+     "isInner": false,
+     "settings": {
+      "shortcode": "[bd_shop_the_look image=\"0\" products=\"101:34:38,102:52:30,103:61:66\" title=\"Na zdjęciu\"]"
+     },
+     "elements": []
+    }
+   ]
+  },
+  {
+   "id": "a07f001",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1520,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-reveal",
+    "html_tag": "section",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "40",
+     "bottom": "0",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "3ad6b85",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "css_classes": "bd-sechead",
+      "flex_align_items": "flex-end"
+     },
+     "elements": [
+      {
+       "id": "6b352d3",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<p class=\"bd-label\">05</p>"
+       },
+       "elements": []
+      },
+      {
+       "id": "1178a33",
+       "elType": "widget",
+       "widgetType": "heading",
+       "isInner": false,
+       "settings": {
+        "title": "Kolekcje",
+        "header_size": "h2",
+        "_css_classes": "bd-h2"
+       },
+       "elements": []
+      },
+      {
+       "id": "7dad408",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": ""
+       },
+       "elements": []
+      }
+     ]
+    },
+    {
+     "id": "95d4e26",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "flex_wrap": "wrap",
       "flex_gap": {
        "column": "20",
        "row": "20",
@@ -803,502 +780,257 @@
        "unit": "px",
        "size": 20
       },
-      "flex_justify_content": "center"
+      "flex_direction_mobile": "column"
      },
      "elements": [
       {
-       "id": "81a0ba0",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
-       "settings": {
-        "html": "<span class=\"bd-eyebrow\">Dlaczego bydopamina</span>"
-       },
-       "elements": []
-      },
-      {
-       "id": "cd73de0",
-       "elType": "widget",
-       "widgetType": "heading",
-       "isInner": false,
-       "settings": {
-        "title": "Mniej, ale lepiej. I z uśmiechem.",
-        "header_size": "h2",
-        "_css_classes": "bd-h2"
-       },
-       "elements": []
-      },
-      {
-       "id": "c0099eb",
-       "elType": "widget",
-       "widgetType": "text-editor",
-       "isInner": false,
-       "settings": {
-        "editor": "<p>2–3 zdania o historii marki i wartościach. Ludzie kupują od ludzi – pokaż twarz, pracownię, proces.</p>"
-       },
-       "elements": []
-      },
-      {
-       "id": "7db4304",
-       "elType": "widget",
-       "widgetType": "icon-list",
-       "isInner": false,
-       "settings": {
-        "view": "traditional",
-        "icon_list": [
-         {
-          "_id": "dde3a36",
-          "text": "Projektujemy i pakujemy w Polsce",
-          "link": {
-           "url": "",
-           "is_external": "",
-           "nofollow": ""
-          },
-          "selected_icon": {
-           "value": "",
-           "library": ""
-          }
-         },
-         {
-          "_id": "99a46df",
-          "text": "Krótkie serie – bez nadprodukcji",
-          "link": {
-           "url": "",
-           "is_external": "",
-           "nofollow": ""
-          },
-          "selected_icon": {
-           "value": "",
-           "library": ""
-          }
-         },
-         {
-          "_id": "e01c683",
-          "text": "Opakowania z recyklingu, bez plastiku",
-          "link": {
-           "url": "",
-           "is_external": "",
-           "nofollow": ""
-          },
-          "selected_icon": {
-           "value": "",
-           "library": ""
-          }
-         }
-        ]
-       },
-       "elements": []
-      },
-      {
-       "id": "65ed0de",
-       "elType": "widget",
-       "widgetType": "button",
-       "isInner": false,
-       "settings": {
-        "text": "Poznaj nas",
-        "link": {
-         "url": "/o-nas/",
-         "is_external": "",
-         "nofollow": ""
-        },
-        "_css_classes": "bd-btn bd-btn--ghost"
-       },
-       "elements": []
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "ed1d9d1",
-   "elType": "container",
-   "isInner": false,
-   "settings": {
-    "content_width": "boxed",
-    "flex_direction": "column",
-    "boxed_width": {
-     "unit": "px",
-     "size": 1360,
-     "sizes": []
-    },
-    "css_classes": "bd-section bd-reveal",
-    "html_tag": "section",
-    "flex_gap": {
-     "column": "32",
-     "row": "32",
-     "isLinked": true,
-     "unit": "px",
-     "size": 32
-    },
-    "padding": {
-     "unit": "px",
-     "top": "0",
-     "right": "24",
-     "bottom": "0",
-     "left": "24",
-     "isLinked": false
-    },
-    "padding_mobile": {
-     "unit": "px",
-     "top": "0",
-     "right": "16",
-     "bottom": "0",
-     "left": "16",
-     "isLinked": false
-    }
-   },
-   "elements": [
-    {
-     "id": "6b82e6c",
-     "elType": "container",
-     "isInner": true,
-     "settings": {
-      "content_width": "full",
-      "flex_direction": "row",
-      "flex_justify_content": "space-between",
-      "flex_align_items": "flex-end",
-      "flex_wrap": "wrap",
-      "flex_gap": {
-       "column": "16",
-       "row": "16",
-       "isLinked": true,
-       "unit": "px",
-       "size": 16
-      }
-     },
-     "elements": [
-      {
-       "id": "423674a",
-       "elType": "widget",
-       "widgetType": "heading",
-       "isInner": false,
-       "settings": {
-        "title": "Nowości",
-        "header_size": "h2",
-        "_css_classes": "bd-h2"
-       },
-       "elements": []
-      },
-      {
-       "id": "d82fb0f",
-       "elType": "widget",
-       "widgetType": "text-editor",
-       "isInner": false,
-       "settings": {
-        "editor": "<p><a class=\"bd-link-arrow\" href=\"/sklep/?orderby=date\">Zobacz wszystkie</a></p>"
-       },
-       "elements": []
-      }
-     ]
-    },
-    {
-     "id": "90624fe",
-     "elType": "widget",
-     "widgetType": "woocommerce-products",
-     "isInner": false,
-     "settings": {
-      "columns": "4",
-      "columns_tablet": "3",
-      "columns_mobile": "2",
-      "rows": "1",
-      "paginate": "",
-      "query_post_type": "product",
-      "query_orderby": "date",
-      "query_order": "desc",
-      "query_exclude": [
-       "current_post"
-      ],
-      "_css_classes": "bd-rail"
-     },
-     "elements": []
-    }
-   ]
-  },
-  {
-   "id": "0c83e78",
-   "elType": "container",
-   "isInner": false,
-   "settings": {
-    "content_width": "boxed",
-    "flex_direction": "column",
-    "boxed_width": {
-     "unit": "px",
-     "size": 1360,
-     "sizes": []
-    },
-    "css_classes": "bd-section bd-reveal",
-    "html_tag": "section",
-    "flex_gap": {
-     "column": "32",
-     "row": "32",
-     "isLinked": true,
-     "unit": "px",
-     "size": 32
-    },
-    "padding": {
-     "unit": "px",
-     "top": "0",
-     "right": "24",
-     "bottom": "0",
-     "left": "24",
-     "isLinked": false
-    },
-    "padding_mobile": {
-     "unit": "px",
-     "top": "0",
-     "right": "16",
-     "bottom": "0",
-     "left": "16",
-     "isLinked": false
-    }
-   },
-   "elements": [
-    {
-     "id": "8350a73",
-     "elType": "container",
-     "isInner": true,
-     "settings": {
-      "content_width": "full",
-      "flex_direction": "row",
-      "flex_justify_content": "space-between",
-      "flex_align_items": "flex-end",
-      "flex_wrap": "wrap",
-      "flex_gap": {
-       "column": "16",
-       "row": "16",
-       "isLinked": true,
-       "unit": "px",
-       "size": 16
-      }
-     },
-     "elements": [
-      {
-       "id": "fb759e0",
-       "elType": "widget",
-       "widgetType": "heading",
-       "isInner": false,
-       "settings": {
-        "title": "Co mówią klienci",
-        "header_size": "h2",
-        "_css_classes": "bd-h2"
-       },
-       "elements": []
-      },
-      {
-       "id": "7aac319",
-       "elType": "widget",
-       "widgetType": "text-editor",
-       "isInner": false,
-       "settings": {
-        "editor": "<p><a class=\"bd-link-arrow\" href=\"/opinie/\">Wszystkie opinie</a></p>"
-       },
-       "elements": []
-      }
-     ]
-    },
-    {
-     "id": "2106119",
-     "elType": "container",
-     "isInner": true,
-     "settings": {
-      "content_width": "full",
-      "flex_direction": "row",
-      "flex_wrap": "wrap",
-      "flex_gap": {
-       "column": "16",
-       "row": "16",
-       "isLinked": true,
-       "unit": "px",
-       "size": 16
-      }
-     },
-     "elements": [
-      {
-       "id": "ce1fd3d",
+       "id": "a156dd3",
        "elType": "container",
        "isInner": true,
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
-        "width": {
-         "unit": "%",
-         "size": 33,
-         "sizes": []
-        },
-        "width_tablet": {
-         "unit": "%",
-         "size": 100,
-         "sizes": []
-        }
-       },
-       "elements": [
-        {
-         "id": "849acfb",
-         "elType": "widget",
-         "widgetType": "html",
-         "isInner": false,
-         "settings": {
-          "html": "<article class=\"bd-review\"><p class=\"bd-stars\" aria-label=\"Ocena 5 na 5\">★★★★★</p><p>„Tu wstaw prawdziwą opinię klienta – najlepiej z konkretem: co kupił, jak szybko dotarło, co go zaskoczyło.”</p><p class=\"bd-muted\"><strong>Imię N.</strong> · zweryfikowany zakup</p></article>"
-         },
-         "elements": []
-        }
-       ]
-      },
-      {
-       "id": "9355084",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "width": {
-         "unit": "%",
-         "size": 33,
-         "sizes": []
-        },
-        "width_tablet": {
-         "unit": "%",
-         "size": 100,
-         "sizes": []
-        }
-       },
-       "elements": [
-        {
-         "id": "067f0cf",
-         "elType": "widget",
-         "widgetType": "html",
-         "isInner": false,
-         "settings": {
-          "html": "<article class=\"bd-review\"><p class=\"bd-stars\" aria-label=\"Ocena 5 na 5\">★★★★★</p><p>„Tu wstaw prawdziwą opinię klienta – najlepiej z konkretem: co kupił, jak szybko dotarło, co go zaskoczyło.”</p><p class=\"bd-muted\"><strong>Imię N.</strong> · zweryfikowany zakup</p></article>"
-         },
-         "elements": []
-        }
-       ]
-      },
-      {
-       "id": "c40d31b",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "width": {
-         "unit": "%",
-         "size": 33,
-         "sizes": []
-        },
-        "width_tablet": {
-         "unit": "%",
-         "size": 100,
-         "sizes": []
-        }
-       },
-       "elements": [
-        {
-         "id": "397a762",
-         "elType": "widget",
-         "widgetType": "html",
-         "isInner": false,
-         "settings": {
-          "html": "<article class=\"bd-review\"><p class=\"bd-stars\" aria-label=\"Ocena 5 na 5\">★★★★★</p><p>„Tu wstaw prawdziwą opinię klienta – najlepiej z konkretem: co kupił, jak szybko dotarło, co go zaskoczyło.”</p><p class=\"bd-muted\"><strong>Imię N.</strong> · zweryfikowany zakup</p></article>"
-         },
-         "elements": []
-        }
-       ]
-      }
-     ]
-    },
-    {
-     "id": "d1711cb",
-     "elType": "widget",
-     "widgetType": "text-editor",
-     "isInner": false,
-     "settings": {
-      "editor": "<p class=\"bd-muted\" style=\"font-size:var(--bd-fs-xs)\">Opinie publikujemy wyłącznie od osób, które kupiły produkt w naszym sklepie – weryfikujemy je na podstawie numeru zamówienia.</p>"
-     },
-     "elements": []
-    }
-   ]
-  },
-  {
-   "id": "7854901",
-   "elType": "container",
-   "isInner": false,
-   "settings": {
-    "content_width": "boxed",
-    "flex_direction": "column",
-    "boxed_width": {
-     "unit": "px",
-     "size": 1360,
-     "sizes": []
-    },
-    "css_classes": "bd-section bd-reveal",
-    "html_tag": "section",
-    "padding": {
-     "unit": "px",
-     "top": "0",
-     "right": "24",
-     "bottom": "0",
-     "left": "24",
-     "isLinked": false
-    },
-    "padding_mobile": {
-     "unit": "px",
-     "top": "0",
-     "right": "16",
-     "bottom": "0",
-     "left": "16",
-     "isLinked": false
-    }
-   },
-   "elements": [
-    {
-     "id": "6dedc86",
-     "elType": "container",
-     "isInner": true,
-     "settings": {
-      "content_width": "full",
-      "flex_direction": "row",
-      "css_classes": "bd-newsletter bd-dark",
-      "flex_wrap": "wrap",
-      "flex_align_items": "center",
-      "flex_gap": {
-       "column": "40",
-       "row": "40",
-       "isLinked": true,
-       "unit": "px",
-       "size": 40
-      },
-      "background_background": "classic",
-      "background_color": "#121212",
-      "padding": {
-       "unit": "px",
-       "top": "56",
-       "right": "56",
-       "bottom": "56",
-       "left": "56",
-       "isLinked": true
-      },
-      "padding_mobile": {
-       "unit": "px",
-       "top": "32",
-       "right": "20",
-       "bottom": "32",
-       "left": "20",
-       "isLinked": false
-      }
-     },
-     "elements": [
-      {
-       "id": "b7a1774",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
+        "css_classes": "bd-media--45",
         "width": {
          "unit": "%",
          "size": 50,
+         "sizes": []
+        },
+        "width_mobile": {
+         "unit": "%",
+         "size": 100,
+         "sizes": []
+        }
+       },
+       "elements": [
+        {
+         "id": "37b4de2",
+         "elType": "widget",
+         "widgetType": "image",
+         "isInner": false,
+         "settings": {
+          "image": {
+           "url": "",
+           "id": "",
+           "alt": "Warstwy naszyjników na szyi"
+          },
+          "image_size": "full",
+          "_css_classes": "bd-unveil"
+         },
+         "elements": []
+        },
+        {
+         "id": "4d8f0a1",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "row",
+          "flex_justify_content": "space-between",
+          "flex_align_items": "baseline",
+          "padding": {
+           "unit": "px",
+           "top": "14",
+           "right": "0",
+           "bottom": "6",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "0909502",
+           "elType": "widget",
+           "widgetType": "heading",
+           "isInner": false,
+           "settings": {
+            "title": "Layering — <em>noś warstwami</em>",
+            "header_size": "h3",
+            "_css_classes": "bd-h3"
+           },
+           "elements": []
+          },
+          {
+           "id": "1db83cb",
+           "elType": "widget",
+           "widgetType": "html",
+           "isInner": false,
+           "settings": {
+            "html": "<p class=\"bd-label\">32 modele</p>"
+           },
+           "elements": []
+          }
+         ]
+        },
+        {
+         "id": "96c24a8",
+         "elType": "widget",
+         "widgetType": "html",
+         "isInner": false,
+         "settings": {
+          "html": "<a class=\"bd-textlink\" href=\"/kolekcja/layering/\">Odkryj <span aria-hidden=\"true\">→</span></a>"
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "0739d18",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "bd-media--45",
+        "width": {
+         "unit": "%",
+         "size": 50,
+         "sizes": []
+        },
+        "width_mobile": {
+         "unit": "%",
+         "size": 100,
+         "sizes": []
+        }
+       },
+       "elements": [
+        {
+         "id": "c1f492b",
+         "elType": "widget",
+         "widgetType": "image",
+         "isInner": false,
+         "settings": {
+          "image": {
+           "url": "",
+           "id": "",
+           "alt": "Delikatne kolczyki na uchu"
+          },
+          "image_size": "full",
+          "_css_classes": "bd-unveil"
+         },
+         "elements": []
+        },
+        {
+         "id": "171023a",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "row",
+          "flex_justify_content": "space-between",
+          "flex_align_items": "baseline",
+          "padding": {
+           "unit": "px",
+           "top": "14",
+           "right": "0",
+           "bottom": "6",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "81ca289",
+           "elType": "widget",
+           "widgetType": "heading",
+           "isInner": false,
+           "settings": {
+            "title": "Minimal — <em>na co dzień</em>",
+            "header_size": "h3",
+            "_css_classes": "bd-h3"
+           },
+           "elements": []
+          },
+          {
+           "id": "a9f9e5f",
+           "elType": "widget",
+           "widgetType": "html",
+           "isInner": false,
+           "settings": {
+            "html": "<p class=\"bd-label\">24 modele</p>"
+           },
+           "elements": []
+          }
+         ]
+        },
+        {
+         "id": "89b62b3",
+         "elType": "widget",
+         "widgetType": "html",
+         "isInner": false,
+         "settings": {
+          "html": "<a class=\"bd-textlink\" href=\"/kolekcja/minimal/\">Odkryj <span aria-hidden=\"true\">→</span></a>"
+         },
+         "elements": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "015b93a",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1520,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-sand",
+    "html_tag": "section",
+    "background_background": "classic",
+    "background_color": "#EDE6DC",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "40",
+     "bottom": "0",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "0742cfc",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "flex_wrap": "wrap",
+      "flex_gap": {
+       "column": "56",
+       "row": "56",
+       "isLinked": true,
+       "unit": "px",
+       "size": 56
+      },
+      "flex_align_items": "center"
+     },
+     "elements": [
+      {
+       "id": "73f4a86",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "width": {
+         "unit": "%",
+         "size": 55,
          "sizes": []
         },
         "width_tablet": {
@@ -1307,40 +1039,278 @@
          "sizes": []
         },
         "flex_gap": {
-         "column": "12",
-         "row": "12",
+         "column": "24",
+         "row": "24",
          "isLinked": true,
          "unit": "px",
-         "size": 12
+         "size": 24
         }
        },
        "elements": [
         {
-         "id": "aba4c70",
+         "id": "1efa58f",
+         "elType": "widget",
+         "widgetType": "html",
+         "isInner": false,
+         "settings": {
+          "html": "<p class=\"bd-label\">06 — Prezenty</p>"
+         },
+         "elements": []
+        },
+        {
+         "id": "9c2ac31",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
          "settings": {
-          "title": "−10% na pierwsze zakupy",
+          "title": "Prezent, który <em>nie trafi</em> do szuflady.",
           "header_size": "h2",
           "_css_classes": "bd-h2"
          },
          "elements": []
         },
         {
-         "id": "1a42721",
+         "id": "2136474",
          "elType": "widget",
          "widgetType": "text-editor",
          "isInner": false,
          "settings": {
-          "editor": "<p>Nowości i dropy przed wszystkimi. Maks. 2 maile w miesiącu.</p>"
+          "editor": "<p>Każde zamówienie pakujemy w pudełko. Chcesz więcej? Zaznacz „pakowanie na prezent” – dołożymy papier, wstążkę i liścik z Twoimi słowami. Bez paragonu w paczce.</p>",
+          "_css_classes": "bd-lead"
+         },
+         "elements": []
+        },
+        {
+         "id": "56434bb",
+         "elType": "widget",
+         "widgetType": "shortcode",
+         "isInner": false,
+         "settings": {
+          "shortcode": "[bd_gift_finder]"
          },
          "elements": []
         }
        ]
       },
       {
-       "id": "9f4fb02",
+       "id": "2130da6",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "bd-media bd-media--45",
+        "width": {
+         "unit": "%",
+         "size": 45,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 100,
+         "sizes": []
+        }
+       },
+       "elements": [
+        {
+         "id": "038eada",
+         "elType": "widget",
+         "widgetType": "image",
+         "isInner": false,
+         "settings": {
+          "image": {
+           "url": "",
+           "id": "",
+           "alt": "Pudełko prezentowe z biżuterią"
+          },
+          "image_size": "full",
+          "_css_classes": "bd-unveil"
+         },
+         "elements": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "8060476",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1520,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-reveal",
+    "html_tag": "section",
+    "flex_gap": {
+     "column": "24",
+     "row": "24",
+     "isLinked": true,
+     "unit": "px",
+     "size": 24
+    },
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "40",
+     "bottom": "0",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "5f25501",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "css_classes": "bd-sechead",
+      "flex_align_items": "flex-end"
+     },
+     "elements": [
+      {
+       "id": "a0d1df2",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<p class=\"bd-label\">07</p>"
+       },
+       "elements": []
+      },
+      {
+       "id": "55c2718",
+       "elType": "widget",
+       "widgetType": "heading",
+       "isInner": false,
+       "settings": {
+        "title": "Opinie",
+        "header_size": "h2",
+        "_css_classes": "bd-h2"
+       },
+       "elements": []
+      },
+      {
+       "id": "a27a3b4",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<a class=\"bd-textlink\" href=\"/opinie/\">Wszystkie opinie <span aria-hidden=\"true\">→</span></a>"
+       },
+       "elements": []
+      }
+     ]
+    },
+    {
+     "id": "835e38c",
+     "elType": "widget",
+     "widgetType": "shortcode",
+     "isInner": false,
+     "settings": {
+      "shortcode": "[bd_rating_summary]"
+     },
+     "elements": []
+    },
+    {
+     "id": "491db36",
+     "elType": "widget",
+     "widgetType": "shortcode",
+     "isInner": false,
+     "settings": {
+      "shortcode": "[bd_reviews limit=\"10\"]"
+     },
+     "elements": []
+    }
+   ]
+  },
+  {
+   "id": "760bece",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1520,
+     "sizes": []
+    },
+    "css_classes": "bd-section",
+    "html_tag": "section",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "40",
+     "bottom": "120",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "72",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "61622e0",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "css_classes": "bd-newsletter-wrap",
+      "flex_wrap": "wrap",
+      "flex_gap": {
+       "column": "48",
+       "row": "48",
+       "isLinked": true,
+       "unit": "px",
+       "size": 48
+      },
+      "flex_align_items": "flex-end",
+      "padding": {
+       "unit": "px",
+       "top": "56",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      },
+      "border_border": "solid",
+      "border_width": {
+       "unit": "px",
+       "top": "1",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      },
+      "border_color": "#DCD2C4"
+     },
+     "elements": [
+      {
+       "id": "d2e16ed",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -1359,7 +1329,40 @@
        },
        "elements": [
         {
-         "id": "e306f0c",
+         "id": "349364a",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Nowe kolekcje <em>najpierw</em> u Ciebie. I −10% na start.",
+          "header_size": "h2",
+          "_css_classes": "bd-h2"
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "d0ed247",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "width": {
+         "unit": "%",
+         "size": 50,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 100,
+         "sizes": []
+        }
+       },
+       "elements": [
+        {
+         "id": "7667dc2",
          "elType": "widget",
          "widgetType": "form",
          "isInner": false,
@@ -1367,166 +1370,42 @@
           "form_name": "Newsletter",
           "form_fields": [
            {
-            "_id": "f675299",
+            "_id": "6248ee5",
             "custom_id": "email",
             "field_type": "email",
             "field_label": "Adres e-mail",
             "placeholder": "twoj@email.pl",
             "required": "true",
-            "width": "100"
+            "width": "70"
            },
            {
-            "_id": "b464c55",
+            "_id": "d25f4e1",
             "custom_id": "hp",
             "field_type": "honeypot",
-            "field_label": "",
             "width": "100"
            },
            {
-            "_id": "85f184e",
+            "_id": "7b7c765",
             "custom_id": "zgoda",
             "field_type": "acceptance",
-            "field_label": "",
-            "acceptance_text": "Zgadzam się na otrzymywanie newslettera. Wypiszesz się jednym kliknięciem. <a href=\"/polityka-prywatnosci/\">Polityka prywatności</a>.",
             "required": "true",
-            "width": "100"
+            "width": "100",
+            "acceptance_text": "Chcę dostawać newsletter (maks. 2 maile w miesiącu). <a href=\"/polityka-prywatnosci/\">Polityka prywatności</a>."
            }
           ],
           "show_labels": "yes",
-          "button_text": "Zapisz się i odbierz −10%",
-          "button_width": "100",
+          "button_text": "Zapisz się",
+          "button_width": "30",
           "submit_actions": [
            "save-to-database"
           ],
-          "success_message": "Dzięki! Sprawdź skrzynkę i potwierdź zapis – kod wyślemy od razu.",
-          "error_message": "Coś poszło nie tak. Spróbuj ponownie."
+          "success_message": "Gotowe. Potwierdź zapis w mailu – kod −10% wyślemy od razu.",
+          "error_message": "Coś poszło nie tak. Spróbuj ponownie.",
+          "_css_classes": "bd-newsletter"
          },
          "elements": []
         }
        ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "e2cbbb9",
-   "elType": "container",
-   "isInner": false,
-   "settings": {
-    "content_width": "boxed",
-    "flex_direction": "row",
-    "boxed_width": {
-     "unit": "px",
-     "size": 1360,
-     "sizes": []
-    },
-    "css_classes": "bd-section bd-reveal",
-    "html_tag": "section",
-    "flex_wrap": "wrap",
-    "flex_gap": {
-     "column": "48",
-     "row": "48",
-     "isLinked": true,
-     "unit": "px",
-     "size": 48
-    },
-    "padding": {
-     "unit": "px",
-     "top": "0",
-     "right": "24",
-     "bottom": "120",
-     "left": "24",
-     "isLinked": false
-    },
-    "padding_mobile": {
-     "unit": "px",
-     "top": "0",
-     "right": "16",
-     "bottom": "64",
-     "left": "16",
-     "isLinked": false
-    }
-   },
-   "elements": [
-    {
-     "id": "e261e34",
-     "elType": "container",
-     "isInner": true,
-     "settings": {
-      "content_width": "full",
-      "flex_direction": "column",
-      "width": {
-       "unit": "%",
-       "size": 40,
-       "sizes": []
-      },
-      "width_tablet": {
-       "unit": "%",
-       "size": 100,
-       "sizes": []
-      },
-      "flex_gap": {
-       "column": "12",
-       "row": "12",
-       "isLinked": true,
-       "unit": "px",
-       "size": 12
-      }
-     },
-     "elements": [
-      {
-       "id": "2475263",
-       "elType": "widget",
-       "widgetType": "heading",
-       "isInner": false,
-       "settings": {
-        "title": "Pytania i odpowiedzi",
-        "header_size": "h2",
-        "_css_classes": "bd-h2"
-       },
-       "elements": []
-      },
-      {
-       "id": "7b6bc3c",
-       "elType": "widget",
-       "widgetType": "text-editor",
-       "isInner": false,
-       "settings": {
-        "editor": "<p><a class=\"bd-link-arrow\" href=\"/faq/\">Wszystkie pytania</a></p>"
-       },
-       "elements": []
-      }
-     ]
-    },
-    {
-     "id": "d981455",
-     "elType": "container",
-     "isInner": true,
-     "settings": {
-      "content_width": "full",
-      "flex_direction": "column",
-      "width": {
-       "unit": "%",
-       "size": 60,
-       "sizes": []
-      },
-      "width_tablet": {
-       "unit": "%",
-       "size": 100,
-       "sizes": []
-      }
-     },
-     "elements": [
-      {
-       "id": "3a9afa3",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
-       "settings": {
-        "html": "<div class=\"bd-accordion\">\n<details><summary><strong>Ile trwa dostawa?</strong></summary><p>Zamówienia złożone do 14:00 w dni robocze wysyłamy tego samego dnia. InPost Paczkomat i kurier dostarczają zwykle w 1–2 dni robocze.</p></details>\n<details><summary><strong>Jak mogę zapłacić?</strong></summary><p>BLIK, karta, Apple Pay, Google Pay, szybki przelew (Przelewy24) oraz PayPo – kup teraz, zapłać za 30 dni.</p></details>\n<details><summary><strong>Jak zwrócić produkt?</strong></summary><p>Masz 30 dni na zwrot bez podawania przyczyny. Wygeneruj etykietę w zakładce „Zwroty” – zwrot pieniędzy do 5 dni roboczych od otrzymania paczki.</p></details>\n<details><summary><strong>Czy mogę zmienić zamówienie?</strong></summary><p>Tak, dopóki nie zostało wysłane. Napisz na hej@bydopamina.pl, podając numer zamówienia.</p></details>\n</div>"
-       },
-       "elements": []
       }
      ]
     }

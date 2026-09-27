@@ -5,16 +5,16 @@ Generuje szablony Elementora (JSON) dla bydopamina.pl do katalogu elementor-temp
 Uruchom:  python3 tools/build_templates.py
 Import:   WordPress → Szablony → Kreator motywu / Zapisane szablony → „Importuj szablony”.
 
-Szablony używają kontenerów Flexbox (Elementor 3.6+, domyślnie włączone) i widgetów
-Elementor Pro + WooCommerce. Wygląd pochodzi głównie z klas bd-* motywu potomnego,
-dzięki czemu zmiana marki = zmiana tokens.css, a nie edycja 10 szablonów.
+Kierunek: editorial jewelry 2026/27 – asymetryczna siatka, szeryf Instrument Serif + Geist/Geist Mono,
+numerowane nagłówki sekcji, łuki kategorii, „shop the look”, prawdziwe opinie, rozmiarówka.
+Wygląd pochodzi z klas bd-* motywu potomnego, więc szablony są lekkie, a marka żyje w tokens.css.
 """
 import json
 import random
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent.parent / "elementor-templates"
-_rng = random.Random(2026)  # deterministyczne ID → czytelne diffy w git
+_rng = random.Random(2027)  # deterministyczne ID → czytelne diffy w git
 
 
 def _id():
@@ -37,22 +37,16 @@ def size(n, unit="px"):
 
 
 def con(*children, inner=False, cls="", direction="column", boxed=True, tag=None, **s):
-    """Kontener flex. Skróty: justify, align, gap, wrap, width(+_tablet/_mobile), pad(+_mobile), bg, minh."""
-    settings = {
-        "content_width": "boxed" if boxed else "full",
-        "flex_direction": direction,
-    }
+    """Kontener flex. Skróty: justify, align, wrap, gap, width(+_tablet/_mobile), pad(+_mobile), bg, minh."""
+    settings = {"content_width": "boxed" if boxed else "full", "flex_direction": direction}
     if boxed:
-        settings["boxed_width"] = size(1360)
+        settings["boxed_width"] = size(1520)
     if cls:
         settings["css_classes"] = cls
     if tag:
         settings["html_tag"] = tag
-    mapping = {
-        "justify": "flex_justify_content",
-        "align": "flex_align_items",
-        "wrap": "flex_wrap",
-    }
+    mapping = {"justify": "flex_justify_content", "align": "flex_align_items", "wrap": "flex_wrap",
+               "direction_tablet": "flex_direction_tablet", "direction_mobile": "flex_direction_mobile"}
     for k, v in s.items():
         if k in mapping:
             settings[mapping[k]] = v
@@ -67,13 +61,15 @@ def con(*children, inner=False, cls="", direction="column", boxed=True, tag=None
             settings["background_color"] = v
         elif k == "minh":
             settings["min_height"] = size(v)
-        elif k == "direction_mobile":
-            settings["flex_direction_mobile"] = v
-        elif k == "direction_tablet":
-            settings["flex_direction_tablet"] = v
         else:
             settings[k] = v
     return {"id": _id(), "elType": "container", "isInner": inner, "settings": settings, "elements": list(children)}
+
+
+def box(*children, **s):
+    """Wewnętrzny kontener pełnej szerokości (kolumna/grupa)."""
+    s.setdefault("boxed", False)
+    return con(*children, inner=True, **s)
 
 
 def w(widget_type, cls="", **settings):
@@ -95,33 +91,39 @@ def text(html, cls=""):
     return w("text-editor", cls, editor=html)
 
 
-def button(label, url, cls="bd-btn", **s):
-    return w("button", cls, text=label, link={"url": url, "is_external": "", "nofollow": ""}, **s)
+def html(markup, cls=""):
+    return w("html", cls, html=markup)
 
 
 def shortcode(code, cls=""):
     return w("shortcode", cls, shortcode=code)
 
 
-def html(markup, cls=""):
-    return w("html", cls, html=markup)
+def button(label, url, cls="bd-btn"):
+    return w("button", cls, text=label, link={"url": url, "is_external": "", "nofollow": ""}, size="md")
 
 
-def image(cls="", alt_note=""):
-    # Pusty URL = placeholder Elementora; podmień w edytorze. Brak zewnętrznych pobrań przy imporcie.
-    return w("image", cls, image={"url": "", "id": "", "alt": alt_note}, image_size="large")
+def textlink(label, url):
+    return html(f'<a class="bd-textlink" href="{url}">{label} <span aria-hidden="true">→</span></a>')
 
 
-def icon_list(items, cls=""):
-    return w(
-        "icon-list",
-        cls,
-        view="traditional",
-        icon_list=[
-            {"_id": _id(), "text": t, "link": {"url": u, "is_external": "", "nofollow": ""}, "selected_icon": {"value": "", "library": ""}}
-            for t, u in items
-        ],
-    )
+def image(cls="", alt=""):
+    # Pusty URL = placeholder Elementora (podmień w edytorze). Brak zewnętrznych pobrań przy imporcie.
+    return w("image", cls, image={"url": "", "id": "", "alt": alt}, image_size="full")
+
+
+def icon_list(items, cls="", inline=False):
+    s = {"view": "inline" if inline else "traditional",
+         "icon_list": [{"_id": _id(), "text": t, "link": {"url": u, "is_external": "", "nofollow": ""},
+                        "selected_icon": {"value": "", "library": ""}} for t, u in items]}
+    return w("icon-list", cls, **s)
+
+
+def sechead(num, title, link_label=None, url=None, dark=False):
+    """Nagłówek sekcji w układzie redakcyjnym: 01 · Tytuł · link."""
+    parts = [html(f'<p class="bd-label">{num}</p>'), heading(title, "h2", "bd-h2")]
+    parts.append(textlink(link_label, url) if link_label else html(""))
+    return box(*parts, direction="row", cls="bd-sechead", align="flex-end")
 
 
 def template(title, kind, content, page_settings=None):
@@ -129,7 +131,15 @@ def template(title, kind, content, page_settings=None):
 
 
 FULL_PAGE = {"template": "elementor_header_footer", "hide_title": "yes"}
-SECTION_PAD = pad(0, 24, 0, 24)
+SIDE = pad(0, 40, 0, 40)
+SIDE_M = pad(0, 16, 0, 16)
+
+
+def section(*children, cls="bd-section", **s):
+    s.setdefault("pad", pad(0, 40, 0, 40))
+    s.setdefault("pad_mobile", SIDE_M)
+    return con(*children, cls=cls, tag="section", **s)
+
 
 # ---------------------------------------------------------------------------
 # HEADER
@@ -137,63 +147,28 @@ SECTION_PAD = pad(0, 24, 0, 24)
 
 def header():
     announcement = con(
-        text("<p>Darmowa dostawa od 199 zł · Wysyłka w 24 h · 30 dni na zwrot</p>", "bd-announcement"),
-        boxed=False,
-        cls="bd-announcement",
-        bg="#121212",
-        align="center",
-        pad=pad(8, 16),
+        html('<ul><li>Darmowa dostawa od 199 zł</li><li>Wysyłka w 24 h</li><li>30 dni na zwrot</li><li>Pudełko prezentowe w cenie</li></ul>'),
+        boxed=False, cls="bd-announcement", pad=pad(0),
     )
+    nav = w("nav-menu", "", menu="", layout="horizontal", align_items="left", pointer="underline",
+            animation_line="fade", dropdown="tablet", toggle="burger", full_width="stretch", text_align="aside",
+            submenu_icon={"value": "", "library": ""})
     logo = heading("bydopamina", "div", "bd-logo", link="/")
-    logo["settings"].update({
-        "typography_typography": "custom",
-        "typography_font_family": "Bricolage Grotesque",
-        "typography_font_weight": "700",
-        "typography_font_size": size(26),
-        "typography_letter_spacing": size(-0.8),
-    })
-    nav = w(
-        "nav-menu",
-        "",
-        menu="",  # po imporcie wybierz menu „Główne”
-        layout="horizontal",
-        align_items="center",
-        pointer="underline",
-        animation_line="slide",
-        dropdown="tablet",
-        toggle="burger",
-        full_width="stretch",
-        text_align="aside",
-        submenu_icon={"value": "", "library": ""},
-    )
-    icons = con(
-        w("search-form", "", skin="full_screen", placeholder="Czego szukasz? np. kubek, bluza…"),
-        w("icon", "", selected_icon={"value": "far fa-user", "library": "fa-regular"},
-          link={"url": "/moje-konto/", "is_external": "", "nofollow": ""}, view="default",
-          _title="Moje konto", aria_label="Moje konto"),
-        w("woocommerce-menu-cart", "", icon="bag-medium", items_indicator="bubble", hide_empty_indicator="yes",
-          cart_type="side-cart", open_cart="click", automatically_open_cart="yes", show_subtotal="no",
-          main_cart_button_padding=pad(0)),
-        inner=True, direction="row", align="center", cls="bd-header-icons", boxed=False, gap=4,
+    icons = box(
+        w("search-form", "", skin="full_screen", placeholder="Szukaj: naszyjnik, obrączka, kolczyki…"),
+        w("icon", "bd-hide-mobile", selected_icon={"value": "far fa-heart", "library": "fa-regular"},
+          link={"url": "/lista-zyczen/", "is_external": "", "nofollow": ""}, _title="Ulubione"),
+        w("icon", "bd-hide-mobile", selected_icon={"value": "far fa-user", "library": "fa-regular"},
+          link={"url": "/moje-konto/", "is_external": "", "nofollow": ""}, _title="Moje konto"),
+        w("woocommerce-menu-cart", "", icon="bag-light", items_indicator="bubble", hide_empty_indicator="yes",
+          cart_type="side-cart", open_cart="click", automatically_open_cart="yes", show_subtotal="no"),
+        direction="row", align="center", cls="bd-header-icons", gap=0,
     )
     bar = con(
-        logo,
-        nav,
-        icons,
-        direction="row",
-        justify="space-between",
-        align="center",
-        wrap="nowrap",
-        gap=16,
-        cls="bd-header",
-        tag="header",
-        minh=68,
-        pad=pad(0, 24),
-        pad_mobile=pad(0, 16),
-        sticky="top",
-        sticky_on=["desktop", "tablet", "mobile"],
-        sticky_effects_offset=size(10),
-        z_index=100,
+        nav, logo, icons,
+        boxed=False, cls="bd-header", tag="header", minh=64,
+        pad=pad(0, 40), pad_mobile=pad(0, 8),
+        sticky="top", sticky_on=["desktop", "tablet", "mobile"], sticky_effects_offset=size(40), z_index=100,
     )
     return template("bydopamina — Header", "header", [announcement, bar])
 
@@ -203,51 +178,41 @@ def header():
 # ---------------------------------------------------------------------------
 
 def footer():
-    cols = con(
-        con(
-            heading("bydopamina", "div", "bd-footer-logo"),
-            text('<p class="bd-muted">Małe rzeczy, które robią Ci dzień. Projektujemy i wysyłamy z Polski.</p>'),
-            w("social-icons", "", shape="circle", social_icon_list=[
+    cols = box(
+        box(
+            heading("Biżuteria na co dzień. Złoto 18K na stali 316L – nie ciemnieje, nie uczula, nie boi się wody.", "p", "bd-h3"),
+            w("social-icons", "", shape="square", social_icon_list=[
                 {"_id": _id(), "social_icon": {"value": "fab fa-instagram", "library": "fa-brands"}, "link": {"url": "https://instagram.com/bydopamina", "is_external": "on", "nofollow": ""}},
                 {"_id": _id(), "social_icon": {"value": "fab fa-tiktok", "library": "fa-brands"}, "link": {"url": "https://tiktok.com/@bydopamina", "is_external": "on", "nofollow": ""}},
                 {"_id": _id(), "social_icon": {"value": "fab fa-pinterest", "library": "fa-brands"}, "link": {"url": "https://pinterest.com/bydopamina", "is_external": "on", "nofollow": ""}},
-            ], icon_color="custom", icon_primary_color="#FFFFFF1A", icon_secondary_color="#FFFFFF"),
-            inner=True, boxed=False, width=34, width_tablet=100, gap=16,
+            ], icon_color="custom", icon_primary_color="#00000000", icon_secondary_color="#F6F2EC"),
+            width=40, width_tablet=100, gap=24,
         ),
-        con(heading("Sklep", "h2", "bd-footer-h"), icon_list([
-            ("Nowości", "/sklep/?orderby=date"), ("Bestsellery", "/sklep/?orderby=popularity"),
-            ("Promocje", "/promocje/"), ("Karty podarunkowe", "/karta-podarunkowa/")]),
-            inner=True, boxed=False, width=22, width_tablet=33, width_mobile=50, gap=12),
-        con(heading("Pomoc", "h2", "bd-footer-h"), icon_list([
+        box(heading("Sklep", "h2", "bd-footer-h"), icon_list([
+            ("Naszyjniki", "/kategoria-produktu/naszyjniki/"), ("Kolczyki", "/kategoria-produktu/kolczyki/"),
+            ("Pierścionki", "/kategoria-produktu/pierscionki/"), ("Bransoletki", "/kategoria-produktu/bransoletki/"),
+            ("Karta podarunkowa", "/karta-podarunkowa/")]), width=20, width_tablet=33, width_mobile=50, gap=16),
+        box(heading("Pomoc", "h2", "bd-footer-h"), icon_list([
             ("Dostawa i płatności", "/dostawa-i-platnosci/"), ("Zwroty i reklamacje", "/zwroty/"),
-            ("FAQ", "/faq/"), ("Kontakt", "/kontakt/"), ("Śledź zamówienie", "/moje-konto/zamowienia/")]),
-            inner=True, boxed=False, width=22, width_tablet=33, width_mobile=50, gap=12),
-        con(heading("Kontakt", "h2", "bd-footer-h"), icon_list([
+            ("Rozmiarówka", "/rozmiarowka/"), ("Pielęgnacja biżuterii", "/pielegnacja/"), ("Kontakt", "/kontakt/")]),
+            width=20, width_tablet=33, width_mobile=50, gap=16),
+        box(heading("Kontakt", "h2", "bd-footer-h"), icon_list([
             ("hej@bydopamina.pl", "mailto:hej@bydopamina.pl"), ("+48 000 000 000", "tel:+48000000000"),
-            ("pn–pt 9:00–16:00", "")]),
-            inner=True, boxed=False, width=22, width_tablet=33, width_mobile=100, gap=12),
-        direction="row", wrap="wrap", gap=32, inner=True, boxed=False,
+            ("pn–pt 9:00–16:00", "")]), width=20, width_tablet=33, width_mobile=100, gap=16),
+        direction="row", wrap="wrap", gap=40,
     )
-    payments = html(
-        '<ul class="bd-payments" aria-label="Metody płatności i dostawy">'
-        "<li>BLIK</li><li>Visa</li><li>Mastercard</li><li>Apple Pay</li><li>Google Pay</li>"
-        "<li>Przelewy24</li><li>PayPo</li><li>InPost</li><li>DPD</li></ul>"
-    )
-    wordmark = heading("bydopamina", "div", "bd-footer-wordmark", align="center")
-    wordmark["settings"].update({"typography_typography": "custom", "typography_font_family": "Bricolage Grotesque", "typography_font_weight": "700"})
-    bottom = con(
-        shortcode("© [bd_year] bydopamina.pl"),
+    payments = html('<ul class="bd-payments" aria-label="Płatności i dostawa"><li>BLIK</li><li>Visa</li><li>Mastercard</li>'
+                    '<li>Apple Pay</li><li>Google Pay</li><li>Przelewy24</li><li>PayPo</li><li>InPost</li><li>DPD</li></ul>')
+    wordmark = html('<p class="bd-footer-wordmark" aria-hidden="true">bydopamina</p>')
+    bottom = box(
+        shortcode("© [bd_year] bydopamina.pl", "bd-label"),
         icon_list([("Regulamin", "/regulamin/"), ("Polityka prywatności", "/polityka-prywatnosci/"),
-                   ("Cookies", "/polityka-cookies/"), ("Odstąpienie od umowy", "/odstapienie-od-umowy/")]),
-        direction="row", justify="space-between", align="center", wrap="wrap", gap=16, inner=True, boxed=False,
-        direction_mobile="column",
+                   ("Cookies", "/polityka-cookies/"), ("Odstąpienie od umowy", "/odstapienie-od-umowy/"),
+                   ("Deklaracja dostępności", "/deklaracja-dostepnosci/")], inline=True),
+        direction="row", justify="space-between", align="center", wrap="wrap", gap=16, direction_mobile="column",
     )
-    bottom["elements"][1]["settings"]["view"] = "inline"
-    main = con(
-        cols, payments, wordmark, bottom,
-        cls="bd-footer bd-dark", tag="footer", bg="#121212", gap=48,
-        pad=pad(80, 24, 32, 24), pad_mobile=pad(56, 16, 24, 16),
-    )
+    main = con(cols, payments, wordmark, bottom, cls="bd-footer bd-dark", tag="footer", bg="#1C1917", gap=48,
+               pad=pad(96, 40, 32, 40), pad_mobile=pad(64, 16, 24, 16))
     mobile_nav = con(shortcode("[bd_mobile_nav]"), boxed=False, pad=pad(0),
                      hide_desktop="hidden-desktop", hide_tablet="hidden-tablet")
     return template("bydopamina — Footer", "footer", [main, mobile_nav])
@@ -257,307 +222,280 @@ def footer():
 # STRONA GŁÓWNA
 # ---------------------------------------------------------------------------
 
-def bento_tile(title, url, cls, sub="Zobacz"):
-    return con(
-        heading(title, "h3", "bd-h3"),
-        text(f'<p><a class="bd-link-arrow" href="{url}">{sub}</a></p>'),
-        inner=True, boxed=False, cls=f"bd-tile {cls}".strip(), justify="flex-end", pad=pad(24),
-        bg="#F2EEE8", background_image={"url": "", "id": ""}, background_position="center center",
-        background_size="cover",
-    )
+SPECS = """<ul class="bd-specs">
+<li><b>316L</b><span>Stal chirurgiczna – ta sama, z której robi się implanty. Nie rdzewieje, nie zmienia koloru.</span></li>
+<li><b>18K</b><span>Złoto nakładane metodą PVD – warstwa wiązana z metalem, a nie tylko nim pokryta.</span></li>
+<li><b>0</b><span>Niklu i ołowiu. Bezpieczna dla wrażliwej skóry i do noszenia 24/7.</span></li>
+</ul>"""
 
-
-def section_head(title, link_label, url):
-    return con(
-        heading(title, "h2", "bd-h2"),
-        text(f'<p><a class="bd-link-arrow" href="{url}">{link_label}</a></p>'),
-        direction="row", justify="space-between", align="flex-end", wrap="wrap", gap=16, inner=True, boxed=False,
-    )
-
-
-def products_rail(orderby, rows=1):
-    return w(
-        "woocommerce-products", "bd-rail",
-        columns="4", columns_tablet="3", columns_mobile="2", rows=str(rows), paginate="",
-        query_post_type="product", query_orderby=orderby, query_order="desc",
-        query_exclude=["current_post"],
-    )
-
-
-REVIEW = (
-    '<article class="bd-review"><p class="bd-stars" aria-label="Ocena 5 na 5">★★★★★</p>'
-    "<p>„Tu wstaw prawdziwą opinię klienta – najlepiej z konkretem: co kupił, jak szybko dotarło, co go zaskoczyło.”</p>"
-    '<p class="bd-muted"><strong>Imię N.</strong> · zweryfikowany zakup</p></article>'
-)
-
-FAQ = """<div class="bd-accordion">
-<details><summary><strong>Ile trwa dostawa?</strong></summary><p>Zamówienia złożone do 14:00 w dni robocze wysyłamy tego samego dnia. InPost Paczkomat i kurier dostarczają zwykle w 1–2 dni robocze.</p></details>
-<details><summary><strong>Jak mogę zapłacić?</strong></summary><p>BLIK, karta, Apple Pay, Google Pay, szybki przelew (Przelewy24) oraz PayPo – kup teraz, zapłać za 30 dni.</p></details>
-<details><summary><strong>Jak zwrócić produkt?</strong></summary><p>Masz 30 dni na zwrot bez podawania przyczyny. Wygeneruj etykietę w zakładce „Zwroty” – zwrot pieniędzy do 5 dni roboczych od otrzymania paczki.</p></details>
-<details><summary><strong>Czy mogę zmienić zamówienie?</strong></summary><p>Tak, dopóki nie zostało wysłane. Napisz na hej@bydopamina.pl, podając numer zamówienia.</p></details>
-</div>"""
-
-MARQUEE_ITEMS = ["Projektowane w Polsce", "Wysyłka w 24 h", "30 dni na zwrot", "Małe serie", "Opakowania bez plastiku"]
+HERO_META = """<dl class="bd-meta">
+<dt>Materiał</dt><dd>Stal 316L, złoto 18K (PVD)</dd>
+<dt>Wysyłka</dt><dd>W 24 h, InPost lub kurier</dd>
+<dt>Zwrot</dt><dd>30 dni, bez podawania przyczyny</dd>
+</dl>"""
 
 
 def home():
-    hero = con(
-        con(
-            html('<span class="bd-eyebrow">Nowa kolekcja · Jesień 2026</span>'),
-            heading('Rzeczy, które robią Ci <span class="bd-highlight">dzień</span>.', "h1", "bd-hero-title"),
-            text('<p class="bd-muted" style="font-size:var(--bd-fs-lg);max-width:34ch">Krótki opis marki w jednym zdaniu: co sprzedajesz i dlaczego u Ciebie – konkret, bez ogólników.</p>'),
-            con(
-                button("Kup teraz", "/sklep/", "bd-btn", size="lg"),
-                button("Zobacz nowości", "/sklep/?orderby=date", "bd-btn bd-btn--ghost", size="lg"),
-                direction="row", wrap="wrap", gap=12, inner=True, boxed=False,
+    hero = section(
+        box(
+            heading("Złoto, które <em>zostaje</em>.", "h1", "bd-hero-title bd-hero__title"),
+            box(
+                image("bd-lcp", "Modelka w naszyjnikach z kolekcji"),
+                html('<div class="bd-caption"><span class="bd-label">Kolekcja 07 — Solstice</span>'
+                     '<a class="bd-textlink" href="/kolekcja/solstice/">Zobacz kolekcję <span aria-hidden="true">→</span></a></div>'),
+                cls="bd-hero__main bd-media bd-media--hero",
             ),
-            html('<p class="bd-muted" style="font-size:var(--bd-fs-sm);margin:0">★ 4,9/5 · 2 300+ opinii zweryfikowanych klientów</p>'),
-            inner=True, boxed=False, width=50, width_tablet=100, gap=24, justify="center",
+            box(
+                image("bd-media bd-media--sq", "Zbliżenie: pierścionki na dłoni"),
+                text("<p>Biżuteria, którą zakładasz rano i zapominasz, że ją masz. "
+                     "Pod prysznic, na siłownię, na wesele.</p>", "bd-lead"),
+                box(button("Kup kolekcję", "/kolekcja/solstice/"), textlink("Bestsellery", "/sklep/?orderby=popularity"),
+                    direction="row", align="center", wrap="wrap", gap=24),
+                html(HERO_META),
+                cls="bd-hero__side",
+            ),
+            cls="bd-hero__grid",
         ),
-        con(
-            image("bd-lcp", "Zdjęcie hero – produkt w użyciu"),
-            html('<span class="bd-hero__badge">Nowość ✦</span>'),
-            inner=True, boxed=False, width=50, width_tablet=100, cls="bd-hero__media", position="relative",
+        cls="bd-hero", pad=pad(24, 40, 0, 40), pad_mobile=pad(12, 16, 0, 16),
+    )
+
+    usp = section(shortcode("[bd_usp]"), cls="bd-usp", pad=pad(48, 40), pad_mobile=pad(40, 16))
+
+    categories = section(
+        sechead("01", "Kategorie", "Cały sklep", "/sklep/"),
+        shortcode("[bd_category_arches limit=\"6\"]"),
+        cls="bd-section bd-reveal", pad=pad(64, 40, 0, 40), pad_mobile=pad(40, 16, 0, 16),
+    )
+
+    products = section(
+        box(html('<p class="bd-label">02 — Wybór redakcji</p>'), textlink("Wszystkie produkty", "/sklep/"),
+            direction="row", justify="space-between", align="center", pad=pad(0, 0, 16, 0)),
+        shortcode('[bd_product_tabs limit="8"]'),
+        cls="bd-section bd-reveal",
+    )
+
+    material = section(
+        sechead("03", "Złoto, które <em>nie schodzi</em> pod prysznicem.", "O materiale", "/o-materiale/", dark=True),
+        box(
+            box(text("<p>Tanie złocenie to kilka mikronów farby na mosiądzu – ściera się po paru tygodniach i zostawia zielony ślad. "
+                     "Nasze złoto jest związane ze stalą próżniowo. Dlatego kolor zostaje z Tobą na lata.</p>", "bd-lead"),
+                html(SPECS), width=58, width_tablet=100, cls="bd-material-col"),
+            box(image("bd-unveil", "Biżuteria w wodzie – zbliżenie"), cls="bd-media bd-media--45", width=42, width_tablet=100),
+            direction="row", wrap="wrap", gap=48, align="flex-end",
         ),
-        direction="row", wrap="wrap", align="center", gap=48, cls="bd-hero bd-section", tag="section",
-        pad=pad(40, 24, 64, 24), pad_mobile=pad(16, 16, 48, 16),
+        cls="bd-section bd-dark", bg="#1C1917",
     )
 
-    trust = con(shortcode("[bd_trust_badges]"), cls="bd-section--tight bd-surface", tag="section",
-                pad=pad(32, 24), pad_mobile=pad(28, 16))
+    look = section(
+        sechead("04", "Stylizacja <em>tygodnia</em>", "Więcej stylizacji", "/stylizacje/"),
+        # Podmień: image = ID zdjęcia z Mediów, products = ID:x%:y% (pozycja kropki na zdjęciu).
+        shortcode('[bd_shop_the_look image="0" products="101:34:38,102:52:30,103:61:66" title="Na zdjęciu"]'),
+        cls="bd-section bd-reveal",
+    )
 
-    bento = con(
-        section_head("Kategorie", "Wszystkie produkty", "/sklep/"),
-        con(
-            bento_tile("Bestsellery", "/sklep/?orderby=popularity", "bd-bento__lg", "Kup to, co kochają inni"),
-            bento_tile("Nowości", "/sklep/?orderby=date", "bd-tile--pink"),
-            bento_tile("Na prezent", "/kategoria-produktu/prezenty/", ""),
-            bento_tile("Kategoria 3", "/kategoria-produktu/kategoria-3/", "bd-bento__wide bd-tile--lime"),
-            inner=True, boxed=False, cls="bd-bento",
+    def collection(title, count, url, alt):
+        return box(
+            image("bd-unveil", alt),
+            box(heading(title, "h3", "bd-h3"), html(f'<p class="bd-label">{count}</p>'),
+                direction="row", justify="space-between", align="baseline", pad=pad(14, 0, 6, 0)),
+            textlink("Odkryj", url),
+            cls="bd-media--45", width=50, width_mobile=100,
+        )
+
+    collections = section(
+        sechead("05", "Kolekcje"),
+        box(collection("Layering — <em>noś warstwami</em>", "32 modele", "/kolekcja/layering/", "Warstwy naszyjników na szyi"),
+            collection("Minimal — <em>na co dzień</em>", "24 modele", "/kolekcja/minimal/", "Delikatne kolczyki na uchu"),
+            direction="row", wrap="wrap", gap=20, direction_mobile="column"),
+        cls="bd-section bd-reveal", pad=pad(0, 40), pad_mobile=SIDE_M,
+    )
+
+    gifts = section(
+        box(
+            box(
+                html('<p class="bd-label">06 — Prezenty</p>'),
+                heading("Prezent, który <em>nie trafi</em> do szuflady.", "h2", "bd-h2"),
+                text("<p>Każde zamówienie pakujemy w pudełko. Chcesz więcej? Zaznacz „pakowanie na prezent” – dołożymy papier, "
+                     "wstążkę i liścik z Twoimi słowami. Bez paragonu w paczce.</p>", "bd-lead"),
+                shortcode("[bd_gift_finder]"),
+                width=55, width_tablet=100, gap=24,
+            ),
+            box(image("bd-unveil", "Pudełko prezentowe z biżuterią"), cls="bd-media bd-media--45", width=45, width_tablet=100),
+            direction="row", wrap="wrap", gap=56, align="center",
         ),
-        cls="bd-section bd-reveal", tag="section", gap=32, pad=SECTION_PAD, pad_mobile=pad(0, 16),
+        cls="bd-section bd-sand", bg="#EDE6DC",
     )
 
-    bestsellers = con(
-        section_head("Bestsellery", "Zobacz wszystkie", "/sklep/?orderby=popularity"),
-        products_rail("popularity"),
-        cls="bd-section bd-reveal", tag="section", gap=32, pad=SECTION_PAD, pad_mobile=pad(0, 16),
-    )
-
-    marquee = con(
-        html('<div class="bd-marquee" aria-hidden="true"><ul class="bd-marquee__track">'
-             + "".join(f"<li>{t}</li>" for t in MARQUEE_ITEMS * 2) + "</ul></div>"
-             '<p class="screen-reader-text">' + ", ".join(MARQUEE_ITEMS) + "</p>"),
-        boxed=False, pad=pad(0),
-    )
-
-    story = con(
-        con(image("", "Zdjęcie zespołu / pracowni"), inner=True, boxed=False, width=50, width_tablet=100, cls="bd-hero__media"),
-        con(
-            html('<span class="bd-eyebrow">Dlaczego bydopamina</span>'),
-            heading("Mniej, ale lepiej. I z uśmiechem.", "h2", "bd-h2"),
-            text("<p>2–3 zdania o historii marki i wartościach. Ludzie kupują od ludzi – pokaż twarz, pracownię, proces.</p>"),
-            icon_list([("Projektujemy i pakujemy w Polsce", ""), ("Krótkie serie – bez nadprodukcji", ""),
-                       ("Opakowania z recyklingu, bez plastiku", "")]),
-            button("Poznaj nas", "/o-nas/", "bd-btn bd-btn--ghost"),
-            inner=True, boxed=False, width=50, width_tablet=100, gap=20, justify="center",
-        ),
-        direction="row", wrap="wrap", align="center", gap=64, cls="bd-section bd-reveal", tag="section",
-        pad=SECTION_PAD, pad_mobile=pad(0, 16),
-    )
-
-    new_in = con(
-        section_head("Nowości", "Zobacz wszystkie", "/sklep/?orderby=date"),
-        products_rail("date"),
-        cls="bd-section bd-reveal", tag="section", gap=32, pad=SECTION_PAD, pad_mobile=pad(0, 16),
-    )
-
-    reviews = con(
-        section_head("Co mówią klienci", "Wszystkie opinie", "/opinie/"),
-        con(*[con(html(REVIEW), inner=True, boxed=False, width=33, width_tablet=100) for _ in range(3)],
-            direction="row", wrap="wrap", gap=16, inner=True, boxed=False),
-        text('<p class="bd-muted" style="font-size:var(--bd-fs-xs)">Opinie publikujemy wyłącznie od osób, które kupiły produkt w naszym sklepie – weryfikujemy je na podstawie numeru zamówienia.</p>'),
-        cls="bd-section bd-reveal", tag="section", gap=32, pad=SECTION_PAD, pad_mobile=pad(0, 16),
+    reviews = section(
+        sechead("07", "Opinie", "Wszystkie opinie", "/opinie/"),
+        shortcode("[bd_rating_summary]"),
+        shortcode('[bd_reviews limit="10"]'),
+        cls="bd-section bd-reveal", gap=24,
     )
 
     newsletter_form = w(
-        "form", "",
+        "form", "bd-newsletter",
         form_name="Newsletter",
         form_fields=[
             {"_id": _id(), "custom_id": "email", "field_type": "email", "field_label": "Adres e-mail",
-             "placeholder": "twoj@email.pl", "required": "true", "width": "100"},
-            {"_id": _id(), "custom_id": "hp", "field_type": "honeypot", "field_label": "", "width": "100"},
-            {"_id": _id(), "custom_id": "zgoda", "field_type": "acceptance", "field_label": "",
-             "acceptance_text": 'Zgadzam się na otrzymywanie newslettera. Wypiszesz się jednym kliknięciem. <a href="/polityka-prywatnosci/">Polityka prywatności</a>.',
-             "required": "true", "width": "100"},
+             "placeholder": "twoj@email.pl", "required": "true", "width": "70"},
+            {"_id": _id(), "custom_id": "hp", "field_type": "honeypot", "width": "100"},
+            {"_id": _id(), "custom_id": "zgoda", "field_type": "acceptance", "required": "true", "width": "100",
+             "acceptance_text": 'Chcę dostawać newsletter (maks. 2 maile w miesiącu). <a href="/polityka-prywatnosci/">Polityka prywatności</a>.'},
         ],
-        show_labels="yes", button_text="Zapisz się i odbierz −10%", button_width="100",
+        show_labels="yes", button_text="Zapisz się", button_width="30",
         submit_actions=["save-to-database"],
-        success_message="Dzięki! Sprawdź skrzynkę i potwierdź zapis – kod wyślemy od razu.",
+        success_message="Gotowe. Potwierdź zapis w mailu – kod −10% wyślemy od razu.",
         error_message="Coś poszło nie tak. Spróbuj ponownie.",
     )
-    newsletter = con(
-        con(
-            con(
-                heading("−10% na pierwsze zakupy", "h2", "bd-h2"),
-                text("<p>Nowości i dropy przed wszystkimi. Maks. 2 maile w miesiącu.</p>"),
-                inner=True, boxed=False, width=50, width_tablet=100, gap=12,
-            ),
-            con(newsletter_form, inner=True, boxed=False, width=50, width_tablet=100),
-            direction="row", wrap="wrap", align="center", gap=40, inner=True, boxed=False,
-            cls="bd-newsletter bd-dark", bg="#121212", pad=pad(56), pad_mobile=pad(32, 20),
+    newsletter = section(
+        box(
+            box(heading("Nowe kolekcje <em>najpierw</em> u Ciebie. I −10% na start.", "h2", "bd-h2"),
+                width=50, width_tablet=100),
+            box(newsletter_form, width=50, width_tablet=100),
+            direction="row", wrap="wrap", gap=48, align="flex-end",
+            pad=pad(56, 0, 0, 0), cls="bd-newsletter-wrap", border_border="solid",
+            border_width={"unit": "px", "top": "1", "right": "0", "bottom": "0", "left": "0", "isLinked": False},
+            border_color="#DCD2C4",
         ),
-        cls="bd-section bd-reveal", tag="section", pad=SECTION_PAD, pad_mobile=pad(0, 16),
-    )
-
-    faq = con(
-        con(heading("Pytania i odpowiedzi", "h2", "bd-h2"),
-            text('<p><a class="bd-link-arrow" href="/faq/">Wszystkie pytania</a></p>'),
-            inner=True, boxed=False, width=40, width_tablet=100, gap=12),
-        con(html(FAQ), inner=True, boxed=False, width=60, width_tablet=100),
-        direction="row", wrap="wrap", gap=48, cls="bd-section bd-reveal", tag="section",
-        pad=pad(0, 24, 120, 24), pad_mobile=pad(0, 16, 64, 16),
+        cls="bd-section", pad=pad(0, 40, 120, 40), pad_mobile=pad(0, 16, 72, 16),
     )
 
     return template("bydopamina — Strona główna", "page",
-                    [hero, trust, bento, bestsellers, marquee, story, new_in, reviews, newsletter, faq], FULL_PAGE)
+                    [hero, usp, categories, products, material, look, collections, gifts, reviews, newsletter], FULL_PAGE)
 
 
 # ---------------------------------------------------------------------------
-# KARTA PRODUKTU (Single Product)
+# KARTA PRODUKTU
 # ---------------------------------------------------------------------------
-
-def accordion_item(title, *widgets):
-    return title, con(*widgets, inner=True, boxed=False, pad=pad(0, 0, 16, 0))
-
 
 def nested_accordion(items):
     return {
         "id": _id(), "elType": "widget", "widgetType": "nested-accordion", "isInner": False,
         "settings": {
             "items": [{"_id": _id(), "item_title": t} for t, _ in items],
-            "default_state": "expanded",  # pierwszy element otwarty
+            "default_state": "all_collapsed",
             "max_items_expended": "one",
             "_css_classes": "bd-accordion",
         },
-        "elements": [c for _, c in items],
+        "elements": [box(*ws, pad=pad(0, 0, 20, 0)) for _, ws in items],
     }
 
 
+CARE = ("<p>Stal 316L ze złoceniem PVD nie boi się wody ani potu. Żeby złoto błyszczało latami:</p>"
+        "<ul><li>perfumy i balsam nakładaj przed założeniem biżuterii,</li>"
+        "<li>czyść miękką ściereczką, bez past i środków ściernych,</li>"
+        "<li>przechowuj osobno – w pudełku lub woreczku, żeby elementy się nie rysowały.</li></ul>")
+GPSR = ("<p><strong>Producent:</strong> [nazwa, adres, e-mail]<br><strong>Podmiot odpowiedzialny w UE:</strong> [jeśli inny]<br>"
+        "<strong>Ostrzeżenia:</strong> zawiera małe elementy – nie dla dzieci poniżej 3 lat.</p>")
+SHIPPING = ("<p><strong>InPost Paczkomat</strong> i <strong>kurier DPD</strong> – 1–2 dni robocze. Darmowa dostawa od 199 zł.</p>"
+            "<p>30 dni na zwrot bez podawania przyczyny. <a href=\"/zwroty/\">Jak zwrócić produkt</a></p>")
+
+
 def product():
-    gallery = con(
-        w("woocommerce-product-images", "bd-pdp-gallery", sale_flash="yes"),
-        inner=True, boxed=False, width=58, width_tablet=100,
-    )
-    summary = con(
-        w("woocommerce-breadcrumb", ""),
+    gallery = box(w("woocommerce-product-images", "bd-pdp-gallery", sale_flash="yes"), width=58, width_tablet=100)
+    summary = box(
+        w("woocommerce-breadcrumb", "bd-label"),
+        shortcode("[bd_product_claims]"),
         w("woocommerce-product-title", "bd-pdp-title", header_size="h1"),
         w("woocommerce-product-rating", ""),
         w("woocommerce-product-price", "bd-pdp-price"),
         w("woocommerce-product-short-description", "bd-muted"),
+        shortcode("[bd_size_guide]"),
         w("woocommerce-product-add-to-cart", "", show_quantity="yes", layout="stacked"),
         shortcode("[bd_delivery_eta]"),
         shortcode("[bd_free_shipping_bar]"),
-        shortcode('[bd_trust_badges variant="stack"]'),
+        shortcode('[bd_usp variant="list"]'),
         nested_accordion([
-            accordion_item("Opis", w("woocommerce-product-content", "")),
-            accordion_item("Szczegóły i wymiary", w("woocommerce-product-additional-information", "", show_heading="")),
-            accordion_item("Dostawa i zwroty", text(
-                "<p><strong>InPost Paczkomat</strong> – 1–2 dni robocze · <strong>Kurier DPD</strong> – 1–2 dni robocze. "
-                "Darmowa dostawa od 199 zł.</p><p>30 dni na zwrot bez podawania przyczyny. "
-                '<a href="/zwroty/">Jak zwrócić produkt</a></p>')),
-            accordion_item("Bezpieczeństwo produktu", text(
-                "<p><strong>Producent:</strong> [nazwa, adres, e-mail]<br><strong>Podmiot odpowiedzialny w UE:</strong> [jeśli inny]<br>"
-                "Ostrzeżenia i instrukcje: [zgodnie z GPSR – uzupełnij dla produktu lub użyj pola własnego].</p>")),
-            accordion_item("Opinie", shortcode("[bd_product_reviews]")),
+            ("Opis", [w("woocommerce-product-content", "")]),
+            ("Materiał i pielęgnacja", [text(CARE)]),
+            ("Wymiary i szczegóły", [w("woocommerce-product-additional-information", "", show_heading="")]),
+            ("Dostawa i zwroty", [text(SHIPPING)]),
+            ("Bezpieczeństwo produktu", [text(GPSR)]),
+            ("Opinie", [shortcode("[bd_product_reviews]")]),
         ]),
-        inner=True, boxed=False, width=42, width_tablet=100, gap=18, cls="bd-sticky-col",
+        width=42, width_tablet=100, gap=16, cls="bd-sticky-col", pad=pad(0, 0, 0, 24), pad_tablet=pad(0),
     )
-    top = con(gallery, summary, direction="row", wrap="wrap", gap=48, tag="section",
-              pad=pad(24, 24, 80, 24), pad_mobile=pad(8, 16, 48, 16))
-    upsell = con(
-        heading("Pasuje do tego", "h2", "bd-h2"),
+    top = con(gallery, summary, direction="row", wrap="wrap", gap=32, tag="section",
+              pad=pad(24, 40, 96, 40), pad_mobile=pad(0, 0, 48, 0))
+    together = section(
+        sechead("01", "Noś <em>razem</em>"),
         w("woocommerce-product-upsell", "bd-rail", columns="4", columns_mobile="2", show_heading=""),
-        cls="bd-section bd-reveal", tag="section", gap=24, pad=SECTION_PAD, pad_mobile=pad(0, 16),
+        cls="bd-section bd-reveal", pad=pad(0, 40, 96, 40), pad_mobile=pad(0, 16, 64, 16),
     )
-    related = con(
-        heading("Może Ci się spodobać", "h2", "bd-h2"),
+    related = section(
+        sechead("02", "Może Ci się <em>spodobać</em>"),
         w("woocommerce-product-related", "bd-rail", columns="4", columns_mobile="2", posts_per_page=8, show_heading=""),
-        cls="bd-section bd-reveal", tag="section", gap=24, pad=pad(0, 24, 120, 24), pad_mobile=pad(0, 16, 64, 16),
+        cls="bd-section bd-reveal", pad=pad(0, 40, 120, 40), pad_mobile=pad(0, 16, 72, 16),
     )
-    return template("bydopamina — Karta produktu", "product", [top, upsell, related])
+    return template("bydopamina — Karta produktu", "product", [top, together, related])
 
 
 # ---------------------------------------------------------------------------
-# ARCHIWUM PRODUKTÓW (sklep, kategorie, tagi, wyszukiwanie)
+# ARCHIWUM PRODUKTÓW
 # ---------------------------------------------------------------------------
 
 def archive():
-    head = con(
-        w("woocommerce-breadcrumb", ""),
-        w("theme-archive-title", "bd-h2", header_size="h1"),
-        w("woocommerce-archive-description", "bd-muted"),
+    head = section(
+        w("woocommerce-breadcrumb", "bd-label"),
+        box(
+            w("theme-archive-title", "bd-hero-title", header_size="h1"),
+            w("woocommerce-archive-description", "bd-lead"),
+            direction="row", justify="space-between", align="flex-end", wrap="wrap", gap=24,
+        ),
         shortcode("[bd_category_chips]"),
-        tag="section", gap=12, pad=pad(32, 24, 24, 24), pad_mobile=pad(16, 16, 16, 16),
+        cls="bd-archive-head", gap=20, pad=pad(40, 40, 32, 40), pad_mobile=pad(20, 16, 20, 16),
     )
-    grid = con(
+    grid = section(
         w("woocommerce-archive-products", "", columns="4", columns_tablet="3", columns_mobile="2", rows="6",
           paginate="yes", allow_order="yes", show_result_count="yes",
-          nothing_found_message="Nic tu nie ma – spróbuj innej frazy albo zobacz bestsellery."),
-        tag="section", pad=pad(0, 24, 120, 24), pad_mobile=pad(0, 16, 64, 16),
+          nothing_found_message="Nic tu nie ma. Spróbuj innej frazy albo zajrzyj do bestsellerów."),
+        cls="bd-section", pad=pad(0, 40, 120, 40), pad_mobile=pad(0, 16, 72, 16),
     )
     return template("bydopamina — Sklep / kategoria", "product-archive", [head, grid])
 
 
 # ---------------------------------------------------------------------------
-# KOSZYK, CHECKOUT, KONTO
+# KOSZYK, CHECKOUT, KONTO, KONTAKT, 404
 # ---------------------------------------------------------------------------
 
-STEPS = ('<ol class="bd-steps" aria-label="Kroki zamówienia">'
-         '<li{c}>Koszyk</li><li{d}>Dane i dostawa</li><li>Płatność</li></ol>')
+def steps(current):
+    names = ["Koszyk", "Dane i dostawa", "Płatność"]
+    cur = ' aria-current="step"'
+    li = "".join(f'<li{cur if i == current else ""}>{n}</li>' for i, n in enumerate(names))
+    return html(f'<ol class="bd-steps" aria-label="Kroki zamówienia">{li}</ol>')
 
 
 def cart():
-    return template("bydopamina — Koszyk", "page", [
-        con(
-            html(STEPS.format(c=' aria-current="step"', d="")),
-            heading("Twój koszyk", "h1", "bd-h2"),
-            shortcode("[bd_free_shipping_bar]"),
-            w("woocommerce-cart", "", layout="two-column", update_cart_automatically="yes", sticky_right_column="yes",
-              sticky_right_column_offset=size(96), apply_coupon_heading="Masz kod rabatowy?"),
-            shortcode("[bd_trust_badges]"),
-            tag="section", gap=24, pad=pad(32, 24, 120, 24), pad_mobile=pad(16, 16, 64, 16),
-        )
-    ], FULL_PAGE)
+    return template("bydopamina — Koszyk", "page", [section(
+        steps(0),
+        heading("Koszyk", "h1", "bd-h2"),
+        shortcode("[bd_free_shipping_bar]"),
+        w("woocommerce-cart", "", layout="two-column", update_cart_automatically="yes", sticky_right_column="yes",
+          sticky_right_column_offset=size(96)),
+        shortcode("[bd_trust_badges]"),
+        cls="bd-section", gap=28, pad=pad(40, 40, 120, 40), pad_mobile=pad(20, 16, 72, 16),
+    )], FULL_PAGE)
 
 
 def checkout():
-    return template("bydopamina — Zamówienie", "page", [
-        con(
-            html(STEPS.format(c="", d=' aria-current="step"')),
-            heading("Zamówienie", "h1", "bd-h2"),
-            w("woocommerce-checkout-page", "bd-checkout", layout="two-column", sticky_right_column="yes",
-              sticky_right_column_offset=size(96)),
-            html('<p class="bd-muted" style="font-size:var(--bd-fs-xs);text-align:center">🔒 Płatności obsługuje licencjonowany operator. '
-                 "Nie przechowujemy danych Twojej karty.</p>"),
-            tag="section", gap=24, pad=pad(32, 24, 120, 24), pad_mobile=pad(16, 16, 64, 16),
-        )
-    ], FULL_PAGE)
+    return template("bydopamina — Zamówienie", "page", [section(
+        steps(1),
+        heading("Zamówienie", "h1", "bd-h2"),
+        w("woocommerce-checkout-page", "bd-checkout", layout="two-column", sticky_right_column="yes",
+          sticky_right_column_offset=size(96)),
+        html('<p class="bd-label" style="text-align:center">Płatności obsługuje licencjonowany operator. Nie przechowujemy danych Twojej karty.</p>'),
+        cls="bd-section", gap=28, pad=pad(40, 40, 120, 40), pad_mobile=pad(20, 16, 72, 16),
+    )], FULL_PAGE)
 
 
 def account():
-    return template("bydopamina — Moje konto", "page", [
-        con(
-            heading("Moje konto", "h1", "bd-h2"),
-            w("woocommerce-my-account", "", tabs_layout="vertical"),
-            tag="section", gap=24, pad=pad(32, 24, 120, 24), pad_mobile=pad(16, 16, 64, 16),
-        )
-    ], FULL_PAGE)
+    return template("bydopamina — Moje konto", "page", [section(
+        heading("Moje konto", "h1", "bd-h2"),
+        w("woocommerce-my-account", "", tabs_layout="vertical"),
+        cls="bd-section", gap=28, pad=pad(40, 40, 120, 40), pad_mobile=pad(20, 16, 72, 16),
+    )], FULL_PAGE)
 
-
-# ---------------------------------------------------------------------------
-# KONTAKT, 404
-# ---------------------------------------------------------------------------
 
 def contact():
     form = w(
@@ -566,47 +504,42 @@ def contact():
         form_fields=[
             {"_id": _id(), "custom_id": "name", "field_type": "text", "field_label": "Imię", "required": "true", "width": "50"},
             {"_id": _id(), "custom_id": "email", "field_type": "email", "field_label": "E-mail", "required": "true", "width": "50"},
-            {"_id": _id(), "custom_id": "order", "field_type": "text", "field_label": "Numer zamówienia (opcjonalnie)", "width": "100"},
+            {"_id": _id(), "custom_id": "order", "field_type": "text", "field_label": "Numer zamówienia (jeśli dotyczy)", "width": "100"},
             {"_id": _id(), "custom_id": "message", "field_type": "textarea", "field_label": "Wiadomość", "required": "true", "rows": 5, "width": "100"},
             {"_id": _id(), "custom_id": "hp", "field_type": "honeypot", "width": "100"},
             {"_id": _id(), "custom_id": "rodo", "field_type": "acceptance", "required": "true", "width": "100",
              "acceptance_text": 'Administratorem danych jest bydopamina.pl. Dane przetwarzamy, aby odpowiedzieć na wiadomość. <a href="/polityka-prywatnosci/">Więcej</a>.'},
         ],
-        show_labels="yes", button_text="Wyślij wiadomość", button_width="100",
+        show_labels="yes", button_text="Wyślij", button_width="100",
         submit_actions=["email", "save-to-database"],
         email_to="hej@bydopamina.pl", email_subject="Wiadomość ze strony bydopamina.pl",
-        success_message="Dziękujemy! Odpowiadamy w ciągu 1 dnia roboczego.",
+        success_message="Dziękujemy. Odpowiadamy w ciągu 1 dnia roboczego.",
     )
-    return template("bydopamina — Kontakt", "page", [
-        con(
-            con(
-                html('<span class="bd-eyebrow">Kontakt</span>'),
-                heading("Napisz do nas – odpisujemy szybko.", "h1", "bd-h2"),
+    return template("bydopamina — Kontakt", "page", [section(
+        box(
+            box(html('<p class="bd-label">Kontakt</p>'), heading("Napisz. <em>Odpisujemy szybko.</em>", "h1", "bd-h2"),
                 icon_list([("hej@bydopamina.pl", "mailto:hej@bydopamina.pl"), ("+48 000 000 000", "tel:+48000000000"),
                            ("pn–pt 9:00–16:00", ""), ("Adres do zwrotów: [uzupełnij]", "")]),
-                inner=True, boxed=False, width=40, width_tablet=100, gap=20,
-            ),
-            con(form, inner=True, boxed=False, width=60, width_tablet=100, cls="bd-panel"),
-            direction="row", wrap="wrap", gap=48, tag="section", pad=pad(48, 24, 120, 24), pad_mobile=pad(24, 16, 64, 16),
-        )
-    ], FULL_PAGE)
+                width=40, width_tablet=100, gap=24),
+            box(form, width=60, width_tablet=100, cls="bd-panel"),
+            direction="row", wrap="wrap", gap=48,
+        ),
+        cls="bd-section", pad=pad(48, 40, 120, 40), pad_mobile=pad(24, 16, 72, 16),
+    )], FULL_PAGE)
 
 
 def error404():
     return template("bydopamina — 404", "error-404", [
-        con(
-            html('<span class="bd-eyebrow">Błąd 404</span>'),
-            heading("Ups, tej strony tu nie ma.", "h1", "bd-hero-title", align="center"),
-            text('<p class="bd-muted" style="text-align:center">Może produkt się wyprzedał albo link jest nieaktualny. Spróbuj wyszukać:</p>'),
-            w("search-form", "", skin="classic", placeholder="Szukaj produktów…"),
-            button("Przejdź do sklepu", "/sklep/", "bd-btn"),
-            align="center", gap=24, tag="section", pad=pad(96, 24), pad_mobile=pad(56, 16),
+        section(
+            html('<p class="bd-label">Błąd 404</p>'),
+            heading("Tej strony <em>tu nie ma</em>.", "h1", "bd-hero-title"),
+            text("<p>Produkt mógł się wyprzedać albo link jest nieaktualny. Spróbuj wyszukać:</p>", "bd-lead"),
+            w("search-form", "", skin="classic", placeholder="Szukaj biżuterii…"),
+            button("Przejdź do sklepu", "/sklep/"),
+            cls="bd-section", gap=24, pad=pad(96, 40, 64, 40), pad_mobile=pad(48, 16, 48, 16),
         ),
-        con(
-            heading("Zamiast tego – bestsellery", "h2", "bd-h3"),
-            products_rail("popularity"),
-            tag="section", gap=24, pad=pad(0, 24, 120, 24), pad_mobile=pad(0, 16, 64, 16),
-        ),
+        section(sechead("—", "Zamiast tego"), shortcode('[bd_product_tabs limit="4"]'),
+                cls="bd-section", pad=pad(0, 40, 120, 40), pad_mobile=pad(0, 16, 72, 16)),
     ])
 
 

@@ -5,7 +5,7 @@
  "page_settings": {},
  "content": [
   {
-   "id": "59001ac",
+   "id": "61a4111",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -13,13 +13,13 @@
     "flex_direction": "column",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
     "css_classes": "bd-footer bd-dark",
     "html_tag": "footer",
     "background_background": "classic",
-    "background_color": "#121212",
+    "background_color": "#1C1917",
     "flex_gap": {
      "column": "48",
      "row": "48",
@@ -29,15 +29,15 @@
     },
     "padding": {
      "unit": "px",
-     "top": "80",
-     "right": "24",
+     "top": "96",
+     "right": "40",
      "bottom": "32",
-     "left": "24",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
-     "top": "56",
+     "top": "64",
      "right": "16",
      "bottom": "24",
      "left": "16",
@@ -46,7 +46,7 @@
    },
    "elements": [
     {
-     "id": "02f0ee9",
+     "id": "3a7e49f",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -54,16 +54,16 @@
       "flex_direction": "row",
       "flex_wrap": "wrap",
       "flex_gap": {
-       "column": "32",
-       "row": "32",
+       "column": "40",
+       "row": "40",
        "isLinked": true,
        "unit": "px",
-       "size": 32
+       "size": 40
       }
      },
      "elements": [
       {
-       "id": "6bad6be",
+       "id": "5906275",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -71,7 +71,7 @@
         "flex_direction": "column",
         "width": {
          "unit": "%",
-         "size": 34,
+         "size": 40,
          "sizes": []
         },
         "width_tablet": {
@@ -80,46 +80,36 @@
          "sizes": []
         },
         "flex_gap": {
-         "column": "16",
-         "row": "16",
+         "column": "24",
+         "row": "24",
          "isLinked": true,
          "unit": "px",
-         "size": 16
+         "size": 24
         }
        },
        "elements": [
         {
-         "id": "e255acc",
+         "id": "e78375d",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
          "settings": {
-          "title": "bydopamina",
-          "header_size": "div",
-          "_css_classes": "bd-footer-logo"
+          "title": "Biżuteria na co dzień. Złoto 18K na stali 316L – nie ciemnieje, nie uczula, nie boi się wody.",
+          "header_size": "p",
+          "_css_classes": "bd-h3"
          },
          "elements": []
         },
         {
-         "id": "39292d2",
-         "elType": "widget",
-         "widgetType": "text-editor",
-         "isInner": false,
-         "settings": {
-          "editor": "<p class=\"bd-muted\">Małe rzeczy, które robią Ci dzień. Projektujemy i wysyłamy z Polski.</p>"
-         },
-         "elements": []
-        },
-        {
-         "id": "8e7aa6e",
+         "id": "2e18b9c",
          "elType": "widget",
          "widgetType": "social-icons",
          "isInner": false,
          "settings": {
-          "shape": "circle",
+          "shape": "square",
           "social_icon_list": [
            {
-            "_id": "e512148",
+            "_id": "ce4e742",
             "social_icon": {
              "value": "fab fa-instagram",
              "library": "fa-brands"
@@ -131,7 +121,7 @@
             }
            },
            {
-            "_id": "99dd251",
+            "_id": "2ef999d",
             "social_icon": {
              "value": "fab fa-tiktok",
              "library": "fa-brands"
@@ -143,7 +133,7 @@
             }
            },
            {
-            "_id": "9f19950",
+            "_id": "6615356",
             "social_icon": {
              "value": "fab fa-pinterest",
              "library": "fa-brands"
@@ -156,15 +146,15 @@
            }
           ],
           "icon_color": "custom",
-          "icon_primary_color": "#FFFFFF1A",
-          "icon_secondary_color": "#FFFFFF"
+          "icon_primary_color": "#00000000",
+          "icon_secondary_color": "#F6F2EC"
          },
          "elements": []
         }
        ]
       },
       {
-       "id": "c4a334b",
+       "id": "a3bf41d",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -172,7 +162,7 @@
         "flex_direction": "column",
         "width": {
          "unit": "%",
-         "size": 22,
+         "size": 20,
          "sizes": []
         },
         "width_tablet": {
@@ -186,16 +176,16 @@
          "sizes": []
         },
         "flex_gap": {
-         "column": "12",
-         "row": "12",
+         "column": "16",
+         "row": "16",
          "isLinked": true,
          "unit": "px",
-         "size": 12
+         "size": 16
         }
        },
        "elements": [
         {
-         "id": "c88b287",
+         "id": "9867ffa",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
@@ -207,7 +197,7 @@
          "elements": []
         },
         {
-         "id": "c6cd75e",
+         "id": "139d741",
          "elType": "widget",
          "widgetType": "icon-list",
          "isInner": false,
@@ -215,10 +205,10 @@
           "view": "traditional",
           "icon_list": [
            {
-            "_id": "9293de8",
-            "text": "Nowości",
+            "_id": "2dd7f27",
+            "text": "Naszyjniki",
             "link": {
-             "url": "/sklep/?orderby=date",
+             "url": "/kategoria-produktu/naszyjniki/",
              "is_external": "",
              "nofollow": ""
             },
@@ -228,10 +218,10 @@
             }
            },
            {
-            "_id": "8c3d5f1",
-            "text": "Bestsellery",
+            "_id": "46d4986",
+            "text": "Kolczyki",
             "link": {
-             "url": "/sklep/?orderby=popularity",
+             "url": "/kategoria-produktu/kolczyki/",
              "is_external": "",
              "nofollow": ""
             },
@@ -241,10 +231,10 @@
             }
            },
            {
-            "_id": "d7a7a3c",
-            "text": "Promocje",
+            "_id": "49f2c59",
+            "text": "Pierścionki",
             "link": {
-             "url": "/promocje/",
+             "url": "/kategoria-produktu/pierscionki/",
              "is_external": "",
              "nofollow": ""
             },
@@ -254,8 +244,21 @@
             }
            },
            {
-            "_id": "bb049a7",
-            "text": "Karty podarunkowe",
+            "_id": "afd08d0",
+            "text": "Bransoletki",
+            "link": {
+             "url": "/kategoria-produktu/bransoletki/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           },
+           {
+            "_id": "9c11981",
+            "text": "Karta podarunkowa",
             "link": {
              "url": "/karta-podarunkowa/",
              "is_external": "",
@@ -273,7 +276,7 @@
        ]
       },
       {
-       "id": "9d3c7de",
+       "id": "d3bb457",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -281,7 +284,7 @@
         "flex_direction": "column",
         "width": {
          "unit": "%",
-         "size": 22,
+         "size": 20,
          "sizes": []
         },
         "width_tablet": {
@@ -295,16 +298,16 @@
          "sizes": []
         },
         "flex_gap": {
-         "column": "12",
-         "row": "12",
+         "column": "16",
+         "row": "16",
          "isLinked": true,
          "unit": "px",
-         "size": 12
+         "size": 16
         }
        },
        "elements": [
         {
-         "id": "7dabe92",
+         "id": "a904315",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
@@ -316,7 +319,7 @@
          "elements": []
         },
         {
-         "id": "00a61f9",
+         "id": "c05523d",
          "elType": "widget",
          "widgetType": "icon-list",
          "isInner": false,
@@ -324,7 +327,7 @@
           "view": "traditional",
           "icon_list": [
            {
-            "_id": "c0433cb",
+            "_id": "57750a6",
             "text": "Dostawa i płatności",
             "link": {
              "url": "/dostawa-i-platnosci/",
@@ -337,7 +340,7 @@
             }
            },
            {
-            "_id": "c5e818f",
+            "_id": "4d5a878",
             "text": "Zwroty i reklamacje",
             "link": {
              "url": "/zwroty/",
@@ -350,10 +353,10 @@
             }
            },
            {
-            "_id": "96263ae",
-            "text": "FAQ",
+            "_id": "111f9c4",
+            "text": "Rozmiarówka",
             "link": {
-             "url": "/faq/",
+             "url": "/rozmiarowka/",
              "is_external": "",
              "nofollow": ""
             },
@@ -363,23 +366,23 @@
             }
            },
            {
-            "_id": "70eb9a0",
+            "_id": "4134609",
+            "text": "Pielęgnacja biżuterii",
+            "link": {
+             "url": "/pielegnacja/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           },
+           {
+            "_id": "f316f61",
             "text": "Kontakt",
             "link": {
              "url": "/kontakt/",
-             "is_external": "",
-             "nofollow": ""
-            },
-            "selected_icon": {
-             "value": "",
-             "library": ""
-            }
-           },
-           {
-            "_id": "3d6c51e",
-            "text": "Śledź zamówienie",
-            "link": {
-             "url": "/moje-konto/zamowienia/",
              "is_external": "",
              "nofollow": ""
             },
@@ -395,7 +398,7 @@
        ]
       },
       {
-       "id": "731c945",
+       "id": "8185fa6",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -403,7 +406,7 @@
         "flex_direction": "column",
         "width": {
          "unit": "%",
-         "size": 22,
+         "size": 20,
          "sizes": []
         },
         "width_tablet": {
@@ -417,16 +420,16 @@
          "sizes": []
         },
         "flex_gap": {
-         "column": "12",
-         "row": "12",
+         "column": "16",
+         "row": "16",
          "isLinked": true,
          "unit": "px",
-         "size": 12
+         "size": 16
         }
        },
        "elements": [
         {
-         "id": "14aa4e7",
+         "id": "efa8037",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
@@ -438,7 +441,7 @@
          "elements": []
         },
         {
-         "id": "1919e93",
+         "id": "6cdfce5",
          "elType": "widget",
          "widgetType": "icon-list",
          "isInner": false,
@@ -446,7 +449,7 @@
           "view": "traditional",
           "icon_list": [
            {
-            "_id": "1c593af",
+            "_id": "a76284e",
             "text": "hej@bydopamina.pl",
             "link": {
              "url": "mailto:hej@bydopamina.pl",
@@ -459,7 +462,7 @@
             }
            },
            {
-            "_id": "4988931",
+            "_id": "db80987",
             "text": "+48 000 000 000",
             "link": {
              "url": "tel:+48000000000",
@@ -472,7 +475,7 @@
             }
            },
            {
-            "_id": "d11745a",
+            "_id": "414beea",
             "text": "pn–pt 9:00–16:00",
             "link": {
              "url": "",
@@ -493,33 +496,27 @@
      ]
     },
     {
-     "id": "d094499",
+     "id": "28110a6",
      "elType": "widget",
      "widgetType": "html",
      "isInner": false,
      "settings": {
-      "html": "<ul class=\"bd-payments\" aria-label=\"Metody płatności i dostawy\"><li>BLIK</li><li>Visa</li><li>Mastercard</li><li>Apple Pay</li><li>Google Pay</li><li>Przelewy24</li><li>PayPo</li><li>InPost</li><li>DPD</li></ul>"
+      "html": "<ul class=\"bd-payments\" aria-label=\"Płatności i dostawa\"><li>BLIK</li><li>Visa</li><li>Mastercard</li><li>Apple Pay</li><li>Google Pay</li><li>Przelewy24</li><li>PayPo</li><li>InPost</li><li>DPD</li></ul>"
      },
      "elements": []
     },
     {
-     "id": "e416320",
+     "id": "bbec008",
      "elType": "widget",
-     "widgetType": "heading",
+     "widgetType": "html",
      "isInner": false,
      "settings": {
-      "title": "bydopamina",
-      "header_size": "div",
-      "align": "center",
-      "_css_classes": "bd-footer-wordmark",
-      "typography_typography": "custom",
-      "typography_font_family": "Bricolage Grotesque",
-      "typography_font_weight": "700"
+      "html": "<p class=\"bd-footer-wordmark\" aria-hidden=\"true\">bydopamina</p>"
      },
      "elements": []
     },
     {
-     "id": "406329b",
+     "id": "742ff72",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -539,17 +536,18 @@
      },
      "elements": [
       {
-       "id": "af67d46",
+       "id": "e0d305e",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
        "settings": {
-        "shortcode": "© [bd_year] bydopamina.pl"
+        "shortcode": "© [bd_year] bydopamina.pl",
+        "_css_classes": "bd-label"
        },
        "elements": []
       },
       {
-       "id": "65b00a2",
+       "id": "65e46f2",
        "elType": "widget",
        "widgetType": "icon-list",
        "isInner": false,
@@ -557,7 +555,7 @@
         "view": "inline",
         "icon_list": [
          {
-          "_id": "7d836e7",
+          "_id": "566c816",
           "text": "Regulamin",
           "link": {
            "url": "/regulamin/",
@@ -570,7 +568,7 @@
           }
          },
          {
-          "_id": "adec6f1",
+          "_id": "d7ab0aa",
           "text": "Polityka prywatności",
           "link": {
            "url": "/polityka-prywatnosci/",
@@ -583,7 +581,7 @@
           }
          },
          {
-          "_id": "5071950",
+          "_id": "589baff",
           "text": "Cookies",
           "link": {
            "url": "/polityka-cookies/",
@@ -596,10 +594,23 @@
           }
          },
          {
-          "_id": "35d1488",
+          "_id": "f132dad",
           "text": "Odstąpienie od umowy",
           "link": {
            "url": "/odstapienie-od-umowy/",
+           "is_external": "",
+           "nofollow": ""
+          },
+          "selected_icon": {
+           "value": "",
+           "library": ""
+          }
+         },
+         {
+          "_id": "382fc78",
+          "text": "Deklaracja dostępności",
+          "link": {
+           "url": "/deklaracja-dostepnosci/",
            "is_external": "",
            "nofollow": ""
           },
@@ -617,7 +628,7 @@
    ]
   },
   {
-   "id": "ffb8830",
+   "id": "ddfd47b",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -636,7 +647,7 @@
    },
    "elements": [
     {
-     "id": "fadb890",
+     "id": "29fcc9e",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,

@@ -5,7 +5,7 @@
  "page_settings": {},
  "content": [
   {
-   "id": "2edc49c",
+   "id": "0a4b010",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -13,11 +13,11 @@
     "flex_direction": "column",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
+    "css_classes": "bd-section",
     "html_tag": "section",
-    "flex_align_items": "center",
     "flex_gap": {
      "column": "24",
      "row": "24",
@@ -28,67 +28,67 @@
     "padding": {
      "unit": "px",
      "top": "96",
-     "right": "24",
-     "bottom": "96",
-     "left": "24",
+     "right": "40",
+     "bottom": "64",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
-     "top": "56",
+     "top": "48",
      "right": "16",
-     "bottom": "56",
+     "bottom": "48",
      "left": "16",
      "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "83e2665",
+     "id": "4091bab",
      "elType": "widget",
      "widgetType": "html",
      "isInner": false,
      "settings": {
-      "html": "<span class=\"bd-eyebrow\">Błąd 404</span>"
+      "html": "<p class=\"bd-label\">Błąd 404</p>"
      },
      "elements": []
     },
     {
-     "id": "4242c22",
+     "id": "6974aad",
      "elType": "widget",
      "widgetType": "heading",
      "isInner": false,
      "settings": {
-      "title": "Ups, tej strony tu nie ma.",
+      "title": "Tej strony <em>tu nie ma</em>.",
       "header_size": "h1",
-      "align": "center",
       "_css_classes": "bd-hero-title"
      },
      "elements": []
     },
     {
-     "id": "73f29c6",
+     "id": "161f5e8",
      "elType": "widget",
      "widgetType": "text-editor",
      "isInner": false,
      "settings": {
-      "editor": "<p class=\"bd-muted\" style=\"text-align:center\">Może produkt się wyprzedał albo link jest nieaktualny. Spróbuj wyszukać:</p>"
+      "editor": "<p>Produkt mógł się wyprzedać albo link jest nieaktualny. Spróbuj wyszukać:</p>",
+      "_css_classes": "bd-lead"
      },
      "elements": []
     },
     {
-     "id": "ec0643b",
+     "id": "03e6769",
      "elType": "widget",
      "widgetType": "search-form",
      "isInner": false,
      "settings": {
       "skin": "classic",
-      "placeholder": "Szukaj produktów…"
+      "placeholder": "Szukaj biżuterii…"
      },
      "elements": []
     },
     {
-     "id": "f71bd13",
+     "id": "775852a",
      "elType": "widget",
      "widgetType": "button",
      "isInner": false,
@@ -99,6 +99,7 @@
        "is_external": "",
        "nofollow": ""
       },
+      "size": "md",
       "_css_classes": "bd-btn"
      },
      "elements": []
@@ -106,7 +107,7 @@
    ]
   },
   {
-   "id": "d7aa220",
+   "id": "aad2228",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -114,65 +115,81 @@
     "flex_direction": "column",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
+    "css_classes": "bd-section",
     "html_tag": "section",
-    "flex_gap": {
-     "column": "24",
-     "row": "24",
-     "isLinked": true,
-     "unit": "px",
-     "size": 24
-    },
     "padding": {
      "unit": "px",
      "top": "0",
-     "right": "24",
+     "right": "40",
      "bottom": "120",
-     "left": "24",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
      "top": "0",
      "right": "16",
-     "bottom": "64",
+     "bottom": "72",
      "left": "16",
      "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "f79edc8",
-     "elType": "widget",
-     "widgetType": "heading",
-     "isInner": false,
+     "id": "033a9e0",
+     "elType": "container",
+     "isInner": true,
      "settings": {
-      "title": "Zamiast tego – bestsellery",
-      "header_size": "h2",
-      "_css_classes": "bd-h3"
+      "content_width": "full",
+      "flex_direction": "row",
+      "css_classes": "bd-sechead",
+      "flex_align_items": "flex-end"
      },
-     "elements": []
+     "elements": [
+      {
+       "id": "c2e001d",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<p class=\"bd-label\">—</p>"
+       },
+       "elements": []
+      },
+      {
+       "id": "bf0ff3c",
+       "elType": "widget",
+       "widgetType": "heading",
+       "isInner": false,
+       "settings": {
+        "title": "Zamiast tego",
+        "header_size": "h2",
+        "_css_classes": "bd-h2"
+       },
+       "elements": []
+      },
+      {
+       "id": "23a2afc",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": ""
+       },
+       "elements": []
+      }
+     ]
     },
     {
-     "id": "6cffb0f",
+     "id": "670733f",
      "elType": "widget",
-     "widgetType": "woocommerce-products",
+     "widgetType": "shortcode",
      "isInner": false,
      "settings": {
-      "columns": "4",
-      "columns_tablet": "3",
-      "columns_mobile": "2",
-      "rows": "1",
-      "paginate": "",
-      "query_post_type": "product",
-      "query_orderby": "popularity",
-      "query_order": "desc",
-      "query_exclude": [
-       "current_post"
-      ],
-      "_css_classes": "bd-rail"
+      "shortcode": "[bd_product_tabs limit=\"4\"]"
      },
      "elements": []
     }

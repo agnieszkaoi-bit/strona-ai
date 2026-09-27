@@ -5,82 +5,63 @@
  "page_settings": {},
  "content": [
   {
-   "id": "51c9bc7",
+   "id": "ed52c2b",
    "elType": "container",
    "isInner": false,
    "settings": {
     "content_width": "full",
     "flex_direction": "column",
     "css_classes": "bd-announcement",
-    "background_background": "classic",
-    "background_color": "#121212",
-    "flex_align_items": "center",
     "padding": {
      "unit": "px",
-     "top": "8",
-     "right": "16",
-     "bottom": "8",
-     "left": "16",
-     "isLinked": false
+     "top": "0",
+     "right": "0",
+     "bottom": "0",
+     "left": "0",
+     "isLinked": true
     }
    },
    "elements": [
     {
-     "id": "1e7ea41",
+     "id": "1bbbb90",
      "elType": "widget",
-     "widgetType": "text-editor",
+     "widgetType": "html",
      "isInner": false,
      "settings": {
-      "editor": "<p>Darmowa dostawa od 199 zł · Wysyłka w 24 h · 30 dni na zwrot</p>",
-      "_css_classes": "bd-announcement"
+      "html": "<ul><li>Darmowa dostawa od 199 zł</li><li>Wysyłka w 24 h</li><li>30 dni na zwrot</li><li>Pudełko prezentowe w cenie</li></ul>"
      },
      "elements": []
     }
    ]
   },
   {
-   "id": "1a46688",
+   "id": "a02f66d",
    "elType": "container",
    "isInner": false,
    "settings": {
-    "content_width": "boxed",
-    "flex_direction": "row",
-    "boxed_width": {
-     "unit": "px",
-     "size": 1360,
-     "sizes": []
-    },
+    "content_width": "full",
+    "flex_direction": "column",
     "css_classes": "bd-header",
     "html_tag": "header",
-    "flex_justify_content": "space-between",
-    "flex_align_items": "center",
-    "flex_wrap": "nowrap",
-    "flex_gap": {
-     "column": "16",
-     "row": "16",
-     "isLinked": true,
-     "unit": "px",
-     "size": 16
-    },
     "min_height": {
      "unit": "px",
-     "size": 68,
+     "size": 64,
      "sizes": []
     },
     "padding": {
      "unit": "px",
      "top": "0",
-     "right": "24",
+     "right": "40",
      "bottom": "0",
-     "left": "24",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
      "top": "0",
-     "right": "16",
+     "right": "8",
      "bottom": "0",
-     "left": "16",
+     "left": "8",
      "isLinked": false
     },
     "sticky": "top",
@@ -91,53 +72,23 @@
     ],
     "sticky_effects_offset": {
      "unit": "px",
-     "size": 10,
+     "size": 40,
      "sizes": []
     },
     "z_index": 100
    },
    "elements": [
     {
-     "id": "80a4df5",
-     "elType": "widget",
-     "widgetType": "heading",
-     "isInner": false,
-     "settings": {
-      "title": "bydopamina",
-      "header_size": "div",
-      "link": {
-       "url": "/",
-       "is_external": "",
-       "nofollow": ""
-      },
-      "_css_classes": "bd-logo",
-      "typography_typography": "custom",
-      "typography_font_family": "Bricolage Grotesque",
-      "typography_font_weight": "700",
-      "typography_font_size": {
-       "unit": "px",
-       "size": 26,
-       "sizes": []
-      },
-      "typography_letter_spacing": {
-       "unit": "px",
-       "size": -0.8,
-       "sizes": []
-      }
-     },
-     "elements": []
-    },
-    {
-     "id": "f38b2ff",
+     "id": "76cc1d7",
      "elType": "widget",
      "widgetType": "nav-menu",
      "isInner": false,
      "settings": {
       "menu": "",
       "layout": "horizontal",
-      "align_items": "center",
+      "align_items": "left",
       "pointer": "underline",
-      "animation_line": "slide",
+      "animation_line": "fade",
       "dropdown": "tablet",
       "toggle": "burger",
       "full_width": "stretch",
@@ -150,7 +101,24 @@
      "elements": []
     },
     {
-     "id": "f3f4924",
+     "id": "145f656",
+     "elType": "widget",
+     "widgetType": "heading",
+     "isInner": false,
+     "settings": {
+      "title": "bydopamina",
+      "header_size": "div",
+      "link": {
+       "url": "/",
+       "is_external": "",
+       "nofollow": ""
+      },
+      "_css_classes": "bd-logo"
+     },
+     "elements": []
+    },
+    {
+     "id": "67f52dc",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -159,27 +127,47 @@
       "css_classes": "bd-header-icons",
       "flex_align_items": "center",
       "flex_gap": {
-       "column": "4",
-       "row": "4",
+       "column": "0",
+       "row": "0",
        "isLinked": true,
        "unit": "px",
-       "size": 4
+       "size": 0
       }
      },
      "elements": [
       {
-       "id": "8306d03",
+       "id": "0378f60",
        "elType": "widget",
        "widgetType": "search-form",
        "isInner": false,
        "settings": {
         "skin": "full_screen",
-        "placeholder": "Czego szukasz? np. kubek, bluza…"
+        "placeholder": "Szukaj: naszyjnik, obrączka, kolczyki…"
        },
        "elements": []
       },
       {
-       "id": "a5aec79",
+       "id": "a7ba792",
+       "elType": "widget",
+       "widgetType": "icon",
+       "isInner": false,
+       "settings": {
+        "selected_icon": {
+         "value": "far fa-heart",
+         "library": "fa-regular"
+        },
+        "link": {
+         "url": "/lista-zyczen/",
+         "is_external": "",
+         "nofollow": ""
+        },
+        "_title": "Ulubione",
+        "_css_classes": "bd-hide-mobile"
+       },
+       "elements": []
+      },
+      {
+       "id": "528e270",
        "elType": "widget",
        "widgetType": "icon",
        "isInner": false,
@@ -193,33 +181,24 @@
          "is_external": "",
          "nofollow": ""
         },
-        "view": "default",
         "_title": "Moje konto",
-        "aria_label": "Moje konto"
+        "_css_classes": "bd-hide-mobile"
        },
        "elements": []
       },
       {
-       "id": "dc28ff9",
+       "id": "cae54cd",
        "elType": "widget",
        "widgetType": "woocommerce-menu-cart",
        "isInner": false,
        "settings": {
-        "icon": "bag-medium",
+        "icon": "bag-light",
         "items_indicator": "bubble",
         "hide_empty_indicator": "yes",
         "cart_type": "side-cart",
         "open_cart": "click",
         "automatically_open_cart": "yes",
-        "show_subtotal": "no",
-        "main_cart_button_padding": {
-         "unit": "px",
-         "top": "0",
-         "right": "0",
-         "bottom": "0",
-         "left": "0",
-         "isLinked": true
-        }
+        "show_subtotal": "no"
        },
        "elements": []
       }

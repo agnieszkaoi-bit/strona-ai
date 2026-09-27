@@ -33,7 +33,7 @@ function bydopamina_free_shipping_bar_html() {
 		/* translators: %s: kwota brakująca do darmowej dostawy */
 		$label = sprintf( __( 'Brakuje Ci %s do darmowej dostawy', 'bydopamina' ), wp_strip_all_tags( wc_price( $missing ) ) );
 	} else {
-		$label = __( 'Masz darmową dostawę 🎉', 'bydopamina' );
+		$label = __( 'Masz darmową dostawę', 'bydopamina' );
 	}
 
 	return sprintf(
@@ -200,6 +200,90 @@ add_action(
 	function ( $query ) {
 		if ( ! is_admin() && $query->is_main_query() && $query->is_search() && ! $query->get( 'post_type' ) ) {
 			$query->set( 'post_type', 'product' );
+		}
+	}
+);
+
+/* -------------------------------------------------------------------------
+ * Karty produktów: drugie zdjęcie (na modelce) po najechaniu + etykieta „Nowość”
+ * ---------------------------------------------------------------------- */
+add_action(
+	'woocommerce_before_shop_loop_item_title',
+	function () {
+		global $product;
+		$created = $product ? $product->get_date_created() : null;
+		if ( $created && ( time() - $created->getTimestamp() ) < 30 * DAY_IN_SECONDS && ! $product->is_on_sale() ) {
+			echo '<span class="bd-badge">' . esc_html__( 'Nowość', 'bydopamina' ) . '</span>';
+		}
+		if ( $product && ! $product->is_in_stock() ) {
+			echo '<span class="bd-badge bd-badge--muted">' . esc_html__( 'Wyprzedane', 'bydopamina' ) . '</span>';
+		}
+	},
+	9
+);
+
+add_action(
+	'woocommerce_before_shop_loop_item_title',
+	function () {
+		global $product;
+		$ids = $product ? $product->get_gallery_image_ids() : array();
+		if ( $ids ) {
+			echo wp_get_attachment_image( $ids[0], 'woocommerce_thumbnail', false, array( 'class' => 'bd-card__alt', 'loading' => 'lazy', 'alt' => '', 'aria-hidden' => 'true' ) );
+		}
+	},
+	11
+);
+
+/* -------------------------------------------------------------------------
+ * Pakowanie na prezent (klasyczny checkout / widget Elementora)
+ * ---------------------------------------------------------------------- */
+add_action(
+	'woocommerce_review_order_before_payment',
+	function () {
+		$checked = WC()->session && WC()->session->get( 'bd_giftwrap' );
+		printf(
+			'<div class="bd-giftwrap"><label><input type="checkbox" name="bd_giftwrap" value="1"%1$s> <span><strong>%2$s</strong> <span class="bd-mono">+%3$s</span><small>%4$s</small></span></label></div>',
+			checked( $checked, true, false ),
+			esc_html__( 'Zapakuj na prezent', 'bydopamina' ),
+			wp_kses_post( wc_price( BYDOPAMINA_GIFTWRAP_PRICE ) ),
+			esc_html__( 'Papier, wstążka i liścik z Twoimi słowami. Bez paragonu w paczce.', 'bydopamina' )
+		);
+	}
+);
+
+// Checkout odświeża podsumowanie przez AJAX – zapisujemy wybór w sesji.
+add_action(
+	'woocommerce_checkout_update_order_review',
+	function ( $post_data ) {
+		parse_str( (string) $post_data, $data );
+		WC()->session->set( 'bd_giftwrap', ! empty( $data['bd_giftwrap'] ) );
+	}
+);
+add_action(
+	'woocommerce_checkout_process',
+	function () {
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce weryfikuje nonce checkoutu.
+		WC()->session->set( 'bd_giftwrap', ! empty( $_POST['bd_giftwrap'] ) );
+	},
+	1
+);
+add_action(
+	'woocommerce_cart_calculate_fees',
+	function ( $cart ) {
+		if ( is_admin() && ! wp_doing_ajax() ) {
+			return;
+		}
+		if ( WC()->session && WC()->session->get( 'bd_giftwrap' ) ) {
+			$cart->add_fee( __( 'Pakowanie na prezent', 'bydopamina' ), (float) BYDOPAMINA_GIFTWRAP_PRICE, true );
+		}
+	}
+);
+add_action(
+	'woocommerce_checkout_create_order',
+	function ( $order ) {
+		if ( WC()->session && WC()->session->get( 'bd_giftwrap' ) ) {
+			$order->update_meta_data( '_bd_giftwrap', 'yes' );
+			WC()->session->set( 'bd_giftwrap', false );
 		}
 	}
 );

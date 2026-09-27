@@ -13,7 +13,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'BYDOPAMINA_VERSION', '1.0.0' );
+define( 'BYDOPAMINA_VERSION', '2.0.0' );
 define( 'BYDOPAMINA_DIR', get_stylesheet_directory() );
 define( 'BYDOPAMINA_URI', get_stylesheet_directory_uri() );
 
@@ -29,6 +29,9 @@ if ( ! defined( 'BYDOPAMINA_SHIPPING_CUTOFF' ) ) {
 }
 if ( ! defined( 'BYDOPAMINA_RETURN_DAYS' ) ) {
 	define( 'BYDOPAMINA_RETURN_DAYS', 30 );
+}
+if ( ! defined( 'BYDOPAMINA_GIFTWRAP_PRICE' ) ) {
+	define( 'BYDOPAMINA_GIFTWRAP_PRICE', 9 );        // PLN – pakowanie na prezent w checkoutcie (0 = za darmo).
 }
 if ( ! defined( 'BYDOPAMINA_CSP_ENFORCE' ) ) {
 	define( 'BYDOPAMINA_CSP_ENFORCE', false );        // false = Content-Security-Policy-Report-Only (bezpieczny start).
@@ -53,9 +56,15 @@ add_action(
 	'wp_enqueue_scripts',
 	function () {
 		wp_enqueue_style(
+			'bydopamina-fonts',
+			BYDOPAMINA_URI . '/assets/css/fonts.css',
+			array(),
+			BYDOPAMINA_VERSION
+		);
+		wp_enqueue_style(
 			'bydopamina-tokens',
 			BYDOPAMINA_URI . '/assets/css/tokens.css',
-			array(),
+			array( 'bydopamina-fonts' ),
 			BYDOPAMINA_VERSION
 		);
 		wp_enqueue_style(
@@ -104,20 +113,24 @@ add_action(
 		add_theme_support( 'html5', array( 'search-form', 'comment-form', 'gallery', 'caption', 'script', 'style' ) );
 		add_theme_support( 'responsive-embeds' );
 
-		// Rozmiary obrazów pod siatkę 4:5 (trend fashion/lifestyle, lepsze wykorzystanie ekranu mobile).
+		// Packshoty biżuterii 4:5 – lepsze wykorzystanie ekranu mobile niż kwadrat.
 		add_image_size( 'bd-card', 600, 750, true );
 		add_image_size( 'bd-card-2x', 1200, 1500, true );
 	}
 );
 
 /**
- * Kolor paska przeglądarki na mobile.
+ * Preload fontów widocznych nad linią zgięcia + kolor paska przeglądarki na mobile.
+ * Fonty ładuje motyw (lokalnie) – w Elementorze wyłącz Google Fonts (patrz README).
  */
 add_action(
 	'wp_head',
 	function () {
-		echo '<meta name="theme-color" content="#FAF8F5" media="(prefers-color-scheme: light)">' . "\n";
-		echo '<meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">' . "\n";
+		foreach ( array( 'instrument-serif-normal-400-latin', 'geist-normal-300-600-latin' ) as $font ) {
+			printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( BYDOPAMINA_URI . '/assets/fonts/' . $font . '.woff2' ) );
+		}
+		echo '<meta name="theme-color" content="#F6F2EC" media="(prefers-color-scheme: light)">' . "\n";
+		echo '<meta name="theme-color" content="#1C1917" media="(prefers-color-scheme: dark)">' . "\n";
 	},
 	1
 );

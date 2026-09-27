@@ -8,245 +8,257 @@
  },
  "content": [
   {
-   "id": "f654060",
+   "id": "39bcd23",
    "elType": "container",
    "isInner": false,
    "settings": {
     "content_width": "boxed",
-    "flex_direction": "row",
+    "flex_direction": "column",
     "boxed_width": {
      "unit": "px",
-     "size": 1360,
+     "size": 1520,
      "sizes": []
     },
+    "css_classes": "bd-section",
     "html_tag": "section",
-    "flex_wrap": "wrap",
-    "flex_gap": {
-     "column": "48",
-     "row": "48",
-     "isLinked": true,
-     "unit": "px",
-     "size": 48
-    },
     "padding": {
      "unit": "px",
      "top": "48",
-     "right": "24",
+     "right": "40",
      "bottom": "120",
-     "left": "24",
+     "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
      "top": "24",
      "right": "16",
-     "bottom": "64",
+     "bottom": "72",
      "left": "16",
      "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "b76dc0c",
+     "id": "1a43196",
      "elType": "container",
      "isInner": true,
      "settings": {
       "content_width": "full",
-      "flex_direction": "column",
-      "width": {
-       "unit": "%",
-       "size": 40,
-       "sizes": []
-      },
-      "width_tablet": {
-       "unit": "%",
-       "size": 100,
-       "sizes": []
-      },
+      "flex_direction": "row",
+      "flex_wrap": "wrap",
       "flex_gap": {
-       "column": "20",
-       "row": "20",
+       "column": "48",
+       "row": "48",
        "isLinked": true,
        "unit": "px",
-       "size": 20
+       "size": 48
       }
      },
      "elements": [
       {
-       "id": "511070a",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
+       "id": "d7612dc",
+       "elType": "container",
+       "isInner": true,
        "settings": {
-        "html": "<span class=\"bd-eyebrow\">Kontakt</span>"
+        "content_width": "full",
+        "flex_direction": "column",
+        "width": {
+         "unit": "%",
+         "size": 40,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 100,
+         "sizes": []
+        },
+        "flex_gap": {
+         "column": "24",
+         "row": "24",
+         "isLinked": true,
+         "unit": "px",
+         "size": 24
+        }
        },
-       "elements": []
+       "elements": [
+        {
+         "id": "63ab9e9",
+         "elType": "widget",
+         "widgetType": "html",
+         "isInner": false,
+         "settings": {
+          "html": "<p class=\"bd-label\">Kontakt</p>"
+         },
+         "elements": []
+        },
+        {
+         "id": "413ec85",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Napisz. <em>Odpisujemy szybko.</em>",
+          "header_size": "h1",
+          "_css_classes": "bd-h2"
+         },
+         "elements": []
+        },
+        {
+         "id": "313ecc4",
+         "elType": "widget",
+         "widgetType": "icon-list",
+         "isInner": false,
+         "settings": {
+          "view": "traditional",
+          "icon_list": [
+           {
+            "_id": "af61bb7",
+            "text": "hej@bydopamina.pl",
+            "link": {
+             "url": "mailto:hej@bydopamina.pl",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           },
+           {
+            "_id": "4ae820b",
+            "text": "+48 000 000 000",
+            "link": {
+             "url": "tel:+48000000000",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           },
+           {
+            "_id": "d245ff1",
+            "text": "pn–pt 9:00–16:00",
+            "link": {
+             "url": "",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           },
+           {
+            "_id": "4537b66",
+            "text": "Adres do zwrotów: [uzupełnij]",
+            "link": {
+             "url": "",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           }
+          ]
+         },
+         "elements": []
+        }
+       ]
       },
       {
-       "id": "7528ea7",
-       "elType": "widget",
-       "widgetType": "heading",
-       "isInner": false,
+       "id": "1a3accd",
+       "elType": "container",
+       "isInner": true,
        "settings": {
-        "title": "Napisz do nas – odpisujemy szybko.",
-        "header_size": "h1",
-        "_css_classes": "bd-h2"
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "bd-panel",
+        "width": {
+         "unit": "%",
+         "size": 60,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 100,
+         "sizes": []
+        }
        },
-       "elements": []
-      },
-      {
-       "id": "b07822d",
-       "elType": "widget",
-       "widgetType": "icon-list",
-       "isInner": false,
-       "settings": {
-        "view": "traditional",
-        "icon_list": [
-         {
-          "_id": "eab42bd",
-          "text": "hej@bydopamina.pl",
-          "link": {
-           "url": "mailto:hej@bydopamina.pl",
-           "is_external": "",
-           "nofollow": ""
-          },
-          "selected_icon": {
-           "value": "",
-           "library": ""
-          }
+       "elements": [
+        {
+         "id": "9c9b79b",
+         "elType": "widget",
+         "widgetType": "form",
+         "isInner": false,
+         "settings": {
+          "form_name": "Kontakt",
+          "form_fields": [
+           {
+            "_id": "348dd0e",
+            "custom_id": "name",
+            "field_type": "text",
+            "field_label": "Imię",
+            "required": "true",
+            "width": "50"
+           },
+           {
+            "_id": "41f943f",
+            "custom_id": "email",
+            "field_type": "email",
+            "field_label": "E-mail",
+            "required": "true",
+            "width": "50"
+           },
+           {
+            "_id": "5baee7d",
+            "custom_id": "order",
+            "field_type": "text",
+            "field_label": "Numer zamówienia (jeśli dotyczy)",
+            "width": "100"
+           },
+           {
+            "_id": "dc37228",
+            "custom_id": "message",
+            "field_type": "textarea",
+            "field_label": "Wiadomość",
+            "required": "true",
+            "rows": 5,
+            "width": "100"
+           },
+           {
+            "_id": "954dc49",
+            "custom_id": "hp",
+            "field_type": "honeypot",
+            "width": "100"
+           },
+           {
+            "_id": "31ac5e8",
+            "custom_id": "rodo",
+            "field_type": "acceptance",
+            "required": "true",
+            "width": "100",
+            "acceptance_text": "Administratorem danych jest bydopamina.pl. Dane przetwarzamy, aby odpowiedzieć na wiadomość. <a href=\"/polityka-prywatnosci/\">Więcej</a>."
+           }
+          ],
+          "show_labels": "yes",
+          "button_text": "Wyślij",
+          "button_width": "100",
+          "submit_actions": [
+           "email",
+           "save-to-database"
+          ],
+          "email_to": "hej@bydopamina.pl",
+          "email_subject": "Wiadomość ze strony bydopamina.pl",
+          "success_message": "Dziękujemy. Odpowiadamy w ciągu 1 dnia roboczego."
          },
-         {
-          "_id": "cfd8c36",
-          "text": "+48 000 000 000",
-          "link": {
-           "url": "tel:+48000000000",
-           "is_external": "",
-           "nofollow": ""
-          },
-          "selected_icon": {
-           "value": "",
-           "library": ""
-          }
-         },
-         {
-          "_id": "192f09a",
-          "text": "pn–pt 9:00–16:00",
-          "link": {
-           "url": "",
-           "is_external": "",
-           "nofollow": ""
-          },
-          "selected_icon": {
-           "value": "",
-           "library": ""
-          }
-         },
-         {
-          "_id": "703e53c",
-          "text": "Adres do zwrotów: [uzupełnij]",
-          "link": {
-           "url": "",
-           "is_external": "",
-           "nofollow": ""
-          },
-          "selected_icon": {
-           "value": "",
-           "library": ""
-          }
-         }
-        ]
-       },
-       "elements": []
-      }
-     ]
-    },
-    {
-     "id": "c8fb445",
-     "elType": "container",
-     "isInner": true,
-     "settings": {
-      "content_width": "full",
-      "flex_direction": "column",
-      "css_classes": "bd-panel",
-      "width": {
-       "unit": "%",
-       "size": 60,
-       "sizes": []
-      },
-      "width_tablet": {
-       "unit": "%",
-       "size": 100,
-       "sizes": []
-      }
-     },
-     "elements": [
-      {
-       "id": "4a41f8e",
-       "elType": "widget",
-       "widgetType": "form",
-       "isInner": false,
-       "settings": {
-        "form_name": "Kontakt",
-        "form_fields": [
-         {
-          "_id": "6f29a9f",
-          "custom_id": "name",
-          "field_type": "text",
-          "field_label": "Imię",
-          "required": "true",
-          "width": "50"
-         },
-         {
-          "_id": "8ece78b",
-          "custom_id": "email",
-          "field_type": "email",
-          "field_label": "E-mail",
-          "required": "true",
-          "width": "50"
-         },
-         {
-          "_id": "a9f5307",
-          "custom_id": "order",
-          "field_type": "text",
-          "field_label": "Numer zamówienia (opcjonalnie)",
-          "width": "100"
-         },
-         {
-          "_id": "e842997",
-          "custom_id": "message",
-          "field_type": "textarea",
-          "field_label": "Wiadomość",
-          "required": "true",
-          "rows": 5,
-          "width": "100"
-         },
-         {
-          "_id": "089b512",
-          "custom_id": "hp",
-          "field_type": "honeypot",
-          "width": "100"
-         },
-         {
-          "_id": "d4d6d27",
-          "custom_id": "rodo",
-          "field_type": "acceptance",
-          "required": "true",
-          "width": "100",
-          "acceptance_text": "Administratorem danych jest bydopamina.pl. Dane przetwarzamy, aby odpowiedzieć na wiadomość. <a href=\"/polityka-prywatnosci/\">Więcej</a>."
-         }
-        ],
-        "show_labels": "yes",
-        "button_text": "Wyślij wiadomość",
-        "button_width": "100",
-        "submit_actions": [
-         "email",
-         "save-to-database"
-        ],
-        "email_to": "hej@bydopamina.pl",
-        "email_subject": "Wiadomość ze strony bydopamina.pl",
-        "success_message": "Dziękujemy! Odpowiadamy w ciągu 1 dnia roboczego."
-       },
-       "elements": []
+         "elements": []
+        }
+       ]
       }
      ]
     }
