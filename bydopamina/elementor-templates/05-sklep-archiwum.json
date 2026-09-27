@@ -1,0 +1,137 @@
+{
+ "version": "0.4",
+ "title": "bydopamina — Sklep / kategoria",
+ "type": "product-archive",
+ "page_settings": {},
+ "content": [
+  {
+   "id": "754e64f",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "html_tag": "section",
+    "flex_gap": {
+     "column": "12",
+     "row": "12",
+     "isLinked": true,
+     "unit": "px",
+     "size": 12
+    },
+    "padding": {
+     "unit": "px",
+     "top": "32",
+     "right": "24",
+     "bottom": "24",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "16",
+     "right": "16",
+     "bottom": "16",
+     "left": "16",
+     "isLinked": true
+    }
+   },
+   "elements": [
+    {
+     "id": "a7d8335",
+     "elType": "widget",
+     "widgetType": "woocommerce-breadcrumb",
+     "isInner": false,
+     "settings": {},
+     "elements": []
+    },
+    {
+     "id": "e1cd7be",
+     "elType": "widget",
+     "widgetType": "theme-archive-title",
+     "isInner": false,
+     "settings": {
+      "header_size": "h1",
+      "_css_classes": "bd-h2"
+     },
+     "elements": []
+    },
+    {
+     "id": "98e6e5b",
+     "elType": "widget",
+     "widgetType": "woocommerce-archive-description",
+     "isInner": false,
+     "settings": {
+      "_css_classes": "bd-muted"
+     },
+     "elements": []
+    },
+    {
+     "id": "f5ee8c7",
+     "elType": "widget",
+     "widgetType": "shortcode",
+     "isInner": false,
+     "settings": {
+      "shortcode": "[bd_category_chips]"
+     },
+     "elements": []
+    }
+   ]
+  },
+  {
+   "id": "85dc0a6",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "html_tag": "section",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "24",
+     "bottom": "120",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "64",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "cdb5408",
+     "elType": "widget",
+     "widgetType": "woocommerce-archive-products",
+     "isInner": false,
+     "settings": {
+      "columns": "4",
+      "columns_tablet": "3",
+      "columns_mobile": "2",
+      "rows": "6",
+      "paginate": "yes",
+      "allow_order": "yes",
+      "show_result_count": "yes",
+      "nothing_found_message": "Nic tu nie ma – spróbuj innej frazy albo zobacz bestsellery."
+     },
+     "elements": []
+    }
+   ]
+  }
+ ]
+}

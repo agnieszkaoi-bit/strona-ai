@@ -1,0 +1,651 @@
+{
+ "version": "0.4",
+ "title": "bydopamina — Footer",
+ "type": "footer",
+ "page_settings": {},
+ "content": [
+  {
+   "id": "59001ac",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "css_classes": "bd-footer bd-dark",
+    "html_tag": "footer",
+    "background_background": "classic",
+    "background_color": "#121212",
+    "flex_gap": {
+     "column": "48",
+     "row": "48",
+     "isLinked": true,
+     "unit": "px",
+     "size": 48
+    },
+    "padding": {
+     "unit": "px",
+     "top": "80",
+     "right": "24",
+     "bottom": "32",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "56",
+     "right": "16",
+     "bottom": "24",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "02f0ee9",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "flex_wrap": "wrap",
+      "flex_gap": {
+       "column": "32",
+       "row": "32",
+       "isLinked": true,
+       "unit": "px",
+       "size": 32
+      }
+     },
+     "elements": [
+      {
+       "id": "6bad6be",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "width": {
+         "unit": "%",
+         "size": 34,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 100,
+         "sizes": []
+        },
+        "flex_gap": {
+         "column": "16",
+         "row": "16",
+         "isLinked": true,
+         "unit": "px",
+         "size": 16
+        }
+       },
+       "elements": [
+        {
+         "id": "e255acc",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "bydopamina",
+          "header_size": "div",
+          "_css_classes": "bd-footer-logo"
+         },
+         "elements": []
+        },
+        {
+         "id": "39292d2",
+         "elType": "widget",
+         "widgetType": "text-editor",
+         "isInner": false,
+         "settings": {
+          "editor": "<p class=\"bd-muted\">Małe rzeczy, które robią Ci dzień. Projektujemy i wysyłamy z Polski.</p>"
+         },
+         "elements": []
+        },
+        {
+         "id": "8e7aa6e",
+         "elType": "widget",
+         "widgetType": "social-icons",
+         "isInner": false,
+         "settings": {
+          "shape": "circle",
+          "social_icon_list": [
+           {
+            "_id": "e512148",
+            "social_icon": {
+             "value": "fab fa-instagram",
+             "library": "fa-brands"
+            },
+            "link": {
+             "url": "https://instagram.com/bydopamina",
+             "is_external": "on",
+             "nofollow": ""
+            }
+           },
+           {
+            "_id": "99dd251",
+            "social_icon": {
+             "value": "fab fa-tiktok",
+             "library": "fa-brands"
+            },
+            "link": {
+             "url": "https://tiktok.com/@bydopamina",
+             "is_external": "on",
+             "nofollow": ""
+            }
+           },
+           {
+            "_id": "9f19950",
+            "social_icon": {
+             "value": "fab fa-pinterest",
+             "library": "fa-brands"
+            },
+            "link": {
+             "url": "https://pinterest.com/bydopamina",
+             "is_external": "on",
+             "nofollow": ""
+            }
+           }
+          ],
+          "icon_color": "custom",
+          "icon_primary_color": "#FFFFFF1A",
+          "icon_secondary_color": "#FFFFFF"
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "c4a334b",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "width": {
+         "unit": "%",
+         "size": 22,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 33,
+         "sizes": []
+        },
+        "width_mobile": {
+         "unit": "%",
+         "size": 50,
+         "sizes": []
+        },
+        "flex_gap": {
+         "column": "12",
+         "row": "12",
+         "isLinked": true,
+         "unit": "px",
+         "size": 12
+        }
+       },
+       "elements": [
+        {
+         "id": "c88b287",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Sklep",
+          "header_size": "h2",
+          "_css_classes": "bd-footer-h"
+         },
+         "elements": []
+        },
+        {
+         "id": "c6cd75e",
+         "elType": "widget",
+         "widgetType": "icon-list",
+         "isInner": false,
+         "settings": {
+          "view": "traditional",
+          "icon_list": [
+           {
+            "_id": "9293de8",
+            "text": "Nowości",
+            "link": {
+             "url": "/sklep/?orderby=date",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           },
+           {
+            "_id": "8c3d5f1",
+            "text": "Bestsellery",
+            "link": {
+             "url": "/sklep/?orderby=popularity",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           },
+           {
+            "_id": "d7a7a3c",
+            "text": "Promocje",
+            "link": {
+             "url": "/promocje/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           },
+           {
+            "_id": "bb049a7",
+            "text": "Karty podarunkowe",
+            "link": {
+             "url": "/karta-podarunkowa/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           }
+          ]
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "9d3c7de",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "width": {
+         "unit": "%",
+         "size": 22,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 33,
+         "sizes": []
+        },
+        "width_mobile": {
+         "unit": "%",
+         "size": 50,
+         "sizes": []
+        },
+        "flex_gap": {
+         "column": "12",
+         "row": "12",
+         "isLinked": true,
+         "unit": "px",
+         "size": 12
+        }
+       },
+       "elements": [
+        {
+         "id": "7dabe92",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Pomoc",
+          "header_size": "h2",
+          "_css_classes": "bd-footer-h"
+         },
+         "elements": []
+        },
+        {
+         "id": "00a61f9",
+         "elType": "widget",
+         "widgetType": "icon-list",
+         "isInner": false,
+         "settings": {
+          "view": "traditional",
+          "icon_list": [
+           {
+            "_id": "c0433cb",
+            "text": "Dostawa i płatności",
+            "link": {
+             "url": "/dostawa-i-platnosci/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           },
+           {
+            "_id": "c5e818f",
+            "text": "Zwroty i reklamacje",
+            "link": {
+             "url": "/zwroty/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           },
+           {
+            "_id": "96263ae",
+            "text": "FAQ",
+            "link": {
+             "url": "/faq/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           },
+           {
+            "_id": "70eb9a0",
+            "text": "Kontakt",
+            "link": {
+             "url": "/kontakt/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           },
+           {
+            "_id": "3d6c51e",
+            "text": "Śledź zamówienie",
+            "link": {
+             "url": "/moje-konto/zamowienia/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           }
+          ]
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "731c945",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "width": {
+         "unit": "%",
+         "size": 22,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 33,
+         "sizes": []
+        },
+        "width_mobile": {
+         "unit": "%",
+         "size": 100,
+         "sizes": []
+        },
+        "flex_gap": {
+         "column": "12",
+         "row": "12",
+         "isLinked": true,
+         "unit": "px",
+         "size": 12
+        }
+       },
+       "elements": [
+        {
+         "id": "14aa4e7",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Kontakt",
+          "header_size": "h2",
+          "_css_classes": "bd-footer-h"
+         },
+         "elements": []
+        },
+        {
+         "id": "1919e93",
+         "elType": "widget",
+         "widgetType": "icon-list",
+         "isInner": false,
+         "settings": {
+          "view": "traditional",
+          "icon_list": [
+           {
+            "_id": "1c593af",
+            "text": "hej@bydopamina.pl",
+            "link": {
+             "url": "mailto:hej@bydopamina.pl",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           },
+           {
+            "_id": "4988931",
+            "text": "+48 000 000 000",
+            "link": {
+             "url": "tel:+48000000000",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           },
+           {
+            "_id": "d11745a",
+            "text": "pn–pt 9:00–16:00",
+            "link": {
+             "url": "",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "selected_icon": {
+             "value": "",
+             "library": ""
+            }
+           }
+          ]
+         },
+         "elements": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "d094499",
+     "elType": "widget",
+     "widgetType": "html",
+     "isInner": false,
+     "settings": {
+      "html": "<ul class=\"bd-payments\" aria-label=\"Metody płatności i dostawy\"><li>BLIK</li><li>Visa</li><li>Mastercard</li><li>Apple Pay</li><li>Google Pay</li><li>Przelewy24</li><li>PayPo</li><li>InPost</li><li>DPD</li></ul>"
+     },
+     "elements": []
+    },
+    {
+     "id": "e416320",
+     "elType": "widget",
+     "widgetType": "heading",
+     "isInner": false,
+     "settings": {
+      "title": "bydopamina",
+      "header_size": "div",
+      "align": "center",
+      "_css_classes": "bd-footer-wordmark",
+      "typography_typography": "custom",
+      "typography_font_family": "Bricolage Grotesque",
+      "typography_font_weight": "700"
+     },
+     "elements": []
+    },
+    {
+     "id": "406329b",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "flex_justify_content": "space-between",
+      "flex_align_items": "center",
+      "flex_wrap": "wrap",
+      "flex_gap": {
+       "column": "16",
+       "row": "16",
+       "isLinked": true,
+       "unit": "px",
+       "size": 16
+      },
+      "flex_direction_mobile": "column"
+     },
+     "elements": [
+      {
+       "id": "af67d46",
+       "elType": "widget",
+       "widgetType": "shortcode",
+       "isInner": false,
+       "settings": {
+        "shortcode": "© [bd_year] bydopamina.pl"
+       },
+       "elements": []
+      },
+      {
+       "id": "65b00a2",
+       "elType": "widget",
+       "widgetType": "icon-list",
+       "isInner": false,
+       "settings": {
+        "view": "inline",
+        "icon_list": [
+         {
+          "_id": "7d836e7",
+          "text": "Regulamin",
+          "link": {
+           "url": "/regulamin/",
+           "is_external": "",
+           "nofollow": ""
+          },
+          "selected_icon": {
+           "value": "",
+           "library": ""
+          }
+         },
+         {
+          "_id": "adec6f1",
+          "text": "Polityka prywatności",
+          "link": {
+           "url": "/polityka-prywatnosci/",
+           "is_external": "",
+           "nofollow": ""
+          },
+          "selected_icon": {
+           "value": "",
+           "library": ""
+          }
+         },
+         {
+          "_id": "5071950",
+          "text": "Cookies",
+          "link": {
+           "url": "/polityka-cookies/",
+           "is_external": "",
+           "nofollow": ""
+          },
+          "selected_icon": {
+           "value": "",
+           "library": ""
+          }
+         },
+         {
+          "_id": "35d1488",
+          "text": "Odstąpienie od umowy",
+          "link": {
+           "url": "/odstapienie-od-umowy/",
+           "is_external": "",
+           "nofollow": ""
+          },
+          "selected_icon": {
+           "value": "",
+           "library": ""
+          }
+         }
+        ]
+       },
+       "elements": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ffb8830",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "full",
+    "flex_direction": "column",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "0",
+     "bottom": "0",
+     "left": "0",
+     "isLinked": true
+    },
+    "hide_desktop": "hidden-desktop",
+    "hide_tablet": "hidden-tablet"
+   },
+   "elements": [
+    {
+     "id": "fadb890",
+     "elType": "widget",
+     "widgetType": "shortcode",
+     "isInner": false,
+     "settings": {
+      "shortcode": "[bd_mobile_nav]"
+     },
+     "elements": []
+    }
+   ]
+  }
+ ]
+}

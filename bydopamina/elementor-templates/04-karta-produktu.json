@@ -1,0 +1,509 @@
+{
+ "version": "0.4",
+ "title": "bydopamina — Karta produktu",
+ "type": "product",
+ "page_settings": {},
+ "content": [
+  {
+   "id": "33d9180",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "row",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "html_tag": "section",
+    "flex_wrap": "wrap",
+    "flex_gap": {
+     "column": "48",
+     "row": "48",
+     "isLinked": true,
+     "unit": "px",
+     "size": 48
+    },
+    "padding": {
+     "unit": "px",
+     "top": "24",
+     "right": "24",
+     "bottom": "80",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "8",
+     "right": "16",
+     "bottom": "48",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "a06d7a6",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "column",
+      "width": {
+       "unit": "%",
+       "size": 58,
+       "sizes": []
+      },
+      "width_tablet": {
+       "unit": "%",
+       "size": 100,
+       "sizes": []
+      }
+     },
+     "elements": [
+      {
+       "id": "1f3c42b",
+       "elType": "widget",
+       "widgetType": "woocommerce-product-images",
+       "isInner": false,
+       "settings": {
+        "sale_flash": "yes",
+        "_css_classes": "bd-pdp-gallery"
+       },
+       "elements": []
+      }
+     ]
+    },
+    {
+     "id": "6edd77d",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "column",
+      "css_classes": "bd-sticky-col",
+      "width": {
+       "unit": "%",
+       "size": 42,
+       "sizes": []
+      },
+      "width_tablet": {
+       "unit": "%",
+       "size": 100,
+       "sizes": []
+      },
+      "flex_gap": {
+       "column": "18",
+       "row": "18",
+       "isLinked": true,
+       "unit": "px",
+       "size": 18
+      }
+     },
+     "elements": [
+      {
+       "id": "b3618e1",
+       "elType": "widget",
+       "widgetType": "woocommerce-breadcrumb",
+       "isInner": false,
+       "settings": {},
+       "elements": []
+      },
+      {
+       "id": "74f09af",
+       "elType": "widget",
+       "widgetType": "woocommerce-product-title",
+       "isInner": false,
+       "settings": {
+        "header_size": "h1",
+        "_css_classes": "bd-pdp-title"
+       },
+       "elements": []
+      },
+      {
+       "id": "ac9f21d",
+       "elType": "widget",
+       "widgetType": "woocommerce-product-rating",
+       "isInner": false,
+       "settings": {},
+       "elements": []
+      },
+      {
+       "id": "782afe6",
+       "elType": "widget",
+       "widgetType": "woocommerce-product-price",
+       "isInner": false,
+       "settings": {
+        "_css_classes": "bd-pdp-price"
+       },
+       "elements": []
+      },
+      {
+       "id": "b6eafff",
+       "elType": "widget",
+       "widgetType": "woocommerce-product-short-description",
+       "isInner": false,
+       "settings": {
+        "_css_classes": "bd-muted"
+       },
+       "elements": []
+      },
+      {
+       "id": "edf165d",
+       "elType": "widget",
+       "widgetType": "woocommerce-product-add-to-cart",
+       "isInner": false,
+       "settings": {
+        "show_quantity": "yes",
+        "layout": "stacked"
+       },
+       "elements": []
+      },
+      {
+       "id": "f5a9ca5",
+       "elType": "widget",
+       "widgetType": "shortcode",
+       "isInner": false,
+       "settings": {
+        "shortcode": "[bd_delivery_eta]"
+       },
+       "elements": []
+      },
+      {
+       "id": "fcbad16",
+       "elType": "widget",
+       "widgetType": "shortcode",
+       "isInner": false,
+       "settings": {
+        "shortcode": "[bd_free_shipping_bar]"
+       },
+       "elements": []
+      },
+      {
+       "id": "fa97002",
+       "elType": "widget",
+       "widgetType": "shortcode",
+       "isInner": false,
+       "settings": {
+        "shortcode": "[bd_trust_badges variant=\"stack\"]"
+       },
+       "elements": []
+      },
+      {
+       "id": "807c7e3",
+       "elType": "widget",
+       "widgetType": "nested-accordion",
+       "isInner": false,
+       "settings": {
+        "items": [
+         {
+          "_id": "b2c5552",
+          "item_title": "Opis"
+         },
+         {
+          "_id": "7a98b9a",
+          "item_title": "Szczegóły i wymiary"
+         },
+         {
+          "_id": "ce0d8d8",
+          "item_title": "Dostawa i zwroty"
+         },
+         {
+          "_id": "e26b524",
+          "item_title": "Bezpieczeństwo produktu"
+         },
+         {
+          "_id": "66e6112",
+          "item_title": "Opinie"
+         }
+        ],
+        "default_state": "expanded",
+        "max_items_expended": "one",
+        "_css_classes": "bd-accordion"
+       },
+       "elements": [
+        {
+         "id": "4041f5e",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "16",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "8bae8e6",
+           "elType": "widget",
+           "widgetType": "woocommerce-product-content",
+           "isInner": false,
+           "settings": {},
+           "elements": []
+          }
+         ]
+        },
+        {
+         "id": "66eebc5",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "16",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "8f4ecb4",
+           "elType": "widget",
+           "widgetType": "woocommerce-product-additional-information",
+           "isInner": false,
+           "settings": {
+            "show_heading": ""
+           },
+           "elements": []
+          }
+         ]
+        },
+        {
+         "id": "ff8b2a6",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "16",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "ab74fe5",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "isInner": false,
+           "settings": {
+            "editor": "<p><strong>InPost Paczkomat</strong> – 1–2 dni robocze · <strong>Kurier DPD</strong> – 1–2 dni robocze. Darmowa dostawa od 199 zł.</p><p>30 dni na zwrot bez podawania przyczyny. <a href=\"/zwroty/\">Jak zwrócić produkt</a></p>"
+           },
+           "elements": []
+          }
+         ]
+        },
+        {
+         "id": "8c53765",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "16",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "4ec0a95",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "isInner": false,
+           "settings": {
+            "editor": "<p><strong>Producent:</strong> [nazwa, adres, e-mail]<br><strong>Podmiot odpowiedzialny w UE:</strong> [jeśli inny]<br>Ostrzeżenia i instrukcje: [zgodnie z GPSR – uzupełnij dla produktu lub użyj pola własnego].</p>"
+           },
+           "elements": []
+          }
+         ]
+        },
+        {
+         "id": "a598d0d",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "16",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "ccbfd2e",
+           "elType": "widget",
+           "widgetType": "shortcode",
+           "isInner": false,
+           "settings": {
+            "shortcode": "[bd_product_reviews]"
+           },
+           "elements": []
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "44df8a1",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-reveal",
+    "html_tag": "section",
+    "flex_gap": {
+     "column": "24",
+     "row": "24",
+     "isLinked": true,
+     "unit": "px",
+     "size": 24
+    },
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "24",
+     "bottom": "0",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "4b5c1a9",
+     "elType": "widget",
+     "widgetType": "heading",
+     "isInner": false,
+     "settings": {
+      "title": "Pasuje do tego",
+      "header_size": "h2",
+      "_css_classes": "bd-h2"
+     },
+     "elements": []
+    },
+    {
+     "id": "d4f398e",
+     "elType": "widget",
+     "widgetType": "woocommerce-product-upsell",
+     "isInner": false,
+     "settings": {
+      "columns": "4",
+      "columns_mobile": "2",
+      "show_heading": "",
+      "_css_classes": "bd-rail"
+     },
+     "elements": []
+    }
+   ]
+  },
+  {
+   "id": "265c28e",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-reveal",
+    "html_tag": "section",
+    "flex_gap": {
+     "column": "24",
+     "row": "24",
+     "isLinked": true,
+     "unit": "px",
+     "size": 24
+    },
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "24",
+     "bottom": "120",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "64",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "025ff87",
+     "elType": "widget",
+     "widgetType": "heading",
+     "isInner": false,
+     "settings": {
+      "title": "Może Ci się spodobać",
+      "header_size": "h2",
+      "_css_classes": "bd-h2"
+     },
+     "elements": []
+    },
+    {
+     "id": "0879d95",
+     "elType": "widget",
+     "widgetType": "woocommerce-product-related",
+     "isInner": false,
+     "settings": {
+      "columns": "4",
+      "columns_mobile": "2",
+      "posts_per_page": 8,
+      "show_heading": "",
+      "_css_classes": "bd-rail"
+     },
+     "elements": []
+    }
+   ]
+  }
+ ]
+}

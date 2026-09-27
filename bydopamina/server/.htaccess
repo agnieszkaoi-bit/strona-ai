@@ -1,0 +1,74 @@
+# =====================================================================
+# bydopamina.pl – .htaccess (Apache / LiteSpeed)
+# Wklej NAD blokiem „# BEGIN WordPress”. Przed wdrożeniem zrób kopię
+# obecnego pliku i sprawdź stronę + checkout + panel po zmianie.
+# =====================================================================
+
+# --- Wymuś HTTPS i domenę bez www -----------------------------------
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.bydopamina\.pl$ [NC]
+RewriteRule ^(.*)$ https://bydopamina.pl/$1 [L,R=301]
+
+# Enumeracja użytkowników ?author=N
+RewriteCond %{REQUEST_URI} !^/wp-admin [NC]
+RewriteCond %{QUERY_STRING} (^|&)author=\d+ [NC]
+RewriteRule ^ - [F,L]
+
+# Pliki PHP w uploads / wp-includes – nigdy nie wykonuj
+RewriteRule ^wp-content/uploads/.*\.(php[0-9]?|phtml|phar)$ - [F,L]
+RewriteRule ^wp-includes/[^/]+\.php$ - [F,L]
+RewriteRule ^wp-includes/js/tinymce/langs/.+\.php - [F,L]
+RewriteRule ^wp-includes/theme-compat/ - [F,L]
+
+# Typowe skanowane ścieżki
+RewriteRule (^|/)\.(?!well-known/) - [F,L]
+RewriteRule \.(bak|backup|old|orig|sql|sql\.gz|swp|log|ini|env|dist|git)$ - [F,L,NC]
+</IfModule>
+
+# --- XML-RPC: zablokowany (brute-force / DDoS przez pingback) -------
+<Files xmlrpc.php>
+	Require all denied
+</Files>
+
+# --- Wrażliwe pliki -------------------------------------------------
+<FilesMatch "^(wp-config\.php|wp-config-sample\.php|readme\.html|license\.txt|install\.php|error_log|debug\.log|\.user\.ini|php\.ini|composer\.(json|lock))$">
+	Require all denied
+</FilesMatch>
+
+# --- Logowanie do panelu tylko z Twoich IP (opcjonalnie) ------------
+# Odkomentuj i wpisz stałe IP biura/VPN. Bez stałego IP użyj 2FA + limitu prób.
+# <Files wp-login.php>
+# 	Require ip 203.0.113.10
+# </Files>
+
+# --- Brak listowania katalogów ----------------------------------------
+# (ServerSignature/ServerTokens ustawia hosting w konfiguracji serwera – w .htaccess dają błąd 500)
+Options -Indexes
+
+# --- Nagłówki bezpieczeństwa ----------------------------------------
+# Działają też dla plików statycznych. Motyw wysyła te same 4 nagłówki z PHP – żeby się
+# nie dublowały, dodaj w wp-config.php:  define( 'BYDOPAMINA_SEND_HEADERS', false );
+# CSP, Permissions-Policy i COOP motyw wysyła zawsze (inc/security.php).
+<IfModule mod_headers.c>
+	Header always set X-Content-Type-Options "nosniff"
+	Header always set X-Frame-Options "SAMEORIGIN"
+	Header always set Referrer-Policy "strict-origin-when-cross-origin"
+	Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" "expr=%{HTTPS} == 'on'"
+	Header always unset X-Powered-By
+	Header unset X-Powered-By
+
+	# Cache zasobów statycznych (wersjonowane ?ver=)
+	<FilesMatch "\.(css|js|woff2|avif|webp|jpg|jpeg|png|gif|svg|ico)$">
+		Header set Cache-Control "public, max-age=31536000, immutable"
+	</FilesMatch>
+</IfModule>
+
+# --- Kompresja ------------------------------------------------------
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
+</IfModule>
+
+# --- Limit rozmiaru żądania (10 MB) – utrudnia nadużycia uploadu -----
+LimitRequestBody 10485760

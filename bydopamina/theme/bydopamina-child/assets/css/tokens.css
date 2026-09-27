@@ -1,0 +1,60 @@
+/*
+ * bydopamina – design tokens.
+ * Te same wartości wpisz w Elementor → Ustawienia witryny → Globalne kolory / Globalne czcionki
+ * (tabela w README). Szablony odwołują się do klas bd-*, a klasy do tych zmiennych.
+ */
+:root {
+	/* Kolory – spokojna, ciepła baza + „dopaminowe” akcenty */
+	--bd-bg: #FAF8F5;          /* tło strony (ciepła biel) */
+	--bd-surface: #FFFFFF;     /* karty, panele */
+	--bd-surface-2: #F2EEE8;   /* sekcje wyróżnione, placeholdery zdjęć */
+	--bd-ink: #121212;         /* tekst, przyciski główne – kontrast 17,9:1 na tle */
+	--bd-ink-2: #56524C;       /* tekst drugorzędny – 7,3:1 (AA/AAA) */
+	--bd-line: #E6E1D9;        /* obramowania, separatory */
+	--bd-accent: #FF4F8B;      /* dopamina pink – tła, znaczniki; tekst na nim zawsze --bd-ink (6,6:1) */
+	--bd-accent-soft: #FFE3EC;
+	--bd-pop: #D9FF50;         /* limonka – highlighty, „nowość”, focus ring na ciemnym */
+	--bd-success: #1C7C45;
+	--bd-danger: #B3261E;
+	--bd-focus: #3D5AFE;
+
+	/* Typografia – hostowane lokalnie (Elementor → Wydajność → „Ładuj Google Fonts lokalnie”) */
+	--bd-font-display: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+	--bd-font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+	/* Skala płynna 360 → 1440 px */
+	--bd-fs-xs: clamp(0.75rem, 0.73rem + 0.1vw, 0.8125rem);
+	--bd-fs-sm: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+	--bd-fs-base: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+	--bd-fs-lg: clamp(1.125rem, 1.07rem + 0.3vw, 1.3125rem);
+	--bd-fs-xl: clamp(1.375rem, 1.23rem + 0.65vw, 1.875rem);
+	--bd-fs-2xl: clamp(1.75rem, 1.45rem + 1.35vw, 2.75rem);
+	--bd-fs-3xl: clamp(2.25rem, 1.6rem + 2.9vw, 4.5rem);
+	--bd-fs-hero: clamp(2.75rem, 1.7rem + 4.7vw, 6.5rem);
+
+	/* Odstępy (siatka 4 px) */
+	--bd-space-1: 4px;
+	--bd-space-2: 8px;
+	--bd-space-3: 12px;
+	--bd-space-4: 16px;
+	--bd-space-5: 24px;
+	--bd-space-6: 32px;
+	--bd-space-7: 48px;
+	--bd-space-8: 64px;
+	--bd-space-9: clamp(64px, 5vw + 40px, 120px); /* odstęp między sekcjami */
+	--bd-gutter: clamp(16px, 3vw, 40px);
+	--bd-max: 1360px;
+
+	/* Kształty i ruch */
+	--bd-radius-sm: 10px;
+	--bd-radius: 18px;
+	--bd-radius-lg: 28px;
+	--bd-radius-pill: 999px;
+	--bd-shadow: 0 1px 2px rgb(18 18 18 / 0.04), 0 8px 24px rgb(18 18 18 / 0.06);
+	--bd-shadow-lg: 0 24px 60px rgb(18 18 18 / 0.12);
+	--bd-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+	--bd-dur: 220ms;
+	--bd-tap: 48px;           /* min. cel dotyku (WCAG 2.5.8 wymaga 24 px, zalecane 44–48) */
+	--bd-header-h: 68px;
+	--bd-mnav-h: 64px;
+}

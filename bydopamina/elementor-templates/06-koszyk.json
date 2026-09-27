@@ -1,0 +1,111 @@
+{
+ "version": "0.4",
+ "title": "bydopamina — Koszyk",
+ "type": "page",
+ "page_settings": {
+  "template": "elementor_header_footer",
+  "hide_title": "yes"
+ },
+ "content": [
+  {
+   "id": "42969a5",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "html_tag": "section",
+    "flex_gap": {
+     "column": "24",
+     "row": "24",
+     "isLinked": true,
+     "unit": "px",
+     "size": 24
+    },
+    "padding": {
+     "unit": "px",
+     "top": "32",
+     "right": "24",
+     "bottom": "120",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "16",
+     "right": "16",
+     "bottom": "64",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "ed4d19b",
+     "elType": "widget",
+     "widgetType": "html",
+     "isInner": false,
+     "settings": {
+      "html": "<ol class=\"bd-steps\" aria-label=\"Kroki zamówienia\"><li aria-current=\"step\">Koszyk</li><li>Dane i dostawa</li><li>Płatność</li></ol>"
+     },
+     "elements": []
+    },
+    {
+     "id": "7d51055",
+     "elType": "widget",
+     "widgetType": "heading",
+     "isInner": false,
+     "settings": {
+      "title": "Twój koszyk",
+      "header_size": "h1",
+      "_css_classes": "bd-h2"
+     },
+     "elements": []
+    },
+    {
+     "id": "5c24c1a",
+     "elType": "widget",
+     "widgetType": "shortcode",
+     "isInner": false,
+     "settings": {
+      "shortcode": "[bd_free_shipping_bar]"
+     },
+     "elements": []
+    },
+    {
+     "id": "ebe80fa",
+     "elType": "widget",
+     "widgetType": "woocommerce-cart",
+     "isInner": false,
+     "settings": {
+      "layout": "two-column",
+      "update_cart_automatically": "yes",
+      "sticky_right_column": "yes",
+      "sticky_right_column_offset": {
+       "unit": "px",
+       "size": 96,
+       "sizes": []
+      },
+      "apply_coupon_heading": "Masz kod rabatowy?"
+     },
+     "elements": []
+    },
+    {
+     "id": "33288e1",
+     "elType": "widget",
+     "widgetType": "shortcode",
+     "isInner": false,
+     "settings": {
+      "shortcode": "[bd_trust_badges]"
+     },
+     "elements": []
+    }
+   ]
+  }
+ ]
+}

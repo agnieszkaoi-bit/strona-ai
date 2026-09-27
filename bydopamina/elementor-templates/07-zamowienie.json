@@ -1,0 +1,100 @@
+{
+ "version": "0.4",
+ "title": "bydopamina — Zamówienie",
+ "type": "page",
+ "page_settings": {
+  "template": "elementor_header_footer",
+  "hide_title": "yes"
+ },
+ "content": [
+  {
+   "id": "c446ab8",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "html_tag": "section",
+    "flex_gap": {
+     "column": "24",
+     "row": "24",
+     "isLinked": true,
+     "unit": "px",
+     "size": 24
+    },
+    "padding": {
+     "unit": "px",
+     "top": "32",
+     "right": "24",
+     "bottom": "120",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "16",
+     "right": "16",
+     "bottom": "64",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "b1515ff",
+     "elType": "widget",
+     "widgetType": "html",
+     "isInner": false,
+     "settings": {
+      "html": "<ol class=\"bd-steps\" aria-label=\"Kroki zamówienia\"><li>Koszyk</li><li aria-current=\"step\">Dane i dostawa</li><li>Płatność</li></ol>"
+     },
+     "elements": []
+    },
+    {
+     "id": "7c4e424",
+     "elType": "widget",
+     "widgetType": "heading",
+     "isInner": false,
+     "settings": {
+      "title": "Zamówienie",
+      "header_size": "h1",
+      "_css_classes": "bd-h2"
+     },
+     "elements": []
+    },
+    {
+     "id": "7776c65",
+     "elType": "widget",
+     "widgetType": "woocommerce-checkout-page",
+     "isInner": false,
+     "settings": {
+      "layout": "two-column",
+      "sticky_right_column": "yes",
+      "sticky_right_column_offset": {
+       "unit": "px",
+       "size": 96,
+       "sizes": []
+      },
+      "_css_classes": "bd-checkout"
+     },
+     "elements": []
+    },
+    {
+     "id": "82e2612",
+     "elType": "widget",
+     "widgetType": "html",
+     "isInner": false,
+     "settings": {
+      "html": "<p class=\"bd-muted\" style=\"font-size:var(--bd-fs-xs);text-align:center\">🔒 Płatności obsługuje licencjonowany operator. Nie przechowujemy danych Twojej karty.</p>"
+     },
+     "elements": []
+    }
+   ]
+  }
+ ]
+}

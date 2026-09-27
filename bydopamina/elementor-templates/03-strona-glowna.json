@@ -1,0 +1,1536 @@
+{
+ "version": "0.4",
+ "title": "bydopamina — Strona główna",
+ "type": "page",
+ "page_settings": {
+  "template": "elementor_header_footer",
+  "hide_title": "yes"
+ },
+ "content": [
+  {
+   "id": "16f4488",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "row",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "css_classes": "bd-hero bd-section",
+    "html_tag": "section",
+    "flex_wrap": "wrap",
+    "flex_align_items": "center",
+    "flex_gap": {
+     "column": "48",
+     "row": "48",
+     "isLinked": true,
+     "unit": "px",
+     "size": 48
+    },
+    "padding": {
+     "unit": "px",
+     "top": "40",
+     "right": "24",
+     "bottom": "64",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "16",
+     "right": "16",
+     "bottom": "48",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "a341738",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "column",
+      "width": {
+       "unit": "%",
+       "size": 50,
+       "sizes": []
+      },
+      "width_tablet": {
+       "unit": "%",
+       "size": 100,
+       "sizes": []
+      },
+      "flex_gap": {
+       "column": "24",
+       "row": "24",
+       "isLinked": true,
+       "unit": "px",
+       "size": 24
+      },
+      "flex_justify_content": "center"
+     },
+     "elements": [
+      {
+       "id": "ede7bd0",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<span class=\"bd-eyebrow\">Nowa kolekcja · Jesień 2026</span>"
+       },
+       "elements": []
+      },
+      {
+       "id": "5b4c801",
+       "elType": "widget",
+       "widgetType": "heading",
+       "isInner": false,
+       "settings": {
+        "title": "Rzeczy, które robią Ci <span class=\"bd-highlight\">dzień</span>.",
+        "header_size": "h1",
+        "_css_classes": "bd-hero-title"
+       },
+       "elements": []
+      },
+      {
+       "id": "ce1d62e",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "isInner": false,
+       "settings": {
+        "editor": "<p class=\"bd-muted\" style=\"font-size:var(--bd-fs-lg);max-width:34ch\">Krótki opis marki w jednym zdaniu: co sprzedajesz i dlaczego u Ciebie – konkret, bez ogólników.</p>"
+       },
+       "elements": []
+      },
+      {
+       "id": "bef7e26",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "row",
+        "flex_wrap": "wrap",
+        "flex_gap": {
+         "column": "12",
+         "row": "12",
+         "isLinked": true,
+         "unit": "px",
+         "size": 12
+        }
+       },
+       "elements": [
+        {
+         "id": "60581cc",
+         "elType": "widget",
+         "widgetType": "button",
+         "isInner": false,
+         "settings": {
+          "text": "Kup teraz",
+          "link": {
+           "url": "/sklep/",
+           "is_external": "",
+           "nofollow": ""
+          },
+          "size": "lg",
+          "_css_classes": "bd-btn"
+         },
+         "elements": []
+        },
+        {
+         "id": "ffe976a",
+         "elType": "widget",
+         "widgetType": "button",
+         "isInner": false,
+         "settings": {
+          "text": "Zobacz nowości",
+          "link": {
+           "url": "/sklep/?orderby=date",
+           "is_external": "",
+           "nofollow": ""
+          },
+          "size": "lg",
+          "_css_classes": "bd-btn bd-btn--ghost"
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "837a793",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<p class=\"bd-muted\" style=\"font-size:var(--bd-fs-sm);margin:0\">★ 4,9/5 · 2 300+ opinii zweryfikowanych klientów</p>"
+       },
+       "elements": []
+      }
+     ]
+    },
+    {
+     "id": "5724195",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "column",
+      "css_classes": "bd-hero__media",
+      "width": {
+       "unit": "%",
+       "size": 50,
+       "sizes": []
+      },
+      "width_tablet": {
+       "unit": "%",
+       "size": 100,
+       "sizes": []
+      },
+      "position": "relative"
+     },
+     "elements": [
+      {
+       "id": "1389b37",
+       "elType": "widget",
+       "widgetType": "image",
+       "isInner": false,
+       "settings": {
+        "image": {
+         "url": "",
+         "id": "",
+         "alt": "Zdjęcie hero – produkt w użyciu"
+        },
+        "image_size": "large",
+        "_css_classes": "bd-lcp"
+       },
+       "elements": []
+      },
+      {
+       "id": "b91dddd",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<span class=\"bd-hero__badge\">Nowość ✦</span>"
+       },
+       "elements": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "89be9c1",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "css_classes": "bd-section--tight bd-surface",
+    "html_tag": "section",
+    "padding": {
+     "unit": "px",
+     "top": "32",
+     "right": "24",
+     "bottom": "32",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "28",
+     "right": "16",
+     "bottom": "28",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "8eb5140",
+     "elType": "widget",
+     "widgetType": "shortcode",
+     "isInner": false,
+     "settings": {
+      "shortcode": "[bd_trust_badges]"
+     },
+     "elements": []
+    }
+   ]
+  },
+  {
+   "id": "6c16722",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-reveal",
+    "html_tag": "section",
+    "flex_gap": {
+     "column": "32",
+     "row": "32",
+     "isLinked": true,
+     "unit": "px",
+     "size": 32
+    },
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "24",
+     "bottom": "0",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "751b4c8",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "flex_justify_content": "space-between",
+      "flex_align_items": "flex-end",
+      "flex_wrap": "wrap",
+      "flex_gap": {
+       "column": "16",
+       "row": "16",
+       "isLinked": true,
+       "unit": "px",
+       "size": 16
+      }
+     },
+     "elements": [
+      {
+       "id": "4ac87fc",
+       "elType": "widget",
+       "widgetType": "heading",
+       "isInner": false,
+       "settings": {
+        "title": "Kategorie",
+        "header_size": "h2",
+        "_css_classes": "bd-h2"
+       },
+       "elements": []
+      },
+      {
+       "id": "49a047d",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "isInner": false,
+       "settings": {
+        "editor": "<p><a class=\"bd-link-arrow\" href=\"/sklep/\">Wszystkie produkty</a></p>"
+       },
+       "elements": []
+      }
+     ]
+    },
+    {
+     "id": "7608d94",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "column",
+      "css_classes": "bd-bento"
+     },
+     "elements": [
+      {
+       "id": "a51149b",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "bd-tile bd-bento__lg",
+        "flex_justify_content": "flex-end",
+        "padding": {
+         "unit": "px",
+         "top": "24",
+         "right": "24",
+         "bottom": "24",
+         "left": "24",
+         "isLinked": true
+        },
+        "background_background": "classic",
+        "background_color": "#F2EEE8",
+        "background_image": {
+         "url": "",
+         "id": ""
+        },
+        "background_position": "center center",
+        "background_size": "cover"
+       },
+       "elements": [
+        {
+         "id": "2411425",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Bestsellery",
+          "header_size": "h3",
+          "_css_classes": "bd-h3"
+         },
+         "elements": []
+        },
+        {
+         "id": "e060a72",
+         "elType": "widget",
+         "widgetType": "text-editor",
+         "isInner": false,
+         "settings": {
+          "editor": "<p><a class=\"bd-link-arrow\" href=\"/sklep/?orderby=popularity\">Kup to, co kochają inni</a></p>"
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "93d2047",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "bd-tile bd-tile--pink",
+        "flex_justify_content": "flex-end",
+        "padding": {
+         "unit": "px",
+         "top": "24",
+         "right": "24",
+         "bottom": "24",
+         "left": "24",
+         "isLinked": true
+        },
+        "background_background": "classic",
+        "background_color": "#F2EEE8",
+        "background_image": {
+         "url": "",
+         "id": ""
+        },
+        "background_position": "center center",
+        "background_size": "cover"
+       },
+       "elements": [
+        {
+         "id": "b437bdb",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Nowości",
+          "header_size": "h3",
+          "_css_classes": "bd-h3"
+         },
+         "elements": []
+        },
+        {
+         "id": "b766ff1",
+         "elType": "widget",
+         "widgetType": "text-editor",
+         "isInner": false,
+         "settings": {
+          "editor": "<p><a class=\"bd-link-arrow\" href=\"/sklep/?orderby=date\">Zobacz</a></p>"
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "d9090b8",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "bd-tile",
+        "flex_justify_content": "flex-end",
+        "padding": {
+         "unit": "px",
+         "top": "24",
+         "right": "24",
+         "bottom": "24",
+         "left": "24",
+         "isLinked": true
+        },
+        "background_background": "classic",
+        "background_color": "#F2EEE8",
+        "background_image": {
+         "url": "",
+         "id": ""
+        },
+        "background_position": "center center",
+        "background_size": "cover"
+       },
+       "elements": [
+        {
+         "id": "4f1a8a1",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Na prezent",
+          "header_size": "h3",
+          "_css_classes": "bd-h3"
+         },
+         "elements": []
+        },
+        {
+         "id": "0655509",
+         "elType": "widget",
+         "widgetType": "text-editor",
+         "isInner": false,
+         "settings": {
+          "editor": "<p><a class=\"bd-link-arrow\" href=\"/kategoria-produktu/prezenty/\">Zobacz</a></p>"
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "5d111a9",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "bd-tile bd-bento__wide bd-tile--lime",
+        "flex_justify_content": "flex-end",
+        "padding": {
+         "unit": "px",
+         "top": "24",
+         "right": "24",
+         "bottom": "24",
+         "left": "24",
+         "isLinked": true
+        },
+        "background_background": "classic",
+        "background_color": "#F2EEE8",
+        "background_image": {
+         "url": "",
+         "id": ""
+        },
+        "background_position": "center center",
+        "background_size": "cover"
+       },
+       "elements": [
+        {
+         "id": "b5fb12e",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Kategoria 3",
+          "header_size": "h3",
+          "_css_classes": "bd-h3"
+         },
+         "elements": []
+        },
+        {
+         "id": "5e6c999",
+         "elType": "widget",
+         "widgetType": "text-editor",
+         "isInner": false,
+         "settings": {
+          "editor": "<p><a class=\"bd-link-arrow\" href=\"/kategoria-produktu/kategoria-3/\">Zobacz</a></p>"
+         },
+         "elements": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "8df05f2",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-reveal",
+    "html_tag": "section",
+    "flex_gap": {
+     "column": "32",
+     "row": "32",
+     "isLinked": true,
+     "unit": "px",
+     "size": 32
+    },
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "24",
+     "bottom": "0",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "e41686c",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "flex_justify_content": "space-between",
+      "flex_align_items": "flex-end",
+      "flex_wrap": "wrap",
+      "flex_gap": {
+       "column": "16",
+       "row": "16",
+       "isLinked": true,
+       "unit": "px",
+       "size": 16
+      }
+     },
+     "elements": [
+      {
+       "id": "1737147",
+       "elType": "widget",
+       "widgetType": "heading",
+       "isInner": false,
+       "settings": {
+        "title": "Bestsellery",
+        "header_size": "h2",
+        "_css_classes": "bd-h2"
+       },
+       "elements": []
+      },
+      {
+       "id": "6616022",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "isInner": false,
+       "settings": {
+        "editor": "<p><a class=\"bd-link-arrow\" href=\"/sklep/?orderby=popularity\">Zobacz wszystkie</a></p>"
+       },
+       "elements": []
+      }
+     ]
+    },
+    {
+     "id": "95f19a5",
+     "elType": "widget",
+     "widgetType": "woocommerce-products",
+     "isInner": false,
+     "settings": {
+      "columns": "4",
+      "columns_tablet": "3",
+      "columns_mobile": "2",
+      "rows": "1",
+      "paginate": "",
+      "query_post_type": "product",
+      "query_orderby": "popularity",
+      "query_order": "desc",
+      "query_exclude": [
+       "current_post"
+      ],
+      "_css_classes": "bd-rail"
+     },
+     "elements": []
+    }
+   ]
+  },
+  {
+   "id": "de0279e",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "full",
+    "flex_direction": "column",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "0",
+     "bottom": "0",
+     "left": "0",
+     "isLinked": true
+    }
+   },
+   "elements": [
+    {
+     "id": "7f9ac09",
+     "elType": "widget",
+     "widgetType": "html",
+     "isInner": false,
+     "settings": {
+      "html": "<div class=\"bd-marquee\" aria-hidden=\"true\"><ul class=\"bd-marquee__track\"><li>Projektowane w Polsce</li><li>Wysyłka w 24 h</li><li>30 dni na zwrot</li><li>Małe serie</li><li>Opakowania bez plastiku</li><li>Projektowane w Polsce</li><li>Wysyłka w 24 h</li><li>30 dni na zwrot</li><li>Małe serie</li><li>Opakowania bez plastiku</li></ul></div><p class=\"screen-reader-text\">Projektowane w Polsce, Wysyłka w 24 h, 30 dni na zwrot, Małe serie, Opakowania bez plastiku</p>"
+     },
+     "elements": []
+    }
+   ]
+  },
+  {
+   "id": "864fa3f",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "row",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-reveal",
+    "html_tag": "section",
+    "flex_wrap": "wrap",
+    "flex_align_items": "center",
+    "flex_gap": {
+     "column": "64",
+     "row": "64",
+     "isLinked": true,
+     "unit": "px",
+     "size": 64
+    },
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "24",
+     "bottom": "0",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "6ce9da6",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "column",
+      "css_classes": "bd-hero__media",
+      "width": {
+       "unit": "%",
+       "size": 50,
+       "sizes": []
+      },
+      "width_tablet": {
+       "unit": "%",
+       "size": 100,
+       "sizes": []
+      }
+     },
+     "elements": [
+      {
+       "id": "1dcf884",
+       "elType": "widget",
+       "widgetType": "image",
+       "isInner": false,
+       "settings": {
+        "image": {
+         "url": "",
+         "id": "",
+         "alt": "Zdjęcie zespołu / pracowni"
+        },
+        "image_size": "large"
+       },
+       "elements": []
+      }
+     ]
+    },
+    {
+     "id": "eab06e9",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "column",
+      "width": {
+       "unit": "%",
+       "size": 50,
+       "sizes": []
+      },
+      "width_tablet": {
+       "unit": "%",
+       "size": 100,
+       "sizes": []
+      },
+      "flex_gap": {
+       "column": "20",
+       "row": "20",
+       "isLinked": true,
+       "unit": "px",
+       "size": 20
+      },
+      "flex_justify_content": "center"
+     },
+     "elements": [
+      {
+       "id": "81a0ba0",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<span class=\"bd-eyebrow\">Dlaczego bydopamina</span>"
+       },
+       "elements": []
+      },
+      {
+       "id": "cd73de0",
+       "elType": "widget",
+       "widgetType": "heading",
+       "isInner": false,
+       "settings": {
+        "title": "Mniej, ale lepiej. I z uśmiechem.",
+        "header_size": "h2",
+        "_css_classes": "bd-h2"
+       },
+       "elements": []
+      },
+      {
+       "id": "c0099eb",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "isInner": false,
+       "settings": {
+        "editor": "<p>2–3 zdania o historii marki i wartościach. Ludzie kupują od ludzi – pokaż twarz, pracownię, proces.</p>"
+       },
+       "elements": []
+      },
+      {
+       "id": "7db4304",
+       "elType": "widget",
+       "widgetType": "icon-list",
+       "isInner": false,
+       "settings": {
+        "view": "traditional",
+        "icon_list": [
+         {
+          "_id": "dde3a36",
+          "text": "Projektujemy i pakujemy w Polsce",
+          "link": {
+           "url": "",
+           "is_external": "",
+           "nofollow": ""
+          },
+          "selected_icon": {
+           "value": "",
+           "library": ""
+          }
+         },
+         {
+          "_id": "99a46df",
+          "text": "Krótkie serie – bez nadprodukcji",
+          "link": {
+           "url": "",
+           "is_external": "",
+           "nofollow": ""
+          },
+          "selected_icon": {
+           "value": "",
+           "library": ""
+          }
+         },
+         {
+          "_id": "e01c683",
+          "text": "Opakowania z recyklingu, bez plastiku",
+          "link": {
+           "url": "",
+           "is_external": "",
+           "nofollow": ""
+          },
+          "selected_icon": {
+           "value": "",
+           "library": ""
+          }
+         }
+        ]
+       },
+       "elements": []
+      },
+      {
+       "id": "65ed0de",
+       "elType": "widget",
+       "widgetType": "button",
+       "isInner": false,
+       "settings": {
+        "text": "Poznaj nas",
+        "link": {
+         "url": "/o-nas/",
+         "is_external": "",
+         "nofollow": ""
+        },
+        "_css_classes": "bd-btn bd-btn--ghost"
+       },
+       "elements": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ed1d9d1",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-reveal",
+    "html_tag": "section",
+    "flex_gap": {
+     "column": "32",
+     "row": "32",
+     "isLinked": true,
+     "unit": "px",
+     "size": 32
+    },
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "24",
+     "bottom": "0",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "6b82e6c",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "flex_justify_content": "space-between",
+      "flex_align_items": "flex-end",
+      "flex_wrap": "wrap",
+      "flex_gap": {
+       "column": "16",
+       "row": "16",
+       "isLinked": true,
+       "unit": "px",
+       "size": 16
+      }
+     },
+     "elements": [
+      {
+       "id": "423674a",
+       "elType": "widget",
+       "widgetType": "heading",
+       "isInner": false,
+       "settings": {
+        "title": "Nowości",
+        "header_size": "h2",
+        "_css_classes": "bd-h2"
+       },
+       "elements": []
+      },
+      {
+       "id": "d82fb0f",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "isInner": false,
+       "settings": {
+        "editor": "<p><a class=\"bd-link-arrow\" href=\"/sklep/?orderby=date\">Zobacz wszystkie</a></p>"
+       },
+       "elements": []
+      }
+     ]
+    },
+    {
+     "id": "90624fe",
+     "elType": "widget",
+     "widgetType": "woocommerce-products",
+     "isInner": false,
+     "settings": {
+      "columns": "4",
+      "columns_tablet": "3",
+      "columns_mobile": "2",
+      "rows": "1",
+      "paginate": "",
+      "query_post_type": "product",
+      "query_orderby": "date",
+      "query_order": "desc",
+      "query_exclude": [
+       "current_post"
+      ],
+      "_css_classes": "bd-rail"
+     },
+     "elements": []
+    }
+   ]
+  },
+  {
+   "id": "0c83e78",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-reveal",
+    "html_tag": "section",
+    "flex_gap": {
+     "column": "32",
+     "row": "32",
+     "isLinked": true,
+     "unit": "px",
+     "size": 32
+    },
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "24",
+     "bottom": "0",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "8350a73",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "flex_justify_content": "space-between",
+      "flex_align_items": "flex-end",
+      "flex_wrap": "wrap",
+      "flex_gap": {
+       "column": "16",
+       "row": "16",
+       "isLinked": true,
+       "unit": "px",
+       "size": 16
+      }
+     },
+     "elements": [
+      {
+       "id": "fb759e0",
+       "elType": "widget",
+       "widgetType": "heading",
+       "isInner": false,
+       "settings": {
+        "title": "Co mówią klienci",
+        "header_size": "h2",
+        "_css_classes": "bd-h2"
+       },
+       "elements": []
+      },
+      {
+       "id": "7aac319",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "isInner": false,
+       "settings": {
+        "editor": "<p><a class=\"bd-link-arrow\" href=\"/opinie/\">Wszystkie opinie</a></p>"
+       },
+       "elements": []
+      }
+     ]
+    },
+    {
+     "id": "2106119",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "flex_wrap": "wrap",
+      "flex_gap": {
+       "column": "16",
+       "row": "16",
+       "isLinked": true,
+       "unit": "px",
+       "size": 16
+      }
+     },
+     "elements": [
+      {
+       "id": "ce1fd3d",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "width": {
+         "unit": "%",
+         "size": 33,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 100,
+         "sizes": []
+        }
+       },
+       "elements": [
+        {
+         "id": "849acfb",
+         "elType": "widget",
+         "widgetType": "html",
+         "isInner": false,
+         "settings": {
+          "html": "<article class=\"bd-review\"><p class=\"bd-stars\" aria-label=\"Ocena 5 na 5\">★★★★★</p><p>„Tu wstaw prawdziwą opinię klienta – najlepiej z konkretem: co kupił, jak szybko dotarło, co go zaskoczyło.”</p><p class=\"bd-muted\"><strong>Imię N.</strong> · zweryfikowany zakup</p></article>"
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "9355084",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "width": {
+         "unit": "%",
+         "size": 33,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 100,
+         "sizes": []
+        }
+       },
+       "elements": [
+        {
+         "id": "067f0cf",
+         "elType": "widget",
+         "widgetType": "html",
+         "isInner": false,
+         "settings": {
+          "html": "<article class=\"bd-review\"><p class=\"bd-stars\" aria-label=\"Ocena 5 na 5\">★★★★★</p><p>„Tu wstaw prawdziwą opinię klienta – najlepiej z konkretem: co kupił, jak szybko dotarło, co go zaskoczyło.”</p><p class=\"bd-muted\"><strong>Imię N.</strong> · zweryfikowany zakup</p></article>"
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "c40d31b",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "width": {
+         "unit": "%",
+         "size": 33,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 100,
+         "sizes": []
+        }
+       },
+       "elements": [
+        {
+         "id": "397a762",
+         "elType": "widget",
+         "widgetType": "html",
+         "isInner": false,
+         "settings": {
+          "html": "<article class=\"bd-review\"><p class=\"bd-stars\" aria-label=\"Ocena 5 na 5\">★★★★★</p><p>„Tu wstaw prawdziwą opinię klienta – najlepiej z konkretem: co kupił, jak szybko dotarło, co go zaskoczyło.”</p><p class=\"bd-muted\"><strong>Imię N.</strong> · zweryfikowany zakup</p></article>"
+         },
+         "elements": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "d1711cb",
+     "elType": "widget",
+     "widgetType": "text-editor",
+     "isInner": false,
+     "settings": {
+      "editor": "<p class=\"bd-muted\" style=\"font-size:var(--bd-fs-xs)\">Opinie publikujemy wyłącznie od osób, które kupiły produkt w naszym sklepie – weryfikujemy je na podstawie numeru zamówienia.</p>"
+     },
+     "elements": []
+    }
+   ]
+  },
+  {
+   "id": "7854901",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-reveal",
+    "html_tag": "section",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "24",
+     "bottom": "0",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "6dedc86",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "css_classes": "bd-newsletter bd-dark",
+      "flex_wrap": "wrap",
+      "flex_align_items": "center",
+      "flex_gap": {
+       "column": "40",
+       "row": "40",
+       "isLinked": true,
+       "unit": "px",
+       "size": 40
+      },
+      "background_background": "classic",
+      "background_color": "#121212",
+      "padding": {
+       "unit": "px",
+       "top": "56",
+       "right": "56",
+       "bottom": "56",
+       "left": "56",
+       "isLinked": true
+      },
+      "padding_mobile": {
+       "unit": "px",
+       "top": "32",
+       "right": "20",
+       "bottom": "32",
+       "left": "20",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "b7a1774",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "width": {
+         "unit": "%",
+         "size": 50,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 100,
+         "sizes": []
+        },
+        "flex_gap": {
+         "column": "12",
+         "row": "12",
+         "isLinked": true,
+         "unit": "px",
+         "size": 12
+        }
+       },
+       "elements": [
+        {
+         "id": "aba4c70",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "−10% na pierwsze zakupy",
+          "header_size": "h2",
+          "_css_classes": "bd-h2"
+         },
+         "elements": []
+        },
+        {
+         "id": "1a42721",
+         "elType": "widget",
+         "widgetType": "text-editor",
+         "isInner": false,
+         "settings": {
+          "editor": "<p>Nowości i dropy przed wszystkimi. Maks. 2 maile w miesiącu.</p>"
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "9f4fb02",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "width": {
+         "unit": "%",
+         "size": 50,
+         "sizes": []
+        },
+        "width_tablet": {
+         "unit": "%",
+         "size": 100,
+         "sizes": []
+        }
+       },
+       "elements": [
+        {
+         "id": "e306f0c",
+         "elType": "widget",
+         "widgetType": "form",
+         "isInner": false,
+         "settings": {
+          "form_name": "Newsletter",
+          "form_fields": [
+           {
+            "_id": "f675299",
+            "custom_id": "email",
+            "field_type": "email",
+            "field_label": "Adres e-mail",
+            "placeholder": "twoj@email.pl",
+            "required": "true",
+            "width": "100"
+           },
+           {
+            "_id": "b464c55",
+            "custom_id": "hp",
+            "field_type": "honeypot",
+            "field_label": "",
+            "width": "100"
+           },
+           {
+            "_id": "85f184e",
+            "custom_id": "zgoda",
+            "field_type": "acceptance",
+            "field_label": "",
+            "acceptance_text": "Zgadzam się na otrzymywanie newslettera. Wypiszesz się jednym kliknięciem. <a href=\"/polityka-prywatnosci/\">Polityka prywatności</a>.",
+            "required": "true",
+            "width": "100"
+           }
+          ],
+          "show_labels": "yes",
+          "button_text": "Zapisz się i odbierz −10%",
+          "button_width": "100",
+          "submit_actions": [
+           "save-to-database"
+          ],
+          "success_message": "Dzięki! Sprawdź skrzynkę i potwierdź zapis – kod wyślemy od razu.",
+          "error_message": "Coś poszło nie tak. Spróbuj ponownie."
+         },
+         "elements": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "e2cbbb9",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "row",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1360,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-reveal",
+    "html_tag": "section",
+    "flex_wrap": "wrap",
+    "flex_gap": {
+     "column": "48",
+     "row": "48",
+     "isLinked": true,
+     "unit": "px",
+     "size": 48
+    },
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "24",
+     "bottom": "120",
+     "left": "24",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "64",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "e261e34",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "column",
+      "width": {
+       "unit": "%",
+       "size": 40,
+       "sizes": []
+      },
+      "width_tablet": {
+       "unit": "%",
+       "size": 100,
+       "sizes": []
+      },
+      "flex_gap": {
+       "column": "12",
+       "row": "12",
+       "isLinked": true,
+       "unit": "px",
+       "size": 12
+      }
+     },
+     "elements": [
+      {
+       "id": "2475263",
+       "elType": "widget",
+       "widgetType": "heading",
+       "isInner": false,
+       "settings": {
+        "title": "Pytania i odpowiedzi",
+        "header_size": "h2",
+        "_css_classes": "bd-h2"
+       },
+       "elements": []
+      },
+      {
+       "id": "7b6bc3c",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "isInner": false,
+       "settings": {
+        "editor": "<p><a class=\"bd-link-arrow\" href=\"/faq/\">Wszystkie pytania</a></p>"
+       },
+       "elements": []
+      }
+     ]
+    },
+    {
+     "id": "d981455",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "column",
+      "width": {
+       "unit": "%",
+       "size": 60,
+       "sizes": []
+      },
+      "width_tablet": {
+       "unit": "%",
+       "size": 100,
+       "sizes": []
+      }
+     },
+     "elements": [
+      {
+       "id": "3a9afa3",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<div class=\"bd-accordion\">\n<details><summary><strong>Ile trwa dostawa?</strong></summary><p>Zamówienia złożone do 14:00 w dni robocze wysyłamy tego samego dnia. InPost Paczkomat i kurier dostarczają zwykle w 1–2 dni robocze.</p></details>\n<details><summary><strong>Jak mogę zapłacić?</strong></summary><p>BLIK, karta, Apple Pay, Google Pay, szybki przelew (Przelewy24) oraz PayPo – kup teraz, zapłać za 30 dni.</p></details>\n<details><summary><strong>Jak zwrócić produkt?</strong></summary><p>Masz 30 dni na zwrot bez podawania przyczyny. Wygeneruj etykietę w zakładce „Zwroty” – zwrot pieniędzy do 5 dni roboczych od otrzymania paczki.</p></details>\n<details><summary><strong>Czy mogę zmienić zamówienie?</strong></summary><p>Tak, dopóki nie zostało wysłane. Napisz na hej@bydopamina.pl, podając numer zamówienia.</p></details>\n</div>"
+       },
+       "elements": []
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

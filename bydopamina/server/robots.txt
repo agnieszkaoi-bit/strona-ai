@@ -1,0 +1,19 @@
+# bydopamina.pl
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /koszyk/
+Disallow: /zamowienie/
+Disallow: /moje-konto/
+Disallow: /*?add-to-cart=
+Disallow: /*?orderby=
+Disallow: /*?filter_
+Disallow: /*&filter_
+Disallow: /?s=
+Disallow: /wp-json/
+
+# Crawlery AI – asystenci zakupowi mogą polecać produkty. Zablokuj trening, jeśli wolisz:
+# User-agent: GPTBot
+# Disallow: /
+
+Sitemap: https://bydopamina.pl/sitemap_index.xml

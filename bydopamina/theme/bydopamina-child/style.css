@@ -1,0 +1,14 @@
+/*
+Theme Name:   bydopamina Child
+Theme URI:    https://bydopamina.pl
+Description:  Motyw potomny Hello Elementor dla sklepu bydopamina.pl (Elementor Pro + WooCommerce). Minimalistyczny UI, mobile-first, dostępność WCAG 2.2 AA, utwardzenie bezpieczeństwa.
+Author:       bydopamina.pl
+Template:     hello-elementor
+Version:      1.0.0
+Requires at least: 6.6
+Requires PHP: 8.1
+License:      GPL-2.0-or-later
+Text Domain:  bydopamina
+*/
+
+/* Style ładowane są z assets/css/ (tokens.css + main.css) – patrz functions.php */
