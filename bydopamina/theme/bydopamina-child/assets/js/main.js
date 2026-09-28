@@ -203,4 +203,28 @@
 			}
 		});
 	});
+	/* 11. Karuzele produktów: strzałki przewijają o szerokość widoku; ukryte na początku/końcu. */
+	$$('[data-bd-carousel]').forEach((wrap) => {
+		const track = $('ul.products', wrap);
+		if (!track) return;
+		const mk = (dir, label, glyph) => {
+			const b = document.createElement('button');
+			b.type = 'button';
+			b.className = `bd-carousel__arrow bd-carousel__arrow--${dir}`;
+			b.setAttribute('aria-label', label);
+			b.innerHTML = `<span aria-hidden="true">${glyph}</span>`;
+			b.addEventListener('click', () => track.scrollBy({ left: (dir === 'next' ? 1 : -1) * track.clientWidth * 0.9, behavior: reduceMotion ? 'auto' : 'smooth' }));
+			wrap.appendChild(b);
+			return b;
+		};
+		const prev = mk('prev', 'Poprzednie produkty', '‹');
+		const next = mk('next', 'Następne produkty', '›');
+		const sync = () => {
+			prev.hidden = track.scrollLeft < 4;
+			next.hidden = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+		};
+		track.addEventListener('scroll', sync, { passive: true });
+		window.addEventListener('resize', sync);
+		sync();
+	});
 })();

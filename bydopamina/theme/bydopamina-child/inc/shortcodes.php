@@ -4,7 +4,8 @@
  *
  *  [bd_usp variant="row|list"]            4 argumenty: darmowa dostawa, nie ciemnieje, zwroty, pudełko
  *  [bd_trust_badges]                      dostawa, zwroty, pudełko prezentowe, płatności
- *  [bd_category_arches]                   kafelki kategorii (przewijane na mobile)
+ *  [bd_category_arches limit="4"]        kafle kategorii na całą szerokość: zdjęcie, NAZWA, „Pokaż więcej”
+ *  [bd_products_carousel type=… category=… tag=…]  karuzela produktów ze strzałkami (Bestsellery, Nowości, Zestawy…)
  *  [bd_product_tabs limit="8"]            zakładki: Bestsellery / Nowości / Promocje
  *  [bd_shop_the_look image="ID" products="ID:x:y,ID:x:y"]   zdjęcie z punktami produktów (x, y w %)
  *  [bd_reviews limit="10"]                prawdziwe opinie z WooCommerce (4–5★, zweryfikowane zakupy)
@@ -114,7 +115,7 @@ add_shortcode(
 		if ( ! taxonomy_exists( 'product_cat' ) ) {
 			return '';
 		}
-		$atts  = shortcode_atts( array( 'limit' => 6 ), $atts, 'bd_category_arches' );
+		$atts  = shortcode_atts( array( 'limit' => 4 ), $atts, 'bd_category_arches' );
 		$terms = get_terms(
 			array(
 				'taxonomy'   => 'product_cat',
@@ -133,11 +134,12 @@ add_shortcode(
 			$thumb = (int) get_term_meta( $term->term_id, 'thumbnail_id', true );
 			$img   = $thumb ? wp_get_attachment_image( $thumb, 'bd-card', false, array( 'loading' => 'lazy', 'alt' => '' ) ) : '<span class="bd-arches__ph"></span>';
 			$html .= sprintf(
-				'<li><a href="%1$s"><span class="bd-arches__img">%2$s</span><span class="bd-arches__name"><span class="bd-mono">%3$02d</span>%4$s</span></a></li>',
+				'<li><a href="%1$s"><span class="bd-arches__img">%2$s</span><span class="bd-arches__name"><span class="bd-mono">%3$02d</span>%4$s</span><span class="bd-arches__more">%5$s</span></a></li>',
 				esc_url( get_term_link( $term ) ),
 				$img,
 				$i + 1,
-				esc_html( $term->name )
+				esc_html( $term->name ),
+				esc_html__( 'Pokaż więcej', 'bydopamina' )
 			);
 		}
 		return $html . '</ul></nav>';
@@ -1008,5 +1010,53 @@ add_shortcode(
 			esc_html__( 'Razem:', 'bydopamina' ),
 			$main_simple ? esc_html__( 'Dodaj komplet do koszyka', 'bydopamina' ) : esc_html__( 'Dodaj zaznaczone', 'bydopamina' )
 		);
+	}
+);
+
+/**
+ * [bd_products_carousel type="bestsellers|new|sale|featured" category="slug" tag="slug" limit="10"]
+ * Pozioma karuzela produktów ze strzałkami (5 na ekranie desktop, 2,3 na telefonie).
+ * „Bestsellery” biorą produkty z tagiem „bestseller”, a gdy go brak – najlepiej sprzedające się.
+ */
+add_shortcode(
+	'bd_products_carousel',
+	function ( $atts ) {
+		$atts = shortcode_atts(
+			array(
+				'type'     => 'bestsellers',
+				'category' => '',
+				'tag'      => '',
+				'limit'    => 10,
+			),
+			$atts,
+			'bd_products_carousel'
+		);
+		$args = 'limit="' . (int) $atts['limit'] . '" columns="5"';
+		if ( $atts['category'] ) {
+			$args .= ' category="' . esc_attr( sanitize_title( $atts['category'] ) ) . '"';
+		}
+		if ( $atts['tag'] ) {
+			$args .= ' tag="' . esc_attr( sanitize_title( $atts['tag'] ) ) . '"';
+		}
+		switch ( $atts['type'] ) {
+			case 'new':
+				$args .= ' orderby="date" order="DESC"';
+				break;
+			case 'sale':
+				$args .= ' on_sale="true"';
+				break;
+			case 'featured':
+				$args .= ' visibility="featured"';
+				break;
+			case 'bestsellers':
+				$tag = get_term_by( 'slug', 'bestseller', 'product_tag' );
+				$args .= ( $tag && $tag->count && ! $atts['tag'] ) ? ' tag="bestseller"' : ' best_selling="true"';
+				break;
+		}
+		$html = do_shortcode( '[products ' . $args . ']' );
+		if ( ! str_contains( $html, 'li class' ) && ! str_contains( $html, '<li' ) ) {
+			return '';
+		}
+		return '<div class="bd-carousel" data-bd-carousel>' . $html . '</div>';
 	}
 );

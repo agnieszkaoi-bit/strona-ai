@@ -15,6 +15,7 @@
 	--bd-surface: #FFFFFF;
 	--bd-surface-2: #F5ECE7;   /* pudrowy róż – tła zdjęć, sekcje */
 	--bd-surface-3: #EFE3DC;
+	--bd-packshot: #F4F2F0;    /* tło zdjęć produktów (jasna szarość, jak w studiu) */
 	--bd-ink: #2B2421;         /* ciepła czerń – tekst, przyciski (~15:1) */
 	--bd-ink-2: #6B5F58;       /* tekst drugorzędny (~6:1, AA) */
 	--bd-ink-3: #9A8E86;       /* tylko duży tekst / nieaktywne */
@@ -60,9 +61,9 @@
 	--bd-measure: 62ch;
 
 	/* Kształt i ruch */
-	--bd-radius: 4px;          /* zdjęcia, karty – prawie proste, jak w klasycznych sklepach jubilerskich */
-	--bd-radius-sm: 4px;
-	--bd-radius-pill: 2px;     /* przyciski, pola, etykiety – prostokątne */
+	--bd-radius: 0;            /* zdjęcia, karty, przyciski – proste kąty, jak w klasycznych sklepach jubilerskich */
+	--bd-radius-sm: 0;
+	--bd-radius-pill: 0;
 	--bd-radius-arch: var(--bd-radius);                          /* zdjęcia i karty: zwykłe, lekko zaokrąglone prostokąty */
 	--bd-ease: cubic-bezier(0.22, 1, 0.36, 1);
 	--bd-ease-out: cubic-bezier(0.16, 1, 0.3, 1);

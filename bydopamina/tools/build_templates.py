@@ -267,49 +267,55 @@ def home():
         boxed=False, cls="bd-hero", pad=pad(0),
     )
 
+    def carousel_section(title, link_label, url, sc, **kw):
+        return section(sechead(title, None, link_label, url), shortcode(sc), cls="bd-section bd-reveal", **kw)
+
+    bestsellers = carousel_section("Bestsellery", "Zobacz wszystko ›", "/sklep/?orderby=popularity",
+                                   '[bd_products_carousel type="bestsellers" limit="10"]')
+
     categories = section(
-        sechead("Kategorie", None, "Zobacz wszystkie", "/sklep/"),
-        shortcode('[bd_category_arches limit="6"]'),
-        cls="bd-section bd-reveal",
+        heading("Biżuteria", "h2", "bd-h2"),
+        # Kafle = kategorie główne (miniatura kategorii 4:5). Kolejność: Produkty → Kategorie.
+        shortcode('[bd_category_arches limit="4"]'),
+        cls="bd-section bd-reveal", gap=28, pad=pad(0, 40), pad_mobile=SIDE_M,
     )
 
-    products = section(
-        sechead("Polecamy", None, "Zobacz wszystkie", "/sklep/"),
-        shortcode('[bd_product_tabs limit="8"]'),
+    new_in = carousel_section("Nowości", "Zobacz wszystko ›", "/sklep/?orderby=date",
+                              '[bd_products_carousel type="new" limit="10"]')
+
+    moods = section(
+        sechead("Biżuteria na nastrój", None, None, None),
+        # Wyróżnik marki. Opcjonalnie zdjęcia: [bd_mood_picker images="radosc:123,spokoj:456"]
+        shortcode("[bd_mood_picker]"),
         cls="bd-section bd-reveal", pad=pad(0, 40), pad_mobile=SIDE_M,
     )
 
-    moods = section(
-        sechead("Biżuteria na nastrój", "Wybierz, jak chcesz się dziś poczuć – dobierzemy kolory.", None, None),
-        # Opcjonalnie zdjęcia w kółkach: [bd_mood_picker images="radosc:123,spokoj:456"]
-        shortcode("[bd_mood_picker]"),
-        cls="bd-section bd-reveal",
-    )
+    sets = carousel_section("Zestawy biżuterii", "Zobacz wszystko ›", "/kategoria-produktu/zestawy/",
+                            '[bd_products_carousel type="all" category="zestawy" limit="10"]')
 
     look = section(
-        sechead("Noś razem", None, "Więcej stylizacji", "/stylizacje/"),
+        sechead("Noś razem", None, "Więcej stylizacji ›", "/stylizacje/"),
         # Podmień: image = ID zdjęcia z Mediów, products = ID:x%:y% (pozycja kropki na zdjęciu).
         shortcode('[bd_shop_the_look image="0" products="101:34:38,102:52:30,103:61:66" title="Na zdjęciu"]'),
         cls="bd-section bd-reveal", pad=pad(0, 40), pad_mobile=SIDE_M,
     )
 
-    gifts = section(
-        box(
-            box(
-                heading("Na prezent", "h2", "bd-h2"),
-                text("<p>Każde zamówienie pakujemy w pudełko. Przy zamówieniu możesz dodać pakowanie na prezent "
-                     "z liścikiem – bez paragonu w paczce.</p>", "bd-lead"),
-                shortcode("[bd_gift_finder]"),
-                width=55, width_tablet=100, gap=20,
-            ),
-            box(image("bd-arch", "Biżuteria w pudełku prezentowym"), width=45, width_tablet=100),
-            direction="row", wrap="wrap", gap=56, align="center", cls="bd-newsletter-box",
-        ),
-        cls="bd-section bd-reveal",
+    def banner(title, url):
+        return con(
+            html(f'<span class="bd-banner__text"><strong>{title}</strong><span>Pokaż więcej ›</span></span>'),
+            inner=True, boxed=False, cls="bd-banner", html_tag="a", link={"url": url, "is_external": "", "nofollow": ""},
+            background_background="classic", background_image={"url": "", "id": ""}, background_size="cover",
+            background_position="center center", minh=180,
+        )
+
+    banners = section(
+        box(banner("Na prezent", "/kategoria-produktu/prezenty/"), banner("Karty podarunkowe", "/karta-podarunkowa/"),
+            cls="bd-banners", direction="row"),
+        cls="bd-section", pad=pad(0, 40), pad_mobile=SIDE_M,
     )
 
     reviews = section(
-        sechead("Opinie klientek", None, "Wszystkie opinie", "/opinie/"),
+        sechead("Opinie klientek", None, "Wszystkie opinie ›", "/opinie/"),
         shortcode("[bd_rating_summary]"),
         shortcode('[bd_reviews limit="10"]'),
         cls="bd-section bd-reveal", gap=24, pad=pad(0, 40), pad_mobile=SIDE_M,
@@ -320,29 +326,29 @@ def home():
         form_name="Newsletter",
         form_fields=[
             {"_id": _id(), "custom_id": "email", "field_type": "email", "field_label": "Adres e-mail",
-             "placeholder": "twoj@email.pl", "required": "true", "width": "70"},
+             "placeholder": "Podaj adres e-mail*", "required": "true", "width": "100"},
             {"_id": _id(), "custom_id": "hp", "field_type": "honeypot", "width": "100"},
             {"_id": _id(), "custom_id": "zgoda", "field_type": "acceptance", "required": "true", "width": "100",
-             "acceptance_text": 'Chcę dostawać newsletter (maks. 2 maile w miesiącu). <a href="/polityka-prywatnosci/">Polityka prywatności</a>.'},
+             "acceptance_text": 'Chcę zapisać się do newslettera. Zapoznałam/em się z <a href="/polityka-prywatnosci/">Polityką prywatności</a>.'},
         ],
-        show_labels="", button_text="Odbierz −10%", button_width="30",
+        show_labels="", button_text="Dołącz", button_width="100",
         submit_actions=["save-to-database"],
-        success_message="Gotowe! Potwierdź zapis w mailu – kod −10% wyślemy od razu.",
+        success_message="Gotowe! Potwierdź zapis w mailu – kod rabatowy wyślemy od razu.",
         error_message="Coś poszło nie tak. Spróbuj ponownie.",
     )
     newsletter = section(
-        box(
-            box(heading("−10% na pierwsze zakupy", "h2", "bd-h2"),
-                text("<p>Zapisz się – nowe kolekcje zobaczysz przed wszystkimi.</p>", "bd-lead"),
-                width=50, width_tablet=100, gap=8),
-            box(newsletter_form, width=50, width_tablet=100),
-            direction="row", wrap="wrap", gap=40, align="center", cls="bd-newsletter-box bd-tint bd-tint--rose",
+        con(
+            box(image("", "Biżuteria na stole"), cls="bd-nl-split__img"),
+            box(heading("Odbierz 10% rabatu na pierwsze zakupy", "h2", ""),
+                text("<p>Dołącz do newslettera – nowe kolekcje, stylizacje i promocje zobaczysz przed wszystkimi.</p>"),
+                newsletter_form, cls="bd-nl-split__panel"),
+            inner=True, boxed=False, cls="bd-nl-split", direction="row",
         ),
-        cls="bd-section", pad=pad(64, 40, 120, 40), pad_mobile=pad(40, 16, 72, 16),
+        cls="bd-section", pad=pad(0, 0, 0, 0),
     )
 
     return template("bydopamina — Strona główna", "page",
-                    [hero, categories, products, moods, look, gifts, reviews, newsletter], FULL_PAGE)
+                    [hero, bestsellers, categories, new_in, moods, sets, look, banners, reviews, newsletter], FULL_PAGE)
 
 
 # ---------------------------------------------------------------------------

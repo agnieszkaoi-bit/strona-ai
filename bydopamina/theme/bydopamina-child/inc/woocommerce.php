@@ -464,3 +464,93 @@ add_filter(
 		return $original ? esc_attr( $original ) : $q;
 	}
 );
+
+/* -------------------------------------------------------------------------
+ * Karty produktów w stylu klasycznych sklepów jubilerskich:
+ * NAZWA → podtytuł (materiał) → cena → pole promocji / oszczędności zestawu.
+ * ---------------------------------------------------------------------- */
+
+/**
+ * Podtytuł produktu: pole własne `bd_subtitle` (np. „z perłą, stal złocona”), a gdy puste – wartości atrybutu Materiał.
+ *
+ * @param WC_Product $product Produkt.
+ * @return string
+ */
+function bydopamina_product_subtitle( $product ) {
+	$subtitle = (string) $product->get_meta( 'bd_subtitle' );
+	if ( '' === $subtitle ) {
+		$names    = wc_get_product_terms( $product->get_id(), 'pa_material', array( 'fields' => 'names' ) );
+		$subtitle = $names ? mb_strtolower( implode( ', ', $names ) ) : '';
+	}
+	return $subtitle;
+}
+
+add_action(
+	'woocommerce_shop_loop_item_title',
+	function () {
+		global $product;
+		$subtitle = $product ? bydopamina_product_subtitle( $product ) : '';
+		if ( $subtitle ) {
+			echo '<p class="bd-card-sub">' . esc_html( $subtitle ) . '</p>';
+		}
+	},
+	11
+);
+
+// Etykieta „Bestseller” – produkty z tagiem „bestseller” (ręczny wybór = pełna kontrola).
+add_action(
+	'woocommerce_before_shop_loop_item_title',
+	function () {
+		global $product;
+		if ( $product && has_term( 'bestseller', 'product_tag', $product->get_id() ) && ! $product->is_on_sale() ) {
+			echo '<span class="bd-badge bd-badge--light">' . esc_html__( 'Bestseller', 'bydopamina' ) . '</span>';
+		}
+	},
+	8
+);
+
+/**
+ * Po cenie:
+ *  – zestaw (kategoria „zestawy”) w promocji: „Cena poza zestawem” + „Oszczędzasz X zł (Y%)”
+ *    (cena regularna = suma produktów osobno, cena promocyjna = cena w zestawie – bez wtyczek);
+ *  – produkt z tagiem „promocja”: pole z hasłem akcji (BYDOPAMINA_PROMO_LABEL).
+ */
+add_action(
+	'woocommerce_after_shop_loop_item_title',
+	function () {
+		global $product;
+		if ( ! $product ) {
+			return;
+		}
+		$regular = (float) $product->get_regular_price();
+		$sale    = (float) $product->get_sale_price();
+		if ( has_term( 'zestawy', 'product_cat', $product->get_id() ) && $product->is_on_sale() && $regular > 0 && $sale > 0 ) {
+			$saved = $regular - $sale;
+			printf(
+				'<p class="bd-set-regular">%1$s <span>%2$s</span></p><span class="bd-save">%3$s</span>',
+				esc_html__( 'Cena produktów poza zestawem:', 'bydopamina' ),
+				wp_kses_post( wc_price( wc_get_price_to_display( $product, array( 'price' => $regular ) ) ) ),
+				/* translators: 1: kwota, 2: procent */
+				esc_html( sprintf( __( 'Oszczędzasz %1$s (%2$d%%)', 'bydopamina' ), wp_strip_all_tags( wc_price( $saved ) ), round( $saved / $regular * 100 ) ) )
+			);
+			return;
+		}
+		if ( has_term( 'promocja', 'product_tag', $product->get_id() ) && BYDOPAMINA_PROMO_LABEL ) {
+			echo '<span class="bd-promo-tag">' . esc_html( BYDOPAMINA_PROMO_LABEL ) . '</span>';
+		}
+	},
+	20
+);
+
+// W zestawach cena z dopiskiem „Cena w zestawie:”.
+add_filter(
+	'woocommerce_get_price_html',
+	function ( $html, $product ) {
+		if ( is_admin() || ! $product->is_on_sale() || ! has_term( 'zestawy', 'product_cat', $product->get_id() ) ) {
+			return $html;
+		}
+		return '<span class="bd-set-label">' . esc_html__( 'Cena w zestawie:', 'bydopamina' ) . '</span> ' . wc_price( wc_get_price_to_display( $product ) );
+	},
+	20,
+	2
+);

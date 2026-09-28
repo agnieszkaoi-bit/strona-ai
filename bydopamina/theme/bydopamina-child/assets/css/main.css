@@ -36,7 +36,7 @@ h1, h2, h3, .bd-display, .elementor-heading-title {
 h1 em, h2 em, h3 em, .elementor-heading-title em { font-style: normal; }
 p { text-wrap: pretty; }
 .bd-hero-title .elementor-heading-title, h1.bd-hero-title { font-size: var(--bd-fs-hero) !important; line-height: 1.04; letter-spacing: -0.03em; }
-.bd-h2 .elementor-heading-title, .bd-h2 { font-size: clamp(1.5rem, 1.25rem + 1vw, 2.25rem) !important; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; }
+.bd-h2 .elementor-heading-title, .bd-h2 { font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2.125rem) !important; font-weight: 500; text-transform: uppercase; letter-spacing: -0.01em; }
 .bd-h3 .elementor-heading-title, .bd-h3 { font-size: var(--bd-fs-xl) !important; }
 .bd-lead, .bd-lead p { font-size: var(--bd-fs-lg); color: var(--bd-ink-2); max-width: 44ch; line-height: 1.55; }
 .bd-muted { color: var(--bd-ink-2); }
@@ -157,7 +157,9 @@ p { text-wrap: pretty; }
 .bd-dark .bd-textlink, .bd-dark .bd-textlink a { color: #FBF8F5; }
 
 /* Nagłówek sekcji: tytuł + opis po lewej, link po prawej */
-.bd-sechead { display: flex !important; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px 24px; margin-bottom: clamp(24px, 3vw, 40px); }
+.bd-sechead { display: flex !important; flex-wrap: wrap; justify-content: flex-start; align-items: baseline; gap: 8px 24px; margin-bottom: clamp(20px, 2.5vw, 32px); }
+.bd-sechead .bd-textlink, .bd-sechead .bd-textlink a { background-image: none; padding: 0; font-size: var(--bd-fs-2xs); }
+.bd-sechead .bd-textlink:hover { text-decoration: underline; }
 .bd-sechead > * { width: auto !important; }
 .bd-sechead p { margin: 6px 0 0; color: var(--bd-ink-2); max-width: 52ch; }
 
@@ -285,7 +287,7 @@ p { text-wrap: pretty; }
 .bd-review blockquote p { margin: 0; font-size: var(--bd-fs-base); line-height: 1.55; }
 .bd-review footer { display: grid; gap: 12px; font-size: var(--bd-fs-xs); color: var(--bd-ink-2); padding-top: 14px; border-top: 1px solid var(--bd-line); }
 .bd-review footer a { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--bd-ink); font-size: var(--bd-fs-sm); font-weight: 500; }
-.bd-review footer img, .bd-review footer .bd-ph { width: 40px; height: 50px; object-fit: cover; background: var(--bd-surface-2); border-radius: 8px; }
+.bd-review footer img, .bd-review footer .bd-ph { flex: none; width: 44px !important; height: 44px !important; aspect-ratio: 1 !important; object-fit: cover; background: var(--bd-surface-2); border-radius: 8px; }
 .bd-reviews__note { font-size: var(--bd-fs-xs); color: var(--bd-ink-2); margin-top: 16px; }
 
 /* Newsletter */
@@ -326,7 +328,7 @@ p { text-wrap: pretty; }
 .bd-tint--rose { --tint: var(--bd-tint-rose); }
 
 /* ============ 7. Nastroje – wyróżnik marki ============ */
-.bd-moods ul { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--bd-grid-gap); margin: 0; padding: 0; list-style: none; }
+.bd-moods ul { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; margin: 0; padding: 0; list-style: none; }
 .bd-mood a {
 	position: relative; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; min-height: 100%;
 	aspect-ratio: 3 / 4.2; padding: 22px 18px; border-radius: var(--bd-radius-arch); background: var(--tint);
@@ -340,70 +342,123 @@ p { text-wrap: pretty; }
 .bd-mood__dots { position: relative; display: flex; gap: 4px; margin-top: 4px; }
 .bd-mood__dots i { width: 12px; height: 12px; border-radius: 50%; background: var(--sw); box-shadow: 0 0 0 2px rgb(255 255 255 / 0.8); }
 
-/* ============ 8. Karty produktów ============ */
-.woocommerce ul.products { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(28px, 3vw, 44px) var(--bd-grid-gap) !important; margin: 0 !important; padding: 0 !important; list-style: none; }
+/* ============ 8. Karty produktów (klasyczny sklep jubilerski) ============ */
+.woocommerce ul.products { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px 12px !important; margin: 0 !important; padding: 0 !important; list-style: none; }
 .woocommerce ul.products::before, .woocommerce ul.products::after { display: none !important; }
 .woocommerce ul.products.columns-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.woocommerce ul.products.columns-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .woocommerce ul.products li.product {
 	position: relative; width: auto !important; margin: 0 !important; padding: 0 !important; float: none !important;
 	text-align: left; display: flex; flex-direction: column; container-type: inline-size;
 }
-.woocommerce ul.products li.product a.woocommerce-LoopProduct-link { position: relative; display: block; text-decoration: none; }
+.woocommerce ul.products li.product a.woocommerce-LoopProduct-link { position: relative; display: block; text-decoration: none; color: var(--bd-ink); }
 .woocommerce ul.products li.product a img, .woocommerce ul.products li.product .bd-ph {
-	display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; margin: 0 0 14px !important;
-	background: var(--bd-surface-2); border-radius: var(--bd-radius);
+	display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; margin: 0 0 16px !important;
+	background: var(--bd-packshot); border-radius: 0;
 }
 .woocommerce ul.products li.product .bd-card__alt { position: absolute; inset: 0 0 auto 0; opacity: 0; transition: opacity 500ms var(--bd-ease); }
-@media (hover: hover) {
-	.woocommerce ul.products li.product:hover .bd-card__alt { opacity: 1; }
-}
+@media (hover: hover) { .woocommerce ul.products li.product:hover .bd-card__alt { opacity: 1; } }
 .woocommerce ul.products li.product .woocommerce-loop-product__title {
-	font-family: var(--bd-font-body) !important; font-size: var(--bd-fs-sm) !important; font-weight: 500 !important;
-	line-height: 1.4; letter-spacing: 0; padding: 0 !important; margin: 0 0 4px !important; color: var(--bd-ink);
+	font-family: var(--bd-font-body) !important; font-size: 13px !important; font-weight: 600 !important; text-transform: uppercase;
+	line-height: 1.4; letter-spacing: 0.02em; padding: 0 !important; margin: 0 0 6px !important; color: var(--bd-ink);
 }
-.woocommerce ul.products li.product .price { display: flex; gap: 8px; flex-wrap: wrap; color: var(--bd-ink) !important; font-size: var(--bd-fs-sm) !important; font-weight: 700; font-variant-numeric: tabular-nums; margin: 0 !important; }
+.bd-card-sub { margin: 0 0 8px; font-size: 13px; font-weight: 500; line-height: 1.4; color: var(--bd-ink-2); }
+.woocommerce ul.products li.product .price { display: flex; gap: 8px; flex-wrap: wrap; align-items: baseline; color: var(--bd-ink) !important; font-size: 13px !important; font-weight: 600; text-transform: uppercase; font-variant-numeric: tabular-nums; margin: 0 !important; }
 .woocommerce ul.products li.product .price del { color: var(--bd-ink-2); font-weight: 400; opacity: 1; }
 .woocommerce ul.products li.product .price ins { text-decoration: none; color: var(--bd-cherry); }
+.bd-set-label { text-transform: none; font-weight: 700; font-size: 15px; }
+.woocommerce ul.products li.product .price:has(.bd-set-label) { font-size: 15px !important; font-weight: 700; text-transform: none; }
+.bd-set-regular { margin: 4px 0 0; font-size: 12px; color: var(--bd-ink-2); }
+.bd-save, .bd-promo-tag { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 8px 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.bd-save { border: 1px solid var(--bd-line); color: var(--bd-ink); }
+.bd-promo-tag { background: var(--bd-cherry); color: #fff; }
+.bd-promo-tag::before { content: ""; width: 12px; height: 12px; border: 1.5px solid currentColor; border-radius: 2px 50% 50% 50%; transform: rotate(-45deg); opacity: 0.9; }
 .woocommerce ul.products li.product .star-rating { display: none; }
-.bd-card-swatches { display: flex; align-items: center; gap: 5px; margin: 8px 0 0; }
+.bd-card-swatches { display: flex; align-items: center; gap: 5px; margin: 10px 0 0; }
 .bd-card-swatches i { width: 12px; height: 12px; border-radius: 50%; background: var(--sw); box-shadow: inset 0 0 0 1px rgb(43 36 33 / 0.15); }
 .bd-card-swatches .bd-mono { color: var(--bd-ink-2); margin-left: 2px; letter-spacing: 0; }
-/* Szybkie dodanie: okrągły „+” na zdjęciu (zawsze widoczny – także na telefonie) */
+/* Szybkie dodanie: na desktopie pasek „Dodaj do koszyka” na dole zdjęcia po najechaniu; na telefonie mały „+” w rogu zdjęcia */
 .woocommerce ul.products li.product .button {
-	position: absolute; right: 10px; top: calc(125cqw - 58px); z-index: 2; margin: 0 !important;
-	width: 44px; min-height: 44px; height: 44px; padding: 0 !important; border-radius: 50% !important; overflow: hidden;
-	background: var(--bd-surface) !important; color: var(--bd-ink) !important; border: 0 !important; box-shadow: var(--bd-shadow-soft);
-	font-size: 0 !important; transition: width var(--bd-dur) var(--bd-ease), background var(--bd-dur), color var(--bd-dur);
+	position: absolute; right: 8px; top: calc(100cqw - 48px); z-index: 2; margin: 0 !important;
+	width: 40px; min-height: 40px; height: 40px; padding: 0 !important; overflow: hidden;
+	background: var(--bd-surface) !important; color: var(--bd-ink) !important; border: 0 !important; box-shadow: none;
+	font-size: 0 !important; letter-spacing: 0.08em;
 }
-.woocommerce ul.products li.product .button::before { content: "+"; font: 400 26px/1 var(--bd-font-body); }
+.woocommerce ul.products li.product .button::before { content: "+"; font: 400 24px/1 var(--bd-font-body); }
 @media (hover: hover) and (min-width: 1025px) {
-	.woocommerce ul.products li.product .button:hover, .woocommerce ul.products li.product:hover .button { width: auto; padding: 0 18px !important; border-radius: var(--bd-radius-pill) !important; font-size: var(--bd-fs-xs) !important; gap: 6px; }
-	.woocommerce ul.products li.product .button:hover::before, .woocommerce ul.products li.product:hover .button::before { font-size: 18px; }
-	.woocommerce ul.products li.product .button:hover { background: var(--bd-ink) !important; color: #fff !important; }
+	.woocommerce ul.products li.product .button { left: 0; right: 0; width: auto; height: 44px; top: calc(100cqw - 44px); opacity: 0; transform: translateY(6px); background: rgb(43 36 33 / 0.9) !important; color: #fff !important; font-size: 11px !important; transition: opacity var(--bd-dur), transform var(--bd-dur) var(--bd-ease); }
+	.woocommerce ul.products li.product .button::before { content: none; }
+	.woocommerce ul.products li.product:hover .button, .woocommerce ul.products li.product .button:focus-visible { opacity: 1; transform: none; }
 }
 .woocommerce ul.products li.product .button.loading { opacity: 0.6; }
 .woocommerce ul.products li.product .button.added::before { content: "✓"; font-size: 18px; }
+/* Serduszko (TI WooCommerce Wishlist / YITH) w prawym górnym rogu zdjęcia */
+.woocommerce ul.products li.product .tinv-wraper, .woocommerce ul.products li.product .yith-wcwl-add-to-wishlist, .bd-wish { position: absolute !important; top: 8px; right: 8px; z-index: 3; margin: 0 !important; }
+.bd-wish { width: 36px; height: 36px; display: grid; place-items: center; color: var(--bd-ink); background: none; border: 0; cursor: pointer; }
 .woocommerce span.onsale, .bd-badge {
 	position: absolute; top: 10px; left: 10px; right: auto; z-index: 2; margin: 0 !important;
-	min-width: 0; min-height: 0; padding: 6px 10px; border-radius: var(--bd-radius-pill); line-height: 1 !important;
-	font: 700 var(--bd-fs-2xs)/1 var(--bd-font-body) !important; letter-spacing: 0.04em;
+	min-width: 0; min-height: 0; padding: 6px 8px; border-radius: 0; line-height: 1 !important;
+	font: 600 10px/1 var(--bd-font-body) !important; letter-spacing: 0.06em; text-transform: uppercase;
 	background: var(--bd-cherry) !important; color: #fff !important;
 }
 .bd-badge { background: var(--bd-butter) !important; color: var(--bd-ink) !important; }
+.bd-badge--light { background: #EAE7E3 !important; color: var(--bd-ink) !important; }
 .bd-badge--muted { background: var(--bd-surface) !important; color: var(--bd-ink-2) !important; }
 .woocommerce a.added_to_cart { display: none !important; }
 .woocommerce-result-count { font-size: var(--bd-fs-xs); color: var(--bd-ink-2); }
-.woocommerce-ordering select { min-height: 42px; border: 1px solid var(--bd-line); border-radius: var(--bd-radius-pill); background: var(--bd-surface); padding: 0 16px; font-size: var(--bd-fs-sm); }
+.woocommerce-ordering select { min-height: 42px; border: 1px solid var(--bd-line); background: var(--bd-surface); padding: 0 16px; font-size: var(--bd-fs-sm); }
 .woocommerce nav.woocommerce-pagination ul { border: 0 !important; display: flex; justify-content: center; gap: 6px; }
 .woocommerce nav.woocommerce-pagination ul li { border: 0 !important; }
-.woocommerce nav.woocommerce-pagination ul li a, .woocommerce nav.woocommerce-pagination ul li span { min-width: 44px; min-height: 44px; display: grid; place-items: center; border-radius: 50%; }
+.woocommerce nav.woocommerce-pagination ul li a, .woocommerce nav.woocommerce-pagination ul li span { min-width: 44px; min-height: 44px; display: grid; place-items: center; }
 .woocommerce nav.woocommerce-pagination ul li span.current { background: var(--bd-ink); color: #fff; }
 
-@media (max-width: 1024px) {
-	.bd-rail ul.products { grid-auto-flow: column; grid-template-columns: none !important; grid-auto-columns: 40%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px !important; scrollbar-width: none; }
-	.bd-rail ul.products::-webkit-scrollbar { display: none; }
-	.bd-rail ul.products li.product { scroll-snap-align: start; }
+/* Karuzela produktów */
+.bd-carousel { position: relative; }
+.bd-carousel ul.products, .bd-rail ul.products {
+	grid-template-columns: none !important; grid-auto-flow: column; grid-auto-columns: calc((100% - 4 * 12px) / 5);
+	gap: 12px !important; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 4px !important;
 }
+.bd-carousel ul.products::-webkit-scrollbar, .bd-rail ul.products::-webkit-scrollbar { display: none; }
+.bd-carousel ul.products li.product, .bd-rail ul.products li.product { scroll-snap-align: start; }
+.bd-carousel__arrow {
+	position: absolute; top: calc((100% - 120px) / 2); z-index: 4; width: 44px; height: 44px; display: grid; place-items: center;
+	border: 0; background: rgb(255 255 255 / 0.85); color: var(--bd-ink); font: 300 32px/1 var(--bd-font-body); cursor: pointer;
+}
+.bd-carousel__arrow--prev { left: 8px; }
+.bd-carousel__arrow--next { right: 8px; }
+.bd-carousel__arrow[hidden] { display: none; }
+
+/* Kafle kategorii na całą szerokość – zdjęcie, NAZWA, „Pokaż więcej” */
+.bd-arches ul { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; grid-auto-flow: row !important; gap: 0 !important; overflow: visible !important; }
+.bd-arches li { position: relative; }
+.bd-arches a { position: relative; display: block !important; color: #fff; text-decoration: none; overflow: hidden; }
+.bd-arches__img { display: block; aspect-ratio: 4 / 5 !important; border-radius: 0 !important; }
+.bd-arches__img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(20 14 12 / 0.45), transparent 40%); pointer-events: none; }
+.bd-arches__name { position: absolute; left: 16px; bottom: 44px; z-index: 1; color: #fff; font-size: var(--bd-fs-sm) !important; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.bd-arches__more { position: absolute; left: 16px; bottom: 18px; z-index: 1; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 3px; }
+.bd-arches__more::after { content: " ›"; }
+
+/* Dwa szerokie banery (np. Na prezent / Karty podarunkowe) */
+.bd-banners { display: grid !important; grid-template-columns: 1fr 1fr; gap: 0; }
+.bd-banners > * { width: auto !important; }
+.bd-banner { position: relative; display: block; min-height: 180px; overflow: hidden; color: #fff; text-decoration: none; background: var(--bd-surface-3); }
+.bd-banner__bg { position: absolute; inset: 0; }
+.bd-banner__bg img, .bd-banner__bg .bd-ph { width: 100% !important; height: 100% !important; aspect-ratio: auto !important; object-fit: cover; }
+.bd-banner::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(20 14 12 / 0.45), transparent 60%); }
+.bd-banner__text { position: absolute; left: 20px; top: 18px; z-index: 1; display: grid; gap: 8px; }
+.bd-banner__text strong { font-size: var(--bd-fs-sm); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.bd-banner__text span { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Newsletter: zdjęcie + kolorowy panel */
+.bd-nl-split { display: grid !important; grid-template-columns: 1fr 1fr; background: var(--bd-surface-3); }
+.bd-nl-split > * { width: auto !important; }
+.bd-nl-split__img img, .bd-nl-split__img .bd-ph { width: 100% !important; height: 100% !important; min-height: 420px; aspect-ratio: auto !important; object-fit: cover; }
+.bd-nl-split__panel { display: flex !important; flex-direction: column; justify-content: center; gap: 14px; padding: clamp(28px, 6vw, 110px) !important; }
+.bd-nl-split__panel h2 { font-size: clamp(1.5rem, 1.2rem + 1vw, 2.25rem); font-weight: 500; text-transform: uppercase; letter-spacing: -0.01em; }
+.bd-nl-split__panel p { margin: 0; font-size: var(--bd-fs-sm); }
+.bd-nl-split input[type=email] { width: 100%; min-height: 52px; border: 0 !important; background: var(--bd-surface) !important; padding: 0 16px !important; font: inherit; }
+.bd-nl-split .bd-btn, .bd-nl-split .elementor-button { width: 100%; background: #000 !important; border-color: #000 !important; }
+.bd-nl-split label.acc { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; }
 
 /* ============ 9. Karta produktu i „Dobierz komplet” ============ */
 @media (min-width: 1025px) {
@@ -582,9 +637,6 @@ p { text-wrap: pretty; }
 	.bd-header .bd-nav-desktop { display: none !important; }
 	.bd-header-search { min-width: 160px; }
 	.bd-hero__media { max-width: 560px; width: 100% !important; justify-self: center; }
-	.bd-arches ul { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 30%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 4px; }
-	.bd-arches ul::-webkit-scrollbar { display: none; }
-	.bd-arches li { scroll-snap-align: start; }
 	.bd-moods ul { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 34%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 6px 2px 10px; }
 	.bd-moods ul::-webkit-scrollbar { display: none; }
 	.bd-mood { scroll-snap-align: start; }
@@ -592,6 +644,8 @@ p { text-wrap: pretty; }
 	.bd-look { grid-template-columns: 1fr; }
 	.bd-birthstones ul { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 	.woocommerce ul.products { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.bd-carousel ul.products, .bd-rail ul.products { grid-auto-columns: calc((100% - 2 * 12px) / 3.2); }
+	.bd-arches ul { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
 }
 @media (max-width: 767px) {
 	:root { --bd-header-h: 58px; }
@@ -611,14 +665,17 @@ p { text-wrap: pretty; }
 	.bd-hero__media { order: -1; }
 	.bd-hero__media .bd-arch img, .bd-hero__media .bd-arch .bd-ph { aspect-ratio: 1 / 1 !important; }
 	.bd-hero__text { gap: 16px; }
-	.bd-arches ul { grid-auto-columns: 40%; }
 	.bd-moods ul { grid-auto-columns: 46%; }
 	.bd-features { gap: 8px; }
 	.bd-features li { flex-direction: column; align-items: flex-start; gap: 8px; padding: 14px; }
 	.bd-reviews__list { grid-auto-columns: 86%; }
-	.bd-rail ul.products { grid-auto-columns: 62%; }
 	.bd-birthstones ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 	.woocommerce ul.products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 10px !important; }
+	.bd-carousel ul.products, .bd-rail ul.products { grid-auto-columns: 46%; gap: 10px !important; }
+	.bd-carousel__arrow { display: none; }
+	.bd-banners, .bd-nl-split { grid-template-columns: 1fr; }
+	.bd-nl-split__img img, .bd-nl-split__img .bd-ph { min-height: 240px; }
+	.bd-moods ul { grid-auto-columns: 46%; }
 	.bd-set__item label { grid-template-columns: auto 48px 1fr; }
 	.bd-set__price { grid-column: 3; }
 

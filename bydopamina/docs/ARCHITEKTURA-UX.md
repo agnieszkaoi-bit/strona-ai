@@ -38,20 +38,24 @@ Header (klasyczny układ sklepu jubilerskiego): **pasek promocji** (malina) → 
 Telefon: hamburger + logo + szukaj + koszyk; **dolny pasek**: Start · Sklep · Szukaj · Ulubione · Koszyk.
 Przy 50 produktach nie ma sensu rozbudowane menu z podkategoriami – kategorie główne wystarczą.
 
-## 4. Strona główna – kolejność (8 sekcji)
+## 4. Strona główna – kolejność (wzór: klasyczne sklepy jubilerskie)
 
 | # | Sekcja | Cel | Decyzja UX |
 |---|---|---|---|
-| 1 | **Slider hero na całą szerokość** (2–3 slajdy) | oferta i akcja w 3 s | zdjęcie, DUŻY napis, podtytuł, prostokątny przycisk „Sprawdź”; strzałki + kropki, autoplay 6 s z pauzą po najechaniu; na telefonie kadr 4:5, napis na dole |
-| 2 | **Kategorie** | nawigacja | kafelki zdjęć 3:4 z nazwą WIELKIMI LITERAMI |
-| 3 | **Polecamy** (zakładki Bestsellery / Nowości / Promocje) | szybki zakup | „+” na karcie = do koszyka bez przeładowania; kropki kolorów wariantów |
-| 4 | **Biżuteria na nastrój** | wyróżnik + wybór z kolorowej oferty | 6 kart w pastelach; nastrój bez produktów się ukrywa |
-| 5 | **Noś razem** (shop the look) | wyższa wartość koszyka | punkty na zdjęciu ↔ lista produktów |
-| 6 | **Na prezent** | ruch prezentowy | budżet do 79 / 129 / 199 zł + informacja o pakowaniu |
-| 7 | **Opinie klientek** | dowód społeczny | tylko zweryfikowane zakupy, średnia liczona automatycznie |
-| 8 | **−10% na pierwsze zakupy** | zapis do newslettera | spokojny blok na końcu strony zamiast wyskakującego okna |
+| 1 | **Slider hero na całą szerokość** | oferta i akcja w 3 s | zdjęcie, DUŻY napis, podtytuł, prostokątny przycisk; strzałki + kropki, autoplay 6 s; telefon: kadr 4:5 |
+| 2 | **Bestsellery** – karuzela | szybki zakup | tytuł + „Zobacz wszystko ›” obok; 5 kart na ekranie, strzałki |
+| 3 | **Biżuteria** – 4 kafle kategorii | nawigacja | zdjęcia bez odstępów, NAZWA + „Pokaż więcej ›” na zdjęciu |
+| 4 | **Nowości** – karuzela | powroty stałych klientek | jw. |
+| 5 | **Biżuteria na nastrój** | wyróżnik marki | 6 kolorowych pól bez odstępów – nastrój = paleta kolorów |
+| 6 | **Zestawy biżuterii** – karuzela | wyższa wartość koszyka | „Cena w zestawie”, cena poza zestawem, pole „Oszczędzasz X zł (Y%)” |
+| 7 | **Noś razem** (shop the look) | upsell z inspiracji | punkty na zdjęciu ↔ lista produktów |
+| 8 | **2 banery**: Na prezent / Karty podarunkowe | ruch prezentowy | zdjęcie, NAZWA + „Pokaż więcej ›” |
+| 9 | **Opinie klientek** | dowód społeczny | tylko zweryfikowane zakupy |
+| 10 | **Newsletter**: zdjęcie + kolorowy panel | zapis | nagłówek, pole e-mail na całą szerokość, czarny przycisk „Dołącz”, zgoda |
 
-Argumenty zaufania (dostawa, zwroty, pudełko) są w pasku informacyjnym nad headerem – na każdej stronie, bez osobnej sekcji.
+**Karta produktu w liście:** zdjęcie 1:1 na jasnoszarym tle (drugie zdjęcie po najechaniu), etykieta BESTSELLER / NOWOŚĆ / −20%,
+serduszko w prawym górnym rogu, NAZWA WIELKIMI LITERAMI, podtytuł (materiał), cena, pole promocji lub oszczędności zestawu,
+„Dodaj do koszyka” na dole zdjęcia po najechaniu (telefon: „+” w rogu zdjęcia).
 
 ## 5. Karta produktu – ścieżka i upsell
 

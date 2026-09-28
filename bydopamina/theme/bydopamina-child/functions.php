@@ -33,6 +33,9 @@ if ( ! defined( 'BYDOPAMINA_RETURN_DAYS' ) ) {
 if ( ! defined( 'BYDOPAMINA_GIFTWRAP_PRICE' ) ) {
 	define( 'BYDOPAMINA_GIFTWRAP_PRICE', 9 );        // PLN – pakowanie na prezent w checkoutcie (0 = za darmo).
 }
+if ( ! defined( 'BYDOPAMINA_PROMO_LABEL' ) ) {
+	define( 'BYDOPAMINA_PROMO_LABEL', 'Druga sztuka −30%' ); // Pole pod ceną produktów z tagiem „promocja” ('' = wyłączone).
+}
 if ( ! defined( 'BYDOPAMINA_CSP_ENFORCE' ) ) {
 	define( 'BYDOPAMINA_CSP_ENFORCE', false );        // false = Content-Security-Policy-Report-Only (bezpieczny start).
 }

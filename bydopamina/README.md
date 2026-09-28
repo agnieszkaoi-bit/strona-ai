@@ -5,6 +5,9 @@ jest stonowana: porcelanowa biel, pudrowy róż, ciepła czerń, jeden akcent �
 Jeden prosty, bardzo czytelny krój: **Figtree** (tekst 17 px). Układ jak w dużych sklepach jubilerskich:
 pasek promocji + pasek informacyjny, logo po lewej, menu WIELKIMI LITERAMI, widoczne pole „Szukaj”, ikony z podpisami
 (Profil / Ulubione / Koszyk), **hero = slider zdjęć na całą szerokość** z dużym napisem i prostokątnym przyciskiem.
+Strona główna: Bestsellery (karuzela) → Biżuteria (4 kafle kategorii) → Nowości → Biżuteria na nastrój → Zestawy biżuterii
+(cena w zestawie + „Oszczędzasz X zł”) → Noś razem → 2 banery → Opinie → newsletter (zdjęcie + panel).
+Karty produktów: zdjęcie 1:1 na jasnoszarym tle, etykieta BESTSELLER/NOWOŚĆ/−20%, serduszko, NAZWA, podtytuł (materiał), cena, pole promocji.
 Prostokątne przyciski i prawie proste rogi zdjęć – bez „pigułek”, kolorowych słów w nagłówkach i ozdobnych etykiet.
 
 **Wyróżniki (czego nie mają inne sklepy):**
@@ -112,6 +115,10 @@ Po imporcie:
 - **Kafelki kategorii**: Produkty → Kategorie → ustaw miniaturę każdej kategorii (3:4) i kolejność.
 - **Atrybuty**: Produkty → Atrybuty → utwórz **Kolor** (slug `kolor`, typ „Kolor” w Variation Swatches – wtedy próbki biorą HEX z wtyczki) i **Materiał** (slug `material`) oraz **Kamień** (slug `kamien`, wartości np. Ametyst, Kwarc różowy, Turkus, Perła – slugi bez polskich znaków: `kwarc-rozowy`); zaznacz „Włącz archiwa”. Własny kolor próbki kamienia: HEX w wtyczce Variation Swatches albo meta `bd_color`. Przypisz je do produktów — z nich budują się sekcja „Szukaj po kolorze, kamieniu, materiale”, kropki na kartach i inteligentne wyszukiwanie. W sidebarze/szufladzie filtrów dodaj blok WooCommerce „Filtr atrybutu” dla Kamienia.
 - **Kolor kolekcji w hero i kaflach**: w klasie kontenera zmień `bd-tint--lagoon` na `coral`, `lilac`, `lime`, `sun` lub `rose`.
+- **Karty produktów**: *podtytuł* pod nazwą = pole własne `bd_subtitle` (np. „z perłą, stal złocona”), a gdy puste – wartości atrybutu Materiał. Tag **`bestseller`** = etykieta BESTSELLER i sekcja Bestsellery. Tag **`promocja`** = pole pod ceną z hasłem akcji (`BYDOPAMINA_PROMO_LABEL`, domyślnie „Druga sztuka −30%” – samą zniżkę ustaw regułą w wtyczce rabatowej lub kuponem).
+- **Zestawy**: produkt w kategorii **`zestawy`** z ceną regularną = suma produktów osobno i ceną promocyjną = cena zestawu → karta pokaże „Cena w zestawie”, „Cena produktów poza zestawem” i „Oszczędzasz X zł (Y%)”. Bez dodatkowych wtyczek.
+- **Serduszko (Ulubione)**: wtyczka TI WooCommerce Wishlist → pozycja przycisku w liście produktów: „Nad obrazkiem” – motyw ustawi je w prawym górnym rogu zdjęcia.
+- **Banery** (Na prezent / Karty podarunkowe): ustaw zdjęcie tła kontenera (min. 1400×360 px).
 - **Upsell**: w każdym produkcie uzupełnij *Dane produktu → Produkty powiązane*: **Dosprzedaż** = 2–3 produkty do kompletu (np. kolczyki do naszyjnika) → „Dobierz komplet”; **Sprzedaż krzyżowa** = drobne dodatki (np. łańcuszek, bransoletka do 79 zł) → „Pasuje do tego” w mini-koszyku i koszyku.
 - **Nastroje**: przypisz produktom kolory (atrybut Kolor) albo tagi `nastroj-radosc`, `nastroj-energia`, `nastroj-czulosc`, `nastroj-spokoj`, `nastroj-marzenia`, `nastroj-swiezosc`.
 - **Shop the look**: w shortcodzie wpisz ID zdjęcia i ID produktów z pozycją punktu, np. `products="101:34:38,102:52:30"`.

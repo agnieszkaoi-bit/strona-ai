@@ -197,7 +197,7 @@
          "widgetType": "heading",
          "isInner": false,
          "settings": {
-          "title": "Kategorie",
+          "title": "Bestsellery",
           "header_size": "h2",
           "_css_classes": "bd-h2"
          },
@@ -211,7 +211,7 @@
        "widgetType": "html",
        "isInner": false,
        "settings": {
-        "html": "<a class=\"bd-textlink\" href=\"/sklep/\">Zobacz wszystkie <span aria-hidden=\"true\">→</span></a>"
+        "html": "<a class=\"bd-textlink\" href=\"/sklep/?orderby=popularity\">Zobacz wszystko › <span aria-hidden=\"true\">→</span></a>"
        },
        "elements": []
       }
@@ -223,14 +223,77 @@
      "widgetType": "shortcode",
      "isInner": false,
      "settings": {
-      "shortcode": "[bd_category_arches limit=\"6\"]"
+      "shortcode": "[bd_products_carousel type=\"bestsellers\" limit=\"10\"]"
      },
      "elements": []
     }
    ]
   },
   {
-   "id": "42176f8",
+   "id": "0fd4f79",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1520,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-reveal",
+    "html_tag": "section",
+    "flex_gap": {
+     "column": "28",
+     "row": "28",
+     "isLinked": true,
+     "unit": "px",
+     "size": 28
+    },
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "40",
+     "bottom": "0",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "dc419ac",
+     "elType": "widget",
+     "widgetType": "heading",
+     "isInner": false,
+     "settings": {
+      "title": "Biżuteria",
+      "header_size": "h2",
+      "_css_classes": "bd-h2"
+     },
+     "elements": []
+    },
+    {
+     "id": "c6a81ba",
+     "elType": "widget",
+     "widgetType": "shortcode",
+     "isInner": false,
+     "settings": {
+      "shortcode": "[bd_category_arches limit=\"4\"]"
+     },
+     "elements": []
+    }
+   ]
+  },
+  {
+   "id": "460323b",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -262,7 +325,7 @@
    },
    "elements": [
     {
-     "id": "5342af1",
+     "id": "8670091",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -274,7 +337,7 @@
      },
      "elements": [
       {
-       "id": "c6a81ba",
+       "id": "79d03cf",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -290,12 +353,12 @@
        },
        "elements": [
         {
-         "id": "dc419ac",
+         "id": "5342af1",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
          "settings": {
-          "title": "Polecamy",
+          "title": "Nowości",
           "header_size": "h2",
           "_css_classes": "bd-h2"
          },
@@ -304,31 +367,31 @@
        ]
       },
       {
-       "id": "0fd4f79",
+       "id": "42176f8",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
        "settings": {
-        "html": "<a class=\"bd-textlink\" href=\"/sklep/\">Zobacz wszystkie <span aria-hidden=\"true\">→</span></a>"
+        "html": "<a class=\"bd-textlink\" href=\"/sklep/?orderby=date\">Zobacz wszystko › <span aria-hidden=\"true\">→</span></a>"
        },
        "elements": []
       }
      ]
     },
     {
-     "id": "79d03cf",
+     "id": "19248ee",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
      "settings": {
-      "shortcode": "[bd_product_tabs limit=\"8\"]"
+      "shortcode": "[bd_products_carousel type=\"new\" limit=\"10\"]"
      },
      "elements": []
     }
    ]
   },
   {
-   "id": "c315604",
+   "id": "62c3ab7",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -360,7 +423,7 @@
    },
    "elements": [
     {
-     "id": "fc331bd",
+     "id": "c315604",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -372,7 +435,7 @@
      },
      "elements": [
       {
-       "id": "460323b",
+       "id": "ff59e1e",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -388,7 +451,7 @@
        },
        "elements": [
         {
-         "id": "8670091",
+         "id": "fc331bd",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
@@ -398,23 +461,13 @@
           "_css_classes": "bd-h2"
          },
          "elements": []
-        },
-        {
-         "id": "19248ee",
-         "elType": "widget",
-         "widgetType": "text-editor",
-         "isInner": false,
-         "settings": {
-          "editor": "<p>Wybierz, jak chcesz się dziś poczuć – dobierzemy kolory.</p>"
-         },
-         "elements": []
         }
        ]
       }
      ]
     },
     {
-     "id": "ff59e1e",
+     "id": "6a18f12",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
@@ -426,7 +479,7 @@
    ]
   },
   {
-   "id": "2d644f8",
+   "id": "968135e",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -458,7 +511,7 @@
    },
    "elements": [
     {
-     "id": "16f4ff3",
+     "id": "2d644f8",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -470,7 +523,7 @@
      },
      "elements": [
       {
-       "id": "62c3ab7",
+       "id": "16f4ff3",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -486,12 +539,12 @@
        },
        "elements": [
         {
-         "id": "6a18f12",
+         "id": "9169211",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
          "settings": {
-          "title": "Noś razem",
+          "title": "Zestawy biżuterii",
           "header_size": "h2",
           "_css_classes": "bd-h2"
          },
@@ -500,24 +553,24 @@
        ]
       },
       {
-       "id": "9169211",
+       "id": "c264979",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
        "settings": {
-        "html": "<a class=\"bd-textlink\" href=\"/stylizacje/\">Więcej stylizacji <span aria-hidden=\"true\">→</span></a>"
+        "html": "<a class=\"bd-textlink\" href=\"/kategoria-produktu/zestawy/\">Zobacz wszystko › <span aria-hidden=\"true\">→</span></a>"
        },
        "elements": []
       }
      ]
     },
     {
-     "id": "c264979",
+     "id": "45d9bf6",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
      "settings": {
-      "shortcode": "[bd_shop_the_look image=\"0\" products=\"101:34:38,102:52:30,103:61:66\" title=\"Na zdjęciu\"]"
+      "shortcode": "[bd_products_carousel type=\"all\" category=\"zestawy\" limit=\"10\"]"
      },
      "elements": []
     }
@@ -556,22 +609,15 @@
    },
    "elements": [
     {
-     "id": "9cbc5ab",
+     "id": "a5bb3ec",
      "elType": "container",
      "isInner": true,
      "settings": {
       "content_width": "full",
       "flex_direction": "row",
-      "css_classes": "bd-newsletter-box",
-      "flex_wrap": "wrap",
-      "flex_gap": {
-       "column": "56",
-       "row": "56",
-       "isLinked": true,
-       "unit": "px",
-       "size": 56
-      },
-      "flex_align_items": "center"
+      "css_classes": "bd-sechead",
+      "flex_align_items": "flex-end",
+      "flex_wrap": "wrap"
      },
      "elements": [
       {
@@ -581,92 +627,170 @@
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
-        "width": {
-         "unit": "%",
-         "size": 55,
-         "sizes": []
-        },
-        "width_tablet": {
-         "unit": "%",
-         "size": 100,
-         "sizes": []
-        },
         "flex_gap": {
-         "column": "20",
-         "row": "20",
+         "column": "0",
+         "row": "0",
          "isLinked": true,
          "unit": "px",
-         "size": 20
+         "size": 0
         }
        },
        "elements": [
         {
-         "id": "45d9bf6",
+         "id": "12812d1",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
          "settings": {
-          "title": "Na prezent",
+          "title": "Noś razem",
           "header_size": "h2",
           "_css_classes": "bd-h2"
-         },
-         "elements": []
-        },
-        {
-         "id": "968135e",
-         "elType": "widget",
-         "widgetType": "text-editor",
-         "isInner": false,
-         "settings": {
-          "editor": "<p>Każde zamówienie pakujemy w pudełko. Przy zamówieniu możesz dodać pakowanie na prezent z liścikiem – bez paragonu w paczce.</p>",
-          "_css_classes": "bd-lead"
-         },
-         "elements": []
-        },
-        {
-         "id": "12812d1",
-         "elType": "widget",
-         "widgetType": "shortcode",
-         "isInner": false,
-         "settings": {
-          "shortcode": "[bd_gift_finder]"
          },
          "elements": []
         }
        ]
       },
       {
-       "id": "a5bb3ec",
+       "id": "cd91758",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<a class=\"bd-textlink\" href=\"/stylizacje/\">Więcej stylizacji › <span aria-hidden=\"true\">→</span></a>"
+       },
+       "elements": []
+      }
+     ]
+    },
+    {
+     "id": "9cbc5ab",
+     "elType": "widget",
+     "widgetType": "shortcode",
+     "isInner": false,
+     "settings": {
+      "shortcode": "[bd_shop_the_look image=\"0\" products=\"101:34:38,102:52:30,103:61:66\" title=\"Na zdjęciu\"]"
+     },
+     "elements": []
+    }
+   ]
+  },
+  {
+   "id": "7dad408",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1520,
+     "sizes": []
+    },
+    "css_classes": "bd-section",
+    "html_tag": "section",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "40",
+     "bottom": "0",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "1178a33",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "css_classes": "bd-banners"
+     },
+     "elements": [
+      {
+       "id": "c4931a5",
        "elType": "container",
        "isInner": true,
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
-        "width": {
-         "unit": "%",
-         "size": 45,
-         "sizes": []
+        "css_classes": "bd-banner",
+        "html_tag": "a",
+        "link": {
+         "url": "/kategoria-produktu/prezenty/",
+         "is_external": "",
+         "nofollow": ""
         },
-        "width_tablet": {
-         "unit": "%",
-         "size": 100,
+        "background_background": "classic",
+        "background_image": {
+         "url": "",
+         "id": ""
+        },
+        "background_size": "cover",
+        "background_position": "center center",
+        "min_height": {
+         "unit": "px",
+         "size": 180,
          "sizes": []
         }
        },
        "elements": [
         {
-         "id": "cd91758",
+         "id": "bf5ab53",
          "elType": "widget",
-         "widgetType": "image",
+         "widgetType": "html",
          "isInner": false,
          "settings": {
-          "image": {
-           "url": "",
-           "id": "",
-           "alt": "Biżuteria w pudełku prezentowym"
-          },
-          "image_size": "full",
-          "_css_classes": "bd-arch"
+          "html": "<span class=\"bd-banner__text\"><strong>Na prezent</strong><span>Pokaż więcej ›</span></span>"
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "6b352d3",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "bd-banner",
+        "html_tag": "a",
+        "link": {
+         "url": "/karta-podarunkowa/",
+         "is_external": "",
+         "nofollow": ""
+        },
+        "background_background": "classic",
+        "background_image": {
+         "url": "",
+         "id": ""
+        },
+        "background_size": "cover",
+        "background_position": "center center",
+        "min_height": {
+         "unit": "px",
+         "size": 180,
+         "sizes": []
+        }
+       },
+       "elements": [
+        {
+         "id": "80b693b",
+         "elType": "widget",
+         "widgetType": "html",
+         "isInner": false,
+         "settings": {
+          "html": "<span class=\"bd-banner__text\"><strong>Karty podarunkowe</strong><span>Pokaż więcej ›</span></span>"
          },
          "elements": []
         }
@@ -677,7 +801,7 @@
    ]
   },
   {
-   "id": "3ad6b85",
+   "id": "a156dd3",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -716,7 +840,7 @@
    },
    "elements": [
     {
-     "id": "6b352d3",
+     "id": "1db83cb",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -728,7 +852,7 @@
      },
      "elements": [
       {
-       "id": "c4931a5",
+       "id": "37b4de2",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -744,7 +868,7 @@
        },
        "elements": [
         {
-         "id": "bf5ab53",
+         "id": "3ad6b85",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
@@ -758,19 +882,19 @@
        ]
       },
       {
-       "id": "80b693b",
+       "id": "0909502",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
        "settings": {
-        "html": "<a class=\"bd-textlink\" href=\"/opinie/\">Wszystkie opinie <span aria-hidden=\"true\">→</span></a>"
+        "html": "<a class=\"bd-textlink\" href=\"/opinie/\">Wszystkie opinie › <span aria-hidden=\"true\">→</span></a>"
        },
        "elements": []
       }
      ]
     },
     {
-     "id": "1178a33",
+     "id": "4d8f0a1",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
@@ -780,7 +904,7 @@
      "elements": []
     },
     {
-     "id": "7dad408",
+     "id": "96c24a8",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
@@ -792,7 +916,7 @@
    ]
   },
   {
-   "id": "171023a",
+   "id": "2136474",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -807,113 +931,92 @@
     "html_tag": "section",
     "padding": {
      "unit": "px",
-     "top": "64",
-     "right": "40",
-     "bottom": "120",
-     "left": "40",
-     "isLinked": false
+     "top": "0",
+     "right": "0",
+     "bottom": "0",
+     "left": "0",
+     "isLinked": true
     },
     "padding_mobile": {
      "unit": "px",
-     "top": "40",
+     "top": "0",
      "right": "16",
-     "bottom": "72",
+     "bottom": "0",
      "left": "16",
      "isLinked": false
     }
    },
    "elements": [
     {
-     "id": "a9f9e5f",
+     "id": "9c2ac31",
      "elType": "container",
      "isInner": true,
      "settings": {
       "content_width": "full",
       "flex_direction": "row",
-      "css_classes": "bd-newsletter-box bd-tint bd-tint--rose",
-      "flex_wrap": "wrap",
-      "flex_gap": {
-       "column": "40",
-       "row": "40",
-       "isLinked": true,
-       "unit": "px",
-       "size": 40
-      },
-      "flex_align_items": "center"
+      "css_classes": "bd-nl-split"
      },
      "elements": [
       {
-       "id": "c1f492b",
+       "id": "0739d18",
        "elType": "container",
        "isInner": true,
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
-        "width": {
-         "unit": "%",
-         "size": 50,
-         "sizes": []
-        },
-        "width_tablet": {
-         "unit": "%",
-         "size": 100,
-         "sizes": []
-        },
-        "flex_gap": {
-         "column": "8",
-         "row": "8",
-         "isLinked": true,
-         "unit": "px",
-         "size": 8
-        }
+        "css_classes": "bd-nl-split__img"
        },
        "elements": [
         {
-         "id": "96c24a8",
+         "id": "89b62b3",
          "elType": "widget",
-         "widgetType": "heading",
+         "widgetType": "image",
          "isInner": false,
          "settings": {
-          "title": "−10% na pierwsze zakupy",
-          "header_size": "h2",
-          "_css_classes": "bd-h2"
-         },
-         "elements": []
-        },
-        {
-         "id": "a156dd3",
-         "elType": "widget",
-         "widgetType": "text-editor",
-         "isInner": false,
-         "settings": {
-          "editor": "<p>Zapisz się – nowe kolekcje zobaczysz przed wszystkimi.</p>",
-          "_css_classes": "bd-lead"
+          "image": {
+           "url": "",
+           "id": "",
+           "alt": "Biżuteria na stole"
+          },
+          "image_size": "full"
          },
          "elements": []
         }
        ]
       },
       {
-       "id": "81ca289",
+       "id": "1efa58f",
        "elType": "container",
        "isInner": true,
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
-        "width": {
-         "unit": "%",
-         "size": 50,
-         "sizes": []
-        },
-        "width_tablet": {
-         "unit": "%",
-         "size": 100,
-         "sizes": []
-        }
+        "css_classes": "bd-nl-split__panel"
        },
        "elements": [
         {
-         "id": "4d8f0a1",
+         "id": "95d4e26",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Odbierz 10% rabatu na pierwsze zakupy",
+          "header_size": "h2"
+         },
+         "elements": []
+        },
+        {
+         "id": "a07f001",
+         "elType": "widget",
+         "widgetType": "text-editor",
+         "isInner": false,
+         "settings": {
+          "editor": "<p>Dołącz do newslettera – nowe kolekcje, stylizacje i promocje zobaczysz przed wszystkimi.</p>"
+         },
+         "elements": []
+        },
+        {
+         "id": "171023a",
          "elType": "widget",
          "widgetType": "form",
          "isInner": false,
@@ -921,36 +1024,36 @@
           "form_name": "Newsletter",
           "form_fields": [
            {
-            "_id": "37b4de2",
+            "_id": "c1f492b",
             "custom_id": "email",
             "field_type": "email",
             "field_label": "Adres e-mail",
-            "placeholder": "twoj@email.pl",
+            "placeholder": "Podaj adres e-mail*",
             "required": "true",
-            "width": "70"
+            "width": "100"
            },
            {
-            "_id": "0909502",
+            "_id": "81ca289",
             "custom_id": "hp",
             "field_type": "honeypot",
             "width": "100"
            },
            {
-            "_id": "1db83cb",
+            "_id": "a9f9e5f",
             "custom_id": "zgoda",
             "field_type": "acceptance",
             "required": "true",
             "width": "100",
-            "acceptance_text": "Chcę dostawać newsletter (maks. 2 maile w miesiącu). <a href=\"/polityka-prywatnosci/\">Polityka prywatności</a>."
+            "acceptance_text": "Chcę zapisać się do newslettera. Zapoznałam/em się z <a href=\"/polityka-prywatnosci/\">Polityką prywatności</a>."
            }
           ],
           "show_labels": "",
-          "button_text": "Odbierz −10%",
-          "button_width": "30",
+          "button_text": "Dołącz",
+          "button_width": "100",
           "submit_actions": [
            "save-to-database"
           ],
-          "success_message": "Gotowe! Potwierdź zapis w mailu – kod −10% wyślemy od razu.",
+          "success_message": "Gotowe! Potwierdź zapis w mailu – kod rabatowy wyślemy od razu.",
           "error_message": "Coś poszło nie tak. Spróbuj ponownie.",
           "_css_classes": "bd-newsletter"
          },
