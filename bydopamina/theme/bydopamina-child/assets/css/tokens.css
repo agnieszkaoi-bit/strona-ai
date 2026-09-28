@@ -50,7 +50,7 @@
 	--bd-fs-xl: clamp(1.5rem, 1.35rem + 0.7vw, 2rem);
 	--bd-fs-2xl: clamp(1.875rem, 1.5rem + 1.6vw, 3rem);
 	--bd-fs-3xl: clamp(2.25rem, 1.7rem + 2.6vw, 4rem);
-	--bd-fs-hero: clamp(2.5rem, 1.7rem + 3.8vw, 5.25rem);
+	--bd-fs-hero: clamp(2.75rem, 1.6rem + 5vw, 6.5rem);
 
 	/* Przestrzeń */
 	--bd-space-section: clamp(64px, 6vw + 28px, 128px);
@@ -59,17 +59,17 @@
 	--bd-max: 1440px;
 	--bd-measure: 62ch;
 
-	/* Kształt i ruch – miękko */
-	--bd-radius: 14px;
-	--bd-radius-sm: 10px;
-	--bd-radius-pill: 999px;
+	/* Kształt i ruch */
+	--bd-radius: 4px;          /* zdjęcia, karty – prawie proste, jak w klasycznych sklepach jubilerskich */
+	--bd-radius-sm: 4px;
+	--bd-radius-pill: 2px;     /* przyciski, pola, etykiety – prostokątne */
 	--bd-radius-arch: var(--bd-radius);                          /* zdjęcia i karty: zwykłe, lekko zaokrąglone prostokąty */
 	--bd-ease: cubic-bezier(0.22, 1, 0.36, 1);
 	--bd-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 	--bd-dur: 240ms;
 	--bd-dur-slow: 700ms;
 	--bd-tap: 48px;
-	--bd-header-h: 68px;
+	--bd-header-h: 84px;
 	--bd-mnav-h: 60px;
 	--bd-shadow-soft: 0 1px 2px rgb(43 36 33 / 0.04), 0 10px 30px rgb(43 36 33 / 0.06);
 	--bd-shadow-pop: 0 18px 50px rgb(43 36 33 / 0.14);

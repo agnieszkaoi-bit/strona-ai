@@ -8,7 +8,7 @@
  },
  "content": [
   {
-   "id": "9b53957",
+   "id": "aaf3ab1",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -47,7 +47,7 @@
    },
    "elements": [
     {
-     "id": "22a0d4e",
+     "id": "4fee38f",
      "elType": "widget",
      "widgetType": "html",
      "isInner": false,
@@ -57,7 +57,7 @@
      "elements": []
     },
     {
-     "id": "fca5222",
+     "id": "7f087a4",
      "elType": "widget",
      "widgetType": "heading",
      "isInner": false,
@@ -69,7 +69,7 @@
      "elements": []
     },
     {
-     "id": "407faff",
+     "id": "6db7ae1",
      "elType": "widget",
      "widgetType": "woocommerce-checkout-page",
      "isInner": false,
@@ -86,7 +86,7 @@
      "elements": []
     },
     {
-     "id": "b5e284a",
+     "id": "23b6eeb",
      "elType": "widget",
      "widgetType": "html",
      "isInner": false,

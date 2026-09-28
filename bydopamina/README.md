@@ -1,8 +1,11 @@
 # bydopamina.pl — sklep z kolorową biżuterią (Elementor Pro + WooCommerce)
 
-**Kierunek (v3): kobieco, jasno, czytelnie – i prosto do koszyka.** Biżuteria jest kolorowa, więc strona
+**Kierunek (v3.1): klasyczny, czytelny sklep jubilerski – jasno, kobieco i prosto do koszyka.** Biżuteria jest kolorowa, więc strona
 jest stonowana: porcelanowa biel, pudrowy róż, ciepła czerń, jeden akcent – malina `#A3385A`.
-Jeden prosty, bardzo czytelny krój: **Figtree** (tekst 17 px). Miękkie kształty: zaokrąglenia, przyciski „pigułki”.
+Jeden prosty, bardzo czytelny krój: **Figtree** (tekst 17 px). Układ jak w dużych sklepach jubilerskich:
+pasek promocji + pasek informacyjny, logo po lewej, menu WIELKIMI LITERAMI, widoczne pole „Szukaj”, ikony z podpisami
+(Profil / Ulubione / Koszyk), **hero = slider zdjęć na całą szerokość** z dużym napisem i prostokątnym przyciskiem.
+Prostokątne przyciski i prawie proste rogi zdjęć – bez „pigułek”, kolorowych słów w nagłówkach i ozdobnych etykiet.
 
 **Wyróżniki (czego nie mają inne sklepy):**
 1. **„Jak chcesz się dziś poczuć?”** – biżuteria wg nastroju (Radość, Energia, Czułość, Spokój, Marzenia, Świeżość),
@@ -10,7 +13,7 @@ Jeden prosty, bardzo czytelny krój: **Figtree** (tekst 17 px). Miękkie kształ
 2. Logo z malinową kropką `bydopamina.` powtórzone w wielkim napisie w stopce.
 
 **Ścieżka zakupu i upsell (sklep ~50 produktów na start):**
-hero z jednym przyciskiem → kategorie → bestsellery z szybkim „+” (dodanie bez wchodzenia w produkt) →
+slider hero z jednym przyciskiem na slajd → kategorie → bestsellery z szybkim „+” (dodanie bez wchodzenia w produkt) →
 karta produktu z **„Dobierz komplet”** (zaznacz i dodaj 2–3 pasujące produkty jednym kliknięciem) →
 mini-koszyk z paskiem do darmowej dostawy i **„Pasuje do tego”** → koszyk z sprzedażą krzyżową →
 zamówienie z **pakowaniem na prezent**. Sklep pokazuje 48 produktów na stronę – prawie całą ofertę bez klikania.
@@ -103,6 +106,8 @@ Szablony typu *Strona*: otwórz stronę w Elementorze → ikona folderu → Moje
 
 Po imporcie:
 - **Header** → widget *Menu nawigacyjne* → wybierz menu „Główne” (utwórz w Wygląd → Menu: Nowości, Kategorie…, O nas).
+- **Slider hero**: w widżecie *Slides* (strona główna) ustaw 2–3 slajdy: zdjęcie tła min. 2400×1300 px (na telefonie kadr 4:5 – ważne, żeby biżuteria była w środku), nagłówek 2–4 słowa, podtytuł, przycisk. Napis jest biały na przyciemnieniu – wybieraj zdjęcia z jaśniejszym miejscem po lewej.
+- **Pasek promocji** (header): zmień tekst i link na aktualną akcję albo ukryj kontener, gdy nie ma promocji. Pozycji „Promocje” w menu nadaj klasę CSS `bd-menu-promo` (malinowy kolor).
 - **Zdjęcia**: podmień placeholdery (WebP/AVIF). Hero główne 2000×1600 px (5:4), boczne 1200×1200 px; packshoty produktów 4:5 na jednolitym, ciepłym tle (#EDE6DC) + **druga fotka na modelce** jako pierwsze zdjęcie galerii (pokazuje się po najechaniu). Zdjęcie hero ma już klasę `bd-lcp` (priorytetowe ładowanie).
 - **Kafelki kategorii**: Produkty → Kategorie → ustaw miniaturę każdej kategorii (3:4) i kolejność.
 - **Atrybuty**: Produkty → Atrybuty → utwórz **Kolor** (slug `kolor`, typ „Kolor” w Variation Swatches – wtedy próbki biorą HEX z wtyczki) i **Materiał** (slug `material`) oraz **Kamień** (slug `kamien`, wartości np. Ametyst, Kwarc różowy, Turkus, Perła – slugi bez polskich znaków: `kwarc-rozowy`); zaznacz „Włącz archiwa”. Własny kolor próbki kamienia: HEX w wtyczce Variation Swatches albo meta `bd_color`. Przypisz je do produktów — z nich budują się sekcja „Szukaj po kolorze, kamieniu, materiale”, kropki na kartach i inteligentne wyszukiwanie. W sidebarze/szufladzie filtrów dodaj blok WooCommerce „Filtr atrybutu” dla Kamienia.

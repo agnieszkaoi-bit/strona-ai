@@ -5,7 +5,7 @@
  "page_settings": {},
  "content": [
   {
-   "id": "968cce0",
+   "id": "9b665a6",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -44,7 +44,7 @@
    },
    "elements": [
     {
-     "id": "2130da6",
+     "id": "0739d18",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -63,7 +63,7 @@
      },
      "elements": [
       {
-       "id": "038eada",
+       "id": "89b62b3",
        "elType": "widget",
        "widgetType": "woocommerce-product-images",
        "isInner": false,
@@ -76,7 +76,7 @@
      ]
     },
     {
-     "id": "aa9a75c",
+     "id": "3d86267",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -119,7 +119,7 @@
      },
      "elements": [
       {
-       "id": "0742cfc",
+       "id": "95d4e26",
        "elType": "widget",
        "widgetType": "woocommerce-breadcrumb",
        "isInner": false,
@@ -129,7 +129,7 @@
        "elements": []
       },
       {
-       "id": "015b93a",
+       "id": "a07f001",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
@@ -139,7 +139,7 @@
        "elements": []
       },
       {
-       "id": "a0d1df2",
+       "id": "1efa58f",
        "elType": "widget",
        "widgetType": "woocommerce-product-title",
        "isInner": false,
@@ -150,7 +150,7 @@
        "elements": []
       },
       {
-       "id": "55c2718",
+       "id": "9c2ac31",
        "elType": "widget",
        "widgetType": "woocommerce-product-rating",
        "isInner": false,
@@ -158,7 +158,7 @@
        "elements": []
       },
       {
-       "id": "a27a3b4",
+       "id": "2136474",
        "elType": "widget",
        "widgetType": "woocommerce-product-price",
        "isInner": false,
@@ -168,7 +168,7 @@
        "elements": []
       },
       {
-       "id": "5f25501",
+       "id": "56434bb",
        "elType": "widget",
        "widgetType": "woocommerce-product-short-description",
        "isInner": false,
@@ -178,7 +178,7 @@
        "elements": []
       },
       {
-       "id": "835e38c",
+       "id": "73f4a86",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
@@ -188,7 +188,7 @@
        "elements": []
       },
       {
-       "id": "491db36",
+       "id": "038eada",
        "elType": "widget",
        "widgetType": "woocommerce-product-add-to-cart",
        "isInner": false,
@@ -199,7 +199,7 @@
        "elements": []
       },
       {
-       "id": "8060476",
+       "id": "2130da6",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
@@ -209,7 +209,7 @@
        "elements": []
       },
       {
-       "id": "6248ee5",
+       "id": "0742cfc",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
@@ -219,7 +219,7 @@
        "elements": []
       },
       {
-       "id": "d25f4e1",
+       "id": "015b93a",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
@@ -229,7 +229,7 @@
        "elements": []
       },
       {
-       "id": "7b7c765",
+       "id": "a0d1df2",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
@@ -239,34 +239,34 @@
        "elements": []
       },
       {
-       "id": "2f81258",
+       "id": "6248ee5",
        "elType": "widget",
        "widgetType": "nested-accordion",
        "isInner": false,
        "settings": {
         "items": [
          {
-          "_id": "e6bc430",
+          "_id": "d25f4e1",
           "item_title": "Opis"
          },
          {
-          "_id": "7a3e39e",
+          "_id": "7b7c765",
           "item_title": "Materiał i pielęgnacja"
          },
          {
-          "_id": "44d9d2d",
+          "_id": "7667dc2",
           "item_title": "Wymiary i szczegóły"
          },
          {
-          "_id": "3d86267",
+          "_id": "349364a",
           "item_title": "Dostawa i zwroty"
          },
          {
-          "_id": "9b665a6",
+          "_id": "d2e16ed",
           "item_title": "Bezpieczeństwo produktu"
          },
          {
-          "_id": "067daf5",
+          "_id": "d0ed247",
           "item_title": "Opinie"
          }
         ],
@@ -276,7 +276,7 @@
        },
        "elements": [
         {
-         "id": "7b3ef92",
+         "id": "61622e0",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -293,7 +293,7 @@
          },
          "elements": [
           {
-           "id": "7667dc2",
+           "id": "55c2718",
            "elType": "widget",
            "widgetType": "woocommerce-product-content",
            "isInner": false,
@@ -303,7 +303,7 @@
          ]
         },
         {
-         "id": "b341528",
+         "id": "760bece",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -320,7 +320,7 @@
          },
          "elements": [
           {
-           "id": "349364a",
+           "id": "a27a3b4",
            "elType": "widget",
            "widgetType": "text-editor",
            "isInner": false,
@@ -332,7 +332,7 @@
          ]
         },
         {
-         "id": "c8d71c9",
+         "id": "2f81258",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -349,7 +349,7 @@
          },
          "elements": [
           {
-           "id": "d2e16ed",
+           "id": "5f25501",
            "elType": "widget",
            "widgetType": "woocommerce-product-additional-information",
            "isInner": false,
@@ -361,7 +361,7 @@
          ]
         },
         {
-         "id": "4285b5f",
+         "id": "e6bc430",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -378,7 +378,7 @@
          },
          "elements": [
           {
-           "id": "d0ed247",
+           "id": "835e38c",
            "elType": "widget",
            "widgetType": "text-editor",
            "isInner": false,
@@ -390,7 +390,7 @@
          ]
         },
         {
-         "id": "f8791ca",
+         "id": "7a3e39e",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -407,7 +407,7 @@
          },
          "elements": [
           {
-           "id": "61622e0",
+           "id": "491db36",
            "elType": "widget",
            "widgetType": "text-editor",
            "isInner": false,
@@ -419,7 +419,7 @@
          ]
         },
         {
-         "id": "a3a5d20",
+         "id": "44d9d2d",
          "elType": "container",
          "isInner": true,
          "settings": {
@@ -436,7 +436,7 @@
          },
          "elements": [
           {
-           "id": "760bece",
+           "id": "8060476",
            "elType": "widget",
            "widgetType": "shortcode",
            "isInner": false,
@@ -454,7 +454,7 @@
    ]
   },
   {
-   "id": "bf38545",
+   "id": "4285b5f",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -486,7 +486,7 @@
    },
    "elements": [
     {
-     "id": "36c3fb4",
+     "id": "b341528",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -498,7 +498,7 @@
      },
      "elements": [
       {
-       "id": "270bc04",
+       "id": "7b3ef92",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -514,12 +514,12 @@
        },
        "elements": [
         {
-         "id": "8ecadd4",
+         "id": "067daf5",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
          "settings": {
-          "title": "Może Ci się <em>spodobać</em>",
+          "title": "Może Ci się spodobać",
           "header_size": "h2",
           "_css_classes": "bd-h2"
          },
@@ -530,7 +530,7 @@
      ]
     },
     {
-     "id": "5c87de1",
+     "id": "c8d71c9",
      "elType": "widget",
      "widgetType": "woocommerce-product-related",
      "isInner": false,

@@ -11,7 +11,7 @@
    "settings": {
     "content_width": "full",
     "flex_direction": "column",
-    "css_classes": "bd-announcement",
+    "css_classes": "bd-promobar",
     "padding": {
      "unit": "px",
      "top": "0",
@@ -28,14 +28,63 @@
      "widgetType": "html",
      "isInner": false,
      "settings": {
-      "html": "<ul><li>Darmowa dostawa od 199 zł</li><li>Wysyłka w 24 h</li><li>30 dni na zwrot</li><li>Pudełko prezentowe w cenie</li></ul>"
+      "html": "<a href=\"/sklep/?on_sale=1\">Druga sztuka −30% · tylko do niedzieli &gt;&gt;&gt;</a>"
      },
      "elements": []
     }
    ]
   },
   {
-   "id": "a02f66d",
+   "id": "0378f60",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "row",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1520,
+     "sizes": []
+    },
+    "css_classes": "bd-utilbar",
+    "flex_justify_content": "space-between",
+    "flex_align_items": "center",
+    "flex_wrap": "wrap",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "40",
+     "bottom": "0",
+     "left": "40",
+     "isLinked": false
+    },
+    "hide_mobile": "hidden-mobile"
+   },
+   "elements": [
+    {
+     "id": "76cc1d7",
+     "elType": "widget",
+     "widgetType": "html",
+     "isInner": false,
+     "settings": {
+      "html": "<ul><li>Darmowa dostawa od 199 zł</li><li>30 dni na zwrot</li><li>Pudełko prezentowe gratis</li></ul>"
+     },
+     "elements": []
+    },
+    {
+     "id": "145f656",
+     "elType": "widget",
+     "widgetType": "html",
+     "isInner": false,
+     "settings": {
+      "html": "<ul class=\"bd-utilbar__links\"><li><a href=\"/kontakt/\">Kontakt i pomoc</a></li><li><a href=\"/karta-podarunkowa/\">Karty podarunkowe</a></li></ul>"
+     },
+     "elements": []
+    }
+   ]
+  },
+  {
+   "id": "2ef999d",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -45,7 +94,7 @@
     "html_tag": "header",
     "min_height": {
      "unit": "px",
-     "size": 64,
+     "size": 84,
      "sizes": []
     },
     "padding": {
@@ -79,29 +128,7 @@
    },
    "elements": [
     {
-     "id": "76cc1d7",
-     "elType": "widget",
-     "widgetType": "nav-menu",
-     "isInner": false,
-     "settings": {
-      "menu": "",
-      "layout": "horizontal",
-      "align_items": "left",
-      "pointer": "underline",
-      "animation_line": "fade",
-      "dropdown": "tablet",
-      "toggle": "burger",
-      "full_width": "stretch",
-      "text_align": "aside",
-      "submenu_icon": {
-       "value": "",
-       "library": ""
-      }
-     },
-     "elements": []
-    },
-    {
-     "id": "145f656",
+     "id": "a7ba792",
      "elType": "widget",
      "widgetType": "heading",
      "isInner": false,
@@ -118,7 +145,29 @@
      "elements": []
     },
     {
-     "id": "67f52dc",
+     "id": "528e270",
+     "elType": "widget",
+     "widgetType": "nav-menu",
+     "isInner": false,
+     "settings": {
+      "menu": "",
+      "layout": "horizontal",
+      "align_items": "center",
+      "pointer": "underline",
+      "animation_line": "fade",
+      "dropdown": "tablet",
+      "toggle": "burger",
+      "full_width": "stretch",
+      "text_align": "aside",
+      "submenu_icon": {
+       "value": "",
+       "library": ""
+      }
+     },
+     "elements": []
+    },
+    {
+     "id": "ce4e742",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -127,67 +176,79 @@
       "css_classes": "bd-header-icons",
       "flex_align_items": "center",
       "flex_gap": {
-       "column": "0",
-       "row": "0",
+       "column": "6",
+       "row": "6",
        "isLinked": true,
        "unit": "px",
-       "size": 0
+       "size": 6
       }
      },
      "elements": [
       {
-       "id": "0378f60",
+       "id": "cae54cd",
        "elType": "widget",
        "widgetType": "search-form",
        "isInner": false,
        "settings": {
-        "skin": "full_screen",
-        "placeholder": "Szukaj: naszyjnik, obrączka, kolczyki…"
+        "skin": "minimal",
+        "placeholder": "Szukaj",
+        "icon": "search",
+        "size": {
+         "unit": "px",
+         "size": 40
+        },
+        "_css_classes": "bd-header-search"
        },
        "elements": []
       },
       {
-       "id": "a7ba792",
+       "id": "67f52dc",
        "elType": "widget",
-       "widgetType": "icon",
-       "isInner": false,
-       "settings": {
-        "selected_icon": {
-         "value": "far fa-heart",
-         "library": "fa-regular"
-        },
-        "link": {
-         "url": "/lista-zyczen/",
-         "is_external": "",
-         "nofollow": ""
-        },
-        "_title": "Ulubione",
-        "_css_classes": "bd-hide-mobile"
-       },
-       "elements": []
-      },
-      {
-       "id": "528e270",
-       "elType": "widget",
-       "widgetType": "icon",
+       "widgetType": "icon-box",
        "isInner": false,
        "settings": {
         "selected_icon": {
          "value": "far fa-user",
          "library": "fa-regular"
         },
+        "title_text": "Profil",
+        "description_text": "",
+        "position": "top",
+        "title_size": "span",
         "link": {
          "url": "/moje-konto/",
          "is_external": "",
          "nofollow": ""
         },
-        "_title": "Moje konto",
         "_css_classes": "bd-hide-mobile"
        },
        "elements": []
       },
       {
-       "id": "cae54cd",
+       "id": "a02f66d",
+       "elType": "widget",
+       "widgetType": "icon-box",
+       "isInner": false,
+       "settings": {
+        "selected_icon": {
+         "value": "far fa-heart",
+         "library": "fa-regular"
+        },
+        "title_text": "Ulubione",
+        "description_text": "",
+        "position": "top",
+        "title_size": "span",
+        "link": {
+         "url": "/lista-zyczen/",
+         "is_external": "",
+         "nofollow": ""
+        },
+        "_css_classes": "bd-hide-mobile"
+       },
+       "elements": []
+      },
+      {
+       "id": "e78375d",
        "elType": "widget",
        "widgetType": "woocommerce-menu-cart",
        "isInner": false,

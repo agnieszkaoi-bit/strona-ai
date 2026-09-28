@@ -8,7 +8,7 @@
  },
  "content": [
   {
-   "id": "d593788",
+   "id": "8568995",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -40,7 +40,7 @@
    },
    "elements": [
     {
-     "id": "d0e8650",
+     "id": "a7462fb",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -57,7 +57,7 @@
      },
      "elements": [
       {
-       "id": "2384396",
+       "id": "694e1cc",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -83,29 +83,30 @@
        },
        "elements": [
         {
-         "id": "a7462fb",
-         "elType": "widget",
-         "widgetType": "html",
-         "isInner": false,
-         "settings": {
-          "html": "<p class=\"bd-label\">Kontakt</p>"
-         },
-         "elements": []
-        },
-        {
-         "id": "8568995",
+         "id": "454acc6",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
          "settings": {
-          "title": "Napisz. <em>Odpisujemy szybko.</em>",
+          "title": "Kontakt",
           "header_size": "h1",
           "_css_classes": "bd-h2"
          },
          "elements": []
         },
         {
-         "id": "76fdb3d",
+         "id": "f2813aa",
+         "elType": "widget",
+         "widgetType": "text-editor",
+         "isInner": false,
+         "settings": {
+          "editor": "<p>Odpisujemy w ciągu 1 dnia roboczego.</p>",
+          "_css_classes": "bd-lead"
+         },
+         "elements": []
+        },
+        {
+         "id": "87426ab",
          "elType": "widget",
          "widgetType": "icon-list",
          "isInner": false,
@@ -113,7 +114,7 @@
           "view": "traditional",
           "icon_list": [
            {
-            "_id": "de01891",
+            "_id": "5b215d8",
             "text": "hej@bydopamina.pl",
             "link": {
              "url": "mailto:hej@bydopamina.pl",
@@ -126,7 +127,7 @@
             }
            },
            {
-            "_id": "06f4585",
+            "_id": "3de0a2e",
             "text": "+48 000 000 000",
             "link": {
              "url": "tel:+48000000000",
@@ -139,7 +140,7 @@
             }
            },
            {
-            "_id": "be03dda",
+            "_id": "ee92c2c",
             "text": "pn–pt 9:00–16:00",
             "link": {
              "url": "",
@@ -152,7 +153,7 @@
             }
            },
            {
-            "_id": "32884ed",
+            "_id": "92e7981",
             "text": "Adres do zwrotów: [uzupełnij]",
             "link": {
              "url": "",
@@ -171,7 +172,7 @@
        ]
       },
       {
-       "id": "a746712",
+       "id": "d7f8e6e",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -191,7 +192,7 @@
        },
        "elements": [
         {
-         "id": "d7f8e6e",
+         "id": "6da36f6",
          "elType": "widget",
          "widgetType": "form",
          "isInner": false,
@@ -199,7 +200,7 @@
           "form_name": "Kontakt",
           "form_fields": [
            {
-            "_id": "5b215d8",
+            "_id": "f8d25c6",
             "custom_id": "name",
             "field_type": "text",
             "field_label": "Imię",
@@ -207,7 +208,7 @@
             "width": "50"
            },
            {
-            "_id": "3de0a2e",
+            "_id": "22a0d4e",
             "custom_id": "email",
             "field_type": "email",
             "field_label": "E-mail",
@@ -215,14 +216,14 @@
             "width": "50"
            },
            {
-            "_id": "ee92c2c",
+            "_id": "fca5222",
             "custom_id": "order",
             "field_type": "text",
             "field_label": "Numer zamówienia (jeśli dotyczy)",
             "width": "100"
            },
            {
-            "_id": "92e7981",
+            "_id": "407faff",
             "custom_id": "message",
             "field_type": "textarea",
             "field_label": "Wiadomość",
@@ -231,13 +232,13 @@
             "width": "100"
            },
            {
-            "_id": "87426ab",
+            "_id": "b5e284a",
             "custom_id": "hp",
             "field_type": "honeypot",
             "width": "100"
            },
            {
-            "_id": "694e1cc",
+            "_id": "9b53957",
             "custom_id": "rodo",
             "field_type": "acceptance",
             "required": "true",

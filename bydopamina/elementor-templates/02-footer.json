@@ -5,7 +5,7 @@
  "page_settings": {},
  "content": [
   {
-   "id": "61a4111",
+   "id": "ca9674c",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -46,7 +46,7 @@
    },
    "elements": [
     {
-     "id": "3a7e49f",
+     "id": "e0d305e",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -63,7 +63,7 @@
      },
      "elements": [
       {
-       "id": "5906275",
+       "id": "46d4986",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -89,7 +89,7 @@
        },
        "elements": [
         {
-         "id": "e78375d",
+         "id": "6615356",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
@@ -101,7 +101,7 @@
          "elements": []
         },
         {
-         "id": "2e18b9c",
+         "id": "2dd7f27",
          "elType": "widget",
          "widgetType": "social-icons",
          "isInner": false,
@@ -109,7 +109,7 @@
           "shape": "square",
           "social_icon_list": [
            {
-            "_id": "ce4e742",
+            "_id": "2e18b9c",
             "social_icon": {
              "value": "fab fa-instagram",
              "library": "fa-brands"
@@ -121,7 +121,7 @@
             }
            },
            {
-            "_id": "2ef999d",
+            "_id": "5906275",
             "social_icon": {
              "value": "fab fa-tiktok",
              "library": "fa-brands"
@@ -133,7 +133,7 @@
             }
            },
            {
-            "_id": "6615356",
+            "_id": "9867ffa",
             "social_icon": {
              "value": "fab fa-pinterest",
              "library": "fa-brands"
@@ -154,7 +154,7 @@
        ]
       },
       {
-       "id": "a3bf41d",
+       "id": "4d5a878",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -185,7 +185,7 @@
        },
        "elements": [
         {
-         "id": "9867ffa",
+         "id": "49f2c59",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
@@ -197,7 +197,7 @@
          "elements": []
         },
         {
-         "id": "139d741",
+         "id": "57750a6",
          "elType": "widget",
          "widgetType": "icon-list",
          "isInner": false,
@@ -205,7 +205,7 @@
           "view": "traditional",
           "icon_list": [
            {
-            "_id": "2dd7f27",
+            "_id": "afd08d0",
             "text": "Naszyjniki",
             "link": {
              "url": "/kategoria-produktu/naszyjniki/",
@@ -218,7 +218,7 @@
             }
            },
            {
-            "_id": "46d4986",
+            "_id": "9c11981",
             "text": "Kolczyki",
             "link": {
              "url": "/kategoria-produktu/kolczyki/",
@@ -231,7 +231,7 @@
             }
            },
            {
-            "_id": "49f2c59",
+            "_id": "139d741",
             "text": "Pierścionki",
             "link": {
              "url": "/kategoria-produktu/pierscionki/",
@@ -244,7 +244,7 @@
             }
            },
            {
-            "_id": "afd08d0",
+            "_id": "a3bf41d",
             "text": "Bransoletki",
             "link": {
              "url": "/kategoria-produktu/bransoletki/",
@@ -257,7 +257,7 @@
             }
            },
            {
-            "_id": "9c11981",
+            "_id": "a904315",
             "text": "Karta podarunkowa",
             "link": {
              "url": "/karta-podarunkowa/",
@@ -276,7 +276,7 @@
        ]
       },
       {
-       "id": "d3bb457",
+       "id": "db80987",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -307,7 +307,7 @@
        },
        "elements": [
         {
-         "id": "a904315",
+         "id": "111f9c4",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
@@ -319,7 +319,7 @@
          "elements": []
         },
         {
-         "id": "c05523d",
+         "id": "a76284e",
          "elType": "widget",
          "widgetType": "icon-list",
          "isInner": false,
@@ -327,7 +327,7 @@
           "view": "traditional",
           "icon_list": [
            {
-            "_id": "57750a6",
+            "_id": "4134609",
             "text": "Dostawa i płatności",
             "link": {
              "url": "/dostawa-i-platnosci/",
@@ -340,7 +340,7 @@
             }
            },
            {
-            "_id": "4d5a878",
+            "_id": "f316f61",
             "text": "Zwroty i reklamacje",
             "link": {
              "url": "/zwroty/",
@@ -353,7 +353,7 @@
             }
            },
            {
-            "_id": "111f9c4",
+            "_id": "c05523d",
             "text": "Rozmiarówka",
             "link": {
              "url": "/rozmiarowka/",
@@ -366,7 +366,7 @@
             }
            },
            {
-            "_id": "4134609",
+            "_id": "d3bb457",
             "text": "Pielęgnacja biżuterii",
             "link": {
              "url": "/pielegnacja/",
@@ -379,7 +379,7 @@
             }
            },
            {
-            "_id": "f316f61",
+            "_id": "efa8037",
             "text": "Kontakt",
             "link": {
              "url": "/kontakt/",
@@ -398,7 +398,7 @@
        ]
       },
       {
-       "id": "8185fa6",
+       "id": "bbec008",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -429,7 +429,7 @@
        },
        "elements": [
         {
-         "id": "efa8037",
+         "id": "414beea",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
@@ -441,7 +441,7 @@
          "elements": []
         },
         {
-         "id": "6cdfce5",
+         "id": "28110a6",
          "elType": "widget",
          "widgetType": "icon-list",
          "isInner": false,
@@ -449,7 +449,7 @@
           "view": "traditional",
           "icon_list": [
            {
-            "_id": "a76284e",
+            "_id": "6cdfce5",
             "text": "hej@bydopamina.pl",
             "link": {
              "url": "mailto:hej@bydopamina.pl",
@@ -462,7 +462,7 @@
             }
            },
            {
-            "_id": "db80987",
+            "_id": "8185fa6",
             "text": "+48 000 000 000",
             "link": {
              "url": "tel:+48000000000",
@@ -475,7 +475,7 @@
             }
            },
            {
-            "_id": "414beea",
+            "_id": "3a7e49f",
             "text": "pn–pt 9:00–16:00",
             "link": {
              "url": "",
@@ -496,7 +496,7 @@
      ]
     },
     {
-     "id": "28110a6",
+     "id": "566c816",
      "elType": "widget",
      "widgetType": "html",
      "isInner": false,
@@ -506,7 +506,7 @@
      "elements": []
     },
     {
-     "id": "bbec008",
+     "id": "d7ab0aa",
      "elType": "widget",
      "widgetType": "html",
      "isInner": false,
@@ -516,7 +516,7 @@
      "elements": []
     },
     {
-     "id": "742ff72",
+     "id": "ddfd47b",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -536,7 +536,7 @@
      },
      "elements": [
       {
-       "id": "e0d305e",
+       "id": "589baff",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
@@ -547,7 +547,7 @@
        "elements": []
       },
       {
-       "id": "65e46f2",
+       "id": "29fcc9e",
        "elType": "widget",
        "widgetType": "icon-list",
        "isInner": false,
@@ -555,7 +555,7 @@
         "view": "inline",
         "icon_list": [
          {
-          "_id": "566c816",
+          "_id": "f132dad",
           "text": "Regulamin",
           "link": {
            "url": "/regulamin/",
@@ -568,7 +568,7 @@
           }
          },
          {
-          "_id": "d7ab0aa",
+          "_id": "382fc78",
           "text": "Polityka prywatności",
           "link": {
            "url": "/polityka-prywatnosci/",
@@ -581,7 +581,7 @@
           }
          },
          {
-          "_id": "589baff",
+          "_id": "65e46f2",
           "text": "Cookies",
           "link": {
            "url": "/polityka-cookies/",
@@ -594,7 +594,7 @@
           }
          },
          {
-          "_id": "f132dad",
+          "_id": "742ff72",
           "text": "Odstąpienie od umowy",
           "link": {
            "url": "/odstapienie-od-umowy/",
@@ -607,7 +607,7 @@
           }
          },
          {
-          "_id": "382fc78",
+          "_id": "61a4111",
           "text": "Deklaracja dostępności",
           "link": {
            "url": "/deklaracja-dostepnosci/",
@@ -628,7 +628,7 @@
    ]
   },
   {
-   "id": "ddfd47b",
+   "id": "5fb5f88",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -647,7 +647,7 @@
    },
    "elements": [
     {
-     "id": "29fcc9e",
+     "id": "77d8baa",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
