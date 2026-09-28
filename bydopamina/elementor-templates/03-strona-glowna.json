@@ -23,17 +23,17 @@
     "html_tag": "section",
     "padding": {
      "unit": "px",
-     "top": "24",
+     "top": "40",
      "right": "40",
-     "bottom": "0",
+     "bottom": "40",
      "left": "40",
-     "isLinked": false
+     "isLinked": true
     },
     "padding_mobile": {
      "unit": "px",
-     "top": "12",
+     "top": "20",
      "right": "16",
-     "bottom": "0",
+     "bottom": "32",
      "left": "16",
      "isLinked": false
     }
@@ -50,50 +50,96 @@
      },
      "elements": [
       {
-       "id": "ca9674c",
-       "elType": "widget",
-       "widgetType": "heading",
-       "isInner": false,
-       "settings": {
-        "title": "Kolor, który <em>robi dzień</em>.",
-        "header_size": "h1",
-        "_css_classes": "bd-hero-title bd-hero__title"
-       },
-       "elements": []
-      },
-      {
-       "id": "ea0e6a6",
+       "id": "9d1fecc",
        "elType": "container",
        "isInner": true,
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
-        "css_classes": "bd-hero__main bd-media--hero bd-tint bd-tint--lagoon"
+        "css_classes": "bd-hero__text"
        },
        "elements": [
         {
-         "id": "77d8baa",
+         "id": "ca9674c",
          "elType": "widget",
-         "widgetType": "image",
+         "widgetType": "html",
          "isInner": false,
          "settings": {
-          "image": {
-           "url": "",
-           "id": "",
-           "alt": "Modelka w naszyjnikach z kolekcji"
-          },
-          "image_size": "full",
-          "_css_classes": "bd-lcp"
+          "html": "<p class=\"bd-label\">Nowa kolekcja · jesień 2026</p>"
+         },
+         "elements": []
+        },
+        {
+         "id": "77d8baa",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Biżuteria, która <em>poprawia humor</em>.",
+          "header_size": "h1",
+          "_css_classes": "bd-hero-title"
          },
          "elements": []
         },
         {
          "id": "5fb5f88",
          "elType": "widget",
-         "widgetType": "html",
+         "widgetType": "text-editor",
          "isInner": false,
          "settings": {
-          "html": "<div class=\"bd-caption\"><span class=\"bd-label\">Kolekcja 07 — Lagoon</span><a class=\"bd-textlink\" href=\"/kolekcja/lagoon/\">Zobacz kolekcję <span aria-hidden=\"true\">→</span></a></div>"
+          "editor": "<p>Kolorowe kolczyki, naszyjniki i bransoletki na co dzień. Ze stali, która nie ciemnieje – pakowane w pudełko, wysyłane w 24 h.</p>",
+          "_css_classes": "bd-lead"
+         },
+         "elements": []
+        },
+        {
+         "id": "c9c583d",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "row",
+          "css_classes": "bd-hero__actions",
+          "flex_align_items": "center",
+          "flex_wrap": "wrap"
+         },
+         "elements": [
+          {
+           "id": "ea0e6a6",
+           "elType": "widget",
+           "widgetType": "button",
+           "isInner": false,
+           "settings": {
+            "text": "Zobacz biżuterię",
+            "link": {
+             "url": "/sklep/",
+             "is_external": "",
+             "nofollow": ""
+            },
+            "size": "md",
+            "_css_classes": "bd-btn"
+           },
+           "elements": []
+          },
+          {
+           "id": "bc989b0",
+           "elType": "widget",
+           "widgetType": "html",
+           "isInner": false,
+           "settings": {
+            "html": "<a class=\"bd-textlink\" href=\"/sklep/?orderby=popularity\">Bestsellery <span aria-hidden=\"true\">→</span></a>"
+           },
+           "elements": []
+          }
+         ]
+        },
+        {
+         "id": "50af9c9",
+         "elType": "widget",
+         "widgetType": "shortcode",
+         "isInner": false,
+         "settings": {
+          "shortcode": "<p class=\"bd-hero__proof\">[bd_rating_summary_inline]</p>"
          },
          "elements": []
         }
@@ -106,11 +152,11 @@
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
-        "css_classes": "bd-hero__side"
+        "css_classes": "bd-hero__media"
        },
        "elements": [
         {
-         "id": "bc989b0",
+         "id": "d7b207f",
          "elType": "widget",
          "widgetType": "image",
          "isInner": false,
@@ -118,70 +164,12 @@
           "image": {
            "url": "",
            "id": "",
-           "alt": "Zbliżenie: pierścionki na dłoni"
+           "alt": "Kolorowa biżuteria na modelce"
           },
           "image_size": "full",
-          "_css_classes": "bd-media bd-media--sq"
+          "_css_classes": "bd-arch bd-lcp"
          },
          "elements": []
-        },
-        {
-         "id": "c9c583d",
-         "elType": "widget",
-         "widgetType": "text-editor",
-         "isInner": false,
-         "settings": {
-          "editor": "<p>Stal, ceramika, perły i muszle w kolorach, które poprawiają humor. Nowa kolekcja co sezon, noszona na co dzień.</p>",
-          "_css_classes": "bd-lead"
-         },
-         "elements": []
-        },
-        {
-         "id": "d7b207f",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "row",
-          "flex_align_items": "center",
-          "flex_wrap": "wrap",
-          "flex_gap": {
-           "column": "24",
-           "row": "24",
-           "isLinked": true,
-           "unit": "px",
-           "size": 24
-          }
-         },
-         "elements": [
-          {
-           "id": "50af9c9",
-           "elType": "widget",
-           "widgetType": "button",
-           "isInner": false,
-           "settings": {
-            "text": "Kup kolekcję",
-            "link": {
-             "url": "/kolekcja/lagoon/",
-             "is_external": "",
-             "nofollow": ""
-            },
-            "size": "md",
-            "_css_classes": "bd-btn"
-           },
-           "elements": []
-          },
-          {
-           "id": "9d1fecc",
-           "elType": "widget",
-           "widgetType": "html",
-           "isInner": false,
-           "settings": {
-            "html": "<a class=\"bd-textlink\" href=\"/sklep/?orderby=popularity\">Bestsellery <span aria-hidden=\"true\">→</span></a>"
-           },
-           "elements": []
-          }
-         ]
         },
         {
          "id": "1fd74d1",
@@ -189,7 +177,7 @@
          "widgetType": "html",
          "isInner": false,
          "settings": {
-          "html": "<dl class=\"bd-meta\">\n<dt>Materiały</dt><dd>Stal 316L, złoto 18K, ceramika, perły</dd>\n<dt>Wysyłka</dt><dd>W 24 h, InPost lub kurier</dd>\n<dt>Zwrot</dt><dd>30 dni, bez podawania przyczyny</dd>\n</dl>"
+          "html": "<a class=\"bd-hero__tag\" href=\"/produkt/kolczyki-lagoon/\"><span class=\"bd-label\">Na zdjęciu</span><strong>Kolczyki Lagoon</strong><span>89 zł →</span></a>"
          },
          "elements": []
         }
@@ -215,17 +203,17 @@
     "html_tag": "section",
     "padding": {
      "unit": "px",
-     "top": "48",
+     "top": "0",
      "right": "40",
-     "bottom": "48",
+     "bottom": "24",
      "left": "40",
      "isLinked": false
     },
     "padding_mobile": {
      "unit": "px",
-     "top": "40",
+     "top": "0",
      "right": "16",
-     "bottom": "40",
+     "bottom": "8",
      "left": "16",
      "isLinked": false
     }
@@ -259,7 +247,7 @@
     "html_tag": "section",
     "padding": {
      "unit": "px",
-     "top": "64",
+     "top": "0",
      "right": "40",
      "bottom": "0",
      "left": "40",
@@ -267,7 +255,7 @@
     },
     "padding_mobile": {
      "unit": "px",
-     "top": "40",
+     "top": "0",
      "right": "16",
      "bottom": "0",
      "left": "16",
@@ -283,30 +271,39 @@
       "content_width": "full",
       "flex_direction": "row",
       "css_classes": "bd-sechead",
-      "flex_align_items": "flex-end"
+      "flex_align_items": "flex-end",
+      "flex_wrap": "wrap"
      },
      "elements": [
       {
-       "id": "c6a81ba",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
-       "settings": {
-        "html": "<p class=\"bd-label\">01</p>"
-       },
-       "elements": []
-      },
-      {
        "id": "0fd4f79",
-       "elType": "widget",
-       "widgetType": "heading",
-       "isInner": false,
+       "elType": "container",
+       "isInner": true,
        "settings": {
-        "title": "Kategorie",
-        "header_size": "h2",
-        "_css_classes": "bd-h2"
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+         "column": "0",
+         "row": "0",
+         "isLinked": true,
+         "unit": "px",
+         "size": 0
+        }
        },
-       "elements": []
+       "elements": [
+        {
+         "id": "c6a81ba",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Kategorie",
+          "header_size": "h2",
+          "_css_classes": "bd-h2"
+         },
+         "elements": []
+        }
+       ]
       },
       {
        "id": "5342af1",
@@ -333,7 +330,7 @@
    ]
   },
   {
-   "id": "6a18f12",
+   "id": "62c3ab7",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -348,7 +345,7 @@
     "html_tag": "section",
     "padding": {
      "unit": "px",
-     "top": "64",
+     "top": "0",
      "right": "40",
      "bottom": "0",
      "left": "40",
@@ -356,7 +353,7 @@
     },
     "padding_mobile": {
      "unit": "px",
-     "top": "48",
+     "top": "0",
      "right": "16",
      "bottom": "0",
      "left": "16",
@@ -365,125 +362,59 @@
    },
    "elements": [
     {
-     "id": "ff59e1e",
+     "id": "c315604",
      "elType": "container",
      "isInner": true,
      "settings": {
       "content_width": "full",
       "flex_direction": "row",
       "css_classes": "bd-sechead",
-      "flex_align_items": "flex-end"
+      "flex_align_items": "flex-end",
+      "flex_wrap": "wrap"
      },
      "elements": [
-      {
-       "id": "19248ee",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
-       "settings": {
-        "html": "<p class=\"bd-label\">02</p>"
-       },
-       "elements": []
-      },
-      {
-       "id": "460323b",
-       "elType": "widget",
-       "widgetType": "heading",
-       "isInner": false,
-       "settings": {
-        "title": "Szukaj po <em>kolorze</em>, kamieniu, materiale",
-        "header_size": "h2",
-        "_css_classes": "bd-h2"
-       },
-       "elements": []
-      },
       {
        "id": "fc331bd",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
+       "elType": "container",
+       "isInner": true,
        "settings": {
-        "html": "<a class=\"bd-textlink\" href=\"/sklep/\">Cały sklep <span aria-hidden=\"true\">→</span></a>"
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+         "column": "0",
+         "row": "0",
+         "isLinked": true,
+         "unit": "px",
+         "size": 0
+        }
        },
-       "elements": []
-      }
-     ]
-    },
-    {
-     "id": "c315604",
-     "elType": "widget",
-     "widgetType": "shortcode",
-     "isInner": false,
-     "settings": {
-      "shortcode": "[bd_shop_by]"
-     },
-     "elements": []
-    }
-   ]
-  },
-  {
-   "id": "2d644f8",
-   "elType": "container",
-   "isInner": false,
-   "settings": {
-    "content_width": "boxed",
-    "flex_direction": "column",
-    "boxed_width": {
-     "unit": "px",
-     "size": 1520,
-     "sizes": []
-    },
-    "css_classes": "bd-section bd-reveal",
-    "html_tag": "section",
-    "padding": {
-     "unit": "px",
-     "top": "0",
-     "right": "40",
-     "bottom": "0",
-     "left": "40",
-     "isLinked": false
-    },
-    "padding_mobile": {
-     "unit": "px",
-     "top": "0",
-     "right": "16",
-     "bottom": "0",
-     "left": "16",
-     "isLinked": false
-    }
-   },
-   "elements": [
-    {
-     "id": "16f4ff3",
-     "elType": "container",
-     "isInner": true,
-     "settings": {
-      "content_width": "full",
-      "flex_direction": "row",
-      "flex_justify_content": "space-between",
-      "flex_align_items": "center",
-      "padding": {
-       "unit": "px",
-       "top": "0",
-       "right": "0",
-       "bottom": "16",
-       "left": "0",
-       "isLinked": false
-      }
-     },
-     "elements": [
-      {
-       "id": "62c3ab7",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
-       "settings": {
-        "html": "<p class=\"bd-label\">03 — Wybór redakcji</p>"
-       },
-       "elements": []
+       "elements": [
+        {
+         "id": "19248ee",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Najczęściej wybierane",
+          "header_size": "h2",
+          "_css_classes": "bd-h2"
+         },
+         "elements": []
+        },
+        {
+         "id": "460323b",
+         "elType": "widget",
+         "widgetType": "text-editor",
+         "isInner": false,
+         "settings": {
+          "editor": "<p>Ulubione klientek i najnowsze modele.</p>"
+         },
+         "elements": []
+        }
+       ]
       },
       {
-       "id": "9169211",
+       "id": "ff59e1e",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
@@ -495,7 +426,7 @@
      ]
     },
     {
-     "id": "c264979",
+     "id": "6a18f12",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
@@ -507,7 +438,7 @@
    ]
   },
   {
-   "id": "80b693b",
+   "id": "968135e",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -518,10 +449,8 @@
      "size": 1520,
      "sizes": []
     },
-    "css_classes": "bd-section bd-dark",
+    "css_classes": "bd-section bd-reveal",
     "html_tag": "section",
-    "background_background": "classic",
-    "background_color": "#1C1917",
     "padding": {
      "unit": "px",
      "top": "0",
@@ -541,150 +470,176 @@
    },
    "elements": [
     {
-     "id": "141f6f6",
+     "id": "2d644f8",
      "elType": "container",
      "isInner": true,
      "settings": {
       "content_width": "full",
       "flex_direction": "row",
       "css_classes": "bd-sechead",
-      "flex_align_items": "flex-end"
+      "flex_align_items": "flex-end",
+      "flex_wrap": "wrap"
      },
      "elements": [
       {
-       "id": "45d9bf6",
+       "id": "c264979",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+         "column": "0",
+         "row": "0",
+         "isLinked": true,
+         "unit": "px",
+         "size": 0
+        }
+       },
+       "elements": [
+        {
+         "id": "9169211",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Jak chcesz się dziś <em>poczuć</em>?",
+          "header_size": "h2",
+          "_css_classes": "bd-h2"
+         },
+         "elements": []
+        },
+        {
+         "id": "16f4ff3",
+         "elType": "widget",
+         "widgetType": "text-editor",
+         "isInner": false,
+         "settings": {
+          "editor": "<p>Wybierz nastrój – dobierzemy biżuterię w pasujących kolorach.</p>"
+         },
+         "elements": []
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "45d9bf6",
+     "elType": "widget",
+     "widgetType": "shortcode",
+     "isInner": false,
+     "settings": {
+      "shortcode": "[bd_mood_picker]"
+     },
+     "elements": []
+    }
+   ]
+  },
+  {
+   "id": "bf5ab53",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1520,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-reveal",
+    "html_tag": "section",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "40",
+     "bottom": "0",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "9cbc5ab",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "css_classes": "bd-sechead",
+      "flex_align_items": "flex-end",
+      "flex_wrap": "wrap"
+     },
+     "elements": [
+      {
+       "id": "cd91758",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+         "column": "0",
+         "row": "0",
+         "isLinked": true,
+         "unit": "px",
+         "size": 0
+        }
+       },
+       "elements": [
+        {
+         "id": "12812d1",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Noś <em>razem</em>",
+          "header_size": "h2",
+          "_css_classes": "bd-h2"
+         },
+         "elements": []
+        },
+        {
+         "id": "141f6f6",
+         "elType": "widget",
+         "widgetType": "text-editor",
+         "isInner": false,
+         "settings": {
+          "editor": "<p>Stylizacja z Instagrama – kliknij punkt, żeby zobaczyć produkt.</p>"
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "a5bb3ec",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
        "settings": {
-        "html": "<p class=\"bd-label\">04</p>"
-       },
-       "elements": []
-      },
-      {
-       "id": "968135e",
-       "elType": "widget",
-       "widgetType": "heading",
-       "isInner": false,
-       "settings": {
-        "title": "Stal, która <em>nie ciemnieje</em>. Nawet pod prysznicem.",
-        "header_size": "h2",
-        "_css_classes": "bd-h2"
-       },
-       "elements": []
-      },
-      {
-       "id": "12812d1",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
-       "settings": {
-        "html": "<a class=\"bd-textlink\" href=\"/o-materiale/\">O materiale <span aria-hidden=\"true\">→</span></a>"
+        "html": "<a class=\"bd-textlink\" href=\"/stylizacje/\">Więcej stylizacji <span aria-hidden=\"true\">→</span></a>"
        },
        "elements": []
       }
      ]
     },
     {
-     "id": "c4931a5",
-     "elType": "container",
-     "isInner": true,
+     "id": "8f8b9dc",
+     "elType": "widget",
+     "widgetType": "shortcode",
+     "isInner": false,
      "settings": {
-      "content_width": "full",
-      "flex_direction": "row",
-      "flex_wrap": "wrap",
-      "flex_gap": {
-       "column": "48",
-       "row": "48",
-       "isLinked": true,
-       "unit": "px",
-       "size": 48
-      },
-      "flex_align_items": "flex-end"
+      "shortcode": "[bd_shop_the_look image=\"0\" products=\"101:34:38,102:52:30,103:61:66\" title=\"Na zdjęciu\"]"
      },
-     "elements": [
-      {
-       "id": "9cbc5ab",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "css_classes": "bd-material-col",
-        "width": {
-         "unit": "%",
-         "size": 58,
-         "sizes": []
-        },
-        "width_tablet": {
-         "unit": "%",
-         "size": 100,
-         "sizes": []
-        }
-       },
-       "elements": [
-        {
-         "id": "cd91758",
-         "elType": "widget",
-         "widgetType": "text-editor",
-         "isInner": false,
-         "settings": {
-          "editor": "<p>Tanie złocenie to kilka mikronów farby na mosiądzu – ściera się po paru tygodniach i zostawia zielony ślad. Nasze złoto jest związane ze stalą próżniowo. Dlatego kolor zostaje z Tobą na lata.</p>",
-          "_css_classes": "bd-lead"
-         },
-         "elements": []
-        },
-        {
-         "id": "a5bb3ec",
-         "elType": "widget",
-         "widgetType": "html",
-         "isInner": false,
-         "settings": {
-          "html": "<ul class=\"bd-specs\">\n<li><b>316L</b><span>Stal chirurgiczna – ta sama, z której robi się implanty. Nie rdzewieje, nie zmienia koloru.</span></li>\n<li><b>18K</b><span>Złoto nakładane metodą PVD – warstwa wiązana z metalem, a nie tylko nim pokryta.</span></li>\n<li><b>0</b><span>Niklu i ołowiu. Bezpieczna dla wrażliwej skóry i do noszenia 24/7.</span></li>\n</ul>"
-         },
-         "elements": []
-        }
-       ]
-      },
-      {
-       "id": "bf5ab53",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "css_classes": "bd-media bd-media--45",
-        "width": {
-         "unit": "%",
-         "size": 42,
-         "sizes": []
-        },
-        "width_tablet": {
-         "unit": "%",
-         "size": 100,
-         "sizes": []
-        }
-       },
-       "elements": [
-        {
-         "id": "8f8b9dc",
-         "elType": "widget",
-         "widgetType": "image",
-         "isInner": false,
-         "settings": {
-          "image": {
-           "url": "",
-           "id": "",
-           "alt": "Biżuteria w wodzie – zbliżenie"
-          },
-          "image_size": "full",
-          "_css_classes": "bd-unveil"
-         },
-         "elements": []
-        }
-       ]
-      }
-     ]
+     "elements": []
     }
    ]
   },
@@ -721,338 +676,13 @@
    },
    "elements": [
     {
-     "id": "3ad6b85",
-     "elType": "container",
-     "isInner": true,
-     "settings": {
-      "content_width": "full",
-      "flex_direction": "row",
-      "css_classes": "bd-sechead",
-      "flex_align_items": "flex-end"
-     },
-     "elements": [
-      {
-       "id": "6b352d3",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
-       "settings": {
-        "html": "<p class=\"bd-label\">05</p>"
-       },
-       "elements": []
-      },
-      {
-       "id": "1178a33",
-       "elType": "widget",
-       "widgetType": "heading",
-       "isInner": false,
-       "settings": {
-        "title": "Stylizacja <em>tygodnia</em>",
-        "header_size": "h2",
-        "_css_classes": "bd-h2"
-       },
-       "elements": []
-      },
-      {
-       "id": "7dad408",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
-       "settings": {
-        "html": "<a class=\"bd-textlink\" href=\"/stylizacje/\">Więcej stylizacji <span aria-hidden=\"true\">→</span></a>"
-       },
-       "elements": []
-      }
-     ]
-    },
-    {
      "id": "37b4de2",
-     "elType": "widget",
-     "widgetType": "shortcode",
-     "isInner": false,
-     "settings": {
-      "shortcode": "[bd_shop_the_look image=\"0\" products=\"101:34:38,102:52:30,103:61:66\" title=\"Na zdjęciu\"]"
-     },
-     "elements": []
-    }
-   ]
-  },
-  {
-   "id": "038eada",
-   "elType": "container",
-   "isInner": false,
-   "settings": {
-    "content_width": "boxed",
-    "flex_direction": "column",
-    "boxed_width": {
-     "unit": "px",
-     "size": 1520,
-     "sizes": []
-    },
-    "css_classes": "bd-section bd-reveal",
-    "html_tag": "section",
-    "padding": {
-     "unit": "px",
-     "top": "0",
-     "right": "40",
-     "bottom": "0",
-     "left": "40",
-     "isLinked": false
-    },
-    "padding_mobile": {
-     "unit": "px",
-     "top": "0",
-     "right": "16",
-     "bottom": "0",
-     "left": "16",
-     "isLinked": false
-    }
-   },
-   "elements": [
-    {
-     "id": "a156dd3",
      "elType": "container",
      "isInner": true,
      "settings": {
       "content_width": "full",
       "flex_direction": "row",
-      "css_classes": "bd-sechead",
-      "flex_align_items": "flex-end"
-     },
-     "elements": [
-      {
-       "id": "1db83cb",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
-       "settings": {
-        "html": "<p class=\"bd-label\">06</p>"
-       },
-       "elements": []
-      },
-      {
-       "id": "4d8f0a1",
-       "elType": "widget",
-       "widgetType": "heading",
-       "isInner": false,
-       "settings": {
-        "title": "Kolekcje <em>sezonu</em>",
-        "header_size": "h2",
-        "_css_classes": "bd-h2"
-       },
-       "elements": []
-      },
-      {
-       "id": "96c24a8",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
-       "settings": {
-        "html": "<a class=\"bd-textlink\" href=\"/kolekcje/\">Wszystkie kolekcje <span aria-hidden=\"true\">→</span></a>"
-       },
-       "elements": []
-      }
-     ]
-    },
-    {
-     "id": "73f4a86",
-     "elType": "container",
-     "isInner": true,
-     "settings": {
-      "content_width": "full",
-      "flex_direction": "column",
-      "css_classes": "bd-collections"
-     },
-     "elements": [
-      {
-       "id": "171023a",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "css_classes": "bd-collection bd-media--45 bd-tint bd-tint--coral"
-       },
-       "elements": [
-        {
-         "id": "c1f492b",
-         "elType": "widget",
-         "widgetType": "image",
-         "isInner": false,
-         "settings": {
-          "image": {
-           "url": "",
-           "id": "",
-           "alt": "Koralowe kolczyki z ceramiki"
-          },
-          "image_size": "full",
-          "_css_classes": "bd-unveil"
-         },
-         "elements": []
-        },
-        {
-         "id": "81ca289",
-         "elType": "widget",
-         "widgetType": "html",
-         "isInner": false,
-         "settings": {
-          "html": "<div class=\"bd-collection__meta\"><h3>Coral</h3><span class=\"bd-label\">18 modeli</span></div>"
-         },
-         "elements": []
-        },
-        {
-         "id": "a9f9e5f",
-         "elType": "widget",
-         "widgetType": "html",
-         "isInner": false,
-         "settings": {
-          "html": "<a class=\"bd-textlink\" href=\"/kolekcja/coral/\">Odkryj <span aria-hidden=\"true\">→</span></a>"
-         },
-         "elements": []
-        }
-       ]
-      },
-      {
-       "id": "a07f001",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "css_classes": "bd-collection bd-media--45 bd-tint bd-tint--lagoon"
-       },
-       "elements": [
-        {
-         "id": "89b62b3",
-         "elType": "widget",
-         "widgetType": "image",
-         "isInner": false,
-         "settings": {
-          "image": {
-           "url": "",
-           "id": "",
-           "alt": "Turkusowy naszyjnik z muszlą"
-          },
-          "image_size": "full",
-          "_css_classes": "bd-unveil"
-         },
-         "elements": []
-        },
-        {
-         "id": "0739d18",
-         "elType": "widget",
-         "widgetType": "html",
-         "isInner": false,
-         "settings": {
-          "html": "<div class=\"bd-collection__meta\"><h3>Lagoon</h3><span class=\"bd-label\">24 modele</span></div>"
-         },
-         "elements": []
-        },
-        {
-         "id": "95d4e26",
-         "elType": "widget",
-         "widgetType": "html",
-         "isInner": false,
-         "settings": {
-          "html": "<a class=\"bd-textlink\" href=\"/kolekcja/lagoon/\">Odkryj <span aria-hidden=\"true\">→</span></a>"
-         },
-         "elements": []
-        }
-       ]
-      },
-      {
-       "id": "56434bb",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "css_classes": "bd-collection bd-media--45 bd-tint bd-tint--lilac"
-       },
-       "elements": [
-        {
-         "id": "1efa58f",
-         "elType": "widget",
-         "widgetType": "image",
-         "isInner": false,
-         "settings": {
-          "image": {
-           "url": "",
-           "id": "",
-           "alt": "Liliowa bransoletka z perłą"
-          },
-          "image_size": "full",
-          "_css_classes": "bd-unveil"
-         },
-         "elements": []
-        },
-        {
-         "id": "9c2ac31",
-         "elType": "widget",
-         "widgetType": "html",
-         "isInner": false,
-         "settings": {
-          "html": "<div class=\"bd-collection__meta\"><h3>Lilac</h3><span class=\"bd-label\">15 modeli</span></div>"
-         },
-         "elements": []
-        },
-        {
-         "id": "2136474",
-         "elType": "widget",
-         "widgetType": "html",
-         "isInner": false,
-         "settings": {
-          "html": "<a class=\"bd-textlink\" href=\"/kolekcja/lilac/\">Odkryj <span aria-hidden=\"true\">→</span></a>"
-         },
-         "elements": []
-        }
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "491db36",
-   "elType": "container",
-   "isInner": false,
-   "settings": {
-    "content_width": "boxed",
-    "flex_direction": "column",
-    "boxed_width": {
-     "unit": "px",
-     "size": 1520,
-     "sizes": []
-    },
-    "css_classes": "bd-section bd-sand",
-    "html_tag": "section",
-    "background_background": "classic",
-    "background_color": "#EDE6DC",
-    "padding": {
-     "unit": "px",
-     "top": "0",
-     "right": "40",
-     "bottom": "0",
-     "left": "40",
-     "isLinked": false
-    },
-    "padding_mobile": {
-     "unit": "px",
-     "top": "0",
-     "right": "16",
-     "bottom": "0",
-     "left": "16",
-     "isLinked": false
-    }
-   },
-   "elements": [
-    {
-     "id": "835e38c",
-     "elType": "container",
-     "isInner": true,
-     "settings": {
-      "content_width": "full",
-      "flex_direction": "row",
+      "css_classes": "bd-newsletter-box",
       "flex_wrap": "wrap",
       "flex_gap": {
        "column": "56",
@@ -1065,7 +695,7 @@
      },
      "elements": [
       {
-       "id": "55c2718",
+       "id": "1178a33",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -1082,49 +712,39 @@
          "sizes": []
         },
         "flex_gap": {
-         "column": "24",
-         "row": "24",
+         "column": "20",
+         "row": "20",
          "isLinked": true,
          "unit": "px",
-         "size": 24
+         "size": 20
         }
        },
        "elements": [
         {
-         "id": "2130da6",
-         "elType": "widget",
-         "widgetType": "html",
-         "isInner": false,
-         "settings": {
-          "html": "<p class=\"bd-label\">07 — Prezenty</p>"
-         },
-         "elements": []
-        },
-        {
-         "id": "0742cfc",
+         "id": "c4931a5",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
          "settings": {
-          "title": "Prezent, który <em>nie trafi</em> do szuflady.",
+          "title": "Szukasz <em>prezentu</em>?",
           "header_size": "h2",
           "_css_classes": "bd-h2"
          },
          "elements": []
         },
         {
-         "id": "015b93a",
+         "id": "80b693b",
          "elType": "widget",
          "widgetType": "text-editor",
          "isInner": false,
          "settings": {
-          "editor": "<p>Każde zamówienie pakujemy w pudełko. Chcesz więcej? Zaznacz „pakowanie na prezent” – dołożymy papier, wstążkę i liścik z Twoimi słowami. Bez paragonu w paczce.</p>",
+          "editor": "<p>Każde zamówienie pakujemy w pudełko. Przy zamówieniu możesz dodać pakowanie na prezent z liścikiem – bez paragonu w paczce.</p>",
           "_css_classes": "bd-lead"
          },
          "elements": []
         },
         {
-         "id": "a0d1df2",
+         "id": "6b352d3",
          "elType": "widget",
          "widgetType": "shortcode",
          "isInner": false,
@@ -1136,13 +756,12 @@
        ]
       },
       {
-       "id": "5f25501",
+       "id": "3ad6b85",
        "elType": "container",
        "isInner": true,
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
-        "css_classes": "bd-media bd-media--45",
         "width": {
          "unit": "%",
          "size": 45,
@@ -1156,7 +775,7 @@
        },
        "elements": [
         {
-         "id": "a27a3b4",
+         "id": "7dad408",
          "elType": "widget",
          "widgetType": "image",
          "isInner": false,
@@ -1164,10 +783,10 @@
           "image": {
            "url": "",
            "id": "",
-           "alt": "Pudełko prezentowe z biżuterią"
+           "alt": "Biżuteria w pudełku prezentowym"
           },
           "image_size": "full",
-          "_css_classes": "bd-unveil"
+          "_css_classes": "bd-arch"
          },
          "elements": []
         }
@@ -1178,7 +797,7 @@
    ]
   },
   {
-   "id": "d2e16ed",
+   "id": "a9f9e5f",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -1217,40 +836,49 @@
    },
    "elements": [
     {
-     "id": "7b7c765",
+     "id": "a156dd3",
      "elType": "container",
      "isInner": true,
      "settings": {
       "content_width": "full",
       "flex_direction": "row",
       "css_classes": "bd-sechead",
-      "flex_align_items": "flex-end"
+      "flex_align_items": "flex-end",
+      "flex_wrap": "wrap"
      },
      "elements": [
       {
-       "id": "8060476",
-       "elType": "widget",
-       "widgetType": "html",
-       "isInner": false,
+       "id": "4d8f0a1",
+       "elType": "container",
+       "isInner": true,
        "settings": {
-        "html": "<p class=\"bd-label\">08</p>"
+        "content_width": "full",
+        "flex_direction": "column",
+        "flex_gap": {
+         "column": "0",
+         "row": "0",
+         "isLinked": true,
+         "unit": "px",
+         "size": 0
+        }
        },
-       "elements": []
+       "elements": [
+        {
+         "id": "1db83cb",
+         "elType": "widget",
+         "widgetType": "heading",
+         "isInner": false,
+         "settings": {
+          "title": "Opinie klientek",
+          "header_size": "h2",
+          "_css_classes": "bd-h2"
+         },
+         "elements": []
+        }
+       ]
       },
       {
-       "id": "6248ee5",
-       "elType": "widget",
-       "widgetType": "heading",
-       "isInner": false,
-       "settings": {
-        "title": "Opinie",
-        "header_size": "h2",
-        "_css_classes": "bd-h2"
-       },
-       "elements": []
-      },
-      {
-       "id": "d25f4e1",
+       "id": "96c24a8",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
@@ -1262,7 +890,7 @@
      ]
     },
     {
-     "id": "7667dc2",
+     "id": "c1f492b",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
@@ -1272,7 +900,7 @@
      "elements": []
     },
     {
-     "id": "349364a",
+     "id": "81ca289",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
@@ -1284,7 +912,7 @@
    ]
   },
   {
-   "id": "9b665a6",
+   "id": "73f4a86",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -1299,7 +927,7 @@
     "html_tag": "section",
     "padding": {
      "unit": "px",
-     "top": "0",
+     "top": "64",
      "right": "40",
      "bottom": "120",
      "left": "40",
@@ -1307,7 +935,7 @@
     },
     "padding_mobile": {
      "unit": "px",
-     "top": "0",
+     "top": "40",
      "right": "16",
      "bottom": "72",
      "left": "16",
@@ -1316,44 +944,26 @@
    },
    "elements": [
     {
-     "id": "3d86267",
+     "id": "56434bb",
      "elType": "container",
      "isInner": true,
      "settings": {
       "content_width": "full",
       "flex_direction": "row",
-      "css_classes": "bd-newsletter-wrap",
+      "css_classes": "bd-newsletter-box bd-tint bd-tint--rose",
       "flex_wrap": "wrap",
       "flex_gap": {
-       "column": "48",
-       "row": "48",
+       "column": "40",
+       "row": "40",
        "isLinked": true,
        "unit": "px",
-       "size": 48
+       "size": 40
       },
-      "flex_align_items": "flex-end",
-      "padding": {
-       "unit": "px",
-       "top": "56",
-       "right": "0",
-       "bottom": "0",
-       "left": "0",
-       "isLinked": false
-      },
-      "border_border": "solid",
-      "border_width": {
-       "unit": "px",
-       "top": "1",
-       "right": "0",
-       "bottom": "0",
-       "left": "0",
-       "isLinked": false
-      },
-      "border_color": "#DCD2C4"
+      "flex_align_items": "center"
      },
      "elements": [
       {
-       "id": "7a3e39e",
+       "id": "9c2ac31",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -1368,25 +978,43 @@
          "unit": "%",
          "size": 100,
          "sizes": []
+        },
+        "flex_gap": {
+         "column": "8",
+         "row": "8",
+         "isLinked": true,
+         "unit": "px",
+         "size": 8
         }
        },
        "elements": [
         {
-         "id": "e6bc430",
+         "id": "a07f001",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
          "settings": {
-          "title": "Nowe kolekcje <em>najpierw</em> u Ciebie. I −10% na start.",
+          "title": "−10% na <em>pierwsze</em> zakupy",
           "header_size": "h2",
           "_css_classes": "bd-h2"
+         },
+         "elements": []
+        },
+        {
+         "id": "1efa58f",
+         "elType": "widget",
+         "widgetType": "text-editor",
+         "isInner": false,
+         "settings": {
+          "editor": "<p>Zapisz się – nowe kolekcje zobaczysz przed wszystkimi.</p>",
+          "_css_classes": "bd-lead"
          },
          "elements": []
         }
        ]
       },
       {
-       "id": "44d9d2d",
+       "id": "2136474",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -1405,7 +1033,7 @@
        },
        "elements": [
         {
-         "id": "2f81258",
+         "id": "95d4e26",
          "elType": "widget",
          "widgetType": "form",
          "isInner": false,
@@ -1413,7 +1041,7 @@
           "form_name": "Newsletter",
           "form_fields": [
            {
-            "_id": "d0ed247",
+            "_id": "171023a",
             "custom_id": "email",
             "field_type": "email",
             "field_label": "Adres e-mail",
@@ -1422,13 +1050,13 @@
             "width": "70"
            },
            {
-            "_id": "61622e0",
+            "_id": "89b62b3",
             "custom_id": "hp",
             "field_type": "honeypot",
             "width": "100"
            },
            {
-            "_id": "760bece",
+            "_id": "0739d18",
             "custom_id": "zgoda",
             "field_type": "acceptance",
             "required": "true",
@@ -1436,13 +1064,13 @@
             "acceptance_text": "Chcę dostawać newsletter (maks. 2 maile w miesiącu). <a href=\"/polityka-prywatnosci/\">Polityka prywatności</a>."
            }
           ],
-          "show_labels": "yes",
-          "button_text": "Zapisz się",
+          "show_labels": "",
+          "button_text": "Odbierz −10%",
           "button_width": "30",
           "submit_actions": [
            "save-to-database"
           ],
-          "success_message": "Gotowe. Potwierdź zapis w mailu – kod −10% wyślemy od razu.",
+          "success_message": "Gotowe! Potwierdź zapis w mailu – kod −10% wyślemy od razu.",
           "error_message": "Coś poszło nie tak. Spróbuj ponownie.",
           "_css_classes": "bd-newsletter"
          },

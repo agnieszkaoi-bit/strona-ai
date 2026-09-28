@@ -1,72 +1,76 @@
 /*
- * bydopamina – design tokens (kierunek: editorial jewelry, 2026/27).
- * Te same wartości wpisz w Elementor → Ustawienia witryny → Globalne kolory / czcionki (tabela w README).
+ * bydopamina – design tokens (v3: kobieco, jasno, czytelnie).
+ * Te same wartości wpisz w Elementor → Ustawienia witryny → Globalne kolory (tabela w README).
  *
  * Zasady:
- *  – kolor robi fotografia, interfejs jest cichy: kość słoniowa, espresso, cienkie linie;
- *  – „dopamina” = kolory KOLEKCJI (color-blocking): każda kolekcja ma swój kolor tła (--bd-tint-*),
- *    na którym stoi zdjęcie i ciemny tekst. Interfejs (przyciski, linie) zostaje neutralny;
- *  – wiśnia = akcent systemowy: promocje, licznik koszyka, hover CTA;
- *  – złoto (#A8864F) wyłącznie jako linia/ikona, nigdy jako tekst (kontrast < 4,5:1);
- *  – kąty proste (2 px) – biżuteria premium, nie aplikacja mobilna.
+ *  – biżuteria jest kolorowa, więc strona jest stonowana: porcelanowa biel, pudrowy róż, ciepła czerń;
+ *  – jeden krój: Figtree – prosty, bardzo czytelny, miękki (kobiecy, ale nie „słodki”);
+ *  – wyróżnik marki: ŁUK (zdjęcie hero, kategorie, karty nastrojów) + „Dobierz biżuterię do nastroju”;
+ *  – kolory nastrojów (--bd-tint-*) tylko jako delikatne tła pod zdjęcia/karty, nigdy jako tekst;
+ *  – malina = akcent: promocje, licznik koszyka, hover przycisku. Oszczędnie.
  */
 :root {
 	/* Kolor */
-	--bd-bg: #F6F2EC;          /* kość słoniowa – tło */
+	--bd-bg: #FBF8F5;          /* porcelana – tło */
 	--bd-surface: #FFFFFF;
-	--bd-surface-2: #EDE6DC;   /* piasek – tła zdjęć packshot, sekcje */
-	--bd-surface-3: #E3D9CB;
-	--bd-ink: #1C1917;         /* espresso – tekst, przyciski (15,7:1 na tle) */
-	--bd-ink-2: #5E564E;       /* tekst drugorzędny (6,5:1) */
-	--bd-ink-3: #8A8178;       /* tylko duży tekst / nieaktywne (3,4:1) */
-	--bd-line: #DCD2C4;
-	--bd-line-strong: #1C1917;
-	--bd-gold: #A8864F;        /* hairline, ikony, gwiazdki (3:1 – tylko grafika) */
-	--bd-cherry: #9C1C33;      /* akcent „dopamina” – biały tekst na nim 8:1, na tle 7,2:1 */
-	--bd-cherry-soft: #F4E1E2;
-	--bd-butter: #F1E4B3;      /* etykieta „Nowość” */
-	/* Kolory kolekcji – tła pod zdjęcia i kafle (tekst na nich zawsze --bd-ink, kontrast ≥ 7:1) */
-	--bd-tint-coral: #F4A48C;
-	--bd-tint-lagoon: #9CCFCB;
-	--bd-tint-lilac: #CDBDEB;
-	--bd-tint-lime: #D8E98F;
-	--bd-tint-sun: #F5D77A;
-	--bd-tint-rose: #F3C1CC;
-	--bd-success: #2E6B45;
-	--bd-danger: #9C1C33;
-	--bd-focus: #1C1917;
+	--bd-surface-2: #F5ECE7;   /* pudrowy róż – tła zdjęć, sekcje */
+	--bd-surface-3: #EFE3DC;
+	--bd-ink: #2B2421;         /* ciepła czerń – tekst, przyciski (~15:1) */
+	--bd-ink-2: #6B5F58;       /* tekst drugorzędny (~6:1, AA) */
+	--bd-ink-3: #9A8E86;       /* tylko duży tekst / nieaktywne */
+	--bd-line: #E9DED7;
+	--bd-line-strong: #2B2421;
+	--bd-gold: #B08A55;        /* gwiazdki, ikony – tylko grafika */
+	--bd-cherry: #A3385A;      /* malina – akcent (biały tekst na niej ~6:1) */
+	--bd-cherry-soft: #F7E3EA;
+	--bd-butter: #F6EBC8;      /* etykieta „Nowość” */
 
-	/* Typografia */
-	--bd-font-display: "Instrument Serif", "Times New Roman", serif;
-	--bd-font-body: "Geist", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-	--bd-font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+	/* Kolory nastrojów/kolekcji – pastelowe tła (tekst na nich zawsze --bd-ink) */
+	--bd-tint-coral: #F8D3C6;  /* Energia */
+	--bd-tint-lagoon: #CFE7E4; /* Spokój */
+	--bd-tint-lilac: #E4DAF4;  /* Marzenia */
+	--bd-tint-lime: #E6EFC4;   /* Świeżość */
+	--bd-tint-sun: #F8E7B4;    /* Radość */
+	--bd-tint-rose: #F6DCE3;   /* Czułość */
 
-	--bd-fs-2xs: 0.6875rem;                                  /* 11 – etykiety mono */
-	--bd-fs-xs: 0.75rem;
-	--bd-fs-sm: 0.875rem;
-	--bd-fs-base: 1rem;
-	--bd-fs-lg: clamp(1.0625rem, 1rem + 0.25vw, 1.25rem);
-	--bd-fs-xl: clamp(1.5rem, 1.3rem + 0.9vw, 2.125rem);     /* tytuł produktu */
-	--bd-fs-2xl: clamp(2rem, 1.55rem + 2vw, 3.5rem);         /* nagłówki sekcji */
-	--bd-fs-3xl: clamp(2.75rem, 1.9rem + 3.8vw, 5.75rem);
-	--bd-fs-hero: clamp(3.25rem, 1.9rem + 6vw, 8.75rem);
+	--bd-success: #2F6B4A;
+	--bd-danger: #A3385A;
+	--bd-focus: #2B2421;
+
+	/* Typografia – jeden krój, różne grubości */
+	--bd-font-display: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+	--bd-font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+	--bd-font-mono: "Figtree", system-ui, sans-serif;           /* etykiety: ta sama rodzina, wersaliki + rozstrzelenie */
+
+	--bd-fs-2xs: 0.75rem;                                        /* 12 – etykiety */
+	--bd-fs-xs: 0.8125rem;
+	--bd-fs-sm: 0.9375rem;
+	--bd-fs-base: 1.0625rem;                                     /* 17 px – wygodne czytanie */
+	--bd-fs-lg: clamp(1.125rem, 1.05rem + 0.3vw, 1.3125rem);
+	--bd-fs-xl: clamp(1.5rem, 1.35rem + 0.7vw, 2rem);
+	--bd-fs-2xl: clamp(1.875rem, 1.5rem + 1.6vw, 3rem);
+	--bd-fs-3xl: clamp(2.25rem, 1.7rem + 2.6vw, 4rem);
+	--bd-fs-hero: clamp(2.5rem, 1.7rem + 3.8vw, 5.25rem);
 
 	/* Przestrzeń */
-	--bd-space-section: clamp(72px, 7vw + 32px, 160px);
+	--bd-space-section: clamp(64px, 6vw + 28px, 128px);
 	--bd-gutter: clamp(16px, 2.5vw, 40px);
-	--bd-grid-gap: clamp(8px, 1.2vw, 20px);
-	--bd-max: 1520px;
+	--bd-grid-gap: clamp(10px, 1.4vw, 24px);
+	--bd-max: 1440px;
 	--bd-measure: 62ch;
 
-	/* Kształt i ruch */
-	--bd-radius: 2px;
-	--bd-radius-arch: 999px 999px 2px 2px;                    /* łuk – kategorie */
+	/* Kształt i ruch – miękko */
+	--bd-radius: 14px;
+	--bd-radius-sm: 10px;
+	--bd-radius-pill: 999px;
+	--bd-radius-arch: 999px 999px 14px 14px;                    /* łuk – znak rozpoznawczy */
 	--bd-ease: cubic-bezier(0.22, 1, 0.36, 1);
 	--bd-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 	--bd-dur: 240ms;
 	--bd-dur-slow: 700ms;
 	--bd-tap: 48px;
-	--bd-header-h: 64px;
+	--bd-header-h: 68px;
 	--bd-mnav-h: 60px;
-	--bd-shadow-pop: 0 18px 50px rgb(28 25 23 / 0.16);
+	--bd-shadow-soft: 0 1px 2px rgb(43 36 33 / 0.04), 0 10px 30px rgb(43 36 33 / 0.06);
+	--bd-shadow-pop: 0 18px 50px rgb(43 36 33 / 0.14);
 }

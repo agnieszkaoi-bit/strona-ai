@@ -511,7 +511,7 @@
      "widgetType": "html",
      "isInner": false,
      "settings": {
-      "html": "<p class=\"bd-footer-wordmark\" aria-hidden=\"true\">bydopamina</p>"
+      "html": "<p class=\"bd-footer-wordmark\" aria-hidden=\"true\">bydopamina<b>.</b></p>"
      },
      "elements": []
     },

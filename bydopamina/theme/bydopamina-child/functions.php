@@ -13,7 +13,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'BYDOPAMINA_VERSION', '2.0.0' );
+define( 'BYDOPAMINA_VERSION', '3.0.0' );
 define( 'BYDOPAMINA_DIR', get_stylesheet_directory() );
 define( 'BYDOPAMINA_URI', get_stylesheet_directory_uri() );
 
@@ -126,11 +126,11 @@ add_action(
 add_action(
 	'wp_head',
 	function () {
-		foreach ( array( 'instrument-serif-normal-400-latin', 'geist-normal-300-600-latin' ) as $font ) {
+		foreach ( array( 'figtree-400-700-latin' ) as $font ) {
 			printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( BYDOPAMINA_URI . '/assets/fonts/' . $font . '.woff2' ) );
 		}
-		echo '<meta name="theme-color" content="#F6F2EC" media="(prefers-color-scheme: light)">' . "\n";
-		echo '<meta name="theme-color" content="#1C1917" media="(prefers-color-scheme: dark)">' . "\n";
+		echo '<meta name="theme-color" content="#FBF8F5" media="(prefers-color-scheme: light)">' . "\n";
+		echo '<meta name="theme-color" content="#2B2421" media="(prefers-color-scheme: dark)">' . "\n";
 	},
 	1
 );

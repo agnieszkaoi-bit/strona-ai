@@ -119,11 +119,15 @@ def icon_list(items, cls="", inline=False):
     return w("icon-list", cls, **s)
 
 
-def sechead(num, title, link_label=None, url=None, dark=False):
-    """Nagłówek sekcji w układzie redakcyjnym: 01 · Tytuł · link."""
-    parts = [html(f'<p class="bd-label">{num}</p>'), heading(title, "h2", "bd-h2")]
-    parts.append(textlink(link_label, url) if link_label else html(""))
-    return box(*parts, direction="row", cls="bd-sechead", align="flex-end")
+def sechead(title, sub=None, link_label=None, url=None):
+    """Nagłówek sekcji: tytuł (+ krótki opis) po lewej, link po prawej."""
+    left = [heading(title, "h2", "bd-h2")]
+    if sub:
+        left.append(text(f"<p>{sub}</p>"))
+    parts = [box(*left, gap=0)]
+    if link_label:
+        parts.append(textlink(link_label, url))
+    return box(*parts, direction="row", cls="bd-sechead", align="flex-end", wrap="wrap")
 
 
 def template(title, kind, content, page_settings=None):
@@ -153,7 +157,7 @@ def header():
     nav = w("nav-menu", "", menu="", layout="horizontal", align_items="left", pointer="underline",
             animation_line="fade", dropdown="tablet", toggle="burger", full_width="stretch", text_align="aside",
             submenu_icon={"value": "", "library": ""})
-    logo = heading("bydopamina", "div", "bd-logo", link="/")
+    logo = heading("bydopamina<b>.</b>", "div", "bd-logo", link="/")
     icons = box(
         w("search-form", "", skin="full_screen", placeholder="Szukaj: naszyjnik, obrączka, kolczyki…"),
         w("icon", "bd-hide-mobile", selected_icon={"value": "far fa-heart", "library": "fa-regular"},
@@ -203,7 +207,7 @@ def footer():
     )
     payments = html('<ul class="bd-payments" aria-label="Płatności i dostawa"><li>BLIK</li><li>Visa</li><li>Mastercard</li>'
                     '<li>Apple Pay</li><li>Google Pay</li><li>Przelewy24</li><li>PayPo</li><li>InPost</li><li>DPD</li></ul>')
-    wordmark = html('<p class="bd-footer-wordmark" aria-hidden="true">bydopamina</p>')
+    wordmark = html('<p class="bd-footer-wordmark" aria-hidden="true">bydopamina<b>.</b></p>')
     bottom = box(
         shortcode("© [bd_year] bydopamina.pl", "bd-label"),
         icon_list([("Regulamin", "/regulamin/"), ("Polityka prywatności", "/polityka-prywatnosci/"),
@@ -222,123 +226,81 @@ def footer():
 # STRONA GŁÓWNA
 # ---------------------------------------------------------------------------
 
-SPECS = """<ul class="bd-specs">
-<li><b>316L</b><span>Stal chirurgiczna – ta sama, z której robi się implanty. Nie rdzewieje, nie zmienia koloru.</span></li>
-<li><b>18K</b><span>Złoto nakładane metodą PVD – warstwa wiązana z metalem, a nie tylko nim pokryta.</span></li>
-<li><b>0</b><span>Niklu i ołowiu. Bezpieczna dla wrażliwej skóry i do noszenia 24/7.</span></li>
-</ul>"""
-
-HERO_META = """<dl class="bd-meta">
-<dt>Materiały</dt><dd>Stal 316L, złoto 18K, ceramika, perły</dd>
-<dt>Wysyłka</dt><dd>W 24 h, InPost lub kurier</dd>
-<dt>Zwrot</dt><dd>30 dni, bez podawania przyczyny</dd>
-</dl>"""
-
-
 def home():
+    """Prosta ścieżka: hero → zaufanie → kategorie → bestsellery → nastroje (wyróżnik) → stylizacja → prezent → opinie → newsletter."""
     hero = section(
         box(
-            heading("Kolor, który <em>robi dzień</em>.", "h1", "bd-hero-title bd-hero__title"),
             box(
-                image("bd-lcp", "Modelka w naszyjnikach z kolekcji"),
-                html('<div class="bd-caption"><span class="bd-label">Kolekcja 07 — Lagoon</span>'
-                     '<a class="bd-textlink" href="/kolekcja/lagoon/">Zobacz kolekcję <span aria-hidden="true">→</span></a></div>'),
-                # Kolor tła = kolor kolekcji: zmień bd-tint--lagoon na coral / lilac / lime / sun / rose.
-                cls="bd-hero__main bd-media--hero bd-tint bd-tint--lagoon",
+                html('<p class="bd-label">Nowa kolekcja · jesień 2026</p>'),
+                heading("Biżuteria, która <em>poprawia humor</em>.", "h1", "bd-hero-title"),
+                text("<p>Kolorowe kolczyki, naszyjniki i bransoletki na co dzień. "
+                     "Ze stali, która nie ciemnieje – pakowane w pudełko, wysyłane w 24 h.</p>", "bd-lead"),
+                box(button("Zobacz biżuterię", "/sklep/"), textlink("Bestsellery", "/sklep/?orderby=popularity"),
+                    cls="bd-hero__actions", direction="row", align="center", wrap="wrap"),
+                shortcode('<p class="bd-hero__proof">[bd_rating_summary_inline]</p>'),
+                cls="bd-hero__text",
             ),
             box(
-                image("bd-media bd-media--sq", "Zbliżenie: pierścionki na dłoni"),
-                text("<p>Stal, ceramika, perły i muszle w kolorach, które poprawiają humor. "
-                     "Nowa kolekcja co sezon, noszona na co dzień.</p>", "bd-lead"),
-                box(button("Kup kolekcję", "/kolekcja/lagoon/"), textlink("Bestsellery", "/sklep/?orderby=popularity"),
-                    direction="row", align="center", wrap="wrap", gap=24),
-                html(HERO_META),
-                cls="bd-hero__side",
+                image("bd-arch bd-lcp", "Kolorowa biżuteria na modelce"),
+                # Pływająca etykieta: podmień nazwę, cenę i link na produkt ze zdjęcia.
+                html('<a class="bd-hero__tag" href="/produkt/kolczyki-lagoon/"><span class="bd-label">Na zdjęciu</span>'
+                     '<strong>Kolczyki Lagoon</strong><span>89 zł →</span></a>'),
+                cls="bd-hero__media",
             ),
             cls="bd-hero__grid",
         ),
-        cls="bd-hero", pad=pad(24, 40, 0, 40), pad_mobile=pad(12, 16, 0, 16),
+        cls="bd-hero", pad=pad(40, 40, 40, 40), pad_mobile=pad(20, 16, 32, 16),
     )
 
-    usp = section(shortcode("[bd_usp]"), cls="bd-usp", pad=pad(48, 40), pad_mobile=pad(40, 16))
+    usp = section(shortcode("[bd_usp]"), cls="bd-usp", pad=pad(0, 40, 24, 40), pad_mobile=pad(0, 16, 8, 16))
 
     categories = section(
-        sechead("01", "Kategorie", "Cały sklep", "/sklep/"),
-        shortcode("[bd_category_arches limit=\"6\"]"),
-        cls="bd-section bd-reveal", pad=pad(64, 40, 0, 40), pad_mobile=pad(40, 16, 0, 16),
-    )
-
-    colours = section(
-        sechead("02", "Szukaj po <em>kolorze</em>, kamieniu, materiale", "Cały sklep", "/sklep/"),
-        # Zakładki Kolor / Kamień / Materiał z atrybutów pa_kolor, pa_kamien, pa_material (puste zakładki się ukrywają).
-        shortcode("[bd_shop_by]"),
-        cls="bd-section bd-reveal", pad=pad(64, 40, 0, 40), pad_mobile=pad(48, 16, 0, 16),
+        sechead("Kategorie", None, "Cały sklep", "/sklep/"),
+        shortcode('[bd_category_arches limit="6"]'),
+        cls="bd-section bd-reveal",
     )
 
     products = section(
-        box(html('<p class="bd-label">03 — Wybór redakcji</p>'), textlink("Wszystkie produkty", "/sklep/"),
-            direction="row", justify="space-between", align="center", pad=pad(0, 0, 16, 0)),
+        sechead("Najczęściej wybierane", "Ulubione klientek i najnowsze modele.", "Wszystkie produkty", "/sklep/"),
         shortcode('[bd_product_tabs limit="8"]'),
-        cls="bd-section bd-reveal",
+        cls="bd-section bd-reveal", pad=pad(0, 40), pad_mobile=SIDE_M,
     )
 
-    material = section(
-        sechead("04", "Stal, która <em>nie ciemnieje</em>. Nawet pod prysznicem.", "O materiale", "/o-materiale/", dark=True),
-        box(
-            box(text("<p>Tanie złocenie to kilka mikronów farby na mosiądzu – ściera się po paru tygodniach i zostawia zielony ślad. "
-                     "Nasze złoto jest związane ze stalą próżniowo. Dlatego kolor zostaje z Tobą na lata.</p>", "bd-lead"),
-                html(SPECS), width=58, width_tablet=100, cls="bd-material-col"),
-            box(image("bd-unveil", "Biżuteria w wodzie – zbliżenie"), cls="bd-media bd-media--45", width=42, width_tablet=100),
-            direction="row", wrap="wrap", gap=48, align="flex-end",
-        ),
-        cls="bd-section bd-dark", bg="#1C1917",
+    moods = section(
+        sechead("Jak chcesz się dziś <em>poczuć</em>?",
+                "Wybierz nastrój – dobierzemy biżuterię w pasujących kolorach.", None, None),
+        # Opcjonalnie zdjęcia w kółkach: [bd_mood_picker images="radosc:123,spokoj:456"]
+        shortcode("[bd_mood_picker]"),
+        cls="bd-section bd-reveal",
     )
 
     look = section(
-        sechead("05", "Stylizacja <em>tygodnia</em>", "Więcej stylizacji", "/stylizacje/"),
+        sechead("Noś <em>razem</em>", "Stylizacja z Instagrama – kliknij punkt, żeby zobaczyć produkt.", "Więcej stylizacji", "/stylizacje/"),
         # Podmień: image = ID zdjęcia z Mediów, products = ID:x%:y% (pozycja kropki na zdjęciu).
         shortcode('[bd_shop_the_look image="0" products="101:34:38,102:52:30,103:61:66" title="Na zdjęciu"]'),
-        cls="bd-section bd-reveal",
-    )
-
-    def collection(title, count, url, alt, tint):
-        return box(
-            image("bd-unveil", alt),
-            html(f'<div class="bd-collection__meta"><h3>{title}</h3><span class="bd-label">{count}</span></div>'),
-            textlink("Odkryj", url),
-            cls=f"bd-collection bd-media--45 bd-tint bd-tint--{tint}",
-        )
-
-    collections = section(
-        sechead("06", "Kolekcje <em>sezonu</em>", "Wszystkie kolekcje", "/kolekcje/"),
-        box(collection("Coral", "18 modeli", "/kolekcja/coral/", "Koralowe kolczyki z ceramiki", "coral"),
-            collection("Lagoon", "24 modele", "/kolekcja/lagoon/", "Turkusowy naszyjnik z muszlą", "lagoon"),
-            collection("Lilac", "15 modeli", "/kolekcja/lilac/", "Liliowa bransoletka z perłą", "lilac"),
-            cls="bd-collections"),
         cls="bd-section bd-reveal", pad=pad(0, 40), pad_mobile=SIDE_M,
     )
 
     gifts = section(
         box(
             box(
-                html('<p class="bd-label">07 — Prezenty</p>'),
-                heading("Prezent, który <em>nie trafi</em> do szuflady.", "h2", "bd-h2"),
-                text("<p>Każde zamówienie pakujemy w pudełko. Chcesz więcej? Zaznacz „pakowanie na prezent” – dołożymy papier, "
-                     "wstążkę i liścik z Twoimi słowami. Bez paragonu w paczce.</p>", "bd-lead"),
+                heading("Szukasz <em>prezentu</em>?", "h2", "bd-h2"),
+                text("<p>Każde zamówienie pakujemy w pudełko. Przy zamówieniu możesz dodać pakowanie na prezent "
+                     "z liścikiem – bez paragonu w paczce.</p>", "bd-lead"),
                 shortcode("[bd_gift_finder]"),
-                width=55, width_tablet=100, gap=24,
+                width=55, width_tablet=100, gap=20,
             ),
-            box(image("bd-unveil", "Pudełko prezentowe z biżuterią"), cls="bd-media bd-media--45", width=45, width_tablet=100),
-            direction="row", wrap="wrap", gap=56, align="center",
+            box(image("bd-arch", "Biżuteria w pudełku prezentowym"), width=45, width_tablet=100),
+            direction="row", wrap="wrap", gap=56, align="center", cls="bd-newsletter-box",
         ),
-        cls="bd-section bd-sand", bg="#EDE6DC",
+        cls="bd-section bd-reveal",
     )
 
     reviews = section(
-        sechead("08", "Opinie", "Wszystkie opinie", "/opinie/"),
+        sechead("Opinie klientek", None, "Wszystkie opinie", "/opinie/"),
         shortcode("[bd_rating_summary]"),
         shortcode('[bd_reviews limit="10"]'),
-        cls="bd-section bd-reveal", gap=24,
+        cls="bd-section bd-reveal", gap=24, pad=pad(0, 40), pad_mobile=SIDE_M,
     )
 
     newsletter_form = w(
@@ -351,26 +313,24 @@ def home():
             {"_id": _id(), "custom_id": "zgoda", "field_type": "acceptance", "required": "true", "width": "100",
              "acceptance_text": 'Chcę dostawać newsletter (maks. 2 maile w miesiącu). <a href="/polityka-prywatnosci/">Polityka prywatności</a>.'},
         ],
-        show_labels="yes", button_text="Zapisz się", button_width="30",
+        show_labels="", button_text="Odbierz −10%", button_width="30",
         submit_actions=["save-to-database"],
-        success_message="Gotowe. Potwierdź zapis w mailu – kod −10% wyślemy od razu.",
+        success_message="Gotowe! Potwierdź zapis w mailu – kod −10% wyślemy od razu.",
         error_message="Coś poszło nie tak. Spróbuj ponownie.",
     )
     newsletter = section(
         box(
-            box(heading("Nowe kolekcje <em>najpierw</em> u Ciebie. I −10% na start.", "h2", "bd-h2"),
-                width=50, width_tablet=100),
+            box(heading("−10% na <em>pierwsze</em> zakupy", "h2", "bd-h2"),
+                text("<p>Zapisz się – nowe kolekcje zobaczysz przed wszystkimi.</p>", "bd-lead"),
+                width=50, width_tablet=100, gap=8),
             box(newsletter_form, width=50, width_tablet=100),
-            direction="row", wrap="wrap", gap=48, align="flex-end",
-            pad=pad(56, 0, 0, 0), cls="bd-newsletter-wrap", border_border="solid",
-            border_width={"unit": "px", "top": "1", "right": "0", "bottom": "0", "left": "0", "isLinked": False},
-            border_color="#DCD2C4",
+            direction="row", wrap="wrap", gap=40, align="center", cls="bd-newsletter-box bd-tint bd-tint--rose",
         ),
-        cls="bd-section", pad=pad(0, 40, 120, 40), pad_mobile=pad(0, 16, 72, 16),
+        cls="bd-section", pad=pad(64, 40, 120, 40), pad_mobile=pad(40, 16, 72, 16),
     )
 
     return template("bydopamina — Strona główna", "page",
-                    [hero, usp, categories, colours, products, material, look, collections, gifts, reviews, newsletter], FULL_PAGE)
+                    [hero, usp, categories, products, moods, look, gifts, reviews, newsletter], FULL_PAGE)
 
 
 # ---------------------------------------------------------------------------
@@ -411,6 +371,7 @@ def product():
         w("woocommerce-product-short-description", "bd-muted"),
         shortcode("[bd_size_guide]"),
         w("woocommerce-product-add-to-cart", "", show_quantity="yes", layout="stacked"),
+        shortcode("[bd_complete_set]"),
         shortcode("[bd_delivery_eta]"),
         shortcode("[bd_free_shipping_bar]"),
         shortcode('[bd_usp variant="list"]'),
@@ -426,17 +387,12 @@ def product():
     )
     top = con(gallery, summary, direction="row", wrap="wrap", gap=32, tag="section",
               pad=pad(24, 40, 96, 40), pad_mobile=pad(0, 0, 48, 0))
-    together = section(
-        sechead("01", "Noś <em>razem</em>"),
-        w("woocommerce-product-upsell", "bd-rail", columns="4", columns_mobile="2", show_heading=""),
-        cls="bd-section bd-reveal", pad=pad(0, 40, 96, 40), pad_mobile=pad(0, 16, 64, 16),
-    )
     related = section(
-        sechead("02", "Może Ci się <em>spodobać</em>"),
+        sechead("Może Ci się <em>spodobać</em>"),
         w("woocommerce-product-related", "bd-rail", columns="4", columns_mobile="2", posts_per_page=8, show_heading=""),
         cls="bd-section bd-reveal", pad=pad(0, 40, 120, 40), pad_mobile=pad(0, 16, 72, 16),
     )
-    return template("bydopamina — Karta produktu", "product", [top, together, related])
+    return template("bydopamina — Karta produktu", "product", [top, related])
 
 
 # ---------------------------------------------------------------------------
@@ -447,7 +403,7 @@ def archive():
     head = section(
         w("woocommerce-breadcrumb", "bd-label"),
         box(
-            w("theme-archive-title", "bd-hero-title", header_size="h1"),
+            w("theme-archive-title", "bd-h2", header_size="h1"),
             w("woocommerce-archive-description", "bd-lead"),
             direction="row", justify="space-between", align="flex-end", wrap="wrap", gap=24,
         ),
@@ -456,7 +412,7 @@ def archive():
         cls="bd-archive-head", gap=20, pad=pad(40, 40, 32, 40), pad_mobile=pad(20, 16, 20, 16),
     )
     grid = section(
-        w("woocommerce-archive-products", "", columns="4", columns_tablet="3", columns_mobile="2", rows="6",
+        w("woocommerce-archive-products", "", columns="4", columns_tablet="3", columns_mobile="2", rows="12",
           paginate="yes", allow_order="yes", show_result_count="yes",
           nothing_found_message="Nic tu nie ma. Spróbuj innej frazy albo zajrzyj do bestsellerów."),
         cls="bd-section", pad=pad(0, 40, 120, 40), pad_mobile=pad(0, 16, 72, 16),
@@ -547,7 +503,7 @@ def error404():
             button("Przejdź do sklepu", "/sklep/"),
             cls="bd-section", gap=24, pad=pad(96, 40, 64, 40), pad_mobile=pad(48, 16, 48, 16),
         ),
-        section(sechead("—", "Zamiast tego"), shortcode('[bd_product_tabs limit="4"]'),
+        section(sechead("Zamiast tego – bestsellery"), shortcode('[bd_product_tabs limit="4"]'),
                 cls="bd-section", pad=pad(0, 40, 120, 40), pad_mobile=pad(0, 16, 72, 16)),
     ])
 

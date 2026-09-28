@@ -160,4 +160,47 @@
 		body.on('wc_fragments_refreshed wc_fragments_loaded added_to_cart removed_from_cart', syncCount);
 		body.on('change', 'input[name="bd_giftwrap"]', () => body.trigger('update_checkout'));
 	}
+
+	/* 10. „Dobierz komplet”: suma zaznaczonych + dodanie wszystkich do koszyka jednym kliknięciem. */
+	$$('[data-bd-set]').forEach((set) => {
+		const boxes = $$('input[type="checkbox"]', set);
+		const totalEl = $('[data-bd-set-total]', set);
+		const btn = $('[data-bd-set-add]', set);
+		const msg = $('.bd-set__msg', set);
+		const currency = set.dataset.currency || 'zł';
+		const fmt = (n) => n.toLocaleString('pl-PL', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ' + currency;
+		const chosen = () => boxes.filter((b) => b.checked);
+		const update = () => {
+			const sum = chosen().reduce((acc, b) => acc + (parseFloat(b.dataset.price) || 0), 0);
+			totalEl.textContent = fmt(sum);
+			btn.disabled = chosen().length === 0;
+		};
+		boxes.forEach((b) => b.addEventListener('change', update));
+		update();
+
+		btn.addEventListener('click', async () => {
+			const params = window.wc_add_to_cart_params;
+			if (!params) return;
+			const url = params.wc_ajax_url.toString().replace('%%endpoint%%', 'add_to_cart');
+			btn.disabled = true;
+			btn.setAttribute('aria-busy', 'true');
+			msg.textContent = '';
+			let added = 0;
+			for (const box of chosen()) {
+				const data = new URLSearchParams({ product_id: box.value, quantity: '1' });
+				try {
+					const res = await fetch(url, { method: 'POST', body: data, credentials: 'same-origin' });
+					const json = await res.json();
+					if (json && !json.error) added += 1;
+				} catch (e) { /* kolejny produkt */ }
+			}
+			btn.removeAttribute('aria-busy');
+			btn.disabled = false;
+			msg.textContent = added ? `Dodano do koszyka: ${added}` : 'Nie udało się dodać. Spróbuj ponownie.';
+			if (added && window.jQuery) {
+				// Odśwież mini-koszyk i otwórz go (Elementor nasłuchuje added_to_cart).
+				window.jQuery(document.body).trigger('wc_fragment_refresh').trigger('added_to_cart', [{}, '', window.jQuery(btn)]);
+			}
+		});
+	});
 })();

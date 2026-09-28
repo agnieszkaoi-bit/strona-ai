@@ -1,17 +1,23 @@
-# bydopamina.pl — sklep z biżuterią (Elementor Pro + WooCommerce)
+# bydopamina.pl — sklep z kolorową biżuterią (Elementor Pro + WooCommerce)
 
-Szablon sklepu z biżuterią (złoto 18K na stali 316L) w kierunku **editorial 2026/27**: zamiast typowego
-„szablonu AI” (kafle bento, gradienty, kropki nad nagłówkami, trzy identyczne karty opinii) — układ jak
-w magazynie modowym: asymetryczna siatka, duży szeryf *Instrument Serif* z kursywą, etykiety w *Geist Mono*,
-numerowane sekcje, kąty proste, cienkie linie. Kolor robi fotografia; interfejs jest cichy, a „dopamina”
-to **kolory kolekcji** (color-blocking: Coral, Lagoon, Lilac, Lime, Sun, Rose) jako tła pod zdjęcia,
-plus wiśnia `#9C1C33` jako akcent systemowy (promocje, licznik koszyka, hover przycisków).
-Inspiracje: bizuteriaparaiso.pl (materiał, zaufanie) i bydziubeka.pl (kolor, mieszanie materiałów, sezonowe kolekcje).
+**Kierunek (v3): kobieco, jasno, czytelnie – i prosto do koszyka.** Biżuteria jest kolorowa, więc strona
+jest stonowana: porcelanowa biel, pudrowy róż, ciepła czerń, jeden akcent – malina `#A3385A`.
+Jeden prosty, bardzo czytelny krój: **Figtree** (tekst 17 px). Miękkie kształty: zaokrąglenia, przyciski „pigułki”.
 
-Najważniejsze elementy UX dla biżuterii: kategorie w łukach, **zakupy wg koloru, kamienia i materiału** (przełącznik z próbkami + kamień urodzinowy), wyszukiwarka rozumiejąca nazwy kamieni, zakładki Bestsellery/Nowości/Promocje,
-druga fotka (na modelce) po najechaniu, **shop the look** z punktami na zdjęciu, **rozmiarówka** w panelu
-(pierścionki + długości łańcuszków), sekcja o materiale (316L / 18K / 0 niklu), prezent wg budżetu,
-**pakowanie na prezent** w checkoutcie, prawdziwe opinie z WooCommerce z automatyczną średnią,
+**Wyróżniki (czego nie mają inne sklepy):**
+1. **Łuk** jako znak rozpoznawczy – zdjęcie w hero, kategorie, karty nastrojów.
+2. **„Jak chcesz się dziś poczuć?”** – biżuteria wg nastroju (Radość, Energia, Czułość, Spokój, Marzenia, Świeżość),
+   każdy nastrój = paleta kolorów. Nawiązuje do nazwy marki i ułatwia wybór z kolorowej oferty.
+3. Logo z malinową kropką `bydopamina.` powtórzone w wielkim napisie w stopce.
+
+**Ścieżka zakupu i upsell (sklep ~50 produktów na start):**
+hero z jednym przyciskiem → kategorie → bestsellery z szybkim „+” (dodanie bez wchodzenia w produkt) →
+karta produktu z **„Dobierz komplet”** (zaznacz i dodaj 2–3 pasujące produkty jednym kliknięciem) →
+mini-koszyk z paskiem do darmowej dostawy i **„Pasuje do tego”** → koszyk z sprzedażą krzyżową →
+zamówienie z **pakowaniem na prezent**. Sklep pokazuje 48 produktów na stronę – prawie całą ofertę bez klikania.
+
+Inspiracje: aniakruk.pl (jasność, prostota), bydziubeka.pl (kolor, materiały), bizuteriaparaiso.pl (zaufanie do materiału).
+Do tego: zakupy wg koloru/kamienia/materiału, kamień urodzinowy, rozmiarówka, shop the look, prawdziwe opinie,
 dolna nawigacja i przyklejony „Dodaj do koszyka” na telefonie. Dostępność WCAG 2.2 AA (wymóg EAA od 28.06.2025).
 
 ```
@@ -60,22 +66,21 @@ bydopamina/
 
 | Nazwa | HEX | Użycie |
 |---|---|---|
-| Tło — kość słoniowa | `#F6F2EC` | tło strony |
-| Tekst — espresso | `#1C1917` | tekst, przyciski, stopka |
-| Tekst drugorzędny | `#5E564E` | opisy, etykiety |
-| Wiśnia (akcent) | `#9C1C33` | promocje, licznik koszyka, hover CTA |
-| Piasek | `#EDE6DC` | tła zdjęć, sekcja prezentów |
-| Masło | `#F1E4B3` | etykieta „Nowość” |
-| Złoto (tylko grafika) | `#A8864F` | ikony, gwiazdki, linie — nigdy tekst |
-| Linia | `#DCD2C4` | obramowania |
-| Kolekcje: Coral / Lagoon / Lilac | `#F4A48C` / `#9CCFCB` / `#CDBDEB` | tła kolekcji (klasa `bd-tint bd-tint--coral` itd.) |
-| Kolekcje: Lime / Sun / Rose | `#D8E98F` / `#F5D77A` / `#F3C1CC` | jw. — tekst na nich zawsze ciemny |
+| Tło — porcelana | `#FBF8F5` | tło strony |
+| Pudrowy róż | `#F5ECE7` | tła zdjęć, sekcje, pasek ogłoszeń |
+| Tekst — ciepła czerń | `#2B2421` | tekst, przyciski, stopka |
+| Tekst drugorzędny | `#6B5F58` | opisy, etykiety |
+| Malina (akcent) | `#A3385A` | promocje, licznik koszyka, hover przycisków, słowo-klucz w nagłówku |
+| Masło | `#F6EBC8` | etykieta „Nowość” |
+| Linia | `#E9DED7` | obramowania |
+| Nastroje: Radość / Energia / Czułość | `#F8E7B4` / `#F8D3C6` / `#F6DCE3` | pastelowe tła kart nastrojów |
+| Nastroje: Spokój / Marzenia / Świeżość | `#CFE7E4` / `#E4DAF4` / `#E6EFC4` | jw. – tekst na nich zawsze ciemny |
 
-**Czcionki**: *Instrument Serif* (nagłówki), *Geist* (tekst), *Geist Mono* (etykiety, ceny w tabelach).
-Motyw ładuje je **lokalnie** z `assets/fonts/` (RODO, CSP). W Elementorze: Ustawienia → Zaawansowane →
+**Czcionka**: *Figtree* 400–700 (jeden krój na całą stronę; nagłówki 500, przyciski 600).
+Motyw ładuje ją **lokalnie** z `assets/fonts/` (RODO, CSP, 30 KB). W Elementorze: Ustawienia → Zaawansowane →
 **Google Fonts: Wyłącz**, a w Globalnych czcionkach zostaw „Domyślne” — style nadaje motyw.
 
-**Układ**: szerokość treści 1520 px, odstęp widżetów 16 px, punkty łamania 767 / 1024 px.
+**Układ**: szerokość treści 1440 px, odstęp widżetów 16 px, punkty łamania 767 / 1024 px.
 
 **Elementor → Ustawienia → Funkcje**: włącz *Flexbox Container*, *Inline Font Icons*, *Optimized Markup*, *Optimized Control Loading*, *Lazy Load Background Images*.
 
@@ -103,6 +108,8 @@ Po imporcie:
 - **Kategorie w łukach**: Produkty → Kategorie → ustaw miniaturę każdej kategorii (3:4) i kolejność.
 - **Atrybuty**: Produkty → Atrybuty → utwórz **Kolor** (slug `kolor`, typ „Kolor” w Variation Swatches – wtedy próbki biorą HEX z wtyczki) i **Materiał** (slug `material`) oraz **Kamień** (slug `kamien`, wartości np. Ametyst, Kwarc różowy, Turkus, Perła – slugi bez polskich znaków: `kwarc-rozowy`); zaznacz „Włącz archiwa”. Własny kolor próbki kamienia: HEX w wtyczce Variation Swatches albo meta `bd_color`. Przypisz je do produktów — z nich budują się sekcja „Szukaj po kolorze, kamieniu, materiale”, kropki na kartach i inteligentne wyszukiwanie. W sidebarze/szufladzie filtrów dodaj blok WooCommerce „Filtr atrybutu” dla Kamienia.
 - **Kolor kolekcji w hero i kaflach**: w klasie kontenera zmień `bd-tint--lagoon` na `coral`, `lilac`, `lime`, `sun` lub `rose`.
+- **Upsell**: w każdym produkcie uzupełnij *Dane produktu → Produkty powiązane*: **Dosprzedaż** = 2–3 produkty do kompletu (np. kolczyki do naszyjnika) → „Dobierz komplet”; **Sprzedaż krzyżowa** = drobne dodatki (np. łańcuszek, bransoletka do 79 zł) → „Pasuje do tego” w mini-koszyku i koszyku.
+- **Nastroje**: przypisz produktom kolory (atrybut Kolor) albo tagi `nastroj-radosc`, `nastroj-energia`, `nastroj-czulosc`, `nastroj-spokoj`, `nastroj-marzenia`, `nastroj-swiezosc`.
 - **Shop the look**: w shortcodzie wpisz ID zdjęcia i ID produktów z pozycją punktu, np. `products="101:34:38,102:52:30"`.
 - **Formularz newslettera**: podłącz akcję MailerLite / Mailchimp / Brevo w *Akcje po wysłaniu* i włącz double opt-in.
 - WooCommerce → Ustawienia → Zaawansowane: przypisz strony Koszyk / Zamówienie / Moje konto.
@@ -125,7 +132,10 @@ Wykonaj **docs/BEZPIECZENSTWO.md** — w tym `.htaccess` lub `nginx`, `wp-config
 
 | Kod | Gdzie | Co robi |
 |---|---|---|
-| `[bd_usp variant="row\|list"]` | home, produkt | 4 cechy materiału: 18K na 316L, hipoalergiczna, wodoodporna, nie ciemnieje (filtr `bydopamina_usp`) |
+| `[bd_usp variant="row\|list"]` | home, produkt | 4 argumenty: darmowa dostawa, nie ciemnieje, 30 dni na zwrot, pudełko (filtr `bydopamina_usp`) |
+| `[bd_mood_picker images="radosc:ID,…"]` | home | **wyróżnik**: „Jak chcesz się dziś poczuć?” – 6 nastrojów = palety kolorów (atrybut `pa_kolor`); tag produktu `nastroj-radosc` itd. ma pierwszeństwo (ręczna selekcja); nastrój bez produktów się ukrywa (filtr `bydopamina_moods`) |
+| `[bd_complete_set limit="3"]` | produkt | **upsell** „Dobierz komplet”: ten produkt + do 3 pasujących (z pola *Dosprzedaż*, a gdy puste – *Sprzedaż krzyżowa*), suma na żywo, jeden przycisk dodaje wszystko (AJAX) |
+| `[bd_rating_summary_inline]` | hero | „★★★★★ 4,9/5 · 128 opinii klientek” – z prawdziwych opinii, pusty dopóki ich nie ma |
 | `[bd_category_arches limit="6"]` | home | kategorie w łukach, kolejność z Produkty → Kategorie, zdjęcie = miniatura kategorii |
 | `[bd_shop_by_color attribute="kolor"]` | home | próbki kolorów z atrybutu **pa_kolor** → sklep z filtrem `?filter_kolor=` (kolor z wtyczki Variation Swatches, meta `bd_color` lub wbudowanej mapy nazw) |
 | `[bd_shop_by_material attribute="material"]` | home | chipsy materiałów z atrybutu **pa_material** (stal, ceramika, perły, muszle…) |
@@ -146,7 +156,7 @@ Wykonaj **docs/BEZPIECZENSTWO.md** — w tym `.htaccess` lub `nginx`, `wp-config
 | `[bd_product_reviews]` | produkt | opinie + formularz (w akordeonie) |
 | `[bd_year]` | stopka | bieżący rok |
 
-Automatycznie (bez shortcode'ów): druga fotka z galerii po najechaniu na kartę produktu, **kropki dostępnych kolorów** pod ceną (produkty z wariantami), etykiety
+Automatycznie (bez shortcode'ów): **„Pasuje do tego” w mini-koszyku** (2 produkty ze Sprzedaży krzyżowej produktów w koszyku, dodawane jednym kliknięciem), szybkie „+” na kartach produktów, druga fotka z galerii po najechaniu na kartę produktu, **kropki dostępnych kolorów** pod ceną (produkty z wariantami), etykiety
 „Nowość”/„Wyprzedane”, rabat „−20%”, **pakowanie na prezent** w checkoutcie (`BYDOPAMINA_GIFTWRAP_PRICE`),
 przyklejony „Dodaj do koszyka” na telefonie, wyszukiwarka zwracająca produkty i **rozumiejąca kamienie, kolory i materiały**:
 „naszyjnik z ametystem” → produkty z atrybutem Kamień = Ametyst i słowem „naszyjnik” w nazwie (działa też odmiana: ametystem, perłowy, turkusowe, ceramiczne).

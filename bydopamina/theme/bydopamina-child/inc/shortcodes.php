@@ -2,7 +2,7 @@
 /**
  * Krótkie kody używane w szablonach Elementora (widget „Shortcode”).
  *
- *  [bd_usp variant="row|list"]            4 cechy materiału: 18K złoto na stali 316L, hipoalergiczna, wodoodporna, nie ciemnieje
+ *  [bd_usp variant="row|list"]            4 argumenty: darmowa dostawa, nie ciemnieje, zwroty, pudełko
  *  [bd_trust_badges]                      dostawa, zwroty, pudełko prezentowe, płatności
  *  [bd_category_arches]                   kategorie w łukach (przewijane na mobile)
  *  [bd_product_tabs limit="8"]            zakładki: Bestsellery / Nowości / Promocje
@@ -11,7 +11,9 @@
  *  [bd_gift_finder]                       prezent wg budżetu
  *  [bd_size_guide]                        przycisk + okno rozmiarówki (pierścionki, długości łańcuszków)
  *  [bd_product_claims]                    etykiety mono na karcie produktu
- *  [bd_rating_summary]                    średnia ocena i liczba opinii (z WooCommerce)
+ *  [bd_rating_summary] [bd_rating_summary_inline]  średnia ocena i liczba opinii (z WooCommerce)
+ *  [bd_mood_picker images="radosc:ID,…"]  „Jak chcesz się dziś poczuć?” – biżuteria wg nastroju (wyróżnik marki)
+ *  [bd_complete_set limit="3"]           „Dobierz komplet” na karcie produktu – upsell jednym kliknięciem
  *  [bd_shop_by_color attribute="kolor"]   próbki kolorów (atrybut pa_kolor) → sklep przefiltrowany po kolorze
  *  [bd_shop_by_material attribute="material"]  chipsy materiałów (pa_material): stal, ceramika, perły, muszle…
  *  [bd_shop_by_stone attribute="kamien"]  próbki kamieni (pa_kamien) + wybór kamienia urodzinowego
@@ -78,10 +80,12 @@ add_shortcode(
 		$items = apply_filters(
 			'bydopamina_usp',
 			array(
-				array( 'ring', __( 'Stal 316L i złoto 18K', 'bydopamina' ), __( 'Nie ciemnieje, nie rdzewieje', 'bydopamina' ) ),
-				array( 'leaf', __( 'Hipoalergiczna', 'bydopamina' ), __( 'Bez niklu i ołowiu', 'bydopamina' ) ),
-				array( 'drop', __( 'Wodoodporna', 'bydopamina' ), __( 'Prysznic, basen, siłownia', 'bydopamina' ) ),
-				array( 'spark', __( 'Kolory na każdy sezon', 'bydopamina' ), __( 'Ceramika, perły, muszle, emalia', 'bydopamina' ) ),
+				/* translators: %d: próg darmowej dostawy */
+				array( 'truck', sprintf( __( 'Darmowa dostawa od %d zł', 'bydopamina' ), BYDOPAMINA_FREE_SHIPPING_FROM ), __( 'Wysyłka w 24 h', 'bydopamina' ) ),
+				array( 'spark', __( 'Nie ciemnieje', 'bydopamina' ), __( 'Stal 316L, hipoalergiczna', 'bydopamina' ) ),
+				/* translators: %d: dni na zwrot */
+				array( 'return', sprintf( __( '%d dni na zwrot', 'bydopamina' ), BYDOPAMINA_RETURN_DAYS ), __( 'Bez podawania przyczyny', 'bydopamina' ) ),
+				array( 'gift', __( 'Pudełko w cenie', 'bydopamina' ), __( 'Gotowe na prezent', 'bydopamina' ) ),
 			)
 		);
 		return bydopamina_feature_list( $items, $atts['variant'], __( 'Cechy biżuterii', 'bydopamina' ) );
@@ -481,36 +485,61 @@ add_shortcode(
 	}
 );
 
-// Podsumowanie ocen sklepu liczone z prawdziwych opinii (bez wpisywania liczb ręcznie).
+/**
+ * Średnia ocena i liczba opinii z prawdziwych recenzji produktów (cache 6 h).
+ *
+ * @return array{avg: float, cnt: int}
+ */
+function bydopamina_rating_data() {
+	$data = get_transient( 'bd_rating_summary' );
+	if ( false === $data ) {
+		global $wpdb;
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery -- jedno zapytanie agregujące, wynik w cache.
+		$data = $wpdb->get_row(
+			"SELECT COUNT(*) AS cnt, AVG(CAST(m.meta_value AS DECIMAL(3,2))) AS avg
+			 FROM {$wpdb->comments} c
+			 INNER JOIN {$wpdb->commentmeta} m ON m.comment_id = c.comment_ID AND m.meta_key = 'rating'
+			 INNER JOIN {$wpdb->posts} p ON p.ID = c.comment_post_ID AND p.post_type = 'product'
+			 WHERE c.comment_approved = '1' AND c.comment_type = 'review'",
+			ARRAY_A
+		);
+		set_transient( 'bd_rating_summary', $data, 6 * HOUR_IN_SECONDS );
+	}
+	return array(
+		'avg' => round( (float) ( $data['avg'] ?? 0 ), 1 ),
+		'cnt' => (int) ( $data['cnt'] ?? 0 ),
+	);
+}
+
+// Podsumowanie ocen sklepu (sekcja opinii).
 add_shortcode(
 	'bd_rating_summary',
 	function () {
-		$data = get_transient( 'bd_rating_summary' );
-		if ( false === $data ) {
-			global $wpdb;
-			// phpcs:ignore WordPress.DB.DirectDatabaseQuery -- jedno zapytanie agregujące, wynik w cache.
-			$data = $wpdb->get_row(
-				"SELECT COUNT(*) AS cnt, AVG(CAST(m.meta_value AS DECIMAL(3,2))) AS avg
-				 FROM {$wpdb->comments} c
-				 INNER JOIN {$wpdb->commentmeta} m ON m.comment_id = c.comment_ID AND m.meta_key = 'rating'
-				 INNER JOIN {$wpdb->posts} p ON p.ID = c.comment_post_ID AND p.post_type = 'product'
-				 WHERE c.comment_approved = '1' AND c.comment_type = 'review'",
-				ARRAY_A
-			);
-			set_transient( 'bd_rating_summary', $data, 6 * HOUR_IN_SECONDS );
-		}
-		if ( empty( $data['cnt'] ) ) {
+		$r = bydopamina_rating_data();
+		if ( ! $r['cnt'] ) {
 			return '';
 		}
-		$avg = round( (float) $data['avg'], 1 );
 		return sprintf(
 			'<div class="bd-rating"><b>%1$s</b><span><span class="bd-stars" role="img" aria-label="%2$s">★★★★★</span><br><span class="bd-label">%3$s</span></span></div>',
-			esc_html( number_format_i18n( $avg, 1 ) ),
+			esc_html( number_format_i18n( $r['avg'], 1 ) ),
 			/* translators: %s: średnia ocena */
-			esc_attr( sprintf( __( 'Średnia ocena %s na 5', 'bydopamina' ), number_format_i18n( $avg, 1 ) ) ),
+			esc_attr( sprintf( __( 'Średnia ocena %s na 5', 'bydopamina' ), number_format_i18n( $r['avg'], 1 ) ) ),
 			/* translators: %s: liczba opinii */
-			esc_html( sprintf( _n( '%s opinia', '%s opinii', (int) $data['cnt'], 'bydopamina' ), number_format_i18n( (int) $data['cnt'] ) ) )
+			esc_html( sprintf( _n( '%s opinia', '%s opinii', $r['cnt'], 'bydopamina' ), number_format_i18n( $r['cnt'] ) ) )
 		);
+	}
+);
+
+// Wersja w jednej linii (hero): „4,9/5 · 128 opinii klientek”. Pusta, dopóki nie ma opinii.
+add_shortcode(
+	'bd_rating_summary_inline',
+	function () {
+		$r = bydopamina_rating_data();
+		if ( ! $r['cnt'] ) {
+			return '';
+		}
+		/* translators: 1: średnia, 2: liczba opinii */
+		return '<span class="bd-stars" aria-hidden="true">★★★★★</span> ' . esc_html( sprintf( _n( '%1$s/5 · %2$s opinia klientki', '%1$s/5 · %2$s opinii klientek', $r['cnt'], 'bydopamina' ), number_format_i18n( $r['avg'], 1 ), number_format_i18n( $r['cnt'] ) ) );
 	}
 );
 add_action(
@@ -836,5 +865,148 @@ add_shortcode(
 			$first = false;
 		}
 		return '<div class="bd-tabs bd-shopby" data-bd-tabs><div role="tablist" class="bd-tabs__list bd-tabs__list--small" aria-label="' . esc_attr__( 'Szukaj według', 'bydopamina' ) . '">' . $nav . '</div>' . $body . '</div>';
+	}
+);
+
+/**
+ * Nastroje – wyróżnik marki „dopamina”: klientka wybiera, jak chce się poczuć, a nie „kategorię”.
+ * Nastrój = zestaw kolorów (pa_kolor). Jeśli istnieje tag produktu „nastroj-{klucz}” z produktami,
+ * link prowadzi do tagu (ręczna selekcja ma pierwszeństwo przed filtrem kolorów).
+ *
+ * @return array<string, array{name: string, hint: string, tint: string, colors: string[]}>
+ */
+function bydopamina_moods() {
+	return apply_filters(
+		'bydopamina_moods',
+		array(
+			'radosc'   => array( 'name' => __( 'Radość', 'bydopamina' ), 'hint' => __( 'złoto, słońce, cytryn', 'bydopamina' ), 'tint' => 'sun', 'colors' => array( 'zolty', 'zloty', 'pomaranczowy' ) ),
+			'energia'  => array( 'name' => __( 'Energia', 'bydopamina' ), 'hint' => __( 'koral i czerwień', 'bydopamina' ), 'tint' => 'coral', 'colors' => array( 'koralowy', 'czerwony', 'pomaranczowy' ) ),
+			'czulosc'  => array( 'name' => __( 'Czułość', 'bydopamina' ), 'hint' => __( 'róż i perła', 'bydopamina' ), 'tint' => 'rose', 'colors' => array( 'rozowy', 'perlowy', 'rozowe-zloto' ) ),
+			'spokoj'   => array( 'name' => __( 'Spokój', 'bydopamina' ), 'hint' => __( 'turkus i mięta', 'bydopamina' ), 'tint' => 'lagoon', 'colors' => array( 'turkusowy', 'mietowy', 'niebieski' ) ),
+			'marzenia' => array( 'name' => __( 'Marzenia', 'bydopamina' ), 'hint' => __( 'lila i fiolet', 'bydopamina' ), 'tint' => 'lilac', 'colors' => array( 'liliowy', 'fioletowy' ) ),
+			'swiezosc' => array( 'name' => __( 'Świeżość', 'bydopamina' ), 'hint' => __( 'zieleń i limonka', 'bydopamina' ), 'tint' => 'lime', 'colors' => array( 'zielony', 'mietowy' ) ),
+		)
+	);
+}
+
+add_shortcode(
+	'bd_mood_picker',
+	function ( $atts ) {
+		if ( ! function_exists( 'wc_get_page_permalink' ) ) {
+			return '';
+		}
+		// images="radosc:123,spokoj:456" – opcjonalne zdjęcia (ID z Mediów) w kółku na karcie nastroju.
+		$atts   = shortcode_atts( array( 'images' => '', 'attribute' => 'kolor' ), $atts, 'bd_mood_picker' );
+		$images = array();
+		foreach ( array_filter( array_map( 'trim', explode( ',', $atts['images'] ) ) ) as $pair ) {
+			list( $key, $id ) = array_pad( explode( ':', $pair ), 2, 0 );
+			$images[ sanitize_key( $key ) ] = (int) $id;
+		}
+		$attribute = sanitize_title( $atts['attribute'] );
+		$taxonomy  = 'pa_' . $attribute;
+		$shop      = wc_get_page_permalink( 'shop' );
+		$html      = '<nav class="bd-moods" aria-label="' . esc_attr__( 'Biżuteria według nastroju', 'bydopamina' ) . '"><ul>';
+
+		foreach ( bydopamina_moods() as $key => $mood ) {
+			$tag = get_term_by( 'slug', 'nastroj-' . $key, 'product_tag' );
+			if ( $tag && $tag->count > 0 ) {
+				$url = get_term_link( $tag );
+			} else {
+				$slugs = array();
+				if ( taxonomy_exists( $taxonomy ) ) {
+					foreach ( $mood['colors'] as $slug ) {
+						$term = get_term_by( 'slug', $slug, $taxonomy );
+						if ( $term && $term->count > 0 ) {
+							$slugs[] = $slug;
+						}
+					}
+				}
+				if ( ! $slugs ) {
+					continue; // Nastrój bez produktów się nie pokazuje.
+				}
+				$url = add_query_arg(
+					array(
+						'filter_' . $attribute     => implode( ',', $slugs ),
+						'query_type_' . $attribute => 'or',
+					),
+					$shop
+				);
+			}
+
+			$dots = '';
+			foreach ( array_slice( $mood['colors'], 0, 3 ) as $slug ) {
+				$term  = taxonomy_exists( $taxonomy ) ? get_term_by( 'slug', $slug, $taxonomy ) : false;
+				$dots .= '<i style="--sw:' . esc_attr( $term ? bydopamina_swatch_color( $term ) : 'var(--bd-surface)' ) . '"></i>';
+			}
+			$img = ! empty( $images[ $key ] ) ? '<span class="bd-mood__img">' . wp_get_attachment_image( $images[ $key ], 'bd-card', false, array( 'loading' => 'lazy', 'alt' => '' ) ) . '</span>' : '';
+
+			$html .= sprintf(
+				'<li class="bd-mood bd-tint--%1$s"><a href="%2$s" style="--tint:var(--bd-tint-%1$s)">%3$s<span class="bd-mood__name">%4$s</span><span class="bd-mood__hint">%5$s</span><span class="bd-mood__dots" aria-hidden="true">%6$s</span></a></li>',
+				esc_attr( $mood['tint'] ),
+				esc_url( is_wp_error( $url ) ? $shop : $url ),
+				$img, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_get_attachment_image.
+				esc_html( $mood['name'] ),
+				esc_html( $mood['hint'] ),
+				$dots // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- zbudowane z esc_attr.
+			);
+		}
+		return $html . '</ul></nav>';
+	}
+);
+
+/**
+ * [bd_complete_set] – „Dobierz komplet” na karcie produktu (upsell).
+ * Produkty: Dosprzedaż (upsells) produktu, a gdy brak – Sprzedaż krzyżowa. Maks. 3, tylko proste i dostępne.
+ * Jeden przycisk dodaje zaznaczone do koszyka (AJAX WooCommerce, bez przeładowania).
+ */
+add_shortcode(
+	'bd_complete_set',
+	function ( $atts ) {
+		global $product;
+		if ( ! $product instanceof WC_Product ) {
+			return '';
+		}
+		$atts = shortcode_atts( array( 'limit' => 3, 'title' => __( 'Dobierz komplet', 'bydopamina' ) ), $atts, 'bd_complete_set' );
+		$ids  = $product->get_upsell_ids() ? $product->get_upsell_ids() : $product->get_cross_sell_ids();
+		$pick = array();
+		foreach ( $ids as $id ) {
+			$p = wc_get_product( $id );
+			if ( $p && $p->is_type( 'simple' ) && $p->is_purchasable() && $p->is_in_stock() && $p->is_visible() ) {
+				$pick[] = $p;
+			}
+			if ( count( $pick ) >= (int) $atts['limit'] ) {
+				break;
+			}
+		}
+		if ( ! $pick ) {
+			return '';
+		}
+		wp_enqueue_script( 'wc-add-to-cart' ); // Daje wc_add_to_cart_params (adres AJAX) dla przycisku kompletu.
+		$main_simple = $product->is_type( 'simple' ) && $product->is_purchasable() && $product->is_in_stock();
+		$row         = static function ( WC_Product $p, $locked ) {
+			return sprintf(
+				'<li class="bd-set__item"><label><input type="checkbox" value="%1$d" data-price="%2$s" checked%3$s> %4$s<span class="bd-set__name">%5$s%6$s</span><span class="bd-set__price">%7$s</span></label></li>',
+				$p->get_id(),
+				esc_attr( wc_get_price_to_display( $p ) ),
+				$locked ? ' disabled data-locked="1"' : '',
+				$p->get_image( 'woocommerce_gallery_thumbnail', array( 'loading' => 'lazy', 'alt' => '' ) ),
+				esc_html( $p->get_name() ),
+				$locked ? '<small>' . esc_html__( 'Ten produkt', 'bydopamina' ) . '</small>' : '',
+				wp_kses_post( $p->get_price_html() )
+			);
+		};
+		$list = $main_simple ? $row( $product, true ) : '';
+		foreach ( $pick as $p ) {
+			$list .= $row( $p, false );
+		}
+		return sprintf(
+			'<div class="bd-set" data-bd-set data-currency="%1$s"><div class="bd-set__head"><strong>%2$s</strong><span class="bd-label">%3$s</span></div><ul class="bd-set__list">%4$s</ul><div class="bd-set__foot"><span class="bd-set__total">%5$s <b data-bd-set-total>—</b></span><button type="button" class="bd-btn" data-bd-set-add>%6$s</button></div><p class="bd-set__msg" role="status" aria-live="polite"></p></div>',
+			esc_attr( html_entity_decode( get_woocommerce_currency_symbol() ) ),
+			esc_html( $atts['title'] ),
+			esc_html__( 'Noszone razem', 'bydopamina' ),
+			$list, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- zbudowane z funkcji escapujących.
+			esc_html__( 'Razem:', 'bydopamina' ),
+			$main_simple ? esc_html__( 'Dodaj komplet do koszyka', 'bydopamina' ) : esc_html__( 'Dodaj zaznaczone', 'bydopamina' )
+		);
 	}
 );

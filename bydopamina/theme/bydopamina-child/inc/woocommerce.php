@@ -186,11 +186,11 @@ add_filter(
 	3
 );
 
-// Produkty na stronę kategorii: 24 (6 rzędów × 4 / 12 × 2 na mobile).
+// Produkty na stronę sklepu/kategorii: 48 (12 rzędów × 4). Przy większym asortymencie wróć do 24.
 add_filter(
 	'loop_shop_per_page',
 	function () {
-		return 24;
+		return 48; // ~50 produktów na start = prawie cały sklep na jednej stronie (mniej klikania).
 	}
 );
 
@@ -284,6 +284,51 @@ add_action(
 		if ( WC()->session && WC()->session->get( 'bd_giftwrap' ) ) {
 			$order->update_meta_data( '_bd_giftwrap', 'yes' );
 			WC()->session->set( 'bd_giftwrap', false );
+		}
+	}
+);
+
+/* -------------------------------------------------------------------------
+ * Mini-koszyk: „Pasuje do tego” – upsell w momencie dodania do koszyka
+ * Źródło: Sprzedaż krzyżowa (cross-sells) produktów z koszyka, bez tych już dodanych. Maks. 2.
+ * ---------------------------------------------------------------------- */
+add_action(
+	'woocommerce_after_mini_cart',
+	function () {
+		if ( ! WC()->cart || WC()->cart->is_empty() ) {
+			return;
+		}
+		$in_cart = array();
+		$ids     = array();
+		foreach ( WC()->cart->get_cart() as $item ) {
+			$in_cart[] = (int) $item['product_id'];
+			$ids       = array_merge( $ids, $item['data']->get_cross_sell_ids() );
+		}
+		$ids = array_diff( array_unique( array_map( 'intval', $ids ) ), $in_cart );
+		$out = '';
+		$n   = 0;
+		foreach ( $ids as $id ) {
+			$p = wc_get_product( $id );
+			if ( ! $p || ! $p->is_visible() || ! $p->is_in_stock() ) {
+				continue;
+			}
+			$button = $p->is_type( 'simple' ) && $p->is_purchasable()
+				? sprintf( '<a href="%1$s" data-quantity="1" data-product_id="%2$d" class="button add_to_cart_button ajax_add_to_cart" aria-label="%3$s" rel="nofollow"></a>', esc_url( $p->add_to_cart_url() ), $p->get_id(), esc_attr( sprintf( /* translators: %s: produkt */ __( 'Dodaj do koszyka: %s', 'bydopamina' ), $p->get_name() ) ) )
+				: sprintf( '<a href="%1$s" class="button" aria-label="%2$s"></a>', esc_url( $p->get_permalink() ), esc_attr( sprintf( /* translators: %s: produkt */ __( 'Wybierz wariant: %s', 'bydopamina' ), $p->get_name() ) ) );
+			$out   .= sprintf(
+				'<li>%1$s<a class="bd-mc-upsell__name" href="%2$s">%3$s %4$s</a>%5$s</li>',
+				$p->get_image( 'woocommerce_gallery_thumbnail', array( 'alt' => '' ) ),
+				esc_url( $p->get_permalink() ),
+				esc_html( $p->get_name() ),
+				wp_kses_post( $p->get_price_html() ),
+				$button // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escapowane wyżej.
+			);
+			if ( ++$n >= 2 ) {
+				break;
+			}
+		}
+		if ( $out ) {
+			echo '<div class="bd-mc-upsell"><p class="bd-label">' . esc_html__( 'Pasuje do tego', 'bydopamina' ) . '</p><ul>' . $out . '</ul></div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 );

@@ -5,39 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>bydopamina – podgląd strony głównej</title>
 <meta name="robots" content="noindex">
-<!-- Podgląd statyczny. Style i fonty pochodzą z motywu; układ, który w WordPressie tworzą kontenery Elementora, emuluje blok <style> poniżej. -->
+<!-- Podgląd statyczny. Style i fonty z motywu; układ kontenerów Elementora emuluje blok <style> poniżej. -->
 <link rel="stylesheet" href="../theme/bydopamina-child/assets/css/fonts.css">
 <link rel="stylesheet" href="../theme/bydopamina-child/assets/css/tokens.css">
 <link rel="stylesheet" href="../theme/bydopamina-child/assets/css/main.css">
 <style>
-	body { margin: 0; }
-	.wrap { max-width: var(--bd-max); margin-inline: auto; padding-inline: var(--bd-gutter); box-sizing: border-box; }
-	h1, h2, h3, p { margin: 0; }
-	.row { display: flex; flex-wrap: wrap; gap: 48px; }
+	.wrap { max-width: var(--bd-max); margin-inline: auto; padding-inline: var(--bd-gutter); }
 	.hdr { position: sticky; top: 0; z-index: 100; height: var(--bd-header-h); padding-inline: var(--bd-gutter); }
-	.nav { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; font-size: var(--bd-fs-sm); }
+	.nav { display: flex; gap: 2px; list-style: none; margin: 0; padding: 0; font-size: var(--bd-fs-sm); font-weight: 500; }
 	.nav a { display: block; padding: 22px 12px; text-decoration: none; }
-	.nav a:hover { text-decoration: underline; }
+	.nav a:hover { color: var(--bd-cherry); }
 	.ico { display: flex; }
-	.ico a, .burger { width: 44px; height: 44px; display: grid; place-items: center; position: relative; color: var(--bd-ink); }
-	.ico .cnt { position: absolute; top: 6px; right: 4px; background: var(--bd-cherry); color: #fff; font: 500 10px/16px var(--bd-font-mono); min-width: 16px; height: 16px; border-radius: 8px; text-align: center; }
+	.ico a, .burger { width: 44px; height: 44px; display: grid; place-items: center; position: relative; color: var(--bd-ink); border: 0; background: none; }
 	.burger { display: none !important; }
-	.logo { font: 400 32px/1 var(--bd-font-display); letter-spacing: -.02em; text-decoration: none; justify-self: center; }
+	.ico .cnt { position: absolute; top: 5px; right: 3px; background: var(--bd-cherry); color: #fff; font: 700 10px/16px var(--bd-font-body); min-width: 16px; height: 16px; border-radius: 8px; text-align: center; }
 	@media (max-width: 1024px) { .nav { display: none; } .burger { display: grid !important; } }
-	.side-img { margin-bottom: 4px; }
-	.btnrow { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-	.col { display: flex; flex-direction: column; gap: 14px; }
-	.coll { flex: 1 1 380px; }
-	.coll-meta { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0 6px; }
-	.nl { display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-end; padding-top: 56px; border-top: 1px solid var(--bd-line); }
-	.nl form { flex: 1 1 380px; display: grid; grid-template-columns: 1fr auto; gap: 16px 20px; align-items: end; }
-	.nl label.f { display: grid; gap: 8px; }
-	.nl input[type=email] { min-height: 52px; border: 0; border-bottom: 1px solid var(--bd-ink); background: transparent; font: inherit; font-size: var(--bd-fs-lg); padding: 0; }
-	.nl .acc { grid-column: 1 / -1; font-size: var(--bd-fs-xs); color: var(--bd-ink-2); display: flex; gap: 8px; }
+	.row { display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
+	.nlform { display: grid; grid-template-columns: 1fr auto; gap: 12px; }
+	.nlform input[type=email] { min-height: 52px; border: 1px solid var(--bd-line); border-radius: 999px; background: #fff; padding: 0 22px; font: inherit; }
+	.nlform .acc { grid-column: 1 / -1; font-size: var(--bd-fs-xs); color: var(--bd-ink-2); display: flex; gap: 8px; align-items: flex-start; }
 	.foot-cols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
-	.foot-cols ul { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 10px; color: #CFC6BA; }
-	.foot-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; color: #9A9086; }
+	.foot-cols ul { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 10px; color: #D8CCC5; }
+	.foot-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; color: #A89A92; font-size: var(--bd-fs-xs); }
 	@media (max-width: 1024px) { .foot-cols { grid-template-columns: 1fr 1fr; } }
+	@media (max-width: 767px) { .nlform { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -47,15 +38,15 @@
 
 <header class="bd-header hdr">
 	<div>
-		<button class="burger" style="background:none;border:0" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M3 8h18M3 16h18"/></svg></button>
-		<ul class="nav"><li><a href="#">Nowości</a></li><li><a href="#">Naszyjniki</a></li><li><a href="#">Kolczyki</a></li><li><a href="#">Pierścionki</a></li><li><a href="#">Bransoletki</a></li><li><a href="#">Prezenty</a></li></ul>
+		<button class="burger" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h18M3 16h18"/></svg></button>
+		<ul class="nav"><li><a href="#">Nowości</a></li><li><a href="#">Kolczyki</a></li><li><a href="#">Naszyjniki</a></li><li><a href="#">Bransoletki</a></li><li><a href="#">Pierścionki</a></li><li><a href="#">Prezenty</a></li></ul>
 	</div>
-	<a class="logo" href="#">bydopamina</a>
+	<a class="bd-logo" href="#">bydopamina<b>.</b></a>
 	<div class="ico bd-header-icons">
-		<a href="#" aria-label="Szukaj"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a>
-		<a href="#" aria-label="Ulubione" class="bd-hide-mobile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7.5 3c0 5.4-7.5 10-7.5 10z"/></svg></a>
-		<a href="#" aria-label="Konto" class="bd-hide-mobile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
-		<a href="#" aria-label="Koszyk, 2 produkty"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="cnt">2</span></a>
+		<a href="#" aria-label="Szukaj"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></a>
+		<a href="#" aria-label="Ulubione" class="bd-hide-mobile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7.5 3c0 5.4-7.5 10-7.5 10z"/></svg></a>
+		<a href="#" aria-label="Konto" class="bd-hide-mobile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
+		<a href="#" aria-label="Koszyk, 2 produkty"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="cnt">2</span></a>
 	</div>
 </header>
 
@@ -63,93 +54,51 @@
 	<!-- HERO -->
 	<section class="bd-hero">
 		<div class="wrap bd-hero__grid">
-			<h1 class="bd-hero-title bd-hero__title">Kolor, który <em>robi dzień</em>.</h1>
-			<div class="bd-hero__main bd-tint bd-tint--lagoon">
-				<div class="bd-media bd-media--hero"><span data-art="model" data-bg="#C4E2DF" data-ratio="5 / 4"></span></div>
-				<div class="bd-caption"><span class="bd-label">Kolekcja 07 — Lagoon</span><a class="bd-textlink" href="#">Zobacz kolekcję <span aria-hidden="true">→</span></a></div>
+			<div class="bd-hero__text">
+				<p class="bd-label">Nowa kolekcja · jesień 2026</p>
+				<h1 class="bd-hero-title">Biżuteria, która <em>poprawia humor</em>.</h1>
+				<p class="bd-lead">Kolorowe kolczyki, naszyjniki i bransoletki na co dzień. Ze stali, która nie ciemnieje – pakowane w pudełko, wysyłane w 24 h.</p>
+				<div class="bd-hero__actions"><a class="bd-btn" href="#">Zobacz biżuterię</a><a class="bd-textlink" href="#">Bestsellery <span aria-hidden="true">→</span></a></div>
+				<p class="bd-hero__proof"><span class="bd-stars" aria-hidden="true">★★★★★</span> 4,9/5 · 128 opinii klientek</p>
 			</div>
-			<div class="bd-hero__side">
-				<div class="bd-media bd-media--sq"><span data-art="hand" data-bg="#E6DACB" data-ratio="1 / 1"></span></div>
-				<p class="bd-lead">Stal, ceramika, perły i muszle w kolorach, które poprawiają humor. Nowa kolekcja co sezon, noszona na co dzień.</p>
-				<div class="btnrow"><a class="bd-btn" href="#">Kup kolekcję</a><a class="bd-textlink" href="#">Bestsellery <span aria-hidden="true">→</span></a></div>
-				<dl class="bd-meta"><dt>Materiały</dt><dd>Stal 316L, złoto 18K, ceramika, perły</dd><dt>Wysyłka</dt><dd>W 24 h, InPost lub kurier</dd><dt>Zwrot</dt><dd>30 dni, bez podawania przyczyny</dd></dl>
+			<div class="bd-hero__media">
+				<div class="bd-arch"><span data-art="model" data-bg="#F6DCE3"></span></div>
+				<a class="bd-hero__tag" href="#"><span class="bd-label">Na zdjęciu</span><strong>Naszyjnik Aura</strong><span>119 zł →</span></a>
 			</div>
 		</div>
 	</section>
 
-	<!-- USP -->
-	<section style="padding-block:48px">
+	<!-- ZAUFANIE -->
+	<section style="padding-bottom:24px">
 		<div class="wrap">
-			<ul class="bd-features bd-features--row" aria-label="Cechy biżuterii">
-				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="14" r="6.5"/><path d="m9.5 5 2.5-2.5L14.5 5 12 7.5z"/></svg><span><strong>Stal 316L i złoto 18K</strong><small>Nie ciemnieje, nie rdzewieje</small></span></li>
-				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/></svg><span><strong>Hipoalergiczna</strong><small>Bez niklu i ołowiu</small></span></li>
-				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.6 6 11a6 6 0 0 1-12 0c0-4.4 6-11 6-11z"/></svg><span><strong>Wodoodporna</strong><small>Prysznic, basen, siłownia</small></span></li>
-				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v5M12 16v5M3 12h5M16 12h5M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3"/></svg><span><strong>Kolory na każdy sezon</strong><small>Ceramika, perły, muszle, emalia</small></span></li>
+			<ul class="bd-features bd-features--row" aria-label="Dlaczego u nas">
+				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg><span><strong>Darmowa dostawa od 199 zł</strong><small>Wysyłka w 24 h</small></span></li>
+				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v5M12 16v5M3 12h5M16 12h5M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3"/></svg><span><strong>Nie ciemnieje</strong><small>Stal 316L, hipoalergiczna</small></span></li>
+				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg><span><strong>30 dni na zwrot</strong><small>Bez podawania przyczyny</small></span></li>
+				<li><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="9" width="17" height="11.5" rx="1"/><path d="M2.5 9h19M12 9v11.5M12 9c-1.5-3-5-4-5.5-2S9 9 12 9zm0 0c1.5-3 5-4 5.5-2S15 9 12 9z"/></svg><span><strong>Pudełko w cenie</strong><small>Gotowe na prezent</small></span></li>
 			</ul>
 		</div>
 	</section>
 
 	<!-- KATEGORIE -->
-	<section class="bd-section" style="padding-top:64px;padding-bottom:0">
+	<section class="bd-section">
 		<div class="wrap">
-			<div class="bd-sechead"><p class="bd-label">01</p><h2 class="bd-h2">Kategorie</h2><a class="bd-textlink" href="#">Cały sklep <span aria-hidden="true">→</span></a></div>
+			<div class="bd-sechead"><div><h2 class="bd-h2">Kategorie</h2></div><a class="bd-textlink" href="#">Cały sklep <span aria-hidden="true">→</span></a></div>
 			<nav class="bd-arches" aria-label="Kategorie biżuterii"><ul>
-				<li><a href="#"><span class="bd-arches__img"><span data-art="necklace" data-ratio="3 / 4" data-bg="#E8DDCF"></span></span><span class="bd-arches__name"><span class="bd-mono">01</span>Naszyjniki</span></a></li>
-				<li><a href="#"><span class="bd-arches__img"><span data-art="hoops" data-ratio="3 / 4" data-bg="#E3D6C5"></span></span><span class="bd-arches__name"><span class="bd-mono">02</span>Kolczyki</span></a></li>
-				<li><a href="#"><span class="bd-arches__img"><span data-art="ring" data-ratio="3 / 4" data-bg="#EAE1D5"></span></span><span class="bd-arches__name"><span class="bd-mono">03</span>Pierścionki</span></a></li>
-				<li><a href="#"><span class="bd-arches__img"><span data-art="bracelet" data-ratio="3 / 4" data-bg="#DFD2C1"></span></span><span class="bd-arches__name"><span class="bd-mono">04</span>Bransoletki</span></a></li>
-				<li><a href="#"><span class="bd-arches__img"><span data-art="layered" data-ratio="3 / 4" data-bg="#E6DCCD"></span></span><span class="bd-arches__name"><span class="bd-mono">05</span>Zestawy</span></a></li>
-				<li><a href="#"><span class="bd-arches__img"><span data-art="box" data-ratio="3 / 4" data-bg="#E9E0D3"></span></span><span class="bd-arches__name"><span class="bd-mono">06</span>Prezenty</span></a></li>
+				<li><a href="#"><span class="bd-arches__img"><span data-art="hoops" data-ratio="3 / 4" data-bg="#F8D3C6"></span></span><span class="bd-arches__name">Kolczyki</span></a></li>
+				<li><a href="#"><span class="bd-arches__img"><span data-art="necklace" data-ratio="3 / 4" data-bg="#CFE7E4"></span></span><span class="bd-arches__name">Naszyjniki</span></a></li>
+				<li><a href="#"><span class="bd-arches__img"><span data-art="bracelet" data-ratio="3 / 4" data-bg="#E4DAF4"></span></span><span class="bd-arches__name">Bransoletki</span></a></li>
+				<li><a href="#"><span class="bd-arches__img"><span data-art="ring" data-ratio="3 / 4" data-bg="#F8E7B4"></span></span><span class="bd-arches__name">Pierścionki</span></a></li>
+				<li><a href="#"><span class="bd-arches__img"><span data-art="layered" data-ratio="3 / 4" data-bg="#F6DCE3"></span></span><span class="bd-arches__name">Zestawy</span></a></li>
+				<li><a href="#"><span class="bd-arches__img"><span data-art="box" data-ratio="3 / 4" data-bg="#EFE3DC"></span></span><span class="bd-arches__name">Prezenty</span></a></li>
 			</ul></nav>
 		</div>
 	</section>
 
-	<!-- SZUKAJ PO KOLORZE / KAMIENIU / MATERIALE -->
-	<section class="bd-section" style="padding-top:64px;padding-bottom:0">
+	<!-- PRODUKTY -->
+	<section style="padding-inline:0">
 		<div class="wrap">
-			<div class="bd-sechead"><p class="bd-label">02</p><h2 class="bd-h2">Szukaj po <em>kolorze</em>, kamieniu, materiale</h2><a class="bd-textlink" href="#">Cały sklep <span aria-hidden="true">→</span></a></div>
-			<div class="bd-tabs bd-shopby" data-bd-tabs>
-				<div role="tablist" class="bd-tabs__list bd-tabs__list--small" aria-label="Szukaj według">
-					<button type="button" role="tab" id="sb1-t" aria-controls="sb1" aria-selected="false" tabindex="-1">Kolor</button>
-					<button type="button" role="tab" id="sb2-t" aria-controls="sb2" aria-selected="true" tabindex="0">Kamień</button>
-					<button type="button" role="tab" id="sb3-t" aria-controls="sb3" aria-selected="false" tabindex="-1">Materiał</button>
-				</div>
-				<div role="tabpanel" id="sb1" aria-labelledby="sb1-t" tabindex="0" hidden><nav class="bd-swatches" aria-label="Zakupy według koloru"><ul>
-				<li><a href="#"><span class="bd-swatches__dot" style="--sw:linear-gradient(135deg,#F3DE9E,#C79A4B)" aria-hidden="true"></span><span class="bd-swatches__name">Złoty<span class="bd-mono">142</span></span></a></li>
-				<li><a href="#"><span class="bd-swatches__dot" style="--sw:linear-gradient(135deg,#F4F4F4,#A9A9A9)" aria-hidden="true"></span><span class="bd-swatches__name">Srebrny<span class="bd-mono">96</span></span></a></li>
-				<li><a href="#"><span class="bd-swatches__dot" style="--sw:#F07A5E" aria-hidden="true"></span><span class="bd-swatches__name">Koralowy<span class="bd-mono">38</span></span></a></li>
-				<li><a href="#"><span class="bd-swatches__dot" style="--sw:#F2A7B8" aria-hidden="true"></span><span class="bd-swatches__name">Różowy<span class="bd-mono">41</span></span></a></li>
-				<li><a href="#"><span class="bd-swatches__dot" style="--sw:#F4C542" aria-hidden="true"></span><span class="bd-swatches__name">Żółty<span class="bd-mono">22</span></span></a></li>
-				<li><a href="#"><span class="bd-swatches__dot" style="--sw:#9FDCC8" aria-hidden="true"></span><span class="bd-swatches__name">Miętowy<span class="bd-mono">19</span></span></a></li>
-				<li><a href="#"><span class="bd-swatches__dot" style="--sw:#2FB7B0" aria-hidden="true"></span><span class="bd-swatches__name">Turkusowy<span class="bd-mono">27</span></span></a></li>
-				<li><a href="#"><span class="bd-swatches__dot" style="--sw:#CDBDEB" aria-hidden="true"></span><span class="bd-swatches__name">Liliowy<span class="bd-mono">24</span></span></a></li>
-				<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 35% 30%,#FFFFFF,#EDE3D6 60%,#D8CBB9)" aria-hidden="true"></span><span class="bd-swatches__name">Perłowy<span class="bd-mono">33</span></span></a></li>
-				<li><a href="#"><span class="bd-swatches__dot" style="--sw:conic-gradient(#F07A5E,#F4C542,#6DAE7C,#2FB7B0,#8E6FCB,#F2A7B8,#F07A5E)" aria-hidden="true"></span><span class="bd-swatches__name">Multikolor<span class="bd-mono">18</span></span></a></li>
-			</ul></nav></div>
-				<div role="tabpanel" id="sb2" aria-labelledby="sb2-t" tabindex="0"><nav class="bd-swatches bd-swatches--gems" aria-label="Zakupy według kamienia"><ul>
-					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#D9C2F0,#9B6FD0 45%,#5B3A8C)" aria-hidden="true"></span><span class="bd-swatches__name">Ametyst<span class="bd-mono">24</span></span></a></li>
-					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#FBE3E8,#F2BFCB 45%,#D9909F)" aria-hidden="true"></span><span class="bd-swatches__name">Kwarc różowy<span class="bd-mono">31</span></span></a></li>
-					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#BFF0EA,#43BFB3 45%,#1E7F77)" aria-hidden="true"></span><span class="bd-swatches__name">Turkus<span class="bd-mono">18</span></span></a></li>
-					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#FFFFFF,#F1E9DE 45%,#D6C8B6)" aria-hidden="true"></span><span class="bd-swatches__name">Perła<span class="bd-mono">42</span></span></a></li>
-					<li><a href="#"><span class="bd-swatches__dot" style="--sw:conic-gradient(from 200deg,#3E4A5C,#4F8FB8,#6FC2B8,#3E4A5C,#8FA3C9,#3E4A5C)" aria-hidden="true"></span><span class="bd-swatches__name">Labradoryt<span class="bd-mono">9</span></span></a></li>
-					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#6B6663,#2A2725 45%,#0E0D0C)" aria-hidden="true"></span><span class="bd-swatches__name">Onyks<span class="bd-mono">14</span></span></a></li>
-					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#CDEDD0,#5FAE73 45%,#2D6B40)" aria-hidden="true"></span><span class="bd-swatches__name">Awenturyn<span class="bd-mono">11</span></span></a></li>
-					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#8CA6E8,#2F4FA8 45%,#16275E)" aria-hidden="true"></span><span class="bd-swatches__name">Lapis lazuli<span class="bd-mono">8</span></span></a></li>
-					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#F2C97A,#B7832F 45%,#5E3A12)" aria-hidden="true"></span><span class="bd-swatches__name">Tygrysie oko<span class="bd-mono">12</span></span></a></li>
-					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#FFFFFF,#E6EEF5 45%,#AFC0CF)" aria-hidden="true"></span><span class="bd-swatches__name">Cyrkonia<span class="bd-mono">57</span></span></a></li>
-					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 35% 30%,#FFFFFF,#E7EEF6 45%,#BFD0E3)" aria-hidden="true"></span><span class="bd-swatches__name">Kamień księżycowy<span class="bd-mono">10</span></span></a></li>
-					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#F9C39A,#E0703A 45%,#9E3E14)" aria-hidden="true"></span><span class="bd-swatches__name">Karneol<span class="bd-mono">7</span></span></a></li>
-				</ul></nav>
-				<div class="bd-birthstones"><p class="bd-label">Kamień urodzinowy</p><ul><li><a href="#"><span class="bd-mono">Styczeń</span>Granat</a></li><li><a href="#"><span class="bd-mono">Luty</span>Ametyst</a></li><li><a href="#"><span class="bd-mono">Marzec</span>Akwamaryn</a></li><li><a href="#"><span class="bd-mono">Kwiecień</span>Cyrkonia · Kryształ górski</a></li><li><a href="#"><span class="bd-mono">Maj</span>Jadeit · Awenturyn</a></li><li><a href="#"><span class="bd-mono">Czerwiec</span>Perła · Kamień księżycowy</a></li><li><a href="#"><span class="bd-mono">Lipiec</span>Karneol</a></li><li><a href="#"><span class="bd-mono">Sierpień</span>Perydot</a></li><li><a href="#"><span class="bd-mono">Wrzesień</span>Lapis lazuli</a></li><li><a href="#"><span class="bd-mono">Październik</span>Opal · Kwarc różowy</a></li><li><a href="#"><span class="bd-mono">Listopad</span>Cytryn</a></li><li><a href="#"><span class="bd-mono">Grudzień</span>Turkus</a></li></ul></div></div>
-				<div role="tabpanel" id="sb3" aria-labelledby="sb3-t" tabindex="0" hidden><ul class="bd-materials" aria-label="Zakupy według materiału"><li><a href="#">Stal chirurgiczna <span class="bd-mono">188</span></a></li><li><a href="#">Ceramika <span class="bd-mono">44</span></a></li><li><a href="#">Perły <span class="bd-mono">31</span></a></li><li><a href="#">Muszle <span class="bd-mono">17</span></a></li><li><a href="#">Emalia <span class="bd-mono">26</span></a></li><li><a href="#">Kamienie naturalne <span class="bd-mono">23</span></a></li></ul></div>
-			</div>
-		</div>
-	</section>
-
-	<!-- ZAKŁADKI PRODUKTÓW -->
-	<section class="bd-section">
-		<div class="wrap">
-			<div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:16px"><p class="bd-label">03 — Wybór redakcji</p><a class="bd-textlink" href="#">Wszystkie produkty <span aria-hidden="true">→</span></a></div>
+			<div class="bd-sechead"><div><h2 class="bd-h2">Najczęściej wybierane</h2><p>Ulubione klientek i najnowsze modele.</p></div><a class="bd-textlink" href="#">Wszystkie produkty <span aria-hidden="true">→</span></a></div>
 			<div class="bd-tabs" data-bd-tabs>
 				<div role="tablist" class="bd-tabs__list" aria-label="Wybór produktów">
 					<button type="button" role="tab" id="t1-t" aria-controls="t1" aria-selected="true" tabindex="0">Bestsellery</button>
@@ -158,10 +107,10 @@
 				</div>
 				<div role="tabpanel" id="t1" aria-labelledby="t1-t" class="bd-rail" tabindex="0">
 					<div class="woocommerce"><ul class="products columns-4">
-						<li class="product"><a class="woocommerce-LoopProduct-link" href="#"><span class="onsale">−20%</span><span data-art="necklace" data-bg="#EDE6DC"></span><h2 class="woocommerce-loop-product__title">Naszyjnik Aura z pierścieniem</h2><span class="price"><del>149,00 zł</del><ins>119,00 zł</ins></span></a><a class="button" href="#">Dodaj do koszyka</a></li>
-						<li class="product"><a class="woocommerce-LoopProduct-link" href="#"><span class="bd-badge">Nowość</span><span data-art="hoops" data-bg="#F9D6CA"></span><h2 class="woocommerce-loop-product__title">Kolczyki Hoop Bold 30 mm</h2><span class="price">109,00 zł</span><span class="bd-card-swatches" role="img" aria-label="Kolory: złoty, srebrny, koralowy"><i style="--sw:linear-gradient(135deg,#F3DE9E,#C79A4B)"></i><i style="--sw:linear-gradient(135deg,#F4F4F4,#A9A9A9)"></i><i style="--sw:#F07A5E"></i></span></a><a class="button" href="#">Dodaj do koszyka</a></li>
-						<li class="product"><a class="woocommerce-LoopProduct-link" href="#"><span data-art="ring" data-bg="#EDE6DC"></span><h2 class="woocommerce-loop-product__title">Pierścionek Solitaire z cyrkonią</h2><span class="price">89,00 zł</span></a><a class="button" href="#">Wybierz rozmiar</a></li>
-						<li class="product"><a class="woocommerce-LoopProduct-link" href="#"><span data-art="bracelet" data-bg="#E6DCF5"></span><h2 class="woocommerce-loop-product__title">Bransoletka z perłą Lilac</h2><span class="price">99,00 zł</span><span class="bd-card-swatches" role="img" aria-label="Kolory: liliowy, miętowy, różowy, perłowy, złoty, żółty"><i style="--sw:#CDBDEB"></i><i style="--sw:#9FDCC8"></i><i style="--sw:#F2A7B8"></i><i style="--sw:radial-gradient(circle at 35% 30%,#fff,#D8CBB9)"></i><i style="--sw:#F4C542"></i><span class="bd-mono">+1</span></span></a><a class="button" href="#">Dodaj do koszyka</a></li>
+						<li class="product"><a class="woocommerce-LoopProduct-link" href="#"><span class="onsale">−20%</span><span data-art="necklace" data-bg="#F5ECE7"></span><h2 class="woocommerce-loop-product__title">Naszyjnik Aura z pierścieniem</h2><span class="price"><del>149,00 zł</del><ins>119,00 zł</ins></span></a><a class="button" href="#">Dodaj do koszyka</a></li>
+						<li class="product"><a class="woocommerce-LoopProduct-link" href="#"><span class="bd-badge">Nowość</span><span data-art="hoops" data-bg="#F8D3C6"></span><h2 class="woocommerce-loop-product__title">Kolczyki Coral z ceramiki</h2><span class="price">89,00 zł</span><span class="bd-card-swatches" role="img" aria-label="Kolory: koralowy, różowy, miętowy"><i style="--sw:#F07A5E"></i><i style="--sw:#F2A7B8"></i><i style="--sw:#9FDCC8"></i></span></a><a class="button" href="#">Wybierz kolor</a></li>
+						<li class="product"><a class="woocommerce-LoopProduct-link" href="#"><span data-art="ring" data-bg="#F5ECE7"></span><h2 class="woocommerce-loop-product__title">Pierścionek z kwarcem różowym</h2><span class="price">99,00 zł</span></a><a class="button" href="#">Wybierz rozmiar</a></li>
+						<li class="product"><a class="woocommerce-LoopProduct-link" href="#"><span data-art="bracelet" data-bg="#E4DAF4"></span><h2 class="woocommerce-loop-product__title">Bransoletka z perłą Lilac</h2><span class="price">79,00 zł</span><span class="bd-card-swatches" role="img" aria-label="Kolory: liliowy, perłowy, złoty"><i style="--sw:#CDBDEB"></i><i style="--sw:radial-gradient(circle at 35% 30%,#fff,#D8CBB9)"></i><i style="--sw:linear-gradient(135deg,#F3DE9E,#C79A4B)"></i></span></a><a class="button" href="#">Dodaj do koszyka</a></li>
 					</ul></div>
 				</div>
 				<div role="tabpanel" id="t2" aria-labelledby="t2-t" class="bd-rail" tabindex="0" hidden><p class="bd-muted">[produkty: Nowości]</p></div>
@@ -170,87 +119,76 @@
 		</div>
 	</section>
 
-	<!-- MATERIAŁ -->
-	<section class="bd-section bd-dark">
+	<!-- NASTROJE – WYRÓŻNIK -->
+	<section class="bd-section">
 		<div class="wrap">
-			<div class="bd-sechead"><p class="bd-label">04</p><h2 class="bd-h2">Stal, która <em>nie ciemnieje</em>. Nawet pod prysznicem.</h2><a class="bd-textlink" href="#">O materiale <span aria-hidden="true">→</span></a></div>
-			<div class="row" style="align-items:flex-end">
-				<div class="bd-material-col" style="flex:1 1 560px"><p class="bd-lead">Tanie złocenie to kilka mikronów farby na mosiądzu – ściera się po paru tygodniach i zostawia zielony ślad. Nasze złoto jest związane ze stalą próżniowo. Dlatego kolor zostaje z Tobą na lata.</p><ul class="bd-specs">
-					<li><b>316L</b><span>Stal chirurgiczna – ta sama, z której robi się implanty. Nie rdzewieje, nie zmienia koloru.</span></li>
-					<li><b>18K</b><span>Złoto nakładane metodą PVD – warstwa wiązana z metalem, a nie tylko nim pokryta.</span></li>
-					<li><b>0</b><span>Niklu i ołowiu. Bezpieczna dla wrażliwej skóry i do noszenia 24/7.</span></li>
-				</ul></div>
-				<div class="bd-media" style="flex:1 1 360px"><span data-art="water" data-ratio="4 / 5"></span></div>
-			</div>
+			<div class="bd-sechead"><div><h2 class="bd-h2">Jak chcesz się dziś <em>poczuć</em>?</h2><p>Wybierz nastrój – dobierzemy biżuterię w pasujących kolorach.</p></div></div>
+			<nav class="bd-moods" aria-label="Biżuteria według nastroju"><ul>
+				<li class="bd-mood"><a href="#" style="--tint:var(--bd-tint-sun)"><span class="bd-mood__img"><span data-art="studs" data-ratio="1 / 1" data-bg="#FFF6DA"></span></span><span class="bd-mood__name">Radość</span><span class="bd-mood__hint">złoto, słońce, cytryn</span><span class="bd-mood__dots" aria-hidden="true"><i style="--sw:#F4C542"></i><i style="--sw:linear-gradient(135deg,#F3DE9E,#C79A4B)"></i><i style="--sw:#F2803A"></i></span></a></li>
+				<li class="bd-mood"><a href="#" style="--tint:var(--bd-tint-coral)"><span class="bd-mood__img"><span data-art="hoops" data-ratio="1 / 1" data-bg="#FDEAE3"></span></span><span class="bd-mood__name">Energia</span><span class="bd-mood__hint">koral i czerwień</span><span class="bd-mood__dots" aria-hidden="true"><i style="--sw:#F07A5E"></i><i style="--sw:#C8323A"></i><i style="--sw:#F2803A"></i></span></a></li>
+				<li class="bd-mood"><a href="#" style="--tint:var(--bd-tint-rose)"><span class="bd-mood__img"><span data-art="necklace" data-ratio="1 / 1" data-bg="#FCEEF2"></span></span><span class="bd-mood__name">Czułość</span><span class="bd-mood__hint">róż i perła</span><span class="bd-mood__dots" aria-hidden="true"><i style="--sw:#F2A7B8"></i><i style="--sw:radial-gradient(circle at 35% 30%,#fff,#D8CBB9)"></i><i style="--sw:linear-gradient(135deg,#F6CDBB,#C98A73)"></i></span></a></li>
+				<li class="bd-mood"><a href="#" style="--tint:var(--bd-tint-lagoon)"><span class="bd-mood__img"><span data-art="layered" data-ratio="1 / 1" data-bg="#EAF5F3"></span></span><span class="bd-mood__name">Spokój</span><span class="bd-mood__hint">turkus i mięta</span><span class="bd-mood__dots" aria-hidden="true"><i style="--sw:#2FB7B0"></i><i style="--sw:#9FDCC8"></i><i style="--sw:#4D7FD6"></i></span></a></li>
+				<li class="bd-mood"><a href="#" style="--tint:var(--bd-tint-lilac)"><span class="bd-mood__img"><span data-art="bracelet" data-ratio="1 / 1" data-bg="#F3EEFB"></span></span><span class="bd-mood__name">Marzenia</span><span class="bd-mood__hint">lila i fiolet</span><span class="bd-mood__dots" aria-hidden="true"><i style="--sw:#CDBDEB"></i><i style="--sw:#8E6FCB"></i></span></a></li>
+				<li class="bd-mood"><a href="#" style="--tint:var(--bd-tint-lime)"><span class="bd-mood__img"><span data-art="ring" data-ratio="1 / 1" data-bg="#F4F8E4"></span></span><span class="bd-mood__name">Świeżość</span><span class="bd-mood__hint">zieleń i limonka</span><span class="bd-mood__dots" aria-hidden="true"><i style="--sw:#6DAE7C"></i><i style="--sw:#9FDCC8"></i></span></a></li>
+			</ul></nav>
 		</div>
 	</section>
 
-	<!-- SHOP THE LOOK -->
-	<section class="bd-section">
+	<!-- NOŚ RAZEM -->
+	<section>
 		<div class="wrap">
-			<div class="bd-sechead"><p class="bd-label">05</p><h2 class="bd-h2">Stylizacja <em>tygodnia</em></h2><a class="bd-textlink" href="#">Więcej stylizacji <span aria-hidden="true">→</span></a></div>
+			<div class="bd-sechead"><div><h2 class="bd-h2">Noś <em>razem</em></h2><p>Stylizacja z Instagrama – kliknij punkt, żeby zobaczyć produkt.</p></div><a class="bd-textlink" href="#">Więcej stylizacji <span aria-hidden="true">→</span></a></div>
 			<div class="bd-look">
-				<figure class="bd-look__media"><span class="bd-look__img" data-art="model" data-bg="#F4B7A4"></span>
+				<figure class="bd-look__media"><span class="bd-look__img" data-art="model" data-bg="#CFE7E4"></span>
 					<button type="button" class="bd-look__dot" style="left:34%;top:30%" data-bd-look="l1" aria-describedby="l1"><span class="screen-reader-text">Łańcuszek Mini</span></button>
 					<button type="button" class="bd-look__dot" style="left:50%;top:63%" data-bd-look="l2" aria-describedby="l2"><span class="screen-reader-text">Naszyjnik Aura</span></button>
 					<button type="button" class="bd-look__dot" style="left:66%;top:44%" data-bd-look="l3" aria-describedby="l3"><span class="screen-reader-text">Łańcuch Figaro</span></button>
 				</figure>
 				<div class="bd-look__panel"><p class="bd-label">Na zdjęciu</p><ol class="bd-look__list">
-					<li id="l1" class="bd-look__item"><a href="#"><span data-art="necklace" data-bg="#EDE6DC"></span><span><span class="bd-mono">01</span><strong>Łańcuszek Mini 42 cm</strong><span class="bd-look__price">69,00 zł</span></span></a></li>
-					<li id="l2" class="bd-look__item"><a href="#"><span data-art="layered" data-bg="#EDE6DC"></span><span><span class="bd-mono">02</span><strong>Naszyjnik Aura z pierścieniem</strong><span class="bd-look__price">119,00 zł</span></span></a></li>
-					<li id="l3" class="bd-look__item"><a href="#"><span data-art="bracelet" data-bg="#EDE6DC"></span><span><span class="bd-mono">03</span><strong>Łańcuch Figaro 50 cm</strong><span class="bd-look__price">129,00 zł</span></span></a></li>
+					<li id="l1" class="bd-look__item"><a href="#"><span data-art="necklace" data-bg="#F5ECE7"></span><span><strong>Łańcuszek Mini 42 cm</strong><span class="bd-look__price">69,00 zł</span></span></a></li>
+					<li id="l2" class="bd-look__item"><a href="#"><span data-art="layered" data-bg="#F5ECE7"></span><span><strong>Naszyjnik Aura z pierścieniem</strong><span class="bd-look__price">119,00 zł</span></span></a></li>
+					<li id="l3" class="bd-look__item"><a href="#"><span data-art="bracelet" data-bg="#F5ECE7"></span><span><strong>Łańcuch Figaro 50 cm</strong><span class="bd-look__price">129,00 zł</span></span></a></li>
 				</ol></div>
 			</div>
 		</div>
 	</section>
 
-	<!-- KOLEKCJE -->
-	<section class="bd-section" style="padding-top:0">
+	<!-- PREZENT -->
+	<section class="bd-section">
 		<div class="wrap">
-			<div class="bd-sechead"><p class="bd-label">06</p><h2 class="bd-h2">Kolekcje <em>sezonu</em></h2><a class="bd-textlink" href="#">Wszystkie kolekcje <span aria-hidden="true">→</span></a></div>
-			<div class="bd-collections">
-				<div class="bd-collection bd-tint bd-tint--coral"><span data-art="hoops" data-bg="#F9C7B8"></span><div class="bd-collection__meta"><h3>Coral</h3><span class="bd-label">18 modeli</span></div><a class="bd-textlink" href="#">Odkryj <span aria-hidden="true">→</span></a></div>
-				<div class="bd-collection bd-tint bd-tint--lagoon"><span data-art="necklace" data-bg="#C4E2DF"></span><div class="bd-collection__meta"><h3>Lagoon</h3><span class="bd-label">24 modele</span></div><a class="bd-textlink" href="#">Odkryj <span aria-hidden="true">→</span></a></div>
-				<div class="bd-collection bd-tint bd-tint--lilac"><span data-art="bracelet" data-bg="#E1D6F3"></span><div class="bd-collection__meta"><h3>Lilac</h3><span class="bd-label">15 modeli</span></div><a class="bd-textlink" href="#">Odkryj <span aria-hidden="true">→</span></a></div>
+			<div class="bd-newsletter-box row" style="gap:56px">
+				<div style="flex:1 1 480px;display:grid;gap:20px">
+					<h2 class="bd-h2">Szukasz <em>prezentu</em>?</h2>
+					<p class="bd-lead">Każde zamówienie pakujemy w pudełko. Przy zamówieniu możesz dodać pakowanie na prezent z liścikiem – bez paragonu w paczce.</p>
+					<ul class="bd-giftfinder"><li><a href="#"><span class="bd-mono">do</span>79 zł</a></li><li><a href="#"><span class="bd-mono">do</span>129 zł</a></li><li><a href="#"><span class="bd-mono">do</span>199 zł</a></li><li><a href="#"><span class="bd-mono">pewniak</span>Bestsellery</a></li></ul>
+				</div>
+				<div style="flex:1 1 320px"><div class="bd-arch"><span data-art="box" data-bg="#EFE3DC"></span></div></div>
 			</div>
-		</div>
-	</section>
-
-	<!-- PREZENTY -->
-	<section class="bd-section bd-sand">
-		<div class="wrap row" style="gap:56px;align-items:center">
-			<div class="col" style="flex:1 1 520px;gap:24px">
-				<p class="bd-label">07 — Prezenty</p>
-				<h2 class="bd-h2">Prezent, który <em>nie trafi</em> do szuflady.</h2>
-				<p class="bd-lead">Każde zamówienie pakujemy w pudełko. Chcesz więcej? Zaznacz „pakowanie na prezent” – dołożymy papier, wstążkę i liścik z Twoimi słowami. Bez paragonu w paczce.</p>
-				<ul class="bd-giftfinder"><li><a href="#"><span class="bd-mono">do</span>79 zł</a></li><li><a href="#"><span class="bd-mono">do</span>129 zł</a></li><li><a href="#"><span class="bd-mono">do</span>199 zł</a></li><li><a href="#"><span class="bd-mono">pewniak</span>Bestsellery</a></li></ul>
-			</div>
-			<div class="bd-media" style="flex:1 1 380px"><span data-art="box" data-bg="#E2D5C4"></span></div>
 		</div>
 	</section>
 
 	<!-- OPINIE -->
-	<section class="bd-section">
+	<section>
 		<div class="wrap" style="display:grid;gap:24px">
-			<div class="bd-sechead" style="margin-bottom:0"><p class="bd-label">08</p><h2 class="bd-h2">Opinie</h2><a class="bd-textlink" href="#">Wszystkie opinie <span aria-hidden="true">→</span></a></div>
-			<div class="bd-rating"><b>4,9</b><span><span class="bd-stars" role="img" aria-label="Średnia ocena 4,9 na 5">★★★★★</span><br><span class="bd-label">liczone automatycznie z opinii WooCommerce</span></span></div>
+			<div class="bd-sechead" style="margin-bottom:0"><div><h2 class="bd-h2">Opinie klientek</h2></div><a class="bd-textlink" href="#">Wszystkie opinie <span aria-hidden="true">→</span></a></div>
+			<div class="bd-rating"><b>4,9</b><span><span class="bd-stars" role="img" aria-label="Średnia ocena 4,9 na 5">★★★★★</span><br><span class="bd-label">128 opinii</span></span></div>
 			<div class="bd-reviews"><ul class="bd-reviews__list">
-				<li class="bd-review"><p class="bd-stars" role="img" aria-label="Ocena 5 na 5">★★★★★</p><blockquote><p>Tu pojawi się prawdziwa opinia klienta – shortcode pobiera ją z WooCommerce, tylko zweryfikowane zakupy.</p></blockquote><footer><span>Imię N. · <span class="bd-mono">Zweryfikowany zakup</span></span><a href="#"><span data-art="necklace" data-bg="#EDE6DC" style="width:40px"></span><span>Naszyjnik Aura</span></a></footer></li>
-				<li class="bd-review"><p class="bd-stars" role="img" aria-label="Ocena 5 na 5">★★★★★</p><blockquote><p>Druga opinia – z konkretem: jak długo nosi, czy złoto trzyma kolor, jak szybko przyszła paczka.</p></blockquote><footer><span>Imię N. · <span class="bd-mono">Zweryfikowany zakup</span></span><a href="#"><span data-art="hoops" data-bg="#EDE6DC" style="width:40px"></span><span>Kolczyki Hoop Bold</span></a></footer></li>
-				<li class="bd-review"><p class="bd-stars" role="img" aria-label="Ocena 4 na 5">★★★★☆</p><blockquote><p>Trzecia opinia. Karty przewijają się poziomo – na telefonie widać fragment następnej, więc wiadomo, że jest więcej.</p></blockquote><footer><span>Imię N. · <span class="bd-mono">Zweryfikowany zakup</span></span><a href="#"><span data-art="ring" data-bg="#EDE6DC" style="width:40px"></span><span>Pierścionek Solitaire</span></a></footer></li>
-				<li class="bd-review"><p class="bd-stars" role="img" aria-label="Ocena 5 na 5">★★★★★</p><blockquote><p>Czwarta opinia – przykład, jak wygląda dłuższa wypowiedź w tej samej karcie.</p></blockquote><footer><span>Imię N. · <span class="bd-mono">Zweryfikowany zakup</span></span><a href="#"><span data-art="bracelet" data-bg="#EDE6DC" style="width:40px"></span><span>Bransoletka Figaro</span></a></footer></li>
+				<li class="bd-review"><p class="bd-stars" role="img" aria-label="Ocena 5 na 5">★★★★★</p><blockquote><p>Tu pojawi się prawdziwa opinia klientki – shortcode pobiera ją z WooCommerce, tylko zweryfikowane zakupy.</p></blockquote><footer><span>Imię N. · Zweryfikowany zakup</span><a href="#"><span data-art="necklace" data-bg="#F5ECE7" style="width:40px"></span><span>Naszyjnik Aura</span></a></footer></li>
+				<li class="bd-review"><p class="bd-stars" role="img" aria-label="Ocena 5 na 5">★★★★★</p><blockquote><p>Druga opinia – z konkretem: jak długo nosi, czy kolor się trzyma, jak szybko przyszła paczka.</p></blockquote><footer><span>Imię N. · Zweryfikowany zakup</span><a href="#"><span data-art="hoops" data-bg="#F8D3C6" style="width:40px"></span><span>Kolczyki Coral</span></a></footer></li>
+				<li class="bd-review"><p class="bd-stars" role="img" aria-label="Ocena 4 na 5">★★★★☆</p><blockquote><p>Trzecia opinia. Karty przewijają się poziomo – na telefonie widać fragment następnej.</p></blockquote><footer><span>Imię N. · Zweryfikowany zakup</span><a href="#"><span data-art="ring" data-bg="#F5ECE7" style="width:40px"></span><span>Pierścionek z kwarcem</span></a></footer></li>
+				<li class="bd-review"><p class="bd-stars" role="img" aria-label="Ocena 5 na 5">★★★★★</p><blockquote><p>Czwarta opinia – przykład dłuższej wypowiedzi w tej samej karcie.</p></blockquote><footer><span>Imię N. · Zweryfikowany zakup</span><a href="#"><span data-art="bracelet" data-bg="#E4DAF4" style="width:40px"></span><span>Bransoletka Lilac</span></a></footer></li>
 			</ul><p class="bd-reviews__note">Pokazujemy wyłącznie opinie osób, które kupiły produkt w naszym sklepie (weryfikacja po numerze zamówienia).</p></div>
 		</div>
 	</section>
 
 	<!-- NEWSLETTER -->
-	<section style="padding-bottom:120px">
+	<section style="padding:64px 0 120px">
 		<div class="wrap">
-			<div class="nl">
-				<h2 class="bd-h2" style="flex:1 1 480px">Nowe kolekcje <em>najpierw</em> u Ciebie. I −10% na start.</h2>
-				<form onsubmit="return false">
-					<label class="f"><span class="bd-label">Adres e-mail</span><input type="email" placeholder="twoj@email.pl" required></label>
-					<button class="bd-btn" type="submit">Zapisz się</button>
+			<div class="bd-newsletter-box bd-tint bd-tint--rose row" style="gap:40px">
+				<div style="flex:1 1 420px;display:grid;gap:8px"><h2 class="bd-h2">−10% na <em>pierwsze</em> zakupy</h2><p class="bd-lead">Zapisz się – nowe kolekcje zobaczysz przed wszystkimi.</p></div>
+				<form class="nlform" style="flex:1 1 420px" onsubmit="return false">
+					<label class="screen-reader-text" for="nl">Adres e-mail</label><input id="nl" type="email" placeholder="twoj@email.pl" required>
+					<button class="bd-btn" type="submit">Odbierz −10%</button>
 					<label class="acc"><input type="checkbox" required> Chcę dostawać newsletter (maks. 2 maile w miesiącu). Polityka prywatności.</label>
 				</form>
 			</div>
@@ -258,26 +196,26 @@
 	</section>
 </main>
 
-<footer class="bd-footer bd-dark" style="padding:96px 0 32px">
-	<div class="wrap" style="display:grid;gap:48px">
+<footer class="bd-footer bd-dark" style="padding:88px 0 32px">
+	<div class="wrap" style="display:grid;gap:44px">
 		<div class="foot-cols">
-			<p class="bd-h3" style="font-family:var(--bd-font-display);color:#F6F2EC;max-width:22ch;line-height:1.15">Biżuteria w kolorach, które poprawiają humor. Stal, ceramika, perły i muszle – na co dzień.</p>
-			<div><p class="bd-footer-h">Sklep</p><ul><li>Naszyjniki</li><li>Kolczyki</li><li>Pierścionki</li><li>Bransoletki</li><li>Karta podarunkowa</li></ul></div>
+			<p style="font-size:var(--bd-fs-lg);font-weight:500;color:#FBF8F5;max-width:28ch;line-height:1.4;margin:0">Biżuteria w kolorach, które poprawiają humor. Stal, ceramika, perły i muszle – na co dzień.</p>
+			<div><p class="bd-footer-h">Sklep</p><ul><li>Kolczyki</li><li>Naszyjniki</li><li>Bransoletki</li><li>Pierścionki</li><li>Karta podarunkowa</li></ul></div>
 			<div><p class="bd-footer-h">Pomoc</p><ul><li>Dostawa i płatności</li><li>Zwroty i reklamacje</li><li>Rozmiarówka</li><li>Pielęgnacja</li><li>Kontakt</li></ul></div>
 			<div><p class="bd-footer-h">Kontakt</p><ul><li>hej@bydopamina.pl</li><li>+48 000 000 000</li><li>pn–pt 9:00–16:00</li></ul></div>
 		</div>
 		<ul class="bd-payments" aria-label="Płatności i dostawa"><li>BLIK</li><li>Visa</li><li>Mastercard</li><li>Apple Pay</li><li>Google Pay</li><li>Przelewy24</li><li>PayPo</li><li>InPost</li><li>DPD</li></ul>
-		<p class="bd-footer-wordmark" aria-hidden="true">bydopamina</p>
-		<div class="foot-bottom"><span class="bd-label">© 2026 bydopamina.pl</span><span class="bd-label">Regulamin · Prywatność · Cookies · Odstąpienie od umowy · Dostępność</span></div>
+		<p class="bd-footer-wordmark" aria-hidden="true">bydopamina<b>.</b></p>
+		<div class="foot-bottom"><span>© 2026 bydopamina.pl</span><span>Regulamin · Prywatność · Cookies · Odstąpienie od umowy · Dostępność</span></div>
 	</div>
 </footer>
 
 <nav class="bd-mnav" aria-label="Nawigacja mobilna"><ul>
-	<li><a href="#" aria-current="page"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="m3 11 9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span>Start</span></a></li>
-	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg><span>Sklep</span></a></li>
-	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Szukaj</span></a></li>
-	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7.5 3c0 5.4-7.5 10-7.5 10z"/></svg><span>Ulubione</span></a></li>
-	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Koszyk</span><span class="bd-mnav__count" data-count="2">2</span></a></li>
+	<li><a href="#" aria-current="page"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 11 9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span>Start</span></a></li>
+	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg><span>Sklep</span></a></li>
+	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Szukaj</span></a></li>
+	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7.5 3c0 5.4-7.5 10-7.5 10z"/></svg><span>Ulubione</span></a></li>
+	<li><a href="#"><svg class="bd-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Koszyk</span><span class="bd-mnav__count" data-count="2">2</span></a></li>
 </ul></nav>
 
 <script src="art.js"></script>

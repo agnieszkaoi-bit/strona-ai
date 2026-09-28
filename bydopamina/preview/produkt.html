@@ -21,11 +21,11 @@
 	.crumb { font-family: var(--bd-font-mono); font-size: var(--bd-fs-2xs); letter-spacing: .08em; text-transform: uppercase; color: var(--bd-ink-2); }
 	.opts { display: grid; gap: 10px; }
 	.sizes { display: flex; flex-wrap: wrap; gap: 6px; }
-	.sizes button { min-width: 48px; min-height: 44px; border: 1px solid var(--bd-line); background: transparent; font: 400 var(--bd-fs-sm) var(--bd-font-body); cursor: pointer; }
+	.sizes button { min-width: 56px; min-height: 44px; border: 1px solid var(--bd-line); border-radius: 999px; background: #fff; font: 400 var(--bd-fs-sm) var(--bd-font-body); cursor: pointer; }
 	.sizes button[aria-pressed="true"] { border-color: var(--bd-ink); box-shadow: inset 0 0 0 1px var(--bd-ink); }
 	.sizes button:disabled { color: var(--bd-ink-3); text-decoration: line-through; cursor: not-allowed; }
 	.metal { display: flex; gap: 8px; }
-	.metal button { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border: 1px solid var(--bd-line); background: transparent; font: 400 var(--bd-fs-sm) var(--bd-font-body); cursor: pointer; }
+	.metal button { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 1px solid var(--bd-line); border-radius: 999px; background: #fff; font: 400 var(--bd-fs-sm) var(--bd-font-body); cursor: pointer; }
 	.metal button[aria-pressed="true"] { border-color: var(--bd-ink); }
 	.metal i { width: 16px; height: 16px; border-radius: 50%; }
 	.optrow { display: flex; justify-content: space-between; align-items: center; }
@@ -36,7 +36,7 @@
 <body>
 <header class="bd-header hdr">
 	<div></div>
-	<a class="logo" href="index.html">bydopamina</a>
+	<a class="bd-logo" href="index.html">bydopamina<b>.</b></a>
 	<div class="bd-header-icons" style="display:flex"><a href="#" aria-label="Koszyk" style="width:44px;height:44px;display:grid;place-items:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></a></div>
 </header>
 
@@ -51,7 +51,7 @@
 		<div class="sum bd-sticky-col">
 			<nav class="crumb" aria-label="Okruszki">Sklep / Naszyjniki</nav>
 			<ul class="bd-claims"><li class="is-new">Nowość</li><li>18K złoto</li><li>Stal 316L</li><li>Wodoodporna</li></ul>
-			<h1 class="bd-pdp-title"><span class="product_title" style="font-size:var(--bd-fs-xl);line-height:1.05">Naszyjnik Aura z pierścieniem</span></h1>
+			<h1 class="bd-pdp-title"><span class="product_title" style="font-size:var(--bd-fs-xl)">Naszyjnik Aura z pierścieniem</span></h1>
 			<div class="woocommerce-product-rating"><span class="bd-stars" role="img" aria-label="Ocena 4,9 na 5">★★★★★</span><a href="#reviews">128 opinii</a></div>
 			<div class="bd-pdp-price"><p class="price"><del>149,00 zł</del> <ins>119,00 zł</ins></p><p class="bd-omnibus">Najniższa cena z 30 dni przed obniżką: 149,00 zł</p></div>
 			<p class="bd-muted">Delikatny łańcuszek z pierścieniem, który układa się tuż pod obojczykami. Świetny solo i jako baza do warstw.</p>
@@ -65,6 +65,12 @@
 			</div>
 
 			<div class="woocommerce"><div class="product"><form class="cart" onsubmit="return false"><div class="quantity"><label class="screen-reader-text" for="q">Ilość</label><input id="q" class="qty" type="number" value="1" min="1"></div><button class="single_add_to_cart_button button" type="submit">Dodaj do koszyka · 119 zł</button></form></div></div>
+
+			<div class="bd-set" data-bd-set data-currency="zł"><div class="bd-set__head"><strong>Dobierz komplet</strong><span class="bd-label">Noszone razem</span></div><ul class="bd-set__list">
+				<li class="bd-set__item"><label><input type="checkbox" value="1" data-price="119" checked disabled data-locked="1"> <span data-art="necklace" data-bg="#F5ECE7"></span><span class="bd-set__name">Naszyjnik Aura z pierścieniem<small>Ten produkt</small></span><span class="bd-set__price"><del>149,00 zł</del><ins>119,00 zł</ins></span></label></li>
+				<li class="bd-set__item"><label><input type="checkbox" value="2" data-price="69" checked> <span data-art="studs" data-bg="#F8E7B4"></span><span class="bd-set__name">Kolczyki Aura mini</span><span class="bd-set__price">69,00 zł</span></label></li>
+				<li class="bd-set__item"><label><input type="checkbox" value="3" data-price="79" checked> <span data-art="bracelet" data-bg="#F6DCE3"></span><span class="bd-set__name">Bransoletka Aura</span><span class="bd-set__price">79,00 zł</span></label></li>
+			</ul><div class="bd-set__foot"><span class="bd-set__total">Razem: <b data-bd-set-total>—</b></span><button type="button" class="bd-btn" data-bd-set-add>Dodaj komplet do koszyka</button></div><p class="bd-set__msg" role="status" aria-live="polite"></p></div>
 
 			<p class="bd-eta"><span class="bd-eta__dot" aria-hidden="true"></span>Zamów w ciągu 3 h 12 min – wyślemy dziś</p>
 			<div class="bd-freeship" role="status"><p class="bd-freeship__label">Brakuje Ci 80,00 zł do darmowej dostawy</p><div class="bd-freeship__track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60" aria-label="Postęp do darmowej dostawy"><span class="bd-freeship__fill" style="width:60%"></span></div></div>
