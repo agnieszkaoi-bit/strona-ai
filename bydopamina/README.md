@@ -8,7 +8,7 @@ to **kolory kolekcji** (color-blocking: Coral, Lagoon, Lilac, Lime, Sun, Rose) j
 plus wiśnia `#9C1C33` jako akcent systemowy (promocje, licznik koszyka, hover przycisków).
 Inspiracje: bizuteriaparaiso.pl (materiał, zaufanie) i bydziubeka.pl (kolor, mieszanie materiałów, sezonowe kolekcje).
 
-Najważniejsze elementy UX dla biżuterii: kategorie w łukach, **zakupy wg koloru** (próbki) i **materiału** (chipsy), zakładki Bestsellery/Nowości/Promocje,
+Najważniejsze elementy UX dla biżuterii: kategorie w łukach, **zakupy wg koloru, kamienia i materiału** (przełącznik z próbkami + kamień urodzinowy), wyszukiwarka rozumiejąca nazwy kamieni, zakładki Bestsellery/Nowości/Promocje,
 druga fotka (na modelce) po najechaniu, **shop the look** z punktami na zdjęciu, **rozmiarówka** w panelu
 (pierścionki + długości łańcuszków), sekcja o materiale (316L / 18K / 0 niklu), prezent wg budżetu,
 **pakowanie na prezent** w checkoutcie, prawdziwe opinie z WooCommerce z automatyczną średnią,
@@ -101,7 +101,7 @@ Po imporcie:
 - **Header** → widget *Menu nawigacyjne* → wybierz menu „Główne” (utwórz w Wygląd → Menu: Nowości, Kategorie…, O nas).
 - **Zdjęcia**: podmień placeholdery (WebP/AVIF). Hero główne 2000×1600 px (5:4), boczne 1200×1200 px; packshoty produktów 4:5 na jednolitym, ciepłym tle (#EDE6DC) + **druga fotka na modelce** jako pierwsze zdjęcie galerii (pokazuje się po najechaniu). Zdjęcie hero ma już klasę `bd-lcp` (priorytetowe ładowanie).
 - **Kategorie w łukach**: Produkty → Kategorie → ustaw miniaturę każdej kategorii (3:4) i kolejność.
-- **Atrybuty**: Produkty → Atrybuty → utwórz **Kolor** (slug `kolor`, typ „Kolor” w Variation Swatches – wtedy próbki biorą HEX z wtyczki) i **Materiał** (slug `material`); zaznacz „Włącz archiwa”. Przypisz je do produktów — z nich budują się sekcje „Wybierz kolor” i kropki na kartach.
+- **Atrybuty**: Produkty → Atrybuty → utwórz **Kolor** (slug `kolor`, typ „Kolor” w Variation Swatches – wtedy próbki biorą HEX z wtyczki) i **Materiał** (slug `material`) oraz **Kamień** (slug `kamien`, wartości np. Ametyst, Kwarc różowy, Turkus, Perła – slugi bez polskich znaków: `kwarc-rozowy`); zaznacz „Włącz archiwa”. Własny kolor próbki kamienia: HEX w wtyczce Variation Swatches albo meta `bd_color`. Przypisz je do produktów — z nich budują się sekcja „Szukaj po kolorze, kamieniu, materiale”, kropki na kartach i inteligentne wyszukiwanie. W sidebarze/szufladzie filtrów dodaj blok WooCommerce „Filtr atrybutu” dla Kamienia.
 - **Kolor kolekcji w hero i kaflach**: w klasie kontenera zmień `bd-tint--lagoon` na `coral`, `lilac`, `lime`, `sun` lub `rose`.
 - **Shop the look**: w shortcodzie wpisz ID zdjęcia i ID produktów z pozycją punktu, np. `products="101:34:38,102:52:30"`.
 - **Formularz newslettera**: podłącz akcję MailerLite / Mailchimp / Brevo w *Akcje po wysłaniu* i włącz double opt-in.
@@ -129,6 +129,8 @@ Wykonaj **docs/BEZPIECZENSTWO.md** — w tym `.htaccess` lub `nginx`, `wp-config
 | `[bd_category_arches limit="6"]` | home | kategorie w łukach, kolejność z Produkty → Kategorie, zdjęcie = miniatura kategorii |
 | `[bd_shop_by_color attribute="kolor"]` | home | próbki kolorów z atrybutu **pa_kolor** → sklep z filtrem `?filter_kolor=` (kolor z wtyczki Variation Swatches, meta `bd_color` lub wbudowanej mapy nazw) |
 | `[bd_shop_by_material attribute="material"]` | home | chipsy materiałów z atrybutu **pa_material** (stal, ceramika, perły, muszle…) |
+| `[bd_shop_by_stone attribute="kamien"]` | home | próbki kamieni z atrybutu **pa_kamien** (ametyst, turkus, perła, labradoryt… – 29 wbudowanych wyglądów) + **kamień urodzinowy** (miesiąc → kamienie tego miesiąca, filtr LUB). `birthstones="no"` ukrywa miesiące |
+| `[bd_shop_by]` | home, sklep/kategoria | jeden przełącznik **Kolor / Kamień / Materiał** (pusta zakładka się ukrywa); na stronie kategorii filtruje w jej obrębie |
 | `[bd_product_tabs limit="8"]` | home, 404 | zakładki Bestsellery / Nowości / Promocje (ARIA, strzałki na klawiaturze) |
 | `[bd_shop_the_look image="ID" products="ID:x:y,…"]` | home | zdjęcie stylizacji z punktami (x, y w % od lewej/góry) + lista produktów |
 | `[bd_gift_finder]` | home | prezent wg budżetu: do 79 / 129 / 199 zł (filtr `bydopamina_gift_ranges`) |
@@ -146,7 +148,8 @@ Wykonaj **docs/BEZPIECZENSTWO.md** — w tym `.htaccess` lub `nginx`, `wp-config
 
 Automatycznie (bez shortcode'ów): druga fotka z galerii po najechaniu na kartę produktu, **kropki dostępnych kolorów** pod ceną (produkty z wariantami), etykiety
 „Nowość”/„Wyprzedane”, rabat „−20%”, **pakowanie na prezent** w checkoutcie (`BYDOPAMINA_GIFTWRAP_PRICE`),
-przyklejony „Dodaj do koszyka” na telefonie, wyszukiwarka zwracająca produkty.
+przyklejony „Dodaj do koszyka” na telefonie, wyszukiwarka zwracająca produkty i **rozumiejąca kamienie, kolory i materiały**:
+„naszyjnik z ametystem” → produkty z atrybutem Kamień = Ametyst i słowem „naszyjnik” w nazwie (działa też odmiana: ametystem, perłowy, turkusowe, ceramiczne).
 
 ## Zalecane wtyczki (minimum — każda wtyczka to potencjalna luka)
 

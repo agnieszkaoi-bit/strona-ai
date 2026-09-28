@@ -5,7 +5,7 @@
  "page_settings": {},
  "content": [
   {
-   "id": "d593788",
+   "id": "a746712",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -44,7 +44,7 @@
    },
    "elements": [
     {
-     "id": "32884ed",
+     "id": "de01891",
      "elType": "widget",
      "widgetType": "woocommerce-breadcrumb",
      "isInner": false,
@@ -54,7 +54,7 @@
      "elements": []
     },
     {
-     "id": "a746712",
+     "id": "32884ed",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -73,7 +73,7 @@
      },
      "elements": [
       {
-       "id": "76fdb3d",
+       "id": "06f4585",
        "elType": "widget",
        "widgetType": "theme-archive-title",
        "isInner": false,
@@ -84,7 +84,7 @@
        "elements": []
       },
       {
-       "id": "2384396",
+       "id": "be03dda",
        "elType": "widget",
        "widgetType": "woocommerce-archive-description",
        "isInner": false,
@@ -96,7 +96,7 @@
      ]
     },
     {
-     "id": "d0e8650",
+     "id": "76fdb3d",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
@@ -104,11 +104,21 @@
       "shortcode": "[bd_category_chips]"
      },
      "elements": []
+    },
+    {
+     "id": "2384396",
+     "elType": "widget",
+     "widgetType": "shortcode",
+     "isInner": false,
+     "settings": {
+      "shortcode": "[bd_shop_by]"
+     },
+     "elements": []
     }
    ]
   },
   {
-   "id": "dc3e7e0",
+   "id": "d593788",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -140,7 +150,7 @@
    },
    "elements": [
     {
-     "id": "4a6b4f9",
+     "id": "d0e8650",
      "elType": "widget",
      "widgetType": "woocommerce-archive-products",
      "isInner": false,

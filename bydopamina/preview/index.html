@@ -104,11 +104,17 @@
 		</div>
 	</section>
 
-	<!-- KOLORY I MATERIAŁY -->
+	<!-- SZUKAJ PO KOLORZE / KAMIENIU / MATERIALE -->
 	<section class="bd-section" style="padding-top:64px;padding-bottom:0">
 		<div class="wrap">
-			<div class="bd-sechead"><p class="bd-label">02</p><h2 class="bd-h2">Wybierz <em>kolor</em></h2><a class="bd-textlink" href="#">Wszystkie kolory <span aria-hidden="true">→</span></a></div>
-			<nav class="bd-swatches" aria-label="Zakupy według koloru"><ul>
+			<div class="bd-sechead"><p class="bd-label">02</p><h2 class="bd-h2">Szukaj po <em>kolorze</em>, kamieniu, materiale</h2><a class="bd-textlink" href="#">Cały sklep <span aria-hidden="true">→</span></a></div>
+			<div class="bd-tabs bd-shopby" data-bd-tabs>
+				<div role="tablist" class="bd-tabs__list bd-tabs__list--small" aria-label="Szukaj według">
+					<button type="button" role="tab" id="sb1-t" aria-controls="sb1" aria-selected="false" tabindex="-1">Kolor</button>
+					<button type="button" role="tab" id="sb2-t" aria-controls="sb2" aria-selected="true" tabindex="0">Kamień</button>
+					<button type="button" role="tab" id="sb3-t" aria-controls="sb3" aria-selected="false" tabindex="-1">Materiał</button>
+				</div>
+				<div role="tabpanel" id="sb1" aria-labelledby="sb1-t" tabindex="0" hidden><nav class="bd-swatches" aria-label="Zakupy według koloru"><ul>
 				<li><a href="#"><span class="bd-swatches__dot" style="--sw:linear-gradient(135deg,#F3DE9E,#C79A4B)" aria-hidden="true"></span><span class="bd-swatches__name">Złoty<span class="bd-mono">142</span></span></a></li>
 				<li><a href="#"><span class="bd-swatches__dot" style="--sw:linear-gradient(135deg,#F4F4F4,#A9A9A9)" aria-hidden="true"></span><span class="bd-swatches__name">Srebrny<span class="bd-mono">96</span></span></a></li>
 				<li><a href="#"><span class="bd-swatches__dot" style="--sw:#F07A5E" aria-hidden="true"></span><span class="bd-swatches__name">Koralowy<span class="bd-mono">38</span></span></a></li>
@@ -119,9 +125,23 @@
 				<li><a href="#"><span class="bd-swatches__dot" style="--sw:#CDBDEB" aria-hidden="true"></span><span class="bd-swatches__name">Liliowy<span class="bd-mono">24</span></span></a></li>
 				<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 35% 30%,#FFFFFF,#EDE3D6 60%,#D8CBB9)" aria-hidden="true"></span><span class="bd-swatches__name">Perłowy<span class="bd-mono">33</span></span></a></li>
 				<li><a href="#"><span class="bd-swatches__dot" style="--sw:conic-gradient(#F07A5E,#F4C542,#6DAE7C,#2FB7B0,#8E6FCB,#F2A7B8,#F07A5E)" aria-hidden="true"></span><span class="bd-swatches__name">Multikolor<span class="bd-mono">18</span></span></a></li>
-			</ul></nav>
-			<div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px;padding-top:28px"><p class="bd-label">albo materiał</p>
-				<ul class="bd-materials" aria-label="Zakupy według materiału"><li><a href="#">Stal chirurgiczna <span class="bd-mono">188</span></a></li><li><a href="#">Ceramika <span class="bd-mono">44</span></a></li><li><a href="#">Perły <span class="bd-mono">31</span></a></li><li><a href="#">Muszle <span class="bd-mono">17</span></a></li><li><a href="#">Emalia <span class="bd-mono">26</span></a></li><li><a href="#">Kamienie naturalne <span class="bd-mono">23</span></a></li></ul>
+			</ul></nav></div>
+				<div role="tabpanel" id="sb2" aria-labelledby="sb2-t" tabindex="0"><nav class="bd-swatches bd-swatches--gems" aria-label="Zakupy według kamienia"><ul>
+					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#D9C2F0,#9B6FD0 45%,#5B3A8C)" aria-hidden="true"></span><span class="bd-swatches__name">Ametyst<span class="bd-mono">24</span></span></a></li>
+					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#FBE3E8,#F2BFCB 45%,#D9909F)" aria-hidden="true"></span><span class="bd-swatches__name">Kwarc różowy<span class="bd-mono">31</span></span></a></li>
+					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#BFF0EA,#43BFB3 45%,#1E7F77)" aria-hidden="true"></span><span class="bd-swatches__name">Turkus<span class="bd-mono">18</span></span></a></li>
+					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#FFFFFF,#F1E9DE 45%,#D6C8B6)" aria-hidden="true"></span><span class="bd-swatches__name">Perła<span class="bd-mono">42</span></span></a></li>
+					<li><a href="#"><span class="bd-swatches__dot" style="--sw:conic-gradient(from 200deg,#3E4A5C,#4F8FB8,#6FC2B8,#3E4A5C,#8FA3C9,#3E4A5C)" aria-hidden="true"></span><span class="bd-swatches__name">Labradoryt<span class="bd-mono">9</span></span></a></li>
+					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#6B6663,#2A2725 45%,#0E0D0C)" aria-hidden="true"></span><span class="bd-swatches__name">Onyks<span class="bd-mono">14</span></span></a></li>
+					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#CDEDD0,#5FAE73 45%,#2D6B40)" aria-hidden="true"></span><span class="bd-swatches__name">Awenturyn<span class="bd-mono">11</span></span></a></li>
+					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#8CA6E8,#2F4FA8 45%,#16275E)" aria-hidden="true"></span><span class="bd-swatches__name">Lapis lazuli<span class="bd-mono">8</span></span></a></li>
+					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#F2C97A,#B7832F 45%,#5E3A12)" aria-hidden="true"></span><span class="bd-swatches__name">Tygrysie oko<span class="bd-mono">12</span></span></a></li>
+					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#FFFFFF,#E6EEF5 45%,#AFC0CF)" aria-hidden="true"></span><span class="bd-swatches__name">Cyrkonia<span class="bd-mono">57</span></span></a></li>
+					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 35% 30%,#FFFFFF,#E7EEF6 45%,#BFD0E3)" aria-hidden="true"></span><span class="bd-swatches__name">Kamień księżycowy<span class="bd-mono">10</span></span></a></li>
+					<li><a href="#"><span class="bd-swatches__dot" style="--sw:radial-gradient(circle at 32% 28%,#F9C39A,#E0703A 45%,#9E3E14)" aria-hidden="true"></span><span class="bd-swatches__name">Karneol<span class="bd-mono">7</span></span></a></li>
+				</ul></nav>
+				<div class="bd-birthstones"><p class="bd-label">Kamień urodzinowy</p><ul><li><a href="#"><span class="bd-mono">Styczeń</span>Granat</a></li><li><a href="#"><span class="bd-mono">Luty</span>Ametyst</a></li><li><a href="#"><span class="bd-mono">Marzec</span>Akwamaryn</a></li><li><a href="#"><span class="bd-mono">Kwiecień</span>Cyrkonia · Kryształ górski</a></li><li><a href="#"><span class="bd-mono">Maj</span>Jadeit · Awenturyn</a></li><li><a href="#"><span class="bd-mono">Czerwiec</span>Perła · Kamień księżycowy</a></li><li><a href="#"><span class="bd-mono">Lipiec</span>Karneol</a></li><li><a href="#"><span class="bd-mono">Sierpień</span>Perydot</a></li><li><a href="#"><span class="bd-mono">Wrzesień</span>Lapis lazuli</a></li><li><a href="#"><span class="bd-mono">Październik</span>Opal · Kwarc różowy</a></li><li><a href="#"><span class="bd-mono">Listopad</span>Cytryn</a></li><li><a href="#"><span class="bd-mono">Grudzień</span>Turkus</a></li></ul></div></div>
+				<div role="tabpanel" id="sb3" aria-labelledby="sb3-t" tabindex="0" hidden><ul class="bd-materials" aria-label="Zakupy według materiału"><li><a href="#">Stal chirurgiczna <span class="bd-mono">188</span></a></li><li><a href="#">Ceramika <span class="bd-mono">44</span></a></li><li><a href="#">Perły <span class="bd-mono">31</span></a></li><li><a href="#">Muszle <span class="bd-mono">17</span></a></li><li><a href="#">Emalia <span class="bd-mono">26</span></a></li><li><a href="#">Kamienie naturalne <span class="bd-mono">23</span></a></li></ul></div>
 			</div>
 		</div>
 	</section>

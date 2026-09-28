@@ -315,3 +315,107 @@ add_action(
 	},
 	15
 );
+
+/* -------------------------------------------------------------------------
+ * Wyszukiwarka rozumie kamienie, kolory i materiały
+ * „naszyjnik z ametystem” → produkty z atrybutem Kamień = Ametyst, w tytule „naszyjnik”.
+ * Dopasowanie po początku słowa (odmiana: ametyst/ametystem/ametystowy), bez polskich znaków.
+ * ---------------------------------------------------------------------- */
+/**
+ * Czy słowo z wyszukiwarki to odmiana wartości atrybutu?
+ * Wspólny początek ≥ długość sluga − 2 (min. 4): ametystem→ametyst, perłowy→perla, ceramiczne→ceramika, złote→zloty.
+ * Albo niedokończone słowo, które jest początkiem sluga (kwarc → kwarc-rozowy).
+ *
+ * @param string $word Znormalizowane słowo (bez polskich znaków).
+ * @param string $slug Slug wartości atrybutu.
+ * @return bool
+ */
+function bydopamina_word_matches_slug( $word, $slug ) {
+	if ( str_starts_with( $slug, $word ) ) {
+		return true;
+	}
+	$base   = strtok( $slug, '-' ); // pierwszy człon: „kwarc-rozowy” → „kwarc”.
+	$need   = max( 4, strlen( $base ) - 2 );
+	$common = 0;
+	$max    = min( strlen( $word ), strlen( $base ) );
+	while ( $common < $max && $word[ $common ] === $base[ $common ] ) {
+		++$common;
+	}
+	return $common >= $need;
+}
+
+add_action(
+	'pre_get_posts',
+	function ( $query ) {
+		if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
+			return;
+		}
+		$search = (string) $query->get( 's' );
+		if ( '' === trim( $search ) ) {
+			return;
+		}
+		$attributes = apply_filters( 'bydopamina_search_attributes', array( 'kamien', 'kolor', 'material' ) );
+		$words      = preg_split( '/\s+/u', trim( $search ) );
+		$rest       = array();
+		$tax_query  = array();
+		$stopwords  = array( 'z', 'ze', 'w', 'i', 'na', 'do', 'dla', 'oraz' );
+
+		foreach ( $words as $word ) {
+			$norm = sanitize_title( remove_accents( $word ) );
+			if ( in_array( $norm, $stopwords, true ) ) {
+				continue;
+			}
+			$matched = false;
+			if ( mb_strlen( $norm ) >= 4 ) {
+				foreach ( $attributes as $attribute ) {
+					$taxonomy = 'pa_' . $attribute;
+					if ( ! taxonomy_exists( $taxonomy ) ) {
+						continue;
+					}
+					$terms = get_terms(
+						array(
+							'taxonomy'   => $taxonomy,
+							'hide_empty' => true,
+							'fields'     => 'id=>slug',
+						)
+					);
+					foreach ( (array) $terms as $term_id => $slug ) {
+						if ( bydopamina_word_matches_slug( $norm, $slug ) ) {
+							$tax_query[ $taxonomy ][] = (int) $term_id;
+							$matched                  = true;
+						}
+					}
+				}
+			}
+			if ( ! $matched ) {
+				$rest[] = $word;
+			}
+		}
+		if ( ! $tax_query ) {
+			return;
+		}
+		$query->set( 'post_type', 'product' );
+		$existing = (array) $query->get( 'tax_query' );
+		foreach ( $tax_query as $taxonomy => $ids ) {
+			$existing[] = array(
+				'taxonomy' => $taxonomy,
+				'field'    => 'term_id',
+				'terms'    => array_unique( $ids ),
+			);
+		}
+		$query->set( 'tax_query', $existing );
+		$query->set( 's', implode( ' ', $rest ) );
+		$query->set( 'bd_original_search', $search );
+	},
+	20
+);
+
+// Nagłówek wyników pokazuje to, co wpisał klient (a nie okrojoną frazę).
+add_filter(
+	'get_search_query',
+	function ( $q ) {
+		global $wp_query;
+		$original = $wp_query ? $wp_query->get( 'bd_original_search' ) : '';
+		return $original ? esc_attr( $original ) : $q;
+	}
+);

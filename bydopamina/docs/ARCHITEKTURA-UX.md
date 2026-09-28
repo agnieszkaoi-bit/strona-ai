@@ -60,7 +60,7 @@ Start (/)
 | — | **Hero** — tytuł na całą szerokość, zdjęcie 5:4 na tle koloru kolekcji (8/12) + zdjęcie 1:1 i tekst (4/12) | emocja + jasna oferta | 1 CTA pełne („Kup kolekcję”) + 1 link; meta: materiał / wysyłka / zwrot |
 | — | **Cechy materiału** (4 kolumny, linie) | odpowiedź na pytanie nr 1: „czy to się nie ściera?” | ikony w kolorze złota, bez teł |
 | 01 | **Kategorie w łukach** | nawigacja kciukiem | 6 kategorii, na mobile przewijane (widać 2,5 – sygnał, że jest więcej) |
-| 02 | **Wybierz kolor / materiał** | skrót dla klientki, która szuka „czegoś koralowego” | duże próbki z liczbą produktów + chipsy materiałów; linki do filtrów WooCommerce |
+| 02 | **Szukaj po kolorze / kamieniu / materiale** (przełącznik) | skrót dla klientki, która szuka „czegoś koralowego” albo „z ametystem” | próbki kolorów, próbki kamieni z połyskiem, **kamień urodzinowy** (12 miesięcy – gotowy pomysł na prezent), chipsy materiałów; linki do filtrów WooCommerce |
 | 03 | **Zakładki produktów** | wybór bez przewijania 3 sekcji | Bestsellery / Nowości / Promocje jako duże słowa w szeryfie; ARIA tabs |
 | 04 | **O materiale** (ciemna sekcja) | zaufanie, uzasadnienie ceny | liczby 316L · 18K · 0 zamiast ikon |
 | 05 | **Shop the look** | średnia wartość koszyka ↑ | punkty na zdjęciu ↔ lista produktów; na dotyku 1. tap podświetla, 2. przenosi |
@@ -106,7 +106,13 @@ Desktop                                                   Mobile
 Okruszki → duży tytuł kategorii + opis (SEO) → chipsy podkategorii z liczbą produktów → wyniki + sortowanie →
 siatka 4/3/2 → paginacja numerowana (mono). Karta produktu: packshot 4:5, **na hover zdjęcie na modelce**,
 „Szybko dodaj” na dole zdjęcia (desktop), etykiety Nowość / −20% / Wyprzedane, **kropki dostępnych kolorów** pod ceną.
-Filtry (kolor, materiał, długość, cena) — przy > 60 produktach: blok „Filtry produktów” WooCommerce w szufladzie.
+Pod chipsami ten sam przełącznik Kolor / Kamień / Materiał, zawężający w obrębie kategorii.
+Filtry (kolor, kamień, materiał, długość, cena) — przy > 60 produktach: blok „Filtry produktów” WooCommerce w szufladzie.
+
+### Wyszukiwarka
+Pełnoekranowa, z dolnego paska na telefonie. Rozpoznaje nazwy kamieni, kolorów i materiałów także w odmianie
+(„kolczyki z perłą”, „turkusowe”, „ceramiczne”) i zamienia je na filtr atrybutu — reszta frazy szuka w nazwach.
+Przy > 300 produktach lub literówkach: FiboSearch (podpowiedzi na żywo ze zdjęciami), logika motywu działa dalej.
 
 ## 6. Koszyk i zamówienie
 - Kroki w mono: **01 Koszyk — 02 Dane i dostawa — 03 Płatność**.

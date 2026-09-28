@@ -5,7 +5,7 @@
  "page_settings": {},
  "content": [
   {
-   "id": "f2813aa",
+   "id": "9b53957",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -44,7 +44,7 @@
    },
    "elements": [
     {
-     "id": "4285b5f",
+     "id": "7b3ef92",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -63,7 +63,7 @@
      },
      "elements": [
       {
-       "id": "c8d71c9",
+       "id": "067daf5",
        "elType": "widget",
        "widgetType": "woocommerce-product-images",
        "isInner": false,
@@ -76,7 +76,7 @@
      ]
     },
     {
-     "id": "454acc6",
+     "id": "b5e284a",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -119,7 +119,7 @@
      },
      "elements": [
       {
-       "id": "f8791ca",
+       "id": "b341528",
        "elType": "widget",
        "widgetType": "woocommerce-breadcrumb",
        "isInner": false,
@@ -129,7 +129,7 @@
        "elements": []
       },
       {
-       "id": "a3a5d20",
+       "id": "c8d71c9",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
@@ -139,7 +139,7 @@
        "elements": []
       },
       {
-       "id": "aa9a75c",
+       "id": "4285b5f",
        "elType": "widget",
        "widgetType": "woocommerce-product-title",
        "isInner": false,
@@ -150,7 +150,7 @@
        "elements": []
       },
       {
-       "id": "968cce0",
+       "id": "f8791ca",
        "elType": "widget",
        "widgetType": "woocommerce-product-rating",
        "isInner": false,
@@ -158,7 +158,7 @@
        "elements": []
       },
       {
-       "id": "8ecadd4",
+       "id": "a3a5d20",
        "elType": "widget",
        "widgetType": "woocommerce-product-price",
        "isInner": false,
@@ -168,7 +168,7 @@
        "elements": []
       },
       {
-       "id": "270bc04",
+       "id": "aa9a75c",
        "elType": "widget",
        "widgetType": "woocommerce-product-short-description",
        "isInner": false,
@@ -178,7 +178,7 @@
        "elements": []
       },
       {
-       "id": "36c3fb4",
+       "id": "968cce0",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
@@ -188,7 +188,7 @@
        "elements": []
       },
       {
-       "id": "5c87de1",
+       "id": "8ecadd4",
        "elType": "widget",
        "widgetType": "woocommerce-product-add-to-cart",
        "isInner": false,
@@ -199,7 +199,7 @@
        "elements": []
       },
       {
-       "id": "bf38545",
+       "id": "270bc04",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
@@ -209,7 +209,7 @@
        "elements": []
       },
       {
-       "id": "a91c062",
+       "id": "36c3fb4",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
@@ -219,7 +219,7 @@
        "elements": []
       },
       {
-       "id": "a95a3d4",
+       "id": "5c87de1",
        "elType": "widget",
        "widgetType": "shortcode",
        "isInner": false,
@@ -229,34 +229,34 @@
        "elements": []
       },
       {
-       "id": "6db7ae1",
+       "id": "173e6fe",
        "elType": "widget",
        "widgetType": "nested-accordion",
        "isInner": false,
        "settings": {
         "items": [
          {
-          "_id": "23b6eeb",
+          "_id": "4fee38f",
           "item_title": "Opis"
          },
          {
-          "_id": "aaf3ab1",
+          "_id": "7f087a4",
           "item_title": "Materiał i pielęgnacja"
          },
          {
-          "_id": "415124d",
+          "_id": "6db7ae1",
           "item_title": "Wymiary i szczegóły"
          },
          {
-          "_id": "71a7aed",
+          "_id": "23b6eeb",
           "item_title": "Dostawa i zwroty"
          },
          {
-          "_id": "bd9a894",
+          "_id": "aaf3ab1",
           "item_title": "Bezpieczeństwo produktu"
          },
          {
-          "_id": "f8d25c6",
+          "_id": "415124d",
           "item_title": "Opinie"
          }
         ],
@@ -265,6 +265,91 @@
         "_css_classes": "bd-accordion"
        },
        "elements": [
+        {
+         "id": "71a7aed",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "20",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "bf38545",
+           "elType": "widget",
+           "widgetType": "woocommerce-product-content",
+           "isInner": false,
+           "settings": {},
+           "elements": []
+          }
+         ]
+        },
+        {
+         "id": "bd9a894",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "20",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "a91c062",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "isInner": false,
+           "settings": {
+            "editor": "<p>Stal 316L ze złoceniem PVD nie boi się wody ani potu. Żeby złoto błyszczało latami:</p><ul><li>perfumy i balsam nakładaj przed założeniem biżuterii,</li><li>czyść miękką ściereczką, bez past i środków ściernych,</li><li>przechowuj osobno – w pudełku lub woreczku, żeby elementy się nie rysowały.</li></ul>"
+           },
+           "elements": []
+          }
+         ]
+        },
+        {
+         "id": "f8d25c6",
+         "elType": "container",
+         "isInner": true,
+         "settings": {
+          "content_width": "full",
+          "flex_direction": "column",
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "20",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "a95a3d4",
+           "elType": "widget",
+           "widgetType": "woocommerce-product-additional-information",
+           "isInner": false,
+           "settings": {
+            "show_heading": ""
+           },
+           "elements": []
+          }
+         ]
+        },
         {
          "id": "22a0d4e",
          "elType": "container",
@@ -285,9 +370,11 @@
           {
            "id": "3b1ab8e",
            "elType": "widget",
-           "widgetType": "woocommerce-product-content",
+           "widgetType": "text-editor",
            "isInner": false,
-           "settings": {},
+           "settings": {
+            "editor": "<p><strong>InPost Paczkomat</strong> i <strong>kurier DPD</strong> – 1–2 dni robocze. Darmowa dostawa od 199 zł.</p><p>30 dni na zwrot bez podawania przyczyny. <a href=\"/zwroty/\">Jak zwrócić produkt</a></p>"
+           },
            "elements": []
           }
          ]
@@ -315,7 +402,7 @@
            "widgetType": "text-editor",
            "isInner": false,
            "settings": {
-            "editor": "<p>Stal 316L ze złoceniem PVD nie boi się wody ani potu. Żeby złoto błyszczało latami:</p><ul><li>perfumy i balsam nakładaj przed założeniem biżuterii,</li><li>czyść miękką ściereczką, bez past i środków ściernych,</li><li>przechowuj osobno – w pudełku lub woreczku, żeby elementy się nie rysowały.</li></ul>"
+            "editor": "<p><strong>Producent:</strong> [nazwa, adres, e-mail]<br><strong>Podmiot odpowiedzialny w UE:</strong> [jeśli inny]<br><strong>Ostrzeżenia:</strong> zawiera małe elementy – nie dla dzieci poniżej 3 lat.</p>"
            },
            "elements": []
           }
@@ -341,93 +428,6 @@
           {
            "id": "c8c101f",
            "elType": "widget",
-           "widgetType": "woocommerce-product-additional-information",
-           "isInner": false,
-           "settings": {
-            "show_heading": ""
-           },
-           "elements": []
-          }
-         ]
-        },
-        {
-         "id": "b5e284a",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "column",
-          "padding": {
-           "unit": "px",
-           "top": "0",
-           "right": "0",
-           "bottom": "20",
-           "left": "0",
-           "isLinked": false
-          }
-         },
-         "elements": [
-          {
-           "id": "173e6fe",
-           "elType": "widget",
-           "widgetType": "text-editor",
-           "isInner": false,
-           "settings": {
-            "editor": "<p><strong>InPost Paczkomat</strong> i <strong>kurier DPD</strong> – 1–2 dni robocze. Darmowa dostawa od 199 zł.</p><p>30 dni na zwrot bez podawania przyczyny. <a href=\"/zwroty/\">Jak zwrócić produkt</a></p>"
-           },
-           "elements": []
-          }
-         ]
-        },
-        {
-         "id": "9b53957",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "column",
-          "padding": {
-           "unit": "px",
-           "top": "0",
-           "right": "0",
-           "bottom": "20",
-           "left": "0",
-           "isLinked": false
-          }
-         },
-         "elements": [
-          {
-           "id": "4fee38f",
-           "elType": "widget",
-           "widgetType": "text-editor",
-           "isInner": false,
-           "settings": {
-            "editor": "<p><strong>Producent:</strong> [nazwa, adres, e-mail]<br><strong>Podmiot odpowiedzialny w UE:</strong> [jeśli inny]<br><strong>Ostrzeżenia:</strong> zawiera małe elementy – nie dla dzieci poniżej 3 lat.</p>"
-           },
-           "elements": []
-          }
-         ]
-        },
-        {
-         "id": "6da36f6",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "column",
-          "padding": {
-           "unit": "px",
-           "top": "0",
-           "right": "0",
-           "bottom": "20",
-           "left": "0",
-           "isLinked": false
-          }
-         },
-         "elements": [
-          {
-           "id": "7f087a4",
-           "elType": "widget",
            "widgetType": "shortcode",
            "isInner": false,
            "settings": {
@@ -444,7 +444,7 @@
    ]
   },
   {
-   "id": "694e1cc",
+   "id": "ee92c2c",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -476,7 +476,7 @@
    },
    "elements": [
     {
-     "id": "92e7981",
+     "id": "5b215d8",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -487,7 +487,7 @@
      },
      "elements": [
       {
-       "id": "5b215d8",
+       "id": "6da36f6",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
@@ -497,7 +497,7 @@
        "elements": []
       },
       {
-       "id": "3de0a2e",
+       "id": "454acc6",
        "elType": "widget",
        "widgetType": "heading",
        "isInner": false,
@@ -509,7 +509,7 @@
        "elements": []
       },
       {
-       "id": "ee92c2c",
+       "id": "f2813aa",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
@@ -521,7 +521,7 @@
      ]
     },
     {
-     "id": "87426ab",
+     "id": "3de0a2e",
      "elType": "widget",
      "widgetType": "woocommerce-product-upsell",
      "isInner": false,
@@ -536,7 +536,7 @@
    ]
   },
   {
-   "id": "be03dda",
+   "id": "8568995",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -568,7 +568,7 @@
    },
    "elements": [
     {
-     "id": "de01891",
+     "id": "d7f8e6e",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -579,7 +579,7 @@
      },
      "elements": [
       {
-       "id": "d7f8e6e",
+       "id": "92e7981",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
@@ -589,7 +589,7 @@
        "elements": []
       },
       {
-       "id": "a7462fb",
+       "id": "87426ab",
        "elType": "widget",
        "widgetType": "heading",
        "isInner": false,
@@ -601,7 +601,7 @@
        "elements": []
       },
       {
-       "id": "8568995",
+       "id": "694e1cc",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
@@ -613,7 +613,7 @@
      ]
     },
     {
-     "id": "06f4585",
+     "id": "a7462fb",
      "elType": "widget",
      "widgetType": "woocommerce-product-related",
      "isInner": false,

@@ -14,6 +14,8 @@
  *  [bd_rating_summary]                    średnia ocena i liczba opinii (z WooCommerce)
  *  [bd_shop_by_color attribute="kolor"]   próbki kolorów (atrybut pa_kolor) → sklep przefiltrowany po kolorze
  *  [bd_shop_by_material attribute="material"]  chipsy materiałów (pa_material): stal, ceramika, perły, muszle…
+ *  [bd_shop_by_stone attribute="kamien"]  próbki kamieni (pa_kamien) + wybór kamienia urodzinowego
+ *  [bd_shop_by]                           przełącznik Kolor / Kamień / Materiał w jednej sekcji
  *  [bd_free_shipping_bar] [bd_delivery_eta] [bd_category_chips] [bd_mobile_nav] [bd_product_reviews] [bd_year]
  *
  * @package bydopamina
@@ -588,7 +590,12 @@ function bydopamina_attribute_links( $attribute ) {
 	if ( is_wp_error( $terms ) ) {
 		return array();
 	}
+	// Na stronie kategorii filtrujemy w jej obrębie, w innych miejscach – cały sklep.
 	$shop = wc_get_page_permalink( 'shop' );
+	if ( function_exists( 'is_product_category' ) && is_product_category() ) {
+		$link = get_term_link( get_queried_object() );
+		$shop = is_wp_error( $link ) ? $shop : $link;
+	}
 	$out  = array();
 	foreach ( $terms as $term ) {
 		// Format filtrów warstwowych WooCommerce: ?filter_kolor=zloty.
@@ -605,17 +612,7 @@ add_shortcode(
 		if ( ! $items ) {
 			return '';
 		}
-		$html = '<nav class="bd-swatches" aria-label="' . esc_attr__( 'Zakupy według koloru', 'bydopamina' ) . '"><ul>';
-		foreach ( $items as list( $term, $url ) ) {
-			$html .= sprintf(
-				'<li><a href="%1$s"><span class="bd-swatches__dot" style="--sw:%2$s" aria-hidden="true"></span><span class="bd-swatches__name">%3$s<span class="bd-mono">%4$d</span></span></a></li>',
-				esc_url( $url ),
-				esc_attr( bydopamina_swatch_color( $term ) ),
-				esc_html( $term->name ),
-				(int) $term->count
-			);
-		}
-		return $html . '</ul></nav>';
+		return bydopamina_swatch_nav( $items, 'bydopamina_swatch_color', __( 'Zakupy według koloru', 'bydopamina' ) );
 	}
 );
 
@@ -632,5 +629,212 @@ add_shortcode(
 			$html .= '<li><a href="' . esc_url( $url ) . '">' . esc_html( $term->name ) . ' <span class="bd-mono">' . (int) $term->count . '</span></a></li>';
 		}
 		return $html . '</ul>';
+	}
+);
+
+/**
+ * Wygląd próbki kamienia: meta `product_attribute_color` / `bd_color` → mapa nazw kamieni.
+ *
+ * @param WP_Term $term Wartość atrybutu pa_kamien.
+ * @return string Wartość CSS background.
+ */
+function bydopamina_stone_color( $term ) {
+	foreach ( array( 'product_attribute_color', 'bd_color' ) as $key ) {
+		$hex = sanitize_hex_color( (string) get_term_meta( $term->term_id, $key, true ) );
+		if ( $hex ) {
+			return $hex;
+		}
+	}
+	$g   = static function ( $light, $mid, $dark ) {
+		return "radial-gradient(circle at 32% 28%,{$light},{$mid} 45%,{$dark})";
+	};
+	$map = apply_filters(
+		'bydopamina_stone_map',
+		array(
+			'ametyst'            => $g( '#D9C2F0', '#9B6FD0', '#5B3A8C' ),
+			'kwarc-rozowy'       => $g( '#FBE3E8', '#F2BFCB', '#D9909F' ),
+			'agat'               => $g( '#EFE3D6', '#B9967A', '#6E5140' ),
+			'turkus'             => $g( '#BFF0EA', '#43BFB3', '#1E7F77' ),
+			'jadeit'             => $g( '#CFEBD2', '#6FB483', '#3A7A4E' ),
+			'awenturyn'          => $g( '#CDEDD0', '#5FAE73', '#2D6B40' ),
+			'malachit'           => $g( '#B9E8CF', '#2F9C66', '#135B38' ),
+			'onyks'              => $g( '#6B6663', '#2A2725', '#0E0D0C' ),
+			'perla'              => $g( '#FFFFFF', '#F1E9DE', '#D6C8B6' ),
+			'macica-perlowa'     => 'conic-gradient(from 40deg,#F6F1EA,#DDE9F0,#F3E0EA,#E9F2E4,#F6F1EA)',
+			'lapis-lazuli'       => $g( '#8CA6E8', '#2F4FA8', '#16275E' ),
+			'cyrkonia'           => $g( '#FFFFFF', '#E6EEF5', '#AFC0CF' ),
+			'krysztal-gorski'    => $g( '#FFFFFF', '#EEF3F6', '#C3D0D8' ),
+			'labradoryt'         => 'conic-gradient(from 200deg,#3E4A5C,#4F8FB8,#6FC2B8,#3E4A5C,#8FA3C9,#3E4A5C)',
+			'tygrysie-oko'       => $g( '#F2C97A', '#B7832F', '#5E3A12' ),
+			'cytryn'             => $g( '#FFF1B8', '#F2C94C', '#C08A12' ),
+			'akwamaryn'          => $g( '#E3F7FB', '#9FDCEB', '#5AAFC6' ),
+			'granat'             => $g( '#E8A0A8', '#9C1C33', '#4E0A17' ),
+			'howlit'             => $g( '#FFFFFF', '#ECECEA', '#B8B6B1' ),
+			'karneol'            => $g( '#F9C39A', '#E0703A', '#9E3E14' ),
+			'amazonit'           => $g( '#D6F3EE', '#8FD1C5', '#4E9C90' ),
+			'kamien-ksiezycowy'  => 'radial-gradient(circle at 35% 30%,#FFFFFF,#E7EEF6 45%,#BFD0E3)',
+			'hematyt'            => $g( '#A9A9AD', '#4E4D52', '#1F1E22' ),
+			'rubin'              => $g( '#F7A6B4', '#C8173A', '#6E0A1E' ),
+			'szmaragd'           => $g( '#A8EAC4', '#1F9E5C', '#0B5A32' ),
+			'szafir'             => $g( '#A9C0F5', '#2A4BC4', '#122470' ),
+			'topaz'              => $g( '#DDF1FB', '#8DC9EA', '#3F8FBF' ),
+			'opal'               => 'conic-gradient(from 90deg,#F7F2FF,#CDEFF2,#F9DDE8,#FFF4C9,#D9F0DA,#F7F2FF)',
+			'perydot'            => $g( '#E9F7B0', '#A8CF3A', '#627D12' ),
+		)
+	);
+	$slug = sanitize_title( remove_accents( $term->slug ) );
+	return $map[ $slug ] ?? $map[ sanitize_title( remove_accents( $term->name ) ) ] ?? 'radial-gradient(circle at 32% 28%,#fff,#E3D9CB 50%,#B9A993)';
+}
+
+/**
+ * Kamienie urodzinowe (tradycja polska/europejska) – miesiąc → slug kamienia w pa_kamien.
+ * Pokazujemy tylko te, które są w sklepie. Zmień filtrem bydopamina_birthstones.
+ *
+ * @return array<string, string[]>
+ */
+function bydopamina_birthstones() {
+	return apply_filters(
+		'bydopamina_birthstones',
+		array(
+			'Styczeń'     => array( 'granat' ),
+			'Luty'        => array( 'ametyst' ),
+			'Marzec'      => array( 'akwamaryn' ),
+			'Kwiecień'    => array( 'cyrkonia', 'krysztal-gorski' ),
+			'Maj'         => array( 'szmaragd', 'jadeit', 'awenturyn' ),
+			'Czerwiec'    => array( 'perla', 'kamien-ksiezycowy' ),
+			'Lipiec'      => array( 'rubin', 'karneol' ),
+			'Sierpień'    => array( 'perydot' ),
+			'Wrzesień'    => array( 'szafir', 'lapis-lazuli' ),
+			'Październik' => array( 'opal', 'kwarc-rozowy' ),
+			'Listopad'    => array( 'topaz', 'cytryn' ),
+			'Grudzień'    => array( 'turkus' ),
+		)
+	);
+}
+
+/**
+ * Lista próbek (kolor albo kamień) jako nawigacja.
+ *
+ * @param array    $items  Wynik bydopamina_attribute_links().
+ * @param callable $color  Funkcja zwracająca tło próbki.
+ * @param string   $label  Etykieta dla czytników ekranu.
+ * @param string   $extra  Dodatkowa klasa (np. bd-swatches--gems).
+ * @return string
+ */
+function bydopamina_swatch_nav( $items, $color, $label, $extra = '' ) {
+	$html = '<nav class="bd-swatches ' . esc_attr( $extra ) . '" aria-label="' . esc_attr( $label ) . '"><ul>';
+	foreach ( $items as list( $term, $url ) ) {
+		$html .= sprintf(
+			'<li><a href="%1$s"><span class="bd-swatches__dot" style="--sw:%2$s" aria-hidden="true"></span><span class="bd-swatches__name">%3$s<span class="bd-mono">%4$d</span></span></a></li>',
+			esc_url( $url ),
+			esc_attr( $color( $term ) ),
+			esc_html( $term->name ),
+			(int) $term->count
+		);
+	}
+	return $html . '</ul></nav>';
+}
+
+/**
+ * Wybór kamienia urodzinowego: miesiąc → sklep przefiltrowany po kamieniach tego miesiąca.
+ *
+ * @param string $attribute Atrybut kamieni (bez pa_).
+ * @return string
+ */
+function bydopamina_birthstone_picker( $attribute ) {
+	$taxonomy = 'pa_' . sanitize_title( $attribute );
+	if ( ! taxonomy_exists( $taxonomy ) ) {
+		return '';
+	}
+	$shop  = wc_get_page_permalink( 'shop' );
+	$items = '';
+	foreach ( bydopamina_birthstones() as $month => $slugs ) {
+		$found = array();
+		foreach ( $slugs as $slug ) {
+			$term = get_term_by( 'slug', $slug, $taxonomy );
+			if ( $term && $term->count > 0 ) {
+				$found[] = $term;
+			}
+		}
+		if ( ! $found ) {
+			continue;
+		}
+		// Kilka kamieni w miesiącu = filtr LUB (query_type_…=or).
+		$url    = add_query_arg(
+			array(
+				'filter_' . $attribute     => implode( ',', wp_list_pluck( $found, 'slug' ) ),
+				'query_type_' . $attribute => 'or',
+			),
+			$shop
+		);
+		$items .= '<li><a href="' . esc_url( $url ) . '"><span class="bd-mono">' . esc_html( $month ) . '</span>' . esc_html( implode( ' · ', wp_list_pluck( $found, 'name' ) ) ) . '</a></li>';
+	}
+	return $items ? '<div class="bd-birthstones"><p class="bd-label">' . esc_html__( 'Kamień urodzinowy', 'bydopamina' ) . '</p><ul>' . $items . '</ul></div>' : '';
+}
+
+add_shortcode(
+	'bd_shop_by_stone',
+	function ( $atts ) {
+		$atts  = shortcode_atts(
+			array(
+				'attribute'   => 'kamien',
+				'birthstones' => 'yes',
+			),
+			$atts,
+			'bd_shop_by_stone'
+		);
+		$items = bydopamina_attribute_links( $atts['attribute'] );
+		if ( ! $items ) {
+			return '';
+		}
+		$html = bydopamina_swatch_nav( $items, 'bydopamina_stone_color', __( 'Zakupy według kamienia', 'bydopamina' ), 'bd-swatches--gems' );
+		if ( 'yes' === $atts['birthstones'] ) {
+			$html .= bydopamina_birthstone_picker( $atts['attribute'] );
+		}
+		return $html;
+	}
+);
+
+/**
+ * [bd_shop_by] – przełącznik Kolor / Kamień / Materiał w jednej sekcji (zakładki ARIA, JS z main.js).
+ * Zakładka bez danych (brak atrybutu lub produktów) jest pomijana.
+ */
+add_shortcode(
+	'bd_shop_by',
+	function ( $atts ) {
+		static $instance = 0;
+		++$instance;
+		$atts   = shortcode_atts(
+			array(
+				'color'    => 'kolor',
+				'stone'    => 'kamien',
+				'material' => 'material',
+			),
+			$atts,
+			'bd_shop_by'
+		);
+		$panels = array_filter(
+			array(
+				'kolor'    => array( __( 'Kolor', 'bydopamina' ), do_shortcode( '[bd_shop_by_color attribute="' . esc_attr( $atts['color'] ) . '"]' ) ),
+				'kamien'   => array( __( 'Kamień', 'bydopamina' ), do_shortcode( '[bd_shop_by_stone attribute="' . esc_attr( $atts['stone'] ) . '"]' ) ),
+				'material' => array( __( 'Materiał', 'bydopamina' ), do_shortcode( '[bd_shop_by_material attribute="' . esc_attr( $atts['material'] ) . '"]' ) ),
+			),
+			static function ( $p ) {
+				return '' !== $p[1];
+			}
+		);
+		if ( ! $panels ) {
+			return '';
+		}
+		$nav   = '';
+		$body  = '';
+		$first = true;
+		foreach ( $panels as $key => $p ) {
+			$id    = 'bd-shopby-' . $instance . '-' . $key;
+			$nav  .= sprintf( '<button type="button" role="tab" id="%1$s-t" aria-controls="%1$s" aria-selected="%2$s" tabindex="%3$s">%4$s</button>', esc_attr( $id ), $first ? 'true' : 'false', $first ? '0' : '-1', esc_html( $p[0] ) );
+			$body .= sprintf( '<div role="tabpanel" id="%1$s" aria-labelledby="%1$s-t" tabindex="0"%2$s>%3$s</div>', esc_attr( $id ), $first ? '' : ' hidden', $p[1] );
+			$first = false;
+		}
+		return '<div class="bd-tabs bd-shopby" data-bd-tabs><div role="tablist" class="bd-tabs__list bd-tabs__list--small" aria-label="' . esc_attr__( 'Szukaj według', 'bydopamina' ) . '">' . $nav . '</div>' . $body . '</div>';
 	}
 );

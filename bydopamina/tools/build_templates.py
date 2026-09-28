@@ -269,10 +269,9 @@ def home():
     )
 
     colours = section(
-        sechead("02", "Wybierz <em>kolor</em>", "Wszystkie kolory", "/sklep/"),
-        shortcode('[bd_shop_by_color attribute="kolor"]'),
-        box(html('<p class="bd-label">albo materiał</p>'), shortcode('[bd_shop_by_material attribute="material"]'),
-            direction="row", align="center", wrap="wrap", gap=20, pad=pad(28, 0, 0, 0)),
+        sechead("02", "Szukaj po <em>kolorze</em>, kamieniu, materiale", "Cały sklep", "/sklep/"),
+        # Zakładki Kolor / Kamień / Materiał z atrybutów pa_kolor, pa_kamien, pa_material (puste zakładki się ukrywają).
+        shortcode("[bd_shop_by]"),
         cls="bd-section bd-reveal", pad=pad(64, 40, 0, 40), pad_mobile=pad(48, 16, 0, 16),
     )
 
@@ -453,6 +452,7 @@ def archive():
             direction="row", justify="space-between", align="flex-end", wrap="wrap", gap=24,
         ),
         shortcode("[bd_category_chips]"),
+        shortcode('[bd_shop_by]'),
         cls="bd-archive-head", gap=20, pad=pad(40, 40, 32, 40), pad_mobile=pad(20, 16, 20, 16),
     )
     grid = section(
