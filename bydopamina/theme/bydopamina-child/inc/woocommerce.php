@@ -212,7 +212,8 @@ add_action(
 	function () {
 		global $product;
 		$created = $product ? $product->get_date_created() : null;
-		if ( $created && ( time() - $created->getTimestamp() ) < 30 * DAY_IN_SECONDS && ! $product->is_on_sale() ) {
+		// Jedna etykieta na zdjęciu: promocja > bestseller > nowość.
+		if ( $created && ( time() - $created->getTimestamp() ) < 30 * DAY_IN_SECONDS && ! $product->is_on_sale() && ! has_term( 'bestseller', 'product_tag', $product->get_id() ) ) {
 			echo '<span class="bd-badge">' . esc_html__( 'Nowość', 'bydopamina' ) . '</span>';
 		}
 		if ( $product && ! $product->is_in_stock() ) {

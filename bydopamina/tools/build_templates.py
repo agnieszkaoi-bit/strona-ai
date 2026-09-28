@@ -152,7 +152,7 @@ def section(*children, cls="bd-section", **s):
 def header():
     """Układ jak w klasycznych sklepach jubilerskich: pasek promocji → pasek informacyjny → logo | menu | szukaj + ikony z podpisami."""
     promobar = con(
-        html('<a href="/sklep/?on_sale=1">Druga sztuka −30% · tylko do niedzieli &gt;&gt;&gt;</a>'),
+        html('<a href="/promocje/">Druga sztuka −30% · tylko do niedzieli &gt;&gt;&gt;</a>'),
         boxed=False, cls="bd-promobar", pad=pad(0),
     )
     utilbar = con(

@@ -1,5 +1,8 @@
 # bydopamina.pl — sklep z kolorową biżuterią (Elementor Pro + WooCommerce)
 
+> **Instalacja automatyczna:** zobacz **[INSTALACJA.md](INSTALACJA.md)** – wgrywasz 2 pliki z `dist/`
+> (motyw + kreator) i klikasz „Uruchom konfigurację sklepu”. Paczki buduje `tools/build_release.sh`.
+
 **Kierunek (v3.1): klasyczny, czytelny sklep jubilerski – jasno, kobieco i prosto do koszyka.** Biżuteria jest kolorowa, więc strona
 jest stonowana: porcelanowa biel, pudrowy róż, ciepła czerń, jeden akcent – malina `#A3385A`.
 Jeden prosty, bardzo czytelny krój: **Figtree** (tekst 17 px). Układ jak w dużych sklepach jubilerskich:

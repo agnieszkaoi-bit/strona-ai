@@ -28,7 +28,7 @@
      "widgetType": "html",
      "isInner": false,
      "settings": {
-      "html": "<a href=\"/sklep/?on_sale=1\">Druga sztuka −30% · tylko do niedzieli &gt;&gt;&gt;</a>"
+      "html": "<a href=\"/promocje/\">Druga sztuka −30% · tylko do niedzieli &gt;&gt;&gt;</a>"
      },
      "elements": []
     }
