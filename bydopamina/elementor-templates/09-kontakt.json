@@ -8,7 +8,7 @@
  },
  "content": [
   {
-   "id": "39bcd23",
+   "id": "23a2afc",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -40,7 +40,7 @@
    },
    "elements": [
     {
-     "id": "1a43196",
+     "id": "bf0ff3c",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -57,7 +57,7 @@
      },
      "elements": [
       {
-       "id": "d7612dc",
+       "id": "0a4b010",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -83,7 +83,7 @@
        },
        "elements": [
         {
-         "id": "63ab9e9",
+         "id": "1a43196",
          "elType": "widget",
          "widgetType": "html",
          "isInner": false,
@@ -93,7 +93,7 @@
          "elements": []
         },
         {
-         "id": "413ec85",
+         "id": "39bcd23",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
@@ -105,7 +105,7 @@
          "elements": []
         },
         {
-         "id": "313ecc4",
+         "id": "775852a",
          "elType": "widget",
          "widgetType": "icon-list",
          "isInner": false,
@@ -113,7 +113,7 @@
           "view": "traditional",
           "icon_list": [
            {
-            "_id": "af61bb7",
+            "_id": "4091bab",
             "text": "hej@bydopamina.pl",
             "link": {
              "url": "mailto:hej@bydopamina.pl",
@@ -126,7 +126,7 @@
             }
            },
            {
-            "_id": "4ae820b",
+            "_id": "6974aad",
             "text": "+48 000 000 000",
             "link": {
              "url": "tel:+48000000000",
@@ -139,7 +139,7 @@
             }
            },
            {
-            "_id": "d245ff1",
+            "_id": "161f5e8",
             "text": "pn–pt 9:00–16:00",
             "link": {
              "url": "",
@@ -152,7 +152,7 @@
             }
            },
            {
-            "_id": "4537b66",
+            "_id": "03e6769",
             "text": "Adres do zwrotów: [uzupełnij]",
             "link": {
              "url": "",
@@ -171,7 +171,7 @@
        ]
       },
       {
-       "id": "1a3accd",
+       "id": "c2e001d",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -191,7 +191,7 @@
        },
        "elements": [
         {
-         "id": "9c9b79b",
+         "id": "1a3accd",
          "elType": "widget",
          "widgetType": "form",
          "isInner": false,
@@ -199,7 +199,7 @@
           "form_name": "Kontakt",
           "form_fields": [
            {
-            "_id": "348dd0e",
+            "_id": "af61bb7",
             "custom_id": "name",
             "field_type": "text",
             "field_label": "Imię",
@@ -207,7 +207,7 @@
             "width": "50"
            },
            {
-            "_id": "41f943f",
+            "_id": "4ae820b",
             "custom_id": "email",
             "field_type": "email",
             "field_label": "E-mail",
@@ -215,14 +215,14 @@
             "width": "50"
            },
            {
-            "_id": "5baee7d",
+            "_id": "d245ff1",
             "custom_id": "order",
             "field_type": "text",
             "field_label": "Numer zamówienia (jeśli dotyczy)",
             "width": "100"
            },
            {
-            "_id": "dc37228",
+            "_id": "4537b66",
             "custom_id": "message",
             "field_type": "textarea",
             "field_label": "Wiadomość",
@@ -231,13 +231,13 @@
             "width": "100"
            },
            {
-            "_id": "954dc49",
+            "_id": "313ecc4",
             "custom_id": "hp",
             "field_type": "honeypot",
             "width": "100"
            },
            {
-            "_id": "31ac5e8",
+            "_id": "d7612dc",
             "custom_id": "rodo",
             "field_type": "acceptance",
             "required": "true",

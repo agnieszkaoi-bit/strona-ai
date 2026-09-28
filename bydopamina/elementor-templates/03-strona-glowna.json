@@ -55,7 +55,7 @@
        "widgetType": "heading",
        "isInner": false,
        "settings": {
-        "title": "Złoto, które <em>zostaje</em>.",
+        "title": "Kolor, który <em>robi dzień</em>.",
         "header_size": "h1",
         "_css_classes": "bd-hero-title bd-hero__title"
        },
@@ -68,7 +68,7 @@
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
-        "css_classes": "bd-hero__main bd-media bd-media--hero"
+        "css_classes": "bd-hero__main bd-media--hero bd-tint bd-tint--lagoon"
        },
        "elements": [
         {
@@ -93,7 +93,7 @@
          "widgetType": "html",
          "isInner": false,
          "settings": {
-          "html": "<div class=\"bd-caption\"><span class=\"bd-label\">Kolekcja 07 — Solstice</span><a class=\"bd-textlink\" href=\"/kolekcja/solstice/\">Zobacz kolekcję <span aria-hidden=\"true\">→</span></a></div>"
+          "html": "<div class=\"bd-caption\"><span class=\"bd-label\">Kolekcja 07 — Lagoon</span><a class=\"bd-textlink\" href=\"/kolekcja/lagoon/\">Zobacz kolekcję <span aria-hidden=\"true\">→</span></a></div>"
          },
          "elements": []
         }
@@ -131,7 +131,7 @@
          "widgetType": "text-editor",
          "isInner": false,
          "settings": {
-          "editor": "<p>Biżuteria, którą zakładasz rano i zapominasz, że ją masz. Pod prysznic, na siłownię, na wesele.</p>",
+          "editor": "<p>Stal, ceramika, perły i muszle w kolorach, które poprawiają humor. Nowa kolekcja co sezon, noszona na co dzień.</p>",
           "_css_classes": "bd-lead"
          },
          "elements": []
@@ -162,7 +162,7 @@
            "settings": {
             "text": "Kup kolekcję",
             "link": {
-             "url": "/kolekcja/solstice/",
+             "url": "/kolekcja/lagoon/",
              "is_external": "",
              "nofollow": ""
             },
@@ -189,7 +189,7 @@
          "widgetType": "html",
          "isInner": false,
          "settings": {
-          "html": "<dl class=\"bd-meta\">\n<dt>Materiał</dt><dd>Stal 316L, złoto 18K (PVD)</dd>\n<dt>Wysyłka</dt><dd>W 24 h, InPost lub kurier</dd>\n<dt>Zwrot</dt><dd>30 dni, bez podawania przyczyny</dd>\n</dl>"
+          "html": "<dl class=\"bd-meta\">\n<dt>Materiały</dt><dd>Stal 316L, złoto 18K, ceramika, perły</dd>\n<dt>Wysyłka</dt><dd>W 24 h, InPost lub kurier</dd>\n<dt>Zwrot</dt><dd>30 dni, bez podawania przyczyny</dd>\n</dl>"
          },
          "elements": []
         }
@@ -333,7 +333,144 @@
    ]
   },
   {
-   "id": "c315604",
+   "id": "16f4ff3",
+   "elType": "container",
+   "isInner": false,
+   "settings": {
+    "content_width": "boxed",
+    "flex_direction": "column",
+    "boxed_width": {
+     "unit": "px",
+     "size": 1520,
+     "sizes": []
+    },
+    "css_classes": "bd-section bd-reveal",
+    "html_tag": "section",
+    "padding": {
+     "unit": "px",
+     "top": "64",
+     "right": "40",
+     "bottom": "0",
+     "left": "40",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "48",
+     "right": "16",
+     "bottom": "0",
+     "left": "16",
+     "isLinked": false
+    }
+   },
+   "elements": [
+    {
+     "id": "ff59e1e",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "css_classes": "bd-sechead",
+      "flex_align_items": "flex-end"
+     },
+     "elements": [
+      {
+       "id": "19248ee",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<p class=\"bd-label\">02</p>"
+       },
+       "elements": []
+      },
+      {
+       "id": "460323b",
+       "elType": "widget",
+       "widgetType": "heading",
+       "isInner": false,
+       "settings": {
+        "title": "Wybierz <em>kolor</em>",
+        "header_size": "h2",
+        "_css_classes": "bd-h2"
+       },
+       "elements": []
+      },
+      {
+       "id": "fc331bd",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<a class=\"bd-textlink\" href=\"/sklep/\">Wszystkie kolory <span aria-hidden=\"true\">→</span></a>"
+       },
+       "elements": []
+      }
+     ]
+    },
+    {
+     "id": "c315604",
+     "elType": "widget",
+     "widgetType": "shortcode",
+     "isInner": false,
+     "settings": {
+      "shortcode": "[bd_shop_by_color attribute=\"kolor\"]"
+     },
+     "elements": []
+    },
+    {
+     "id": "9169211",
+     "elType": "container",
+     "isInner": true,
+     "settings": {
+      "content_width": "full",
+      "flex_direction": "row",
+      "flex_align_items": "center",
+      "flex_wrap": "wrap",
+      "flex_gap": {
+       "column": "20",
+       "row": "20",
+       "isLinked": true,
+       "unit": "px",
+       "size": 20
+      },
+      "padding": {
+       "unit": "px",
+       "top": "28",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "6a18f12",
+       "elType": "widget",
+       "widgetType": "html",
+       "isInner": false,
+       "settings": {
+        "html": "<p class=\"bd-label\">albo materiał</p>"
+       },
+       "elements": []
+      },
+      {
+       "id": "62c3ab7",
+       "elType": "widget",
+       "widgetType": "shortcode",
+       "isInner": false,
+       "settings": {
+        "shortcode": "[bd_shop_by_material attribute=\"material\"]"
+       },
+       "elements": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "12812d1",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -365,7 +502,7 @@
    },
    "elements": [
     {
-     "id": "fc331bd",
+     "id": "45d9bf6",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -384,17 +521,17 @@
      },
      "elements": [
       {
-       "id": "19248ee",
+       "id": "c264979",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
        "settings": {
-        "html": "<p class=\"bd-label\">02 — Wybór redakcji</p>"
+        "html": "<p class=\"bd-label\">03 — Wybór redakcji</p>"
        },
        "elements": []
       },
       {
-       "id": "460323b",
+       "id": "2d644f8",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
@@ -406,7 +543,7 @@
      ]
     },
     {
-     "id": "ff59e1e",
+     "id": "968135e",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
@@ -418,7 +555,7 @@
    ]
   },
   {
-   "id": "cd91758",
+   "id": "7dad408",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -452,7 +589,7 @@
    },
    "elements": [
     {
-     "id": "16f4ff3",
+     "id": "9cbc5ab",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -463,29 +600,29 @@
      },
      "elements": [
       {
-       "id": "6a18f12",
+       "id": "141f6f6",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
        "settings": {
-        "html": "<p class=\"bd-label\">03</p>"
+        "html": "<p class=\"bd-label\">04</p>"
        },
        "elements": []
       },
       {
-       "id": "62c3ab7",
+       "id": "cd91758",
        "elType": "widget",
        "widgetType": "heading",
        "isInner": false,
        "settings": {
-        "title": "Złoto, które <em>nie schodzi</em> pod prysznicem.",
+        "title": "Stal, która <em>nie ciemnieje</em>. Nawet pod prysznicem.",
         "header_size": "h2",
         "_css_classes": "bd-h2"
        },
        "elements": []
       },
       {
-       "id": "9169211",
+       "id": "a5bb3ec",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
@@ -497,7 +634,7 @@
      ]
     },
     {
-     "id": "141f6f6",
+     "id": "1178a33",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -515,7 +652,7 @@
      },
      "elements": [
       {
-       "id": "45d9bf6",
+       "id": "c4931a5",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -535,7 +672,7 @@
        },
        "elements": [
         {
-         "id": "c264979",
+         "id": "8f8b9dc",
          "elType": "widget",
          "widgetType": "text-editor",
          "isInner": false,
@@ -546,7 +683,7 @@
          "elements": []
         },
         {
-         "id": "2d644f8",
+         "id": "bf5ab53",
          "elType": "widget",
          "widgetType": "html",
          "isInner": false,
@@ -558,7 +695,7 @@
        ]
       },
       {
-       "id": "12812d1",
+       "id": "6b352d3",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -578,7 +715,7 @@
        },
        "elements": [
         {
-         "id": "968135e",
+         "id": "80b693b",
          "elType": "widget",
          "widgetType": "image",
          "isInner": false,
@@ -600,7 +737,7 @@
    ]
   },
   {
-   "id": "80b693b",
+   "id": "96c24a8",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -632,7 +769,7 @@
    },
    "elements": [
     {
-     "id": "bf5ab53",
+     "id": "1db83cb",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -643,17 +780,17 @@
      },
      "elements": [
       {
-       "id": "a5bb3ec",
+       "id": "3ad6b85",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
        "settings": {
-        "html": "<p class=\"bd-label\">04</p>"
+        "html": "<p class=\"bd-label\">05</p>"
        },
        "elements": []
       },
       {
-       "id": "9cbc5ab",
+       "id": "37b4de2",
        "elType": "widget",
        "widgetType": "heading",
        "isInner": false,
@@ -665,7 +802,7 @@
        "elements": []
       },
       {
-       "id": "8f8b9dc",
+       "id": "0909502",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
@@ -677,7 +814,7 @@
      ]
     },
     {
-     "id": "c4931a5",
+     "id": "4d8f0a1",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
@@ -689,7 +826,7 @@
    ]
   },
   {
-   "id": "a07f001",
+   "id": "015b93a",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -721,7 +858,7 @@
    },
    "elements": [
     {
-     "id": "3ad6b85",
+     "id": "a9f9e5f",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -732,226 +869,74 @@
      },
      "elements": [
       {
-       "id": "6b352d3",
+       "id": "a156dd3",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
        "settings": {
-        "html": "<p class=\"bd-label\">05</p>"
+        "html": "<p class=\"bd-label\">06</p>"
        },
        "elements": []
       },
       {
-       "id": "1178a33",
+       "id": "c1f492b",
        "elType": "widget",
        "widgetType": "heading",
        "isInner": false,
        "settings": {
-        "title": "Kolekcje",
+        "title": "Kolekcje <em>sezonu</em>",
         "header_size": "h2",
         "_css_classes": "bd-h2"
        },
        "elements": []
       },
       {
-       "id": "7dad408",
+       "id": "81ca289",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
        "settings": {
-        "html": ""
+        "html": "<a class=\"bd-textlink\" href=\"/kolekcje/\">Wszystkie kolekcje <span aria-hidden=\"true\">→</span></a>"
        },
        "elements": []
       }
      ]
     },
     {
-     "id": "95d4e26",
+     "id": "0742cfc",
      "elType": "container",
      "isInner": true,
      "settings": {
       "content_width": "full",
-      "flex_direction": "row",
-      "flex_wrap": "wrap",
-      "flex_gap": {
-       "column": "20",
-       "row": "20",
-       "isLinked": true,
-       "unit": "px",
-       "size": 20
-      },
-      "flex_direction_mobile": "column"
+      "flex_direction": "column",
+      "css_classes": "bd-collections"
      },
      "elements": [
       {
-       "id": "a156dd3",
+       "id": "95d4e26",
        "elType": "container",
        "isInner": true,
        "settings": {
         "content_width": "full",
         "flex_direction": "column",
-        "css_classes": "bd-media--45",
-        "width": {
-         "unit": "%",
-         "size": 50,
-         "sizes": []
-        },
-        "width_mobile": {
-         "unit": "%",
-         "size": 100,
-         "sizes": []
-        }
+        "css_classes": "bd-collection bd-media--45 bd-tint bd-tint--coral"
        },
        "elements": [
-        {
-         "id": "37b4de2",
-         "elType": "widget",
-         "widgetType": "image",
-         "isInner": false,
-         "settings": {
-          "image": {
-           "url": "",
-           "id": "",
-           "alt": "Warstwy naszyjników na szyi"
-          },
-          "image_size": "full",
-          "_css_classes": "bd-unveil"
-         },
-         "elements": []
-        },
-        {
-         "id": "4d8f0a1",
-         "elType": "container",
-         "isInner": true,
-         "settings": {
-          "content_width": "full",
-          "flex_direction": "row",
-          "flex_justify_content": "space-between",
-          "flex_align_items": "baseline",
-          "padding": {
-           "unit": "px",
-           "top": "14",
-           "right": "0",
-           "bottom": "6",
-           "left": "0",
-           "isLinked": false
-          }
-         },
-         "elements": [
-          {
-           "id": "0909502",
-           "elType": "widget",
-           "widgetType": "heading",
-           "isInner": false,
-           "settings": {
-            "title": "Layering — <em>noś warstwami</em>",
-            "header_size": "h3",
-            "_css_classes": "bd-h3"
-           },
-           "elements": []
-          },
-          {
-           "id": "1db83cb",
-           "elType": "widget",
-           "widgetType": "html",
-           "isInner": false,
-           "settings": {
-            "html": "<p class=\"bd-label\">32 modele</p>"
-           },
-           "elements": []
-          }
-         ]
-        },
-        {
-         "id": "96c24a8",
-         "elType": "widget",
-         "widgetType": "html",
-         "isInner": false,
-         "settings": {
-          "html": "<a class=\"bd-textlink\" href=\"/kolekcja/layering/\">Odkryj <span aria-hidden=\"true\">→</span></a>"
-         },
-         "elements": []
-        }
-       ]
-      },
-      {
-       "id": "0739d18",
-       "elType": "container",
-       "isInner": true,
-       "settings": {
-        "content_width": "full",
-        "flex_direction": "column",
-        "css_classes": "bd-media--45",
-        "width": {
-         "unit": "%",
-         "size": 50,
-         "sizes": []
-        },
-        "width_mobile": {
-         "unit": "%",
-         "size": 100,
-         "sizes": []
-        }
-       },
-       "elements": [
-        {
-         "id": "c1f492b",
-         "elType": "widget",
-         "widgetType": "image",
-         "isInner": false,
-         "settings": {
-          "image": {
-           "url": "",
-           "id": "",
-           "alt": "Delikatne kolczyki na uchu"
-          },
-          "image_size": "full",
-          "_css_classes": "bd-unveil"
-         },
-         "elements": []
-        },
         {
          "id": "171023a",
-         "elType": "container",
-         "isInner": true,
+         "elType": "widget",
+         "widgetType": "image",
+         "isInner": false,
          "settings": {
-          "content_width": "full",
-          "flex_direction": "row",
-          "flex_justify_content": "space-between",
-          "flex_align_items": "baseline",
-          "padding": {
-           "unit": "px",
-           "top": "14",
-           "right": "0",
-           "bottom": "6",
-           "left": "0",
-           "isLinked": false
-          }
-         },
-         "elements": [
-          {
-           "id": "81ca289",
-           "elType": "widget",
-           "widgetType": "heading",
-           "isInner": false,
-           "settings": {
-            "title": "Minimal — <em>na co dzień</em>",
-            "header_size": "h3",
-            "_css_classes": "bd-h3"
-           },
-           "elements": []
+          "image": {
+           "url": "",
+           "id": "",
+           "alt": "Koralowe kolczyki z ceramiki"
           },
-          {
-           "id": "a9f9e5f",
-           "elType": "widget",
-           "widgetType": "html",
-           "isInner": false,
-           "settings": {
-            "html": "<p class=\"bd-label\">24 modele</p>"
-           },
-           "elements": []
-          }
-         ]
+          "image_size": "full",
+          "_css_classes": "bd-unveil"
+         },
+         "elements": []
         },
         {
          "id": "89b62b3",
@@ -959,7 +944,113 @@
          "widgetType": "html",
          "isInner": false,
          "settings": {
-          "html": "<a class=\"bd-textlink\" href=\"/kolekcja/minimal/\">Odkryj <span aria-hidden=\"true\">→</span></a>"
+          "html": "<div class=\"bd-collection__meta\"><h3>Coral</h3><span class=\"bd-label\">18 modeli</span></div>"
+         },
+         "elements": []
+        },
+        {
+         "id": "0739d18",
+         "elType": "widget",
+         "widgetType": "html",
+         "isInner": false,
+         "settings": {
+          "html": "<a class=\"bd-textlink\" href=\"/kolekcja/coral/\">Odkryj <span aria-hidden=\"true\">→</span></a>"
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "2136474",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "bd-collection bd-media--45 bd-tint bd-tint--lagoon"
+       },
+       "elements": [
+        {
+         "id": "a07f001",
+         "elType": "widget",
+         "widgetType": "image",
+         "isInner": false,
+         "settings": {
+          "image": {
+           "url": "",
+           "id": "",
+           "alt": "Turkusowy naszyjnik z muszlą"
+          },
+          "image_size": "full",
+          "_css_classes": "bd-unveil"
+         },
+         "elements": []
+        },
+        {
+         "id": "1efa58f",
+         "elType": "widget",
+         "widgetType": "html",
+         "isInner": false,
+         "settings": {
+          "html": "<div class=\"bd-collection__meta\"><h3>Lagoon</h3><span class=\"bd-label\">24 modele</span></div>"
+         },
+         "elements": []
+        },
+        {
+         "id": "9c2ac31",
+         "elType": "widget",
+         "widgetType": "html",
+         "isInner": false,
+         "settings": {
+          "html": "<a class=\"bd-textlink\" href=\"/kolekcja/lagoon/\">Odkryj <span aria-hidden=\"true\">→</span></a>"
+         },
+         "elements": []
+        }
+       ]
+      },
+      {
+       "id": "2130da6",
+       "elType": "container",
+       "isInner": true,
+       "settings": {
+        "content_width": "full",
+        "flex_direction": "column",
+        "css_classes": "bd-collection bd-media--45 bd-tint bd-tint--lilac"
+       },
+       "elements": [
+        {
+         "id": "56434bb",
+         "elType": "widget",
+         "widgetType": "image",
+         "isInner": false,
+         "settings": {
+          "image": {
+           "url": "",
+           "id": "",
+           "alt": "Liliowa bransoletka z perłą"
+          },
+          "image_size": "full",
+          "_css_classes": "bd-unveil"
+         },
+         "elements": []
+        },
+        {
+         "id": "73f4a86",
+         "elType": "widget",
+         "widgetType": "html",
+         "isInner": false,
+         "settings": {
+          "html": "<div class=\"bd-collection__meta\"><h3>Lilac</h3><span class=\"bd-label\">15 modeli</span></div>"
+         },
+         "elements": []
+        },
+        {
+         "id": "038eada",
+         "elType": "widget",
+         "widgetType": "html",
+         "isInner": false,
+         "settings": {
+          "html": "<a class=\"bd-textlink\" href=\"/kolekcja/lilac/\">Odkryj <span aria-hidden=\"true\">→</span></a>"
          },
          "elements": []
         }
@@ -970,7 +1061,7 @@
    ]
   },
   {
-   "id": "015b93a",
+   "id": "d25f4e1",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -1004,7 +1095,7 @@
    },
    "elements": [
     {
-     "id": "0742cfc",
+     "id": "6248ee5",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -1022,7 +1113,7 @@
      },
      "elements": [
       {
-       "id": "73f4a86",
+       "id": "835e38c",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -1048,17 +1139,17 @@
        },
        "elements": [
         {
-         "id": "1efa58f",
+         "id": "a0d1df2",
          "elType": "widget",
          "widgetType": "html",
          "isInner": false,
          "settings": {
-          "html": "<p class=\"bd-label\">06 — Prezenty</p>"
+          "html": "<p class=\"bd-label\">07 — Prezenty</p>"
          },
          "elements": []
         },
         {
-         "id": "9c2ac31",
+         "id": "55c2718",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
@@ -1070,7 +1161,7 @@
          "elements": []
         },
         {
-         "id": "2136474",
+         "id": "a27a3b4",
          "elType": "widget",
          "widgetType": "text-editor",
          "isInner": false,
@@ -1081,7 +1172,7 @@
          "elements": []
         },
         {
-         "id": "56434bb",
+         "id": "5f25501",
          "elType": "widget",
          "widgetType": "shortcode",
          "isInner": false,
@@ -1093,7 +1184,7 @@
        ]
       },
       {
-       "id": "2130da6",
+       "id": "8060476",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -1113,7 +1204,7 @@
        },
        "elements": [
         {
-         "id": "038eada",
+         "id": "491db36",
          "elType": "widget",
          "widgetType": "image",
          "isInner": false,
@@ -1135,7 +1226,7 @@
    ]
   },
   {
-   "id": "8060476",
+   "id": "760bece",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -1174,7 +1265,7 @@
    },
    "elements": [
     {
-     "id": "5f25501",
+     "id": "d2e16ed",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -1185,17 +1276,17 @@
      },
      "elements": [
       {
-       "id": "a0d1df2",
+       "id": "7b7c765",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
        "settings": {
-        "html": "<p class=\"bd-label\">07</p>"
+        "html": "<p class=\"bd-label\">08</p>"
        },
        "elements": []
       },
       {
-       "id": "55c2718",
+       "id": "7667dc2",
        "elType": "widget",
        "widgetType": "heading",
        "isInner": false,
@@ -1207,7 +1298,7 @@
        "elements": []
       },
       {
-       "id": "a27a3b4",
+       "id": "349364a",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
@@ -1219,7 +1310,7 @@
      ]
     },
     {
-     "id": "835e38c",
+     "id": "d0ed247",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
@@ -1229,7 +1320,7 @@
      "elements": []
     },
     {
-     "id": "491db36",
+     "id": "61622e0",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,
@@ -1241,7 +1332,7 @@
    ]
   },
   {
-   "id": "760bece",
+   "id": "b341528",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -1273,7 +1364,7 @@
    },
    "elements": [
     {
-     "id": "61622e0",
+     "id": "7b3ef92",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -1310,7 +1401,7 @@
      },
      "elements": [
       {
-       "id": "d2e16ed",
+       "id": "9b665a6",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -1329,7 +1420,7 @@
        },
        "elements": [
         {
-         "id": "349364a",
+         "id": "3d86267",
          "elType": "widget",
          "widgetType": "heading",
          "isInner": false,
@@ -1343,7 +1434,7 @@
        ]
       },
       {
-       "id": "d0ed247",
+       "id": "067daf5",
        "elType": "container",
        "isInner": true,
        "settings": {
@@ -1362,7 +1453,7 @@
        },
        "elements": [
         {
-         "id": "7667dc2",
+         "id": "44d9d2d",
          "elType": "widget",
          "widgetType": "form",
          "isInner": false,
@@ -1370,7 +1461,7 @@
           "form_name": "Newsletter",
           "form_fields": [
            {
-            "_id": "6248ee5",
+            "_id": "2f81258",
             "custom_id": "email",
             "field_type": "email",
             "field_label": "Adres e-mail",
@@ -1379,13 +1470,13 @@
             "width": "70"
            },
            {
-            "_id": "d25f4e1",
+            "_id": "e6bc430",
             "custom_id": "hp",
             "field_type": "honeypot",
             "width": "100"
            },
            {
-            "_id": "7b7c765",
+            "_id": "7a3e39e",
             "custom_id": "zgoda",
             "field_type": "acceptance",
             "required": "true",

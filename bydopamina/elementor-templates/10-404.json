@@ -5,7 +5,7 @@
  "page_settings": {},
  "content": [
   {
-   "id": "0a4b010",
+   "id": "4f6eb0c",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -44,7 +44,7 @@
    },
    "elements": [
     {
-     "id": "4091bab",
+     "id": "033a9e0",
      "elType": "widget",
      "widgetType": "html",
      "isInner": false,
@@ -54,7 +54,7 @@
      "elements": []
     },
     {
-     "id": "6974aad",
+     "id": "670733f",
      "elType": "widget",
      "widgetType": "heading",
      "isInner": false,
@@ -66,7 +66,7 @@
      "elements": []
     },
     {
-     "id": "161f5e8",
+     "id": "aad2228",
      "elType": "widget",
      "widgetType": "text-editor",
      "isInner": false,
@@ -77,7 +77,7 @@
      "elements": []
     },
     {
-     "id": "03e6769",
+     "id": "954144a",
      "elType": "widget",
      "widgetType": "search-form",
      "isInner": false,
@@ -88,7 +88,7 @@
      "elements": []
     },
     {
-     "id": "775852a",
+     "id": "367f5a8",
      "elType": "widget",
      "widgetType": "button",
      "isInner": false,
@@ -107,7 +107,7 @@
    ]
   },
   {
-   "id": "aad2228",
+   "id": "1fea8e7",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -139,7 +139,7 @@
    },
    "elements": [
     {
-     "id": "033a9e0",
+     "id": "88060e8",
      "elType": "container",
      "isInner": true,
      "settings": {
@@ -150,7 +150,7 @@
      },
      "elements": [
       {
-       "id": "c2e001d",
+       "id": "9216acd",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
@@ -160,7 +160,7 @@
        "elements": []
       },
       {
-       "id": "bf0ff3c",
+       "id": "df4f2e1",
        "elType": "widget",
        "widgetType": "heading",
        "isInner": false,
@@ -172,7 +172,7 @@
        "elements": []
       },
       {
-       "id": "23a2afc",
+       "id": "45764b7",
        "elType": "widget",
        "widgetType": "html",
        "isInner": false,
@@ -184,7 +184,7 @@
      ]
     },
     {
-     "id": "670733f",
+     "id": "662623f",
      "elType": "widget",
      "widgetType": "shortcode",
      "isInner": false,

@@ -8,7 +8,7 @@
  },
  "content": [
   {
-   "id": "4dab43f",
+   "id": "413ec85",
    "elType": "container",
    "isInner": false,
    "settings": {
@@ -47,7 +47,7 @@
    },
    "elements": [
     {
-     "id": "64a46ad",
+     "id": "9c9b79b",
      "elType": "widget",
      "widgetType": "heading",
      "isInner": false,
@@ -59,7 +59,7 @@
      "elements": []
     },
     {
-     "id": "9735eef",
+     "id": "63ab9e9",
      "elType": "widget",
      "widgetType": "woocommerce-my-account",
      "isInner": false,

@@ -4,7 +4,9 @@
  *
  * Zasady:
  *  – kolor robi fotografia, interfejs jest cichy: kość słoniowa, espresso, cienkie linie;
- *  – „dopamina” = jeden akcent: wiśnia. Tylko: promocje, stan aktywny, licznik koszyka, hover CTA;
+ *  – „dopamina” = kolory KOLEKCJI (color-blocking): każda kolekcja ma swój kolor tła (--bd-tint-*),
+ *    na którym stoi zdjęcie i ciemny tekst. Interfejs (przyciski, linie) zostaje neutralny;
+ *  – wiśnia = akcent systemowy: promocje, licznik koszyka, hover CTA;
  *  – złoto (#A8864F) wyłącznie jako linia/ikona, nigdy jako tekst (kontrast < 4,5:1);
  *  – kąty proste (2 px) – biżuteria premium, nie aplikacja mobilna.
  */
@@ -23,6 +25,13 @@
 	--bd-cherry: #9C1C33;      /* akcent „dopamina” – biały tekst na nim 8:1, na tle 7,2:1 */
 	--bd-cherry-soft: #F4E1E2;
 	--bd-butter: #F1E4B3;      /* etykieta „Nowość” */
+	/* Kolory kolekcji – tła pod zdjęcia i kafle (tekst na nich zawsze --bd-ink, kontrast ≥ 7:1) */
+	--bd-tint-coral: #F4A48C;
+	--bd-tint-lagoon: #9CCFCB;
+	--bd-tint-lilac: #CDBDEB;
+	--bd-tint-lime: #D8E98F;
+	--bd-tint-sun: #F5D77A;
+	--bd-tint-rose: #F3C1CC;
 	--bd-success: #2E6B45;
 	--bd-danger: #9C1C33;
 	--bd-focus: #1C1917;

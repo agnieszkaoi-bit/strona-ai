@@ -287,3 +287,31 @@ add_action(
 		}
 	}
 );
+
+/* -------------------------------------------------------------------------
+ * Karty produktów: dostępne kolory jako kropki pod ceną (produkty z wariantami)
+ * ---------------------------------------------------------------------- */
+add_action(
+	'woocommerce_after_shop_loop_item_title',
+	function () {
+		global $product;
+		$taxonomy = 'pa_' . apply_filters( 'bydopamina_color_attribute', 'kolor' );
+		if ( ! $product || ! $product->is_type( 'variable' ) || ! function_exists( 'bydopamina_swatch_color' ) ) {
+			return;
+		}
+		$terms = wc_get_product_terms( $product->get_id(), $taxonomy, array( 'fields' => 'all' ) );
+		if ( count( $terms ) < 2 ) {
+			return;
+		}
+		$names = wp_list_pluck( $terms, 'name' );
+		echo '<span class="bd-card-swatches" role="img" aria-label="' . esc_attr( sprintf( /* translators: %s: lista kolorów */ __( 'Kolory: %s', 'bydopamina' ), implode( ', ', $names ) ) ) . '">';
+		foreach ( array_slice( $terms, 0, 5 ) as $term ) {
+			echo '<i style="--sw:' . esc_attr( bydopamina_swatch_color( $term ) ) . '"></i>';
+		}
+		if ( count( $terms ) > 5 ) {
+			echo '<span class="bd-mono">+' . (int) ( count( $terms ) - 5 ) . '</span>';
+		}
+		echo '</span>';
+	},
+	15
+);

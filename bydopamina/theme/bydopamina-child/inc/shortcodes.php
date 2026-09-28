@@ -12,6 +12,8 @@
  *  [bd_size_guide]                        przycisk + okno rozmiarówki (pierścionki, długości łańcuszków)
  *  [bd_product_claims]                    etykiety mono na karcie produktu
  *  [bd_rating_summary]                    średnia ocena i liczba opinii (z WooCommerce)
+ *  [bd_shop_by_color attribute="kolor"]   próbki kolorów (atrybut pa_kolor) → sklep przefiltrowany po kolorze
+ *  [bd_shop_by_material attribute="material"]  chipsy materiałów (pa_material): stal, ceramika, perły, muszle…
  *  [bd_free_shipping_bar] [bd_delivery_eta] [bd_category_chips] [bd_mobile_nav] [bd_product_reviews] [bd_year]
  *
  * @package bydopamina
@@ -74,10 +76,10 @@ add_shortcode(
 		$items = apply_filters(
 			'bydopamina_usp',
 			array(
-				array( 'ring', __( 'Złoto 18K na stali 316L', 'bydopamina' ), __( 'Powłoka PVD, trwalsza niż zwykłe złocenie', 'bydopamina' ) ),
+				array( 'ring', __( 'Stal 316L i złoto 18K', 'bydopamina' ), __( 'Nie ciemnieje, nie rdzewieje', 'bydopamina' ) ),
 				array( 'leaf', __( 'Hipoalergiczna', 'bydopamina' ), __( 'Bez niklu i ołowiu', 'bydopamina' ) ),
 				array( 'drop', __( 'Wodoodporna', 'bydopamina' ), __( 'Prysznic, basen, siłownia', 'bydopamina' ) ),
-				array( 'spark', __( 'Nie ciemnieje', 'bydopamina' ), __( 'Nosisz codziennie, latami', 'bydopamina' ) ),
+				array( 'spark', __( 'Kolory na każdy sezon', 'bydopamina' ), __( 'Ceramika, perły, muszle, emalia', 'bydopamina' ) ),
 			)
 		);
 		return bydopamina_feature_list( $items, $atts['variant'], __( 'Cechy biżuterii', 'bydopamina' ) );
@@ -519,5 +521,116 @@ add_action(
 	'wp_set_comment_status',
 	function () {
 		delete_transient( 'bd_rating_summary' );
+	}
+);
+
+/**
+ * Kolor próbki dla wartości atrybutu: meta wtyczki Variation Swatches → własna meta `bd_color` → mapa nazw.
+ *
+ * @param WP_Term $term Wartość atrybutu (np. pa_kolor).
+ * @return string Wartość CSS background.
+ */
+function bydopamina_swatch_color( $term ) {
+	foreach ( array( 'product_attribute_color', 'bd_color' ) as $key ) {
+		$hex = sanitize_hex_color( (string) get_term_meta( $term->term_id, $key, true ) );
+		if ( $hex ) {
+			return $hex;
+		}
+	}
+	$map = apply_filters(
+		'bydopamina_swatch_map',
+		array(
+			'zloty'        => 'linear-gradient(135deg,#F3DE9E,#C79A4B)',
+			'srebrny'      => 'linear-gradient(135deg,#F4F4F4,#A9A9A9)',
+			'rozowe-zloto' => 'linear-gradient(135deg,#F6CDBB,#C98A73)',
+			'rozowy'       => '#F2A7B8',
+			'czerwony'     => '#C8323A',
+			'koralowy'     => '#F07A5E',
+			'pomaranczowy' => '#F2803A',
+			'zolty'        => '#F4C542',
+			'zielony'      => '#6DAE7C',
+			'mietowy'      => '#9FDCC8',
+			'turkusowy'    => '#2FB7B0',
+			'niebieski'    => '#4D7FD6',
+			'granatowy'    => '#243A73',
+			'fioletowy'    => '#8E6FCB',
+			'liliowy'      => '#CDBDEB',
+			'bezowy'       => '#D9C3A5',
+			'brazowy'      => '#7A5236',
+			'bialy'        => '#FFFFFF',
+			'czarny'       => '#1C1917',
+			'perlowy'      => 'radial-gradient(circle at 35% 30%,#FFFFFF,#EDE3D6 60%,#D8CBB9)',
+			'multikolor'   => 'conic-gradient(#F07A5E,#F4C542,#6DAE7C,#2FB7B0,#8E6FCB,#F2A7B8,#F07A5E)',
+		)
+	);
+	return $map[ sanitize_title( remove_accents( $term->slug ) ) ] ?? ( $map[ $term->slug ] ?? 'var(--bd-surface-2)' );
+}
+
+/**
+ * Wartości atrybutu produktu (niepuste) + link do sklepu przefiltrowanego po tej wartości.
+ *
+ * @param string $attribute Nazwa atrybutu bez prefiksu pa_ (np. kolor).
+ * @return array<int, array{0: WP_Term, 1: string}>
+ */
+function bydopamina_attribute_links( $attribute ) {
+	$attribute = sanitize_title( $attribute );
+	$taxonomy  = 'pa_' . $attribute;
+	if ( ! function_exists( 'wc_get_page_permalink' ) || ! taxonomy_exists( $taxonomy ) ) {
+		return array();
+	}
+	$terms = get_terms(
+		array(
+			'taxonomy'   => $taxonomy,
+			'hide_empty' => true,
+			'orderby'    => 'menu_order',
+		)
+	);
+	if ( is_wp_error( $terms ) ) {
+		return array();
+	}
+	$shop = wc_get_page_permalink( 'shop' );
+	$out  = array();
+	foreach ( $terms as $term ) {
+		// Format filtrów warstwowych WooCommerce: ?filter_kolor=zloty.
+		$out[] = array( $term, add_query_arg( 'filter_' . $attribute, $term->slug, $shop ) );
+	}
+	return $out;
+}
+
+add_shortcode(
+	'bd_shop_by_color',
+	function ( $atts ) {
+		$atts  = shortcode_atts( array( 'attribute' => 'kolor' ), $atts, 'bd_shop_by_color' );
+		$items = bydopamina_attribute_links( $atts['attribute'] );
+		if ( ! $items ) {
+			return '';
+		}
+		$html = '<nav class="bd-swatches" aria-label="' . esc_attr__( 'Zakupy według koloru', 'bydopamina' ) . '"><ul>';
+		foreach ( $items as list( $term, $url ) ) {
+			$html .= sprintf(
+				'<li><a href="%1$s"><span class="bd-swatches__dot" style="--sw:%2$s" aria-hidden="true"></span><span class="bd-swatches__name">%3$s<span class="bd-mono">%4$d</span></span></a></li>',
+				esc_url( $url ),
+				esc_attr( bydopamina_swatch_color( $term ) ),
+				esc_html( $term->name ),
+				(int) $term->count
+			);
+		}
+		return $html . '</ul></nav>';
+	}
+);
+
+add_shortcode(
+	'bd_shop_by_material',
+	function ( $atts ) {
+		$atts  = shortcode_atts( array( 'attribute' => 'material' ), $atts, 'bd_shop_by_material' );
+		$items = bydopamina_attribute_links( $atts['attribute'] );
+		if ( ! $items ) {
+			return '';
+		}
+		$html = '<ul class="bd-materials" aria-label="' . esc_attr__( 'Zakupy według materiału', 'bydopamina' ) . '">';
+		foreach ( $items as list( $term, $url ) ) {
+			$html .= '<li><a href="' . esc_url( $url ) . '">' . esc_html( $term->name ) . ' <span class="bd-mono">' . (int) $term->count . '</span></a></li>';
+		}
+		return $html . '</ul>';
 	}
 );

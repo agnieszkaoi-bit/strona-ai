@@ -17,6 +17,13 @@ karty opinii z wymyślonymi imionami. bydopamina idzie w przeciwną stronę — 
 | ikony w kółkach | liczby jako grafika: **316L · 18K · 0** (niklu) |
 | fade-in wszystkiego | zdjęcia „odsłaniają się” jak kurtyna (CSS scroll-driven), reszta stoi w miejscu |
 | wymyślone opinie | shortcode pobiera **prawdziwe**, zweryfikowane opinie i liczy średnią |
+| „dopaminowe” kolory rozlane po całym UI | **color-blocking kolekcji**: kolor jest tłem zdjęcia/kolekcji, interfejs zostaje neutralny |
+
+### Dwie inspiracje, jedna marka
+- **bizuteriaparaiso.pl** → zaufanie do materiału: stal 316L, złoto 18K, wodoodporność, hipoalergiczność.
+- **bydziubeka.pl** → kolor i zabawa: bogata paleta, mieszanie materiałów (stal, ceramika, muszle, perły, drewno, skóra), kolekcje co sezon.
+- **bydopamina** łączy oba: spokojny, redakcyjny interfejs + każda kolekcja ma własny kolor (Coral, Lagoon, Lilac…),
+  a klient może kupować **wg koloru** i **wg materiału** — tak, jak myśli o biżuterii modowej („coś turkusowego do sukienki”).
 
 Typografia: *Instrument Serif* (nagłówki, kursywa na słowie-kluczu), *Geist* (tekst), *Geist Mono*
 (etykiety, liczby porządkowe, meta). Trzy kroje, jedna rodzina decyzji.
@@ -50,15 +57,16 @@ Start (/)
 | # | Sekcja | Cel | Decyzja UX |
 |---|---|---|---|
 | — | Pasek ogłoszeń (mono, ciemny) | usunąć obawy od pierwszej sekundy | na telefonie 1 komunikat, na desktopie 4 |
-| — | **Hero** — tytuł na całą szerokość, zdjęcie 5:4 (8/12) + zdjęcie 1:1 i tekst (4/12) | emocja + jasna oferta | 1 CTA pełne („Kup kolekcję”) + 1 link; meta: materiał / wysyłka / zwrot |
+| — | **Hero** — tytuł na całą szerokość, zdjęcie 5:4 na tle koloru kolekcji (8/12) + zdjęcie 1:1 i tekst (4/12) | emocja + jasna oferta | 1 CTA pełne („Kup kolekcję”) + 1 link; meta: materiał / wysyłka / zwrot |
 | — | **Cechy materiału** (4 kolumny, linie) | odpowiedź na pytanie nr 1: „czy to się nie ściera?” | ikony w kolorze złota, bez teł |
 | 01 | **Kategorie w łukach** | nawigacja kciukiem | 6 kategorii, na mobile przewijane (widać 2,5 – sygnał, że jest więcej) |
-| 02 | **Zakładki produktów** | wybór bez przewijania 3 sekcji | Bestsellery / Nowości / Promocje jako duże słowa w szeryfie; ARIA tabs |
-| 03 | **O materiale** (ciemna sekcja) | zaufanie, uzasadnienie ceny | liczby 316L · 18K · 0 zamiast ikon |
-| 04 | **Shop the look** | średnia wartość koszyka ↑ | punkty na zdjęciu ↔ lista produktów; na dotyku 1. tap podświetla, 2. przenosi |
-| 05 | **Kolekcje** (2 duże zdjęcia) | inspiracja, layering | podpis pod zdjęciem, nie na nim (czytelność, dostępność) |
-| 06 | **Prezenty** (piaskowe tło) | ruch sezonowy (święta, Walentynki, Dzień Matki) | wybór wg budżetu + informacja o pakowaniu |
-| 07 | **Opinie** | dowód społeczny | średnia liczona automatycznie, tylko zweryfikowane zakupy, miniatura produktu przy opinii |
+| 02 | **Wybierz kolor / materiał** | skrót dla klientki, która szuka „czegoś koralowego” | duże próbki z liczbą produktów + chipsy materiałów; linki do filtrów WooCommerce |
+| 03 | **Zakładki produktów** | wybór bez przewijania 3 sekcji | Bestsellery / Nowości / Promocje jako duże słowa w szeryfie; ARIA tabs |
+| 04 | **O materiale** (ciemna sekcja) | zaufanie, uzasadnienie ceny | liczby 316L · 18K · 0 zamiast ikon |
+| 05 | **Shop the look** | średnia wartość koszyka ↑ | punkty na zdjęciu ↔ lista produktów; na dotyku 1. tap podświetla, 2. przenosi |
+| 06 | **Kolekcje sezonu** (3 kafle w kolorach kolekcji) | inspiracja, powroty co sezon | color-blocking; podpis pod zdjęciem, nie na nim (czytelność) |
+| 07 | **Prezenty** (piaskowe tło) | ruch sezonowy (święta, Walentynki, Dzień Matki) | wybór wg budżetu + informacja o pakowaniu |
+| 08 | **Opinie** | dowód społeczny | średnia liczona automatycznie, tylko zweryfikowane zakupy, miniatura produktu przy opinii |
 | — | **Newsletter** — jedna linia | retencja | e-mail + zgoda + honeypot, bez wyskakującego okna na wejściu |
 
 ## 4. Karta produktu
@@ -97,8 +105,8 @@ Desktop                                                   Mobile
 ## 5. Sklep / kategoria
 Okruszki → duży tytuł kategorii + opis (SEO) → chipsy podkategorii z liczbą produktów → wyniki + sortowanie →
 siatka 4/3/2 → paginacja numerowana (mono). Karta produktu: packshot 4:5, **na hover zdjęcie na modelce**,
-„Szybko dodaj” na dole zdjęcia (desktop), etykiety Nowość / −20% / Wyprzedane.
-Filtry (kolor złota, długość, cena) — przy > 60 produktach: blok „Filtry produktów” WooCommerce w szufladzie.
+„Szybko dodaj” na dole zdjęcia (desktop), etykiety Nowość / −20% / Wyprzedane, **kropki dostępnych kolorów** pod ceną.
+Filtry (kolor, materiał, długość, cena) — przy > 60 produktach: blok „Filtry produktów” WooCommerce w szufladzie.
 
 ## 6. Koszyk i zamówienie
 - Kroki w mono: **01 Koszyk — 02 Dane i dostawa — 03 Płatność**.
@@ -112,7 +120,8 @@ Filtry (kolor złota, długość, cena) — przy > 60 produktach: blok „Filtry
 | Trend | Realizacja |
 |---|---|
 | Editorial commerce | siatka 12 kolumn, asymetria 8/4, duży szeryf, numerowane sekcje |
-| „Quiet luxury” UI | 2 neutralne kolory + 1 akcent, cienkie linie, brak cieni |
+| „Quiet UI + color-blocking” | neutralny interfejs, kolor w blokach kolekcji, cienkie linie, brak cieni |
+| Shop by color | próbki kolorów i materiałów jako główna nawigacja obok kategorii |
 | Typografia jako grafika | liczby 316L/18K/0, tytuł hero 140 px, kursywa na słowie-kluczu |
 | Shoppable content | shop the look z punktami, kolekcje jako historie |
 | Strefa kciuka | dolny pasek, sticky dodaj do koszyka, panele od dołu |
