@@ -4,7 +4,7 @@
  *
  *  [bd_usp variant="row|list"]            4 argumenty: darmowa dostawa, nie ciemnieje, zwroty, pudełko
  *  [bd_trust_badges]                      dostawa, zwroty, pudełko prezentowe, płatności
- *  [bd_category_arches]                   kategorie w łukach (przewijane na mobile)
+ *  [bd_category_arches]                   kafelki kategorii (przewijane na mobile)
  *  [bd_product_tabs limit="8"]            zakładki: Bestsellery / Nowości / Promocje
  *  [bd_shop_the_look image="ID" products="ID:x:y,ID:x:y"]   zdjęcie z punktami produktów (x, y w %)
  *  [bd_reviews limit="10"]                prawdziwe opinie z WooCommerce (4–5★, zweryfikowane zakupy)

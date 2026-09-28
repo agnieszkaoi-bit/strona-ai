@@ -4,7 +4,7 @@
 
 1. **Stonowana strona, kolorowa biżuteria.** Porcelanowa biel, pudrowy róż, ciepła czerń. Kolor pokazują zdjęcia
    produktów i pastelowe tła nastrojów – interfejs nie konkuruje z biżuterią.
-2. **Kobieco, ale nie „słodko”.** Miękkie zaokrąglenia, przyciski-pigułki, łuki, dużo powietrza. Bez brokatu i ozdobników.
+2. **Kobieco, ale nie „słodko”.** Miękkie zaokrąglenia, przyciski-pigułki, dużo powietrza. Bez brokatu i ozdobników.
 3. **Jeden czytelny krój.** *Figtree*, tekst 17 px, nagłówki 500. Zero kroju ozdobnego – czytelność na telefonie jest ważniejsza.
 4. **Najkrótsza droga do koszyka.** Każdy ekran ma jedną główną akcję (czarna pigułka). „+” na karcie produktu
    dodaje do koszyka bez wchodzenia w produkt.
@@ -17,7 +17,6 @@
 
 | Wyróżnik | Gdzie | Dlaczego |
 |---|---|---|
-| **Łuk** | zdjęcie w hero, kategorie, karty nastrojów | rozpoznawalny kształt (jak gablota jubilera), spójny w całym sklepie, a przy tym prosty |
 | **„Jak chcesz się dziś poczuć?”** | strona główna | nazwa *dopamina* → biżuteria dobierana do nastroju. Radość (złoto, żółć), Energia (koral), Czułość (róż, perła), Spokój (turkus, mięta), Marzenia (lila), Świeżość (zieleń). Klientka wybiera emocję zamiast przeglądać kategorie – szczególnie przy kolorowej ofercie |
 | **Logo z malinową kropką** `bydopamina.` | header + wielki napis w stopce | minimalny znak, łatwy do powtórzenia na opakowaniach i w social media |
 | **Słowo-klucz w malinie** | nagłówki („Biżuteria, która **poprawia humor**”) | jeden akcent koloru w typografii zamiast grafik |
@@ -42,11 +41,11 @@ Przy 50 produktach nie ma sensu rozbudowane menu z podkategoriami – kategorie 
 
 | # | Sekcja | Cel | Decyzja UX |
 |---|---|---|---|
-| 1 | **Hero**: tekst + zdjęcie w łuku, pływająca etykieta „Na zdjęciu: produkt, cena →” | 3 s na zrozumienie oferty | 1 główny przycisk „Zobacz biżuterię” + link „Bestsellery”; ocena z prawdziwych opinii; na telefonie zdjęcie nad tekstem |
+| 1 | **Hero**: tekst + duże zdjęcie (zaokrąglone rogi), pływająca etykieta „Na zdjęciu: produkt, cena →” | 3 s na zrozumienie oferty | 1 główny przycisk „Zobacz biżuterię” + link „Bestsellery”; ocena z prawdziwych opinii; na telefonie zdjęcie nad tekstem |
 | 2 | **4 argumenty** (białe karty) | usunąć obawy | darmowa dostawa, nie ciemnieje, 30 dni na zwrot, pudełko |
-| 3 | **Kategorie w łukach** | nawigacja kciukiem | 5–6 kategorii, na telefonie przewijane |
+| 3 | **Kafelki kategorii** | nawigacja kciukiem | 5–6 kategorii, na telefonie przewijane |
 | 4 | **Najczęściej wybierane** (zakładki Bestsellery / Nowości / Promocje) | szybki zakup | „+” na karcie = do koszyka bez przeładowania; kropki kolorów wariantów |
-| 5 | **Jak chcesz się dziś poczuć?** | wyróżnik + wybór z kolorowej oferty | 6 kart-łuków w pastelach; nastrój bez produktów się ukrywa |
+| 5 | **Jak chcesz się dziś poczuć?** | wyróżnik + wybór z kolorowej oferty | 6 kart w pastelach; nastrój bez produktów się ukrywa |
 | 6 | **Noś razem** (shop the look) | wyższa wartość koszyka | punkty na zdjęciu ↔ lista produktów |
 | 7 | **Szukasz prezentu?** | ruch prezentowy | budżet do 79 / 129 / 199 zł + informacja o pakowaniu |
 | 8 | **Opinie klientek** | dowód społeczny | tylko zweryfikowane zakupy, średnia liczona automatycznie |

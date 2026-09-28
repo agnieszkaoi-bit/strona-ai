@@ -1,5 +1,5 @@
 /*
- * bydopamina – komponenty (v3: kobieco, jasno, czytelnie; łuk jako znak rozpoznawczy).
+ * bydopamina – komponenty (v3: kobieco, jasno, czytelnie).
  * Konwencja: klasy bd-* nadawane w Elementorze (Zaawansowane → Klasy CSS) albo generowane przez shortcody.
  * Spis: 1 baza · 2 typografia · 3 a11y · 4 przyciski · 5 header · 6 sekcje strony głównej · 7 nastroje
  *       8 karty produktów · 9 karta produktu i komplet · 10 koszyk/checkout/mini-koszyk · 11 dialog · 12 stopka
@@ -145,7 +145,7 @@ p { text-wrap: pretty; }
 .bd-sechead > * { width: auto !important; }
 .bd-sechead p { margin: 6px 0 0; color: var(--bd-ink-2); max-width: 52ch; }
 
-/* Hero: tekst + zdjęcie w łuku */
+/* Hero: tekst + duże zdjęcie */
 .bd-hero { padding-top: clamp(24px, 4vw, 64px); padding-bottom: clamp(32px, 4vw, 72px); }
 .bd-hero__grid { display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 96px); align-items: center; }
 .bd-hero__grid > * { width: auto !important; }
@@ -177,7 +177,7 @@ p { text-wrap: pretty; }
 .bd-features--list { grid-template-columns: 1fr 1fr; gap: 8px; }
 .bd-features--list li { background: var(--bd-surface-2); padding: 14px 16px; }
 
-/* Kategorie w łukach */
+/* Kafelki kategorii */
 .bd-arches ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--bd-grid-gap); margin: 0; padding: 0; list-style: none; }
 .bd-arches a { display: grid; gap: 12px; justify-items: center; text-decoration: none; }
 .bd-arches__img { display: block; width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border-radius: var(--bd-radius-arch); background: var(--bd-surface-2); }
@@ -282,8 +282,8 @@ p { text-wrap: pretty; }
 	text-decoration: none; overflow: hidden; transition: transform var(--bd-dur) var(--bd-ease), box-shadow var(--bd-dur);
 }
 .bd-mood a:hover, .bd-mood a:focus-visible { transform: translateY(-4px); box-shadow: var(--bd-shadow-pop); }
-.bd-mood__img { position: absolute; inset: 0 0 38% 0; display: grid; place-items: center; }
-.bd-mood__img img, .bd-mood__img .bd-ph { width: 72%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; background: rgb(255 255 255 / 0.5); }
+.bd-mood__img { position: absolute; inset: 12px 12px 40% 12px; }
+.bd-mood__img img, .bd-mood__img .bd-ph { width: 100% !important; height: 100% !important; aspect-ratio: auto !important; object-fit: cover; border-radius: var(--bd-radius-sm); background: rgb(255 255 255 / 0.55) !important; }
 .bd-mood__name { position: relative; font-size: var(--bd-fs-lg); font-weight: 600; line-height: 1.15; }
 .bd-mood__hint { position: relative; font-size: var(--bd-fs-xs); color: var(--bd-ink-2); }
 .bd-mood__dots { position: relative; display: flex; gap: 4px; margin-top: 4px; }
@@ -528,7 +528,7 @@ p { text-wrap: pretty; }
 .bd-mnav { display: none; }
 @media (max-width: 1024px) {
 	.bd-hero__grid { grid-template-columns: 1fr; }
-	.bd-hero__media { max-width: 560px; width: 100%; justify-self: center; }
+	.bd-hero__media { max-width: 560px; width: 100% !important; justify-self: center; }
 	.bd-arches ul { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 30%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 4px; }
 	.bd-arches ul::-webkit-scrollbar { display: none; }
 	.bd-arches li { scroll-snap-align: start; }
@@ -547,7 +547,7 @@ p { text-wrap: pretty; }
 	.bd-header-icons .bd-hide-mobile { display: none !important; }
 	.bd-hero__tag { left: 10px; bottom: 10px; padding: 10px 14px; }
 	.bd-hero__media { order: -1; }
-	.bd-hero__media .bd-arch img, .bd-hero__media .bd-arch .bd-ph { aspect-ratio: 1 / 1; }
+	.bd-hero__media .bd-arch img, .bd-hero__media .bd-arch .bd-ph { aspect-ratio: 1 / 1 !important; }
 	.bd-hero__text { gap: 16px; }
 	.bd-arches ul { grid-auto-columns: 40%; }
 	.bd-moods ul { grid-auto-columns: 46%; }

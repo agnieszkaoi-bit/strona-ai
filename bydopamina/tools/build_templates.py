@@ -6,7 +6,7 @@ Uruchom:  python3 tools/build_templates.py
 Import:   WordPress → Szablony → Kreator motywu / Zapisane szablony → „Importuj szablony”.
 
 Kierunek: editorial jewelry 2026/27 – asymetryczna siatka, szeryf Instrument Serif + Geist/Geist Mono,
-numerowane nagłówki sekcji, łuki kategorii, „shop the look”, prawdziwe opinie, rozmiarówka.
+numerowane nagłówki sekcji, kafelki kategorii, nastroje, „shop the look”, prawdziwe opinie, rozmiarówka.
 Wygląd pochodzi z klas bd-* motywu potomnego, więc szablony są lekkie, a marka żyje w tokens.css.
 """
 import json

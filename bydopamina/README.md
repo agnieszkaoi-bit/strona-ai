@@ -5,10 +5,9 @@ jest stonowana: porcelanowa biel, pudrowy róż, ciepła czerń, jeden akcent �
 Jeden prosty, bardzo czytelny krój: **Figtree** (tekst 17 px). Miękkie kształty: zaokrąglenia, przyciski „pigułki”.
 
 **Wyróżniki (czego nie mają inne sklepy):**
-1. **Łuk** jako znak rozpoznawczy – zdjęcie w hero, kategorie, karty nastrojów.
-2. **„Jak chcesz się dziś poczuć?”** – biżuteria wg nastroju (Radość, Energia, Czułość, Spokój, Marzenia, Świeżość),
+1. **„Jak chcesz się dziś poczuć?”** – biżuteria wg nastroju (Radość, Energia, Czułość, Spokój, Marzenia, Świeżość),
    każdy nastrój = paleta kolorów. Nawiązuje do nazwy marki i ułatwia wybór z kolorowej oferty.
-3. Logo z malinową kropką `bydopamina.` powtórzone w wielkim napisie w stopce.
+2. Logo z malinową kropką `bydopamina.` powtórzone w wielkim napisie w stopce.
 
 **Ścieżka zakupu i upsell (sklep ~50 produktów na start):**
 hero z jednym przyciskiem → kategorie → bestsellery z szybkim „+” (dodanie bez wchodzenia w produkt) →
@@ -105,7 +104,7 @@ Szablony typu *Strona*: otwórz stronę w Elementorze → ikona folderu → Moje
 Po imporcie:
 - **Header** → widget *Menu nawigacyjne* → wybierz menu „Główne” (utwórz w Wygląd → Menu: Nowości, Kategorie…, O nas).
 - **Zdjęcia**: podmień placeholdery (WebP/AVIF). Hero główne 2000×1600 px (5:4), boczne 1200×1200 px; packshoty produktów 4:5 na jednolitym, ciepłym tle (#EDE6DC) + **druga fotka na modelce** jako pierwsze zdjęcie galerii (pokazuje się po najechaniu). Zdjęcie hero ma już klasę `bd-lcp` (priorytetowe ładowanie).
-- **Kategorie w łukach**: Produkty → Kategorie → ustaw miniaturę każdej kategorii (3:4) i kolejność.
+- **Kafelki kategorii**: Produkty → Kategorie → ustaw miniaturę każdej kategorii (3:4) i kolejność.
 - **Atrybuty**: Produkty → Atrybuty → utwórz **Kolor** (slug `kolor`, typ „Kolor” w Variation Swatches – wtedy próbki biorą HEX z wtyczki) i **Materiał** (slug `material`) oraz **Kamień** (slug `kamien`, wartości np. Ametyst, Kwarc różowy, Turkus, Perła – slugi bez polskich znaków: `kwarc-rozowy`); zaznacz „Włącz archiwa”. Własny kolor próbki kamienia: HEX w wtyczce Variation Swatches albo meta `bd_color`. Przypisz je do produktów — z nich budują się sekcja „Szukaj po kolorze, kamieniu, materiale”, kropki na kartach i inteligentne wyszukiwanie. W sidebarze/szufladzie filtrów dodaj blok WooCommerce „Filtr atrybutu” dla Kamienia.
 - **Kolor kolekcji w hero i kaflach**: w klasie kontenera zmień `bd-tint--lagoon` na `coral`, `lilac`, `lime`, `sun` lub `rose`.
 - **Upsell**: w każdym produkcie uzupełnij *Dane produktu → Produkty powiązane*: **Dosprzedaż** = 2–3 produkty do kompletu (np. kolczyki do naszyjnika) → „Dobierz komplet”; **Sprzedaż krzyżowa** = drobne dodatki (np. łańcuszek, bransoletka do 79 zł) → „Pasuje do tego” w mini-koszyku i koszyku.
@@ -136,7 +135,7 @@ Wykonaj **docs/BEZPIECZENSTWO.md** — w tym `.htaccess` lub `nginx`, `wp-config
 | `[bd_mood_picker images="radosc:ID,…"]` | home | **wyróżnik**: „Jak chcesz się dziś poczuć?” – 6 nastrojów = palety kolorów (atrybut `pa_kolor`); tag produktu `nastroj-radosc` itd. ma pierwszeństwo (ręczna selekcja); nastrój bez produktów się ukrywa (filtr `bydopamina_moods`) |
 | `[bd_complete_set limit="3"]` | produkt | **upsell** „Dobierz komplet”: ten produkt + do 3 pasujących (z pola *Dosprzedaż*, a gdy puste – *Sprzedaż krzyżowa*), suma na żywo, jeden przycisk dodaje wszystko (AJAX) |
 | `[bd_rating_summary_inline]` | hero | „★★★★★ 4,9/5 · 128 opinii klientek” – z prawdziwych opinii, pusty dopóki ich nie ma |
-| `[bd_category_arches limit="6"]` | home | kategorie w łukach, kolejność z Produkty → Kategorie, zdjęcie = miniatura kategorii |
+| `[bd_category_arches limit="6"]` | home | kafelki kategorii (zdjęcie 3:4, zaokrąglone rogi), kolejność z Produkty → Kategorie, zdjęcie = miniatura kategorii |
 | `[bd_shop_by_color attribute="kolor"]` | home | próbki kolorów z atrybutu **pa_kolor** → sklep z filtrem `?filter_kolor=` (kolor z wtyczki Variation Swatches, meta `bd_color` lub wbudowanej mapy nazw) |
 | `[bd_shop_by_material attribute="material"]` | home | chipsy materiałów z atrybutu **pa_material** (stal, ceramika, perły, muszle…) |
 | `[bd_shop_by_stone attribute="kamien"]` | home | próbki kamieni z atrybutu **pa_kamien** (ametyst, turkus, perła, labradoryt… – 29 wbudowanych wyglądów) + **kamień urodzinowy** (miesiąc → kamienie tego miesiąca, filtr LUB). `birthstones="no"` ukrywa miesiące |

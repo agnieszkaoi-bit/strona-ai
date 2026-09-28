@@ -5,7 +5,7 @@
  * Zasady:
  *  – biżuteria jest kolorowa, więc strona jest stonowana: porcelanowa biel, pudrowy róż, ciepła czerń;
  *  – jeden krój: Figtree – prosty, bardzo czytelny, miękki (kobiecy, ale nie „słodki”);
- *  – wyróżnik marki: ŁUK (zdjęcie hero, kategorie, karty nastrojów) + „Dobierz biżuterię do nastroju”;
+ *  – wyróżnik marki: „Jak chcesz się dziś poczuć?” (biżuteria wg nastroju) + malinowa kropka w logo;
  *  – kolory nastrojów (--bd-tint-*) tylko jako delikatne tła pod zdjęcia/karty, nigdy jako tekst;
  *  – malina = akcent: promocje, licznik koszyka, hover przycisku. Oszczędnie.
  */
@@ -63,7 +63,7 @@
 	--bd-radius: 14px;
 	--bd-radius-sm: 10px;
 	--bd-radius-pill: 999px;
-	--bd-radius-arch: 999px 999px 14px 14px;                    /* łuk – znak rozpoznawczy */
+	--bd-radius-arch: var(--bd-radius);                          /* zdjęcia i karty: zwykłe, lekko zaokrąglone prostokąty */
 	--bd-ease: cubic-bezier(0.22, 1, 0.36, 1);
 	--bd-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 	--bd-dur: 240ms;
