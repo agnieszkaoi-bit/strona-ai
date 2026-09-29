@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Testy punktacji</title>
+  <style>
+    body { margin: 0; padding: 24px 16px; background: #0e0e0d; color: #f4f1ea; font: 16px/1.5 system-ui, sans-serif; }
+    main { max-width: 48rem; margin: 0 auto; }
+    h1 { font-size: 1.5rem; margin: 0 0 0.5rem; }
+    ul { list-style: none; padding: 0; }
+    li { padding: 0.5rem 0; border-top: 1px solid #34332f; }
+    .ok::before { content: "OK  "; color: #7ee08a; font-weight: 700; }
+    .blad::before { content: "BŁĄD  "; color: #ff9a8c; font-weight: 700; }
+    .blad small { display: block; color: #ff9a8c; }
+    #podsumowanie { font-weight: 700; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Testy punktacji</h1>
+  <p>Sprawdzają prawdziwy content.js i app.js. Wszystko powinno mieć „OK”.</p>
+  <p id="podsumowanie"></p>
+  <ul id="lista"></ul>
+</main>
+<script src="content.js"></script>
+<script src="app.js"></script>
+<script>
+(function () {
+  "use strict";
+  var T = window.TRESC;
+  var P = window.TestOferty.punktacja;
+  var lista = document.getElementById("lista");
+  var wyniki = { ok: 0, nieudane: [] };
+
+  function test(nazwa, fn) {
+    var li = document.createElement("li");
+    try {
+      fn();
+      li.className = "ok";
+      li.textContent = nazwa;
+      wyniki.ok++;
+    } catch (e) {
+      li.className = "blad";
+      li.textContent = nazwa;
+      var s = document.createElement("small");
+      s.textContent = e.message;
+      li.appendChild(s);
+      wyniki.nieudane.push(nazwa + ": " + e.message);
+      console.error("Test nie przeszedł: " + nazwa + ": " + e.message);
+    }
+    lista.appendChild(li);
+  }
+
+  function rowne(faktyczne, oczekiwane, opis) {
+    var a = JSON.stringify(faktyczne), b = JSON.stringify(oczekiwane);
+    if (a !== b) throw new Error((opis || "") + " oczekiwano " + b + ", jest " + a);
+  }
+
+  function ids(punkty) {
+    return P.najslabsze(P.wynikiMechanizmow(T, punkty), 3).map(function (w) { return w.mechanizm.id; });
+  }
+  function procenty(punkty) {
+    var o = {};
+    P.wynikiMechanizmow(T, punkty).forEach(function (w) { o[w.mechanizm.id] = w.procent; });
+    return o;
+  }
+  function opisPrzedzialu(wynik) {
+    var p = P.przedzial(T, wynik);
+    return p ? p.opis : null;
+  }
+  var PRZEDZIALY = T.wynikOgolny.przedzialy.map(function (p) { return p.opis; });
+  var MECH = T.mechanizmy.map(function (m) { return m.id; });
+
+  /* ---------- Treść ---------- */
+
+  test("10 pytań, każde ma 3 odpowiedzi za 0, 1 i 2 punkty (w tej kolejności)", function () {
+    rowne(T.pytania.lista.length, 10, "liczba pytań:");
+    T.pytania.lista.forEach(function (p, i) {
+      rowne(p.odpowiedzi.map(function (o) { return o.punkty; }), [0, 1, 2], "pytanie " + (i + 1) + ":");
+    });
+  });
+
+  test("7 mechanizmów, każde pytanie wskazuje istniejący mechanizm", function () {
+    rowne(T.mechanizmy.length, 7, "liczba mechanizmów:");
+    T.pytania.lista.forEach(function (p, i) {
+      if (MECH.indexOf(p.mechanizm) === -1) throw new Error("pytanie " + (i + 1) + " ma nieznany mechanizm " + p.mechanizm);
+    });
+  });
+
+  test("Maksimum: 20 pkt; mechanizmy 1–3 po 4 pkt, 4–7 po 2 pkt", function () {
+    rowne(P.maksimumTestu(T), 20, "maksimum:");
+    rowne(P.wynikiMechanizmow(T, []).map(function (w) { return w.maks; }), [4, 4, 4, 2, 2, 2, 2]);
+  });
+
+  test("Każdy mechanizm ma nazwę, mit, badania, „co zrobić” i prompt", function () {
+    T.mechanizmy.forEach(function (m) {
+      ["nazwa", "mit", "badania", "coZrobic", "prompt"].forEach(function (k) {
+        if (!m[k]) throw new Error(m.id + ": brak pola " + k);
+      });
+    });
+  });
+
+  test("Przedziały pokrywają 0–20 bez luk i nakładania", function () {
+    for (var w = 0; w <= 20; w++) {
+      var pasujace = T.wynikOgolny.przedzialy.filter(function (p) { return w >= p.od && w <= p.do; });
+      rowne(pasujace.length, 1, "wynik " + w + ": liczba pasujących przedziałów");
+    }
+  });
+
+  /* ---------- Punktacja ---------- */
+
+  test("Same zera: 0/20, pierwszy przedział, wszystkie 0%, remis → mechanizmy 1, 2, 3", function () {
+    var punkty = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    rowne(P.suma(punkty), 0);
+    rowne(opisPrzedzialu(0), PRZEDZIALY[0]);
+    MECH.forEach(function (id) { rowne(procenty(punkty)[id], 0, id + ":"); });
+    rowne(ids(punkty), ["pierwsze-wrazenie", "efekt-kontrastu", "spoleczny-dowod"]);
+  });
+
+  test("Same dwójki: 20/20, trzeci przedział, wszystkie 100%, remis → mechanizmy 1, 2, 3", function () {
+    var punkty = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2];
+    rowne(P.suma(punkty), 20);
+    rowne(opisPrzedzialu(20), PRZEDZIALY[2]);
+    MECH.forEach(function (id) { rowne(procenty(punkty)[id], 100, id + ":"); });
+    rowne(ids(punkty), ["pierwsze-wrazenie", "efekt-kontrastu", "spoleczny-dowod"]);
+  });
+
+  test("Remis 4 mechanizmów na 0% (4, 5, 6, 7) → wygrywa kolejność: 4, 5, 6", function () {
+    var punkty = [2, 2, 2, 2, 2, 2, 0, 0, 0, 0];
+    rowne(P.suma(punkty), 12);
+    rowne(ids(punkty), ["wzajemnosc", "autorytet", "niedostepnosc"]);
+  });
+
+  test("Remis przy różnych maksimach: 2/4 i 1/2 to te same 50% → decyduje kolejność", function () {
+    var punkty = [1, 1, 2, 2, 2, 2, 1, 2, 2, 2];
+    rowne(procenty(punkty)["pierwsze-wrazenie"], 50);
+    rowne(procenty(punkty)["wzajemnosc"], 50);
+    rowne(ids(punkty), ["pierwsze-wrazenie", "wzajemnosc", "efekt-kontrastu"]);
+  });
+
+  test("Wynik mieszany: najniższe procenty, remis 50% rozstrzygnięty kolejnością", function () {
+    var punkty = [2, 1, 0, 1, 2, 2, 1, 0, 2, 1];
+    rowne(P.suma(punkty), 12);
+    rowne(procenty(punkty), {
+      "pierwsze-wrazenie": 75, "efekt-kontrastu": 25, "spoleczny-dowod": 100,
+      "wzajemnosc": 50, "autorytet": 0, "niedostepnosc": 100, "zaangazowanie": 50
+    });
+    rowne(ids(punkty), ["autorytet", "efekt-kontrastu", "wzajemnosc"]);
+  });
+
+  test("Granice przedziałów: 8 | 9 i 14 | 15", function () {
+    rowne(opisPrzedzialu(8), PRZEDZIALY[0], "8:");
+    rowne(opisPrzedzialu(9), PRZEDZIALY[1], "9:");
+    rowne(opisPrzedzialu(14), PRZEDZIALY[1], "14:");
+    rowne(opisPrzedzialu(15), PRZEDZIALY[2], "15:");
+  });
+
+  test("Wybory na ekranie zamieniają się na punkty (brak odpowiedzi = 0)", function () {
+    rowne(P.punktyZWyborow(T, [0, 1, 2, 2, 1, 0, 2, 1, 0, 2]), [0, 1, 2, 2, 1, 0, 2, 1, 0, 2]);
+    rowne(P.punktyZWyborow(T, [2, 2]), [2, 2, 0, 0, 0, 0, 0, 0, 0, 0]);
+  });
+
+  var podsumowanie = document.getElementById("podsumowanie");
+  podsumowanie.textContent = wyniki.nieudane.length
+    ? "Nie przeszło: " + wyniki.nieudane.length + " z " + (wyniki.ok + wyniki.nieudane.length)
+    : "Wszystkie testy przeszły (" + wyniki.ok + ").";
+  window.WYNIK_TESTOW = wyniki;
+})();
+</script>
+</body>
+</html>
