@@ -47,23 +47,25 @@ window.AIOL_CONFIG = {
   formularz: "/formularz-aiol/formularz.php", // skrypt wysyłający zgłoszenie
   platnosc: "https://easl.ink/XD2bl",         // link do płatności online
   termin: "czwartek, 5 listopada 2026",       // data (i godziny) edycji
-  photoUrl: "",                               // adres zdjęcia prowadzącej
+  heroPhotoUrl: "",                           // inne zdjęcie w hero (puste = wbudowane)
+  photoUrl: "",                               // inne zdjęcie w sekcji „Prowadząca” (puste = wbudowane)
   stickyBar: true                             // pływający pasek z przyciskiem
 };
 ```
 
-- **termin**: data edycji, teraz „czwartek, 5 listopada 2026”. Możesz dopisać godziny, np. „czwartek, 5 listopada 2026, 10:00-12:00”. Termin pojawia się w żółtym pasku na górze, w hero, w karcie z ceną, w finale, w pływającym pasku i w mailu ze zgłoszeniem. Puste pole = bez terminu.
+- **termin**: data edycji, teraz „czwartek, 5 listopada 2026”. Możesz dopisać godziny, np. „czwartek, 5 listopada 2026, 10:00-12:00”. Termin pojawia się w pasku na górze, w hero, w karcie z ceną, w finale, w pływającym pasku i w mailu ze zgłoszeniem. Puste pole = bez terminu.
   Po zmianie daty popraw też `"startDate": "2026-11-05"` w bloku `application/ld+json` na dole kodu (format rok-miesiąc-dzień).
-- **photoUrl**: Media → Biblioteka → wybierz zdjęcie → „Kopiuj adres URL do schowka” i wklej między cudzysłowy. Najlepiej zdjęcie pionowe (4:5). Zdjęcie wypełnia cały kafelek, a twarz powinna być w górnej części kadru. Bez zdjęcia w tym miejscu wyświetlają się inicjały „AK”.
+- **Zdjęcia prowadzącej** są wbudowane w kod strony: portret w hero i zdjęcie z konferencji w sekcji „Prowadząca”. Nie trzeba ich nigdzie wgrywać.
+- **heroPhotoUrl** / **photoUrl**: jeśli chcesz inne zdjęcie, wejdź w Media → Biblioteka → wybierz zdjęcie → „Kopiuj adres URL do schowka” i wklej między cudzysłowy. Najlepiej zdjęcie pionowe (4:5) z twarzą w górnej części kadru.
 - **platnosc**: link do płatności online, otwierany przez przyciski „Kupuję i przechodzę do płatności”. Pusty cudzysłów `""` usuwa te przyciski ze strony, np. gdy sprzedaż online jest zamknięta.
 - **stickyBar**: `false` wyłącza pływający pasek z ceną i przyciskiem.
 
 ## Dwa sposoby zapisu
 
 1. **Formularz zgłoszenia.** Wszystkie żółte przyciski **„Zapisuję się”** przewijają stronę do formularza, a zgłoszenie trafia na office@officeinfluencers.pl.
-2. **Płatność online.** Czarne lub białe przyciski **„Kupuję i przechodzę do płatności”** prowadzą do linku z ustawienia `platnosc`. Są w trzech miejscach: w hero obok „Zapisuję się”, w karcie z ceną nad formularzem i w sekcji końcowej.
+2. **Płatność online.** Przyciski z cienkim obrysem **„Kupuję i przechodzę do płatności”** prowadzą do linku z ustawienia `platnosc`. Są w trzech miejscach: w hero obok „Zapisuję się”, w karcie z ceną nad formularzem i w sekcji końcowej.
 
-Pływający pasek, żółty pasek na górze i przyciski w środku strony prowadzą tylko do formularza.
+Pływający pasek, pasek na górze i przyciski w środku strony prowadzą tylko do formularza.
 
 ## Jak działa formularz
 
@@ -77,18 +79,17 @@ Pływający pasek, żółty pasek na górze i przyciski w środku strony prowadz
 
 ## Wygląd
 
-Cała strona jest na białym tle i używa jednego prostego kroju: **Inter**. Treść jest ułożona w siatkę kafelków (białych, jasnoszarych, żółtych i czarnych), dzięki czemu nie ma dużych pustych pól.
+Cała strona jest na białym tle i używa jednego prostego kroju: **Inter**. Treść jest ułożona w siatkę jasnych kafelków (białych, jasnoszarych i beżowych). Nagłówki są w średniej grubości, bez pogrubień, bez ikon, ozdobnych plam i świecących efektów. Jedyny mocny kolor to żółte przyciski „Zapisuję się”.
 
-Kolejność sekcji: żółty pasek → hero → klienci (przewijana taśma) → dla kogo i o szkoleniu → puenta „Nie jak napisać prompt” → opinie → program (4 moduły) → po szkoleniu i dalsza ścieżka → pytania z sali → prowadząca → cena z formularzem zgłoszenia → dla firm i kontakt → FAQ w dwóch kolumnach → finał.
+Kolejność sekcji: pasek z terminem → hero → klienci (przewijana taśma) → dla kogo i o szkoleniu → puenta „Nie jak napisać prompt” → opinie → program (4 moduły) → po szkoleniu i dalsza ścieżka → pytania z sali → prowadząca → cena z formularzem zgłoszenia → dla firm i kontakt → FAQ w dwóch kolumnach → finał.
 
 ### Animacje
 
 - kafelki i nagłówki płynnie wjeżdżają, gdy pojawiają się na ekranie,
 - żółte zakreślenie rysuje się pod kluczowymi słowami,
-- liczby „25+” i „10 000+” odliczają się od zera,
 - nazwy klientów przewijają się w taśmie (zatrzymuje się po najechaniu kursorem),
 - cienki złoty pasek na samej górze pokazuje, ile strony już przeczytano,
-- kafelki i przyciski lekko reagują na najechanie kursorem, a kwota w karcie z ceną „podskakuje” po zmianie liczby osób.
+- przyciski i ramki kafelków delikatnie zmieniają kolor po najechaniu kursorem, a kwota w karcie z ceną „podskakuje” po zmianie liczby osób.
 
 Jeśli ktoś ma w systemie włączone ograniczanie ruchu, strona wyświetla się bez animacji. Bez JavaScriptu cała treść też jest widoczna od razu.
 
@@ -97,11 +98,13 @@ Jeśli ktoś ma w systemie włączone ograniczanie ruchu, strona wyświetla się
 | Zmienna | Do czego | Wartość |
 |---|---|---|
 | `--aiol-cta` | przyciski „Zapisuję się” (żółte) | `#f7c531` |
-| `--aiol-cta-hover` | przycisk po najechaniu kursorem | `#eab308` |
+| `--aiol-cta-hover` | przycisk po najechaniu kursorem | `#efb918` |
+| `--aiol-mark` | jasnożółte zakreślenie w nagłówkach | `#fbe39a` |
 | `--aiol-gold` | złoty akcent (jak na officeinfluencers.pl) | `#ad8644` |
-| `--aiol-line` | ramki białych kafelków i cienkie linie | `#e6e6e6` |
-| `--aiol-soft` | jasnoszare kafelki i tło pól formularza | `#f6f6f4` |
-| `--aiol-ink` | czarne kafelki i pływający pasek | `#141414` |
+| `--aiol-line` | ramki białych kafelków i cienkie linie | `#ebebeb` |
+| `--aiol-soft` | jasnoszare kafelki i tło pól formularza | `#f7f7f5` |
+| `--aiol-gold-soft` | beżowe kafelki, pasek na górze, karta z ceną | `#f8f3ea` |
+| `--aiol-ink` | nagłówki i ciemny tekst | `#1a1a1a` |
 
 ## SEO (Yoast / Rank Math)
 
