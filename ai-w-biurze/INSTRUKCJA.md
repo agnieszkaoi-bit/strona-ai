@@ -107,16 +107,16 @@ Pływający pasek, pasek na górze i przyciski w środku strony prowadzą tylko 
 
 ## Wygląd
 
-Cała strona jest na białym tle i używa jednego prostego kroju: **Inter**. Treść jest ułożona w siatkę kafelków w czterech wyraźnie różnych tłach: białe z delikatnym cieniem, szare, beżowe i jasnożółte. Sekcje z opiniami, pytaniami z sali oraz ceną i formularzem mają ciepłe tło, więc białe kafelki dobrze się na nich odcinają. Nagłówki są w średniej grubości, bez pogrubień, bez ikon, ozdobnych plam i świecących efektów. Jedyny mocny kolor to żółte przyciski „Zapisuję się”.
+Strona ma czarne tło i żółte akcenty, a cała treść używa jednego prostego kroju: **Inter**. Treść jest ułożona w siatkę ciemnych kafelków. Część z nich ma żółtą ramkę, a kilka jest w całości żółtych („Nie musisz mieć doświadczenia z AI”, pytanie o RODO, „25+”). Na żółto są też przyciski „Zapisuję się”, wyróżnione słowa w nagłówkach, numery modułów i pasek z terminem na górze.
 
 Kolejność sekcji: pasek z terminem → hero → klienci (przewijana taśma) → dla kogo i o szkoleniu → puenta „Nie jak napisać prompt” → opinie → program (4 moduły) → po szkoleniu i dalsza ścieżka → pytania z sali → prowadząca → cena z formularzem zgłoszenia → dla firm i kontakt → FAQ w dwóch kolumnach → finał.
 
 ### Animacje
 
 - kafelki i nagłówki płynnie wjeżdżają, gdy pojawiają się na ekranie,
-- żółte zakreślenie rysuje się pod kluczowymi słowami,
+- żółte podkreślenie rysuje się pod wyróżnionymi słowami w nagłówkach,
 - nazwy klientów przewijają się w taśmie (zatrzymuje się po najechaniu kursorem),
-- cienki złoty pasek na samej górze pokazuje, ile strony już przeczytano,
+- cienki żółty pasek na samej górze pokazuje, ile strony już przeczytano,
 - przyciski i ramki kafelków delikatnie zmieniają kolor po najechaniu kursorem, a kwota w karcie z ceną „podskakuje” po zmianie liczby osób.
 
 Jeśli ktoś ma w systemie włączone ograniczanie ruchu, strona wyświetla się bez animacji. Bez JavaScriptu cała treść też jest widoczna od razu.
@@ -125,16 +125,15 @@ Jeśli ktoś ma w systemie włączone ograniczanie ruchu, strona wyświetla się
 
 | Zmienna | Do czego | Wartość |
 |---|---|---|
-| `--aiol-cta` | przyciski „Zapisuję się” (żółte) | `#f7c531` |
-| `--aiol-cta-hover` | przycisk po najechaniu kursorem | `#efb918` |
-| `--aiol-mark` | jasnożółte zakreślenie w nagłówkach | `#fbe39a` |
-| `--aiol-gold` | złoty akcent (jak na officeinfluencers.pl) | `#ad8644` |
-| `--aiol-line` | ramki białych kafelków i cienkie linie | `#e2e2de` |
-| `--aiol-soft` | szare kafelki | `#eeede8` |
-| `--aiol-gold-soft` | beżowe kafelki, pasek na górze, karta z ceną | `#f2e6cf` |
-| `--aiol-cream` | jasnożółte kafelki | `#fcefc3` |
-| `--aiol-band` | ciepłe tło co drugiej sekcji | `#f6f2ea` |
-| `--aiol-ink` | nagłówki i ciemny tekst | `#1a1a1a` |
+| `--aiol-bg` | tło strony | `#0c0c0c` |
+| `--aiol-tile` | ciemne kafelki, formularz, karta z ceną | `#161616` |
+| `--aiol-soft` | jaśniejsze kafelki | `#1f1f1f` |
+| `--aiol-band` | tło sekcji z opiniami, pytaniami i ceną | `#121212` |
+| `--aiol-line` | ramki i cienkie linie | `#2c2c2c` |
+| `--aiol-cta` | przyciski „Zapisuję się” i wszystkie żółte akcenty | `#f7c531` |
+| `--aiol-cta-hover` | przycisk po najechaniu kursorem | `#ffd657` |
+| `--aiol-ink` | nagłówki | `#ffffff` |
+| `--aiol-text` | zwykły tekst | `#d2d2d2` |
 
 ## SEO (Yoast / Rank Math)
 
