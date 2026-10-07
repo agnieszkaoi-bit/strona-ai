@@ -51,8 +51,8 @@ window.AIOL_CONFIG = {
 };
 ```
 
-- **termin**: wpisz datę i godzinę edycji. Pojawi się w żółtym pasku na górze, w podsumowaniu obok formularza i w mailu ze zgłoszeniem. Puste pole = bez terminu.
-- **photoUrl**: Media → Biblioteka → wybierz zdjęcie → „Kopiuj adres URL do schowka” i wklej między cudzysłowy. Najlepiej zdjęcie pionowe (4:5). Bez zdjęcia w tym miejscu wyświetlają się inicjały „AK”.
+- **termin**: wpisz datę i godzinę edycji. Pojawi się w żółtym pasku na górze, w karcie z ceną obok formularza i w mailu ze zgłoszeniem. Puste pole = bez terminu.
+- **photoUrl**: Media → Biblioteka → wybierz zdjęcie → „Kopiuj adres URL do schowka” i wklej między cudzysłowy. Najlepiej zdjęcie pionowe (4:5). Zdjęcie wypełnia cały kafelek, a twarz powinna być w górnej części kadru. Bez zdjęcia w tym miejscu wyświetlają się inicjały „AK”.
 - **stickyBar**: `false` wyłącza pływający pasek z ceną i przyciskiem.
 
 Wszystkie przyciski **„Zapisuję się”** przewijają stronę do formularza.
@@ -61,21 +61,38 @@ Wszystkie przyciski **„Zapisuję się”** przewijają stronę do formularza.
 
 - **Pola:** imię i nazwisko, e-mail, telefon, stanowisko, liczba osób (1–10), płatnik (firma albo osoba prywatna), NIP, nazwa firmy, adres do faktury, uwagi, zgoda RODO (wymagana) i zgoda marketingowa (dobrowolna).
 - **NIP:** po wpisaniu 10 cyfr strona sama pobiera nazwę i adres firmy z wykazu podatników VAT Ministerstwa Finansów.
-- **Podsumowanie:** obok formularza cena liczy się na żywo (liczba osób × 290 zł netto). Ta sama kwota trafia do maila.
+- **Podsumowanie:** w karcie z ceną obok formularza kwota liczy się na żywo (liczba osób × 290 zł netto). Ta sama kwota trafia do maila.
 - **Kilka osób:** przy liczbie osób większej niż 1 podpowiedź w polu „Uwagi” prosi o dane pozostałych uczestników.
 - **Ochrona przed spamem** (jak w poprzednim formularzu): ukryte pole-pułapka, odrzucanie zbyt szybkich wysyłek, limit wysyłek z jednego adresu IP, blokada powtarzanej treści, odrzucanie adresów jednorazowych i zmyślonych domen.
 - **Bezpieczeństwo:** adres odbiorcy i temat są na sztywno w kodzie, a skrypt przyjmuje zgłoszenia tylko ze strony officeinfluencers.pl. Treść jest oczyszczona z ukrytych poleceń dla AI (prompt injection). Nic nie jest zapisywane na serwerze.
 
-## Kolory i krój pisma
+## Wygląd
 
-Cała strona jest na białym tle i używa jednego prostego kroju: **Inter**. Kolejność sekcji i skala pisma są wzorowane na stronie kursu „4 warstwy prezentacji + AI”: żółty pasek → hero → klienci → dla kogo → problem → puenta → opinie → program → po szkoleniu → dalsza ścieżka → pytania z sali → prowadząca → cena → formularz → dla firm → FAQ → finał.
+Cała strona jest na białym tle i używa jednego prostego kroju: **Inter**. Treść jest ułożona w siatkę kafelków (białych, jasnoszarych, żółtych i czarnych), dzięki czemu nie ma dużych pustych pól.
+
+Kolejność sekcji: żółty pasek → hero → klienci (przewijana taśma) → dla kogo i o szkoleniu → puenta „Nie jak napisać prompt” → opinie → program (4 moduły) → po szkoleniu i dalsza ścieżka → pytania z sali → prowadząca → cena z formularzem zgłoszenia → dla firm i kontakt → FAQ w dwóch kolumnach → finał.
+
+### Animacje
+
+- kafelki i nagłówki płynnie wjeżdżają, gdy pojawiają się na ekranie,
+- żółte zakreślenie rysuje się pod kluczowymi słowami,
+- liczby „25+” i „10 000+” odliczają się od zera,
+- nazwy klientów przewijają się w taśmie (zatrzymuje się po najechaniu kursorem),
+- cienki złoty pasek na samej górze pokazuje, ile strony już przeczytano,
+- kafelki i przyciski lekko reagują na najechanie kursorem, a kwota w karcie z ceną „podskakuje” po zmianie liczby osób.
+
+Jeśli ktoś ma w systemie włączone ograniczanie ruchu, strona wyświetla się bez animacji. Bez JavaScriptu cała treść też jest widoczna od razu.
+
+### Kolory
 
 | Zmienna | Do czego | Wartość |
 |---|---|---|
 | `--aiol-cta` | przyciski „Zapisuję się” (żółte) | `#f7c531` |
 | `--aiol-cta-hover` | przycisk po najechaniu kursorem | `#eab308` |
 | `--aiol-gold` | złoty akcent (jak na officeinfluencers.pl) | `#ad8644` |
-| `--aiol-line` | cienkie linie między sekcjami i ramki kart | `#e6e6e6` |
+| `--aiol-line` | ramki białych kafelków i cienkie linie | `#e6e6e6` |
+| `--aiol-soft` | jasnoszare kafelki i tło pól formularza | `#f6f6f4` |
+| `--aiol-ink` | czarne kafelki i pływający pasek | `#141414` |
 
 ## SEO (Yoast / Rank Math)
 
@@ -89,7 +106,7 @@ Cała strona jest na białym tle i używa jednego prostego kroju: **Inter**. Kol
 
 Do `dataLayer` (Google Tag Manager) trafiają dwa zdarzenia:
 
-- `aiol_cta_click`: kliknięcie „Zapisuję się”, z parametrem `cta_location` (`pasek-gora`, `hero`, `opinie`, `program`, `efekty`, `cena`, `final`, `pasek`),
+- `aiol_cta_click`: kliknięcie „Zapisuję się”, z parametrem `cta_location` (`pasek-gora`, `hero`, `opinie`, `program`, `efekty`, `final`, `pasek`),
 - `aiol_zgloszenie`: wysłane zgłoszenie, z parametrem `liczba_osob`. Ustaw je w GA4 jako konwersję.
 
 ## Gdyby coś nie działało
@@ -99,8 +116,8 @@ Do `dataLayer` (Google Tag Manager) trafiają dwa zdarzenia:
 - **Formularz pokazuje „Zgłoszenie przyjęte”, ale mail nie dochodzi:** sprawdź spam. Następnie w panelu Zenbox sprawdź, czy istnieje skrzynka office@officeinfluencers.pl i czy rekord SPF domeny obejmuje serwer Zenbox.
 - **NIP nie uzupełnia danych:** rejestr Ministerstwa Finansów bywa chwilowo niedostępny. Wtedy nazwę i adres wpisuje się ręcznie, a zgłoszenie i tak dochodzi.
 - **Strona jest wąska albo ma ramki po bokach:** kontener nie ma pełnej szerokości albo ma padding (krok 2.3).
-- **Przyciski nie przewijają do formularza przy optymalizacji JavaScriptu** (WP Rocket „Opóźnij JavaScript”, LiteSpeed Cache, Autoptimize): dodaj do wyjątków `AIOL_CONFIG` oraz `aiol`.
-- **Po kliknięciu sekcja chowa się pod przyklejonym nagłówkiem:** zwiększ `scroll-margin-top: 100px` przy `.aiol-sec`.
+- **Przyciski nie przewijają do formularza albo kafelki pojawiają się dopiero po ruchu myszką** (WP Rocket „Opóźnij JavaScript”, LiteSpeed Cache, Autoptimize): dodaj do wyjątków `AIOL_CONFIG` oraz `aiol`.
+- **Po kliknięciu sekcja chowa się pod przyklejonym nagłówkiem:** zwiększ wartość `scroll-margin-top: 100px` (występuje w kodzie 3 razy).
 - **Fonty:** kod ładuje Inter z Google Fonts. Jeśli serwis ładuje go lokalnie (Elementor → Ustawienia → Wydajność), możesz usunąć 3 linie `<link …fonts.googleapis.com…>` z początku kodu.
 
 ## Pliki w repozytorium

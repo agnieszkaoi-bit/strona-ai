@@ -39,14 +39,14 @@
   --aiol-gold: #ad8644;         /* złoty akcent marki Office Influencers */
   --aiol-gold-dark: #8a6a32;    /* złoty do drobnego tekstu (czytelniejszy) */
   --aiol-gold-soft: #f7f1e6;
-  --aiol-ink: #141414;
+  --aiol-ink: #141414;          /* ciemne kafelki */
   --aiol-text: #3f3f3f;
   --aiol-muted: #6b6b6b;
   --aiol-line: #e6e6e6;
-  --aiol-soft: #f7f7f7;
-  --aiol-dark: #191713;      /* tylko pływający pasek */
-  --aiol-on-dark: #cfc9bd;
+  --aiol-soft: #f6f6f4;         /* jasnoszare kafelki */
+  --aiol-radius: 20px;
   --aiol-live: #e5484d;
+  --aiol-ease: cubic-bezier(.2, .7, .2, 1);
   --aiol-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --aiol-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
   --aiol-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
@@ -80,8 +80,8 @@
 #aiol fieldset { min-width: 0; }
 #aiol [hidden] { display: none !important; }
 #aiol h1, #aiol h2, #aiol h3, #aiol h4 {
-  font-family: var(--aiol-sans); font-weight: 700; font-style: normal;
-  color: var(--aiol-ink); line-height: 1.2; letter-spacing: -0.02em; text-transform: none;
+  font-family: var(--aiol-sans); font-weight: 800; font-style: normal;
+  color: var(--aiol-ink); line-height: 1.15; letter-spacing: -0.02em; text-transform: none;
 }
 #aiol p, #aiol li { font-size: inherit; line-height: inherit; color: inherit; }
 #aiol ul, #aiol ol { list-style: none; }
@@ -93,298 +93,394 @@
 #aiol img { display: block; max-width: 100%; height: auto; border: 0; border-radius: 0; box-shadow: none; }
 #aiol svg { display: inline-block; vertical-align: middle; flex-shrink: 0; }
 #aiol .aiol-i { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-#aiol a:focus-visible, #aiol summary:focus-visible { outline: 3px solid var(--aiol-gold); outline-offset: 3px; border-radius: 4px; }
+#aiol a:focus-visible, #aiol summary:focus-visible { outline: 3px solid var(--aiol-gold); outline-offset: 3px; border-radius: 6px; }
+#aiol .aiol-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
-/* ---------- Układ ---------- */
-#aiol .aiol-wrap { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 20px; }
-#aiol .aiol-sec { position: relative; padding: 72px 0; background: #fff; border-top: 1px solid var(--aiol-line); scroll-margin-top: 100px; }
-@media (min-width: 768px) { #aiol .aiol-wrap { padding: 0 32px; } }
-@media (min-width: 721px) { #aiol .aiol-sec { padding: 120px 0; } }
+/* ---------- Układ: mniej pustego miejsca ---------- */
+#aiol .aiol-wrap { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 16px; }
+#aiol .aiol-sec { position: relative; padding: 28px 0; scroll-margin-top: 100px; }
+@media (min-width: 768px) { #aiol .aiol-wrap { padding: 0 32px; } #aiol .aiol-sec { padding: 40px 0; } }
 
 /* ---------- Typografia ---------- */
 #aiol .aiol-eyebrow {
-  display: block; margin-bottom: 16px;
-  font-family: var(--aiol-sans); font-size: 13px; font-weight: 800; line-height: 1.3;
-  letter-spacing: .18em; text-transform: uppercase; color: var(--aiol-gold-dark);
+  display: block; margin-bottom: 14px;
+  font-size: 13px; font-weight: 800; line-height: 1.3; letter-spacing: .18em; text-transform: uppercase; color: var(--aiol-gold-dark);
 }
-#aiol .aiol-h1 { font-size: clamp(40px, 6vw, 80px); font-weight: 800; line-height: .98; letter-spacing: -0.02em; margin-bottom: 24px; text-wrap: balance; }
-#aiol .aiol-h2 { max-width: 960px; font-size: clamp(30px, 3.6vw, 48px); font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; }
-#aiol .aiol-h2--short { font-size: clamp(32px, 4vw, 56px); line-height: 1.05; }
-#aiol .aiol-h2--xl { max-width: 22ch; font-size: clamp(32px, 4.5vw, 60px); line-height: 1.08; }
-#aiol .aiol-h2--quote { text-indent: -.45em; }
-#aiol .aiol-byline { margin-top: 16px; font-size: 17px; font-weight: 600; color: var(--aiol-muted); }
-#aiol .aiol-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+#aiol .aiol-h1 { margin-bottom: 20px; font-size: clamp(38px, 5.6vw, 76px); line-height: .98; letter-spacing: -.03em; text-wrap: balance; }
+#aiol .aiol-h2 { max-width: 960px; font-size: clamp(30px, 3.6vw, 48px); line-height: 1.08; letter-spacing: -.02em; text-wrap: balance; }
+#aiol .aiol-h2--xl { font-size: clamp(32px, 4.2vw, 56px); line-height: 1.04; }
+#aiol .aiol-h2--short { font-size: clamp(32px, 4vw, 52px); line-height: 1.05; }
 #aiol .aiol-gold { color: var(--aiol-gold); }
-#aiol .aiol-h1 .aiol-gold { white-space: nowrap; }
-#aiol .aiol-lead { font-size: clamp(18px, 1.6vw, 20px); line-height: 1.5; }
-#aiol .aiol-head { max-width: 780px; margin-bottom: 48px; }
-#aiol .aiol-head > p:not(.aiol-eyebrow) { max-width: 720px; margin-top: 18px; font-size: clamp(18px, 1.6vw, 20px); line-height: 1.5; text-wrap: pretty; }
-#aiol .aiol-head > h2 + p { margin-top: 24px; }
-#aiol .aiol-head--center { margin-left: auto; margin-right: auto; text-align: center; }
-#aiol .aiol-head--center .aiol-h2, #aiol .aiol-head--center > p { margin-left: auto; margin-right: auto; }
-#aiol .aiol-prose p + p { margin-top: 18px; }
+#aiol .aiol-yellow { color: var(--aiol-cta); }
+#aiol .aiol-link { color: var(--aiol-ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--aiol-gold); text-underline-offset: 3px; }
+#aiol .aiol-link:hover { color: var(--aiol-gold-dark); }
+#aiol .aiol-head { margin-bottom: 24px; }
+#aiol .aiol-head--split { display: grid; gap: 14px 64px; align-items: end; }
+#aiol .aiol-head__side p { max-width: 640px; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.5; color: var(--aiol-text); text-wrap: pretty; }
+#aiol .aiol-head__side p + p { margin-top: 10px; }
+@media (min-width: 992px) { #aiol .aiol-head--split { grid-template-columns: minmax(0, 1fr) minmax(0, .95fr); } }
+/* Nagłówek nad programem: tytuł w jednej linii, opis w dwóch kolumnach */
+#aiol .aiol-head--stack .aiol-h2 { max-width: none; }
+#aiol .aiol-head--stack .aiol-head__side { margin-top: 16px; }
+@media (min-width: 992px) {
+  #aiol .aiol-head--stack .aiol-head__side { columns: 2; column-gap: 48px; }
+  #aiol .aiol-head--stack .aiol-head__side p { max-width: none; }
+}
 
-/* ---------- Przycisk CTA (żółty) ---------- */
+/* Zakreślacz: rysuje się, gdy tekst wjeżdża na ekran */
+#aiol .aiol-mark {
+  padding: 0 .06em; color: inherit;
+  background-image: linear-gradient(var(--aiol-cta), var(--aiol-cta)); background-repeat: no-repeat;
+  background-position: 0 90%; background-size: 100% 36%;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+
+/* ---------- Przycisk CTA (żółty, pigułka) ---------- */
 #aiol .aiol-btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-  min-height: 56px; padding: 18px 32px; border: 0; border-radius: 4px;
+  position: relative; isolation: isolate; overflow: hidden;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 18px 30px; border: 0; border-radius: 999px;
   background: var(--aiol-cta); color: var(--aiol-cta-text);
   font-family: var(--aiol-sans); font-size: 17px; font-weight: 800; line-height: 1.1;
   letter-spacing: .01em; text-transform: none; text-decoration: none; text-align: center;
-  cursor: pointer; box-shadow: 0 12px 26px -14px rgba(160,115,0,.7);
+  cursor: pointer; box-shadow: 0 14px 30px -14px rgba(160,115,0,.75);
   transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
-#aiol .aiol-btn:hover, #aiol .aiol-btn:focus { background: var(--aiol-cta-hover); color: var(--aiol-cta-text); transform: translateY(-2px); box-shadow: 0 16px 30px -14px rgba(160,115,0,.8); }
+#aiol .aiol-btn::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.6) 50%, transparent 70%);
+  transform: translateX(-120%); transition: transform .7s ease;
+}
+#aiol .aiol-btn:hover, #aiol .aiol-btn:focus { background: var(--aiol-cta-hover); color: var(--aiol-cta-text); transform: translateY(-2px); box-shadow: 0 18px 34px -14px rgba(160,115,0,.85); }
+#aiol .aiol-btn:hover::before { transform: translateX(120%); }
+#aiol .aiol-btn:active { transform: scale(.98); }
+#aiol .aiol-btn--glow::before { animation: aiol-shine 6s ease-in-out 2s infinite; }
 #aiol .aiol-btn .aiol-i { width: 18px; height: 18px; stroke-width: 2.5; transition: transform .2s ease; }
 #aiol .aiol-btn:hover .aiol-i { transform: translateX(4px); }
 #aiol .aiol-btn--block { width: 100%; }
-#aiol .aiol-btn--sm { flex-shrink: 0; min-height: 44px; padding: 12px 20px; font-size: 14px; letter-spacing: .01em; white-space: nowrap; }
+#aiol .aiol-btn--sm { flex-shrink: 0; min-height: 44px; padding: 12px 20px; font-size: 14px; white-space: nowrap; }
+@keyframes aiol-shine { 0% { transform: translateX(-120%); } 18%, 100% { transform: translateX(120%); } }
+
+/* ---------- Siatka kafelków (bento) ---------- */
+#aiol .aiol-bento { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+@media (min-width: 700px) {
+  #aiol .aiol-bento { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  #aiol .aiol-bento > .t-2 { grid-column: span 2; }
+}
+@media (min-width: 1024px) {
+  #aiol .aiol-bento { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px; }
+  #aiol .aiol-bento > .s-3 { grid-column: span 3; }
+  #aiol .aiol-bento > .s-4 { grid-column: span 4; }
+  #aiol .aiol-bento > .s-5 { grid-column: span 5; }
+  #aiol .aiol-bento > .s-6 { grid-column: span 6; }
+  #aiol .aiol-bento > .s-7 { grid-column: span 7; }
+  #aiol .aiol-bento > .s-8 { grid-column: span 8; }
+  #aiol .aiol-bento > .s-12 { grid-column: span 12; }
+  #aiol .aiol-bento > .r-2 { grid-row: span 2; }
+}
+
+/* ---------- Kafelki ---------- */
+#aiol .aiol-tile {
+  position: relative; overflow: hidden; min-width: 0; padding: 24px;
+  border-radius: var(--aiol-radius); background: #fff; border: 1px solid var(--aiol-line); color: var(--aiol-text);
+  transition: transform .35s var(--aiol-ease), box-shadow .35s var(--aiol-ease), border-color .35s ease, background-color .35s ease;
+}
+#aiol .aiol-tile--soft { background: var(--aiol-soft); border-color: transparent; }
+#aiol .aiol-tile--gold { background: var(--aiol-gold-soft); border-color: transparent; }
+#aiol .aiol-tile--yellow { background: var(--aiol-cta); border-color: transparent; color: var(--aiol-ink); }
+#aiol .aiol-tile--ink { background: var(--aiol-ink); border-color: transparent; color: #cfcfcf; }
+#aiol .aiol-tile--ink h2, #aiol .aiol-tile--ink h3, #aiol .aiol-tile--ink strong, #aiol .aiol-tile--ink b { color: #fff; }
+#aiol .aiol-tile--ink .aiol-eyebrow { color: var(--aiol-cta); }
+#aiol .aiol-tile--col { display: flex; flex-direction: column; justify-content: space-between; gap: 20px; }
+#aiol .aiol-tile__ic { display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: var(--aiol-gold-soft); color: var(--aiol-gold-dark); transition: transform .35s var(--aiol-ease); }
+#aiol .aiol-tile__ic .aiol-i { width: 24px; height: 24px; }
+#aiol .aiol-tile__ic--ink { background: var(--aiol-ink); color: var(--aiol-cta); }
+#aiol .aiol-tile__ic--yellow { background: var(--aiol-cta); color: var(--aiol-ink); }
+#aiol .aiol-tile__title { font-size: clamp(22px, 2.2vw, 28px); line-height: 1.15; letter-spacing: -.02em; text-wrap: balance; }
+#aiol .aiol-tile__big { font-size: clamp(19px, 1.8vw, 23px); font-weight: 600; line-height: 1.4; color: var(--aiol-ink); text-wrap: pretty; }
+#aiol .aiol-tile__big strong { font-weight: 800; }
+#aiol .aiol-tile--ink .aiol-tile__big { color: #fff; }
+#aiol .aiol-tile__p { font-size: 16px; line-height: 1.55; }
+#aiol .aiol-tile__kicker { font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+@media (min-width: 768px) { #aiol .aiol-tile { padding: 32px; } }
+/* Kafelek unosi się pod kursorem (tylko myszka, nie ekran dotykowy) */
+@media (hover: hover) {
+  #aiol .aiol-tile:hover { transform: translateY(-4px); box-shadow: 0 26px 50px -30px rgba(20,20,20,.38); border-color: #d6d6d6; }
+  #aiol .aiol-tile--soft:hover, #aiol .aiol-tile--gold:hover, #aiol .aiol-tile--yellow:hover, #aiol .aiol-tile--ink:hover { border-color: transparent; }
+  #aiol .aiol-tile:hover .aiol-tile__ic { transform: rotate(-8deg) scale(1.08); }
+}
+#aiol .aiol-tile__title--lg { font-size: clamp(26px, 2.8vw, 38px); line-height: 1.1; }
+#aiol .aiol-tile__kicker + .aiol-tile__big { margin-top: 10px; }
+#aiol .aiol-tile__big--xl { font-size: clamp(24px, 2.4vw, 32px); font-weight: 800; line-height: 1.2; letter-spacing: -.02em; }
+#aiol .aiol-tile__title + .aiol-tile__p { margin-top: 8px; }
+#aiol .aiol-tile--col > .aiol-btn:not(.aiol-btn--block) { align-self: flex-start; }
 
 /* ---------- Lista z ptaszkami ---------- */
-#aiol .aiol-list li { position: relative; padding-left: 34px; }
-#aiol .aiol-list li + li { margin-top: 10px; }
+#aiol .aiol-list li { position: relative; padding-left: 32px; }
+#aiol .aiol-list li + li { margin-top: 9px; }
 #aiol .aiol-list li::before { content: ""; position: absolute; left: 0; top: 3px; width: 22px; height: 22px; border-radius: 50%; background: var(--aiol-gold-soft); }
 #aiol .aiol-list li::after {
   content: ""; position: absolute; left: 6px; top: 9px; width: 10px; height: 10px; background: var(--aiol-gold-dark);
   -webkit-mask: var(--aiol-check) center / contain no-repeat; mask: var(--aiol-check) center / contain no-repeat;
 }
-#aiol .aiol-ic {
-  display: inline-grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px;
-  border-radius: 10px; background: var(--aiol-gold-soft); color: var(--aiol-gold-dark);
-}
+#aiol .aiol-ic { display: inline-grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: var(--aiol-gold-soft); color: var(--aiol-gold-dark); }
 #aiol .aiol-ic .aiol-i { width: 22px; height: 22px; }
 
+/* ---------- Pasek górny i pasek postępu ---------- */
+#aiol .aiol-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 14px; min-height: 40px; padding: 6px 16px; background: var(--aiol-cta); color: var(--aiol-ink); font-size: 15px; font-weight: 600; line-height: 1.3; text-align: center; }
+#aiol .aiol-bar strong { font-weight: 800; color: var(--aiol-ink); }
+#aiol .aiol-bar__dot { display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: var(--aiol-live); vertical-align: 1px; animation: aiol-pulse 2s infinite; }
+#aiol .aiol-bar__link { display: inline-flex; align-items: center; min-height: 28px; padding: 0 14px; border-radius: 999px; background: var(--aiol-ink); color: #fff; font-size: 14px; font-weight: 800; line-height: 1.1; white-space: nowrap; transition: transform .15s ease; }
+#aiol .aiol-bar__link:hover, #aiol .aiol-bar__link:focus { color: #fff; transform: translateY(-1px); }
+#aiol .aiol-progress { position: fixed; left: 0; right: 0; top: 0; z-index: 9991; height: 3px; pointer-events: none; }
+#aiol .aiol-progress span { display: block; height: 100%; background: linear-gradient(90deg, var(--aiol-gold), var(--aiol-cta)); transform: scaleX(0); transform-origin: 0 50%; }
+@keyframes aiol-pulse { 0% { box-shadow: 0 0 0 0 rgba(229,72,77,.5); } 70% { box-shadow: 0 0 0 9px rgba(229,72,77,0); } 100% { box-shadow: 0 0 0 0 rgba(229,72,77,0); } }
+
 /* ---------- HERO ---------- */
-#aiol .aiol-hero { position: relative; padding: 56px 0 72px; background: #fff; }
-#aiol .aiol-hero__grid { display: grid; gap: 48px; align-items: center; }
-#aiol .aiol-hero__lead { max-width: 52ch; margin-bottom: 24px; font-size: clamp(17px, 1.45vw, 22px); line-height: 1.45; padding-left: 24px; border-left: 3px solid var(--aiol-gold); }
-#aiol .aiol-facts { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }
-#aiol .aiol-facts li {
-  display: inline-flex; align-items: center; gap: 9px; padding: 10px 16px;
-  background: #fff; border: 1px solid var(--aiol-line); border-radius: 6px;
-  font-size: 15.5px; font-weight: 500; line-height: 1.4; color: var(--aiol-ink);
-}
+#aiol .aiol-hero { position: relative; overflow: hidden; padding: 36px 0 32px; background: #fff; }
+#aiol .aiol-hero__glow { position: absolute; z-index: 0; right: -12%; top: -30%; width: min(70vw, 820px); aspect-ratio: 1; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(247,197,49,.38) 0%, rgba(247,197,49,.12) 40%, rgba(247,197,49,0) 66%); animation: aiol-drift 16s ease-in-out infinite alternate; }
+#aiol .aiol-hero__glow--b { left: -18%; right: auto; top: 45%; width: min(50vw, 560px); background: radial-gradient(circle, rgba(173,134,68,.16) 0%, rgba(173,134,68,0) 65%); animation-duration: 20s; animation-direction: alternate-reverse; }
+@keyframes aiol-drift { to { transform: translate3d(-8%, 10%, 0) scale(1.1); } }
+#aiol .aiol-hero__grid { position: relative; z-index: 1; display: grid; gap: 32px; align-items: center; }
+#aiol .aiol-pill { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 16px; padding: 7px 14px 7px 12px; border-radius: 999px; background: #fff; border: 1px solid var(--aiol-line); box-shadow: 0 8px 20px -14px rgba(20,20,20,.4); font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--aiol-ink); }
+#aiol .aiol-pill__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--aiol-live); animation: aiol-pulse 2s infinite; }
+#aiol .aiol-hero__name { margin: 0 0 12px; font-size: clamp(22px, 2.4vw, 30px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; color: var(--aiol-ink); }
+#aiol .aiol-hero__name b { color: var(--aiol-gold); font-weight: 800; }
+#aiol .aiol-hero__lead { max-width: 54ch; margin-bottom: 22px; padding-left: 20px; border-left: 3px solid var(--aiol-cta); font-size: clamp(17px, 1.45vw, 21px); line-height: 1.45; text-wrap: pretty; }
+#aiol .aiol-facts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+#aiol .aiol-facts li { display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border-radius: 999px; background: rgba(255,255,255,.85); border: 1px solid var(--aiol-line); font-size: 15.5px; font-weight: 600; line-height: 1.3; color: var(--aiol-ink); transition: border-color .2s ease, transform .2s ease; }
+#aiol .aiol-facts li:hover { border-color: var(--aiol-gold); transform: translateY(-2px); }
 #aiol .aiol-facts .aiol-i { width: 18px; height: 18px; color: var(--aiol-gold); }
-#aiol .aiol-hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
-#aiol .aiol-hero__note { font-size: 14.5px; line-height: 1.5; color: var(--aiol-muted); max-width: 260px; }
-#aiol .aiol-nos { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 34px; padding-top: 24px; border-top: 1px solid var(--aiol-line); font-size: 14.5px; line-height: 1.5; color: var(--aiol-muted); }
+#aiol .aiol-hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+#aiol .aiol-hero__note { max-width: 260px; font-size: 14.5px; line-height: 1.5; color: var(--aiol-muted); }
+#aiol .aiol-nos { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 22px; font-size: 14.5px; line-height: 1.5; color: var(--aiol-muted); }
 #aiol .aiol-nos li { display: inline-flex; align-items: center; gap: 8px; }
 #aiol .aiol-nos .aiol-i { width: 16px; height: 16px; color: var(--aiol-gold); stroke-width: 2.5; }
+#aiol .aiol-hero__side { position: relative; }
+#aiol .aiol-floater { position: absolute; z-index: 2; display: none; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #fff; border: 1px solid var(--aiol-line); box-shadow: 0 18px 40px -16px rgba(20,20,20,.35); font-size: 14px; font-weight: 700; line-height: 1.2; color: var(--aiol-ink); white-space: nowrap; animation: aiol-bob 5s ease-in-out infinite; }
+#aiol .aiol-floater .aiol-i { width: 18px; height: 18px; color: var(--aiol-gold); }
+#aiol .aiol-floater--a { left: -40px; bottom: -22px; }
+#aiol .aiol-floater--b { right: -14px; top: -20px; animation-delay: -2.5s; }
+@keyframes aiol-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 @media (min-width: 992px) {
-  #aiol .aiol-hero { padding: 96px 0 112px; }
-  #aiol .aiol-hero__grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 72px; }
+  #aiol .aiol-hero { padding: 56px 0 48px; }
+  #aiol .aiol-hero__grid { grid-template-columns: minmax(0, 1.18fr) minmax(0, .82fr); gap: 56px; }
 }
+@media (min-width: 1100px) { #aiol .aiol-floater { display: inline-flex; } }
 
 /* Karta w hero */
-#aiol .aiol-card { position: relative; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; box-shadow: 0 40px 70px -40px rgba(20,20,20,.35); }
-#aiol .aiol-labcard { padding: 28px; }
-#aiol .aiol-labcard::before { content: ""; position: absolute; left: 28px; right: 28px; top: -1px; height: 3px; background: var(--aiol-gold); border-radius: 0 0 3px 3px; }
-#aiol .aiol-labcard__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 22px; }
-#aiol .aiol-live { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aiol-ink); }
+#aiol .aiol-labcard { position: relative; padding: 26px; border-radius: 24px; background: rgba(255,255,255,.92); border: 1px solid var(--aiol-line); box-shadow: 0 40px 80px -40px rgba(20,20,20,.4); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+#aiol .aiol-labcard__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+#aiol .aiol-live { display: inline-flex; align-items: center; gap: 8px; padding: 5px 11px; border-radius: 999px; background: #fdecec; font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #b42318; }
 #aiol .aiol-live__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--aiol-live); animation: aiol-pulse 2s infinite; }
-@keyframes aiol-pulse { 0% { box-shadow: 0 0 0 0 rgba(229,72,77,.5); } 70% { box-shadow: 0 0 0 9px rgba(229,72,77,0); } 100% { box-shadow: 0 0 0 0 rgba(229,72,77,0); } }
-#aiol .aiol-labcard__id { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--aiol-muted); }
-#aiol .aiol-labcard__title { font-size: 22px; font-weight: 700; line-height: 1.25; color: var(--aiol-ink); margin-bottom: 14px; }
+#aiol .aiol-labcard__id { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aiol-muted); }
+#aiol .aiol-labcard__title { margin-bottom: 10px; font-size: 22px; font-weight: 800; line-height: 1.25; letter-spacing: -.01em; color: var(--aiol-ink); }
 #aiol .aiol-labcard__list li { border-top: 1px solid var(--aiol-line); }
-#aiol .aiol-labcard__list a { display: flex; align-items: center; gap: 14px; padding: 13px 0; font-weight: 600; line-height: 1.35; color: var(--aiol-ink); transition: color .2s ease; }
-#aiol .aiol-labcard__list a:hover { color: var(--aiol-gold-dark); }
-#aiol .aiol-labcard__num { font-size: 12.5px; font-weight: 700; letter-spacing: .1em; color: var(--aiol-gold); min-width: 22px; }
-#aiol .aiol-labcard__list .aiol-i { width: 16px; height: 16px; margin-left: auto; color: var(--aiol-gold); }
-#aiol .aiol-labcard__tools { margin-top: 18px; padding: 16px; border-radius: 8px; background: var(--aiol-soft); }
-#aiol .aiol-labcard__label { display: block; margin-bottom: 10px; font-size: 11.5px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--aiol-gold-dark); }
+#aiol .aiol-labcard__list a { display: flex; align-items: center; gap: 14px; padding: 12px 6px; margin: 0 -6px; border-radius: 10px; font-weight: 600; line-height: 1.35; color: var(--aiol-ink); transition: background-color .2s ease, color .2s ease; }
+#aiol .aiol-labcard__list a:hover { background: var(--aiol-soft); color: var(--aiol-gold-dark); }
+#aiol .aiol-labcard__num { min-width: 22px; font-size: 12.5px; font-weight: 800; letter-spacing: .08em; color: var(--aiol-gold); }
+#aiol .aiol-labcard__list .aiol-i { width: 16px; height: 16px; margin-left: auto; color: var(--aiol-gold); transition: transform .2s ease; }
+#aiol .aiol-labcard__list a:hover .aiol-i { transform: translateX(4px); }
+#aiol .aiol-labcard__tools { margin-top: 14px; padding: 14px; border-radius: 14px; background: var(--aiol-soft); }
+#aiol .aiol-labcard__label { display: block; margin-bottom: 8px; font-size: 11.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--aiol-gold-dark); }
 #aiol .aiol-labcard__tools ul { display: flex; flex-wrap: wrap; gap: 6px; }
-#aiol .aiol-labcard__tools li { padding: 5px 11px; border-radius: 4px; background: #fff; border: 1px solid var(--aiol-line); font-size: 13.5px; font-weight: 600; line-height: 1.3; color: var(--aiol-ink); }
-#aiol .aiol-labcard__foot { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-top: 20px; padding-top: 18px; border-top: 1px dashed var(--aiol-line); }
-#aiol .aiol-labcard__price { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; color: var(--aiol-ink); }
-#aiol .aiol-labcard__price small { font-family: var(--aiol-sans); font-size: 14px; font-weight: 600; color: var(--aiol-muted); }
+#aiol .aiol-labcard__tools li { padding: 5px 11px; border-radius: 999px; background: #fff; border: 1px solid var(--aiol-line); font-size: 13.5px; font-weight: 600; line-height: 1.3; color: var(--aiol-ink); transition: transform .2s ease, border-color .2s ease; }
+#aiol .aiol-labcard__tools li:hover { transform: translateY(-2px); border-color: var(--aiol-gold); }
+#aiol .aiol-labcard__foot { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--aiol-line); }
+#aiol .aiol-labcard__price { font-size: 30px; font-weight: 800; line-height: 1; letter-spacing: -.02em; color: var(--aiol-ink); }
+#aiol .aiol-labcard__price small { font-size: 14px; font-weight: 600; letter-spacing: 0; color: var(--aiol-muted); }
 #aiol .aiol-labcard__extra { font-size: 13.5px; color: var(--aiol-muted); }
-@media (min-width: 768px) { #aiol .aiol-labcard { padding: 34px; } #aiol .aiol-labcard::before { left: 34px; right: 34px; } }
+@media (min-width: 768px) { #aiol .aiol-labcard { padding: 30px; } }
 
-/* ---------- Dla kogo ---------- */
-#aiol .aiol-who { display: grid; gap: 40px; }
-#aiol .aiol-who__label { margin-bottom: 16px; font-weight: 600; color: var(--aiol-ink); }
-#aiol .aiol-chips { display: flex; flex-wrap: wrap; gap: 10px; }
-#aiol .aiol-chips li { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 6px; font-size: 17px; font-weight: 600; line-height: 1.3; color: var(--aiol-ink); }
+/* ---------- Klienci: przewijana taśma ---------- */
+#aiol .aiol-trust { padding: 14px 0; border-top: 1px solid var(--aiol-line); border-bottom: 1px solid var(--aiol-line); background: #fff; }
+#aiol .aiol-trust__in { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; }
+#aiol .aiol-trust__label { flex: none; font-size: 13px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--aiol-gold-dark); }
+#aiol .aiol-marquee { flex: 1 1 320px; min-width: 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+#aiol .aiol-marquee__track { display: flex; width: max-content; animation: aiol-marquee 38s linear infinite; }
+#aiol .aiol-marquee:hover .aiol-marquee__track { animation-play-state: paused; }
+#aiol .aiol-marquee__track li { display: inline-flex; align-items: center; padding: 6px 0; font-size: 19px; font-weight: 700; letter-spacing: -.01em; line-height: 1.3; color: #8b8b8b; white-space: nowrap; transition: color .2s ease; }
+#aiol .aiol-marquee__track li:hover { color: var(--aiol-ink); }
+#aiol .aiol-marquee__track li::after { content: "✦"; margin: 0 26px; font-size: 13px; color: var(--aiol-gold); }
+@keyframes aiol-marquee { to { transform: translateX(-50%); } }
+
+/* ---------- O szkoleniu ---------- */
+#aiol .aiol-prob__lead { margin-top: 18px; font-size: clamp(19px, 1.9vw, 24px); line-height: 1.4; color: var(--aiol-muted); text-wrap: balance; }
+#aiol .aiol-prob__lead b { display: block; margin-top: .5em; font-weight: 800; color: var(--aiol-ink); }
+#aiol .aiol-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+#aiol .aiol-chips li { display: inline-flex; align-items: center; gap: 9px; padding: 9px 15px; border-radius: 999px; background: #fff; border: 1px solid var(--aiol-line); font-size: 16px; font-weight: 600; line-height: 1.3; color: var(--aiol-ink); transition: background-color .2s ease, border-color .2s ease, transform .2s ease; }
 #aiol .aiol-chips li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--aiol-gold); }
-#aiol .aiol-callout { display: flex; align-items: center; gap: 16px; margin-top: 24px; padding: 18px 22px; border-radius: 10px; background: #fff; border: 1px solid var(--aiol-line); border-left: 4px solid var(--aiol-cta); color: var(--aiol-ink); font-weight: 600; line-height: 1.45; }
-#aiol .aiol-callout .aiol-ic { background: var(--aiol-gold-soft); color: var(--aiol-gold-dark); width: 40px; height: 40px; }
-#aiol .aiol-who .aiol-callout { max-width: 720px; }
+#aiol .aiol-chips li:hover { background: var(--aiol-gold-soft); border-color: var(--aiol-gold); transform: translateY(-2px); }
+#aiol .aiol-tile--ink .aiol-chips li { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14); color: #fff; }
+#aiol .aiol-tile--ink .aiol-chips li:hover { background: rgba(247,197,49,.14); border-color: var(--aiol-cta); }
+#aiol .aiol-who__label { margin-top: 18px; font-weight: 600; color: var(--aiol-ink); }
+#aiol .aiol-nos3 { display: grid; gap: 10px; }
+#aiol .aiol-nos3 li { display: flex; align-items: center; gap: 14px; font-size: 18px; font-weight: 700; line-height: 1.35; color: var(--aiol-ink); }
+#aiol .aiol-nos3 .aiol-ic { width: 40px; height: 40px; border-radius: 50%; background: #fff; color: var(--aiol-ink); }
+#aiol .aiol-nos3 .aiol-ic .aiol-i { width: 18px; height: 18px; stroke-width: 2.5; }
+#aiol .aiol-check-big { display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--aiol-cta); color: var(--aiol-ink); }
+#aiol .aiol-check-big .aiol-i { width: 28px; height: 28px; stroke-width: 2.6; }
+@media (min-width: 768px) { #aiol .aiol-nos3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; } }
 
-/* ---------- Program ---------- */
-#aiol .aiol-modules { display: grid; gap: 20px; }
-#aiol .aiol-module { position: relative; padding: 28px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; transition: border-color .2s ease, box-shadow .2s ease; }
-#aiol .aiol-module:hover { border-color: #cfcfcf; box-shadow: 0 30px 60px -40px rgba(20,20,20,.35); }
-#aiol .aiol-module__top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
-#aiol .aiol-module__num { font-size: 44px; font-weight: 800; line-height: 1; letter-spacing: -.04em; color: var(--aiol-gold); font-variant-numeric: tabular-nums; }
-#aiol .aiol-module h3 { font-size: 22px; font-weight: 700; line-height: 1.25; letter-spacing: -.01em; margin-bottom: 10px; }
-#aiol .aiol-module__intro { margin-bottom: 18px; color: var(--aiol-muted); }
-#aiol .aiol-module__intro strong { color: var(--aiol-ink); }
-#aiol .aiol-list--cols { display: grid; gap: 10px 36px; }
-#aiol .aiol-list--cols li + li { margin-top: 0; }
-@media (min-width: 768px) {
-  #aiol .aiol-module { padding: 38px; }
-  #aiol .aiol-list--cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (min-width: 900px) {
-  #aiol .aiol-modules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  #aiol .aiol-module--wide { grid-column: 1 / -1; }
-}
-
-/* Łańcuch: kontekst -> zadanie -> materiał -> wymagania -> rezultat */
-#aiol .aiol-chain { display: grid; gap: 14px; }
-#aiol .aiol-chain li { position: relative; display: flex; align-items: center; gap: 14px; padding: 16px 18px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 8px; font-size: 17px; font-weight: 700; line-height: 1.3; color: var(--aiol-ink); }
-#aiol .aiol-chain li:last-child { background: var(--aiol-ink); border-color: var(--aiol-ink); color: #fff; }
-#aiol .aiol-chain__n { font-size: 12px; font-weight: 700; letter-spacing: .14em; color: var(--aiol-gold-dark); }
-#aiol .aiol-chain li:last-child .aiol-chain__n { color: var(--aiol-cta); }
-#aiol .aiol-chain li:not(:last-child)::before { content: ""; position: absolute; z-index: 1; left: 22px; bottom: -17px; width: 24px; height: 24px; border-radius: 50%; background: #fff; border: 1px solid var(--aiol-line); }
-#aiol .aiol-chain li:not(:last-child)::after {
-  content: ""; position: absolute; z-index: 2; left: 29px; bottom: -10px; width: 10px; height: 10px; background: var(--aiol-gold-dark); transform: rotate(90deg);
-  -webkit-mask: var(--aiol-arrow) center / contain no-repeat; mask: var(--aiol-arrow) center / contain no-repeat;
-}
-@media (min-width: 768px) {
-  #aiol .aiol-chain { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
-  #aiol .aiol-chain li { flex-direction: column; align-items: flex-start; justify-content: center; gap: 6px; min-height: 96px; }
-  #aiol .aiol-chain li:not(:last-child)::before { left: auto; right: -22px; top: 50%; bottom: auto; transform: translateY(-50%); }
-  #aiol .aiol-chain li:not(:last-child)::after { left: auto; right: -15px; top: 50%; bottom: auto; transform: translateY(-50%); }
-}
-
-/* ---------- Ciemny pas: zadanie zamiast promptu ---------- */
-
-/* ---------- Po szkoleniu ---------- */
-#aiol .aiol-outcomes { display: grid; gap: 16px; }
-#aiol .aiol-outcome { display: flex; flex-direction: column; gap: 18px; padding: 26px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; }
-#aiol .aiol-outcome p { font-size: 18px; font-weight: 700; line-height: 1.35; color: var(--aiol-ink); }
-#aiol .aiol-outcome p::first-letter { text-transform: uppercase; }
-#aiol .aiol-bridge { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; margin-top: 40px; padding: 28px; border-radius: 12px; background: #fff; border: 1px solid var(--aiol-line); }
-#aiol .aiol-bridge p { max-width: 560px; font-size: 18px; font-weight: 600; color: var(--aiol-ink); }
-@media (min-width: 640px) { #aiol .aiol-outcomes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1100px) { #aiol .aiol-outcomes { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-@media (min-width: 768px) { #aiol .aiol-bridge { padding: 32px 40px; } }
-
-/* ---------- Cena ---------- */
-#aiol .aiol-price { display: grid; max-width: 1040px; margin: 0 auto; overflow: hidden; background: #fff; border: 1px solid var(--aiol-line); border-radius: 14px; box-shadow: 0 50px 90px -50px rgba(20,20,20,.45); }
-#aiol .aiol-price__main { position: relative; padding: 36px 26px; background: #fff; border-bottom: 1px solid var(--aiol-line); }
-#aiol .aiol-price__name { font-size: 12.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--aiol-gold-dark); }
-#aiol .aiol-price__title { margin-top: 6px; font-size: 24px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; color: var(--aiol-ink); }
-#aiol .aiol-price__amount { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin: 26px 0 6px; }
-#aiol .aiol-price__value { font-size: clamp(36px, 3.9vw, 56px); font-weight: 800; line-height: 1; letter-spacing: -0.03em; color: var(--aiol-ink); }
-#aiol .aiol-price__tax { font-size: 18px; font-weight: 600; color: var(--aiol-ink); }
-#aiol .aiol-price__meta { margin-bottom: 30px; }
-#aiol .aiol-price__notes { display: grid; gap: 8px; margin-top: 22px; font-size: 15px; line-height: 1.45; }
-#aiol .aiol-price__notes li { display: flex; align-items: center; gap: 10px; }
-#aiol .aiol-price__notes .aiol-i { width: 16px; height: 16px; color: var(--aiol-gold); stroke-width: 2.5; }
-#aiol .aiol-price__incl { padding: 36px 26px; }
-#aiol .aiol-price__label { margin-bottom: 20px; font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aiol-gold-dark); }
-#aiol .aiol-incl { display: grid; gap: 14px; }
-#aiol .aiol-incl li { display: flex; align-items: center; gap: 16px; font-size: 16px; font-weight: 600; line-height: 1.5; color: var(--aiol-ink); }
-#aiol .aiol-incl .aiol-ic { width: 42px; height: 42px; }
-#aiol .aiol-incl .aiol-ic .aiol-i { width: 20px; height: 20px; }
-@media (min-width: 768px) { #aiol .aiol-price__main, #aiol .aiol-price__incl { padding: 48px; } }
-@media (min-width: 900px) { #aiol .aiol-price { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); } #aiol .aiol-price__main { border-bottom: 0; border-right: 1px solid var(--aiol-line); } }
-
-/* ---------- Ścieżka: FUNDAMENT -> SYSTEM ---------- */
-#aiol .aiol-path { display: grid; gap: 16px; align-items: stretch; }
-#aiol .aiol-step { padding: 30px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; }
-#aiol .aiol-step--now { background: #fff; }
-#aiol .aiol-step--next { border: 2px solid var(--aiol-gold); }
-#aiol .aiol-step__tag { display: inline-block; margin-bottom: 18px; padding: 6px 12px; border-radius: 4px; background: var(--aiol-ink); color: #fff; font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; line-height: 1.3; }
-#aiol .aiol-step--next .aiol-step__tag { background: var(--aiol-gold); color: #fff; }
-#aiol .aiol-step__code { font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aiol-muted); }
-#aiol .aiol-step h3 { margin: 4px 0 14px; font-size: clamp(24px, 2.4vw, 30px); font-weight: 800; letter-spacing: -0.01em; }
-#aiol .aiol-step__q { font-size: 19px; font-weight: 600; line-height: 1.45; color: var(--aiol-ink); }
-#aiol .aiol-step__more { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--aiol-line); font-size: 16px; }
-#aiol .aiol-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-#aiol .aiol-tags li { padding: 6px 12px; border-radius: 4px; background: var(--aiol-gold-soft); color: var(--aiol-ink); font-size: 14.5px; font-weight: 600; line-height: 1.3; }
-#aiol .aiol-path__arrow { display: grid; place-items: center; color: var(--aiol-gold); }
-#aiol .aiol-path__arrow .aiol-i { width: 32px; height: 32px; transform: rotate(90deg); }
-@media (min-width: 900px) {
-  #aiol .aiol-path { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.35fr); align-items: center; gap: 24px; }
-  #aiol .aiol-path__arrow .aiol-i { transform: none; }
-  #aiol .aiol-step { padding: 38px; }
-}
-
-/* ---------- Prowadząca ---------- */
-#aiol .aiol-photo { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 5; max-width: 440px; overflow: hidden; border-radius: 12px; background: var(--aiol-soft); border: 1px solid var(--aiol-line); }
-#aiol .aiol-photo__initials { font-size: 96px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: #d0d0d0; }
-#aiol .aiol-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+/* ---------- Puenta ---------- */
+#aiol .aiol-punch__box { position: relative; overflow: hidden; padding: 40px 20px; border-radius: 28px; background: var(--aiol-soft); text-align: center; }
+#aiol .aiol-punch__text { max-width: 26ch; margin: 0 auto; font-size: clamp(28px, 3.8vw, 50px); font-weight: 800; line-height: 1.18; letter-spacing: -.02em; color: var(--aiol-ink); text-wrap: balance; }
+#aiol .aiol-punch__sub { max-width: 700px; margin: 20px auto 0; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.5; color: var(--aiol-text); text-wrap: pretty; }
+#aiol .aiol-punch__pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 22px; }
+#aiol .aiol-punch__pills li { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; background: #fff; font-size: 15px; font-weight: 700; color: var(--aiol-ink); box-shadow: 0 10px 24px -16px rgba(20,20,20,.5); }
+#aiol .aiol-punch__pills .aiol-i { width: 16px; height: 16px; color: var(--aiol-gold); }
+@media (min-width: 768px) { #aiol .aiol-punch__box { padding: 64px 48px; } }
 
 /* ---------- Opinie ---------- */
-#aiol .aiol-quotes { display: grid; gap: 20px; margin-top: 40px; }
-#aiol .aiol-quote { display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: 32px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; }
-#aiol .aiol-quote__mark { width: 38px; height: 38px; color: var(--aiol-gold); fill: var(--aiol-gold-soft); }
-#aiol .aiol-quote blockquote { margin-top: 18px; }
-#aiol .aiol-quote blockquote p { font-size: 17px; font-weight: 500; line-height: 1.5; color: var(--aiol-ink); }
-#aiol .aiol-quote figcaption { display: flex; align-items: center; gap: 14px; padding-top: 22px; border-top: 1px solid var(--aiol-line); line-height: 1.4; }
-#aiol .aiol-avatar { display: grid; place-items: center; flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; background: var(--aiol-gold-soft); color: var(--aiol-gold-dark); font-weight: 700; font-size: 15px; letter-spacing: .04em; }
+#aiol .aiol-quotehead { margin: 4px 0 14px; font-size: clamp(26px, 2.6vw, 34px); line-height: 1.15; letter-spacing: -.02em; text-indent: -.42em; text-wrap: balance; }
+#aiol .aiol-byline { font-size: 15px; font-weight: 600; line-height: 1.45; color: var(--aiol-muted); }
+#aiol .aiol-quote { display: flex; flex-direction: column; justify-content: space-between; gap: 22px; }
+#aiol .aiol-quote__mark { width: 40px; height: 40px; color: var(--aiol-gold); fill: var(--aiol-gold-soft); }
+#aiol .aiol-quote blockquote { margin-top: 14px; }
+#aiol .aiol-quote blockquote p { font-size: 17px; font-weight: 500; line-height: 1.55; color: var(--aiol-ink); }
+#aiol .aiol-quote figcaption { display: flex; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid var(--aiol-line); line-height: 1.4; }
+#aiol .aiol-avatar { display: grid; place-items: center; flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%; background: var(--aiol-cta); color: var(--aiol-ink); font-size: 15px; font-weight: 800; letter-spacing: .04em; }
 #aiol .aiol-quote__name { display: block; font-weight: 700; color: var(--aiol-ink); }
 #aiol .aiol-quote__role { display: block; font-size: 14px; color: var(--aiol-muted); }
-@media (min-width: 900px) { #aiol .aiol-quotes { grid-template-columns: repeat(2, minmax(0, 1fr)); } #aiol .aiol-quote { padding: 40px; } }
 
-/* ---------- Dla firm + kontakt ---------- */
-#aiol .aiol-b2b { display: grid; gap: 40px; }
-#aiol .aiol-b2b__ask { font-size: 20px; font-weight: 600; color: var(--aiol-ink); margin-bottom: 16px; }
-#aiol .aiol-b2b .aiol-chips { margin-top: 28px; }
-#aiol .aiol-contact { padding: 28px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; box-shadow: 0 40px 70px -45px rgba(20,20,20,.35); }
-#aiol .aiol-contact h3 { margin-bottom: 4px; font-size: 24px; }
-#aiol .aiol-contact__block { padding: 22px 0; border-bottom: 1px solid var(--aiol-line); }
-#aiol .aiol-contact__label { margin-bottom: 6px; font-size: 11.5px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--aiol-gold-dark); }
-#aiol .aiol-contact__name { margin-bottom: 10px; font-size: 18px; font-weight: 700; color: var(--aiol-ink); }
-#aiol .aiol-contact a { display: flex; align-items: center; gap: 12px; padding: 5px 0; font-weight: 500; line-height: 1.4; color: var(--aiol-ink); transition: color .2s ease; }
-#aiol .aiol-contact a span { overflow-wrap: anywhere; }
-#aiol .aiol-contact a:hover { color: var(--aiol-gold-dark); }
-#aiol .aiol-contact a .aiol-i { width: 18px; height: 18px; color: var(--aiol-gold); }
-#aiol .aiol-contact__foot { padding-top: 18px; font-size: 13.5px; color: var(--aiol-muted); }
-@media (min-width: 768px) { #aiol .aiol-contact { padding: 40px; } }
-@media (min-width: 992px) { #aiol .aiol-b2b { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 80px; align-items: center; } }
+/* ---------- Program ---------- */
+#aiol .aiol-module__top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+#aiol .aiol-module__num { font-size: 44px; font-weight: 800; line-height: 1; letter-spacing: -.04em; color: var(--aiol-gold); font-variant-numeric: tabular-nums; }
+#aiol .aiol-module h3 { margin-bottom: 8px; font-size: 22px; font-weight: 800; line-height: 1.25; letter-spacing: -.01em; }
+#aiol .aiol-module__intro { margin-bottom: 14px; color: var(--aiol-muted); }
+#aiol .aiol-module__intro strong { color: var(--aiol-ink); }
+#aiol .aiol-list--cols { display: grid; gap: 9px 32px; }
+#aiol .aiol-list--cols li + li { margin-top: 0; }
+@media (min-width: 768px) { #aiol .aiol-list--cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-/* ---------- FAQ ---------- */
-#aiol .aiol-faq { display: grid; gap: 40px; }
-#aiol .aiol-faq__help { margin-top: 18px; color: var(--aiol-muted); }
-#aiol .aiol-faq__help a { color: var(--aiol-ink); font-weight: 600; border-bottom: 1px solid var(--aiol-gold); overflow-wrap: anywhere; }
-#aiol .aiol-faq__help a:hover { color: var(--aiol-gold-dark); }
-#aiol .aiol-faq__nav { display: none; }
-#aiol .aiol-faq__group + .aiol-faq__group { margin-top: 48px; }
-#aiol .aiol-faq__group { scroll-margin-top: 100px; }
-#aiol .aiol-faq__group h3 { margin-bottom: 10px; font-family: var(--aiol-sans); font-size: 13px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: var(--aiol-gold-dark); }
-#aiol .aiol-qa { border-bottom: 1px solid var(--aiol-line); }
-#aiol .aiol-qa summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 0; cursor: pointer; list-style: none; font-size: 19px; font-weight: 700; line-height: 1.3; color: var(--aiol-ink); transition: color .2s ease; }
-#aiol .aiol-qa summary::-webkit-details-marker { display: none; }
-#aiol .aiol-qa summary::marker { content: ""; }
-#aiol .aiol-qa summary:hover { color: var(--aiol-gold-dark); }
-#aiol .aiol-qa__ico { display: grid; place-items: center; flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--aiol-soft); border: 1px solid var(--aiol-line); color: var(--aiol-ink); transition: transform .25s ease, background-color .25s ease; }
-#aiol .aiol-qa__ico .aiol-i { width: 16px; height: 16px; stroke-width: 2.5; }
-#aiol .aiol-qa[open] .aiol-qa__ico { transform: rotate(45deg); background: var(--aiol-cta); border-color: var(--aiol-cta); }
-#aiol .aiol-qa__a { padding: 0 54px 24px 0; font-size: 17.5px; line-height: 1.6; }
-#aiol .aiol-qa__a p + p { margin-top: 12px; }
-@media (min-width: 992px) {
-  #aiol .aiol-faq { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 80px; }
-  #aiol .aiol-faq__aside { position: sticky; top: 110px; align-self: start; }
-  #aiol .aiol-faq__nav { display: grid; gap: 2px; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--aiol-line); }
-  #aiol .aiol-faq__nav a { padding: 7px 0; font-weight: 600; color: var(--aiol-muted); transition: color .2s ease; }
-  #aiol .aiol-faq__nav a:hover { color: var(--aiol-ink); }
+/* Łańcuch: kontekst -> zadanie -> materiał -> wymagania -> rezultat (kroki rozświetlają się po kolei) */
+#aiol .aiol-chain { display: grid; gap: 12px; }
+#aiol .aiol-chain li { position: relative; display: flex; align-items: center; gap: 12px; padding: 15px 18px; border-radius: 14px; background: var(--aiol-soft); border: 1px solid transparent; font-size: 17px; font-weight: 700; line-height: 1.3; color: var(--aiol-ink); }
+#aiol .aiol-chain li:not(:last-child) { animation: aiol-chain 6s ease-in-out infinite; }
+#aiol .aiol-chain li:nth-child(2) { animation-delay: 1s; }
+#aiol .aiol-chain li:nth-child(3) { animation-delay: 2s; }
+#aiol .aiol-chain li:nth-child(4) { animation-delay: 3s; }
+#aiol .aiol-chain li:last-child { background: var(--aiol-ink); color: #fff; }
+#aiol .aiol-chain__n { font-size: 12px; font-weight: 800; letter-spacing: .12em; color: var(--aiol-gold-dark); }
+#aiol .aiol-chain li:last-child .aiol-chain__n { color: var(--aiol-cta); }
+#aiol .aiol-chain li:not(:last-child)::before { content: ""; position: absolute; z-index: 1; left: 22px; bottom: -16px; width: 22px; height: 22px; border-radius: 50%; background: #fff; border: 1px solid var(--aiol-line); }
+#aiol .aiol-chain li:not(:last-child)::after {
+  content: ""; position: absolute; z-index: 2; left: 28px; bottom: -10px; width: 10px; height: 10px; background: var(--aiol-gold-dark); transform: rotate(90deg);
+  -webkit-mask: var(--aiol-arrow) center / contain no-repeat; mask: var(--aiol-arrow) center / contain no-repeat;
+}
+@keyframes aiol-chain { 0%, 22%, 100% { background: var(--aiol-soft); border-color: transparent; } 8%, 14% { background: var(--aiol-gold-soft); border-color: var(--aiol-gold); } }
+@media (min-width: 768px) {
+  #aiol .aiol-chain { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+  #aiol .aiol-chain li { flex-direction: column; align-items: flex-start; justify-content: center; gap: 6px; min-height: 92px; }
+  #aiol .aiol-chain li:not(:last-child)::before { left: auto; right: -20px; top: 50%; bottom: auto; transform: translateY(-50%); }
+  #aiol .aiol-chain li:not(:last-child)::after { left: auto; right: -14px; top: 50%; bottom: auto; transform: translateY(-50%); }
 }
 
-/* ---------- Finał ---------- */
-#aiol .aiol-final { text-align: center; }
-#aiol .aiol-final h2 { font-size: clamp(30px, 3.6vw, 52px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; }
-#aiol .aiol-final__facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 26px 0 38px; }
-#aiol .aiol-final__facts li { padding: 9px 18px; border-radius: 4px; border: 1px solid var(--aiol-line); font-weight: 600; line-height: 1.3; color: var(--aiol-ink); }
-#aiol .aiol-final__small { margin-top: 22px; font-size: 14.5px; color: var(--aiol-muted); }
+/* ---------- Po szkoleniu + ścieżka ---------- */
+#aiol .aiol-outcome { display: flex; flex-direction: column; justify-content: space-between; gap: 18px; }
+@media (min-width: 700px) { #aiol .aiol-outcome { min-height: 172px; } }
+#aiol .aiol-outcome__top { display: flex; align-items: center; justify-content: space-between; }
+#aiol .aiol-outcome__n { font-size: 13px; font-weight: 800; letter-spacing: .12em; color: var(--aiol-muted); }
+#aiol .aiol-outcome p { font-size: 19px; font-weight: 800; line-height: 1.3; letter-spacing: -.01em; color: var(--aiol-ink); }
+#aiol .aiol-outcome p::first-letter { text-transform: uppercase; }
+#aiol .aiol-path { display: grid; gap: 10px; margin: 16px 0; align-items: stretch; }
+#aiol .aiol-step { padding: 18px; border-radius: 16px; background: var(--aiol-soft); }
+#aiol .aiol-step--next { background: #fff; border: 2px solid var(--aiol-gold); }
+#aiol .aiol-step__tag { display: inline-block; margin-bottom: 10px; padding: 4px 10px; border-radius: 999px; background: var(--aiol-ink); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; line-height: 1.3; }
+#aiol .aiol-step--next .aiol-step__tag { background: var(--aiol-gold); }
+#aiol .aiol-step__code { font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--aiol-muted); }
+#aiol .aiol-step__name { margin: 2px 0 6px; font-size: 24px; font-weight: 800; line-height: 1.1; letter-spacing: -.01em; color: var(--aiol-ink); }
+#aiol .aiol-step__q { font-size: 16px; font-weight: 600; line-height: 1.4; color: var(--aiol-ink); }
+#aiol .aiol-path__arrow { display: grid; place-items: center; color: var(--aiol-gold); }
+#aiol .aiol-path__arrow .aiol-i { width: 28px; height: 28px; transform: rotate(90deg); animation: aiol-nudge 2.4s ease-in-out infinite; }
+@keyframes aiol-nudge { 0%, 100% { translate: 0 0; } 50% { translate: 0 4px; } }
+#aiol .aiol-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+#aiol .aiol-tags li { padding: 5px 12px; border-radius: 999px; background: var(--aiol-gold-soft); color: var(--aiol-ink); font-size: 14px; font-weight: 600; line-height: 1.3; transition: background-color .2s ease; }
+#aiol .aiol-tags li:hover { background: var(--aiol-cta); }
+@media (min-width: 600px) {
+  #aiol .aiol-path { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.25fr); align-items: center; }
+  #aiol .aiol-path__arrow .aiol-i { transform: none; }
+  @keyframes aiol-nudge { 0%, 100% { translate: 0 0; } 50% { translate: 4px 0; } }
+}
 
-/* ---------- Pływający pasek ---------- */
-#aiol .aiol-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9990; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); transform: translateY(120%); visibility: hidden; transition: transform .3s ease, visibility .3s ease; }
-#aiol .aiol-sticky.is-visible { transform: none; visibility: visible; }
-#aiol .aiol-sticky__in { display: flex; align-items: center; justify-content: space-between; gap: 14px; max-width: 720px; margin: 0 auto; padding: 8px 8px 8px 20px; border-radius: 8px; background: rgba(25,23,19,.96); box-shadow: 0 20px 40px -14px rgba(0,0,0,.5); color: #fff; }
-#aiol .aiol-sticky__txt { display: flex; flex-direction: column; min-width: 0; line-height: 1.3; }
-#aiol .aiol-sticky__txt strong { color: #fff; font-size: 15px; white-space: nowrap; }
-#aiol .aiol-sticky__txt span { overflow: hidden; font-size: 13px; color: var(--aiol-on-dark); white-space: nowrap; text-overflow: ellipsis; }
+/* ---------- Pytania z sali ---------- */
+#aiol .aiol-qcard { display: flex; flex-direction: column; gap: 14px; }
+#aiol .aiol-qcard__mark { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: var(--aiol-gold-dark); font-size: 22px; font-weight: 800; line-height: 1; }
+#aiol .aiol-tile--ink .aiol-qcard__mark { background: var(--aiol-cta); color: var(--aiol-ink); }
+#aiol .aiol-qcard__q { font-size: clamp(21px, 1.9vw, 25px); line-height: 1.2; letter-spacing: -.015em; text-wrap: balance; }
+#aiol .aiol-qcard__a p { font-size: 16.5px; line-height: 1.55; }
+#aiol .aiol-qcard__a p:first-child { font-size: 19px; font-weight: 800; color: var(--aiol-ink); }
+#aiol .aiol-tile--ink .aiol-qcard__a p:first-child { color: var(--aiol-cta); }
+#aiol .aiol-qcard__a p + p { margin-top: 8px; }
+#aiol .aiol-qcard__note { margin-top: 12px !important; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.14); font-size: 14px !important; color: #a7a7a7; }
 
-/* ---------- Formularz zgłoszenia ---------- */
-#aiol .aiol-link { color: var(--aiol-ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--aiol-gold); text-underline-offset: 3px; }
-#aiol .aiol-link:hover { color: var(--aiol-gold-dark); }
-#aiol .aiol-signup { display: grid; gap: 24px; align-items: start; }
-#aiol .aiol-form, #aiol .aiol-done { padding: 26px 22px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; box-shadow: 0 40px 70px -45px rgba(20,20,20,.35); }
-#aiol .aiol-fields { display: grid; gap: 18px 20px; }
+/* ---------- Prowadząca ---------- */
+#aiol .aiol-tile--photo { padding: 0; min-height: 360px; background: var(--aiol-soft); border-color: transparent; }
+#aiol .aiol-photo { position: relative; display: grid; place-items: center; width: 100%; height: 100%; min-height: inherit; overflow: hidden; }
+#aiol .aiol-photo__initials { font-size: 110px; font-weight: 800; line-height: 1; letter-spacing: -.05em; color: #d4d4d4; }
+#aiol .aiol-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .8s var(--aiol-ease); }
+#aiol .aiol-tile--photo:hover .aiol-photo img { transform: scale(1.04); }
+#aiol .aiol-host__lead { margin-top: 16px; font-size: clamp(19px, 1.9vw, 24px); font-weight: 700; line-height: 1.35; color: var(--aiol-ink); text-wrap: pretty; }
+#aiol .aiol-host__lead::before { content: "„"; color: var(--aiol-gold); }
+#aiol .aiol-host__lead::after { content: "”"; color: var(--aiol-gold); }
+#aiol .aiol-host__p { max-width: 640px; margin-top: 12px; font-size: 17px; line-height: 1.55; color: var(--aiol-muted); }
+#aiol .aiol-num { display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; }
+@media (min-width: 700px) { #aiol .aiol-num { min-height: 170px; } }
+#aiol .aiol-num b { display: block; font-size: clamp(44px, 5vw, 72px); font-weight: 800; line-height: .95; letter-spacing: -.035em; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--aiol-ink); }
+#aiol .aiol-tile--ink.aiol-num b { color: var(--aiol-cta); }
+#aiol .aiol-num span { display: block; font-size: 14px; font-weight: 700; line-height: 1.4; letter-spacing: .1em; text-transform: uppercase; }
+#aiol .aiol-facts4 { display: grid; gap: 14px 28px; }
+#aiol .aiol-facts4 li { display: flex; align-items: flex-start; gap: 14px; font-size: 16.5px; line-height: 1.5; color: var(--aiol-muted); }
+#aiol .aiol-facts4 .aiol-ic { width: 40px; height: 40px; background: #fff; }
+#aiol .aiol-facts4 strong { font-weight: 700; color: var(--aiol-ink); }
+@media (min-width: 768px) { #aiol .aiol-facts4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { #aiol .aiol-tile--photo { min-height: 0; } }
+
+/* ---------- Cena i formularz ---------- */
+#aiol .aiol-signup { display: grid; gap: 18px; align-items: start; }
+@media (min-width: 992px) {
+  #aiol .aiol-signup { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 24px; }
+}
+/* Karta z ceną jedzie obok formularza tylko na wysokich ekranach, na których mieści się cała */
+@media (min-width: 992px) and (min-height: 1040px) { #aiol .aiol-pricecard { position: sticky; top: 110px; } }
+#aiol .aiol-pricecard { overflow: hidden; border-radius: 24px; background: #fff; border: 1px solid var(--aiol-line); box-shadow: 0 40px 70px -45px rgba(20,20,20,.4); }
+#aiol .aiol-pricecard__top { position: relative; overflow: hidden; padding: 26px; background: var(--aiol-ink); color: #cfcfcf; }
+#aiol .aiol-pricecard__top::after { content: ""; position: absolute; right: -30%; top: -60%; width: 80%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(247,197,49,.28), rgba(247,197,49,0) 65%); animation: aiol-drift 14s ease-in-out infinite alternate; pointer-events: none; }
+#aiol .aiol-pricecard__top > * { position: relative; z-index: 1; }
+#aiol .aiol-pricecard__name { font-size: 13px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--aiol-cta); }
+#aiol .aiol-pricecard__name strong { color: #fff; }
+#aiol .aiol-pricecard__amount { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-top: 12px; }
+#aiol .aiol-pricecard__value { font-size: clamp(44px, 4.4vw, 60px); font-weight: 800; line-height: 1; letter-spacing: -.03em; color: #fff; }
+#aiol .aiol-pricecard__amount span:last-child { font-size: 16px; font-weight: 600; color: #fff; }
+#aiol .aiol-pricecard__meta { margin-top: 8px; font-size: 15px; }
+#aiol .aiol-pricecard__body { padding: 22px 26px 26px; }
+#aiol .aiol-summary__rows > div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--aiol-line); font-size: 15px; line-height: 1.4; }
+#aiol .aiol-summary__rows dt { color: var(--aiol-muted); font-weight: 500; }
+#aiol .aiol-summary__rows dd { color: var(--aiol-ink); font-weight: 700; text-align: right; }
+#aiol .aiol-summary__total { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding: 12px 0 4px; }
+#aiol .aiol-summary__total span { flex-basis: 100%; font-size: 12.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--aiol-muted); }
+#aiol .aiol-summary__total strong { font-size: 40px; font-weight: 800; line-height: 1.05; letter-spacing: -.03em; color: var(--aiol-ink); transition: color .3s ease; }
+#aiol .aiol-summary__total strong.is-bump { animation: aiol-bump .45s var(--aiol-ease); }
+@keyframes aiol-bump { 0% { transform: scale(1); } 40% { transform: scale(1.08); color: var(--aiol-gold); } 100% { transform: scale(1); } }
+#aiol .aiol-summary__total strong { display: inline-block; transform-origin: 0 70%; }
+#aiol .aiol-summary__total small { font-size: 15px; font-weight: 600; color: var(--aiol-ink); }
+#aiol .aiol-pricecard__label { margin: 18px 0 10px; font-size: 12.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--aiol-gold-dark); }
+#aiol .aiol-incl { display: grid; gap: 8px; }
+#aiol .aiol-incl li { display: flex; align-items: center; gap: 12px; font-size: 15.5px; font-weight: 600; line-height: 1.4; color: var(--aiol-ink); }
+#aiol .aiol-incl .aiol-ic { width: 34px; height: 34px; border-radius: 10px; }
+#aiol .aiol-incl .aiol-ic .aiol-i { width: 17px; height: 17px; }
+#aiol .aiol-price__notes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+#aiol .aiol-price__notes li { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: var(--aiol-soft); font-size: 13.5px; font-weight: 600; line-height: 1.3; color: var(--aiol-ink); }
+#aiol .aiol-price__notes .aiol-i { width: 14px; height: 14px; color: var(--aiol-gold); stroke-width: 2.6; }
+#aiol .aiol-summary__help { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--aiol-line); font-size: 14px; line-height: 1.7; }
+#aiol .aiol-summary__help a { color: var(--aiol-ink); font-weight: 700; overflow-wrap: anywhere; }
+#aiol .aiol-summary__help a:hover { color: var(--aiol-gold-dark); }
+#aiol .aiol-signup__form { scroll-margin-top: 100px; }
+#aiol .aiol-form__title { margin-bottom: 18px; font-size: clamp(24px, 2.4vw, 30px); line-height: 1.15; }
+
+#aiol .aiol-form, #aiol .aiol-done { padding: 24px 20px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 24px; box-shadow: 0 40px 70px -45px rgba(20,20,20,.35); }
+#aiol .aiol-fields { display: grid; gap: 16px 18px; }
 #aiol .aiol-label {
   display: block; float: none; width: auto; margin: 0 0 7px;
   font-family: var(--aiol-sans); font-size: 14.5px; font-weight: 600; line-height: 1.4;
@@ -394,23 +490,26 @@
 #aiol .aiol-input {
   display: block; width: 100%; max-width: 100%; height: auto; min-height: 50px; margin: 0; padding: 12px 14px;
   font-family: var(--aiol-sans); font-size: 16px; font-weight: 400; line-height: 1.4; letter-spacing: 0; text-transform: none;
-  color: var(--aiol-ink); background: #fff; border: 1px solid #d4d4d4; border-radius: 6px; box-shadow: none; outline: 0;
-  -webkit-appearance: none; appearance: none; transition: border-color .2s ease, box-shadow .2s ease;
+  color: var(--aiol-ink); background: var(--aiol-soft); border: 1px solid transparent; border-radius: 12px; box-shadow: none; outline: 0;
+  -webkit-appearance: none; appearance: none; transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
 }
 #aiol textarea.aiol-input { min-height: 80px; resize: vertical; }
 #aiol select.aiol-input {
   padding-right: 42px; cursor: pointer;
-  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23141414' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center / 16px;
+  background: var(--aiol-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23141414' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center / 16px;
 }
-#aiol .aiol-input:hover { border-color: #a3a3a3; }
-#aiol .aiol-input:focus { border-color: var(--aiol-gold); box-shadow: 0 0 0 3px rgba(173,134,68,.28); }
-#aiol .aiol-input[aria-invalid="true"] { border-color: #b42318; box-shadow: 0 0 0 3px rgba(180,35,24,.12); }
+#aiol .aiol-input:hover { border-color: #cfcfcf; }
+#aiol .aiol-input:focus { background-color: #fff; border-color: var(--aiol-gold); box-shadow: 0 0 0 4px rgba(247,197,49,.35); }
+#aiol .aiol-input[aria-invalid="true"] { background-color: #fff; border-color: #b42318; box-shadow: 0 0 0 3px rgba(180,35,24,.12); }
+#aiol .aiol-input[aria-invalid="true"] { animation: aiol-shake .35s ease; }
+@keyframes aiol-shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
 #aiol .aiol-hint { margin-top: 6px; font-size: 13.5px; line-height: 1.45; color: var(--aiol-muted); }
 #aiol .aiol-err { margin-top: 6px; font-size: 13.5px; font-weight: 600; line-height: 1.45; color: #b42318; }
 #aiol .aiol-err:empty, #aiol .aiol-form-status:empty { display: none; }
 #aiol .aiol-choices { display: grid; gap: 10px; }
 #aiol .aiol-choice, #aiol .aiol-consent { cursor: pointer; font-family: var(--aiol-sans); text-transform: none; letter-spacing: 0; }
-#aiol .aiol-choice { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 12px 16px; border: 1px solid #d4d4d4; border-radius: 6px; background: #fff; font-size: 15.5px; font-weight: 600; line-height: 1.3; color: var(--aiol-ink); transition: border-color .2s ease, background-color .2s ease; }
+#aiol .aiol-choice { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 12px 16px; border: 1px solid var(--aiol-line); border-radius: 14px; background: #fff; font-size: 15.5px; font-weight: 600; line-height: 1.3; color: var(--aiol-ink); transition: border-color .2s ease, background-color .2s ease, transform .2s ease; }
+#aiol .aiol-choice:hover { transform: translateY(-1px); }
 #aiol .aiol-choice.is-on { border-color: var(--aiol-gold); background: var(--aiol-gold-soft); box-shadow: inset 0 0 0 1px var(--aiol-gold); }
 #aiol .aiol-choice input, #aiol .aiol-consent input {
   display: inline-block; visibility: visible; position: static; clip: auto; clip-path: none;
@@ -418,152 +517,120 @@
   opacity: 1; border: 0; background: none; box-shadow: none; cursor: pointer;
   -webkit-appearance: auto; appearance: auto; accent-color: var(--aiol-ink);
 }
-#aiol .aiol-consents { display: grid; gap: 14px; margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--aiol-line); }
+#aiol .aiol-consents { display: grid; gap: 14px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--aiol-line); }
 #aiol .aiol-consent { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; font-weight: 400; line-height: 1.55; color: var(--aiol-text); }
 #aiol .aiol-consent input { margin-top: 1px; }
 #aiol .aiol-consents .aiol-err { margin: -6px 0 0 32px; }
-#aiol .aiol-form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-top: 26px; }
+#aiol .aiol-form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-top: 24px; }
 #aiol .aiol-form-status { font-size: 14.5px; font-weight: 600; line-height: 1.5; color: #b42318; }
 #aiol button.aiol-btn[disabled] { opacity: .75; cursor: progress; transform: none; }
 #aiol .aiol-hp { position: absolute !important; left: -10000px !important; top: auto; width: 1px; height: 1px; overflow: hidden; }
-#aiol .aiol-done { text-align: center; padding-top: 44px; padding-bottom: 44px; outline: 0; }
-#aiol .aiol-done .aiol-ic { width: 60px; height: 60px; border-radius: 50%; margin-bottom: 18px; background: var(--aiol-cta); color: var(--aiol-ink); }
-#aiol .aiol-done .aiol-ic .aiol-i { width: 28px; height: 28px; stroke-width: 2.5; }
-#aiol .aiol-done h3 { font-size: 30px; margin-bottom: 12px; }
+#aiol .aiol-done { text-align: center; padding-top: 44px; padding-bottom: 44px; outline: 0; animation: aiol-pop .6s var(--aiol-ease); }
+@keyframes aiol-pop { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+#aiol .aiol-done .aiol-ic { width: 64px; height: 64px; border-radius: 50%; margin-bottom: 18px; background: var(--aiol-cta); color: var(--aiol-ink); }
+#aiol .aiol-done .aiol-ic .aiol-i { width: 30px; height: 30px; stroke-width: 2.5; }
+#aiol .aiol-done h3 { margin-bottom: 12px; font-size: 28px; }
 #aiol .aiol-done p { max-width: 460px; margin: 10px auto 0; }
-
-#aiol .aiol-summary { padding: 28px; border-radius: 12px; background: #fff; border: 1px solid var(--aiol-line); color: var(--aiol-text); }
-#aiol .aiol-summary__label { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--aiol-gold-dark); }
-#aiol .aiol-summary__name { margin-top: 8px; font-size: 22px; font-weight: 700; line-height: 1.3; color: var(--aiol-ink); }
-#aiol .aiol-summary__rows { margin-top: 18px; }
-#aiol .aiol-summary__rows > div { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-top: 1px solid var(--aiol-line); font-size: 15px; line-height: 1.4; }
-#aiol .aiol-summary dt { color: var(--aiol-muted); font-weight: 500; }
-#aiol .aiol-summary dd { color: var(--aiol-ink); font-weight: 600; text-align: right; }
-#aiol .aiol-summary__total { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding-top: 16px; border-top: 1px solid var(--aiol-ink); }
-#aiol .aiol-summary__total span { flex-basis: 100%; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--aiol-muted); }
-#aiol .aiol-summary__total strong { font-size: 40px; font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; color: var(--aiol-ink); }
-#aiol .aiol-summary__total small { font-size: 15px; font-weight: 600; color: var(--aiol-ink); }
-#aiol .aiol-summary__incl { display: grid; gap: 8px; margin-top: 20px; font-size: 14.5px; }
-#aiol .aiol-summary__incl li { display: flex; align-items: center; gap: 10px; }
-#aiol .aiol-summary__incl .aiol-i { width: 16px; height: 16px; color: var(--aiol-gold); stroke-width: 2.5; }
-#aiol .aiol-summary__help { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--aiol-line); font-size: 14px; line-height: 1.7; }
-#aiol .aiol-summary__help a { color: var(--aiol-ink); font-weight: 600; overflow-wrap: anywhere; }
-#aiol .aiol-summary__help a:hover { color: var(--aiol-gold-dark); }
 @media (min-width: 640px) {
   #aiol .aiol-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   #aiol .aiol-field--full { grid-column: 1 / -1; }
   #aiol .aiol-choices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-@media (min-width: 768px) { #aiol .aiol-form, #aiol .aiol-done { padding: 40px; } #aiol .aiol-summary { padding: 34px; } }
-@media (min-width: 992px) {
-  #aiol .aiol-signup { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 40px; }
-  #aiol .aiol-summary { position: sticky; top: 110px; }
+@media (min-width: 768px) {
+  #aiol .aiol-form, #aiol .aiol-done { padding: 36px; }
+  #aiol .aiol-pricecard__top { padding: 32px; }
+  #aiol .aiol-pricecard__body { padding: 24px 32px 30px; }
 }
 
-/* ---------- Pasek górny (jak we wzorze) ---------- */
-#aiol .aiol-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 14px; min-height: 40px; padding: 6px 16px; background: var(--aiol-cta); color: var(--aiol-ink); font-size: 15px; font-weight: 600; line-height: 1.3; text-align: center; }
-#aiol .aiol-bar strong { color: var(--aiol-ink); font-weight: 800; }
-#aiol .aiol-bar__link { display: inline-flex; align-items: center; min-height: 28px; padding: 0 14px; border-radius: 999px; background: var(--aiol-ink); color: #fff; font-size: 14px; font-weight: 800; line-height: 1.1; letter-spacing: .01em; white-space: nowrap; transition: transform .15s ease; }
-#aiol .aiol-bar__link:hover, #aiol .aiol-bar__link:focus { color: #fff; transform: translateY(-1px); }
+/* ---------- Dla firm + kontakt ---------- */
+#aiol .aiol-b2b__ask { margin: 14px 0 10px; font-size: 20px; font-weight: 700; line-height: 1.35; color: #fff; }
+#aiol .aiol-b2b p + p { margin-top: 10px; }
+#aiol .aiol-b2b .aiol-h2 { font-size: clamp(28px, 3vw, 40px); }
+#aiol .aiol-b2b .aiol-chips { margin-top: 20px; }
+#aiol .aiol-contact h3 { margin-bottom: 2px; font-size: 26px; }
+#aiol .aiol-contact__block { padding: 16px 0; border-bottom: 1px solid var(--aiol-line); }
+#aiol .aiol-contact__label { margin-bottom: 4px; font-size: 11.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--aiol-gold-dark); }
+#aiol .aiol-contact__name { margin-bottom: 6px; font-size: 18px; font-weight: 800; color: var(--aiol-ink); }
+#aiol .aiol-contact a { display: flex; align-items: center; gap: 12px; padding: 4px 0; font-weight: 600; line-height: 1.4; color: var(--aiol-ink); transition: color .2s ease, transform .2s ease; }
+#aiol .aiol-contact a span { overflow-wrap: anywhere; }
+#aiol .aiol-contact a:hover { color: var(--aiol-gold-dark); transform: translateX(3px); }
+#aiol .aiol-contact a .aiol-i { width: 18px; height: 18px; color: var(--aiol-gold); }
+#aiol .aiol-contact__foot { padding-top: 14px; font-size: 13.5px; color: var(--aiol-muted); }
 
-/* ---------- Nazwa szkolenia w hero ---------- */
-#aiol .aiol-hero__name { margin: 0 0 14px; font-size: clamp(22px, 2.4vw, 30px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; color: var(--aiol-ink); }
-#aiol .aiol-hero__name b { color: var(--aiol-gold); font-weight: 800; }
+/* ---------- FAQ ---------- */
+#aiol .aiol-faq__help a { color: var(--aiol-ink); font-weight: 700; border-bottom: 1px solid var(--aiol-gold); overflow-wrap: anywhere; }
+#aiol .aiol-faq__help a:hover { color: var(--aiol-gold-dark); }
+#aiol .aiol-faq__cols { display: grid; gap: 14px; align-items: start; }
+#aiol .aiol-faq__col { display: grid; gap: 14px; }
+@media (min-width: 992px) { #aiol .aiol-faq__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; } #aiol .aiol-faq__col { gap: 18px; } }
+#aiol .aiol-faq__group { padding: 18px 22px 6px; border-radius: var(--aiol-radius); background: var(--aiol-soft); scroll-margin-top: 100px; }
+#aiol .aiol-faq__group h3 { margin-bottom: 4px; font-size: 13px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--aiol-gold-dark); }
+#aiol .aiol-qa + .aiol-qa { border-top: 1px solid #e3e3df; }
+#aiol .aiol-qa summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; cursor: pointer; list-style: none; font-size: 17.5px; font-weight: 700; line-height: 1.3; color: var(--aiol-ink); transition: color .2s ease; }
+#aiol .aiol-qa summary::-webkit-details-marker { display: none; }
+#aiol .aiol-qa summary::marker { content: ""; }
+#aiol .aiol-qa summary:hover { color: var(--aiol-gold-dark); }
+#aiol .aiol-qa__ico { display: grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: #fff; color: var(--aiol-ink); transition: transform .3s var(--aiol-ease), background-color .25s ease; }
+#aiol .aiol-qa__ico .aiol-i { width: 16px; height: 16px; stroke-width: 2.5; }
+#aiol .aiol-qa summary:hover .aiol-qa__ico { background: var(--aiol-gold-soft); }
+#aiol .aiol-qa[open] .aiol-qa__ico { transform: rotate(135deg); background: var(--aiol-cta); }
+#aiol .aiol-qa__a { padding: 0 44px 18px 0; font-size: 16.5px; line-height: 1.6; }
+#aiol .aiol-qa__a p + p { margin-top: 10px; }
 
-/* ---------- Klienci ---------- */
-#aiol .aiol-trust { padding: 56px 0 64px; border-top: 1px solid var(--aiol-line); text-align: center; }
-#aiol .aiol-trust__label { margin: 0 0 32px; font-size: 20px; font-weight: 400; line-height: 1.3; letter-spacing: .12em; text-transform: uppercase; color: var(--aiol-gold-dark); }
-#aiol .aiol-trust__list { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 20px 40px; }
-#aiol .aiol-trust__list li { font-size: 20px; font-weight: 700; line-height: 1.3; letter-spacing: -.01em; color: #8b8b8b; white-space: nowrap; }
+/* ---------- Finał ---------- */
+#aiol .aiol-final__box { position: relative; overflow: hidden; padding: 48px 22px; border-radius: 32px; background: var(--aiol-ink); color: #cfcfcf; text-align: center; }
+#aiol .aiol-final__box > * { position: relative; z-index: 1; }
+#aiol .aiol-final__glow { position: absolute; z-index: 0 !important; left: 50%; top: -60%; width: min(90vw, 900px); aspect-ratio: 1; margin-left: calc(min(90vw, 900px) / -2); border-radius: 50%; background: radial-gradient(circle, rgba(247,197,49,.30) 0%, rgba(247,197,49,0) 62%); animation: aiol-breathe 7s ease-in-out infinite; pointer-events: none; }
+@keyframes aiol-breathe { 0%, 100% { opacity: .75; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
+#aiol .aiol-final__box .aiol-eyebrow { color: var(--aiol-cta); }
+#aiol .aiol-final h2 { font-size: clamp(34px, 4.6vw, 64px); line-height: 1.02; letter-spacing: -.03em; color: #fff; }
+#aiol .aiol-final__facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 20px 0 28px; }
+#aiol .aiol-final__facts li { padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.2); font-weight: 600; line-height: 1.3; color: #fff; }
+#aiol .aiol-final__small { margin-top: 18px; font-size: 14.5px; color: #a7a7a7; }
+@media (min-width: 768px) { #aiol .aiol-final__box { padding: 72px 48px; } }
 
-/* ---------- Problem ---------- */
-#aiol .aiol-prob { display: grid; gap: 22px; margin-top: 30px; }
-#aiol .aiol-prob__lead { font-size: clamp(20px, 2.1vw, 26px); line-height: 1.4; color: var(--aiol-muted); text-wrap: balance; }
-#aiol .aiol-prob__lead b { display: block; margin-top: .75em; font-size: 1.12em; font-weight: 800; color: var(--aiol-ink); }
-#aiol .aiol-prob__list { border-top: 1px solid var(--aiol-line); }
-#aiol .aiol-prob__list li { display: flex; align-items: center; gap: 18px; padding: 18px 2px; border-bottom: 1px solid var(--aiol-line); font-size: 20px; font-weight: 600; line-height: 1.36; color: var(--aiol-ink); }
-#aiol .aiol-prob__ico { display: flex; flex: none; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 11px; background: var(--aiol-soft); color: var(--aiol-ink); }
-#aiol .aiol-prob__ico .aiol-i { width: 20px; height: 20px; }
-#aiol .aiol-prob__good { display: flex; align-items: center; gap: 22px; margin-top: 56px; padding: 28px 36px; border-radius: 12px; background: #fffaeb; border: 1px solid #f3d67a; }
-#aiol .aiol-prob__ok { display: flex; flex: none; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: var(--aiol-cta); color: var(--aiol-ink); }
-#aiol .aiol-prob__ok .aiol-i { width: 22px; height: 22px; stroke-width: 2.6; }
-#aiol .aiol-prob__good p { font-size: clamp(19px, 2vw, 24px); font-weight: 600; line-height: 1.42; color: var(--aiol-ink); text-wrap: pretty; }
-#aiol .aiol-prob__good strong { font-weight: 800; }
-@media (min-width: 761px) {
-  #aiol .aiol-prob { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 28px 72px; align-items: start; margin-top: 48px; }
-  #aiol .aiol-prob__lead { padding-top: 22px; border-top: 1px solid var(--aiol-line); }
+/* ---------- Pływający pasek ---------- */
+#aiol .aiol-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9990; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); transform: translateY(120%); visibility: hidden; transition: transform .35s var(--aiol-ease), visibility .35s ease; }
+#aiol .aiol-sticky.is-visible { transform: none; visibility: visible; }
+#aiol .aiol-sticky__in { display: flex; align-items: center; justify-content: space-between; gap: 14px; max-width: 720px; margin: 0 auto; padding: 8px 8px 8px 20px; border-radius: 999px; background: rgba(20,20,20,.94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 20px 40px -14px rgba(0,0,0,.5); color: #fff; }
+#aiol .aiol-sticky__txt { display: flex; flex-direction: column; min-width: 0; line-height: 1.3; }
+#aiol .aiol-sticky__txt strong { color: #fff; font-size: 15px; white-space: nowrap; }
+#aiol .aiol-sticky__txt span { overflow: hidden; font-size: 13px; color: #bdbdbd; white-space: nowrap; text-overflow: ellipsis; }
+
+/* ---------- Mikroanimacje wejścia (tylko gdy działa skrypt i użytkownik nie ogranicza ruchu) ---------- */
+#aiol.aiol-anim [data-r] {
+  opacity: 0; translate: 0 26px;
+  transition: opacity .8s var(--aiol-ease) var(--d, 0ms), translate .8s var(--aiol-ease) var(--d, 0ms),
+              transform .35s var(--aiol-ease), box-shadow .35s var(--aiol-ease), border-color .35s ease, background-color .35s ease;
 }
+#aiol.aiol-anim [data-r].is-in { opacity: 1; translate: none; }
+#aiol.aiol-anim [data-r] .aiol-mark { background-size: 0 36%; transition: background-size 1.1s var(--aiol-ease) .45s; }
+#aiol.aiol-anim [data-r].is-in .aiol-mark { background-size: 100% 36%; }
 
-/* ---------- Puenta ---------- */
-#aiol .aiol-punch { padding: 128px 0; text-align: center; }
-#aiol .aiol-punch__text { max-width: 28ch; margin: 0 auto; font-size: clamp(26px, 3.6vw, 46px); font-weight: 800; line-height: 1.2; letter-spacing: -.01em; color: var(--aiol-ink); text-wrap: balance; }
-#aiol .aiol-mark { padding: 0 .06em; background: linear-gradient(transparent 58%, var(--aiol-cta) 58%); color: inherit; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-#aiol .aiol-punch__sub { max-width: 720px; margin: 28px auto 0; font-size: clamp(18px, 1.6vw, 20px); line-height: 1.5; color: var(--aiol-text); text-wrap: pretty; }
-
-/* ---------- Pytania z sali i odpowiedzi ---------- */
-#aiol .aiol-objection { padding: 96px 0; text-align: center; }
-#aiol .aiol-objection__q { max-width: 900px; margin: 0 auto; font-size: clamp(28px, 4vw, 48px); font-weight: 800; line-height: 1.15; letter-spacing: -.01em; color: var(--aiol-ink); text-wrap: balance; }
-#aiol .aiol-answer { max-width: 860px; margin: 40px auto 0; text-align: left; }
-#aiol .aiol-answer p { font-size: clamp(20px, 2.3vw, 26px); font-weight: 600; line-height: 1.42; color: var(--aiol-ink); text-wrap: pretty; }
-#aiol .aiol-answer p + p { margin-top: 16px; }
-#aiol .aiol-answer .aiol-answer__note { margin-top: 24px; font-size: 15px; font-weight: 400; line-height: 1.55; color: var(--aiol-muted); }
-
-/* ---------- Pas i wiersz z przyciskiem ---------- */
-#aiol .aiol-ctaband { padding: 56px 0; border-top: 1px solid var(--aiol-line); text-align: center; }
-#aiol .aiol-ctaband__micro { margin-top: 18px; font-size: 14px; line-height: 1.5; color: var(--aiol-muted); }
-#aiol .aiol-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-top: 48px; }
-#aiol .aiol-cta span { font-size: 14px; color: var(--aiol-muted); }
-
-/* ---------- Prowadząca ---------- */
-#aiol .aiol-host { display: grid; gap: 28px; align-items: center; }
-#aiol .aiol-host .aiol-photo { width: 100%; }
-#aiol .aiol-host__lead { margin-top: 22px; font-size: clamp(20px, 2vw, 26px); font-weight: 600; line-height: 1.35; color: var(--aiol-ink); text-wrap: pretty; }
-#aiol .aiol-host__p { max-width: 680px; margin-top: 18px; font-size: 17px; line-height: 1.6; color: var(--aiol-muted); }
-#aiol .aiol-nums { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 48px; margin: 72px 0; padding: 56px 0; border-top: 1px solid var(--aiol-line); border-bottom: 1px solid var(--aiol-line); }
-#aiol .aiol-num b { display: block; margin-bottom: 12px; font-size: clamp(36px, 3.9vw, 56px); font-weight: 800; line-height: 1; letter-spacing: -.02em; color: var(--aiol-gold); white-space: nowrap; font-variant-numeric: tabular-nums; }
-#aiol .aiol-num span { display: block; font-size: 14px; font-weight: 600; line-height: 1.4; letter-spacing: .1em; text-transform: uppercase; color: var(--aiol-ink); }
-#aiol .aiol-facts2 { display: grid; gap: 14px; max-width: 860px; }
-#aiol .aiol-facts2 li { position: relative; padding-left: 32px; font-size: 18px; line-height: 1.5; color: var(--aiol-muted); }
-#aiol .aiol-facts2 li::before { content: "–"; position: absolute; left: 0; top: 0; font-weight: 800; color: var(--aiol-gold); }
-#aiol .aiol-facts2 strong { font-weight: 600; color: var(--aiol-ink); }
-@media (min-width: 701px) { #aiol .aiol-host { grid-template-columns: minmax(220px, 300px) minmax(0, 1fr); gap: 32px; } }
-@media (min-width: 901px) { #aiol .aiol-host { grid-template-columns: minmax(260px, 420px) minmax(0, 1fr); gap: 64px; } }
-
-/* ---------- Mniejsze ekrany (progi jak we wzorze) ---------- */
-@media (max-width: 760px) {
-  #aiol .aiol-h1 { font-size: clamp(34px, 10.2vw, 40px); margin-bottom: 16px; }
-  #aiol .aiol-prob__list li { gap: 14px; padding: 14px 0; font-size: 18px; }
-  #aiol .aiol-prob__ico { width: 38px; height: 38px; border-radius: 10px; }
-  #aiol .aiol-prob__good { flex-direction: column; align-items: flex-start; gap: 14px; margin-top: 36px; padding: 22px 20px; }
-  #aiol .aiol-module__num { font-size: 32px; }
-}
-@media (max-width: 720px) {
-  #aiol .aiol-punch { padding: 72px 0; }
-  #aiol .aiol-objection { padding: 64px 0; }
-  #aiol .aiol-ctaband { padding: 40px 0; }
-  #aiol .aiol-trust { padding: 40px 0 48px; }
-  #aiol .aiol-trust__label { margin-bottom: 24px; font-size: 17px; }
-  #aiol .aiol-trust__list { gap: 14px 28px; }
-  #aiol .aiol-trust__list li { font-size: 17px; }
-  #aiol .aiol-nums { margin: 48px 0; padding: 40px 0; gap: 32px 24px; }
-  #aiol .aiol-num b { font-size: clamp(28px, 8.4vw, 48px); }
-  #aiol .aiol-num span { font-size: 12.5px; }
-}
+/* ---------- Telefony ---------- */
 @media (max-width: 600px) {
   #aiol .aiol-bar { padding: 8px 16px; font-size: 14px; line-height: 1.35; }
   #aiol .aiol-bar__link { display: none; }
 }
-
-/* ---------- Telefony ---------- */
 @media (max-width: 479px) {
-  #aiol .aiol-eyebrow { letter-spacing: .2em; }
   #aiol .aiol-btn { width: 100%; }
   #aiol .aiol-btn--sm { width: auto; }
   #aiol .aiol-hero__note { max-width: none; }
+  #aiol .aiol-h1 { font-size: clamp(34px, 10.2vw, 40px); }
+  #aiol .aiol-module__num { font-size: 34px; }
+  #aiol .aiol-trust__in { gap: 6px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   #aiol *, #aiol *::before, #aiol *::after { transition: none !important; animation: none !important; }
+  #aiol .aiol-marquee { -webkit-mask-image: none; mask-image: none; }
+  #aiol .aiol-marquee__track { flex-wrap: wrap; width: auto; row-gap: 4px; }
+  #aiol .aiol-marquee__track .aiol-marquee__dup { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  #aiol details { interpolate-size: allow-keywords; }
+  #aiol details::details-content { block-size: 0; overflow: clip; transition: block-size .35s var(--aiol-ease), content-visibility .35s allow-discrete; }
+  #aiol details[open]::details-content { block-size: auto; }
 }
 </style>
 
@@ -592,97 +659,115 @@
       <symbol id="aiol-i-circlecheck" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
       <symbol id="aiol-i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></symbol>
       <symbol id="aiol-i-searchcheck" viewBox="0 0 24 24"><path d="m8 11 2 2 4-4"/><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
-      <symbol id="aiol-i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></symbol>
       <symbol id="aiol-i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
       <symbol id="aiol-i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
       <symbol id="aiol-i-quote" viewBox="0 0 24 24"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></symbol>
+      <symbol id="aiol-i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+      <symbol id="aiol-i-graduation" viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+      <symbol id="aiol-i-tv" viewBox="0 0 24 24"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></symbol>
+      <symbol id="aiol-i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></symbol>
     </defs>
   </svg>
 
   <!-- ===================== PASEK GÓRNY ===================== -->
   <div class="aiol-bar" role="note">
-    <span class="aiol-bar__txt"><strong>AIOfficeLab / 01 FUNDAMENT</strong> · 2 godziny online LIVE · 290 zł netto + VAT<span data-aiol-bar-termin hidden></span></span>
+    <span class="aiol-bar__txt"><span class="aiol-bar__dot" aria-hidden="true"></span><strong>AIOfficeLab / 01 FUNDAMENT</strong> · 2 godziny online LIVE · 290 zł netto + VAT<span data-aiol-bar-termin hidden></span></span>
     <a class="aiol-bar__link" href="#aiol-formularz" data-aiol-cta="pasek-gora">Zapisuję się</a>
   </div>
+  <div class="aiol-progress" aria-hidden="true"><span data-aiol-progress></span></div>
 
   <!-- ===================== HERO ===================== -->
   <section class="aiol-hero" id="aiol-start" aria-labelledby="aiol-h1">
+    <span class="aiol-hero__glow" aria-hidden="true"></span>
+    <span class="aiol-hero__glow aiol-hero__glow--b" aria-hidden="true"></span>
     <div class="aiol-wrap aiol-hero__grid">
       <div class="aiol-hero__copy">
-        <p class="aiol-eyebrow">Szkolenie online LIVE</p>
-        <p class="aiol-hero__name">AIOfficeLab / 01 <b>FUNDAMENT</b></p>
-        <h1 class="aiol-h1" id="aiol-h1">Bezpieczna i&nbsp;skuteczna praca z&nbsp;<span class="aiol-gold">AI w&nbsp;biurze</span></h1>
-        <p class="aiol-lead aiol-hero__lead">AIOfficeLab FUNDAMENT to praktyczne szkolenie z&nbsp;AI dla osób pracujących w&nbsp;administracji biurowej, HR, finansach, sprzedaży, marketingu, obsłudze klienta, działach operacyjnych i&nbsp;biurach zarządu.</p>
-        <ul class="aiol-facts">
+        <p class="aiol-pill" data-r><span class="aiol-pill__dot" aria-hidden="true"></span>Szkolenie online LIVE</p>
+        <p class="aiol-hero__name" data-r>AIOfficeLab / 01 <b>FUNDAMENT</b></p>
+        <h1 class="aiol-h1" id="aiol-h1" data-r>Bezpieczna i&nbsp;skuteczna praca z&nbsp;<span class="aiol-mark">AI w&nbsp;biurze</span></h1>
+        <p class="aiol-hero__lead" data-r>AIOfficeLab FUNDAMENT to praktyczne szkolenie z&nbsp;AI dla osób pracujących w&nbsp;administracji biurowej, HR, finansach, sprzedaży, marketingu, obsłudze klienta, działach operacyjnych i&nbsp;biurach zarządu.</p>
+        <ul class="aiol-facts" data-r>
           <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-clock"/></svg>2&nbsp;godziny online LIVE</li>
           <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-level"/></svg>Poziom podstawowy</li>
           <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-tag"/></svg>290&nbsp;zł netto + VAT</li>
         </ul>
-        <div class="aiol-hero__cta">
-          <a class="aiol-btn" href="#aiol-formularz" data-aiol-cta="hero">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
+        <div class="aiol-hero__cta" data-r>
+          <a class="aiol-btn aiol-btn--glow" href="#aiol-formularz" data-aiol-cta="hero">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
           <p class="aiol-hero__note">Nagranie przez 30&nbsp;dni, materiały i&nbsp;imienny certyfikat w&nbsp;cenie.</p>
         </div>
-        <ul class="aiol-nos">
+        <ul class="aiol-nos" data-r>
           <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg>Bez technicznego języka</li>
           <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg>Bez programowania</li>
           <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg>Bez konieczności wcześniejszego doświadczenia z&nbsp;AI</li>
         </ul>
       </div>
 
-      <aside class="aiol-card aiol-labcard" aria-label="Szkolenie w skrócie">
-        <div class="aiol-labcard__top">
-          <span class="aiol-live"><span class="aiol-live__dot" aria-hidden="true"></span>Online LIVE</span>
-          <span class="aiol-labcard__id">AIOfficeLab / 01</span>
-        </div>
-        <p class="aiol-labcard__title">Czego nauczysz się w&nbsp;2&nbsp;godziny?</p>
-        <ol class="aiol-labcard__list">
-          <li><a href="#aiol-program"><span class="aiol-labcard__num">01</span>AI bez mitów<svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a></li>
-          <li><a href="#aiol-program"><span class="aiol-labcard__num">02</span>Bezpieczeństwo i&nbsp;wiarygodność<svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a></li>
-          <li><a href="#aiol-program"><span class="aiol-labcard__num">03</span>Jak skutecznie zlecać zadania AI<svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a></li>
-          <li><a href="#aiol-program"><span class="aiol-labcard__num">04</span>AI w&nbsp;realnej pracy biurowej<svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a></li>
-        </ol>
-        <div class="aiol-labcard__tools">
-          <span class="aiol-labcard__label">Omawiane narzędzia</span>
-          <ul>
-            <li>ChatGPT</li>
-            <li>Microsoft Copilot</li>
-            <li>Claude</li>
-            <li>Gemini</li>
-          </ul>
-        </div>
-        <div class="aiol-labcard__foot">
-          <span class="aiol-labcard__price">290&nbsp;zł <small>netto + VAT</small></span>
-          <span class="aiol-labcard__extra">nagranie 30&nbsp;dni · certyfikat</span>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- ===================== ZAUFALI ===================== -->
-  <section class="aiol-trust" aria-label="Klienci">
-    <div class="aiol-wrap">
-      <p class="aiol-trust__label">Realizowałam projekty m.in. dla:</p>
-      <ul class="aiol-trust__list">
-        <li>Mercedes-Benz</li>
-        <li>ABB</li>
-        <li>Polska Akademia Nauk</li>
-        <li>3M Poland</li>
-        <li>Grupa Maspex</li>
-        <li>ArcelorMittal</li>
-        <li>T-Mobile</li>
-        <li>PGNiG</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===================== DLA KOGO ===================== -->
-  <section class="aiol-sec" id="aiol-dla-kogo" aria-labelledby="aiol-h-who">
-    <div class="aiol-wrap aiol-who">
-      <div>
-        <p class="aiol-eyebrow">Dla kogo?</p>
-        <h2 class="aiol-h2" id="aiol-h-who">Dla każdego, kto pracuje przy komputerze i&nbsp;chce korzystać z&nbsp;AI <span class="aiol-gold">świadomie i&nbsp;bezpiecznie</span></h2>
+      <div class="aiol-hero__side" data-r>
+        <aside class="aiol-labcard" aria-label="Szkolenie w skrócie">
+          <div class="aiol-labcard__top">
+            <span class="aiol-live"><span class="aiol-live__dot" aria-hidden="true"></span>Online LIVE</span>
+            <span class="aiol-labcard__id">AIOfficeLab / 01</span>
+          </div>
+          <p class="aiol-labcard__title">Czego nauczysz się w&nbsp;2&nbsp;godziny?</p>
+          <ol class="aiol-labcard__list">
+            <li><a href="#aiol-program"><span class="aiol-labcard__num">01</span>AI bez mitów<svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a></li>
+            <li><a href="#aiol-program"><span class="aiol-labcard__num">02</span>Bezpieczeństwo i&nbsp;wiarygodność<svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a></li>
+            <li><a href="#aiol-program"><span class="aiol-labcard__num">03</span>Jak skutecznie zlecać zadania AI<svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a></li>
+            <li><a href="#aiol-program"><span class="aiol-labcard__num">04</span>AI w&nbsp;realnej pracy biurowej<svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a></li>
+          </ol>
+          <div class="aiol-labcard__tools">
+            <span class="aiol-labcard__label">Omawiane narzędzia</span>
+            <ul>
+              <li>ChatGPT</li>
+              <li>Microsoft Copilot</li>
+              <li>Claude</li>
+              <li>Gemini</li>
+            </ul>
+          </div>
+          <div class="aiol-labcard__foot">
+            <span class="aiol-labcard__price">290&nbsp;zł <small>netto + VAT</small></span>
+            <span class="aiol-labcard__extra">nagranie 30&nbsp;dni · certyfikat</span>
+          </div>
+        </aside>
+        <span class="aiol-floater aiol-floater--a" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-video"/></svg>Nagranie przez 30&nbsp;dni</span>
+        <span class="aiol-floater aiol-floater--b" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-award"/></svg>Imienny certyfikat</span>
       </div>
-      <div>
+    </div>
+  </section>
+
+  <!-- ===================== KLIENCI (przewijana taśma) ===================== -->
+  <section class="aiol-trust" aria-label="Klienci">
+    <div class="aiol-wrap aiol-trust__in">
+      <p class="aiol-trust__label">Realizowałam projekty m.in. dla:</p>
+      <div class="aiol-marquee">
+        <ul class="aiol-marquee__track">
+          <li>Mercedes-Benz</li>
+          <li>ABB</li>
+          <li>Polska Akademia Nauk</li>
+          <li>3M Poland</li>
+          <li>Grupa Maspex</li>
+          <li>ArcelorMittal</li>
+          <li>T-Mobile</li>
+          <li>PGNiG</li>
+          <li class="aiol-marquee__dup" aria-hidden="true">Mercedes-Benz</li>
+          <li class="aiol-marquee__dup" aria-hidden="true">ABB</li>
+          <li class="aiol-marquee__dup" aria-hidden="true">Polska Akademia Nauk</li>
+          <li class="aiol-marquee__dup" aria-hidden="true">3M Poland</li>
+          <li class="aiol-marquee__dup" aria-hidden="true">Grupa Maspex</li>
+          <li class="aiol-marquee__dup" aria-hidden="true">ArcelorMittal</li>
+          <li class="aiol-marquee__dup" aria-hidden="true">T-Mobile</li>
+          <li class="aiol-marquee__dup" aria-hidden="true">PGNiG</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DLA KOGO + O SZKOLENIU (kafelki) ===================== -->
+  <section class="aiol-sec" id="aiol-o-szkoleniu" aria-labelledby="aiol-h-who">
+    <div class="aiol-wrap aiol-bento">
+      <div class="aiol-tile s-8 t-2" id="aiol-dla-kogo" data-r>
+        <p class="aiol-eyebrow">Dla kogo?</p>
+        <h2 class="aiol-tile__title aiol-tile__title--lg" id="aiol-h-who">Dla każdego, kto pracuje przy komputerze i&nbsp;chce korzystać z&nbsp;AI <span class="aiol-gold">świadomie i&nbsp;bezpiecznie</span></h2>
         <p class="aiol-who__label">W&nbsp;szczególności dla pracowników:</p>
         <ul class="aiol-chips">
           <li>administracji</li>
@@ -695,92 +780,107 @@
           <li>biur zarządu</li>
           <li>zespołów wsparcia</li>
         </ul>
-        <p class="aiol-callout"><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg></span>Nie musisz mieć wcześniejszego doświadczenia z&nbsp;AI.</p>
       </div>
-    </div>
-  </section>
 
-  <!-- ===================== O SZKOLENIU ===================== -->
-  <section class="aiol-sec" id="aiol-o-szkoleniu" aria-labelledby="aiol-h-intro">
-    <div class="aiol-wrap">
-      <h2 class="aiol-h2 aiol-h2--xl" id="aiol-h-intro">AI jest już częścią <span class="aiol-gold">pracy biurowej</span>.</h2>
-      <div class="aiol-prob">
-        <p class="aiol-prob__lead">Pytanie nie brzmi więc: „czy z&nbsp;niego korzystać?”, ale: <b>jak robić to dobrze, bezpiecznie i&nbsp;z&nbsp;realnym pożytkiem dla swojej pracy?</b></p>
-        <ul class="aiol-prob__list">
-          <li><span class="aiol-prob__ico"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-x"/></svg></span><span>Bez technicznego języka.</span></li>
-          <li><span class="aiol-prob__ico"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-x"/></svg></span><span>Bez przeglądu dziesiątek narzędzi.</span></li>
-          <li><span class="aiol-prob__ico"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-x"/></svg></span><span>Bez uczenia się sztuczek i&nbsp;„magicznych promptów”.</span></li>
-        </ul>
+      <div class="aiol-tile aiol-tile--ink aiol-tile--col s-4" data-r>
+        <span class="aiol-check-big"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg></span>
+        <div>
+          <p class="aiol-tile__kicker aiol-yellow">Poziom podstawowy</p>
+          <p class="aiol-tile__big">Nie musisz mieć wcześniejszego doświadczenia z&nbsp;AI.</p>
+        </div>
       </div>
-      <div class="aiol-prob__good">
-        <span class="aiol-prob__ok"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg></span>
-        <p><strong>AIOfficeLab FUNDAMENT</strong> to dwugodzinne szkolenie dla osób pracujących w&nbsp;biurze, które chcą uporządkować podstawy i&nbsp;zobaczyć, jak wykorzystywać AI do pracy z&nbsp;informacją, dokumentami i&nbsp;codziennymi zadaniami.</p>
+
+      <div class="aiol-tile aiol-tile--soft s-7" data-r>
+        <p class="aiol-eyebrow">O&nbsp;szkoleniu</p>
+        <h2 class="aiol-h2 aiol-h2--xl" id="aiol-h-intro">AI jest już częścią <span class="aiol-gold">pracy biurowej</span>.</h2>
+        <p class="aiol-prob__lead">Pytanie nie brzmi więc: „czy z&nbsp;niego korzystać?”, ale: <b>jak robić to dobrze, bezpiecznie i&nbsp;z&nbsp;realnym pożytkiem dla swojej pracy?</b></p>
+      </div>
+
+      <div class="aiol-tile aiol-tile--yellow aiol-tile--col s-5 t-2" data-r>
+        <span class="aiol-tile__ic aiol-tile__ic--ink"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-sparkles"/></svg></span>
+        <p class="aiol-tile__big"><strong>AIOfficeLab FUNDAMENT</strong> to dwugodzinne szkolenie dla osób pracujących w&nbsp;biurze, które chcą uporządkować podstawy i&nbsp;zobaczyć, jak wykorzystywać AI do pracy z&nbsp;informacją, dokumentami i&nbsp;codziennymi zadaniami.</p>
+      </div>
+
+      <div class="aiol-tile aiol-tile--soft s-12 t-2" data-r>
+        <ul class="aiol-nos3">
+          <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-x"/></svg></span>Bez technicznego języka.</li>
+          <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-x"/></svg></span>Bez przeglądu dziesiątek narzędzi.</li>
+          <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-x"/></svg></span>Bez uczenia się sztuczek i&nbsp;„magicznych promptów”.</li>
+        </ul>
       </div>
     </div>
   </section>
 
   <!-- ===================== ZADANIE, NIE PROMPT ===================== -->
-  <section class="aiol-sec aiol-punch" id="aiol-podejscie" aria-labelledby="aiol-h-task">
+  <section class="aiol-sec" id="aiol-podejscie" aria-labelledby="aiol-h-task">
     <div class="aiol-wrap">
-      <h2 class="aiol-punch__text" id="aiol-h-task">Nie „jak napisać prompt”.<br><span class="aiol-mark">Tylko: jak rozwiązać zadanie.</span></h2>
-      <p class="aiol-punch__sub">To szkolenie nie jest kursem obsługi jednego programu. <strong>Najpierw jest Twoje zadanie.</strong> Dopiero potem wybieramy sposób, w&nbsp;jaki AI może Ci pomóc je wykonać szybciej, lepiej lub bardziej systematycznie.</p>
+      <div class="aiol-punch__box" data-r>
+        <h2 class="aiol-punch__text" id="aiol-h-task">Nie „jak napisać prompt”.<br><span class="aiol-mark">Tylko: jak rozwiązać zadanie.</span></h2>
+        <p class="aiol-punch__sub">To szkolenie nie jest kursem obsługi jednego programu. <strong>Najpierw jest Twoje zadanie.</strong> Dopiero potem wybieramy sposób, w&nbsp;jaki AI może Ci pomóc je wykonać szybciej, lepiej lub bardziej systematycznie.</p>
+        <ul class="aiol-punch__pills" aria-hidden="true">
+          <li><svg class="aiol-i"><use href="#aiol-i-check"/></svg>szybciej</li>
+          <li><svg class="aiol-i"><use href="#aiol-i-check"/></svg>lepiej</li>
+          <li><svg class="aiol-i"><use href="#aiol-i-check"/></svg>bardziej systematycznie</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <!-- ===================== OPINIE ===================== -->
   <section class="aiol-sec" id="aiol-opinie" aria-labelledby="aiol-h-reviews">
-    <div class="aiol-wrap">
-      <p class="aiol-eyebrow">Opinie uczestników</p>
-      <h2 class="aiol-h2 aiol-h2--quote" id="aiol-h-reviews">„Absolutny must have dla każdej osoby pracującej w&nbsp;dziale administracji”</h2>
-      <p class="aiol-byline">Ewelina Popis, Head of Administration and Operations, QualityMinds</p>
-      <div class="aiol-quotes">
-        <figure class="aiol-quote">
-          <div>
-            <svg class="aiol-i aiol-quote__mark" aria-hidden="true"><use href="#aiol-i-quote"/></svg>
-            <blockquote><p>Szkolenie »AI i&nbsp;automatyzacja pracy w&nbsp;biurze« to absolutny must have dla każdej osoby pracującej w&nbsp;dziale administracji. Agnieszka w&nbsp;bardzo przejrzysty sposób wyjaśnia, jak czerpać z&nbsp;potencjału AI i&nbsp;jak »rozmawiać« z&nbsp;AI, żeby uzyskać oczekiwane informacje.</p></blockquote>
-          </div>
-          <figcaption>
-            <span class="aiol-avatar" aria-hidden="true">EP</span>
-            <span><span class="aiol-quote__name">Ewelina Popis</span><span class="aiol-quote__role">Head of Administration and Operations, QualityMinds</span></span>
-          </figcaption>
-        </figure>
-        <figure class="aiol-quote">
-          <div>
-            <svg class="aiol-i aiol-quote__mark" aria-hidden="true"><use href="#aiol-i-quote"/></svg>
-            <blockquote><p>Dostałam od prowadzącej bardzo dużą dawkę wiedzy praktycznej. Fajnie jest czerpać wiedzę od praktyka, który z&nbsp;entuzjazmem dzieli się doświadczeniem.</p></blockquote>
-          </div>
-          <figcaption>
-            <span class="aiol-avatar" aria-hidden="true">EK</span>
-            <span><span class="aiol-quote__name">Ewa Karpiel</span><span class="aiol-quote__role">Asystentka w&nbsp;Biurze Zarządu, Pekao TFI</span></span>
-          </figcaption>
-        </figure>
+    <div class="aiol-wrap aiol-bento">
+      <div class="aiol-tile aiol-tile--soft aiol-tile--col s-4 t-2" data-r>
+        <div>
+          <p class="aiol-eyebrow">Opinie uczestników</p>
+          <h2 class="aiol-quotehead" id="aiol-h-reviews">„Absolutny must have dla każdej osoby pracującej w&nbsp;dziale administracji”</h2>
+          <p class="aiol-byline">Ewelina Popis, Head of Administration and Operations, QualityMinds</p>
+        </div>
+        <a class="aiol-btn" href="#aiol-formularz" data-aiol-cta="opinie">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
       </div>
-    </div>
-  </section>
 
-  <!-- ===================== PRZYCISK PO OPINIACH ===================== -->
-  <section class="aiol-ctaband" aria-label="Zapisy">
-    <div class="aiol-wrap">
-      <a class="aiol-btn" href="#aiol-formularz" data-aiol-cta="opinie">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
-      <p class="aiol-ctaband__micro">2 godziny online LIVE · 290 zł netto + VAT · nagranie przez 30 dni</p>
+      <figure class="aiol-tile aiol-quote s-4" data-r>
+        <div>
+          <svg class="aiol-i aiol-quote__mark" aria-hidden="true"><use href="#aiol-i-quote"/></svg>
+          <blockquote><p>Szkolenie »AI i&nbsp;automatyzacja pracy w&nbsp;biurze« to absolutny must have dla każdej osoby pracującej w&nbsp;dziale administracji. Agnieszka w&nbsp;bardzo przejrzysty sposób wyjaśnia, jak czerpać z&nbsp;potencjału AI i&nbsp;jak »rozmawiać« z&nbsp;AI, żeby uzyskać oczekiwane informacje.</p></blockquote>
+        </div>
+        <figcaption>
+          <span class="aiol-avatar" aria-hidden="true">EP</span>
+          <span><span class="aiol-quote__name">Ewelina Popis</span><span class="aiol-quote__role">Head of Administration and Operations, QualityMinds</span></span>
+        </figcaption>
+      </figure>
+
+      <figure class="aiol-tile aiol-quote s-4" data-r>
+        <div>
+          <svg class="aiol-i aiol-quote__mark" aria-hidden="true"><use href="#aiol-i-quote"/></svg>
+          <blockquote><p>Dostałam od prowadzącej bardzo dużą dawkę wiedzy praktycznej. Fajnie jest czerpać wiedzę od praktyka, który z&nbsp;entuzjazmem dzieli się doświadczeniem.</p></blockquote>
+        </div>
+        <figcaption>
+          <span class="aiol-avatar" aria-hidden="true">EK</span>
+          <span><span class="aiol-quote__name">Ewa Karpiel</span><span class="aiol-quote__role">Asystentka w&nbsp;Biurze Zarządu, Pekao TFI</span></span>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
   <!-- ===================== PROGRAM ===================== -->
   <section class="aiol-sec" id="aiol-program" aria-labelledby="aiol-h-program">
     <div class="aiol-wrap">
-      <div class="aiol-head">
-        <p class="aiol-eyebrow">Program</p>
-        <h2 class="aiol-h2" id="aiol-h-program">Czego nauczysz się w&nbsp;<span class="aiol-gold">2&nbsp;godziny?</span></h2>
-        <p>W&nbsp;ciągu 2 godzin dowiesz się, jak bezpiecznie i&nbsp;skutecznie korzystać z&nbsp;ChatGPT, Microsoft Copilot, Claude i&nbsp;Gemini w&nbsp;codziennej pracy. Nauczysz się przekazywać AI właściwy kontekst, pracować z&nbsp;dokumentami i&nbsp;większą ilością informacji, wykonywać research, porównywać dane oraz zamieniać nieuporządkowane materiały w&nbsp;podsumowania, tabele, checklisty i&nbsp;plany działania.</p>
-        <p>Poznasz również ograniczenia AI, zasady ochrony danych firmowych oraz sposoby ograniczania halucynacji i&nbsp;weryfikowania odpowiedzi.</p>
+      <div class="aiol-head aiol-head--stack">
+        <div data-r>
+          <p class="aiol-eyebrow">Program</p>
+          <h2 class="aiol-h2" id="aiol-h-program">Czego nauczysz się w&nbsp;<span class="aiol-mark">2&nbsp;godziny?</span></h2>
+        </div>
+        <div class="aiol-head__side" data-r>
+          <p>W&nbsp;ciągu 2 godzin dowiesz się, jak bezpiecznie i&nbsp;skutecznie korzystać z&nbsp;ChatGPT, Microsoft Copilot, Claude i&nbsp;Gemini w&nbsp;codziennej pracy. Nauczysz się przekazywać AI właściwy kontekst, pracować z&nbsp;dokumentami i&nbsp;większą ilością informacji, wykonywać research, porównywać dane oraz zamieniać nieuporządkowane materiały w&nbsp;podsumowania, tabele, checklisty i&nbsp;plany działania.</p>
+          <p>Poznasz również ograniczenia AI, zasady ochrony danych firmowych oraz sposoby ograniczania halucynacji i&nbsp;weryfikowania odpowiedzi.</p>
+        </div>
       </div>
 
-      <div class="aiol-modules">
-        <article class="aiol-module">
+      <div class="aiol-bento">
+        <article class="aiol-tile aiol-module s-6" data-r>
           <div class="aiol-module__top">
             <span class="aiol-module__num"><span class="aiol-sr">Moduł </span>01</span>
-            <span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-sparkles"/></svg></span>
+            <span class="aiol-tile__ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-sparkles"/></svg></span>
           </div>
           <h3>AI bez mitów</h3>
           <p class="aiol-module__intro">Dowiesz się:</p>
@@ -792,10 +892,10 @@
           </ul>
         </article>
 
-        <article class="aiol-module">
+        <article class="aiol-tile aiol-module s-6" data-r>
           <div class="aiol-module__top">
             <span class="aiol-module__num"><span class="aiol-sr">Moduł </span>02</span>
-            <span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-shield"/></svg></span>
+            <span class="aiol-tile__ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-shield"/></svg></span>
           </div>
           <h3>Bezpieczeństwo i&nbsp;wiarygodność</h3>
           <p class="aiol-module__intro">Zobaczysz:</p>
@@ -808,10 +908,10 @@
           </ul>
         </article>
 
-        <article class="aiol-module aiol-module--wide">
+        <article class="aiol-tile aiol-module s-12 t-2" data-r>
           <div class="aiol-module__top">
             <span class="aiol-module__num"><span class="aiol-sr">Moduł </span>03</span>
-            <span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-send"/></svg></span>
+            <span class="aiol-tile__ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-send"/></svg></span>
           </div>
           <h3>Jak skutecznie zlecać zadania AI</h3>
           <p class="aiol-module__intro"><strong>Nie potrzebujesz skomplikowanych formuł promptowych.</strong> Poznasz prosty sposób przekazywania AI:</p>
@@ -824,10 +924,10 @@
           </ol>
         </article>
 
-        <article class="aiol-module aiol-module--wide">
+        <article class="aiol-tile aiol-tile--soft aiol-module s-8 t-2" data-r>
           <div class="aiol-module__top">
             <span class="aiol-module__num"><span class="aiol-sr">Moduł </span>04</span>
-            <span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-briefcase"/></svg></span>
+            <span class="aiol-tile__ic aiol-tile__ic--yellow"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-briefcase"/></svg></span>
           </div>
           <h3>AI w&nbsp;realnej pracy biurowej</h3>
           <p class="aiol-module__intro">Na konkretnych przykładach zobaczysz, jak wykorzystać AI do:</p>
@@ -842,174 +942,206 @@
             <li>zamiany materiału w&nbsp;tabelę, checklistę, plan lub rekomendację</li>
           </ul>
         </article>
+
+        <div class="aiol-tile aiol-tile--ink aiol-tile--col s-4 t-2" data-r>
+          <div>
+            <p class="aiol-tile__kicker aiol-yellow">4 moduły · 2&nbsp;godziny online LIVE</p>
+            <p class="aiol-tile__big">Nagranie przez 30&nbsp;dni, materiały szkoleniowe i&nbsp;imienny certyfikat w&nbsp;cenie.</p>
+          </div>
+          <a class="aiol-btn aiol-btn--block" href="#aiol-formularz" data-aiol-cta="program">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
+        </div>
       </div>
-      <div class="aiol-cta"><a class="aiol-btn" href="#aiol-formularz" data-aiol-cta="program">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a><span>4 moduły · 2 godziny online LIVE · nagranie przez 30 dni</span></div>
     </div>
   </section>
 
-  <!-- ===================== PO SZKOLENIU ===================== -->
+  <!-- ===================== PO SZKOLENIU + DALSZA ŚCIEŻKA ===================== -->
   <section class="aiol-sec" id="aiol-efekty" aria-labelledby="aiol-h-outcomes">
     <div class="aiol-wrap">
-      <div class="aiol-head">
+      <div class="aiol-head" data-r>
         <p class="aiol-eyebrow">Po szkoleniu</p>
         <h2 class="aiol-h2" id="aiol-h-outcomes">Będziesz wiedzieć:</h2>
       </div>
-      <ul class="aiol-outcomes">
-        <li class="aiol-outcome"><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-circlecheck"/></svg></span><p>co możesz zlecić AI</p></li>
-        <li class="aiol-outcome"><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-ban"/></svg></span><p>czego mu nie powierzać</p></li>
-        <li class="aiol-outcome"><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-send"/></svg></span><p>jak przekazać mu zadanie</p></li>
-        <li class="aiol-outcome"><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-searchcheck"/></svg></span><p>jak sprawdzić rezultat, zanim wykorzystasz go w&nbsp;pracy</p></li>
-      </ul>
-      <div class="aiol-bridge">
-        <p>To fundament, na którym można bezpiecznie budować dalsze kompetencje.</p>
-        <a class="aiol-btn" href="#aiol-formularz" data-aiol-cta="efekty">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
-      </div>
-    </div>
-  </section>
 
-  <!-- ===================== DALSZA ŚCIEŻKA ===================== -->
-  <section class="aiol-sec" id="aiol-dalej" aria-labelledby="aiol-h-next">
-    <div class="aiol-wrap">
-      <div class="aiol-head">
-        <p class="aiol-eyebrow">Ścieżka AIOfficeLab</p>
-        <h2 class="aiol-h2" id="aiol-h-next">Chcesz pójść dalej?</h2>
-        <p>Poziom FUNDAMENT uczy skutecznie korzystać z&nbsp;AI. Kolejny etap to AIOfficeLab / 02 SYSTEM.</p>
-      </div>
-      <div class="aiol-path">
-        <article class="aiol-step aiol-step--now">
-          <span class="aiol-step__tag">Ten poziom</span>
-          <p class="aiol-step__code">AIOfficeLab / 01</p>
-          <h3>FUNDAMENT</h3>
-          <p class="aiol-step__q">Jak prawidłowo pracować z&nbsp;AI?</p>
-        </article>
-        <div class="aiol-path__arrow" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-arrow"/></svg></div>
-        <article class="aiol-step aiol-step--next">
-          <span class="aiol-step__tag">Kolejny etap</span>
-          <p class="aiol-step__code">AIOfficeLab / 02</p>
-          <h3>SYSTEM</h3>
-          <p class="aiol-step__q">Jak wykorzystać AI do zarządzania informacją, projektami i&nbsp;codzienną pracą?</p>
-          <div class="aiol-step__more">
-            <p>Tam przechodzimy od pojedynczych zastosowań AI do zarządzania:</p>
-            <ul class="aiol-tags">
-              <li>informacją</li>
-              <li>briefingami</li>
-              <li>projektami</li>
-              <li>zadaniami</li>
-              <li>terminami</li>
-              <li>przepływem pracy</li>
-            </ul>
+      <div class="aiol-bento">
+        <div class="aiol-tile aiol-outcome s-3" data-r>
+          <div class="aiol-outcome__top"><span class="aiol-tile__ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-circlecheck"/></svg></span><span class="aiol-outcome__n" aria-hidden="true">01</span></div>
+          <p>co możesz zlecić AI</p>
+        </div>
+        <div class="aiol-tile aiol-outcome s-3" data-r>
+          <div class="aiol-outcome__top"><span class="aiol-tile__ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-ban"/></svg></span><span class="aiol-outcome__n" aria-hidden="true">02</span></div>
+          <p>czego mu nie powierzać</p>
+        </div>
+        <div class="aiol-tile aiol-outcome s-3" data-r>
+          <div class="aiol-outcome__top"><span class="aiol-tile__ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-send"/></svg></span><span class="aiol-outcome__n" aria-hidden="true">03</span></div>
+          <p>jak przekazać mu zadanie</p>
+        </div>
+        <div class="aiol-tile aiol-outcome s-3" data-r>
+          <div class="aiol-outcome__top"><span class="aiol-tile__ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-searchcheck"/></svg></span><span class="aiol-outcome__n" aria-hidden="true">04</span></div>
+          <p>jak sprawdzić rezultat, zanim wykorzystasz go w&nbsp;pracy</p>
+        </div>
+
+        <div class="aiol-tile aiol-tile--gold aiol-tile--col s-5 t-2" data-r>
+          <span class="aiol-tile__ic aiol-tile__ic--ink"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-level"/></svg></span>
+          <p class="aiol-tile__big aiol-tile__big--xl">To fundament, na którym można bezpiecznie budować dalsze kompetencje.</p>
+          <a class="aiol-btn" href="#aiol-formularz" data-aiol-cta="efekty">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
+        </div>
+
+        <div class="aiol-tile s-7 t-2" id="aiol-dalej" data-r>
+          <p class="aiol-eyebrow">Ścieżka AIOfficeLab</p>
+          <h3 class="aiol-tile__title">Chcesz pójść dalej?</h3>
+          <p class="aiol-tile__p">Poziom FUNDAMENT uczy skutecznie korzystać z&nbsp;AI. Kolejny etap to AIOfficeLab / 02 SYSTEM.</p>
+          <div class="aiol-path">
+            <div class="aiol-step aiol-step--now">
+              <span class="aiol-step__tag">Ten poziom</span>
+              <p class="aiol-step__code">AIOfficeLab / 01</p>
+              <h4 class="aiol-step__name">FUNDAMENT</h4>
+              <p class="aiol-step__q">Jak prawidłowo pracować z&nbsp;AI?</p>
+            </div>
+            <div class="aiol-path__arrow" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-arrow"/></svg></div>
+            <div class="aiol-step aiol-step--next">
+              <span class="aiol-step__tag">Kolejny etap</span>
+              <p class="aiol-step__code">AIOfficeLab / 02</p>
+              <h4 class="aiol-step__name">SYSTEM</h4>
+              <p class="aiol-step__q">Jak wykorzystać AI do zarządzania informacją, projektami i&nbsp;codzienną pracą?</p>
+            </div>
           </div>
-        </article>
+          <p class="aiol-tile__p">Tam przechodzimy od pojedynczych zastosowań AI do zarządzania:</p>
+          <ul class="aiol-tags">
+            <li>informacją</li>
+            <li>briefingami</li>
+            <li>projektami</li>
+            <li>zadaniami</li>
+            <li>terminami</li>
+            <li>przepływem pracy</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== PYTANIE: NARZEDZIA ===================== -->
-  <section class="aiol-sec aiol-objection" id="aiol-pytanie-narzedzia" aria-labelledby="aiol-h-q-narzedzia">
+  <!-- ===================== PYTANIA Z SALI ===================== -->
+  <section class="aiol-sec" id="aiol-pytania" aria-labelledby="aiol-h-questions">
     <div class="aiol-wrap">
-      <h2 class="aiol-objection__q" id="aiol-h-q-narzedzia">„Czy muszę mieć płatną wersję ChatGPT, Copilota lub innego narzędzia?”</h2>
-      <div class="aiol-answer">
-        <p>Nie jest to konieczne do uczestnictwa w&nbsp;poziomie FUNDAMENT.</p>
-        <p>Zakres poszczególnych funkcji może różnić się w&nbsp;zależności od posiadanej wersji i&nbsp;licencji, dlatego podczas szkolenia omawiane są również te różnice.</p>
+      <div class="aiol-head" data-r>
+        <p class="aiol-eyebrow">Pytania z&nbsp;sali</p>
+        <h2 class="aiol-h2" id="aiol-h-questions">Najczęstsze wątpliwości</h2>
       </div>
-    </div>
-  </section>
 
-  <!-- ===================== PYTANIE: RODO ===================== -->
-  <section class="aiol-sec aiol-objection" id="aiol-pytanie-rodo" aria-labelledby="aiol-h-q-rodo">
-    <div class="aiol-wrap">
-      <h2 class="aiol-objection__q" id="aiol-h-q-rodo">„Czy na szkoleniu będzie mowa o&nbsp;bezpieczeństwie danych i&nbsp;RODO?”</h2>
-      <div class="aiol-answer">
-        <p>Tak. Bezpieczna praca z&nbsp;AI jest jednym z&nbsp;podstawowych elementów programu.</p>
-        <p>Dowiesz się, jakiego rodzaju informacji nie należy przekazywać do publicznych narzędzi AI, na co zwracać uwagę przy pracy z&nbsp;dokumentami firmowymi i&nbsp;dlaczego możliwość technicznego wgrania pliku nie oznacza automatycznie, że można to zrobić zgodnie z&nbsp;zasadami organizacji.</p>
-        <p class="aiol-answer__note">Szkolenie ma charakter edukacyjny i&nbsp;nie zastępuje polityki bezpieczeństwa, decyzji działu IT ani indywidualnej analizy prawnej organizacji.</p>
-      </div>
-    </div>
-  </section>
+      <div class="aiol-bento">
+        <div class="aiol-tile aiol-tile--soft aiol-qcard s-4" id="aiol-pytanie-narzedzia" data-r>
+          <span class="aiol-qcard__mark" aria-hidden="true">?</span>
+          <h3 class="aiol-qcard__q">Czy muszę mieć płatną wersję ChatGPT, Copilota lub innego narzędzia?</h3>
+          <div class="aiol-qcard__a">
+            <p>Nie jest to konieczne do uczestnictwa w&nbsp;poziomie FUNDAMENT.</p>
+            <p>Zakres poszczególnych funkcji może różnić się w&nbsp;zależności od posiadanej wersji i&nbsp;licencji, dlatego podczas szkolenia omawiane są również te różnice.</p>
+          </div>
+        </div>
 
-  <!-- ===================== PYTANIE: DOKUMENTY ===================== -->
-  <section class="aiol-sec aiol-objection" id="aiol-pytanie-dokumenty" aria-labelledby="aiol-h-q-dokumenty">
-    <div class="aiol-wrap">
-      <h2 class="aiol-objection__q" id="aiol-h-q-dokumenty">„Czy podczas szkolenia trzeba udostępniać dane lub dokumenty firmy?”</h2>
-      <div class="aiol-answer">
-        <p>Nie.</p>
-        <p>Demonstracje mogą być prowadzone na neutralnych materiałach i&nbsp;przykładowych danych. Nie ma potrzeby udostępniania poufnych informacji firmy.</p>
+        <div class="aiol-tile aiol-tile--ink aiol-qcard s-4" id="aiol-pytanie-rodo" data-r>
+          <span class="aiol-qcard__mark" aria-hidden="true">?</span>
+          <h3 class="aiol-qcard__q">Czy na szkoleniu będzie mowa o&nbsp;bezpieczeństwie danych i&nbsp;RODO?</h3>
+          <div class="aiol-qcard__a">
+            <p>Tak. Bezpieczna praca z&nbsp;AI jest jednym z&nbsp;podstawowych elementów programu.</p>
+            <p>Dowiesz się, jakiego rodzaju informacji nie należy przekazywać do publicznych narzędzi AI, na co zwracać uwagę przy pracy z&nbsp;dokumentami firmowymi i&nbsp;dlaczego możliwość technicznego wgrania pliku nie oznacza automatycznie, że można to zrobić zgodnie z&nbsp;zasadami organizacji.</p>
+            <p class="aiol-qcard__note">Szkolenie ma charakter edukacyjny i&nbsp;nie zastępuje polityki bezpieczeństwa, decyzji działu IT ani indywidualnej analizy prawnej organizacji.</p>
+          </div>
+        </div>
+
+        <div class="aiol-tile aiol-tile--soft aiol-qcard s-4 t-2" id="aiol-pytanie-dokumenty" data-r>
+          <span class="aiol-qcard__mark" aria-hidden="true">?</span>
+          <h3 class="aiol-qcard__q">Czy podczas szkolenia trzeba udostępniać dane lub dokumenty firmy?</h3>
+          <div class="aiol-qcard__a">
+            <p>Nie.</p>
+            <p>Demonstracje mogą być prowadzone na neutralnych materiałach i&nbsp;przykładowych danych. Nie ma potrzeby udostępniania poufnych informacji firmy.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ===================== PROWADZĄCA ===================== -->
   <section class="aiol-sec" id="aiol-prowadzaca" aria-labelledby="aiol-h-trainer">
-    <div class="aiol-wrap">
-      <div class="aiol-host">
+    <div class="aiol-wrap aiol-bento">
+      <div class="aiol-tile aiol-tile--photo s-4 r-2" data-r>
         <div class="aiol-photo" data-aiol-photo><span class="aiol-photo__initials" aria-hidden="true">AK</span></div>
-        <div class="aiol-host__txt">
-          <p class="aiol-eyebrow">Prowadząca</p>
-          <h2 class="aiol-h2 aiol-h2--short" id="aiol-h-trainer">Agnieszka Korach</h2>
-          <p class="aiol-host__lead">Nie uczę narzędzi dla samych narzędzi. Pokazuję, gdzie AI rzeczywiście pomaga w&nbsp;pracy, a&nbsp;gdzie nadal potrzebne są wiedza, doświadczenie i&nbsp;decyzja człowieka.</p>
-          <p class="aiol-host__p">Łączę wiedzę o&nbsp;realnej pracy biurowej z&nbsp;praktycznym wykorzystaniem nowych technologii.</p>
-        </div>
       </div>
-      <div class="aiol-nums">
-        <div class="aiol-num"><b>25+</b><span>lat doświadczenia</span></div>
-        <div class="aiol-num"><b>10 000+</b><span>przeszkolonych osób</span></div>
+
+      <div class="aiol-tile s-8" data-r>
+        <p class="aiol-eyebrow">Prowadząca</p>
+        <h2 class="aiol-h2 aiol-h2--short" id="aiol-h-trainer">Agnieszka Korach</h2>
+        <p class="aiol-host__lead">Nie uczę narzędzi dla samych narzędzi. Pokazuję, gdzie AI rzeczywiście pomaga w&nbsp;pracy, a&nbsp;gdzie nadal potrzebne są wiedza, doświadczenie i&nbsp;decyzja człowieka.</p>
+        <p class="aiol-host__p">Łączę wiedzę o&nbsp;realnej pracy biurowej z&nbsp;praktycznym wykorzystaniem nowych technologii.</p>
       </div>
-      <ul class="aiol-facts2">
-        <li>Od ponad 25 lat rozwijam kompetencje osób pracujących w&nbsp;<strong>administracji, biurach zarządu i&nbsp;zespołach wsparcia</strong>. Przez moje szkolenia przeszło ponad 10 000 osób.</li>
-        <li>Jestem <strong>dyplomowanym trenerem biznesu, psychologiem społecznym SWPS</strong> oraz <strong>certyfikowaną Edukatorką AI CampusAI</strong>.</li>
-        <li>Udzielałam eksperckich wywiadów m.in. dla <strong>TVN, TVP, Polsat i&nbsp;Polskiego Radia</strong>.</li>
-        <li>Jestem <strong>prelegentką konferencji i&nbsp;kongresów branżowych</strong>.</li>
-      </ul>
+
+      <div class="aiol-tile aiol-tile--yellow aiol-num s-4" data-r>
+        <b data-aiol-count="25" data-suffix="+">25+</b>
+        <span>lat doświadczenia</span>
+      </div>
+
+      <div class="aiol-tile aiol-tile--ink aiol-num s-4" data-r>
+        <b data-aiol-count="10000" data-suffix="+">10&nbsp;000+</b>
+        <span>przeszkolonych osób</span>
+      </div>
+
+      <div class="aiol-tile aiol-tile--soft s-12 t-2" data-r>
+        <ul class="aiol-facts4">
+          <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-users"/></svg></span><span>Od ponad 25 lat rozwijam kompetencje osób pracujących w&nbsp;<strong>administracji, biurach zarządu i&nbsp;zespołach wsparcia</strong>. Przez moje szkolenia przeszło ponad 10&nbsp;000 osób.</span></li>
+          <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-graduation"/></svg></span><span>Jestem <strong>dyplomowanym trenerem biznesu, psychologiem społecznym SWPS</strong> oraz <strong>certyfikowaną Edukatorką AI CampusAI</strong>.</span></li>
+          <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-tv"/></svg></span><span>Udzielałam eksperckich wywiadów m.in. dla <strong>TVN, TVP, Polsat i&nbsp;Polskiego Radia</strong>.</span></li>
+          <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-mic"/></svg></span><span>Jestem <strong>prelegentką konferencji i&nbsp;kongresów branżowych</strong>.</span></li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <!-- ===================== CENA ===================== -->
+  <!-- ===================== CENA + FORMULARZ ZGŁOSZENIA ===================== -->
   <section class="aiol-sec" id="aiol-cena" aria-labelledby="aiol-h-price">
     <div class="aiol-wrap">
-      <div class="aiol-head aiol-head--center">
-        <p class="aiol-eyebrow">Cena i&nbsp;zapisy</p>
-        <h2 class="aiol-h2" id="aiol-h-price">Co otrzymujesz?</h2>
-      </div>
-      <div class="aiol-price">
-        <div class="aiol-price__main">
-          <p class="aiol-price__name">AIOfficeLab / 01</p>
-          <p class="aiol-price__title">FUNDAMENT</p>
-          <p class="aiol-price__amount"><span class="aiol-price__value">290&nbsp;zł</span><span class="aiol-price__tax">netto + VAT</span></p>
-          <p class="aiol-price__meta">2&nbsp;godziny online LIVE · poziom podstawowy</p>
-          <a class="aiol-btn aiol-btn--block" href="#aiol-formularz" data-aiol-cta="cena">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
-          <ul class="aiol-price__notes">
-            <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg>Faktura VAT dla firmy</li>
-            <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg>Możesz zgłosić kilka osób z&nbsp;jednej firmy</li>
-          </ul>
+      <div class="aiol-head aiol-head--split">
+        <div data-r>
+          <p class="aiol-eyebrow">Cena i&nbsp;zapisy</p>
+          <h2 class="aiol-h2" id="aiol-h-price">Co otrzymujesz?</h2>
         </div>
-        <div class="aiol-price__incl">
-          <p class="aiol-price__label">W&nbsp;cenie:</p>
-          <ul class="aiol-incl">
-            <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-monitor"/></svg></span>2&nbsp;godziny szkolenia online LIVE</li>
-            <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-bulb"/></svg></span>Praktyczne demonstracje</li>
-            <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-video"/></svg></span>Dostęp do nagrania przez 30&nbsp;dni</li>
-            <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-file"/></svg></span>Materiały szkoleniowe</li>
-            <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-listcheck"/></svg></span>Checklista bezpiecznej pracy z&nbsp;AI</li>
-            <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-briefcase"/></svg></span>Zestaw przykładowych zastosowań AI w&nbsp;pracy biurowej</li>
-            <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-award"/></svg></span>Imienny certyfikat</li>
-          </ul>
+        <div class="aiol-head__side" data-r>
+          <p>Wypełnij formularz, a&nbsp;zgłoszenie trafi do biura Office Influencers. Możesz też napisać na <a class="aiol-link" href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a>.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== FORMULARZ ZGŁOSZENIA ===================== -->
-  <section class="aiol-sec" id="aiol-formularz" aria-labelledby="aiol-h-form">
-    <div class="aiol-wrap">
-      <div class="aiol-head">
-        <p class="aiol-eyebrow">Zgłoszenie</p>
-        <h2 class="aiol-h2" id="aiol-h-form">Formularz zgłoszenia</h2>
-        <p>Wypełnij formularz, a&nbsp;zgłoszenie trafi do biura Office Influencers. Możesz też napisać na <a class="aiol-link" href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a>.</p>
       </div>
 
       <div class="aiol-signup">
-        <div>
+        <aside class="aiol-pricecard" aria-label="Cena i podsumowanie zgłoszenia" data-r>
+          <div class="aiol-pricecard__top">
+            <p class="aiol-pricecard__name">AIOfficeLab / 01 <strong>FUNDAMENT</strong></p>
+            <p class="aiol-pricecard__amount"><span class="aiol-pricecard__value">290&nbsp;zł</span><span>netto + VAT za osobę</span></p>
+            <p class="aiol-pricecard__meta">2&nbsp;godziny online LIVE · poziom podstawowy</p>
+          </div>
+          <div class="aiol-pricecard__body">
+            <dl class="aiol-summary__rows">
+              <div data-aiol-termin-wiersz hidden><dt>Termin</dt><dd data-aiol-termin></dd></div>
+              <div><dt>Forma</dt><dd>online LIVE, 2&nbsp;godziny</dd></div>
+              <div><dt>Liczba osób</dt><dd id="aiol-s-count">1</dd></div>
+            </dl>
+            <p class="aiol-summary__total"><span>Razem</span><strong id="aiol-s-total">290&nbsp;zł</strong><small>netto + VAT</small></p>
+            <p class="aiol-pricecard__label">W&nbsp;cenie:</p>
+            <ul class="aiol-incl">
+              <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-monitor"/></svg></span>2&nbsp;godziny szkolenia online LIVE</li>
+              <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-bulb"/></svg></span>Praktyczne demonstracje</li>
+              <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-video"/></svg></span>Dostęp do nagrania przez 30&nbsp;dni</li>
+              <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-file"/></svg></span>Materiały szkoleniowe</li>
+              <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-listcheck"/></svg></span>Checklista bezpiecznej pracy z&nbsp;AI</li>
+              <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-briefcase"/></svg></span>Zestaw przykładowych zastosowań AI w&nbsp;pracy biurowej</li>
+              <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-award"/></svg></span>Imienny certyfikat</li>
+            </ul>
+            <ul class="aiol-price__notes">
+              <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg>Faktura VAT dla firmy</li>
+              <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg>Możesz zgłosić kilka osób z&nbsp;jednej firmy</li>
+            </ul>
+            <p class="aiol-summary__help">Pytania? <a href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a><br><a href="tel:+48224357002">+48 22 435 70 02</a></p>
+          </div>
+        </aside>
+
+        <div class="aiol-signup__form" id="aiol-formularz">
           <form class="aiol-form" id="aiol-form" method="post" action="/formularz-aiol/formularz.php" novalidate>
+            <h3 class="aiol-form__title">Formularz zgłoszenia</h3>
             <input type="hidden" name="formularz" value="zgloszenie">
             <input type="hidden" name="termin" value="" data-aiol-termin-pole>
             <div class="aiol-fields">
@@ -1125,39 +1257,19 @@
             <p>Jeśli wiadomość nie dotrze, sprawdź folder spam albo napisz na <a class="aiol-link" href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a>.</p>
           </div>
         </div>
-
-        <aside class="aiol-summary" aria-label="Podsumowanie zgłoszenia">
-          <p class="aiol-summary__label">Twoje zgłoszenie</p>
-          <p class="aiol-summary__name">AIOfficeLab / 01 <strong>FUNDAMENT</strong></p>
-          <dl class="aiol-summary__rows">
-            <div data-aiol-termin-wiersz hidden><dt>Termin</dt><dd data-aiol-termin></dd></div>
-            <div><dt>Forma</dt><dd>online LIVE, 2&nbsp;godziny</dd></div>
-            <div><dt>Cena za osobę</dt><dd>290&nbsp;zł netto</dd></div>
-            <div><dt>Liczba osób</dt><dd id="aiol-s-count">1</dd></div>
-          </dl>
-          <p class="aiol-summary__total"><span>Razem</span><strong id="aiol-s-total">290&nbsp;zł</strong><small>netto + VAT</small></p>
-          <ul class="aiol-summary__incl">
-            <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg>Nagranie przez 30&nbsp;dni</li>
-            <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg>Materiały i&nbsp;checklista</li>
-            <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg>Imienny certyfikat</li>
-          </ul>
-          <p class="aiol-summary__help">Pytania? <a href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a><br><a href="tel:+48224357002">+48 22 435 70 02</a></p>
-        </aside>
       </div>
     </div>
   </section>
 
   <!-- ===================== DLA FIRMY + KONTAKT ===================== -->
   <section class="aiol-sec" id="aiol-dla-firm" aria-labelledby="aiol-h-b2b">
-    <div class="aiol-wrap aiol-b2b">
-      <div>
+    <div class="aiol-wrap aiol-bento">
+      <div class="aiol-tile aiol-tile--ink aiol-b2b s-7 t-2" data-r>
         <p class="aiol-eyebrow">Szkolenia zamknięte</p>
-        <h2 class="aiol-h2" id="aiol-h-b2b">AIOfficeLab FUNDAMENT <span class="aiol-gold">dla firmy</span></h2>
-        <div class="aiol-prose" style="margin-top:22px">
-          <p class="aiol-b2b__ask">Chcesz przeszkolić większą grupę pracowników?</p>
-          <p>Poziom FUNDAMENT może zostać zrealizowany jako zamknięte szkolenie dla firmy — online lub stacjonarnie.</p>
-          <p>Przykłady i&nbsp;demonstracje możemy dopasować do charakteru pracy zespołu oraz środowiska wykorzystywanego w&nbsp;organizacji.</p>
-        </div>
+        <h2 class="aiol-h2" id="aiol-h-b2b">AIOfficeLab FUNDAMENT <span class="aiol-yellow">dla firmy</span></h2>
+        <p class="aiol-b2b__ask">Chcesz przeszkolić większą grupę pracowników?</p>
+        <p>Poziom FUNDAMENT może zostać zrealizowany jako zamknięte szkolenie dla firmy — online lub stacjonarnie.</p>
+        <p>Przykłady i&nbsp;demonstracje możemy dopasować do charakteru pracy zespołu oraz środowiska wykorzystywanego w&nbsp;organizacji.</p>
         <ul class="aiol-chips">
           <li>Online lub stacjonarnie</li>
           <li>Przykłady dopasowane do pracy zespołu</li>
@@ -1165,7 +1277,7 @@
         </ul>
       </div>
 
-      <div class="aiol-contact" id="aiol-kontakt">
+      <div class="aiol-tile aiol-contact s-5 t-2" id="aiol-kontakt" data-r>
         <h3>Kontakt</h3>
         <div class="aiol-contact__block">
           <p class="aiol-contact__label">Zapisy i&nbsp;pytania</p>
@@ -1186,194 +1298,194 @@
 
   <!-- ===================== FAQ ===================== -->
   <section class="aiol-sec" id="aiol-faq" aria-labelledby="aiol-h-faq">
-    <div class="aiol-wrap aiol-faq">
-      <div class="aiol-faq__aside">
-        <p class="aiol-eyebrow">FAQ</p>
-        <h2 class="aiol-h2" id="aiol-h-faq">Najczęściej zadawane pytania</h2>
-        <p class="aiol-faq__help">Nie ma tu odpowiedzi na Twoje pytanie? Napisz: <a href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a> lub zadzwoń: <a href="tel:+48224357002">+48 22 435 70 02</a>.</p>
-        <nav class="aiol-faq__nav" aria-label="Kategorie pytań">
-          <a href="#aiol-faq-program">O&nbsp;programie</a>
-          <a href="#aiol-faq-dane">Bezpieczeństwo i&nbsp;dane firmowe</a>
-          <a href="#aiol-faq-organizacja">Organizacja</a>
-          <a href="#aiol-faq-firma">Dla firmy i&nbsp;HR</a>
-          <a href="#aiol-faq-dalej">Dalsza ścieżka</a>
-        </nav>
+    <div class="aiol-wrap">
+      <div class="aiol-head aiol-head--split">
+        <div data-r>
+          <p class="aiol-eyebrow">FAQ</p>
+          <h2 class="aiol-h2" id="aiol-h-faq">Najczęściej zadawane pytania</h2>
+        </div>
+        <div class="aiol-head__side" data-r>
+          <p class="aiol-faq__help">Nie ma tu odpowiedzi na Twoje pytanie? Napisz: <a href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a> lub zadzwoń: <a href="tel:+48224357002">+48 22 435 70 02</a>.</p>
+        </div>
       </div>
 
-      <div class="aiol-faq__groups">
-        <div class="aiol-faq__group" id="aiol-faq-program">
-          <h3>O&nbsp;programie</h3>
-          <details class="aiol-qa" open>
-            <summary><span>Dla kogo jest AIOfficeLab FUNDAMENT?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>AIOfficeLab FUNDAMENT to szkolenie z&nbsp;AI dla osób pracujących przy komputerze: w&nbsp;administracji, HR, finansach, sprzedaży, marketingu, obsłudze klienta, działach operacyjnych, biurach zarządu i&nbsp;innych zespołach biurowych.</p>
-              <p>Program został przygotowany dla osób początkujących oraz tych, które korzystają już z&nbsp;AI, ale robią to intuicyjnie i&nbsp;chcą uporządkować podstawy.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czy to szkolenie tylko dla Asystentek i&nbsp;Office Managerów?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Nie. FUNDAMENT jest najbardziej uniwersalnym poziomem AIOfficeLab i&nbsp;został przygotowany dla każdego pracownika biurowego.</p>
-              <p>Poziomy SYSTEM i&nbsp;AUTONOMIA są już mocniej skoncentrowane na administracji, koordynacji pracy, projektach i&nbsp;procesach.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czy muszę wcześniej korzystać z&nbsp;ChatGPT?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Nie. Szkolenie zaczyna się od podstaw i&nbsp;nie wymaga wcześniejszego doświadczenia z&nbsp;ChatGPT, Copilotem, Claude czy Gemini.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czy szkolenie jest odpowiednie dla osób, które już korzystają z&nbsp;AI?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Tak, jeśli korzystasz z&nbsp;AI głównie intuicyjnie, nie masz pewności, jak weryfikować odpowiedzi, pracować z&nbsp;dokumentami, chronić dane lub skutecznie przekazywać AI bardziej złożone zadania.</p>
-              <p>Jeżeli te umiejętności masz już opanowane, bardziej odpowiedni będzie AIOfficeLab SYSTEM.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czego konkretnie nauczę się podczas dwóch godzin?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Poznasz zasady bezpiecznej pracy z&nbsp;AI, ograniczenia modeli, sposoby weryfikowania informacji oraz prostą metodę zlecania AI zadań.</p>
-              <p>Na przykładach zobaczysz również, jak wykorzystać AI do analizy dokumentów, researchu, porównywania informacji, tworzenia podsumowań, tabel, checklist i&nbsp;planów działania.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czy będziemy uczyć się pisania promptów?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Tak, ale bez rozbudowanej teorii „prompt engineeringu”.</p>
-              <p>Celem jest nauczenie prostego sposobu przekazywania AI kontekstu, materiału, zadania, wymagań i&nbsp;oczekiwanego rezultatu tak, aby można było zastosować tę metodę do różnych modeli i&nbsp;różnych zadań.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Jakie narzędzia AI będą omawiane?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Szkolenie pokazuje praktyczne różnice między najpopularniejszymi modelami wykorzystywanymi w&nbsp;pracy biurowej, m.in. ChatGPT, Microsoft Copilot, Claude i&nbsp;Gemini.</p>
-              <p>Nie jest to jednak kurs obsługi czterech aplikacji. Uczysz się przede wszystkim sposobu pracy, który można przenieść między narzędziami.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czy muszę mieć płatną wersję ChatGPT, Copilota lub innego narzędzia?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Nie jest to konieczne do uczestnictwa w&nbsp;poziomie FUNDAMENT.</p>
-              <p>Zakres poszczególnych funkcji może różnić się w&nbsp;zależności od posiadanej wersji i&nbsp;licencji, dlatego podczas szkolenia omawiane są również te różnice.</p>
-            </div>
-          </details>
-        </div>
+      <div class="aiol-faq__cols">
+        <div class="aiol-faq__col">
+          <div class="aiol-faq__group" id="aiol-faq-program" data-r>
+            <h3>O&nbsp;programie</h3>
+            <details class="aiol-qa" open>
+              <summary><span>Dla kogo jest AIOfficeLab FUNDAMENT?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>AIOfficeLab FUNDAMENT to szkolenie z&nbsp;AI dla osób pracujących przy komputerze: w&nbsp;administracji, HR, finansach, sprzedaży, marketingu, obsłudze klienta, działach operacyjnych, biurach zarządu i&nbsp;innych zespołach biurowych.</p>
+                <p>Program został przygotowany dla osób początkujących oraz tych, które korzystają już z&nbsp;AI, ale robią to intuicyjnie i&nbsp;chcą uporządkować podstawy.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy to szkolenie tylko dla Asystentek i&nbsp;Office Managerów?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Nie. FUNDAMENT jest najbardziej uniwersalnym poziomem AIOfficeLab i&nbsp;został przygotowany dla każdego pracownika biurowego.</p>
+                <p>Poziomy SYSTEM i&nbsp;AUTONOMIA są już mocniej skoncentrowane na administracji, koordynacji pracy, projektach i&nbsp;procesach.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy muszę wcześniej korzystać z&nbsp;ChatGPT?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Nie. Szkolenie zaczyna się od podstaw i&nbsp;nie wymaga wcześniejszego doświadczenia z&nbsp;ChatGPT, Copilotem, Claude czy Gemini.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy szkolenie jest odpowiednie dla osób, które już korzystają z&nbsp;AI?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Tak, jeśli korzystasz z&nbsp;AI głównie intuicyjnie, nie masz pewności, jak weryfikować odpowiedzi, pracować z&nbsp;dokumentami, chronić dane lub skutecznie przekazywać AI bardziej złożone zadania.</p>
+                <p>Jeżeli te umiejętności masz już opanowane, bardziej odpowiedni będzie AIOfficeLab SYSTEM.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czego konkretnie nauczę się podczas dwóch godzin?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Poznasz zasady bezpiecznej pracy z&nbsp;AI, ograniczenia modeli, sposoby weryfikowania informacji oraz prostą metodę zlecania AI zadań.</p>
+                <p>Na przykładach zobaczysz również, jak wykorzystać AI do analizy dokumentów, researchu, porównywania informacji, tworzenia podsumowań, tabel, checklist i&nbsp;planów działania.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy będziemy uczyć się pisania promptów?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Tak, ale bez rozbudowanej teorii „prompt engineeringu”.</p>
+                <p>Celem jest nauczenie prostego sposobu przekazywania AI kontekstu, materiału, zadania, wymagań i&nbsp;oczekiwanego rezultatu tak, aby można było zastosować tę metodę do różnych modeli i&nbsp;różnych zadań.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Jakie narzędzia AI będą omawiane?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Szkolenie pokazuje praktyczne różnice między najpopularniejszymi modelami wykorzystywanymi w&nbsp;pracy biurowej, m.in. ChatGPT, Microsoft Copilot, Claude i&nbsp;Gemini.</p>
+                <p>Nie jest to jednak kurs obsługi czterech aplikacji. Uczysz się przede wszystkim sposobu pracy, który można przenieść między narzędziami.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy muszę mieć płatną wersję ChatGPT, Copilota lub innego narzędzia?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Nie jest to konieczne do uczestnictwa w&nbsp;poziomie FUNDAMENT.</p>
+                <p>Zakres poszczególnych funkcji może różnić się w&nbsp;zależności od posiadanej wersji i&nbsp;licencji, dlatego podczas szkolenia omawiane są również te różnice.</p>
+              </div>
+            </details>
+          </div>
 
-        <div class="aiol-faq__group" id="aiol-faq-dane">
-          <h3>Bezpieczeństwo i&nbsp;dane firmowe</h3>
-          <details class="aiol-qa">
-            <summary><span>Czy na szkoleniu będzie mowa o&nbsp;bezpieczeństwie danych i&nbsp;RODO?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Tak. Bezpieczna praca z&nbsp;AI jest jednym z&nbsp;podstawowych elementów programu.</p>
-              <p>Dowiesz się, jakiego rodzaju informacji nie należy przekazywać do publicznych narzędzi AI, na co zwracać uwagę przy pracy z&nbsp;dokumentami firmowymi i&nbsp;dlaczego możliwość technicznego wgrania pliku nie oznacza automatycznie, że można to zrobić zgodnie z&nbsp;zasadami organizacji.</p>
-              <p>Szkolenie ma charakter edukacyjny i&nbsp;nie zastępuje polityki bezpieczeństwa, decyzji działu IT ani indywidualnej analizy prawnej organizacji.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czy podczas szkolenia trzeba udostępniać dane lub dokumenty firmy?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Nie.</p>
-              <p>Demonstracje mogą być prowadzone na neutralnych materiałach i&nbsp;przykładowych danych. Nie ma potrzeby udostępniania poufnych informacji firmy.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czy dowiem się, jak sprawdzać, czy AI nie podaje nieprawdziwych informacji?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Tak. Omawiamy halucynacje modeli, pracę ze źródłami oraz sposoby weryfikowania odpowiedzi przed wykorzystaniem ich w&nbsp;pracy.</p>
-            </div>
-          </details>
+          <div class="aiol-faq__group" id="aiol-faq-dane" data-r>
+            <h3>Bezpieczeństwo i&nbsp;dane firmowe</h3>
+            <details class="aiol-qa">
+              <summary><span>Czy na szkoleniu będzie mowa o&nbsp;bezpieczeństwie danych i&nbsp;RODO?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Tak. Bezpieczna praca z&nbsp;AI jest jednym z&nbsp;podstawowych elementów programu.</p>
+                <p>Dowiesz się, jakiego rodzaju informacji nie należy przekazywać do publicznych narzędzi AI, na co zwracać uwagę przy pracy z&nbsp;dokumentami firmowymi i&nbsp;dlaczego możliwość technicznego wgrania pliku nie oznacza automatycznie, że można to zrobić zgodnie z&nbsp;zasadami organizacji.</p>
+                <p>Szkolenie ma charakter edukacyjny i&nbsp;nie zastępuje polityki bezpieczeństwa, decyzji działu IT ani indywidualnej analizy prawnej organizacji.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy podczas szkolenia trzeba udostępniać dane lub dokumenty firmy?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Nie.</p>
+                <p>Demonstracje mogą być prowadzone na neutralnych materiałach i&nbsp;przykładowych danych. Nie ma potrzeby udostępniania poufnych informacji firmy.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy dowiem się, jak sprawdzać, czy AI nie podaje nieprawdziwych informacji?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Tak. Omawiamy halucynacje modeli, pracę ze źródłami oraz sposoby weryfikowania odpowiedzi przed wykorzystaniem ich w&nbsp;pracy.</p>
+              </div>
+            </details>
+          </div>
         </div>
+        <div class="aiol-faq__col">
+          <div class="aiol-faq__group" id="aiol-faq-organizacja" data-r>
+            <h3>Organizacja</h3>
+            <details class="aiol-qa">
+              <summary><span>Jaka jest forma szkolenia?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Szkolenie odbywa się online LIVE i&nbsp;trwa 2&nbsp;godziny.</p>
+                <p>Program ma formę instruktażową i&nbsp;demonstracyjną. Nie ma obowiązkowych ćwiczeń wykonywanych przez uczestników podczas spotkania.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy otrzymam nagranie?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Tak. Uczestnicy otrzymują dostęp do nagrania przez 30&nbsp;dni.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy otrzymam materiały po szkoleniu?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Tak. W&nbsp;cenie znajdują się materiały szkoleniowe, checklista bezpiecznej pracy z&nbsp;AI oraz przykłady praktycznych zastosowań AI w&nbsp;pracy biurowej.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy otrzymam certyfikat?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Tak. Uczestnicy otrzymują imienny certyfikat ukończenia szkolenia.</p>
+              </div>
+            </details>
+          </div>
 
-        <div class="aiol-faq__group" id="aiol-faq-organizacja">
-          <h3>Organizacja</h3>
-          <details class="aiol-qa">
-            <summary><span>Jaka jest forma szkolenia?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Szkolenie odbywa się online LIVE i&nbsp;trwa 2&nbsp;godziny.</p>
-              <p>Program ma formę instruktażową i&nbsp;demonstracyjną. Nie ma obowiązkowych ćwiczeń wykonywanych przez uczestników podczas spotkania.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czy otrzymam nagranie?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Tak. Uczestnicy otrzymują dostęp do nagrania przez 30&nbsp;dni.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czy otrzymam materiały po szkoleniu?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Tak. W&nbsp;cenie znajdują się materiały szkoleniowe, checklista bezpiecznej pracy z&nbsp;AI oraz przykłady praktycznych zastosowań AI w&nbsp;pracy biurowej.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czy otrzymam certyfikat?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Tak. Uczestnicy otrzymują imienny certyfikat ukończenia szkolenia.</p>
-            </div>
-          </details>
-        </div>
+          <div class="aiol-faq__group" id="aiol-faq-firma" data-r>
+            <h3>Dla firmy i&nbsp;HR</h3>
+            <details class="aiol-qa">
+              <summary><span>Ile kosztuje AIOfficeLab FUNDAMENT?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Cena udziału w&nbsp;szkoleniu otwartym wynosi <strong>290&nbsp;zł netto + VAT za osobę</strong>.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy firma otrzyma fakturę VAT?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Tak. Udział w&nbsp;szkoleniu może zostać zakupiony przez firmę i&nbsp;rozliczony na podstawie faktury VAT.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy możemy zgłosić kilka osób z&nbsp;jednej firmy?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Tak. Firma może zgłosić kilku pracowników na tę samą edycję.</p>
+                <p>Przy większej grupie warto zapytać również o&nbsp;zamkniętą wersję szkolenia przygotowaną dla jednej organizacji.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy szkolenie można zrealizować dla całego zespołu?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Tak. AIOfficeLab FUNDAMENT może zostać przeprowadzony jako szkolenie zamknięte online lub w&nbsp;siedzibie firmy.</p>
+                <p>Zakres przykładów może zostać dopasowany do rodzaju pracy zespołu i&nbsp;środowiska wykorzystywanego w&nbsp;organizacji.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Dlaczego firma powinna przeszkolić pracowników z&nbsp;podstaw korzystania z&nbsp;AI?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Celem szkolenia jest stworzenie wspólnego minimum kompetencyjnego: pracownik powinien wiedzieć, do czego AI można wykorzystać, jak prawidłowo przekazać mu zadanie, jak oceniać wynik i&nbsp;jak nie narażać danych firmy.</p>
+                <p>To szczególnie ważne w&nbsp;organizacjach, w&nbsp;których pracownicy zaczęli korzystać z&nbsp;narzędzi AI samodzielnie.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy program można dopasować do Microsoft 365 lub Google Workspace?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>W&nbsp;przypadku szkolenia zamkniętego zakres może zostać dostosowany do środowiska wykorzystywanego przez organizację.</p>
+              </div>
+            </details>
+          </div>
 
-        <div class="aiol-faq__group" id="aiol-faq-firma">
-          <h3>Dla firmy i&nbsp;HR</h3>
-          <details class="aiol-qa">
-            <summary><span>Ile kosztuje AIOfficeLab FUNDAMENT?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Cena udziału w&nbsp;szkoleniu otwartym wynosi <strong>290&nbsp;zł netto + VAT za osobę</strong>.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czy firma otrzyma fakturę VAT?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Tak. Udział w&nbsp;szkoleniu może zostać zakupiony przez firmę i&nbsp;rozliczony na podstawie faktury VAT.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czy możemy zgłosić kilka osób z&nbsp;jednej firmy?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Tak. Firma może zgłosić kilku pracowników na tę samą edycję.</p>
-              <p>Przy większej grupie warto zapytać również o&nbsp;zamkniętą wersję szkolenia przygotowaną dla jednej organizacji.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czy szkolenie można zrealizować dla całego zespołu?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Tak. AIOfficeLab FUNDAMENT może zostać przeprowadzony jako szkolenie zamknięte online lub w&nbsp;siedzibie firmy.</p>
-              <p>Zakres przykładów może zostać dopasowany do rodzaju pracy zespołu i&nbsp;środowiska wykorzystywanego w&nbsp;organizacji.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Dlaczego firma powinna przeszkolić pracowników z&nbsp;podstaw korzystania z&nbsp;AI?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Celem szkolenia jest stworzenie wspólnego minimum kompetencyjnego: pracownik powinien wiedzieć, do czego AI można wykorzystać, jak prawidłowo przekazać mu zadanie, jak oceniać wynik i&nbsp;jak nie narażać danych firmy.</p>
-              <p>To szczególnie ważne w&nbsp;organizacjach, w&nbsp;których pracownicy zaczęli korzystać z&nbsp;narzędzi AI samodzielnie.</p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czy program można dopasować do Microsoft 365 lub Google Workspace?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>W&nbsp;przypadku szkolenia zamkniętego zakres może zostać dostosowany do środowiska wykorzystywanego przez organizację.</p>
-            </div>
-          </details>
-        </div>
-
-        <div class="aiol-faq__group" id="aiol-faq-dalej">
-          <h3>Dalsza ścieżka</h3>
-          <details class="aiol-qa">
-            <summary><span>Co po poziomie FUNDAMENT?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Kolejnym etapem jest <strong>AIOfficeLab SYSTEM</strong>.</p>
-              <p>FUNDAMENT odpowiada na pytanie: <strong>Jak prawidłowo pracować z&nbsp;AI?</strong></p>
-              <p>SYSTEM: <strong>Jak wykorzystać AI do zarządzania informacją, projektami i&nbsp;codzienną pracą?</strong></p>
-            </div>
-          </details>
-          <details class="aiol-qa">
-            <summary><span>Czy muszę ukończyć FUNDAMENT, żeby zapisać się na SYSTEM?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
-            <div class="aiol-qa__a">
-              <p>Nie.</p>
-              <p>Jeżeli samodzielnie korzystasz już z&nbsp;AI, rozumiesz podstawy bezpieczeństwa i&nbsp;potrafisz skutecznie zlecać modelowi zadania, możesz rozpocząć bezpośrednio od poziomu SYSTEM.</p>
-            </div>
-          </details>
+          <div class="aiol-faq__group" id="aiol-faq-dalej" data-r>
+            <h3>Dalsza ścieżka</h3>
+            <details class="aiol-qa">
+              <summary><span>Co po poziomie FUNDAMENT?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Kolejnym etapem jest <strong>AIOfficeLab SYSTEM</strong>.</p>
+                <p>FUNDAMENT odpowiada na pytanie: <strong>Jak prawidłowo pracować z&nbsp;AI?</strong></p>
+                <p>SYSTEM: <strong>Jak wykorzystać AI do zarządzania informacją, projektami i&nbsp;codzienną pracą?</strong></p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy muszę ukończyć FUNDAMENT, żeby zapisać się na SYSTEM?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <div class="aiol-qa__a">
+                <p>Nie.</p>
+                <p>Jeżeli samodzielnie korzystasz już z&nbsp;AI, rozumiesz podstawy bezpieczeństwa i&nbsp;potrafisz skutecznie zlecać modelowi zadania, możesz rozpocząć bezpośrednio od poziomu SYSTEM.</p>
+              </div>
+            </details>
+          </div>
         </div>
       </div>
     </div>
@@ -1382,14 +1494,17 @@
   <!-- ===================== FINAŁ ===================== -->
   <section class="aiol-sec aiol-final" id="aiol-zapisy" aria-labelledby="aiol-h-final">
     <div class="aiol-wrap">
-      <p class="aiol-eyebrow">AIOfficeLab / 01 &nbsp;|&nbsp; Fundament</p>
-      <h2 id="aiol-h-final">Zacznij od <span class="aiol-gold">fundamentu</span></h2>
-      <ul class="aiol-final__facts">
-        <li>2&nbsp;godziny online LIVE</li>
-        <li>290&nbsp;zł netto + VAT</li>
-      </ul>
-      <a class="aiol-btn" href="#aiol-formularz" data-aiol-cta="final">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
-      <p class="aiol-final__small">Nagranie przez 30&nbsp;dni · materiały szkoleniowe · imienny certyfikat</p>
+      <div class="aiol-final__box" data-r>
+        <span class="aiol-final__glow" aria-hidden="true"></span>
+        <p class="aiol-eyebrow">AIOfficeLab / 01 &nbsp;|&nbsp; Fundament</p>
+        <h2 id="aiol-h-final">Zacznij od <span class="aiol-yellow">fundamentu</span></h2>
+        <ul class="aiol-final__facts">
+          <li>2&nbsp;godziny online LIVE</li>
+          <li>290&nbsp;zł netto + VAT</li>
+        </ul>
+        <a class="aiol-btn aiol-btn--glow" href="#aiol-formularz" data-aiol-cta="final">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
+        <p class="aiol-final__small">Nagranie przez 30&nbsp;dni · materiały szkoleniowe · imienny certyfikat</p>
+      </div>
     </div>
   </section>
 
@@ -1824,7 +1939,13 @@
     [["aiol-f-name", "aiol-e-name"], ["aiol-f-email", "aiol-e-email"], ["aiol-f-phone", "aiol-e-phone"],
      ["aiol-f-nip", "aiol-e-nip"], ["aiol-f-company", "aiol-e-company"], ["aiol-f-address", "aiol-e-address"],
      ["aiol-f-rodo", "aiol-e-rodo"]].forEach(function (pair) { clearOn(q(pair[0]), pair[1]); });
-    count.addEventListener("change", refreshSummary);
+    count.addEventListener("change", function () {
+      refreshSummary();
+      var total = q("aiol-s-total");
+      total.classList.remove("is-bump");
+      void total.offsetWidth;
+      total.classList.add("is-bump");
+    });
     form.addEventListener("change", function (e) {
       if (e.target.name === "platnik") { refreshPayer(); syncChoices(); }
     });
@@ -1902,7 +2023,73 @@
     }
   });
 
-  // 5) Pływający pasek: widoczny po hero, ukryty przy cenie, formularzu i na końcu strony
+  // 5) Mikroanimacje: pasek postępu czytania, pojawianie się kafelków, liczniki
+  (function () {
+    var progress = root.querySelector("[data-aiol-progress]");
+    if (progress) {
+      var pending = false;
+      var paint = function () {
+        pending = false;
+        var r = root.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        var range = r.height - vh;
+        var p = range > 0 ? Math.min(1, Math.max(0, -r.top / range)) : 0;
+        progress.style.transform = "scaleX(" + p.toFixed(4) + ")";
+      };
+      window.addEventListener("scroll", function () {
+        if (!pending) { pending = true; window.requestAnimationFrame(paint); }
+      }, { passive: true });
+      window.addEventListener("resize", paint);
+      paint();
+    }
+
+    var items = [].slice.call(root.querySelectorAll("[data-r]"));
+    if (reduceMotion || !("IntersectionObserver" in window) || !items.length) return;
+
+    function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+    function countUp(el) {
+      var target = +el.getAttribute("data-aiol-count") || 0;
+      var suffix = el.getAttribute("data-suffix") || "";
+      var start = null;
+      function step(t) {
+        if (start === null) start = t;
+        var k = Math.min(1, (t - start) / 1400);
+        el.textContent = fmt(Math.round(target * (1 - Math.pow(1 - k, 3)))) + suffix;
+        if (k < 1) window.requestAnimationFrame(step);
+      }
+      window.requestAnimationFrame(step);
+    }
+    function show(el, delay) {
+      el.style.setProperty("--d", delay + "ms");
+      el.classList.add("is-in");
+      [].forEach.call(el.querySelectorAll("[data-aiol-count]"), function (c) {
+        setTimeout(function () { countUp(c); }, delay);
+      });
+    }
+
+    [].forEach.call(root.querySelectorAll("[data-aiol-count]"), function (c) {
+      c.textContent = "0" + (c.getAttribute("data-suffix") || "");
+    });
+    root.classList.add("aiol-anim");
+
+    // Elementy, które wjeżdżają na ekran razem, pojawiają się kolejno co 90 ms
+    var io = new IntersectionObserver(function (entries) {
+      var n = 0;
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        io.unobserve(entry.target);
+        show(entry.target, Math.min(n++, 6) * 90);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0 });
+    items.forEach(function (el) { io.observe(el); });
+
+    // Do druku pokazujemy wszystko od razu
+    window.addEventListener("beforeprint", function () {
+      items.forEach(function (el) { if (!el.classList.contains("is-in")) { io.unobserve(el); show(el, 0); } });
+    });
+  })();
+
+  // 6) Pływający pasek: widoczny po hero, ukryty przy cenie, formularzu i na końcu strony
   var bar = root.querySelector("[data-aiol-sticky]");
   if (!bar) return;
   if (cfg.stickyBar === false) { bar.parentNode.removeChild(bar); return; }
