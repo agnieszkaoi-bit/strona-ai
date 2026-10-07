@@ -66,14 +66,16 @@ Wszystkie przyciski **„Zapisuję się”** przewijają stronę do formularza.
 - **Ochrona przed spamem** (jak w poprzednim formularzu): ukryte pole-pułapka, odrzucanie zbyt szybkich wysyłek, limit wysyłek z jednego adresu IP, blokada powtarzanej treści, odrzucanie adresów jednorazowych i zmyślonych domen.
 - **Bezpieczeństwo:** adres odbiorcy i temat są na sztywno w kodzie, a skrypt przyjmuje zgłoszenia tylko ze strony officeinfluencers.pl. Treść jest oczyszczona z ukrytych poleceń dla AI (prompt injection). Nic nie jest zapisywane na serwerze.
 
-## Kolory
+## Kolory i krój pisma
+
+Cała strona jest na białym tle i używa jednego prostego kroju: **Inter**.
 
 | Zmienna | Do czego | Wartość |
 |---|---|---|
 | `--aiol-cta` | przyciski „Zapisuję się” (żółte) | `#f7c531` |
 | `--aiol-cta-hover` | przycisk po najechaniu kursorem | `#eab308` |
-| `--aiol-gold` | złoty akcent (jak na officeinfluencers.pl) | `#bf9a5a` |
-| `--aiol-dark` | ciemne sekcje | `#191713` |
+| `--aiol-gold` | złoty akcent (jak na officeinfluencers.pl) | `#ad8644` |
+| `--aiol-line` | cienkie linie między sekcjami i ramki kart | `#e6e6e6` |
 
 ## SEO (Yoast / Rank Math)
 
@@ -99,7 +101,7 @@ Do `dataLayer` (Google Tag Manager) trafiają dwa zdarzenia:
 - **Strona jest wąska albo ma ramki po bokach:** kontener nie ma pełnej szerokości albo ma padding (krok 2.3).
 - **Przyciski nie przewijają do formularza przy optymalizacji JavaScriptu** (WP Rocket „Opóźnij JavaScript”, LiteSpeed Cache, Autoptimize): dodaj do wyjątków `AIOL_CONFIG` oraz `aiol`.
 - **Po kliknięciu sekcja chowa się pod przyklejonym nagłówkiem:** zwiększ `scroll-margin-top: 100px` przy `.aiol-sec`.
-- **Fonty:** kod ładuje Inter i Playfair Display z Google Fonts. Jeśli serwis ładuje te fonty lokalnie (Elementor → Ustawienia → Wydajność), możesz usunąć 3 linie `<link …fonts.googleapis.com…>` z początku kodu.
+- **Fonty:** kod ładuje Inter z Google Fonts. Jeśli serwis ładuje go lokalnie (Elementor → Ustawienia → Wydajność), możesz usunąć 3 linie `<link …fonts.googleapis.com…>` z początku kodu.
 
 ## Pliki w repozytorium
 
