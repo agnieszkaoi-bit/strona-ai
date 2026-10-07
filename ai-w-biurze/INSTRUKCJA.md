@@ -123,14 +123,14 @@ Pływający pasek, pasek na górze i przyciski w środku strony prowadzą tylko 
 
 ## Wygląd
 
-Strona ma czarne tło i żółte akcenty, a cała treść używa jednego prostego kroju: **Inter**. Treść jest ułożona w siatkę ciemnych kafelków. Część z nich ma żółtą ramkę, a kilka jest w całości żółtych („Nie musisz mieć doświadczenia z AI”, pytanie o RODO, „25+”). Na żółto są też przyciski „Zapisuję się”, wyróżnione słowa w nagłówkach, numery modułów i pasek z terminem na górze.
+Strona ma białe tło, czarne sekcje i żółte akcenty, bez beżu. Całość używa jednego prostego kroju: **Inter**. Czarne są: hero z paskiem klientów, opinie, pytania z sali i sekcja końcowa. W białych sekcjach kafelki są białe z ramką, szare, czarne albo żółte. Żółte są przyciski „Zapisuję się”, pasek z terminem na górze, plakietki nad nagłówkami i kilka kafelków. Wyróżnione słowa w nagłówkach mają na białym tle żółte zakreślenie, a na czarnym są żółte z cienkim podkreśleniem.
 
 Kolejność sekcji: pasek z terminem → hero → klienci (przewijana taśma) → dla kogo i o szkoleniu → puenta „Nie jak napisać prompt” → opinie → program (4 moduły) → po szkoleniu i dalsza ścieżka → pytania z sali → prowadząca → cena z formularzem zgłoszenia → dla firm i kontakt → FAQ w dwóch kolumnach → finał.
 
 ### Animacje
 
 - kafelki i nagłówki płynnie wjeżdżają, gdy pojawiają się na ekranie,
-- żółte podkreślenie rysuje się pod wyróżnionymi słowami w nagłówkach,
+- żółte zakreślenie albo podkreślenie rysuje się pod wyróżnionymi słowami w nagłówkach,
 - nazwy klientów przewijają się w taśmie (zatrzymuje się po najechaniu kursorem),
 - cienki żółty pasek na samej górze pokazuje, ile strony już przeczytano,
 - przyciski i ramki kafelków delikatnie zmieniają kolor po najechaniu kursorem, a kwota w karcie z ceną „podskakuje” po zmianie liczby osób.
@@ -141,15 +141,14 @@ Jeśli ktoś ma w systemie włączone ograniczanie ruchu, strona wyświetla się
 
 | Zmienna | Do czego | Wartość |
 |---|---|---|
-| `--aiol-bg` | tło strony | `#0c0c0c` |
-| `--aiol-tile` | ciemne kafelki, formularz, karta z ceną | `#161616` |
-| `--aiol-soft` | jaśniejsze kafelki | `#1f1f1f` |
-| `--aiol-band` | tło sekcji z opiniami, pytaniami i ceną | `#121212` |
-| `--aiol-line` | ramki i cienkie linie | `#2c2c2c` |
 | `--aiol-cta` | przyciski „Zapisuję się” i wszystkie żółte akcenty | `#f7c531` |
-| `--aiol-cta-hover` | przycisk po najechaniu kursorem | `#ffd657` |
-| `--aiol-ink` | nagłówki | `#ffffff` |
-| `--aiol-text` | zwykły tekst | `#d2d2d2` |
+| `--aiol-cta-hover` | przycisk po najechaniu kursorem | `#ffd24d` |
+| `--aiol-soft` | szare kafelki (na białym) | `#f2f2f2` |
+| `--aiol-line` | ramki i cienkie linie (na białym) | `#e3e3e3` |
+| `--aiol-ink` | nagłówki (na białym) | `#111111` |
+| `--aiol-text` | zwykły tekst (na białym) | `#3d3d3d` |
+
+Czarne sekcje i kafelki mają klasę `aiol-dark`. Ich kolory (tło `#0c0c0c`, kafelki `#161616`, tekst biały) są w regule `#aiol .aiol-dark` na początku stylów. Żeby zmienić sekcję z białej na czarną, dopisz `aiol-dark` do jej klasy, np. `class="aiol-sec aiol-dark"`.
 
 ## SEO (Yoast / Rank Math)
 

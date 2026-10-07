@@ -37,18 +37,25 @@
 <style>
 /* ---------- Zmienne: kolory i fonty (wszystko w jednym miejscu) ---------- */
 #aiol {
-  --aiol-bg: #0c0c0c;           /* tło strony - czarne */
-  --aiol-tile: #161616;         /* kafelki */
-  --aiol-soft: #1f1f1f;         /* jaśniejsze kafelki */
-  --aiol-band: #121212;         /* tło co drugiej sekcji */
-  --aiol-line: #2c2c2c;         /* ramki i linie */
+  /* Jasna część strony */
+  --aiol-bg: #ffffff;
+  --aiol-tile: #ffffff;
+  --aiol-soft: #f2f2f2;         /* szare kafelki */
+  --aiol-line: #e3e3e3;         /* ramki i linie */
+  --aiol-chip: #d4d4d4;         /* ramki pigułek i pól */
+  --aiol-hover-line: #b5b5b5;
+  --aiol-field: #f6f6f6;        /* tło pól formularza */
+  --aiol-ink: #111111;          /* nagłówki */
+  --aiol-text: #3d3d3d;
+  --aiol-muted: #6b6b6b;
+  --aiol-hi: #111111;           /* wyróżniony tekst: na białym czarny, na czarnym żółty */
+  --aiol-mark-color: currentColor;
+  --aiol-mark-size: .32em;      /* na białym: żółte zakreślenie pod słowem */
+  --aiol-error: #b42318;
+  /* Żółty akcent */
   --aiol-cta: #f7c531;          /* przyciski "Zapisuję się" i żółte akcenty */
-  --aiol-cta-hover: #ffd657;
+  --aiol-cta-hover: #ffd24d;
   --aiol-on-yellow: #111111;    /* tekst na żółtym */
-  --aiol-ink: #ffffff;          /* nagłówki */
-  --aiol-text: #d2d2d2;
-  --aiol-muted: #9c9c9c;
-  --aiol-error: #ff8080;
   --aiol-radius: 18px;
   --aiol-ease: cubic-bezier(.2, .7, .2, 1);
   --aiol-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -59,7 +66,6 @@
   padding: 0;
   background: var(--aiol-bg);
   color: var(--aiol-text);
-  color-scheme: dark;
   font-family: var(--aiol-sans);
   font-size: 17px;
   font-weight: 400;
@@ -70,6 +76,27 @@
   overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Czarne sekcje i kafelki: te same elementy, odwrócone kolory */
+#aiol .aiol-dark {
+  --aiol-bg: #0c0c0c;
+  --aiol-tile: #161616;
+  --aiol-soft: #1f1f1f;
+  --aiol-line: #2c2c2c;
+  --aiol-chip: #3a3a3a;
+  --aiol-hover-line: #4a4a4a;
+  --aiol-field: #0e0e0e;
+  --aiol-ink: #ffffff;
+  --aiol-text: #d2d2d2;
+  --aiol-muted: #9c9c9c;
+  --aiol-hi: var(--aiol-cta);
+  --aiol-mark-color: var(--aiol-cta);
+  --aiol-mark-size: .07em;      /* na czarnym: żółte słowo z cienkim podkreśleniem */
+  --aiol-error: #ff8080;
+  background-color: var(--aiol-bg);
+  color: var(--aiol-text);
+  color-scheme: dark;
 }
 
 /* ---------- Reset (chroni przed stylami motywu WordPress / Elementora) ---------- */
@@ -94,24 +121,28 @@
 #aiol blockquote { quotes: none; font-style: normal; }
 #aiol blockquote::before, #aiol blockquote::after { content: none; }
 #aiol img { display: block; max-width: 100%; height: auto; border: 0; border-radius: 0; box-shadow: none; }
-#aiol a:focus-visible, #aiol summary:focus-visible { outline: 2px solid var(--aiol-cta); outline-offset: 3px; border-radius: 6px; }
+#aiol a:focus-visible, #aiol summary:focus-visible { outline: 2px solid var(--aiol-hi); outline-offset: 3px; border-radius: 6px; }
 #aiol .aiol-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 /* ---------- Układ ---------- */
 #aiol .aiol-wrap { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 16px; }
 #aiol .aiol-sec { position: relative; padding: 30px 0; scroll-margin-top: 100px; }
 @media (min-width: 768px) { #aiol .aiol-wrap { padding: 0 32px; } #aiol .aiol-sec { padding: 44px 0; } }
-#aiol .aiol-sec--band { background: var(--aiol-band); }
 
 /* ---------- Typografia ---------- */
-#aiol .aiol-eyebrow { display: block; margin-bottom: 12px; font-size: 15px; font-weight: 500; line-height: 1.3; color: var(--aiol-cta); }
+#aiol .aiol-eyebrow { display: inline-block; margin-bottom: 14px; padding: 3px 10px; border-radius: 6px; background: var(--aiol-cta); color: var(--aiol-on-yellow); font-size: 13.5px; font-weight: 600; line-height: 1.35; }
 #aiol .aiol-h1 { margin-bottom: 22px; font-size: clamp(38px, 5.2vw, 70px); line-height: 1.03; letter-spacing: -.035em; text-wrap: balance; }
 #aiol .aiol-h2 { max-width: 960px; font-size: clamp(30px, 3.3vw, 46px); line-height: 1.1; letter-spacing: -.025em; text-wrap: balance; }
 #aiol .aiol-h2--xl { font-size: clamp(32px, 3.9vw, 52px); line-height: 1.06; }
 #aiol .aiol-h2--short { font-size: clamp(32px, 3.8vw, 50px); line-height: 1.06; }
-#aiol .aiol-accent { color: var(--aiol-cta); }
+#aiol .aiol-accent, #aiol .aiol-mark {
+  color: var(--aiol-mark-color);
+  background-image: linear-gradient(var(--aiol-cta), var(--aiol-cta)); background-repeat: no-repeat;
+  background-position: 0 92%; background-size: 100% var(--aiol-mark-size);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
 #aiol .aiol-link { color: var(--aiol-ink); font-weight: 500; text-decoration: underline; text-decoration-color: var(--aiol-cta); text-underline-offset: 3px; }
-#aiol .aiol-link:hover { color: var(--aiol-cta); }
+#aiol .aiol-link:hover { color: var(--aiol-hi); }
 #aiol .aiol-head { margin-bottom: 24px; }
 #aiol .aiol-head--split { display: grid; gap: 14px 64px; align-items: end; }
 #aiol .aiol-head__side p { max-width: 640px; font-size: clamp(17px, 1.4vw, 18.5px); line-height: 1.6; color: var(--aiol-text); text-wrap: pretty; }
@@ -123,14 +154,6 @@
 @media (min-width: 992px) {
   #aiol .aiol-head--stack .aiol-head__side { columns: 2; column-gap: 48px; }
   #aiol .aiol-head--stack .aiol-head__side p { max-width: none; }
-}
-
-/* Żółte słowa z podkreśleniem, które rysuje się, gdy tekst wjeżdża na ekran */
-#aiol .aiol-mark {
-  color: var(--aiol-cta);
-  background-image: linear-gradient(currentColor, currentColor); background-repeat: no-repeat;
-  background-position: 0 100%; background-size: 100% .07em;
-  -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
 
 /* ---------- Przyciski ---------- */
@@ -148,9 +171,9 @@
 #aiol .aiol-btn--sm { flex-shrink: 0; min-height: 42px; padding: 11px 20px; font-size: 14px; white-space: nowrap; }
 #aiol .aiol-btns { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 #aiol .aiol-btns--center { justify-content: center; }
-/* Drugi przycisk: "Kupuję i przechodzę do płatności" (biały obrys) */
-#aiol .aiol-btn--pay { background: transparent; color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.7); }
-#aiol .aiol-btn--pay:hover, #aiol .aiol-btn--pay:focus { background: #fff; color: var(--aiol-on-yellow); box-shadow: inset 0 0 0 1px #fff; }
+/* Drugi przycisk: "Kupuję i przechodzę do płatności" (obrys) */
+#aiol .aiol-btn--pay { background: transparent; color: var(--aiol-ink); box-shadow: inset 0 0 0 1px var(--aiol-ink); }
+#aiol .aiol-btn--pay:hover, #aiol .aiol-btn--pay:focus { background: var(--aiol-ink); color: var(--aiol-bg); box-shadow: inset 0 0 0 1px var(--aiol-ink); }
 
 /* ---------- Siatka kafelków ---------- */
 #aiol .aiol-bento { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
@@ -170,26 +193,25 @@
   #aiol .aiol-bento > .r-2 { grid-row: span 2; }
 }
 
-/* ---------- Kafelki: ciemne, jaśniejsze, z żółtą ramką i żółte ---------- */
+/* ---------- Kafelki: białe, szare, czarne (.aiol-dark) i żółte ---------- */
 #aiol .aiol-tile {
   position: relative; overflow: hidden; min-width: 0; padding: 24px;
   border-radius: var(--aiol-radius); background: var(--aiol-tile); border: 1px solid var(--aiol-line); color: var(--aiol-text);
   transition: border-color .3s ease;
 }
 #aiol .aiol-tile--soft { background: var(--aiol-soft); border-color: transparent; }
-#aiol .aiol-tile--edge { border-color: rgba(247,197,49,.55); }
 #aiol .aiol-tile--yellow { background: var(--aiol-cta); border-color: transparent; color: var(--aiol-on-yellow); }
 #aiol .aiol-tile--yellow h2, #aiol .aiol-tile--yellow h3, #aiol .aiol-tile--yellow strong, #aiol .aiol-tile--yellow b,
 #aiol .aiol-tile--yellow .aiol-tile__big, #aiol .aiol-tile--yellow .aiol-tile__kicker, #aiol .aiol-tile--yellow .aiol-qcard__a p:first-child { color: var(--aiol-on-yellow); }
 #aiol .aiol-tile--col { display: flex; flex-direction: column; justify-content: space-between; gap: 20px; }
 #aiol .aiol-tile--end { display: flex; flex-direction: column; justify-content: flex-end; }
-@media (hover: hover) { #aiol .aiol-tile:not(.aiol-tile--soft):not(.aiol-tile--yellow):not(.aiol-tile--edge):hover { border-color: #4a4a4a; } }
+@media (hover: hover) { #aiol .aiol-tile:not(.aiol-tile--soft):not(.aiol-tile--yellow):hover { border-color: var(--aiol-hover-line); } }
 #aiol .aiol-tile__title { font-size: clamp(21px, 2vw, 26px); line-height: 1.2; letter-spacing: -.015em; text-wrap: balance; }
 #aiol .aiol-tile__title--lg { font-size: clamp(26px, 2.6vw, 36px); line-height: 1.12; }
 #aiol .aiol-tile__big { font-size: clamp(18px, 1.6vw, 21px); font-weight: 400; line-height: 1.5; color: var(--aiol-ink); text-wrap: pretty; }
 #aiol .aiol-tile__big--xl { font-size: clamp(22px, 2.1vw, 27px); font-weight: 500; line-height: 1.3; letter-spacing: -.015em; }
 #aiol .aiol-tile__p { font-size: 16px; line-height: 1.6; }
-#aiol .aiol-tile__kicker { font-size: 15px; font-weight: 500; color: var(--aiol-cta); }
+#aiol .aiol-tile__kicker { font-size: 15px; font-weight: 500; color: var(--aiol-hi); }
 #aiol .aiol-tile__kicker + .aiol-tile__big { margin-top: 8px; }
 #aiol .aiol-tile__title + .aiol-tile__p { margin-top: 8px; }
 #aiol .aiol-tile--col > .aiol-btn:not(.aiol-btn--block) { align-self: flex-start; }
@@ -198,7 +220,7 @@
 /* ---------- Listy (cienka żółta kreska zamiast ikon) ---------- */
 #aiol .aiol-list li, #aiol .aiol-incl li, #aiol .aiol-nos3 li, #aiol .aiol-facts4 li { position: relative; padding-left: 22px; }
 #aiol .aiol-list li + li { margin-top: 8px; }
-#aiol .aiol-list li::before, #aiol .aiol-incl li::before, #aiol .aiol-nos3 li::before, #aiol .aiol-facts4 li::before { content: ""; position: absolute; left: 0; top: .82em; width: 10px; height: 1px; background: var(--aiol-cta); }
+#aiol .aiol-list li::before, #aiol .aiol-incl li::before, #aiol .aiol-nos3 li::before, #aiol .aiol-facts4 li::before { content: ""; position: absolute; left: 0; top: .78em; width: 10px; height: 2px; background: var(--aiol-cta); }
 
 /* ---------- Pasek górny i pasek postępu ---------- */
 #aiol .aiol-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 14px; min-height: 40px; padding: 7px 16px; background: var(--aiol-cta); color: var(--aiol-on-yellow); font-size: 15px; font-weight: 400; line-height: 1.35; text-align: center; }
@@ -212,10 +234,10 @@
 #aiol .aiol-hero { padding: 36px 0 32px; }
 #aiol .aiol-hero__grid { display: grid; gap: 32px; align-items: center; }
 #aiol .aiol-hero__name { margin: 0 0 12px; font-size: clamp(20px, 2.1vw, 26px); font-weight: 500; line-height: 1.15; letter-spacing: -.015em; color: var(--aiol-ink); }
-#aiol .aiol-hero__name b { color: var(--aiol-cta); font-weight: 600; }
+#aiol .aiol-hero__name b { color: var(--aiol-hi); font-weight: 600; }
 #aiol .aiol-hero__lead { max-width: 56ch; margin-bottom: 22px; padding-left: 18px; border-left: 2px solid var(--aiol-cta); font-size: clamp(17px, 1.4vw, 19.5px); line-height: 1.55; text-wrap: pretty; }
 #aiol .aiol-facts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
-#aiol .aiol-facts li { padding: 7px 14px; border-radius: 999px; border: 1px solid #3a3a3a; font-size: 15px; font-weight: 400; line-height: 1.3; color: var(--aiol-ink); }
+#aiol .aiol-facts li { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--aiol-chip); font-size: 15px; font-weight: 400; line-height: 1.3; color: var(--aiol-ink); }
 #aiol .aiol-hero__cta { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
 #aiol .aiol-hero__note { font-size: 14.5px; line-height: 1.5; color: var(--aiol-muted); }
 #aiol .aiol-nos { display: flex; flex-wrap: wrap; gap: 4px 22px; margin-top: 18px; font-size: 14.5px; line-height: 1.5; color: var(--aiol-muted); }
@@ -232,12 +254,12 @@
 /* ---------- Klienci: przewijana taśma ---------- */
 #aiol .aiol-trust { padding: 14px 0; border-top: 1px solid var(--aiol-line); border-bottom: 1px solid var(--aiol-line); }
 #aiol .aiol-trust__in { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; }
-#aiol .aiol-trust__label { flex: none; font-size: 15px; font-weight: 500; color: var(--aiol-cta); }
+#aiol .aiol-trust__label { flex: none; font-size: 15px; font-weight: 500; color: var(--aiol-hi); }
 #aiol .aiol-marquee { flex: 1 1 320px; min-width: 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
 #aiol .aiol-marquee__track { display: flex; width: max-content; animation: aiol-marquee 48s linear infinite; }
 #aiol .aiol-marquee:hover .aiol-marquee__track { animation-play-state: paused; }
-#aiol .aiol-marquee__track li { display: inline-flex; align-items: center; padding: 6px 0; font-size: 18px; font-weight: 500; letter-spacing: -.01em; line-height: 1.3; color: #8e8e8e; white-space: nowrap; transition: color .2s ease; }
-#aiol .aiol-marquee__track li:hover { color: #fff; }
+#aiol .aiol-marquee__track li { display: inline-flex; align-items: center; padding: 6px 0; font-size: 18px; font-weight: 500; letter-spacing: -.01em; line-height: 1.3; color: var(--aiol-muted); white-space: nowrap; transition: color .2s ease; }
+#aiol .aiol-marquee__track li:hover { color: var(--aiol-ink); }
 #aiol .aiol-marquee__track li::after { content: "·"; margin: 0 22px; color: var(--aiol-cta); }
 @keyframes aiol-marquee { to { transform: translateX(-50%); } }
 
@@ -245,7 +267,7 @@
 #aiol .aiol-prob__lead { margin-top: 18px; font-size: clamp(18px, 1.7vw, 22px); line-height: 1.45; color: var(--aiol-muted); text-wrap: balance; }
 #aiol .aiol-prob__lead b { display: block; margin-top: .5em; font-weight: 500; color: var(--aiol-ink); }
 #aiol .aiol-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-#aiol .aiol-chips li { padding: 7px 14px; border-radius: 999px; border: 1px solid #3a3a3a; font-size: 15.5px; font-weight: 400; line-height: 1.3; color: var(--aiol-ink); transition: border-color .2s ease; }
+#aiol .aiol-chips li { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--aiol-chip); font-size: 15.5px; font-weight: 400; line-height: 1.3; color: var(--aiol-ink); transition: border-color .2s ease; }
 #aiol .aiol-chips li:hover { border-color: var(--aiol-cta); }
 #aiol .aiol-who__label { margin-top: 16px; color: var(--aiol-text); }
 #aiol .aiol-nos3 { display: grid; gap: 14px; }
@@ -269,7 +291,7 @@
 
 /* ---------- Program ---------- */
 #aiol .aiol-module__top { margin-bottom: 14px; }
-#aiol .aiol-module__num { font-size: 44px; font-weight: 300; line-height: 1; letter-spacing: -.03em; color: var(--aiol-cta); font-variant-numeric: tabular-nums; }
+#aiol .aiol-module__num { font-size: 44px; font-weight: 300; line-height: 1; letter-spacing: -.03em; color: var(--aiol-hi); font-variant-numeric: tabular-nums; }
 #aiol .aiol-module h3 { margin-bottom: 6px; font-size: 21px; font-weight: 500; line-height: 1.3; letter-spacing: -.01em; }
 #aiol .aiol-module__intro { margin-bottom: 14px; color: var(--aiol-muted); }
 #aiol .aiol-module__intro strong { font-weight: 500; color: var(--aiol-ink); }
@@ -280,7 +302,7 @@
 #aiol .aiol-chain { display: grid; gap: 10px; }
 #aiol .aiol-chain li { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 12px; background: var(--aiol-soft); font-size: 16.5px; font-weight: 500; line-height: 1.3; color: var(--aiol-ink); }
 #aiol .aiol-chain li:last-child { background: var(--aiol-cta); color: var(--aiol-on-yellow); }
-#aiol .aiol-chain__n { font-size: 13px; font-weight: 500; color: var(--aiol-cta); font-variant-numeric: tabular-nums; }
+#aiol .aiol-chain__n { font-size: 13px; font-weight: 500; color: var(--aiol-hi); font-variant-numeric: tabular-nums; }
 #aiol .aiol-chain li:last-child .aiol-chain__n { color: var(--aiol-on-yellow); }
 @media (min-width: 768px) {
   #aiol .aiol-chain { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
@@ -290,25 +312,25 @@
 /* ---------- Po szkoleniu + ścieżka ---------- */
 #aiol .aiol-outcome { display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
 @media (min-width: 700px) { #aiol .aiol-outcome { min-height: 160px; } }
-#aiol .aiol-outcome__n { font-size: 30px; font-weight: 300; line-height: 1; color: var(--aiol-cta); font-variant-numeric: tabular-nums; }
+#aiol .aiol-outcome__n { font-size: 30px; font-weight: 300; line-height: 1; color: var(--aiol-hi); font-variant-numeric: tabular-nums; }
 #aiol .aiol-outcome p { font-size: 18.5px; font-weight: 500; line-height: 1.35; letter-spacing: -.01em; color: var(--aiol-ink); }
 #aiol .aiol-outcome p::first-letter { text-transform: uppercase; }
 #aiol .aiol-path { display: grid; gap: 12px; margin: 16px 0; }
 #aiol .aiol-step { padding: 18px; border-radius: 14px; background: var(--aiol-soft); }
-#aiol .aiol-step--next { background: transparent; box-shadow: inset 0 0 0 1px var(--aiol-cta); }
-#aiol .aiol-step__tag { display: block; margin-bottom: 6px; font-size: 13.5px; font-weight: 500; line-height: 1.3; color: var(--aiol-cta); }
+#aiol .aiol-step--next { background: transparent; box-shadow: inset 0 0 0 2px var(--aiol-cta); }
+#aiol .aiol-step__tag { display: block; margin-bottom: 6px; font-size: 13.5px; font-weight: 500; line-height: 1.3; color: var(--aiol-hi); }
 #aiol .aiol-step__code { font-size: 13px; color: var(--aiol-muted); }
 #aiol .aiol-step__name { margin: 2px 0 6px; font-size: 22px; font-weight: 600; line-height: 1.1; letter-spacing: -.01em; color: var(--aiol-ink); }
 #aiol .aiol-step__q { font-size: 15.5px; line-height: 1.45; color: var(--aiol-ink); }
 #aiol .aiol-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-#aiol .aiol-tags li { padding: 4px 12px; border-radius: 999px; border: 1px solid rgba(247,197,49,.5); color: var(--aiol-ink); font-size: 14px; line-height: 1.35; }
+#aiol .aiol-tags li { padding: 4px 12px; border-radius: 999px; border: 1px solid var(--aiol-cta); color: var(--aiol-ink); font-size: 14px; line-height: 1.35; }
 @media (min-width: 600px) { #aiol .aiol-path { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* ---------- Pytania z sali ---------- */
 #aiol .aiol-qcard { display: flex; flex-direction: column; gap: 14px; }
 #aiol .aiol-qcard__q { font-size: clamp(20px, 1.8vw, 23px); font-weight: 500; line-height: 1.25; letter-spacing: -.015em; text-indent: -.42em; text-wrap: balance; }
 #aiol .aiol-qcard__a p { font-size: 16.5px; line-height: 1.6; }
-#aiol .aiol-qcard__a p:first-child { font-size: 18px; font-weight: 500; color: var(--aiol-cta); }
+#aiol .aiol-qcard__a p:first-child { font-size: 18px; font-weight: 500; color: var(--aiol-hi); }
 #aiol .aiol-qcard__a p + p { margin-top: 8px; }
 #aiol .aiol-qcard__a .aiol-qcard__note { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(128,128,128,.3); font-size: 14px; opacity: .8; }
 
@@ -317,12 +339,12 @@
 #aiol .aiol-photo { position: relative; width: 100%; height: 100%; min-height: inherit; overflow: hidden; }
 #aiol .aiol-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
 #aiol .aiol-host__lead { margin-top: 16px; font-size: clamp(19px, 1.8vw, 23px); font-weight: 400; line-height: 1.45; color: var(--aiol-ink); text-wrap: pretty; }
-#aiol .aiol-host__lead::before { content: "„"; color: var(--aiol-cta); }
-#aiol .aiol-host__lead::after { content: "”"; color: var(--aiol-cta); }
+#aiol .aiol-host__lead::before { content: "„"; color: var(--aiol-hi); }
+#aiol .aiol-host__lead::after { content: "”"; color: var(--aiol-hi); }
 #aiol .aiol-host__p { max-width: 640px; margin-top: 12px; font-size: 17px; line-height: 1.6; color: var(--aiol-muted); }
 #aiol .aiol-num { display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; }
 @media (min-width: 700px) { #aiol .aiol-num { min-height: 160px; } }
-#aiol .aiol-num b { display: block; font-size: clamp(44px, 4.6vw, 66px); font-weight: 300; line-height: 1; letter-spacing: -.03em; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--aiol-cta); }
+#aiol .aiol-num b { display: block; font-size: clamp(44px, 4.6vw, 66px); font-weight: 300; line-height: 1; letter-spacing: -.03em; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--aiol-hi); }
 #aiol .aiol-tile--yellow.aiol-num b { color: var(--aiol-on-yellow); }
 #aiol .aiol-num span { display: block; font-size: 15px; line-height: 1.4; }
 #aiol .aiol-facts4 { display: grid; gap: 16px 32px; }
@@ -339,8 +361,8 @@
 /* Karta z ceną jedzie obok formularza tylko na wysokich ekranach, na których mieści się cała */
 @media (min-width: 992px) and (min-height: 1040px) { #aiol .aiol-pricecard { position: sticky; top: 110px; } }
 #aiol .aiol-pricecard { overflow: hidden; border-radius: 22px; background: var(--aiol-tile); border: 1px solid var(--aiol-line); }
-#aiol .aiol-pricecard__top { padding: 26px; background: var(--aiol-soft); border-bottom: 1px solid var(--aiol-line); }
-#aiol .aiol-pricecard__name { font-size: 15px; font-weight: 500; color: var(--aiol-cta); }
+#aiol .aiol-pricecard__top { padding: 26px; background: var(--aiol-bg); }
+#aiol .aiol-pricecard__name { font-size: 15px; font-weight: 500; color: var(--aiol-hi); }
 #aiol .aiol-pricecard__name strong { font-weight: 600; }
 #aiol .aiol-pricecard__amount { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-top: 10px; }
 #aiol .aiol-pricecard__value { font-size: clamp(44px, 4.2vw, 58px); font-weight: 400; line-height: 1; letter-spacing: -.03em; color: var(--aiol-ink); }
@@ -349,7 +371,7 @@
 #aiol .aiol-pricecard__pay { margin-top: 20px; }
 #aiol .aiol-pricecard__or { margin-top: 12px; font-size: 14px; text-align: center; color: var(--aiol-muted); }
 #aiol .aiol-pricecard__or a { color: var(--aiol-ink); font-weight: 500; text-decoration: underline; text-decoration-color: var(--aiol-cta); text-underline-offset: 3px; }
-#aiol .aiol-pricecard__or a:hover { color: var(--aiol-cta); }
+#aiol .aiol-pricecard__or a:hover { color: var(--aiol-hi); }
 #aiol .aiol-pricecard__body { padding: 20px 26px 26px; }
 #aiol .aiol-summary__rows > div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--aiol-line); font-size: 15px; line-height: 1.4; }
 #aiol .aiol-summary__rows dt { color: var(--aiol-muted); }
@@ -358,16 +380,16 @@
 #aiol .aiol-summary__total span { flex-basis: 100%; font-size: 14px; color: var(--aiol-muted); }
 #aiol .aiol-summary__total strong { display: inline-block; transform-origin: 0 70%; font-size: 36px; font-weight: 500; line-height: 1.05; letter-spacing: -.03em; color: var(--aiol-ink); transition: color .3s ease; }
 #aiol .aiol-summary__total strong.is-bump { animation: aiol-bump .45s var(--aiol-ease); }
-@keyframes aiol-bump { 0% { transform: scale(1); } 40% { transform: scale(1.05); color: var(--aiol-cta); } 100% { transform: scale(1); } }
+@keyframes aiol-bump { 0% { transform: scale(1); } 40% { transform: scale(1.05); color: var(--aiol-hi); } 100% { transform: scale(1); } }
 #aiol .aiol-summary__total small { font-size: 15px; color: var(--aiol-ink); }
-#aiol .aiol-pricecard__label { margin: 18px 0 8px; font-size: 15px; font-weight: 500; color: var(--aiol-cta); }
+#aiol .aiol-pricecard__label { margin: 18px 0 8px; font-size: 15px; font-weight: 500; color: var(--aiol-hi); }
 #aiol .aiol-incl { display: grid; gap: 7px; }
 #aiol .aiol-incl li { font-size: 15.5px; line-height: 1.45; color: var(--aiol-ink); }
 #aiol .aiol-price__notes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
-#aiol .aiol-price__notes li { padding: 5px 12px; border-radius: 999px; border: 1px solid #3a3a3a; font-size: 13.5px; line-height: 1.35; color: var(--aiol-ink); }
+#aiol .aiol-price__notes li { padding: 5px 12px; border-radius: 999px; border: 1px solid var(--aiol-chip); font-size: 13.5px; line-height: 1.35; color: var(--aiol-ink); }
 #aiol .aiol-summary__help { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--aiol-line); font-size: 14px; line-height: 1.7; }
 #aiol .aiol-summary__help a { color: var(--aiol-ink); font-weight: 500; overflow-wrap: anywhere; }
-#aiol .aiol-summary__help a:hover { color: var(--aiol-cta); }
+#aiol .aiol-summary__help a:hover { color: var(--aiol-hi); }
 #aiol .aiol-signup__form { scroll-margin-top: 100px; }
 #aiol .aiol-form__title { margin-bottom: 18px; font-size: clamp(22px, 2.2vw, 28px); font-weight: 500; line-height: 1.15; }
 
@@ -382,15 +404,15 @@
 #aiol .aiol-input {
   display: block; width: 100%; max-width: 100%; height: auto; min-height: 50px; margin: 0; padding: 12px 14px;
   font-family: var(--aiol-sans); font-size: 16px; font-weight: 400; line-height: 1.4; letter-spacing: 0; text-transform: none;
-  color: var(--aiol-ink); background: #0e0e0e; border: 1px solid #333; border-radius: 12px; box-shadow: none; outline: 0;
+  color: var(--aiol-ink); background: var(--aiol-field); border: 1px solid var(--aiol-chip); border-radius: 12px; box-shadow: none; outline: 0;
   -webkit-appearance: none; appearance: none; transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
 }
 #aiol textarea.aiol-input { min-height: 80px; resize: vertical; }
 #aiol select.aiol-input {
   padding-right: 42px; cursor: pointer;
-  background: #0e0e0e url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center / 16px;
+  background: var(--aiol-field) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center / 16px;
 }
-#aiol .aiol-input:hover { border-color: #4a4a4a; }
+#aiol .aiol-input:hover { border-color: var(--aiol-hover-line); }
 #aiol .aiol-input:focus { border-color: var(--aiol-cta); box-shadow: 0 0 0 3px rgba(247,197,49,.25); }
 #aiol .aiol-input[aria-invalid="true"] { border-color: var(--aiol-error); box-shadow: 0 0 0 3px rgba(255,128,128,.15); animation: aiol-shake .35s ease; }
 @keyframes aiol-shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
@@ -399,8 +421,8 @@
 #aiol .aiol-err:empty, #aiol .aiol-form-status:empty { display: none; }
 #aiol .aiol-choices { display: grid; gap: 10px; }
 #aiol .aiol-choice, #aiol .aiol-consent { cursor: pointer; font-family: var(--aiol-sans); text-transform: none; letter-spacing: 0; }
-#aiol .aiol-choice { display: flex; align-items: center; gap: 12px; min-height: 50px; padding: 12px 16px; border: 1px solid #333; border-radius: 14px; background: #0e0e0e; font-size: 15.5px; font-weight: 400; line-height: 1.3; color: var(--aiol-ink); transition: border-color .2s ease, background-color .2s ease; }
-#aiol .aiol-choice.is-on { border-color: var(--aiol-cta); background: rgba(247,197,49,.08); }
+#aiol .aiol-choice { display: flex; align-items: center; gap: 12px; min-height: 50px; padding: 12px 16px; border: 1px solid var(--aiol-chip); border-radius: 14px; background: var(--aiol-field); font-size: 15.5px; font-weight: 400; line-height: 1.3; color: var(--aiol-ink); transition: border-color .2s ease, background-color .2s ease; }
+#aiol .aiol-choice.is-on { border-color: var(--aiol-cta); box-shadow: inset 0 0 0 1px var(--aiol-cta); background: rgba(247,197,49,.14); }
 #aiol .aiol-choice input, #aiol .aiol-consent input {
   display: inline-block; visibility: visible; position: static; clip: auto; clip-path: none;
   flex-shrink: 0; width: 18px; height: 18px; min-height: 0; margin: 0; padding: 0;
@@ -437,29 +459,29 @@
 #aiol .aiol-b2b .aiol-chips { margin-top: 18px; }
 #aiol .aiol-contact h3 { margin-bottom: 2px; font-size: 24px; }
 #aiol .aiol-contact__block { padding: 14px 0; border-bottom: 1px solid var(--aiol-line); }
-#aiol .aiol-contact__label { margin-bottom: 2px; font-size: 14px; font-weight: 500; color: var(--aiol-cta); }
+#aiol .aiol-contact__label { margin-bottom: 2px; font-size: 14px; font-weight: 500; color: var(--aiol-hi); }
 #aiol .aiol-contact__name { margin-bottom: 4px; font-size: 17px; font-weight: 500; color: var(--aiol-ink); }
 #aiol .aiol-contact a { display: block; padding: 2px 0; line-height: 1.5; color: var(--aiol-ink); transition: color .2s ease; }
 #aiol .aiol-contact a span { overflow-wrap: anywhere; }
-#aiol .aiol-contact a:hover { color: var(--aiol-cta); }
+#aiol .aiol-contact a:hover { color: var(--aiol-hi); }
 #aiol .aiol-contact__foot { padding-top: 14px; font-size: 13.5px; color: var(--aiol-muted); }
 
 /* ---------- FAQ ---------- */
 #aiol .aiol-faq__help a { color: var(--aiol-ink); font-weight: 500; border-bottom: 1px solid var(--aiol-cta); overflow-wrap: anywhere; }
-#aiol .aiol-faq__help a:hover { color: var(--aiol-cta); }
+#aiol .aiol-faq__help a:hover { color: var(--aiol-hi); }
 #aiol .aiol-faq__cols { display: grid; gap: 14px; align-items: start; }
 #aiol .aiol-faq__col { display: grid; gap: 14px; }
 @media (min-width: 992px) { #aiol .aiol-faq__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; } #aiol .aiol-faq__col { gap: 18px; } }
-#aiol .aiol-faq__group { padding: 18px 22px 6px; border-radius: var(--aiol-radius); background: var(--aiol-tile); border: 1px solid var(--aiol-line); scroll-margin-top: 100px; }
-#aiol .aiol-faq__group h3 { margin-bottom: 4px; font-size: 15px; font-weight: 500; color: var(--aiol-cta); }
+#aiol .aiol-faq__group { padding: 18px 22px 6px; border-radius: var(--aiol-radius); background: var(--aiol-soft); scroll-margin-top: 100px; }
+#aiol .aiol-faq__group h3 { margin-bottom: 4px; font-size: 15px; font-weight: 500; color: var(--aiol-hi); }
 #aiol .aiol-qa + .aiol-qa { border-top: 1px solid var(--aiol-line); }
 #aiol .aiol-qa summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 15px 0; cursor: pointer; list-style: none; font-size: 17px; font-weight: 500; line-height: 1.35; color: var(--aiol-ink); transition: color .2s ease; }
 #aiol .aiol-qa summary::-webkit-details-marker { display: none; }
 #aiol .aiol-qa summary::marker { content: ""; }
-#aiol .aiol-qa summary:hover { color: var(--aiol-cta); }
+#aiol .aiol-qa summary:hover { color: var(--aiol-hi); }
 /* Plus, który po otwarciu zamienia się w minus */
-#aiol .aiol-qa__ico { position: relative; flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--aiol-soft); transition: background-color .25s ease; }
-#aiol .aiol-qa__ico::before, #aiol .aiol-qa__ico::after { content: ""; position: absolute; left: 50%; top: 50%; width: 11px; height: 1.5px; margin: -.75px 0 0 -5.5px; background: #fff; transition: transform .3s var(--aiol-ease), background-color .25s ease; }
+#aiol .aiol-qa__ico { position: relative; flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--aiol-tile); transition: background-color .25s ease; }
+#aiol .aiol-qa__ico::before, #aiol .aiol-qa__ico::after { content: ""; position: absolute; left: 50%; top: 50%; width: 11px; height: 1.5px; margin: -.75px 0 0 -5.5px; background: var(--aiol-ink); transition: transform .3s var(--aiol-ease), background-color .25s ease; }
 #aiol .aiol-qa__ico::after { transform: rotate(90deg); }
 #aiol .aiol-qa[open] .aiol-qa__ico { background: var(--aiol-cta); }
 #aiol .aiol-qa[open] .aiol-qa__ico::before, #aiol .aiol-qa[open] .aiol-qa__ico::after { background: var(--aiol-on-yellow); }
@@ -471,17 +493,17 @@
 #aiol .aiol-final__box { padding: 48px 22px; border-radius: 28px; background: var(--aiol-tile); border: 1px solid rgba(247,197,49,.55); text-align: center; }
 #aiol .aiol-final h2 { font-size: clamp(34px, 4.3vw, 58px); font-weight: 500; line-height: 1.05; letter-spacing: -.035em; color: var(--aiol-ink); }
 #aiol .aiol-final__facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 20px 0 28px; }
-#aiol .aiol-final__facts li { padding: 7px 14px; border-radius: 999px; border: 1px solid #3a3a3a; line-height: 1.3; color: var(--aiol-ink); }
+#aiol .aiol-final__facts li { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--aiol-chip); line-height: 1.3; color: var(--aiol-ink); }
 #aiol .aiol-final__small { margin-top: 20px; font-size: 14.5px; color: var(--aiol-muted); }
 @media (min-width: 768px) { #aiol .aiol-final__box { padding: 68px 48px; } }
 
 /* ---------- Pływający pasek ---------- */
 #aiol .aiol-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9990; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); transform: translateY(120%); visibility: hidden; transition: transform .35s var(--aiol-ease), visibility .35s ease; }
 #aiol .aiol-sticky.is-visible { transform: none; visibility: visible; }
-#aiol .aiol-sticky__in { display: flex; align-items: center; justify-content: space-between; gap: 14px; max-width: 680px; margin: 0 auto; padding: 7px 7px 7px 20px; border-radius: 999px; background: rgba(22,22,22,.96); border: 1px solid #333; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 12px 30px -12px rgba(0,0,0,.6); color: var(--aiol-ink); }
+#aiol .aiol-sticky__in { display: flex; align-items: center; justify-content: space-between; gap: 14px; max-width: 680px; margin: 0 auto; padding: 7px 7px 7px 20px; border-radius: 999px; background: rgba(17,17,17,.96); border: 1px solid #333; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 12px 30px -12px rgba(0,0,0,.6); color: #fff; }
 #aiol .aiol-sticky__txt { display: flex; flex-direction: column; min-width: 0; line-height: 1.3; }
-#aiol .aiol-sticky__txt strong { color: var(--aiol-ink); font-size: 15px; font-weight: 600; white-space: nowrap; }
-#aiol .aiol-sticky__txt span { overflow: hidden; font-size: 13px; color: var(--aiol-muted); white-space: nowrap; text-overflow: ellipsis; }
+#aiol .aiol-sticky__txt strong { color: #fff; font-size: 15px; font-weight: 600; white-space: nowrap; }
+#aiol .aiol-sticky__txt span { overflow: hidden; font-size: 13px; color: #a8a8a8; white-space: nowrap; text-overflow: ellipsis; }
 
 /* ---------- Animacje wejścia (tylko gdy działa skrypt i użytkownik nie ogranicza ruchu) ---------- */
 #aiol.aiol-anim [data-r] {
@@ -489,8 +511,8 @@
   transition: opacity .7s var(--aiol-ease) var(--d, 0ms), translate .7s var(--aiol-ease) var(--d, 0ms), border-color .3s ease;
 }
 #aiol.aiol-anim [data-r].is-in { opacity: 1; translate: none; }
-#aiol.aiol-anim [data-r] .aiol-mark { background-size: 0 .07em; transition: background-size 1s var(--aiol-ease) .4s; }
-#aiol.aiol-anim [data-r].is-in .aiol-mark { background-size: 100% .07em; }
+#aiol.aiol-anim [data-r] .aiol-mark { background-size: 0 var(--aiol-mark-size); transition: background-size 1s var(--aiol-ease) .4s; }
+#aiol.aiol-anim [data-r].is-in .aiol-mark { background-size: 100% var(--aiol-mark-size); }
 
 /* ---------- Telefony ---------- */
 @media (max-width: 600px) {
@@ -531,7 +553,7 @@
   <div class="aiol-progress" aria-hidden="true"><span data-aiol-progress></span></div>
 
   <!-- ===================== HERO ===================== -->
-  <section class="aiol-hero" id="aiol-start" aria-labelledby="aiol-h1">
+  <section class="aiol-hero aiol-dark" id="aiol-start" aria-labelledby="aiol-h1">
     <div class="aiol-wrap aiol-hero__grid">
       <div>
         <p class="aiol-eyebrow" data-r>Szkolenie online LIVE</p>
@@ -566,7 +588,7 @@
   </section>
 
   <!-- ===================== KLIENCI (przewijana taśma) ===================== -->
-  <section class="aiol-trust" aria-label="Klienci">
+  <section class="aiol-trust aiol-dark" aria-label="Klienci">
     <div class="aiol-wrap aiol-trust__in">
       <p class="aiol-trust__label">Realizowałam projekty m.in. dla:</p>
       <div class="aiol-marquee">
@@ -621,7 +643,7 @@
         <p class="aiol-prob__lead">Pytanie nie brzmi więc: „czy z&nbsp;niego korzystać?”, ale: <b>jak robić to dobrze, bezpiecznie i&nbsp;z&nbsp;realnym pożytkiem dla swojej pracy?</b></p>
       </div>
 
-      <div class="aiol-tile aiol-tile--edge aiol-tile--end s-5 t-2" data-r>
+      <div class="aiol-tile aiol-dark aiol-tile--end s-5 t-2" data-r>
         <p class="aiol-tile__big"><strong>AIOfficeLab FUNDAMENT</strong> to dwugodzinne szkolenie dla osób pracujących w&nbsp;administracji biurowej, które chcą uporządkować podstawy i&nbsp;zobaczyć, jak wykorzystywać AI do pracy z&nbsp;informacją, dokumentami i&nbsp;codziennymi zadaniami.</p>
       </div>
 
@@ -638,7 +660,7 @@
   <!-- ===================== ZADANIE, NIE PROMPT ===================== -->
   <section class="aiol-sec" id="aiol-podejscie" aria-labelledby="aiol-h-task">
     <div class="aiol-wrap">
-      <div class="aiol-punch__box" data-r>
+      <div class="aiol-punch__box aiol-dark" data-r>
         <h2 class="aiol-punch__text" id="aiol-h-task">Nie „jak napisać prompt”.<br><span class="aiol-mark">Tylko: jak rozwiązać zadanie.</span></h2>
         <p class="aiol-punch__sub">To szkolenie nie jest kursem obsługi jednego programu. <strong>Najpierw jest Twoje zadanie.</strong> Dopiero potem wybieramy sposób, w&nbsp;jaki AI może Ci pomóc je wykonać szybciej, lepiej lub bardziej systematycznie.</p>
       </div>
@@ -646,7 +668,7 @@
   </section>
 
   <!-- ===================== OPINIE ===================== -->
-  <section class="aiol-sec aiol-sec--band" id="aiol-opinie" aria-labelledby="aiol-h-reviews">
+  <section class="aiol-sec aiol-dark" id="aiol-opinie" aria-labelledby="aiol-h-reviews">
     <div class="aiol-wrap aiol-bento">
       <div class="aiol-tile aiol-tile--col s-4 t-2" data-r>
         <div>
@@ -754,7 +776,7 @@
           </ul>
         </article>
 
-        <div class="aiol-tile aiol-tile--edge aiol-tile--col s-4 t-2" data-r>
+        <div class="aiol-tile aiol-dark aiol-tile--col s-4 t-2" data-r>
           <div>
             <p class="aiol-tile__kicker">4 moduły · 2&nbsp;godziny online LIVE</p>
             <p class="aiol-tile__big">Nagranie przez 30&nbsp;dni, materiały szkoleniowe i&nbsp;imienny certyfikat w&nbsp;cenie.</p>
@@ -791,7 +813,7 @@
           <p>jak sprawdzić rezultat, zanim wykorzystasz go w&nbsp;pracy</p>
         </div>
 
-        <div class="aiol-tile aiol-tile--soft aiol-tile--col s-5 t-2" data-r>
+        <div class="aiol-tile aiol-dark aiol-tile--col s-5 t-2" data-r>
           <p class="aiol-tile__big aiol-tile__big--xl">To fundament, na którym można bezpiecznie budować dalsze kompetencje.</p>
           <a class="aiol-btn" href="#aiol-formularz" data-aiol-cta="efekty">Zapisuję się</a>
         </div>
@@ -829,7 +851,7 @@
   </section>
 
   <!-- ===================== PYTANIA Z SALI ===================== -->
-  <section class="aiol-sec aiol-sec--band" id="aiol-pytania" aria-labelledby="aiol-h-questions">
+  <section class="aiol-sec aiol-dark" id="aiol-pytania" aria-labelledby="aiol-h-questions">
     <div class="aiol-wrap">
       <div class="aiol-head" data-r>
         <p class="aiol-eyebrow">Pytania z&nbsp;sali</p>
@@ -884,7 +906,7 @@
         <span>lat doświadczenia</span>
       </div>
 
-      <div class="aiol-tile aiol-tile--edge aiol-num s-4" data-r>
+      <div class="aiol-tile aiol-dark aiol-num s-4" data-r>
         <b>10&nbsp;000+</b>
         <span>przeszkolonych osób</span>
       </div>
@@ -901,7 +923,7 @@
   </section>
 
   <!-- ===================== CENA + FORMULARZ ZGŁOSZENIA ===================== -->
-  <section class="aiol-sec aiol-sec--band" id="aiol-cena" aria-labelledby="aiol-h-price">
+  <section class="aiol-sec" id="aiol-cena" aria-labelledby="aiol-h-price">
     <div class="aiol-wrap">
       <div class="aiol-head aiol-head--split">
         <div data-r>
@@ -915,7 +937,7 @@
 
       <div class="aiol-signup">
         <aside class="aiol-pricecard" aria-label="Cena i podsumowanie zgłoszenia" data-r>
-          <div class="aiol-pricecard__top">
+          <div class="aiol-pricecard__top aiol-dark">
             <p class="aiol-pricecard__name">AIOfficeLab / 01 <strong>FUNDAMENT</strong></p>
             <p class="aiol-pricecard__amount"><span class="aiol-pricecard__value">290&nbsp;zł</span><span>netto + VAT za osobę</span></p>
             <p class="aiol-pricecard__meta">2&nbsp;godziny online LIVE · poziom podstawowy</p>
@@ -1074,7 +1096,7 @@
   <!-- ===================== DLA FIRMY + KONTAKT ===================== -->
   <section class="aiol-sec" id="aiol-dla-firm" aria-labelledby="aiol-h-b2b">
     <div class="aiol-wrap aiol-bento">
-      <div class="aiol-tile aiol-tile--edge aiol-b2b s-7 t-2" data-r>
+      <div class="aiol-tile aiol-dark aiol-b2b s-7 t-2" data-r>
         <p class="aiol-eyebrow">Szkolenia zamknięte</p>
         <h2 class="aiol-h2" id="aiol-h-b2b">AIOfficeLab FUNDAMENT <span class="aiol-accent">dla firmy</span></h2>
         <p class="aiol-b2b__ask">Chcesz przeszkolić większą grupę pracowników?</p>
@@ -1301,7 +1323,7 @@
   </section>
 
   <!-- ===================== FINAŁ ===================== -->
-  <section class="aiol-sec aiol-final" id="aiol-zapisy" aria-labelledby="aiol-h-final">
+  <section class="aiol-sec aiol-final aiol-dark" id="aiol-zapisy" aria-labelledby="aiol-h-final">
     <div class="aiol-wrap">
       <div class="aiol-final__box" data-r>
         <p class="aiol-eyebrow">AIOfficeLab / 01 &nbsp;|&nbsp; Fundament</p>
