@@ -6,75 +6,74 @@ require __DIR__ . '/bezpieczenstwo.php';
 /*
  * Formularz zgłoszenia na AIOfficeLab / 01 FUNDAMENT
  * (https://www.officeinfluencers.pl/ai-w-biurze).
- * Adres odbiorcy i temat są na sztywno w kodzie, nigdy z formularza.
+ * Odbiorca, nadawca i temat są na sztywno w kodzie, nigdy z formularza.
  */
-const ODBIORCY = [
-    'zgloszenie' => 'office@officeinfluencers.pl',
-];
-
-const TEMATY = [
-    'zgloszenie' => 'Zgłoszenie: AIOfficeLab FUNDAMENT (AI w biurze)',
-];
-
-const SZKOLENIE   = 'AIOfficeLab / 01 FUNDAMENT, online LIVE, 2 godziny';
-const CENA_NETTO  = 290;
-
-const NADAWCA      = 'office@officeinfluencers.pl';
+const ODBIORCA      = 'office@officeinfluencers.pl';
+const TEMAT         = 'Zgłoszenie: AIOfficeLab FUNDAMENT (AI w biurze)';
+const NADAWCA       = 'office@officeinfluencers.pl';
 const NAZWA_NADAWCY = 'Formularz officeinfluencers.pl';
 
+const SZKOLENIE       = 'AIOfficeLab / 01 FUNDAMENT, online LIVE, 2 godziny';
+const CENA_NETTO      = 290;
+const MAX_UCZESTNIKOW = 10;
+
+// Pola, które trafiają do wiadomości, w tej kolejności.
 const POLA = [
-    'zgloszenie' => [
-        'termin'               => 'Termin',
-        'imie_nazwisko'        => 'Imię i nazwisko',
-        'email'                => 'E-mail',
-        'telefon'              => 'Telefon',
-        'stanowisko'           => 'Stanowisko',
-        'liczba_osob'          => 'Liczba osób',
-        'platnik'              => 'Płatnik',
-        'firma'                => 'Firma',
-        'nip'                  => 'NIP',
-        'adres_faktury'        => 'Adres do faktury',
-        'uwagi'                => 'Uwagi',
-        'zgoda_rodo'           => 'Zgoda na przetwarzanie danych',
-        'zgoda_marketing'      => 'Zgoda marketingowa',
-    ],
+    'termin'          => 'Termin',
+    'imie_nazwisko'   => 'Imię i nazwisko',
+    'email'           => 'E-mail',
+    'telefon'         => 'Telefon',
+    'stanowisko'      => 'Stanowisko',
+    'liczba_osob'     => 'Liczba osób',
+    'platnik'         => 'Płatnik',
+    'firma'           => 'Firma',
+    'nip'             => 'NIP',
+    'adres_faktury'   => 'Adres do faktury',
+    'uwagi'           => 'Uwagi',
+    'zgoda_rodo'      => 'Zgoda na przetwarzanie danych',
+    'zgoda_marketing' => 'Zgoda marketingowa',
 ];
 
 // Pola wielowierszowe trafiają do wiadomości w ramce, każdy wiersz z kreską.
 const CYTOWANE = ['adres_faktury', 'uwagi'];
 
+/*
+ * Wszystkie pola, które wysyła strona, z największą dozwoloną długością.
+ * Pole spoza tej listy oznacza żądanie spreparowane poza stroną.
+ */
 const DLUGOSCI = [
-    'termin'        => 120,
-    'imie_nazwisko' => 80,
-    'email'         => 120,
-    'telefon'       => 25,
-    'stanowisko'    => 80,
-    'firma'         => 160,
-    'nip'           => 20,
-    'adres_faktury' => 300,
-    'uwagi'         => 2000,
+    'formularz'       => 20,
+    'termin'          => 120,
+    'imie_nazwisko'   => 80,
+    'email'           => 120,
+    'telefon'         => 25,
+    'stanowisko'      => 80,
+    'liczba_osob'     => 2,
+    'platnik'         => 20,
+    'firma'           => 160,
+    'nip'             => 20,
+    'adres_faktury'   => 300,
+    'uwagi'           => 2000,
+    'zgoda_rodo'      => 3,
+    'zgoda_marketing' => 3,
+    'www'             => 200,
+    'czas'            => 12,
 ];
-
-const MAILERLITE_TOKEN = '';
-const MAILERLITE_GRUPA = '';
-
-const MAX_DLUGOSC = 2000;
 
 const LIMIT_WYSLANYCH = 5;
 const LIMIT_ZADAN     = 30;
+const LIMIT_POWTOR    = 2;
 const OKNO_LIMITU     = 3600;
 
-const LIMIT_POWTOR = 2;
-
 /*
- * Bot, który nie wykonuje JavaScriptu, zostawia w tym polu zero i wpada
+ * Bot, który nie wykonuje JavaScriptu, zostawia w polu "czas" zero i wpada
  * w pułapkę przy każdym progu. Próg powyżej zera dotyczy więc wyłącznie
  * prawdziwych przeglądarek oraz agentów wypełniających formularz za
  * człowieka, a ci bywają szybsi od niego.
  */
 const MIN_CZAS_MS = 1500;
 
-const PLATNICY      = ['firma', 'osoba_prywatna'];
+const PLATNICY = ['firma', 'osoba_prywatna'];
 
 const DOMENY_JEDNORAZOWE = [
     'mailinator.com', 'guerrillamail.com', 'guerrillamail.info', '10minutemail.com',
@@ -82,8 +81,6 @@ const DOMENY_JEDNORAZOWE = [
     'sharklasers.com', 'throwawaymail.com', 'maildrop.cc', 'dispostable.com',
     'fakeinbox.com', 'mailnesia.com', 'mohmal.com', 'tempr.email', 'emailondeck.com',
 ];
-
-const MAX_UCZESTNIKOW = 10;
 
 header('Content-Type: application/json; charset=utf-8');
 naglowkiBezpieczenstwa();
@@ -93,7 +90,7 @@ function odpowiedz(int $kod, string $komunikat): void
     http_response_code($kod);
     echo json_encode(
         ['ok' => $kod === 200, 'komunikat' => $komunikat],
-        JSON_UNESCAPED_UNICODE
+        JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP
     );
     exit;
 }
@@ -106,67 +103,7 @@ function bezNaglowkow(string $wartosc): string
 /** Ile adresów internetowych siedzi w tekście. */
 function ileOdnosnikow(string $tekst): int
 {
-    return preg_match_all('#(https?://|www\.|\[url|\bhref\s*=)#i', $tekst);
-}
-
-/*
- * Pole na imię ma zawierać imię. Adres internetowy albo pismo spoza alfabetu
- * łacińskiego oznacza wpis maszynowy, nie osobę zgłaszającą się na szkolenie
- * prowadzone po polsku.
- */
-function imieWygladaNaSpam(string $imie): bool
-{
-    return ileOdnosnikow($imie) > 0 || zawieraZnaczniki($imie) || pismoSpozaLaciny($imie);
-}
-
-/*
- * Czy domena adresu ma serwer pocztowy. Wyłapuje literówki i domeny zmyślone.
- *
- * Najpierw upewniamy się, że odpytywanie DNS w ogóle na tym serwerze działa.
- * Gdyby padło, sprawdzenie odrzucałoby każdy adres i formularz przestałby
- * przyjmować zgłoszenia. W razie wątpliwości przepuszczamy.
- */
-function domenaPrzyjmujePoczte(string $email): bool
-{
-    $domena = substr(strrchr($email, '@') ?: '', 1);
-    if ($domena === '' || !function_exists('checkdnsrr')) {
-        return true;
-    }
-    if (!checkdnsrr('gmail.com', 'MX')) {
-        error_log('Sprawdzanie DNS nie dziala, pomijam kontrole domeny adresu.');
-        return true;
-    }
-    return checkdnsrr($domena, 'MX') || checkdnsrr($domena, 'A');
-}
-
-function wartosc(string $klucz): string
-{
-    $surowa = $_POST[$klucz] ?? '';
-    if (!is_string($surowa)) {
-        return '';
-    }
-    $limit = DLUGOSCI[$klucz] ?? MAX_DLUGOSC;
-    return trim(bezZnakowSterujacych(mb_substr($surowa, 0, $limit)));
-}
-
-/** Czy któreś pole przyszło dłuższe, niż formularz na stronie pozwala wpisać. */
-function zaDlugiePole(string $typ): string
-{
-    foreach (DLUGOSCI as $klucz => $limit) {
-        $surowa = $_POST[$klucz] ?? '';
-        if (is_string($surowa) && mb_strlen($surowa) > $limit) {
-            return POLA[$typ][$klucz] ?? POLA['zgloszenie'][$klucz] ?? $klucz;
-        }
-    }
-    return '';
-}
-
-/** Numer krajowy: dziewięć cyfr, z prefiksem 48 albo bez niego. */
-function telefonPoprawny(string $wpisany): bool
-{
-    $cyfry = preg_replace('/\D/', '', $wpisany) ?? '';
-    $cyfry = preg_replace('/^(0048|48)/', '', $cyfry) ?? '';
-    return strlen($cyfry) === 9;
+    return (int)preg_match_all('#(https?://|www\.|\[url|\bhref\s*=)#i', $tekst);
 }
 
 /** Znaczniki HTML w polu formularza oznaczają wpis maszynowy. */
@@ -183,53 +120,41 @@ function pismoSpozaLaciny(string $tekst): bool
     return (bool)preg_match('/[\p{Cyrillic}\p{Han}\p{Arabic}\p{Hebrew}\p{Hiragana}\p{Katakana}\p{Thai}\p{Devanagari}]/u', $tekst);
 }
 
-function rozbijImie(string $pelne): array
+/*
+ * Adres trafia do nagłówka Reply-To, więc dopuszczamy tylko zwykłą postać
+ * imie@firma.pl: bez cudzysłowów, przecinków i znaków spoza ASCII.
+ */
+function emailPoprawny(string $email): bool
 {
-    $czesci = preg_split('/\s+/', trim($pelne), 2) ?: [];
-    return [$czesci[0] ?? '', $czesci[1] ?? ''];
+    return filter_var($email, FILTER_VALIDATE_EMAIL) !== false
+        && (bool)preg_match("/^[A-Za-z0-9._%+'-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$/", $email);
 }
 
-function daneDoMailerLite(string $email, string $pelneImie): array
+/*
+ * Czy domena adresu ma serwer pocztowy. Wyłapuje literówki i domeny zmyślone.
+ *
+ * Najpierw upewniamy się, że odpytywanie DNS w ogóle na tym serwerze działa.
+ * Gdyby padło, sprawdzenie odrzucałoby każdy adres i formularz przestałby
+ * przyjmować zgłoszenia. W razie wątpliwości przepuszczamy.
+ */
+function domenaPrzyjmujePoczte(string $domena): bool
 {
-    [$imie, $nazwisko] = rozbijImie($pelneImie);
-    $dane = ['email' => $email, 'fields' => ['name' => $imie]];
-    if ($nazwisko !== '') {
-        $dane['fields']['last_name'] = $nazwisko;
+    if (!function_exists('checkdnsrr')) {
+        return true;
     }
-    if (MAILERLITE_GRUPA !== '') {
-        $dane['groups'] = [MAILERLITE_GRUPA];
+    if (!checkdnsrr('gmail.com', 'MX')) {
+        error_log('Sprawdzanie DNS nie dziala, pomijam kontrole domeny adresu.');
+        return true;
     }
-    return $dane;
+    return checkdnsrr($domena, 'MX') || checkdnsrr($domena, 'A');
 }
 
-function doMailerLite(string $email, string $pelneImie): void
+/** Numer krajowy: dziewięć cyfr, z prefiksem 48 albo bez niego. */
+function telefonPoprawny(string $wpisany): bool
 {
-    if (MAILERLITE_TOKEN === '' || !function_exists('curl_init')) {
-        return;
-    }
-    $ch = curl_init('https://connect.mailerlite.com/api/subscribers');
-    curl_setopt_array($ch, [
-        CURLOPT_POST           => true,
-        CURLOPT_POSTFIELDS     => json_encode(daneDoMailerLite($email, $pelneImie), JSON_UNESCAPED_UNICODE),
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT        => 5,
-        CURLOPT_SSL_VERIFYPEER => true,
-        CURLOPT_SSL_VERIFYHOST => 2,
-        CURLOPT_FOLLOWLOCATION => false,
-        CURLOPT_PROTOCOLS      => CURLPROTO_HTTPS,
-        CURLOPT_HTTPHEADER     => [
-            'Authorization: Bearer ' . MAILERLITE_TOKEN,
-            'Content-Type: application/json',
-            'Accept: application/json',
-        ],
-    ]);
-    $odpowiedz = curl_exec($ch);
-    $kod = (int)curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
-    curl_close($ch);
-
-    if ($kod < 200 || $kod > 299) {
-        error_log('MailerLite odrzucil zapis (' . $kod . '): ' . substr((string)$odpowiedz, 0, 300));
-    }
+    $cyfry = preg_replace('/\D/', '', $wpisany) ?? '';
+    $cyfry = preg_replace('/^(0048|48)/', '', $cyfry) ?? '';
+    return strlen($cyfry) === 9;
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -244,7 +169,7 @@ sprawdzPochodzenie(true, static function (): void {
     odpowiedz(403, 'Żądanie spoza strony officeinfluencers.pl.');
 });
 
-if (rozmiarZadania() > MAX_ZADANIA || count($_POST) > MAX_POL) {
+if (rozmiarZadania() > MAX_ZADANIA || count($_POST) > MAX_POL || $_FILES !== []) {
     odpowiedz(400, 'Zgłoszenie jest za duże. Skróć uwagi albo napisz na office@officeinfluencers.pl.');
 }
 
@@ -252,115 +177,112 @@ limitZadan('formularz-proby', LIMIT_ZADAN, OKNO_LIMITU, static function (): void
     odpowiedz(429, 'Zbyt wiele prób z tego adresu. Spróbuj za godzinę lub napisz na office@officeinfluencers.pl.');
 });
 
-foreach ($_POST as $surowa) {
-    if (is_string($surowa) && !poprawneUtf8($surowa)) {
+// Tylko znane pola, tylko tekst, tylko poprawne UTF-8 i nie dłużej, niż pozwala strona.
+foreach ($_POST as $klucz => $surowa) {
+    if (!is_string($klucz) || !isset(DLUGOSCI[$klucz]) || !is_string($surowa)) {
+        odpowiedz(400, 'Nieznane pole formularza. Odśwież stronę i spróbuj ponownie.');
+    }
+    if (!poprawneUtf8($surowa)) {
         odpowiedz(400, 'Zgłoszenie zawiera znaki, których nie potrafimy odczytać. Wpisz treść jeszcze raz.');
+    }
+    if (mb_strlen($surowa) > DLUGOSCI[$klucz]) {
+        $etykieta = POLA[$klucz] ?? $klucz;
+        odpowiedz(400, 'Pole „' . $etykieta . '” jest za długie. Skróć je i spróbuj ponownie.');
     }
 }
 
-if (wartosc('www') !== '') {
-    odpowiedz(200, 'Dziękuję.');
+$dane = [];
+foreach (DLUGOSCI as $klucz => $limit) {
+    $dane[$klucz] = trim(bezZnakowSterujacych((string)($_POST[$klucz] ?? '')));
 }
-if ((int)wartosc('czas') < MIN_CZAS_MS) {
+
+// Pułapki na boty: wypełnione ukryte pole albo wysyłka szybsza niż człowiek.
+if ($dane['www'] !== '' || (int)$dane['czas'] < MIN_CZAS_MS) {
     odpowiedz(200, 'Dziękuję.');
 }
 
-$typ = wartosc('formularz');
-if (!isset(ODBIORCY[$typ])) {
+if ($dane['formularz'] !== 'zgloszenie') {
     odpowiedz(400, 'Nieznany formularz.');
 }
 
-$zaDlugie = zaDlugiePole($typ);
-if ($zaDlugie !== '') {
-    odpowiedz(400, 'Pole „' . $zaDlugie . '” jest za długie. Skróć je i spróbuj ponownie.');
+// Termin wstawia strona. Wpuszczamy tylko datę i godzinę, nic innego.
+if (!preg_match('/^[\p{L}\d .,:\/–-]*$/u', $dane['termin'])) {
+    $dane['termin'] = '';
 }
 
-$email = bezNaglowkow(wartosc('email'));
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+$email = bezNaglowkow($dane['email']);
+if (!emailPoprawny($email)) {
     odpowiedz(400, 'Wpisz adres w formacie imie@firma.pl.');
 }
-
-$domena = strtolower(substr(strrchr($email, '@') ?: '', 1));
+$domena = strtolower(substr((string)strrchr($email, '@'), 1));
 if (in_array($domena, DOMENY_JEDNORAZOWE, true)) {
     odpowiedz(400, 'Na ten adres nie wyślemy potwierdzenia. Podaj adres, z którego korzystasz na co dzień.');
 }
-if (!domenaPrzyjmujePoczte($email)) {
+if (!domenaPrzyjmujePoczte($domena)) {
     odpowiedz(400, 'Nie znaleźliśmy serwera pocztowego domeny ' . $domena . '. Sprawdź, czy adres nie ma literówki.');
 }
 
-$imie = wartosc('imie_nazwisko');
+$imie = $dane['imie_nazwisko'];
 if (mb_strlen($imie) < 2) {
     odpowiedz(400, 'Wpisz imię i nazwisko.');
 }
-// Wpis maszynowy kwitujemy uprzejmie i nie wysyłamy nic dalej.
-if (imieWygladaNaSpam($imie)) {
+// Adres internetowy, znacznik albo pismo spoza łaciny w imieniu to wpis maszynowy.
+if (ileOdnosnikow($imie) > 0 || zawieraZnaczniki($imie) || pismoSpozaLaciny($imie)) {
     odpowiedz(200, 'Dziękuję.');
 }
-if ($typ === 'zgloszenie' && !preg_match('/\s/', trim($imie))) {
+if (!preg_match('/\s/', $imie)) {
     odpowiedz(400, 'Wpisz imię i nazwisko, nie samo imię.');
 }
 
-if ($typ === 'zgloszenie') {
-    if (wartosc('zgoda_rodo') === '') {
-        odpowiedz(400, 'Brak zgody na przetwarzanie danych.');
-    }
-    $telefon = wartosc('telefon');
-    if ($telefon !== '' && !telefonPoprawny($telefon)) {
-        odpowiedz(400, 'Numer ma dziewięć cyfr, bez numeru kierunkowego kraju.');
-    }
-    if (!in_array(wartosc('platnik'), PLATNICY, true)) {
-        odpowiedz(400, 'Wskaż, kto opłaca udział.');
-    }
-    $osoby = (int)wartosc('liczba_osob');
-    if ($osoby < 1 || $osoby > MAX_UCZESTNIKOW) {
-        odpowiedz(400, 'Podaj liczbę osób od 1 do ' . MAX_UCZESTNIKOW . '.');
-    }
-    if (wartosc('platnik') === 'firma') {
-        $nip = preg_replace('/\D/', '', wartosc('nip')) ?? '';
-        if (strlen($nip) !== 10) {
-            odpowiedz(400, 'NIP ma dziesięć cyfr, bez myślników i spacji.');
-        }
-        if (!nipPoprawny($nip)) {
-            odpowiedz(400, 'Ten numer nie jest poprawnym NIP-em. Sprawdź, czy cyfry się zgadzają.');
-        }
-        if (wartosc('firma') === '' || wartosc('adres_faktury') === '') {
-            odpowiedz(400, 'Uzupełnij nazwę firmy i adres do faktury.');
-        }
-    }
+if ($dane['zgoda_rodo'] === '') {
+    odpowiedz(400, 'Brak zgody na przetwarzanie danych.');
 }
-
-// Jeden odnośnik w uwagach bywa uzasadniony, kilka to rozsyłka reklamowa.
-if (ileOdnosnikow(wartosc('uwagi')) > 1) {
-    odpowiedz(200, 'Dziękuję.');
+if ($dane['telefon'] !== '' && !telefonPoprawny($dane['telefon'])) {
+    odpowiedz(400, 'Numer ma dziewięć cyfr, bez numeru kierunkowego kraju.');
+}
+if (!in_array($dane['platnik'], PLATNICY, true)) {
+    odpowiedz(400, 'Wskaż, kto opłaca udział.');
+}
+$osoby = ctype_digit($dane['liczba_osob']) ? (int)$dane['liczba_osob'] : 0;
+if ($osoby < 1 || $osoby > MAX_UCZESTNIKOW) {
+    odpowiedz(400, 'Podaj liczbę osób od 1 do ' . MAX_UCZESTNIKOW . '.');
+}
+if ($dane['platnik'] === 'firma') {
+    $nip = preg_replace('/\D/', '', $dane['nip']) ?? '';
+    if (strlen($nip) !== 10) {
+        odpowiedz(400, 'NIP ma dziesięć cyfr, bez myślników i spacji.');
+    }
+    if (!nipPoprawny($nip)) {
+        odpowiedz(400, 'Ten numer nie jest poprawnym NIP-em. Sprawdź, czy cyfry się zgadzają.');
+    }
+    if ($dane['firma'] === '' || $dane['adres_faktury'] === '') {
+        odpowiedz(400, 'Uzupełnij nazwę firmy i adres do faktury.');
+    }
 }
 
 /*
- * Nazwa firmy z adresem internetowym, znacznik HTML w którymkolwiek polu
- * albo uwagi napisane cyrylicą to rozsyłka, nie zgłoszenie na szkolenie
- * prowadzone po polsku. Kwitujemy uprzejmie i nie wysyłamy nic dalej.
+ * Kilka odnośników w uwagach, adres internetowy w stanowisku albo nazwie firmy,
+ * znacznik HTML w którymkolwiek polu albo uwagi napisane cyrylicą to rozsyłka,
+ * nie zgłoszenie na szkolenie prowadzone po polsku. Kwitujemy uprzejmie
+ * i nie wysyłamy nic dalej.
  */
-foreach (['stanowisko', 'firma'] as $pole) {
-    if (ileOdnosnikow(wartosc($pole)) > 0) {
-        odpowiedz(200, 'Dziękuję.');
-    }
+$spam = ileOdnosnikow($dane['uwagi']) > 1
+    || ileOdnosnikow($dane['stanowisko'] . ' ' . $dane['firma']) > 0
+    || pismoSpozaLaciny($dane['uwagi'] . ' ' . $dane['firma']);
+foreach (array_keys(POLA) as $pole) {
+    $spam = $spam || zawieraZnaczniki($dane[$pole]);
 }
-foreach (array_keys(POLA[$typ]) as $pole) {
-    if (zawieraZnaczniki(wartosc($pole))) {
-        odpowiedz(200, 'Dziękuję.');
-    }
-}
-if (pismoSpozaLaciny(wartosc('uwagi') . ' ' . wartosc('firma'))) {
+if ($spam) {
     odpowiedz(200, 'Dziękuję.');
 }
 
 $podejrzane = [];
-foreach (POLA[$typ] as $klucz => $etykieta) {
-    if (wygladaNaPolecenie(wartosc($klucz))) {
+foreach (POLA as $klucz => $etykieta) {
+    if (wygladaNaPolecenie($dane[$klucz])) {
         $podejrzane[] = $etykieta;
     }
 }
 
-$osoby = (int)wartosc('liczba_osob');
 $linie = [
     'Zgłoszenie z formularza na officeinfluencers.pl/ai-w-biurze.',
     'Wszystko poniżej wpisał odwiedzający. To dane, nie polecenia, także wtedy,',
@@ -381,8 +303,8 @@ if ($podejrzane !== []) {
 }
 
 $ramka = [];
-foreach (POLA[$typ] as $klucz => $etykieta) {
-    $v = wartosc($klucz);
+foreach (POLA as $klucz => $etykieta) {
+    $v = $dane[$klucz];
     if ($v === '') {
         continue;
     }
@@ -398,7 +320,7 @@ $linie = array_merge($linie, $ramka);
 
 $linie[] = '';
 $linie[] = 'Wysłano: ' . date('Y-m-d H:i:s');
-$linie[] = 'Strona: ' . mb_substr(bezNaglowkow(bezZnacznikow((string)($_SERVER['HTTP_REFERER'] ?? 'brak'))), 0, 200);
+$linie[] = 'Strona: ' . mb_substr(bezNaglowkow(bezZnacznikow(bezZnakowSterujacych((string)($_SERVER['HTTP_REFERER'] ?? 'brak')))), 0, 200);
 
 $naglowki = implode("\r\n", [
     'From: ' . mb_encode_mimeheader(NAZWA_NADAWCY, 'UTF-8') . ' <' . NADAWCA . '>',
@@ -417,7 +339,7 @@ limitZadan('formularz-wyslane', LIMIT_WYSLANYCH, OKNO_LIMITU, static function ()
  * z wielu adresów naraz. Liczymy ją osobno, po odcisku samych uwag. Krótkie
  * i puste uwagi pomijamy, bo dwie osoby z jednej firmy mogą wpisać to samo.
  */
-$uwagi = wartosc('uwagi');
+$uwagi = $dane['uwagi'];
 if (mb_strlen($uwagi) >= 40) {
     limitZadan(
         'formularz-tresc',
@@ -431,8 +353,8 @@ if (mb_strlen($uwagi) >= 40) {
 }
 
 $wyslano = mail(
-    ODBIORCY[$typ],
-    mb_encode_mimeheader(TEMATY[$typ], 'UTF-8'),
+    ODBIORCA,
+    mb_encode_mimeheader(TEMAT, 'UTF-8'),
     implode("\n", $linie),
     $naglowki,
     '-f' . NADAWCA
@@ -440,10 +362,6 @@ $wyslano = mail(
 
 if (!$wyslano) {
     odpowiedz(500, 'Serwer pocztowy odrzucił wiadomość.');
-}
-
-if ($typ === 'zgloszenie' && wartosc('zgoda_marketing') !== '') {
-    doMailerLite($email, wartosc('imie_nazwisko'));
 }
 
 odpowiedz(200, 'Dziękuję, wiadomość została wysłana.');

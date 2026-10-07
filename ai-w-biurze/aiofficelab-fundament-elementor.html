@@ -9,20 +9,18 @@
 <!-- ===================== USTAWIENIA (zmieniaj tylko tutaj) ===================== -->
 <script>
   window.AIOL_CONFIG = {
-    // Adres skryptu, który wysyła zgłoszenie na office@officeinfluencers.pl.
-    // Folder "formularz-aiol" wgrywasz na serwer (instrukcja w INSTRUKCJA.md).
+    // Skrypt wysyłający zgłoszenie na office@officeinfluencers.pl (folder "formularz-aiol"
+    // na serwerze). Adres musi zaczynać się od "/", czyli być na tej samej stronie.
     formularz: "/formularz-aiol/formularz.php",
 
-    // Link do płatności online (przycisk "Kupuję i przechodzę do płatności").
-    // Puste "" = przyciski płatności znikają ze strony.
+    // Link do płatności online (musi zaczynać się od https://). Puste "" = bez przycisków płatności.
     platnosc: "https://easl.ink/XD2bl",
 
-    // Termin szkolenia widoczny w formularzu i w mailu ze zgłoszeniem,
-    // np. "12 listopada 2026, 10:00-12:00". Puste "" = bez terminu.
-    termin: "czwartek, 5 listopada 2026",
+    // Termin szkolenia widoczny na stronie i w mailu ze zgłoszeniem. Puste "" = bez terminu.
+    termin: "czwartek, 5 listopada 2026, godz. 10.00–12.00",
 
-    // Zdjęcia prowadzącej są wbudowane w stronę. Żeby je podmienić, wklej adres
-    // z Biblioteki mediów WordPressa. Puste "" = zdjęcia wbudowane.
+    // Zdjęcia prowadzącej są wbudowane w stronę. Inne zdjęcie: adres z Biblioteki mediów
+    // WordPressa (https://... albo /wp-content/...). Puste "" = zdjęcia wbudowane.
     heroPhotoUrl: "",   // zdjęcie w hero (na górze strony)
     photoUrl: "",       // zdjęcie w sekcji "Prowadząca"
 
@@ -34,7 +32,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" referrerpolicy="no-referrer">
 
 <style>
 /* ---------- Zmienne: kolory i fonty (wszystko w jednym miejscu) ---------- */
@@ -515,11 +513,11 @@
 }
 </style>
 
-<div id="aiol" class="aiol" lang="pl">
+<div id="aiol" lang="pl">
 
   <!-- ===================== PASEK GÓRNY ===================== -->
   <div class="aiol-bar" role="note">
-    <span class="aiol-bar__txt"><strong>AIOfficeLab / 01 FUNDAMENT</strong> · 2 godziny online LIVE · 290 zł netto + VAT<span data-aiol-bar-termin hidden></span></span>
+    <span><strong>AIOfficeLab / 01 FUNDAMENT</strong> · 2 godziny online LIVE · 290 zł netto + VAT<span data-aiol-bar-termin hidden></span></span>
     <a class="aiol-bar__link" href="#aiol-formularz" data-aiol-cta="pasek-gora">Zapisuję się</a>
   </div>
   <div class="aiol-progress" aria-hidden="true"><span data-aiol-progress></span></div>
@@ -527,7 +525,7 @@
   <!-- ===================== HERO ===================== -->
   <section class="aiol-hero" id="aiol-start" aria-labelledby="aiol-h1">
     <div class="aiol-wrap aiol-hero__grid">
-      <div class="aiol-hero__copy">
+      <div>
         <p class="aiol-eyebrow" data-r>Szkolenie online LIVE</p>
         <p class="aiol-hero__name" data-r>AIOfficeLab / 01 <b>FUNDAMENT</b></p>
         <h1 class="aiol-h1" id="aiol-h1" data-r>Bezpieczna i&nbsp;skuteczna praca z&nbsp;<span class="aiol-mark">AI w&nbsp;biurze</span></h1>
@@ -589,7 +587,7 @@
   <!-- ===================== DLA KOGO + O SZKOLENIU (kafelki) ===================== -->
   <section class="aiol-sec" id="aiol-o-szkoleniu" aria-labelledby="aiol-h-who">
     <div class="aiol-wrap aiol-bento">
-      <div class="aiol-tile s-8 t-2" id="aiol-dla-kogo" data-r>
+      <div class="aiol-tile s-8 t-2" data-r>
         <p class="aiol-eyebrow">Dla kogo?</p>
         <h2 class="aiol-tile__title aiol-tile__title--lg" id="aiol-h-who">Dla działów administracji biurowej, które chcą korzystać z&nbsp;AI <span class="aiol-gold">świadomie i&nbsp;bezpiecznie</span></h2>
         <p class="aiol-who__label">Szkolenie jest przeznaczone wyłącznie dla pracowników działów administracji biurowej, w&nbsp;szczególności dla:</p>
@@ -611,7 +609,7 @@
 
       <div class="aiol-tile aiol-tile--soft s-7" data-r>
         <p class="aiol-eyebrow">O&nbsp;szkoleniu</p>
-        <h2 class="aiol-h2 aiol-h2--xl" id="aiol-h-intro">AI jest już częścią <span class="aiol-gold">pracy biurowej</span>.</h2>
+        <h2 class="aiol-h2 aiol-h2--xl">AI jest już częścią <span class="aiol-gold">pracy biurowej</span>.</h2>
         <p class="aiol-prob__lead">Pytanie nie brzmi więc: „czy z&nbsp;niego korzystać?”, ale: <b>jak robić to dobrze, bezpiecznie i&nbsp;z&nbsp;realnym pożytkiem dla swojej pracy?</b></p>
       </div>
 
@@ -769,19 +767,19 @@
 
       <div class="aiol-bento">
         <div class="aiol-tile aiol-outcome s-3" data-r>
-          <div class="aiol-outcome__top"><span class="aiol-outcome__n" aria-hidden="true">01</span></div>
+          <span class="aiol-outcome__n" aria-hidden="true">01</span>
           <p>co możesz zlecić AI</p>
         </div>
         <div class="aiol-tile aiol-outcome s-3" data-r>
-          <div class="aiol-outcome__top"><span class="aiol-outcome__n" aria-hidden="true">02</span></div>
+          <span class="aiol-outcome__n" aria-hidden="true">02</span>
           <p>czego mu nie powierzać</p>
         </div>
         <div class="aiol-tile aiol-outcome s-3" data-r>
-          <div class="aiol-outcome__top"><span class="aiol-outcome__n" aria-hidden="true">03</span></div>
+          <span class="aiol-outcome__n" aria-hidden="true">03</span>
           <p>jak przekazać mu zadanie</p>
         </div>
         <div class="aiol-tile aiol-outcome s-3" data-r>
-          <div class="aiol-outcome__top"><span class="aiol-outcome__n" aria-hidden="true">04</span></div>
+          <span class="aiol-outcome__n" aria-hidden="true">04</span>
           <p>jak sprawdzić rezultat, zanim wykorzystasz go w&nbsp;pracy</p>
         </div>
 
@@ -790,12 +788,12 @@
           <a class="aiol-btn" href="#aiol-formularz" data-aiol-cta="efekty">Zapisuję się</a>
         </div>
 
-        <div class="aiol-tile s-7 t-2" id="aiol-dalej" data-r>
+        <div class="aiol-tile s-7 t-2" data-r>
           <p class="aiol-eyebrow">Ścieżka AIOfficeLab</p>
           <h3 class="aiol-tile__title">Chcesz pójść dalej?</h3>
           <p class="aiol-tile__p">Poziom FUNDAMENT uczy skutecznie korzystać z&nbsp;AI. Kolejny etap to AIOfficeLab / 02 SYSTEM.</p>
           <div class="aiol-path">
-            <div class="aiol-step aiol-step--now">
+            <div class="aiol-step">
               <span class="aiol-step__tag">Ten poziom</span>
               <p class="aiol-step__code">AIOfficeLab / 01</p>
               <h4 class="aiol-step__name">FUNDAMENT</h4>
@@ -831,7 +829,7 @@
       </div>
 
       <div class="aiol-bento">
-        <div class="aiol-tile aiol-tile--soft aiol-qcard s-4" id="aiol-pytanie-narzedzia" data-r>
+        <div class="aiol-tile aiol-tile--soft aiol-qcard s-4" data-r>
           <h3 class="aiol-qcard__q">„Czy muszę mieć płatną wersję ChatGPT, Copilota lub innego narzędzia?”</h3>
           <div class="aiol-qcard__a">
             <p>Nie jest to konieczne do uczestnictwa w&nbsp;poziomie FUNDAMENT.</p>
@@ -839,7 +837,7 @@
           </div>
         </div>
 
-        <div class="aiol-tile aiol-tile--gold aiol-qcard s-4" id="aiol-pytanie-rodo" data-r>
+        <div class="aiol-tile aiol-tile--gold aiol-qcard s-4" data-r>
           <h3 class="aiol-qcard__q">„Czy na szkoleniu będzie mowa o&nbsp;bezpieczeństwie danych i&nbsp;RODO?”</h3>
           <div class="aiol-qcard__a">
             <p>Tak. Bezpieczna praca z&nbsp;AI jest jednym z&nbsp;podstawowych elementów programu.</p>
@@ -848,7 +846,7 @@
           </div>
         </div>
 
-        <div class="aiol-tile aiol-tile--soft aiol-qcard s-4 t-2" id="aiol-pytanie-dokumenty" data-r>
+        <div class="aiol-tile aiol-tile--soft aiol-qcard s-4 t-2" data-r>
           <h3 class="aiol-qcard__q">„Czy podczas szkolenia trzeba udostępniać dane lub dokumenty firmy?”</h3>
           <div class="aiol-qcard__a">
             <p>Nie.</p>
@@ -949,32 +947,32 @@
             <input type="hidden" name="formularz" value="zgloszenie">
             <input type="hidden" name="termin" value="" data-aiol-termin-pole>
             <div class="aiol-fields">
-              <div class="aiol-field aiol-field--full">
+              <div class="aiol-field--full">
                 <label class="aiol-label" for="aiol-f-name">Imię i&nbsp;nazwisko<span class="aiol-req" aria-hidden="true">*</span></label>
                 <input class="aiol-input" type="text" id="aiol-f-name" name="imie_nazwisko" autocomplete="name" maxlength="80" required aria-describedby="aiol-e-name">
                 <p class="aiol-err" id="aiol-e-name" role="alert"></p>
               </div>
 
-              <div class="aiol-field">
+              <div>
                 <label class="aiol-label" for="aiol-f-email">E-mail<span class="aiol-req" aria-hidden="true">*</span></label>
                 <input class="aiol-input" type="email" id="aiol-f-email" name="email" autocomplete="email" maxlength="120" required aria-describedby="aiol-e-email">
                 <p class="aiol-err" id="aiol-e-email" role="alert"></p>
               </div>
 
-              <div class="aiol-field">
+              <div>
                 <label class="aiol-label" for="aiol-f-phone">Telefon</label>
                 <input class="aiol-input" type="tel" id="aiol-f-phone" name="telefon" autocomplete="tel" inputmode="tel" maxlength="25" aria-describedby="aiol-h-phone aiol-e-phone">
                 <p class="aiol-hint" id="aiol-h-phone">Zadzwonimy tylko w&nbsp;sprawie tego zgłoszenia.</p>
                 <p class="aiol-err" id="aiol-e-phone" role="alert"></p>
               </div>
 
-              <div class="aiol-field">
+              <div>
                 <label class="aiol-label" for="aiol-f-role">Stanowisko</label>
                 <input class="aiol-input" type="text" id="aiol-f-role" name="stanowisko" autocomplete="organization-title" maxlength="80" aria-describedby="aiol-h-role">
                 <p class="aiol-hint" id="aiol-h-role">Szkolenie jest dla działów administracji biurowej.</p>
               </div>
 
-              <div class="aiol-field">
+              <div>
                 <label class="aiol-label" for="aiol-f-count">Liczba osób<span class="aiol-req" aria-hidden="true">*</span></label>
                 <select class="aiol-input" id="aiol-f-count" name="liczba_osob" required aria-describedby="aiol-h-count">
                   <option value="1" selected>1 osoba</option>
@@ -991,7 +989,7 @@
                 <p class="aiol-hint" id="aiol-h-count">Większa grupa? Zapytaj o&nbsp;<a class="aiol-link" href="#aiol-dla-firm">szkolenie zamknięte dla firmy</a>.</p>
               </div>
 
-              <div class="aiol-field aiol-field--full">
+              <div class="aiol-field--full">
                 <fieldset>
                   <legend class="aiol-label">Kto opłaca udział?<span class="aiol-req" aria-hidden="true">*</span></legend>
                   <div class="aiol-choices">
@@ -1001,26 +999,26 @@
                 </fieldset>
               </div>
 
-              <div class="aiol-field" id="aiol-wrap-nip">
+              <div id="aiol-wrap-nip">
                 <label class="aiol-label" for="aiol-f-nip">NIP<span class="aiol-req" aria-hidden="true">*</span></label>
                 <input class="aiol-input" type="text" id="aiol-f-nip" name="nip" inputmode="numeric" maxlength="15" aria-describedby="aiol-e-nip aiol-h-nip">
                 <p class="aiol-err" id="aiol-e-nip" role="alert"></p>
                 <p class="aiol-hint" id="aiol-h-nip" role="status" aria-live="polite">10 cyfr. Nazwę firmy i&nbsp;adres pobierzemy z&nbsp;rejestru.</p>
               </div>
 
-              <div class="aiol-field" id="aiol-wrap-company">
+              <div id="aiol-wrap-company">
                 <label class="aiol-label" for="aiol-f-company">Nazwa firmy<span class="aiol-req" aria-hidden="true">*</span></label>
                 <input class="aiol-input" type="text" id="aiol-f-company" name="firma" autocomplete="organization" maxlength="160" aria-describedby="aiol-e-company">
                 <p class="aiol-err" id="aiol-e-company" role="alert"></p>
               </div>
 
-              <div class="aiol-field aiol-field--full" id="aiol-wrap-address">
+              <div class="aiol-field--full" id="aiol-wrap-address">
                 <label class="aiol-label" for="aiol-f-address">Adres do faktury<span class="aiol-req" aria-hidden="true">*</span></label>
                 <textarea class="aiol-input" id="aiol-f-address" name="adres_faktury" rows="2" autocomplete="street-address" maxlength="300" aria-describedby="aiol-e-address"></textarea>
                 <p class="aiol-err" id="aiol-e-address" role="alert"></p>
               </div>
 
-              <div class="aiol-field aiol-field--full">
+              <div class="aiol-field--full">
                 <label class="aiol-label" for="aiol-f-notes">Uwagi</label>
                 <textarea class="aiol-input" id="aiol-f-notes" name="uwagi" rows="3" maxlength="2000" aria-describedby="aiol-h-notes"></textarea>
                 <p class="aiol-hint" id="aiol-h-notes">Pytania albo informacje, które powinniśmy znać przed szkoleniem.</p>
@@ -1040,7 +1038,7 @@
             <div class="aiol-consents">
               <label class="aiol-consent">
                 <input type="checkbox" id="aiol-f-rodo" name="zgoda_rodo" value="tak" required aria-describedby="aiol-e-rodo">
-                <span>Akceptuję regulamin szkolenia i&nbsp;wiem, że moje dane będą przetwarzane w&nbsp;celu obsługi zgłoszenia, zgodnie z&nbsp;<a class="aiol-link" href="https://www.officeinfluencers.pl/polityka-prywatnosci" target="_blank" rel="noopener">polityką prywatności</a>. Administratorem danych jest ARK Consulting Agnieszka Korach.<span class="aiol-req" aria-hidden="true">*</span></span>
+                <span>Akceptuję regulamin szkolenia i&nbsp;wiem, że moje dane będą przetwarzane w&nbsp;celu obsługi zgłoszenia, zgodnie z&nbsp;<a class="aiol-link" href="https://www.officeinfluencers.pl/polityka-prywatnosci" target="_blank" rel="noopener noreferrer">polityką prywatności</a>. Administratorem danych jest ARK Consulting Agnieszka Korach.<span class="aiol-req" aria-hidden="true">*</span></span>
               </label>
               <p class="aiol-err" id="aiol-e-rodo" role="alert"></p>
               <label class="aiol-consent">
@@ -1081,7 +1079,7 @@
         </ul>
       </div>
 
-      <div class="aiol-tile aiol-contact s-5 t-2" id="aiol-kontakt" data-r>
+      <div class="aiol-tile aiol-contact s-5 t-2" data-r>
         <h3>Kontakt</h3>
         <div class="aiol-contact__block">
           <p class="aiol-contact__label">Zapisy i&nbsp;pytania</p>
@@ -1115,7 +1113,7 @@
 
       <div class="aiol-faq__cols">
         <div class="aiol-faq__col">
-          <div class="aiol-faq__group" id="aiol-faq-program" data-r>
+          <div class="aiol-faq__group" data-r>
             <h3>O&nbsp;programie</h3>
             <details class="aiol-qa" open>
               <summary><span>Dla kogo jest AIOfficeLab FUNDAMENT?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
@@ -1173,7 +1171,7 @@
             </details>
           </div>
 
-          <div class="aiol-faq__group" id="aiol-faq-dane" data-r>
+          <div class="aiol-faq__group" data-r>
             <h3>Bezpieczeństwo i&nbsp;dane firmowe</h3>
             <details class="aiol-qa">
               <summary><span>Czy na szkoleniu będzie mowa o&nbsp;bezpieczeństwie danych i&nbsp;RODO?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
@@ -1199,7 +1197,7 @@
           </div>
         </div>
         <div class="aiol-faq__col">
-          <div class="aiol-faq__group" id="aiol-faq-organizacja" data-r>
+          <div class="aiol-faq__group" data-r>
             <h3>Organizacja</h3>
             <details class="aiol-qa">
               <summary><span>Jaka jest forma szkolenia?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
@@ -1228,7 +1226,7 @@
             </details>
           </div>
 
-          <div class="aiol-faq__group" id="aiol-faq-firma" data-r>
+          <div class="aiol-faq__group" data-r>
             <h3>Dla firmy i&nbsp;HR</h3>
             <details class="aiol-qa">
               <summary><span>Ile kosztuje AIOfficeLab FUNDAMENT?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
@@ -1271,7 +1269,7 @@
             </details>
           </div>
 
-          <div class="aiol-faq__group" id="aiol-faq-dalej" data-r>
+          <div class="aiol-faq__group" data-r>
             <h3>Dalsza ścieżka</h3>
             <details class="aiol-qa">
               <summary><span>Co po poziomie FUNDAMENT?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
@@ -1364,7 +1362,8 @@
       "hasCourseInstance": {
         "@type": "CourseInstance",
         "courseMode": "Online",
-        "startDate": "2026-11-05",
+        "startDate": "2026-11-05T10:00:00+01:00",
+        "endDate": "2026-11-05T12:00:00+01:00",
         "courseWorkload": "PT2H",
         "inLanguage": "pl",
         "instructor": {
@@ -1592,6 +1591,8 @@
   if (!root) return;
   var cfg = window.AIOL_CONFIG || {};
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Adres na tej samej stronie ("/..."), bez "//" i "/\", które przeglądarka czyta jak inną domenę
+  var SAMA_STRONA = /^\/(?![\/\\])/;
 
   // 1) Formularz zgłoszenia: wysyłka na office@officeinfluencers.pl przez formularz.php
   (function () {
@@ -1600,7 +1601,9 @@
     var CENA = 290;
     var MAIL = "office@officeinfluencers.pl";
     var BLAD_WYSYLKI = "Nie udało się wysłać zgłoszenia. Spróbuj ponownie albo napisz na " + MAIL + ".";
-    var endpoint = String(cfg.formularz || form.getAttribute("action") || "").trim();
+    // Zgłoszenie idzie wyłącznie na tę samą stronę: adres z ustawień musi zaczynać się od "/".
+    var endpoint = String(cfg.formularz || "").trim();
+    if (!SAMA_STRONA.test(endpoint)) endpoint = form.getAttribute("action");
     var nipEndpoint = endpoint.replace(/[^\/]*$/, "nip.php");
     form.setAttribute("action", endpoint);
     var otwarto = Date.now();
@@ -1619,11 +1622,13 @@
     // Termin z ustawień: w podsumowaniu i w mailu
     var termin = String(cfg.termin || "").trim();
     if (termin) {
-      [].forEach.call(root.querySelectorAll("[data-aiol-termin]"), function (el) { el.textContent = termin; });
+      // Godzina "10.00–12.00" nie łamie się na dwie linie
+      var terminTekst = termin.replace(/godz\. /g, "godz.\u00a0").replace(/\s*–\s*/g, "\u2060–\u2060");
+      [].forEach.call(root.querySelectorAll("[data-aiol-termin]"), function (el) { el.textContent = terminTekst; });
       [].forEach.call(root.querySelectorAll("[data-aiol-termin-wiersz]"), function (el) { el.hidden = false; });
       root.querySelector("[data-aiol-termin-pole]").value = termin;
       var barTermin = root.querySelector("[data-aiol-bar-termin]");
-      if (barTermin) { barTermin.textContent = " · Termin: " + termin; barTermin.hidden = false; }
+      if (barTermin) { barTermin.textContent = " · Termin: " + terminTekst; barTermin.hidden = false; }
     }
 
     // Podsumowanie: liczba osób i cena
@@ -1633,7 +1638,7 @@
     function refreshSummary() {
       var n = parseInt(count.value, 10) || 1;
       q("aiol-s-count").textContent = String(n);
-      q("aiol-s-total").textContent = (n * CENA).toLocaleString("pl-PL") + " zł";
+      q("aiol-s-total").textContent = (n * CENA).toLocaleString("pl-PL") + "\u00a0zł";
       notesHint.textContent = n > 1 ? "Wpisz imię, nazwisko i e-mail każdej z pozostałych osób." : NOTES_HINT;
     }
 
@@ -1761,7 +1766,7 @@
     syncChoices();
 
     var submit = q("aiol-f-submit"), status = q("aiol-f-status"), done = q("aiol-done");
-    var SUBMIT_HTML = submit.innerHTML;
+    var SUBMIT_TEXT = submit.textContent;
     function showDone() {
       form.hidden = true;
       done.hidden = false;
@@ -1770,7 +1775,7 @@
     }
     function reset(msg) {
       submit.disabled = false;
-      submit.innerHTML = SUBMIT_HTML;
+      submit.textContent = SUBMIT_TEXT;
       status.textContent = msg;
     }
 
@@ -1802,7 +1807,7 @@
   [["[data-aiol-hero-photo]", cfg.heroPhotoUrl], ["[data-aiol-photo]", cfg.photoUrl]].forEach(function (p) {
     var url = String(p[1] || "").trim();
     var img = root.querySelector(p[0] + " img");
-    if (url && img) img.src = url;
+    if (img && (/^https:\/\//i.test(url) || SAMA_STRONA.test(url))) img.src = url;
   });
 
   // 3) Płynne przewijanie do sekcji tej strony
@@ -1887,7 +1892,6 @@
   if (cfg.stickyBar === false) { bar.parentNode.removeChild(bar); return; }
   var hero = root.querySelector(".aiol-hero");
   var price = document.getElementById("aiol-cena");
-  var signup = document.getElementById("aiol-formularz");
   var finale = document.getElementById("aiol-zapisy");
   var ticking = false;
   function onScreen(el, vh) { var r = el.getBoundingClientRect(); return r.top < vh && r.bottom > 0; }
@@ -1896,7 +1900,7 @@
     var vh = window.innerHeight || document.documentElement.clientHeight;
     var show = hero.getBoundingClientRect().bottom < 0 &&
                finale.getBoundingClientRect().top > vh &&
-               !onScreen(price, vh) && !onScreen(signup, vh);
+               !onScreen(price, vh);
     bar.classList.toggle("is-visible", show);
   }
   function onScroll() { if (!ticking) { ticking = true; window.requestAnimationFrame(update); } }

@@ -16,7 +16,9 @@ Formularz wysyła zgłoszenia na **office@officeinfluencers.pl** przez ten sam s
 1. Zaloguj się do panelu Zenbox → **Menedżer plików**. Możesz też użyć FTP, np. FileZilla.
 2. Otwórz główny katalog strony officeinfluencers.pl, czyli ten, w którym są `wp-config.php`, `wp-content` i `wp-admin`.
 3. Wgraj `formularz-aiol.zip` i **rozpakuj**. Powstanie folder `formularz-aiol` z czterema plikami: `formularz.php`, `nip.php`, `bezpieczenstwo.php`, `.htaccess`.
+   Jeśli folder już jest na serwerze, **zastąp wszystkie cztery pliki** nowymi, także ukryty `.htaccess`. W Menedżerze plików włącz „Pokaż ukryte pliki”.
 4. Sprawdzenie: otwórz w przeglądarce `https://www.officeinfluencers.pl/formularz-aiol/formularz.php`. Prawidłowa odpowiedź to komunikat `{"ok":false,"komunikat":"Dozwolona jest tylko metoda POST."}`. Oznacza on, że skrypt działa.
+5. Sprawdzenie zabezpieczeń: adresy `https://www.officeinfluencers.pl/formularz-aiol/bezpieczenstwo.php` i `https://www.officeinfluencers.pl/formularz-aiol/` muszą pokazać błąd „Forbidden” (403) albo „Not Found” (404), a nie treść pliku czy listę plików.
 
 > Folderu **nie nazywaj** `ai-w-biurze`. Zasłoniłby stronę WordPressa o tym adresie. Jeśli wybierzesz inną nazwę, popraw ustawienie `formularz` w kodzie strony.
 
@@ -46,18 +48,19 @@ Formularz wysyła zgłoszenia na **office@officeinfluencers.pl** przez ten sam s
 window.AIOL_CONFIG = {
   formularz: "/formularz-aiol/formularz.php", // skrypt wysyłający zgłoszenie
   platnosc: "https://easl.ink/XD2bl",         // link do płatności online
-  termin: "czwartek, 5 listopada 2026",       // data (i godziny) edycji
+  termin: "czwartek, 5 listopada 2026, godz. 10.00–12.00", // data i godziny edycji
   heroPhotoUrl: "",                           // inne zdjęcie w hero (puste = wbudowane)
   photoUrl: "",                               // inne zdjęcie w sekcji „Prowadząca” (puste = wbudowane)
   stickyBar: true                             // pływający pasek z przyciskiem
 };
 ```
 
-- **termin**: data edycji, teraz „czwartek, 5 listopada 2026”. Możesz dopisać godziny, np. „czwartek, 5 listopada 2026, 10:00-12:00”. Termin pojawia się w pasku na górze, w hero, w karcie z ceną, w finale, w pływającym pasku i w mailu ze zgłoszeniem. Puste pole = bez terminu.
-  Po zmianie daty popraw też `"startDate": "2026-11-05"` w bloku `application/ld+json` na dole kodu (format rok-miesiąc-dzień).
+- **formularz**: adres skryptu na tej samej stronie, zaczyna się od `/`. Adresu z inną domeną strona nie przyjmie, żeby dane ze zgłoszeń nie mogły trafić gdzie indziej.
+- **termin**: data i godziny edycji, teraz „czwartek, 5 listopada 2026, godz. 10.00–12.00”. Termin pojawia się w pasku na górze, w hero, w karcie z ceną, w finale, w pływającym pasku i w mailu ze zgłoszeniem. Puste pole = bez terminu.
+  Po zmianie terminu popraw też `"startDate": "2026-11-05T10:00:00+01:00"` i `"endDate": "2026-11-05T12:00:00+01:00"` w bloku `application/ld+json` na dole kodu (rok-miesiąc-dzień, godzina; `+01:00` zimą, `+02:00` latem).
 - **Zdjęcia prowadzącej** są wbudowane w kod strony: zdjęcie z konferencji w hero i portret w sekcji „Prowadząca”. Nie trzeba ich nigdzie wgrywać.
-- **heroPhotoUrl** / **photoUrl**: jeśli chcesz inne zdjęcie, wejdź w Media → Biblioteka → wybierz zdjęcie → „Kopiuj adres URL do schowka” i wklej między cudzysłowy. Najlepiej zdjęcie pionowe (4:5) z twarzą w górnej części kadru.
-- **platnosc**: link do płatności online, otwierany przez przyciski „Kupuję i przechodzę do płatności”. Pusty cudzysłów `""` usuwa te przyciski ze strony, np. gdy sprzedaż online jest zamknięta.
+- **heroPhotoUrl** / **photoUrl**: jeśli chcesz inne zdjęcie, wejdź w Media → Biblioteka → wybierz zdjęcie → „Kopiuj adres URL do schowka” i wklej między cudzysłowy. Adres musi zaczynać się od `https://` albo `/`. Najlepiej zdjęcie pionowe (4:5) z twarzą w górnej części kadru.
+- **platnosc**: link do płatności online, otwierany przez przyciski „Kupuję i przechodzę do płatności”. Musi zaczynać się od `https://`. Pusty cudzysłów `""` usuwa te przyciski ze strony, np. gdy sprzedaż online jest zamknięta.
 - **stickyBar**: `false` wyłącza pływający pasek z ceną i przyciskiem.
 
 ## Dwa sposoby zapisu
@@ -75,7 +78,32 @@ Pływający pasek, pasek na górze i przyciski w środku strony prowadzą tylko 
 - **Podsumowanie:** w karcie z ceną obok formularza kwota liczy się na żywo (liczba osób × 290 zł netto). Ta sama kwota trafia do maila.
 - **Kilka osób:** przy liczbie osób większej niż 1 podpowiedź w polu „Uwagi” prosi o dane pozostałych uczestników.
 - **Ochrona przed spamem** (jak w poprzednim formularzu): ukryte pole-pułapka, odrzucanie zbyt szybkich wysyłek, limit wysyłek z jednego adresu IP, blokada powtarzanej treści, odrzucanie adresów jednorazowych i zmyślonych domen.
-- **Bezpieczeństwo:** adres odbiorcy i temat są na sztywno w kodzie, a skrypt przyjmuje zgłoszenia tylko ze strony officeinfluencers.pl. Treść jest oczyszczona z ukrytych poleceń dla AI (prompt injection). Nic nie jest zapisywane na serwerze.
+- **Dane:** na serwerze nie zostaje nic ze zgłoszeń. Skrypt zapisuje tylko liczniki prób (skrót adresu IP i godzina) w katalogu tymczasowym i regularnie usuwa te starsze niż dwie godziny.
+
+## Zabezpieczenia
+
+**Skrypty na serwerze (`formularz-aiol`)**
+
+- Z zewnątrz da się otworzyć tylko `formularz.php` i `nip.php`. Plik pomocniczy, kopie zapasowe, pliki ukryte i lista plików w folderze są zablokowane.
+- Zgłoszenie przyjmowane jest tylko ze strony officeinfluencers.pl. Skrypt sprawdza nagłówki Origin, Referer i Sec-Fetch, więc cudza strona nie wyśle zgłoszenia w imieniu odwiedzającego.
+- Odbiorca, nadawca i temat maila są na sztywno w kodzie. Adres e-mail ze zgłoszenia przechodzi ścisłą kontrolę, zanim trafi do „Odpowiedz”, więc nie da się nim dopisać ukrytych odbiorców.
+- Skrypt przyjmuje tylko pola, które wysyła strona, każde z limitem długości. Dodatkowe pola, tablice, pliki i za duże żądania są odrzucane. Termin z formularza może zawierać tylko datę i godzinę.
+- Limity: 30 prób i 5 wysłanych zgłoszeń na godzinę z jednego adresu IP, a sprawdzanie NIP-u do 6 razy na 2 minuty i 25 razy na godzinę.
+- Sprawdzanie NIP-u pyta wyłącznie wykaz podatników VAT Ministerstwa Finansów. NIP musi mieć 10 cyfr z poprawną cyfrą kontrolną, więc skryptu nie da się użyć do odpytywania innych serwerów.
+- Odpowiedzi skryptów mają nagłówki blokujące osadzanie, zgadywanie typu treści, indeksowanie i zapisywanie w pamięci podręcznej. Błędy PHP nie są pokazywane odwiedzającym.
+- Treść maila jest oczyszczona z niewidocznych znaków i ukrytych poleceń dla programów AI (prompt injection), a podejrzane fragmenty są oznaczone na górze wiadomości.
+
+**Kod strony**
+
+- Strona nie wstawia żadnego tekstu jako HTML. Termin, komunikaty serwera i dane z rejestru trafiają na stronę jako zwykły tekst.
+- Adresy z ustawień są sprawdzane. Formularz wysyła tylko na adres na tej samej stronie, zdjęcia ładują się tylko z `https://` albo z tej samej strony, a link płatności musi zaczynać się od `https://`. Błędny adres jest pomijany.
+- Jedyne zewnętrzne zasoby to fonty Google (bez przekazywania adresu strony) i link do płatności. Zdjęcia są wbudowane w kod.
+
+**Poza tym kodem** największe ryzyko dotyczy samego WordPressa:
+
+- aktualne WordPress, motyw i wtyczki,
+- logowanie dwuetapowe dla kont administratorów,
+- regularne kopie zapasowe w panelu Zenbox.
 
 ## Wygląd
 
@@ -125,6 +153,7 @@ Do `dataLayer` (Google Tag Manager) trafiają trzy zdarzenia:
 ## Gdyby coś nie działało
 
 - **Po kliknięciu „Zapisuję się” w formularzu pojawia się „Nie udało się wysłać zgłoszenia”:** sprawdź krok 1.4. Adres skryptu musi zgadzać się z ustawieniem `formularz`.
+- **Adres `formularz.php` pokazuje „500 Internal Server Error” zaraz po wgraniu plików:** serwer nie przyjmuje reguł dostępu z pliku `.htaccess`. Poproś pomoc Zenbox o włączenie `AllowOverride AuthConfig` dla tego folderu. Do tego czasu możesz usunąć `.htaccess`: plik `bezpieczenstwo.php` i tak sam blokuje bezpośrednie otwarcie.
 - **Pojawia się „Żądanie spoza strony officeinfluencers.pl”:** strona i folder `formularz-aiol` muszą być w tej samej domenie (`www.officeinfluencers.pl`). Ustawienie `formularz` zaczyna się od `/`, bez `https://`.
 - **Formularz pokazuje „Zgłoszenie przyjęte”, ale mail nie dochodzi:** sprawdź spam. Następnie w panelu Zenbox sprawdź, czy istnieje skrzynka office@officeinfluencers.pl i czy rekord SPF domeny obejmuje serwer Zenbox.
 - **NIP nie uzupełnia danych:** rejestr Ministerstwa Finansów bywa chwilowo niedostępny. Wtedy nazwę i adres wpisuje się ręcznie, a zgłoszenie i tak dochodzi.

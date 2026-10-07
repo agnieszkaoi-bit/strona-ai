@@ -5,6 +5,7 @@ declare(strict_types=1);
 @ini_set('display_startup_errors', '0');
 @ini_set('log_errors', '1');
 error_reporting(E_ALL);
+date_default_timezone_set('Europe/Warsaw');
 
 $tenPlik = realpath(__FILE__);
 $wywolany = realpath((string)($_SERVER['SCRIPT_FILENAME'] ?? ''));
@@ -29,6 +30,7 @@ function naglowkiBezpieczenstwa(): void
     header('Referrer-Policy: strict-origin-when-cross-origin');
     header('Cache-Control: no-store');
     header('Content-Security-Policy: default-src \'none\'; frame-ancestors \'none\'');
+    header('Cross-Origin-Resource-Policy: same-origin');
     header_remove('X-Powered-By');
 }
 
@@ -99,7 +101,8 @@ function sprzatnijLimity(string $katalog, int $okno): void
 
 function limitZadan(string $nazwa, int $ile, int $okno, callable $odmowa, ?string $klucz = null): void
 {
-    $katalog = sys_get_temp_dir() . '/oi-limity';
+    // Osobny katalog, żeby liczniki nie mieszały się z innymi formularzami na serwerze.
+    $katalog = sys_get_temp_dir() . '/aiol-limity';
     if (!is_dir($katalog) && !@mkdir($katalog, 0700, true) && !is_dir($katalog)) {
         return;
     }

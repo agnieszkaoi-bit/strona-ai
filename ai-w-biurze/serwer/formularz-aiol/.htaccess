@@ -1,22 +1,10 @@
 # Katalog ze skryptami formularza AIOfficeLab FUNDAMENT.
-# Dostępne z zewnątrz są tylko formularz.php i nip.php.
+# Z zewnątrz dostępne są tylko formularz.php i nip.php. Wszystko inne
+# (bezpieczenstwo.php, kopie zapasowe, pliki ukryte) jest zablokowane.
 
 Options -Indexes
 
-<FilesMatch "^\.">
-  Require all denied
+Require all denied
+<FilesMatch "^(formularz|nip)\.php$">
+  Require all granted
 </FilesMatch>
-
-<Files "bezpieczenstwo.php">
-  Require all denied
-</Files>
-
-<FilesMatch "\.(bak|old|orig|save|swp|sql|log|ini|sh|txt|md)$">
-  Require all denied
-</FilesMatch>
-
-<IfModule mod_headers.c>
-  Header always set X-Content-Type-Options "nosniff"
-  Header always set X-Robots-Tag "noindex, nofollow"
-  Header always unset X-Powered-By
-</IfModule>
