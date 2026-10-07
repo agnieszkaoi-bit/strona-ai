@@ -43,12 +43,14 @@
   --aiol-mark: #fbe39a;         /* jasnożółte zakreślenie w nagłówkach */
   --aiol-gold: #ad8644;         /* złoty akcent marki Office Influencers */
   --aiol-gold-dark: #8a6a32;    /* złoty do drobnego tekstu (czytelniejszy) */
-  --aiol-gold-soft: #f8f3ea;    /* beżowe kafelki */
+  --aiol-gold-soft: #f2e6cf;    /* beżowe kafelki */
+  --aiol-cream: #fcefc3;        /* jasnożółte kafelki */
+  --aiol-band: #f6f2ea;         /* tło co drugiej sekcji */
   --aiol-ink: #1a1a1a;          /* nagłówki */
   --aiol-text: #474747;
   --aiol-muted: #737373;
-  --aiol-line: #ebebeb;
-  --aiol-soft: #f7f7f5;         /* jasnoszare kafelki */
+  --aiol-line: #e2e2de;
+  --aiol-soft: #eeede8;         /* jasnoszare kafelki */
   --aiol-radius: 18px;
   --aiol-ease: cubic-bezier(.2, .7, .2, 1);
   --aiol-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -100,6 +102,8 @@
 #aiol .aiol-wrap { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 16px; }
 #aiol .aiol-sec { position: relative; padding: 30px 0; scroll-margin-top: 100px; }
 @media (min-width: 768px) { #aiol .aiol-wrap { padding: 0 32px; } #aiol .aiol-sec { padding: 44px 0; } }
+/* Co druga sekcja na ciepłym tle, białe kafelki na nim wyraźnie się odcinają */
+#aiol .aiol-sec--band { background: var(--aiol-band); }
 
 /* ---------- Typografia ---------- */
 #aiol .aiol-eyebrow { display: block; margin-bottom: 12px; font-size: 15px; font-weight: 500; line-height: 1.3; color: var(--aiol-gold-dark); }
@@ -172,13 +176,15 @@
 #aiol .aiol-tile {
   position: relative; overflow: hidden; min-width: 0; padding: 24px;
   border-radius: var(--aiol-radius); background: #fff; border: 1px solid var(--aiol-line); color: var(--aiol-text);
+  box-shadow: 0 1px 2px rgba(20,20,20,.04), 0 12px 32px -24px rgba(20,20,20,.3);
   transition: border-color .3s ease;
 }
-#aiol .aiol-tile--soft { background: var(--aiol-soft); border-color: transparent; }
-#aiol .aiol-tile--gold { background: var(--aiol-gold-soft); border-color: transparent; }
+#aiol .aiol-tile--soft { background: var(--aiol-soft); border-color: transparent; box-shadow: none; }
+#aiol .aiol-tile--gold { background: var(--aiol-gold-soft); border-color: transparent; box-shadow: none; }
+#aiol .aiol-tile--cream { background: var(--aiol-cream); border-color: transparent; box-shadow: none; }
 #aiol .aiol-tile--col { display: flex; flex-direction: column; justify-content: space-between; gap: 20px; }
 #aiol .aiol-tile--end { display: flex; flex-direction: column; justify-content: flex-end; }
-@media (hover: hover) { #aiol .aiol-tile:not(.aiol-tile--soft):not(.aiol-tile--gold):hover { border-color: #d9d9d9; } }
+@media (hover: hover) { #aiol .aiol-tile:not(.aiol-tile--soft):not(.aiol-tile--gold):not(.aiol-tile--cream):hover { border-color: #cfcfca; } }
 #aiol .aiol-tile__title { font-size: clamp(21px, 2vw, 26px); line-height: 1.2; letter-spacing: -.015em; text-wrap: balance; }
 #aiol .aiol-tile__title--lg { font-size: clamp(26px, 2.6vw, 36px); line-height: 1.12; }
 #aiol .aiol-tile__big { font-size: clamp(18px, 1.6vw, 21px); font-weight: 400; line-height: 1.5; color: var(--aiol-ink); text-wrap: pretty; }
@@ -307,7 +313,7 @@
 #aiol .aiol-qcard__a .aiol-qcard__note { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(0,0,0,.08); font-size: 14px; color: var(--aiol-muted); }
 
 /* ---------- Prowadząca ---------- */
-#aiol .aiol-tile--photo { padding: 0; min-height: 380px; background: var(--aiol-soft); border-color: transparent; }
+#aiol .aiol-tile--photo { padding: 0; min-height: 380px; background: var(--aiol-soft); border-color: transparent; box-shadow: none; }
 #aiol .aiol-photo { position: relative; width: 100%; height: 100%; min-height: inherit; overflow: hidden; }
 #aiol .aiol-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
 #aiol .aiol-host__lead { margin-top: 16px; font-size: clamp(19px, 1.8vw, 23px); font-weight: 400; line-height: 1.45; color: var(--aiol-ink); text-wrap: pretty; }
@@ -331,7 +337,7 @@
 }
 /* Karta z ceną jedzie obok formularza tylko na wysokich ekranach, na których mieści się cała */
 @media (min-width: 992px) and (min-height: 1040px) { #aiol .aiol-pricecard { position: sticky; top: 110px; } }
-#aiol .aiol-pricecard { overflow: hidden; border-radius: 22px; background: #fff; border: 1px solid var(--aiol-line); }
+#aiol .aiol-pricecard { overflow: hidden; border-radius: 22px; background: #fff; border: 1px solid var(--aiol-line); box-shadow: 0 1px 2px rgba(20,20,20,.04), 0 12px 32px -24px rgba(20,20,20,.3); }
 #aiol .aiol-pricecard__top { padding: 26px; background: var(--aiol-gold-soft); }
 #aiol .aiol-pricecard__name { font-size: 15px; font-weight: 500; color: var(--aiol-gold-dark); }
 #aiol .aiol-pricecard__name strong { font-weight: 600; }
@@ -364,7 +370,7 @@
 #aiol .aiol-signup__form { scroll-margin-top: 100px; }
 #aiol .aiol-form__title { margin-bottom: 18px; font-size: clamp(22px, 2.2vw, 28px); font-weight: 500; line-height: 1.15; }
 
-#aiol .aiol-form, #aiol .aiol-done { padding: 24px 20px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 22px; }
+#aiol .aiol-form, #aiol .aiol-done { padding: 24px 20px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 22px; box-shadow: 0 1px 2px rgba(20,20,20,.04), 0 12px 32px -24px rgba(20,20,20,.3); }
 #aiol .aiol-fields { display: grid; gap: 16px 18px; }
 #aiol .aiol-label {
   display: block; float: none; width: auto; margin: 0 0 7px;
@@ -375,13 +381,13 @@
 #aiol .aiol-input {
   display: block; width: 100%; max-width: 100%; height: auto; min-height: 50px; margin: 0; padding: 12px 14px;
   font-family: var(--aiol-sans); font-size: 16px; font-weight: 400; line-height: 1.4; letter-spacing: 0; text-transform: none;
-  color: var(--aiol-ink); background: var(--aiol-soft); border: 1px solid transparent; border-radius: 12px; box-shadow: none; outline: 0;
+  color: var(--aiol-ink); background: #f4f3ef; border: 1px solid #e4e3de; border-radius: 12px; box-shadow: none; outline: 0;
   -webkit-appearance: none; appearance: none; transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
 }
 #aiol textarea.aiol-input { min-height: 80px; resize: vertical; }
 #aiol select.aiol-input {
   padding-right: 42px; cursor: pointer;
-  background: var(--aiol-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1a1a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center / 16px;
+  background: #f4f3ef url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1a1a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center / 16px;
 }
 #aiol .aiol-input:hover { border-color: #d6d6d6; }
 #aiol .aiol-input:focus { background-color: #fff; border-color: var(--aiol-gold); box-shadow: 0 0 0 3px rgba(247,197,49,.25); }
@@ -600,7 +606,7 @@
         </ul>
       </div>
 
-      <div class="aiol-tile aiol-tile--gold aiol-tile--end s-4" data-r>
+      <div class="aiol-tile aiol-tile--cream aiol-tile--end s-4" data-r>
         <div>
           <p class="aiol-tile__kicker">Poziom podstawowy</p>
           <p class="aiol-tile__big">Nie musisz mieć wcześniejszego doświadczenia z&nbsp;AI.</p>
@@ -613,7 +619,7 @@
         <p class="aiol-prob__lead">Pytanie nie brzmi więc: „czy z&nbsp;niego korzystać?”, ale: <b>jak robić to dobrze, bezpiecznie i&nbsp;z&nbsp;realnym pożytkiem dla swojej pracy?</b></p>
       </div>
 
-      <div class="aiol-tile aiol-tile--end s-5 t-2" data-r>
+      <div class="aiol-tile aiol-tile--gold aiol-tile--end s-5 t-2" data-r>
         <p class="aiol-tile__big"><strong>AIOfficeLab FUNDAMENT</strong> to dwugodzinne szkolenie dla osób pracujących w&nbsp;administracji biurowej, które chcą uporządkować podstawy i&nbsp;zobaczyć, jak wykorzystywać AI do pracy z&nbsp;informacją, dokumentami i&nbsp;codziennymi zadaniami.</p>
       </div>
 
@@ -638,9 +644,9 @@
   </section>
 
   <!-- ===================== OPINIE ===================== -->
-  <section class="aiol-sec" id="aiol-opinie" aria-labelledby="aiol-h-reviews">
+  <section class="aiol-sec aiol-sec--band" id="aiol-opinie" aria-labelledby="aiol-h-reviews">
     <div class="aiol-wrap aiol-bento">
-      <div class="aiol-tile aiol-tile--soft aiol-tile--col s-4 t-2" data-r>
+      <div class="aiol-tile aiol-tile--col s-4 t-2" data-r>
         <div>
           <p class="aiol-eyebrow">Opinie uczestników</p>
           <h2 class="aiol-quotehead" id="aiol-h-reviews">„Absolutny must have dla każdej osoby pracującej w&nbsp;dziale administracji”</h2>
@@ -766,19 +772,19 @@
       </div>
 
       <div class="aiol-bento">
-        <div class="aiol-tile aiol-outcome s-3" data-r>
+        <div class="aiol-tile aiol-tile--cream aiol-outcome s-3" data-r>
           <span class="aiol-outcome__n" aria-hidden="true">01</span>
           <p>co możesz zlecić AI</p>
         </div>
-        <div class="aiol-tile aiol-outcome s-3" data-r>
+        <div class="aiol-tile aiol-tile--cream aiol-outcome s-3" data-r>
           <span class="aiol-outcome__n" aria-hidden="true">02</span>
           <p>czego mu nie powierzać</p>
         </div>
-        <div class="aiol-tile aiol-outcome s-3" data-r>
+        <div class="aiol-tile aiol-tile--cream aiol-outcome s-3" data-r>
           <span class="aiol-outcome__n" aria-hidden="true">03</span>
           <p>jak przekazać mu zadanie</p>
         </div>
-        <div class="aiol-tile aiol-outcome s-3" data-r>
+        <div class="aiol-tile aiol-tile--cream aiol-outcome s-3" data-r>
           <span class="aiol-outcome__n" aria-hidden="true">04</span>
           <p>jak sprawdzić rezultat, zanim wykorzystasz go w&nbsp;pracy</p>
         </div>
@@ -821,7 +827,7 @@
   </section>
 
   <!-- ===================== PYTANIA Z SALI ===================== -->
-  <section class="aiol-sec" id="aiol-pytania" aria-labelledby="aiol-h-questions">
+  <section class="aiol-sec aiol-sec--band" id="aiol-pytania" aria-labelledby="aiol-h-questions">
     <div class="aiol-wrap">
       <div class="aiol-head" data-r>
         <p class="aiol-eyebrow">Pytania z&nbsp;sali</p>
@@ -829,7 +835,7 @@
       </div>
 
       <div class="aiol-bento">
-        <div class="aiol-tile aiol-tile--soft aiol-qcard s-4" data-r>
+        <div class="aiol-tile aiol-qcard s-4" data-r>
           <h3 class="aiol-qcard__q">„Czy muszę mieć płatną wersję ChatGPT, Copilota lub innego narzędzia?”</h3>
           <div class="aiol-qcard__a">
             <p>Nie jest to konieczne do uczestnictwa w&nbsp;poziomie FUNDAMENT.</p>
@@ -837,7 +843,7 @@
           </div>
         </div>
 
-        <div class="aiol-tile aiol-tile--gold aiol-qcard s-4" data-r>
+        <div class="aiol-tile aiol-tile--cream aiol-qcard s-4" data-r>
           <h3 class="aiol-qcard__q">„Czy na szkoleniu będzie mowa o&nbsp;bezpieczeństwie danych i&nbsp;RODO?”</h3>
           <div class="aiol-qcard__a">
             <p>Tak. Bezpieczna praca z&nbsp;AI jest jednym z&nbsp;podstawowych elementów programu.</p>
@@ -846,7 +852,7 @@
           </div>
         </div>
 
-        <div class="aiol-tile aiol-tile--soft aiol-qcard s-4 t-2" data-r>
+        <div class="aiol-tile aiol-qcard s-4 t-2" data-r>
           <h3 class="aiol-qcard__q">„Czy podczas szkolenia trzeba udostępniać dane lub dokumenty firmy?”</h3>
           <div class="aiol-qcard__a">
             <p>Nie.</p>
@@ -871,12 +877,12 @@
         <p class="aiol-host__p">Łączę wiedzę o&nbsp;realnej pracy biurowej z&nbsp;praktycznym wykorzystaniem nowych technologii.</p>
       </div>
 
-      <div class="aiol-tile aiol-tile--gold aiol-num s-4" data-r>
+      <div class="aiol-tile aiol-tile--cream aiol-num s-4" data-r>
         <b>25+</b>
         <span>lat doświadczenia</span>
       </div>
 
-      <div class="aiol-tile aiol-tile--soft aiol-num s-4" data-r>
+      <div class="aiol-tile aiol-tile--gold aiol-num s-4" data-r>
         <b>10&nbsp;000+</b>
         <span>przeszkolonych osób</span>
       </div>
@@ -893,7 +899,7 @@
   </section>
 
   <!-- ===================== CENA + FORMULARZ ZGŁOSZENIA ===================== -->
-  <section class="aiol-sec" id="aiol-cena" aria-labelledby="aiol-h-price">
+  <section class="aiol-sec aiol-sec--band" id="aiol-cena" aria-labelledby="aiol-h-price">
     <div class="aiol-wrap">
       <div class="aiol-head aiol-head--split">
         <div data-r>
@@ -1066,7 +1072,7 @@
   <!-- ===================== DLA FIRMY + KONTAKT ===================== -->
   <section class="aiol-sec" id="aiol-dla-firm" aria-labelledby="aiol-h-b2b">
     <div class="aiol-wrap aiol-bento">
-      <div class="aiol-tile aiol-tile--soft aiol-b2b s-7 t-2" data-r>
+      <div class="aiol-tile aiol-tile--gold aiol-b2b s-7 t-2" data-r>
         <p class="aiol-eyebrow">Szkolenia zamknięte</p>
         <h2 class="aiol-h2" id="aiol-h-b2b">AIOfficeLab FUNDAMENT <span class="aiol-gold">dla firmy</span></h2>
         <p class="aiol-b2b__ask">Chcesz przeszkolić większą grupę pracowników?</p>

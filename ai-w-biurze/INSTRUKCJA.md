@@ -107,7 +107,7 @@ Pływający pasek, pasek na górze i przyciski w środku strony prowadzą tylko 
 
 ## Wygląd
 
-Cała strona jest na białym tle i używa jednego prostego kroju: **Inter**. Treść jest ułożona w siatkę jasnych kafelków (białych, jasnoszarych i beżowych). Nagłówki są w średniej grubości, bez pogrubień, bez ikon, ozdobnych plam i świecących efektów. Jedyny mocny kolor to żółte przyciski „Zapisuję się”.
+Cała strona jest na białym tle i używa jednego prostego kroju: **Inter**. Treść jest ułożona w siatkę kafelków w czterech wyraźnie różnych tłach: białe z delikatnym cieniem, szare, beżowe i jasnożółte. Sekcje z opiniami, pytaniami z sali oraz ceną i formularzem mają ciepłe tło, więc białe kafelki dobrze się na nich odcinają. Nagłówki są w średniej grubości, bez pogrubień, bez ikon, ozdobnych plam i świecących efektów. Jedyny mocny kolor to żółte przyciski „Zapisuję się”.
 
 Kolejność sekcji: pasek z terminem → hero → klienci (przewijana taśma) → dla kogo i o szkoleniu → puenta „Nie jak napisać prompt” → opinie → program (4 moduły) → po szkoleniu i dalsza ścieżka → pytania z sali → prowadząca → cena z formularzem zgłoszenia → dla firm i kontakt → FAQ w dwóch kolumnach → finał.
 
@@ -129,9 +129,11 @@ Jeśli ktoś ma w systemie włączone ograniczanie ruchu, strona wyświetla się
 | `--aiol-cta-hover` | przycisk po najechaniu kursorem | `#efb918` |
 | `--aiol-mark` | jasnożółte zakreślenie w nagłówkach | `#fbe39a` |
 | `--aiol-gold` | złoty akcent (jak na officeinfluencers.pl) | `#ad8644` |
-| `--aiol-line` | ramki białych kafelków i cienkie linie | `#ebebeb` |
-| `--aiol-soft` | jasnoszare kafelki i tło pól formularza | `#f7f7f5` |
-| `--aiol-gold-soft` | beżowe kafelki, pasek na górze, karta z ceną | `#f8f3ea` |
+| `--aiol-line` | ramki białych kafelków i cienkie linie | `#e2e2de` |
+| `--aiol-soft` | szare kafelki | `#eeede8` |
+| `--aiol-gold-soft` | beżowe kafelki, pasek na górze, karta z ceną | `#f2e6cf` |
+| `--aiol-cream` | jasnożółte kafelki | `#fcefc3` |
+| `--aiol-band` | ciepłe tło co drugiej sekcji | `#f6f2ea` |
 | `--aiol-ink` | nagłówki i ciemny tekst | `#1a1a1a` |
 
 ## SEO (Yoast / Rank Math)
