@@ -15,7 +15,7 @@
 
     // Termin szkolenia widoczny w formularzu i w mailu ze zgłoszeniem,
     // np. "12 listopada 2026, 10:00-12:00". Puste "" = bez terminu.
-    termin: "",
+    termin: "czwartek, 5 listopada 2026",
 
     // Adres zdjęcia prowadzącej z Biblioteki mediów WordPressa (puste "" = inicjały AK)
     photoUrl: "",
@@ -643,6 +643,7 @@
       <symbol id="aiol-i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
       <symbol id="aiol-i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
       <symbol id="aiol-i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+      <symbol id="aiol-i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
       <symbol id="aiol-i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
       <symbol id="aiol-i-level" viewBox="0 0 24 24"><path d="M6 20v-4"/><path d="M12 20v-9"/><path d="M18 20V5" opacity=".35"/></symbol>
       <symbol id="aiol-i-tag" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r="1"/></symbol>
@@ -685,8 +686,9 @@
         <p class="aiol-pill" data-r><span class="aiol-pill__dot" aria-hidden="true"></span>Szkolenie online LIVE</p>
         <p class="aiol-hero__name" data-r>AIOfficeLab / 01 <b>FUNDAMENT</b></p>
         <h1 class="aiol-h1" id="aiol-h1" data-r>Bezpieczna i&nbsp;skuteczna praca z&nbsp;<span class="aiol-mark">AI w&nbsp;biurze</span></h1>
-        <p class="aiol-hero__lead" data-r>AIOfficeLab FUNDAMENT to praktyczne szkolenie z&nbsp;AI dla osób pracujących w&nbsp;administracji biurowej, HR, finansach, sprzedaży, marketingu, obsłudze klienta, działach operacyjnych i&nbsp;biurach zarządu.</p>
+        <p class="aiol-hero__lead" data-r>AIOfficeLab FUNDAMENT to praktyczne szkolenie z&nbsp;AI przygotowane dla działów administracji biurowej: asystentek i&nbsp;asystentów, office managerów, sekretariatów, biur zarządu i&nbsp;zespołów wsparcia administracyjnego.</p>
         <ul class="aiol-facts" data-r>
+          <li data-aiol-termin-wiersz hidden><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-calendar"/></svg><span data-aiol-termin></span></li>
           <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-clock"/></svg>2&nbsp;godziny online LIVE</li>
           <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-level"/></svg>Poziom podstawowy</li>
           <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-tag"/></svg>290&nbsp;zł netto + VAT</li>
@@ -767,18 +769,14 @@
     <div class="aiol-wrap aiol-bento">
       <div class="aiol-tile s-8 t-2" id="aiol-dla-kogo" data-r>
         <p class="aiol-eyebrow">Dla kogo?</p>
-        <h2 class="aiol-tile__title aiol-tile__title--lg" id="aiol-h-who">Dla każdego, kto pracuje przy komputerze i&nbsp;chce korzystać z&nbsp;AI <span class="aiol-gold">świadomie i&nbsp;bezpiecznie</span></h2>
-        <p class="aiol-who__label">W&nbsp;szczególności dla pracowników:</p>
+        <h2 class="aiol-tile__title aiol-tile__title--lg" id="aiol-h-who">Dla działów administracji biurowej, które chcą korzystać z&nbsp;AI <span class="aiol-gold">świadomie i&nbsp;bezpiecznie</span></h2>
+        <p class="aiol-who__label">Szkolenie jest przeznaczone wyłącznie dla pracowników działów administracji biurowej, w&nbsp;szczególności dla:</p>
         <ul class="aiol-chips">
-          <li>administracji</li>
-          <li>HR</li>
-          <li>finansów</li>
-          <li>sprzedaży</li>
-          <li>marketingu</li>
-          <li>obsługi klienta</li>
-          <li>działów operacyjnych</li>
+          <li>asystentek i&nbsp;asystentów</li>
+          <li>office managerów</li>
+          <li>sekretariatów</li>
           <li>biur zarządu</li>
-          <li>zespołów wsparcia</li>
+          <li>zespołów wsparcia administracyjnego</li>
         </ul>
       </div>
 
@@ -798,7 +796,7 @@
 
       <div class="aiol-tile aiol-tile--yellow aiol-tile--col s-5 t-2" data-r>
         <span class="aiol-tile__ic aiol-tile__ic--ink"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-sparkles"/></svg></span>
-        <p class="aiol-tile__big"><strong>AIOfficeLab FUNDAMENT</strong> to dwugodzinne szkolenie dla osób pracujących w&nbsp;biurze, które chcą uporządkować podstawy i&nbsp;zobaczyć, jak wykorzystywać AI do pracy z&nbsp;informacją, dokumentami i&nbsp;codziennymi zadaniami.</p>
+        <p class="aiol-tile__big"><strong>AIOfficeLab FUNDAMENT</strong> to dwugodzinne szkolenie dla osób pracujących w&nbsp;administracji biurowej, które chcą uporządkować podstawy i&nbsp;zobaczyć, jak wykorzystywać AI do pracy z&nbsp;informacją, dokumentami i&nbsp;codziennymi zadaniami.</p>
       </div>
 
       <div class="aiol-tile aiol-tile--soft s-12 t-2" data-r>
@@ -1166,7 +1164,8 @@
 
               <div class="aiol-field">
                 <label class="aiol-label" for="aiol-f-role">Stanowisko</label>
-                <input class="aiol-input" type="text" id="aiol-f-role" name="stanowisko" autocomplete="organization-title" maxlength="80">
+                <input class="aiol-input" type="text" id="aiol-f-role" name="stanowisko" autocomplete="organization-title" maxlength="80" aria-describedby="aiol-h-role">
+                <p class="aiol-hint" id="aiol-h-role">Szkolenie jest dla działów administracji biurowej.</p>
               </div>
 
               <div class="aiol-field">
@@ -1316,15 +1315,14 @@
             <details class="aiol-qa" open>
               <summary><span>Dla kogo jest AIOfficeLab FUNDAMENT?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
               <div class="aiol-qa__a">
-                <p>AIOfficeLab FUNDAMENT to szkolenie z&nbsp;AI dla osób pracujących przy komputerze: w&nbsp;administracji, HR, finansach, sprzedaży, marketingu, obsłudze klienta, działach operacyjnych, biurach zarządu i&nbsp;innych zespołach biurowych.</p>
+                <p>AIOfficeLab FUNDAMENT to szkolenie z&nbsp;AI wyłącznie dla pracowników działów administracji biurowej: asystentek i&nbsp;asystentów, office managerów, sekretariatów, biur zarządu i&nbsp;zespołów wsparcia administracyjnego.</p>
                 <p>Program został przygotowany dla osób początkujących oraz tych, które korzystają już z&nbsp;AI, ale robią to intuicyjnie i&nbsp;chcą uporządkować podstawy.</p>
               </div>
             </details>
             <details class="aiol-qa">
-              <summary><span>Czy to szkolenie tylko dla Asystentek i&nbsp;Office Managerów?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
+              <summary><span>Czy na szkolenie mogą zapisać się osoby z&nbsp;innych działów?</span><span class="aiol-qa__ico" aria-hidden="true"><svg class="aiol-i"><use href="#aiol-i-plus"/></svg></span></summary>
               <div class="aiol-qa__a">
-                <p>Nie. FUNDAMENT jest najbardziej uniwersalnym poziomem AIOfficeLab i&nbsp;został przygotowany dla każdego pracownika biurowego.</p>
-                <p>Poziomy SYSTEM i&nbsp;AUTONOMIA są już mocniej skoncentrowane na administracji, koordynacji pracy, projektach i&nbsp;procesach.</p>
+                <p>Nie. To szkolenie jest przeznaczone wyłącznie dla pracowników działów administracji biurowej.</p>
               </div>
             </details>
             <details class="aiol-qa">
@@ -1499,6 +1497,7 @@
         <p class="aiol-eyebrow">AIOfficeLab / 01 &nbsp;|&nbsp; Fundament</p>
         <h2 id="aiol-h-final">Zacznij od <span class="aiol-yellow">fundamentu</span></h2>
         <ul class="aiol-final__facts">
+          <li data-aiol-termin-wiersz hidden><span data-aiol-termin></span></li>
           <li>2&nbsp;godziny online LIVE</li>
           <li>290&nbsp;zł netto + VAT</li>
         </ul>
@@ -1513,7 +1512,7 @@
     <div class="aiol-sticky__in">
       <div class="aiol-sticky__txt">
         <strong>290&nbsp;zł netto + VAT</strong>
-        <span>AIOfficeLab FUNDAMENT · 2&nbsp;h online LIVE</span>
+        <span>AIOfficeLab FUNDAMENT · 2&nbsp;h online LIVE<span data-aiol-termin-wiersz hidden> · <span data-aiol-termin></span></span></span>
       </div>
       <a class="aiol-btn aiol-btn--sm" href="#aiol-formularz" data-aiol-cta="pasek">Zapisuję się</a>
     </div>
@@ -1529,7 +1528,7 @@
       "@type": "Course",
       "@id": "https://www.officeinfluencers.pl/ai-w-biurze#kurs",
       "name": "AIOfficeLab / 01 FUNDAMENT: Bezpieczna i skuteczna praca z AI w biurze",
-      "description": "Dwugodzinne szkolenie online LIVE na poziomie podstawowym: jak bezpiecznie i skutecznie korzystać z ChatGPT, Microsoft Copilot, Claude i Gemini w pracy biurowej. Przekazywanie AI kontekstu, praca z dokumentami, research, porównywanie danych, ochrona danych firmowych, ograniczanie halucynacji i weryfikowanie odpowiedzi.",
+      "description": "Dwugodzinne szkolenie online LIVE na poziomie podstawowym dla działów administracji biurowej: jak bezpiecznie i skutecznie korzystać z ChatGPT, Microsoft Copilot, Claude i Gemini w pracy biurowej. Przekazywanie AI kontekstu, praca z dokumentami, research, porównywanie danych, ochrona danych firmowych, ograniczanie halucynacji i weryfikowanie odpowiedzi.",
       "url": "https://www.officeinfluencers.pl/ai-w-biurze",
       "inLanguage": "pl",
       "educationalLevel": "Podstawowy",
@@ -1544,7 +1543,7 @@
       ],
       "audience": {
         "@type": "Audience",
-        "audienceType": "Pracownicy biurowi: administracja, HR, finanse, sprzedaż, marketing, obsługa klienta, działy operacyjne, biura zarządu, zespoły wsparcia"
+        "audienceType": "Pracownicy działów administracji biurowej: asystentki i asystenci, office managerowie, sekretariaty, biura zarządu, zespoły wsparcia administracyjnego"
       },
       "educationalCredentialAwarded": "Imienny certyfikat ukończenia szkolenia",
       "provider": {
@@ -1558,6 +1557,7 @@
       "hasCourseInstance": {
         "@type": "CourseInstance",
         "courseMode": "Online",
+        "startDate": "2026-11-05",
         "courseWorkload": "PT2H",
         "inLanguage": "pl",
         "instructor": {
@@ -1594,15 +1594,15 @@
           "name": "Dla kogo jest AIOfficeLab FUNDAMENT?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "AIOfficeLab FUNDAMENT to szkolenie z AI dla osób pracujących przy komputerze: w administracji, HR, finansach, sprzedaży, marketingu, obsłudze klienta, działach operacyjnych, biurach zarządu i innych zespołach biurowych.\n\nProgram został przygotowany dla osób początkujących oraz tych, które korzystają już z AI, ale robią to intuicyjnie i chcą uporządkować podstawy."
+            "text": "AIOfficeLab FUNDAMENT to szkolenie z AI wyłącznie dla pracowników działów administracji biurowej: asystentek i asystentów, office managerów, sekretariatów, biur zarządu i zespołów wsparcia administracyjnego.\n\nProgram został przygotowany dla osób początkujących oraz tych, które korzystają już z AI, ale robią to intuicyjnie i chcą uporządkować podstawy."
           }
         },
         {
           "@type": "Question",
-          "name": "Czy to szkolenie tylko dla Asystentek i Office Managerów?",
+          "name": "Czy na szkolenie mogą zapisać się osoby z innych działów?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nie. FUNDAMENT jest najbardziej uniwersalnym poziomem AIOfficeLab i został przygotowany dla każdego pracownika biurowego.\n\nPoziomy SYSTEM i AUTONOMIA są już mocniej skoncentrowane na administracji, koordynacji pracy, projektach i procesach."
+            "text": "Nie. To szkolenie jest przeznaczone wyłącznie dla pracowników działów administracji biurowej."
           }
         },
         {
@@ -1812,8 +1812,8 @@
     // Termin z ustawień: w podsumowaniu i w mailu
     var termin = String(cfg.termin || "").trim();
     if (termin) {
-      root.querySelector("[data-aiol-termin]").textContent = termin;
-      root.querySelector("[data-aiol-termin-wiersz]").hidden = false;
+      [].forEach.call(root.querySelectorAll("[data-aiol-termin]"), function (el) { el.textContent = termin; });
+      [].forEach.call(root.querySelectorAll("[data-aiol-termin-wiersz]"), function (el) { el.hidden = false; });
       root.querySelector("[data-aiol-termin-pole]").value = termin;
       var barTermin = root.querySelector("[data-aiol-bar-termin]");
       if (barTermin) { barTermin.textContent = " · Termin: " + termin; barTermin.hidden = false; }

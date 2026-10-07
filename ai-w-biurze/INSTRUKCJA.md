@@ -45,13 +45,14 @@ Formularz wysyła zgłoszenia na **office@officeinfluencers.pl** przez ten sam s
 ```js
 window.AIOL_CONFIG = {
   formularz: "/formularz-aiol/formularz.php", // skrypt wysyłający zgłoszenie
-  termin: "",                                 // np. "12 listopada 2026, 10:00-12:00"
+  termin: "czwartek, 5 listopada 2026",       // data (i godziny) edycji
   photoUrl: "",                               // adres zdjęcia prowadzącej
   stickyBar: true                             // pływający pasek z przyciskiem
 };
 ```
 
-- **termin**: wpisz datę i godzinę edycji. Pojawi się w żółtym pasku na górze, w karcie z ceną obok formularza i w mailu ze zgłoszeniem. Puste pole = bez terminu.
+- **termin**: data edycji, teraz „czwartek, 5 listopada 2026”. Możesz dopisać godziny, np. „czwartek, 5 listopada 2026, 10:00-12:00”. Termin pojawia się w żółtym pasku na górze, w hero, w karcie z ceną, w finale, w pływającym pasku i w mailu ze zgłoszeniem. Puste pole = bez terminu.
+  Po zmianie daty popraw też `"startDate": "2026-11-05"` w bloku `application/ld+json` na dole kodu (format rok-miesiąc-dzień).
 - **photoUrl**: Media → Biblioteka → wybierz zdjęcie → „Kopiuj adres URL do schowka” i wklej między cudzysłowy. Najlepiej zdjęcie pionowe (4:5). Zdjęcie wypełnia cały kafelek, a twarz powinna być w górnej części kadru. Bez zdjęcia w tym miejscu wyświetlają się inicjały „AK”.
 - **stickyBar**: `false` wyłącza pływający pasek z ceną i przyciskiem.
 
@@ -59,6 +60,7 @@ Wszystkie przyciski **„Zapisuję się”** przewijają stronę do formularza.
 
 ## Jak działa formularz
 
+- **Grupa docelowa:** szkolenie jest przeznaczone wyłącznie dla działów administracji biurowej. Mówią o tym hero, kafelek „Dla kogo?”, FAQ i podpowiedź przy polu „Stanowisko”.
 - **Pola:** imię i nazwisko, e-mail, telefon, stanowisko, liczba osób (1–10), płatnik (firma albo osoba prywatna), NIP, nazwa firmy, adres do faktury, uwagi, zgoda RODO (wymagana) i zgoda marketingowa (dobrowolna).
 - **NIP:** po wpisaniu 10 cyfr strona sama pobiera nazwę i adres firmy z wykazu podatników VAT Ministerstwa Finansów.
 - **Podsumowanie:** w karcie z ceną obok formularza kwota liczy się na żywo (liczba osób × 290 zł netto). Ta sama kwota trafia do maila.
@@ -97,7 +99,7 @@ Jeśli ktoś ma w systemie włączone ograniczanie ruchu, strona wyświetla się
 ## SEO (Yoast / Rank Math)
 
 - **Tytuł SEO:** `AI w biurze – szkolenie online LIVE | AIOfficeLab FUNDAMENT`
-- **Opis meta:** `Szkolenie online LIVE (2 h): jak bezpiecznie i skutecznie korzystać z ChatGPT, Copilota, Claude i Gemini w pracy biurowej. 290 zł netto + VAT.`
+- **Opis meta:** `Szkolenie online LIVE (2 h) dla działów administracji biurowej, 5 listopada 2026: jak bezpiecznie i skutecznie korzystać z ChatGPT, Copilota, Claude i Gemini. 290 zł netto + VAT.`
 - **Fraza kluczowa:** `AI w biurze`
 - Dane strukturalne **Course** i **FAQPage** są już w kodzie (blok `application/ld+json`). Nie dodawaj osobnego schematu FAQ we wtyczce, bo powstanie duplikat.
 - Po zmianie pytań lub odpowiedzi w FAQ popraw ten sam tekst w bloku `application/ld+json` na dole kodu.
