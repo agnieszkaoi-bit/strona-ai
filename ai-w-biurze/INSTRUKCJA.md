@@ -15,12 +15,27 @@ Formularz wysyła zgłoszenia na **office@officeinfluencers.pl** przez ten sam s
 
 1. Zaloguj się do panelu Zenbox → **Menedżer plików**. Możesz też użyć FTP, np. FileZilla.
 2. Otwórz główny katalog strony officeinfluencers.pl, czyli ten, w którym są `wp-config.php`, `wp-content` i `wp-admin`.
-3. Wgraj `formularz-aiol.zip` i **rozpakuj**. Powstanie folder `formularz-aiol` z czterema plikami: `formularz.php`, `nip.php`, `bezpieczenstwo.php`, `.htaccess`.
-   Jeśli folder już jest na serwerze, **zastąp wszystkie cztery pliki** nowymi, także ukryty `.htaccess`. W Menedżerze plików włącz „Pokaż ukryte pliki”.
+3. Wgraj `formularz-aiol.zip` i **rozpakuj**. Powstanie folder `formularz-aiol` z pięcioma plikami: `formularz.php`, `nip.php`, `bezpieczenstwo.php`, `klucze.php`, `.htaccess`.
+   Jeśli folder już jest na serwerze, **zastąp pliki** nowymi, także ukryty `.htaccess` (w Menedżerze plików włącz „Pokaż ukryte pliki”). Wyjątek: jeśli w `klucze.php` jest już wpisany token CEIDG, tego pliku nie nadpisuj.
 4. Sprawdzenie: otwórz w przeglądarce `https://www.officeinfluencers.pl/formularz-aiol/formularz.php`. Prawidłowa odpowiedź to komunikat `{"ok":false,"komunikat":"Dozwolona jest tylko metoda POST."}`. Oznacza on, że skrypt działa.
 5. Sprawdzenie zabezpieczeń: adresy `https://www.officeinfluencers.pl/formularz-aiol/bezpieczenstwo.php` i `https://www.officeinfluencers.pl/formularz-aiol/` muszą pokazać błąd „Forbidden” (403) albo „Not Found” (404), a nie treść pliku czy listę plików.
 
 > Folderu **nie nazywaj** `ai-w-biurze`. Zasłoniłby stronę WordPressa o tym adresie. Jeśli wybierzesz inną nazwę, popraw ustawienie `formularz` w kodzie strony.
+
+## 1a. Dane firm z CEIDG (Hurtownia Danych)
+
+Po wpisaniu NIP-u formularz sam uzupełnia nazwę i adres firmy. Najpierw pyta wykaz podatników VAT Ministerstwa Finansów (spółki i firmy z VAT). Jeśli tam firmy nie ma albo brakuje adresu, pyta CEIDG, czyli rejestr jednoosobowych działalności, także tych bez VAT. Do CEIDG potrzebny jest token z Hurtowni Danych.
+
+1. W panelu Hurtowni Danych (dane.biznes.gov.pl) skopiuj token do API CEIDG. To długi ciąg znaków zaczynający się zwykle od `eyJ`.
+2. Zenbox → **Menedżer plików** → folder `formularz-aiol` → plik `klucze.php` → **Edytuj**.
+3. W linii `'ceidg_token' => '',` wklej token między apostrofy, w całości, bez spacji i enterów:
+   `'ceidg_token' => 'eyJ...tu cały token...',`
+4. Zapisz plik.
+5. Sprawdzenie: na stronie wybierz „Firma (faktura VAT)” i wpisz NIP jednoosobowej działalności. Pod polem NIP pojawi się „Dane z CEIDG” albo „Dane z wykazu podatników VAT”, a nazwa i adres uzupełnią się same.
+
+Token jest tajny. Nie wysyłaj go mailem ani na czacie. Z internetu nie da się otworzyć pliku `klucze.php`, a token nie trafia na stronę ani do przeglądarki odwiedzających. Jeśli token wyciekł albo wygasł, wygeneruj nowy w Hurtowni Danych i podmień go w `klucze.php`.
+
+Gdy CEIDG nie odpowiada albo token jest zły, formularz dalej działa: nazwę i adres wpisuje się wtedy ręcznie. W logach błędów PHP w panelu Zenbox pojawi się wpis `CEIDG: odpowiedz HTTP 401` (albo 403), który oznacza zły lub wygasły token.
 
 ## 2. Wklej stronę do Elementora
 
@@ -58,7 +73,7 @@ window.AIOL_CONFIG = {
 - **formularz**: adres skryptu na tej samej stronie, zaczyna się od `/`. Adresu z inną domeną strona nie przyjmie, żeby dane ze zgłoszeń nie mogły trafić gdzie indziej.
 - **termin**: data i godziny edycji, teraz „czwartek, 5 listopada 2026, godz. 10.00–12.00”. Termin pojawia się w pasku na górze, w hero, w karcie z ceną, w finale, w pływającym pasku i w mailu ze zgłoszeniem. Puste pole = bez terminu.
   Po zmianie terminu popraw też `"startDate": "2026-11-05T10:00:00+01:00"` i `"endDate": "2026-11-05T12:00:00+01:00"` w bloku `application/ld+json` na dole kodu (rok-miesiąc-dzień, godzina; `+01:00` zimą, `+02:00` latem).
-- **Zdjęcia prowadzącej** są wbudowane w kod strony: zdjęcie z konferencji w hero i portret w sekcji „Prowadząca”. Nie trzeba ich nigdzie wgrywać.
+- **Zdjęcia prowadzącej** są wbudowane w kod strony: portret w hero i zdjęcie z konferencji w sekcji „Prowadząca”. Nie trzeba ich nigdzie wgrywać.
 - **heroPhotoUrl** / **photoUrl**: jeśli chcesz inne zdjęcie, wejdź w Media → Biblioteka → wybierz zdjęcie → „Kopiuj adres URL do schowka” i wklej między cudzysłowy. Adres musi zaczynać się od `https://` albo `/`. Najlepiej zdjęcie pionowe (4:5) z twarzą w górnej części kadru.
 - **platnosc**: link do płatności online, otwierany przez przyciski „Kupuję i przechodzę do płatności”. Musi zaczynać się od `https://`. Pusty cudzysłów `""` usuwa te przyciski ze strony, np. gdy sprzedaż online jest zamknięta.
 - **stickyBar**: `false` wyłącza pływający pasek z ceną i przyciskiem.
@@ -89,7 +104,8 @@ Pływający pasek, pasek na górze i przyciski w środku strony prowadzą tylko 
 - Odbiorca, nadawca i temat maila są na sztywno w kodzie. Adres e-mail ze zgłoszenia przechodzi ścisłą kontrolę, zanim trafi do „Odpowiedz”, więc nie da się nim dopisać ukrytych odbiorców.
 - Skrypt przyjmuje tylko pola, które wysyła strona, każde z limitem długości. Dodatkowe pola, tablice, pliki i za duże żądania są odrzucane. Termin z formularza może zawierać tylko datę i godzinę.
 - Limity: 30 prób i 5 wysłanych zgłoszeń na godzinę z jednego adresu IP, a sprawdzanie NIP-u do 6 razy na 2 minuty i 25 razy na godzinę.
-- Sprawdzanie NIP-u pyta wyłącznie wykaz podatników VAT Ministerstwa Finansów. NIP musi mieć 10 cyfr z poprawną cyfrą kontrolną, więc skryptu nie da się użyć do odpytywania innych serwerów.
+- Sprawdzanie NIP-u pyta wyłącznie wykaz podatników VAT Ministerstwa Finansów i CEIDG. NIP musi mieć 10 cyfr z poprawną cyfrą kontrolną, więc skryptu nie da się użyć do odpytywania innych serwerów.
+- Token CEIDG leży w `klucze.php` na serwerze. Pliku nie da się otworzyć z internetu, a token jest sprawdzany przed użyciem, żeby błędnie wklejony tekst nie trafił do zapytania.
 - Odpowiedzi skryptów mają nagłówki blokujące osadzanie, zgadywanie typu treści, indeksowanie i zapisywanie w pamięci podręcznej. Błędy PHP nie są pokazywane odwiedzającym.
 - Treść maila jest oczyszczona z niewidocznych znaków i ukrytych poleceń dla programów AI (prompt injection), a podejrzane fragmenty są oznaczone na górze wiadomości.
 
