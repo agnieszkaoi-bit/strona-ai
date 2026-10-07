@@ -13,6 +13,10 @@
     // Folder "formularz-aiol" wgrywasz na serwer (instrukcja w INSTRUKCJA.md).
     formularz: "/formularz-aiol/formularz.php",
 
+    // Link do płatności online (przycisk "Kupuję i przechodzę do płatności").
+    // Puste "" = przyciski płatności znikają ze strony.
+    platnosc: "https://easl.ink/XD2bl",
+
     // Termin szkolenia widoczny w formularzu i w mailu ze zgłoszeniem,
     // np. "12 listopada 2026, 10:00-12:00". Puste "" = bez terminu.
     termin: "czwartek, 5 listopada 2026",
@@ -159,6 +163,16 @@
 #aiol .aiol-btn:hover .aiol-i { transform: translateX(4px); }
 #aiol .aiol-btn--block { width: 100%; }
 #aiol .aiol-btn--sm { flex-shrink: 0; min-height: 44px; padding: 12px 20px; font-size: 14px; white-space: nowrap; }
+/* Drugi przycisk: "Kupuję i przechodzę do płatności" (czarny; na ciemnym tle biały) */
+#aiol .aiol-btns { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+#aiol .aiol-btns--center { justify-content: center; }
+#aiol .aiol-btn--pay { background: var(--aiol-ink); color: #fff; box-shadow: 0 14px 30px -14px rgba(20,20,20,.55); }
+#aiol .aiol-btn--pay::before { background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.22) 50%, transparent 70%); }
+#aiol .aiol-btn--pay:hover, #aiol .aiol-btn--pay:focus { background: #2e2e2e; color: #fff; box-shadow: 0 18px 34px -14px rgba(20,20,20,.7); }
+#aiol .aiol-btn--light { background: #fff; color: var(--aiol-ink); box-shadow: 0 14px 30px -16px rgba(0,0,0,.6); }
+#aiol .aiol-btn--light::before { background: linear-gradient(110deg, transparent 30%, rgba(247,197,49,.4) 50%, transparent 70%); }
+#aiol .aiol-btn--light:hover, #aiol .aiol-btn--light:focus { background: var(--aiol-gold-soft); color: var(--aiol-ink); }
+#aiol .aiol-btn--pay:hover .aiol-i { transform: none; }
 @keyframes aiol-shine { 0% { transform: translateX(-120%); } 18%, 100% { transform: translateX(120%); } }
 
 /* ---------- Siatka kafelków (bento) ---------- */
@@ -253,7 +267,7 @@
 #aiol .aiol-facts li:hover { border-color: var(--aiol-gold); transform: translateY(-2px); }
 #aiol .aiol-facts .aiol-i { width: 18px; height: 18px; color: var(--aiol-gold); }
 #aiol .aiol-hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
-#aiol .aiol-hero__note { max-width: 260px; font-size: 14.5px; line-height: 1.5; color: var(--aiol-muted); }
+#aiol .aiol-hero__note { flex-basis: 100%; font-size: 14.5px; line-height: 1.5; color: var(--aiol-muted); }
 #aiol .aiol-nos { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 22px; font-size: 14.5px; line-height: 1.5; color: var(--aiol-muted); }
 #aiol .aiol-nos li { display: inline-flex; align-items: center; gap: 8px; }
 #aiol .aiol-nos .aiol-i { width: 16px; height: 16px; color: var(--aiol-gold); stroke-width: 2.5; }
@@ -454,6 +468,10 @@
 #aiol .aiol-pricecard__value { font-size: clamp(44px, 4.4vw, 60px); font-weight: 800; line-height: 1; letter-spacing: -.03em; color: #fff; }
 #aiol .aiol-pricecard__amount span:last-child { font-size: 16px; font-weight: 600; color: #fff; }
 #aiol .aiol-pricecard__meta { margin-top: 8px; font-size: 15px; }
+#aiol .aiol-pricecard__pay { margin-top: 20px; }
+#aiol .aiol-pricecard__or { margin-top: 12px; font-size: 14px; text-align: center; color: #bdbdbd; }
+#aiol .aiol-pricecard__or a { color: #fff; font-weight: 600; text-decoration: underline; text-decoration-color: var(--aiol-cta); text-underline-offset: 3px; }
+#aiol .aiol-pricecard__or a:hover { color: var(--aiol-cta); }
 #aiol .aiol-pricecard__body { padding: 22px 26px 26px; }
 #aiol .aiol-summary__rows > div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--aiol-line); font-size: 15px; line-height: 1.4; }
 #aiol .aiol-summary__rows dt { color: var(--aiol-muted); font-weight: 500; }
@@ -586,7 +604,7 @@
 #aiol .aiol-final h2 { font-size: clamp(34px, 4.6vw, 64px); line-height: 1.02; letter-spacing: -.03em; color: #fff; }
 #aiol .aiol-final__facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 20px 0 28px; }
 #aiol .aiol-final__facts li { padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.2); font-weight: 600; line-height: 1.3; color: #fff; }
-#aiol .aiol-final__small { margin-top: 18px; font-size: 14.5px; color: #a7a7a7; }
+#aiol .aiol-final__small { margin-top: 20px; font-size: 14.5px; color: #a7a7a7; }
 @media (min-width: 768px) { #aiol .aiol-final__box { padding: 72px 48px; } }
 
 /* ---------- Pływający pasek ---------- */
@@ -615,10 +633,17 @@
 @media (max-width: 479px) {
   #aiol .aiol-btn { width: 100%; }
   #aiol .aiol-btn--sm { width: auto; }
-  #aiol .aiol-hero__note { max-width: none; }
+  /* Napis "Kupuję i przechodzę do płatności" mieści się w jednej linii także na wąskim telefonie */
+  #aiol .aiol-btn--pay { gap: 8px; padding-left: 16px; padding-right: 16px; font-size: 15px; letter-spacing: 0; }
+  #aiol .aiol-btn--pay .aiol-i { width: 16px; height: 16px; }
+  #aiol .aiol-pricecard__top { padding: 22px; }
+  #aiol .aiol-final__box { padding-left: 18px; padding-right: 18px; }
   #aiol .aiol-h1 { font-size: clamp(34px, 10.2vw, 40px); }
   #aiol .aiol-module__num { font-size: 34px; }
   #aiol .aiol-trust__in { gap: 6px; }
+}
+@media (max-width: 399px) {
+  #aiol .aiol-btn--pay .aiol-i { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -644,6 +669,7 @@
       <symbol id="aiol-i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
       <symbol id="aiol-i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
       <symbol id="aiol-i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
+      <symbol id="aiol-i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></symbol>
       <symbol id="aiol-i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
       <symbol id="aiol-i-level" viewBox="0 0 24 24"><path d="M6 20v-4"/><path d="M12 20v-9"/><path d="M18 20V5" opacity=".35"/></symbol>
       <symbol id="aiol-i-tag" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r="1"/></symbol>
@@ -694,7 +720,10 @@
           <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-tag"/></svg>290&nbsp;zł netto + VAT</li>
         </ul>
         <div class="aiol-hero__cta" data-r>
-          <a class="aiol-btn aiol-btn--glow" href="#aiol-formularz" data-aiol-cta="hero">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
+          <div class="aiol-btns">
+            <a class="aiol-btn aiol-btn--glow" href="#aiol-formularz" data-aiol-cta="hero">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
+            <a class="aiol-btn aiol-btn--pay" href="https://easl.ink/XD2bl" data-aiol-pay="hero"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-card"/></svg>Kupuję i&nbsp;przechodzę do płatności</a>
+          </div>
           <p class="aiol-hero__note">Nagranie przez 30&nbsp;dni, materiały i&nbsp;imienny certyfikat w&nbsp;cenie.</p>
         </div>
         <ul class="aiol-nos" data-r>
@@ -1101,7 +1130,7 @@
           <h2 class="aiol-h2" id="aiol-h-price">Co otrzymujesz?</h2>
         </div>
         <div class="aiol-head__side" data-r>
-          <p>Wypełnij formularz, a&nbsp;zgłoszenie trafi do biura Office Influencers. Możesz też napisać na <a class="aiol-link" href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a>.</p>
+          <p>Zapisz się w&nbsp;jeden z&nbsp;dwóch sposobów: wypełnij formularz zgłoszenia albo kup udział od razu i&nbsp;przejdź do płatności online. Możesz też napisać na <a class="aiol-link" href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a>.</p>
         </div>
       </div>
 
@@ -1111,6 +1140,10 @@
             <p class="aiol-pricecard__name">AIOfficeLab / 01 <strong>FUNDAMENT</strong></p>
             <p class="aiol-pricecard__amount"><span class="aiol-pricecard__value">290&nbsp;zł</span><span>netto + VAT za osobę</span></p>
             <p class="aiol-pricecard__meta">2&nbsp;godziny online LIVE · poziom podstawowy</p>
+            <div data-aiol-pay-box>
+              <a class="aiol-btn aiol-btn--pay aiol-btn--light aiol-btn--block aiol-pricecard__pay" href="https://easl.ink/XD2bl" data-aiol-pay="cena"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-card"/></svg>Kupuję i&nbsp;przechodzę do płatności</a>
+              <p class="aiol-pricecard__or">albo <a href="#aiol-formularz">wypełnij formularz zgłoszenia</a></p>
+            </div>
           </div>
           <div class="aiol-pricecard__body">
             <dl class="aiol-summary__rows">
@@ -1501,7 +1534,10 @@
           <li>2&nbsp;godziny online LIVE</li>
           <li>290&nbsp;zł netto + VAT</li>
         </ul>
-        <a class="aiol-btn aiol-btn--glow" href="#aiol-formularz" data-aiol-cta="final">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
+        <div class="aiol-btns aiol-btns--center">
+          <a class="aiol-btn aiol-btn--glow" href="#aiol-formularz" data-aiol-cta="final">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
+          <a class="aiol-btn aiol-btn--pay aiol-btn--light" href="https://easl.ink/XD2bl" data-aiol-pay="final"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-card"/></svg>Kupuję i&nbsp;przechodzę do płatności</a>
+        </div>
         <p class="aiol-final__small">Nagranie przez 30&nbsp;dni · materiały szkoleniowe · imienny certyfikat</p>
       </div>
     </div>
@@ -2015,12 +2051,22 @@
     if (window.history && history.replaceState) history.replaceState(null, "", link.getAttribute("href"));
   });
 
-  // 4) Zdarzenie dla Google Tag Managera / GA4 po kliknięciu "Zapisuję się"
+  // 4) Przyciski "Kupuję i przechodzę do płatności": link z ustawień, puste "" = bez płatności online
+  if (typeof cfg.platnosc === "string") {
+    var payUrl = cfg.platnosc.trim();
+    [].forEach.call(root.querySelectorAll("[data-aiol-pay]"), function (a) {
+      if (/^https:\/\//i.test(payUrl)) a.href = payUrl;
+      else (a.closest("[data-aiol-pay-box]") || a).hidden = true;
+    });
+  }
+
+  // Zdarzenia dla Google Tag Managera / GA4: "Zapisuję się" i "Kupuję i przechodzę do płatności"
   root.addEventListener("click", function (e) {
-    var cta = e.target.closest ? e.target.closest("[data-aiol-cta]") : null;
-    if (cta && window.dataLayer && window.dataLayer.push) {
-      window.dataLayer.push({ event: "aiol_cta_click", cta_location: cta.getAttribute("data-aiol-cta") });
-    }
+    if (!e.target.closest || !window.dataLayer || !window.dataLayer.push) return;
+    var cta = e.target.closest("[data-aiol-cta]");
+    if (cta) window.dataLayer.push({ event: "aiol_cta_click", cta_location: cta.getAttribute("data-aiol-cta") });
+    var buy = e.target.closest("[data-aiol-pay]");
+    if (buy) window.dataLayer.push({ event: "aiol_platnosc_click", cta_location: buy.getAttribute("data-aiol-pay") });
   });
 
   // 5) Mikroanimacje: pasek postępu czytania, pojawianie się kafelków, liczniki

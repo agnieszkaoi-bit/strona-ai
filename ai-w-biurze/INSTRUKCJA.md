@@ -45,6 +45,7 @@ Formularz wysyła zgłoszenia na **office@officeinfluencers.pl** przez ten sam s
 ```js
 window.AIOL_CONFIG = {
   formularz: "/formularz-aiol/formularz.php", // skrypt wysyłający zgłoszenie
+  platnosc: "https://easl.ink/XD2bl",         // link do płatności online
   termin: "czwartek, 5 listopada 2026",       // data (i godziny) edycji
   photoUrl: "",                               // adres zdjęcia prowadzącej
   stickyBar: true                             // pływający pasek z przyciskiem
@@ -54,9 +55,15 @@ window.AIOL_CONFIG = {
 - **termin**: data edycji, teraz „czwartek, 5 listopada 2026”. Możesz dopisać godziny, np. „czwartek, 5 listopada 2026, 10:00-12:00”. Termin pojawia się w żółtym pasku na górze, w hero, w karcie z ceną, w finale, w pływającym pasku i w mailu ze zgłoszeniem. Puste pole = bez terminu.
   Po zmianie daty popraw też `"startDate": "2026-11-05"` w bloku `application/ld+json` na dole kodu (format rok-miesiąc-dzień).
 - **photoUrl**: Media → Biblioteka → wybierz zdjęcie → „Kopiuj adres URL do schowka” i wklej między cudzysłowy. Najlepiej zdjęcie pionowe (4:5). Zdjęcie wypełnia cały kafelek, a twarz powinna być w górnej części kadru. Bez zdjęcia w tym miejscu wyświetlają się inicjały „AK”.
+- **platnosc**: link do płatności online, otwierany przez przyciski „Kupuję i przechodzę do płatności”. Pusty cudzysłów `""` usuwa te przyciski ze strony, np. gdy sprzedaż online jest zamknięta.
 - **stickyBar**: `false` wyłącza pływający pasek z ceną i przyciskiem.
 
-Wszystkie przyciski **„Zapisuję się”** przewijają stronę do formularza.
+## Dwa sposoby zapisu
+
+1. **Formularz zgłoszenia.** Wszystkie żółte przyciski **„Zapisuję się”** przewijają stronę do formularza, a zgłoszenie trafia na office@officeinfluencers.pl.
+2. **Płatność online.** Czarne lub białe przyciski **„Kupuję i przechodzę do płatności”** prowadzą do linku z ustawienia `platnosc`. Są w trzech miejscach: w hero obok „Zapisuję się”, w karcie z ceną nad formularzem i w sekcji końcowej.
+
+Pływający pasek, żółty pasek na górze i przyciski w środku strony prowadzą tylko do formularza.
 
 ## Jak działa formularz
 
@@ -106,9 +113,10 @@ Jeśli ktoś ma w systemie włączone ograniczanie ruchu, strona wyświetla się
 
 ## Analityka (opcjonalnie)
 
-Do `dataLayer` (Google Tag Manager) trafiają dwa zdarzenia:
+Do `dataLayer` (Google Tag Manager) trafiają trzy zdarzenia:
 
 - `aiol_cta_click`: kliknięcie „Zapisuję się”, z parametrem `cta_location` (`pasek-gora`, `hero`, `opinie`, `program`, `efekty`, `final`, `pasek`),
+- `aiol_platnosc_click`: kliknięcie „Kupuję i przechodzę do płatności”, z parametrem `cta_location` (`hero`, `cena`, `final`),
 - `aiol_zgloszenie`: wysłane zgłoszenie, z parametrem `liczba_osob`. Ustaw je w GA4 jako konwersję.
 
 ## Gdyby coś nie działało
