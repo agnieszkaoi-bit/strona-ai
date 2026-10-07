@@ -55,7 +55,7 @@ window.AIOL_CONFIG = {
 
 - **termin**: data edycji, teraz „czwartek, 5 listopada 2026”. Możesz dopisać godziny, np. „czwartek, 5 listopada 2026, 10:00-12:00”. Termin pojawia się w pasku na górze, w hero, w karcie z ceną, w finale, w pływającym pasku i w mailu ze zgłoszeniem. Puste pole = bez terminu.
   Po zmianie daty popraw też `"startDate": "2026-11-05"` w bloku `application/ld+json` na dole kodu (format rok-miesiąc-dzień).
-- **Zdjęcia prowadzącej** są wbudowane w kod strony: portret w hero i zdjęcie z konferencji w sekcji „Prowadząca”. Nie trzeba ich nigdzie wgrywać.
+- **Zdjęcia prowadzącej** są wbudowane w kod strony: zdjęcie z konferencji w hero i portret w sekcji „Prowadząca”. Nie trzeba ich nigdzie wgrywać.
 - **heroPhotoUrl** / **photoUrl**: jeśli chcesz inne zdjęcie, wejdź w Media → Biblioteka → wybierz zdjęcie → „Kopiuj adres URL do schowka” i wklej między cudzysłowy. Najlepiej zdjęcie pionowe (4:5) z twarzą w górnej części kadru.
 - **platnosc**: link do płatności online, otwierany przez przyciski „Kupuję i przechodzę do płatności”. Pusty cudzysłów `""` usuwa te przyciski ze strony, np. gdy sprzedaż online jest zamknięta.
 - **stickyBar**: `false` wyłącza pływający pasek z ceną i przyciskiem.
