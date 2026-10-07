@@ -9,12 +9,13 @@
 <!-- ===================== USTAWIENIA (zmieniaj tylko tutaj) ===================== -->
 <script>
   window.AIOL_CONFIG = {
-    // Link do formularza zapisów / koszyka. Wszystkie przyciski "Zapisuję się" prowadzą pod ten adres.
-    // Zostaw puste "", a przyciski przewiną stronę do sekcji z ceną.
-    signupUrl: "",
+    // Adres skryptu, który wysyła zgłoszenie na office@officeinfluencers.pl.
+    // Folder "formularz-aiol" wgrywasz na serwer (instrukcja w INSTRUKCJA.md).
+    formularz: "/formularz-aiol/formularz.php",
 
-    // true = formularz zapisów otwiera się w nowej karcie, false = w tej samej
-    signupNewTab: false,
+    // Termin szkolenia widoczny w formularzu i w mailu ze zgłoszeniem,
+    // np. "12 listopada 2026, 10:00-12:00". Puste "" = bez terminu.
+    termin: "",
 
     // Adres zdjęcia prowadzącej z Biblioteki mediów WordPressa (puste "" = inicjały AK)
     photoUrl: "",
@@ -73,9 +74,12 @@
 #aiol *, #aiol *::before, #aiol *::after { box-sizing: border-box; }
 #aiol h1, #aiol h2, #aiol h3, #aiol h4, #aiol p, #aiol ul, #aiol ol, #aiol li,
 #aiol figure, #aiol blockquote, #aiol figcaption, #aiol details, #aiol summary,
-#aiol section, #aiol article, #aiol aside, #aiol nav {
+#aiol section, #aiol article, #aiol aside, #aiol nav,
+#aiol form, #aiol fieldset, #aiol legend, #aiol label, #aiol dl, #aiol dt, #aiol dd {
   margin: 0; padding: 0; border: 0; background: none; box-shadow: none;
 }
+#aiol fieldset { min-width: 0; }
+#aiol [hidden] { display: none !important; }
 #aiol h1, #aiol h2, #aiol h3, #aiol h4 {
   font-family: var(--aiol-serif); font-weight: 700; font-style: normal;
   color: var(--aiol-ink); line-height: 1.15; letter-spacing: -0.005em; text-transform: none;
@@ -411,6 +415,88 @@
 #aiol .aiol-sticky__txt strong { color: #fff; font-size: 15px; white-space: nowrap; }
 #aiol .aiol-sticky__txt span { overflow: hidden; font-size: 13px; color: var(--aiol-on-dark); white-space: nowrap; text-overflow: ellipsis; }
 
+/* ---------- Formularz zgłoszenia ---------- */
+#aiol .aiol-link { color: var(--aiol-ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--aiol-gold); text-underline-offset: 3px; }
+#aiol .aiol-link:hover { color: var(--aiol-gold-dark); }
+#aiol .aiol-signup { display: grid; gap: 24px; align-items: start; }
+#aiol .aiol-form, #aiol .aiol-done { padding: 26px 22px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; box-shadow: 0 40px 70px -45px rgba(60,45,15,.35); }
+#aiol .aiol-fields { display: grid; gap: 18px 20px; }
+#aiol .aiol-label {
+  display: block; float: none; width: auto; margin: 0 0 7px;
+  font-family: var(--aiol-sans); font-size: 14.5px; font-weight: 600; line-height: 1.4;
+  letter-spacing: 0; text-transform: none; color: var(--aiol-ink);
+}
+#aiol .aiol-req { margin-left: 3px; color: #b42318; }
+#aiol .aiol-input {
+  display: block; width: 100%; max-width: 100%; height: auto; min-height: 50px; margin: 0; padding: 12px 14px;
+  font-family: var(--aiol-sans); font-size: 16px; font-weight: 400; line-height: 1.4; letter-spacing: 0; text-transform: none;
+  color: var(--aiol-ink); background: #fff; border: 1px solid #d6cebe; border-radius: 6px; box-shadow: none; outline: 0;
+  -webkit-appearance: none; appearance: none; transition: border-color .2s ease, box-shadow .2s ease;
+}
+#aiol textarea.aiol-input { min-height: 80px; resize: vertical; }
+#aiol select.aiol-input {
+  padding-right: 42px; cursor: pointer;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23141414' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center / 16px;
+}
+#aiol .aiol-input:hover { border-color: #b9ad97; }
+#aiol .aiol-input:focus { border-color: var(--aiol-gold); box-shadow: 0 0 0 3px rgba(191,154,90,.28); }
+#aiol .aiol-input[aria-invalid="true"] { border-color: #b42318; box-shadow: 0 0 0 3px rgba(180,35,24,.12); }
+#aiol .aiol-hint { margin-top: 6px; font-size: 13.5px; line-height: 1.45; color: var(--aiol-muted); }
+#aiol .aiol-err { margin-top: 6px; font-size: 13.5px; font-weight: 600; line-height: 1.45; color: #b42318; }
+#aiol .aiol-err:empty, #aiol .aiol-form-status:empty { display: none; }
+#aiol .aiol-choices { display: grid; gap: 10px; }
+#aiol .aiol-choice, #aiol .aiol-consent { cursor: pointer; font-family: var(--aiol-sans); text-transform: none; letter-spacing: 0; }
+#aiol .aiol-choice { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 12px 16px; border: 1px solid #d6cebe; border-radius: 6px; background: #fff; font-size: 15.5px; font-weight: 600; line-height: 1.3; color: var(--aiol-ink); transition: border-color .2s ease, background-color .2s ease; }
+#aiol .aiol-choice.is-on { border-color: var(--aiol-gold); background: var(--aiol-gold-soft); box-shadow: inset 0 0 0 1px var(--aiol-gold); }
+#aiol .aiol-choice input, #aiol .aiol-consent input {
+  display: inline-block; visibility: visible; position: static; clip: auto; clip-path: none;
+  flex-shrink: 0; width: 20px; height: 20px; min-height: 0; margin: 0; padding: 0;
+  opacity: 1; border: 0; background: none; box-shadow: none; cursor: pointer;
+  -webkit-appearance: auto; appearance: auto; accent-color: var(--aiol-ink);
+}
+#aiol .aiol-consents { display: grid; gap: 14px; margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--aiol-line); }
+#aiol .aiol-consent { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; font-weight: 400; line-height: 1.55; color: var(--aiol-text); }
+#aiol .aiol-consent input { margin-top: 1px; }
+#aiol .aiol-consents .aiol-err { margin: -6px 0 0 32px; }
+#aiol .aiol-form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-top: 26px; }
+#aiol .aiol-form-status { font-size: 14.5px; font-weight: 600; line-height: 1.5; color: #b42318; }
+#aiol button.aiol-btn[disabled] { opacity: .75; cursor: progress; transform: none; }
+#aiol .aiol-hp { position: absolute !important; left: -10000px !important; top: auto; width: 1px; height: 1px; overflow: hidden; }
+#aiol .aiol-done { text-align: center; padding-top: 44px; padding-bottom: 44px; outline: 0; }
+#aiol .aiol-done .aiol-ic { width: 60px; height: 60px; border-radius: 50%; margin-bottom: 18px; background: var(--aiol-cta); color: var(--aiol-ink); }
+#aiol .aiol-done .aiol-ic .aiol-i { width: 28px; height: 28px; stroke-width: 2.5; }
+#aiol .aiol-done h3 { font-size: 30px; margin-bottom: 12px; }
+#aiol .aiol-done p { max-width: 460px; margin: 10px auto 0; }
+
+#aiol .aiol-summary { padding: 28px; border-radius: 12px; background: var(--aiol-dark); color: var(--aiol-on-dark); }
+#aiol .aiol-summary__label { font-size: 12px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--aiol-gold); }
+#aiol .aiol-summary__name { margin-top: 8px; font-family: var(--aiol-serif); font-size: 24px; font-weight: 700; line-height: 1.25; color: #fff; }
+#aiol .aiol-summary__name strong { color: #fff; }
+#aiol .aiol-summary__rows { margin-top: 18px; }
+#aiol .aiol-summary__rows > div { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-top: 1px solid rgba(255,255,255,.12); font-size: 15px; line-height: 1.4; }
+#aiol .aiol-summary dt { color: #a49d90; font-weight: 500; }
+#aiol .aiol-summary dd { color: #fff; font-weight: 600; text-align: right; }
+#aiol .aiol-summary__total { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.22); }
+#aiol .aiol-summary__total span { flex-basis: 100%; font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #a49d90; }
+#aiol .aiol-summary__total strong { font-family: var(--aiol-serif); font-size: 42px; line-height: 1.05; color: #fff; }
+#aiol .aiol-summary__total small { font-size: 15px; font-weight: 600; color: #fff; }
+#aiol .aiol-summary__incl { display: grid; gap: 8px; margin-top: 20px; font-size: 14.5px; }
+#aiol .aiol-summary__incl li { display: flex; align-items: center; gap: 10px; }
+#aiol .aiol-summary__incl .aiol-i { width: 16px; height: 16px; color: var(--aiol-gold); stroke-width: 2.5; }
+#aiol .aiol-summary__help { margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.12); font-size: 14px; line-height: 1.7; }
+#aiol .aiol-summary__help a { color: #fff; font-weight: 600; overflow-wrap: anywhere; }
+#aiol .aiol-summary__help a:hover { color: var(--aiol-cta); }
+@media (min-width: 640px) {
+  #aiol .aiol-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #aiol .aiol-field--full { grid-column: 1 / -1; }
+  #aiol .aiol-choices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 768px) { #aiol .aiol-form, #aiol .aiol-done { padding: 40px; } #aiol .aiol-summary { padding: 34px; } }
+@media (min-width: 992px) {
+  #aiol .aiol-signup { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 40px; }
+  #aiol .aiol-summary { position: sticky; top: 110px; }
+}
+
 /* ---------- Telefony ---------- */
 @media (max-width: 479px) {
   #aiol .aiol-eyebrow { letter-spacing: .2em; }
@@ -469,7 +555,7 @@
           <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-tag"/></svg>290&nbsp;zł netto + VAT</li>
         </ul>
         <div class="aiol-hero__cta">
-          <a class="aiol-btn" href="#aiol-cena" data-aiol-cta="hero">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
+          <a class="aiol-btn" href="#aiol-formularz" data-aiol-cta="hero">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
           <p class="aiol-hero__note">Nagranie przez 30&nbsp;dni, materiały i&nbsp;imienny certyfikat w&nbsp;cenie.</p>
         </div>
         <ul class="aiol-nos">
@@ -663,7 +749,7 @@
       </ul>
       <div class="aiol-bridge">
         <p>To fundament, na którym można bezpiecznie budować dalsze kompetencje.</p>
-        <a class="aiol-btn" href="#aiol-cena" data-aiol-cta="efekty">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
+        <a class="aiol-btn" href="#aiol-formularz" data-aiol-cta="efekty">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
       </div>
     </div>
   </section>
@@ -681,7 +767,7 @@
           <p class="aiol-price__title">FUNDAMENT</p>
           <p class="aiol-price__amount"><span class="aiol-price__value">290&nbsp;zł</span><span class="aiol-price__tax">netto + VAT</span></p>
           <p class="aiol-price__meta">2&nbsp;godziny online LIVE · poziom podstawowy</p>
-          <a class="aiol-btn aiol-btn--block" href="#aiol-cena" data-aiol-cta="cena">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
+          <a class="aiol-btn aiol-btn--block" href="#aiol-formularz" data-aiol-cta="cena">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
           <ul class="aiol-price__notes">
             <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg>Faktura VAT dla firmy</li>
             <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg>Możesz zgłosić kilka osób z&nbsp;jednej firmy</li>
@@ -699,6 +785,155 @@
             <li><span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-award"/></svg></span>Imienny certyfikat</li>
           </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FORMULARZ ZGŁOSZENIA ===================== -->
+  <section class="aiol-sec" id="aiol-formularz" aria-labelledby="aiol-h-form">
+    <div class="aiol-wrap">
+      <div class="aiol-head">
+        <p class="aiol-eyebrow">Zgłoszenie</p>
+        <h2 class="aiol-h2" id="aiol-h-form">Formularz zgłoszenia</h2>
+        <p>Wypełnij formularz, a&nbsp;zgłoszenie trafi do biura Office Influencers. Możesz też napisać na <a class="aiol-link" href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a>.</p>
+      </div>
+
+      <div class="aiol-signup">
+        <div>
+          <form class="aiol-form" id="aiol-form" method="post" action="/formularz-aiol/formularz.php" novalidate>
+            <input type="hidden" name="formularz" value="zgloszenie">
+            <input type="hidden" name="termin" value="" data-aiol-termin-pole>
+            <div class="aiol-fields">
+              <div class="aiol-field aiol-field--full">
+                <label class="aiol-label" for="aiol-f-name">Imię i&nbsp;nazwisko<span class="aiol-req" aria-hidden="true">*</span></label>
+                <input class="aiol-input" type="text" id="aiol-f-name" name="imie_nazwisko" autocomplete="name" maxlength="80" required aria-describedby="aiol-e-name">
+                <p class="aiol-err" id="aiol-e-name" role="alert"></p>
+              </div>
+
+              <div class="aiol-field">
+                <label class="aiol-label" for="aiol-f-email">E-mail<span class="aiol-req" aria-hidden="true">*</span></label>
+                <input class="aiol-input" type="email" id="aiol-f-email" name="email" autocomplete="email" maxlength="120" required aria-describedby="aiol-e-email">
+                <p class="aiol-err" id="aiol-e-email" role="alert"></p>
+              </div>
+
+              <div class="aiol-field">
+                <label class="aiol-label" for="aiol-f-phone">Telefon</label>
+                <input class="aiol-input" type="tel" id="aiol-f-phone" name="telefon" autocomplete="tel" inputmode="tel" maxlength="25" aria-describedby="aiol-h-phone aiol-e-phone">
+                <p class="aiol-hint" id="aiol-h-phone">Zadzwonimy tylko w&nbsp;sprawie tego zgłoszenia.</p>
+                <p class="aiol-err" id="aiol-e-phone" role="alert"></p>
+              </div>
+
+              <div class="aiol-field">
+                <label class="aiol-label" for="aiol-f-role">Stanowisko</label>
+                <input class="aiol-input" type="text" id="aiol-f-role" name="stanowisko" autocomplete="organization-title" maxlength="80">
+              </div>
+
+              <div class="aiol-field">
+                <label class="aiol-label" for="aiol-f-count">Liczba osób<span class="aiol-req" aria-hidden="true">*</span></label>
+                <select class="aiol-input" id="aiol-f-count" name="liczba_osob" required aria-describedby="aiol-h-count">
+                  <option value="1" selected>1 osoba</option>
+                  <option value="2">2 osoby</option>
+                  <option value="3">3 osoby</option>
+                  <option value="4">4 osoby</option>
+                  <option value="5">5 osób</option>
+                  <option value="6">6 osób</option>
+                  <option value="7">7 osób</option>
+                  <option value="8">8 osób</option>
+                  <option value="9">9 osób</option>
+                  <option value="10">10 osób</option>
+                </select>
+                <p class="aiol-hint" id="aiol-h-count">Większa grupa? Zapytaj o&nbsp;<a class="aiol-link" href="#aiol-dla-firm">szkolenie zamknięte dla firmy</a>.</p>
+              </div>
+
+              <div class="aiol-field aiol-field--full">
+                <fieldset>
+                  <legend class="aiol-label">Kto opłaca udział?<span class="aiol-req" aria-hidden="true">*</span></legend>
+                  <div class="aiol-choices">
+                    <label class="aiol-choice"><input type="radio" name="platnik" value="firma" id="aiol-f-payer-company" checked>Firma (faktura VAT)</label>
+                    <label class="aiol-choice"><input type="radio" name="platnik" value="osoba_prywatna" id="aiol-f-payer-person">Osoba prywatna</label>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="aiol-field" id="aiol-wrap-nip">
+                <label class="aiol-label" for="aiol-f-nip">NIP<span class="aiol-req" aria-hidden="true">*</span></label>
+                <input class="aiol-input" type="text" id="aiol-f-nip" name="nip" inputmode="numeric" maxlength="15" aria-describedby="aiol-e-nip aiol-h-nip">
+                <p class="aiol-err" id="aiol-e-nip" role="alert"></p>
+                <p class="aiol-hint" id="aiol-h-nip" role="status" aria-live="polite">10 cyfr. Nazwę firmy i&nbsp;adres pobierzemy z&nbsp;rejestru.</p>
+              </div>
+
+              <div class="aiol-field" id="aiol-wrap-company">
+                <label class="aiol-label" for="aiol-f-company">Nazwa firmy<span class="aiol-req" aria-hidden="true">*</span></label>
+                <input class="aiol-input" type="text" id="aiol-f-company" name="firma" autocomplete="organization" maxlength="160" aria-describedby="aiol-e-company">
+                <p class="aiol-err" id="aiol-e-company" role="alert"></p>
+              </div>
+
+              <div class="aiol-field aiol-field--full" id="aiol-wrap-address">
+                <label class="aiol-label" for="aiol-f-address">Adres do faktury<span class="aiol-req" aria-hidden="true">*</span></label>
+                <textarea class="aiol-input" id="aiol-f-address" name="adres_faktury" rows="2" autocomplete="street-address" maxlength="300" aria-describedby="aiol-e-address"></textarea>
+                <p class="aiol-err" id="aiol-e-address" role="alert"></p>
+              </div>
+
+              <div class="aiol-field aiol-field--full">
+                <label class="aiol-label" for="aiol-f-notes">Uwagi</label>
+                <textarea class="aiol-input" id="aiol-f-notes" name="uwagi" rows="3" maxlength="2000" aria-describedby="aiol-h-notes"></textarea>
+                <p class="aiol-hint" id="aiol-h-notes">Pytania albo informacje, które powinniśmy znać przed szkoleniem.</p>
+              </div>
+            </div>
+
+            <div class="aiol-hp" aria-hidden="true">
+              <label for="aiol-f-www">Nie wypełniaj tego pola</label>
+              <input type="text" id="aiol-f-www" name="www" tabindex="-1" autocomplete="off">
+              <input type="hidden" name="czas" value="0" data-aiol-zegar>
+            </div>
+
+            <noscript>
+              <p class="aiol-hint">Formularz potrzebuje włączonego JavaScriptu. Możesz też napisać na <a class="aiol-link" href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a> albo zadzwonić: <a class="aiol-link" href="tel:+48224357002">+48 22 435 70 02</a>.</p>
+            </noscript>
+
+            <div class="aiol-consents">
+              <label class="aiol-consent">
+                <input type="checkbox" id="aiol-f-rodo" name="zgoda_rodo" value="tak" required aria-describedby="aiol-e-rodo">
+                <span>Akceptuję regulamin szkolenia i&nbsp;wiem, że moje dane będą przetwarzane w&nbsp;celu obsługi zgłoszenia, zgodnie z&nbsp;<a class="aiol-link" href="https://www.officeinfluencers.pl/polityka-prywatnosci" target="_blank" rel="noopener">polityką prywatności</a>. Administratorem danych jest ARK Consulting Agnieszka Korach.<span class="aiol-req" aria-hidden="true">*</span></span>
+              </label>
+              <p class="aiol-err" id="aiol-e-rodo" role="alert"></p>
+              <label class="aiol-consent">
+                <input type="checkbox" id="aiol-f-marketing" name="zgoda_marketing" value="tak">
+                <span>Chcę dostawać informacje o&nbsp;kolejnych szkoleniach AIOfficeLab i&nbsp;materiałach o&nbsp;pracy z&nbsp;AI. Zgodę mogę wycofać w&nbsp;każdej chwili.</span>
+              </label>
+            </div>
+
+            <div class="aiol-form-foot">
+              <button type="submit" class="aiol-btn" id="aiol-f-submit">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></button>
+              <p class="aiol-form-status" id="aiol-f-status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+
+          <div class="aiol-done" id="aiol-done" hidden tabindex="-1">
+            <span class="aiol-ic"><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg></span>
+            <h3>Zgłoszenie przyjęte</h3>
+            <p>Dziękujemy. Potwierdzenie udziału wyślemy na Twój adres e-mail w&nbsp;ciągu jednego dnia roboczego.</p>
+            <p>Jeśli wiadomość nie dotrze, sprawdź folder spam albo napisz na <a class="aiol-link" href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a>.</p>
+          </div>
+        </div>
+
+        <aside class="aiol-summary" aria-label="Podsumowanie zgłoszenia">
+          <p class="aiol-summary__label">Twoje zgłoszenie</p>
+          <p class="aiol-summary__name">AIOfficeLab / 01 <strong>FUNDAMENT</strong></p>
+          <dl class="aiol-summary__rows">
+            <div data-aiol-termin-wiersz hidden><dt>Termin</dt><dd data-aiol-termin></dd></div>
+            <div><dt>Forma</dt><dd>online LIVE, 2&nbsp;godziny</dd></div>
+            <div><dt>Cena za osobę</dt><dd>290&nbsp;zł netto</dd></div>
+            <div><dt>Liczba osób</dt><dd id="aiol-s-count">1</dd></div>
+          </dl>
+          <p class="aiol-summary__total"><span>Razem</span><strong id="aiol-s-total">290&nbsp;zł</strong><small>netto + VAT</small></p>
+          <ul class="aiol-summary__incl">
+            <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg>Nagranie przez 30&nbsp;dni</li>
+            <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg>Materiały i&nbsp;checklista</li>
+            <li><svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-check"/></svg>Imienny certyfikat</li>
+          </ul>
+          <p class="aiol-summary__help">Pytania? <a href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a><br><a href="tel:+48224357002">+48 22 435 70 02</a></p>
+        </aside>
       </div>
     </div>
   </section>
@@ -1058,7 +1293,7 @@
         <li>2&nbsp;godziny online LIVE</li>
         <li>290&nbsp;zł netto + VAT</li>
       </ul>
-      <a class="aiol-btn" href="#aiol-cena" data-aiol-cta="final">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
+      <a class="aiol-btn" href="#aiol-formularz" data-aiol-cta="final">Zapisuję się <svg class="aiol-i" aria-hidden="true"><use href="#aiol-i-arrow"/></svg></a>
       <p class="aiol-final__small">Nagranie przez 30&nbsp;dni · materiały szkoleniowe · imienny certyfikat</p>
     </div>
   </section>
@@ -1070,7 +1305,7 @@
         <strong>290&nbsp;zł netto + VAT</strong>
         <span>AIOfficeLab FUNDAMENT · 2&nbsp;h online LIVE</span>
       </div>
-      <a class="aiol-btn aiol-btn--sm" href="#aiol-cena" data-aiol-cta="pasek">Zapisuję się</a>
+      <a class="aiol-btn aiol-btn--sm" href="#aiol-formularz" data-aiol-cta="pasek">Zapisuję się</a>
     </div>
   </div>
 </div>
@@ -1339,19 +1574,204 @@
   var root = document.getElementById("aiol");
   if (!root) return;
   var cfg = window.AIOL_CONFIG || {};
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // 1) Link zapisów dla wszystkich przycisków "Zapisuję się"
-  var signupUrl = String(cfg.signupUrl || "").trim();
-  if (signupUrl) {
-    var ctas = root.querySelectorAll("[data-aiol-cta]");
-    for (var i = 0; i < ctas.length; i++) {
-      ctas[i].setAttribute("href", signupUrl);
-      if (cfg.signupNewTab) {
-        ctas[i].setAttribute("target", "_blank");
-        ctas[i].setAttribute("rel", "noopener");
-      }
+  // 1) Formularz zgłoszenia: wysyłka na office@officeinfluencers.pl przez formularz.php
+  (function () {
+    var form = document.getElementById("aiol-form");
+    if (!form) return;
+    var CENA = 290;
+    var MAIL = "office@officeinfluencers.pl";
+    var BLAD_WYSYLKI = "Nie udało się wysłać zgłoszenia. Spróbuj ponownie albo napisz na " + MAIL + ".";
+    var endpoint = String(cfg.formularz || form.getAttribute("action") || "").trim();
+    var nipEndpoint = endpoint.replace(/[^\/]*$/, "nip.php");
+    form.setAttribute("action", endpoint);
+    var otwarto = Date.now();
+
+    function q(id) { return document.getElementById(id); }
+    function setErr(input, errId, msg) {
+      var box = q(errId);
+      if (box) box.textContent = msg || "";
+      if (input) input.setAttribute("aria-invalid", msg ? "true" : "false");
     }
-  }
+    function clearOn(input, errId) {
+      if (!input) return;
+      input.addEventListener(input.type === "checkbox" ? "change" : "input", function () { setErr(input, errId, ""); });
+    }
+
+    // Termin z ustawień: w podsumowaniu i w mailu
+    var termin = String(cfg.termin || "").trim();
+    if (termin) {
+      root.querySelector("[data-aiol-termin]").textContent = termin;
+      root.querySelector("[data-aiol-termin-wiersz]").hidden = false;
+      root.querySelector("[data-aiol-termin-pole]").value = termin;
+    }
+
+    // Podsumowanie: liczba osób i cena
+    var count = q("aiol-f-count");
+    var notesHint = q("aiol-h-notes");
+    var NOTES_HINT = notesHint.textContent;
+    function refreshSummary() {
+      var n = parseInt(count.value, 10) || 1;
+      q("aiol-s-count").textContent = String(n);
+      q("aiol-s-total").textContent = (n * CENA).toLocaleString("pl-PL") + " zł";
+      notesHint.textContent = n > 1 ? "Wpisz imię, nazwisko i e-mail każdej z pozostałych osób." : NOTES_HINT;
+    }
+
+    // Pola firmowe tylko przy płatniku "Firma"
+    var payerCompany = q("aiol-f-payer-company");
+    var companyBlocks = ["aiol-wrap-nip", "aiol-wrap-company", "aiol-wrap-address"].map(q);
+    function refreshPayer() {
+      var isCompany = payerCompany.checked;
+      companyBlocks.forEach(function (block) {
+        block.hidden = !isCompany;
+        var input = block.querySelector("input,textarea");
+        if (input && !isCompany) setErr(input, "aiol-e-" + input.id.slice(7), "");
+      });
+    }
+    function syncChoices() {
+      [].forEach.call(form.querySelectorAll(".aiol-choice input"), function (input) {
+        input.closest(".aiol-choice").classList.toggle("is-on", input.checked);
+      });
+    }
+
+    // NIP ma cyfrę kontrolną, więc literówkę widać od razu, bez pytania rejestru
+    var WAGI_NIP = [6, 5, 7, 2, 3, 4, 5, 6, 7];
+    function nipPoprawny(cyfry) {
+      if (cyfry.length !== 10 || /^(\d)\1{9}$/.test(cyfry)) return false;
+      var suma = 0;
+      for (var i = 0; i < 9; i++) suma += WAGI_NIP[i] * (+cyfry[i]);
+      var kontrolna = suma % 11;
+      return kontrolna !== 10 && kontrolna === (+cyfry[9]);
+    }
+
+    // Najczęstsze literówki w domenach pocztowych
+    var LITEROWKI = {
+      "gmial.com": "gmail.com", "gmail.pl": "gmail.com", "gmai.com": "gmail.com",
+      "gmail.con": "gmail.com", "gmail.co": "gmail.com", "gnail.com": "gmail.com",
+      "wp.p": "wp.pl", "wp.com": "wp.pl", "onet.p": "onet.pl", "o2.p": "o2.pl",
+      "interia.p": "interia.pl", "outlook.p": "outlook.com", "hotmai.com": "hotmail.com"
+    };
+
+    function validate() {
+      var bad = null;
+      function check(input, errId, ok, msg) {
+        if (ok) { setErr(input, errId, ""); return; }
+        setErr(input, errId, msg);
+        if (!bad) bad = input;
+      }
+      var name = q("aiol-f-name"), email = q("aiol-f-email"), phone = q("aiol-f-phone"), rodo = q("aiol-f-rodo");
+
+      var imie = name.value.trim().replace(/\s+/g, " ");
+      check(name, "aiol-e-name",
+        imie.length > 2 && /\s/.test(imie) && /^[\p{L}][\p{L}\s.'-]*$/u.test(imie),
+        imie.length && !/\s/.test(imie) ? "Podaj imię i nazwisko, nie samo imię." : "Wpisz imię i nazwisko, bez cyfr i adresów.");
+
+      var adres = email.value.trim();
+      var literowka = LITEROWKI[(adres.split("@")[1] || "").toLowerCase()] || "";
+      check(email, "aiol-e-email",
+        /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(adres) && !literowka,
+        literowka ? "Czy chodziło o adres w domenie " + literowka + "?" : "Wpisz adres w formacie imie@firma.pl.");
+
+      if (phone.value.trim() !== "") {
+        var cyfry = phone.value.replace(/\D/g, "").replace(/^(0048|48)/, "");
+        check(phone, "aiol-e-phone", cyfry.length === 9, "Numer ma dziewięć cyfr, bez numeru kierunkowego kraju.");
+      } else setErr(phone, "aiol-e-phone", "");
+
+      if (payerCompany.checked) {
+        var nipPole = q("aiol-f-nip"), company = q("aiol-f-company"), address = q("aiol-f-address");
+        var cyfryNip = nipPole.value.replace(/\D/g, "");
+        check(nipPole, "aiol-e-nip", nipPoprawny(cyfryNip),
+          cyfryNip.length !== 10 ? "NIP ma dziesięć cyfr, bez myślników i spacji." : "Ten numer nie jest poprawnym NIP-em. Sprawdź, czy cyfry się zgadzają.");
+        check(company, "aiol-e-company", company.value.trim().length > 1, "Wpisz nazwę firmy tak, jak ma być na fakturze.");
+        check(address, "aiol-e-address", address.value.trim().length > 5, "Wpisz ulicę, kod pocztowy i miasto.");
+      }
+      check(rodo, "aiol-e-rodo", rodo.checked, "Bez tej zgody nie możemy przyjąć zgłoszenia.");
+      if (bad) { bad.focus(); return false; }
+      return true;
+    }
+
+    // Po wpisaniu NIP-u pobieramy nazwę i adres firmy z rejestru (nip.php)
+    var nip = q("aiol-f-nip"), nipHint = q("aiol-h-nip"), lastNip = "";
+    var NIP_HINT = nipHint.textContent;
+    var NIP_BLAD = "Nie można teraz pobrać danych. Wpisz nazwę i adres ręcznie.";
+    function odczytajJson(r) {
+      return r.json().then(function (dane) { return dane || null; }, function () { return null; });
+    }
+    function lookupNip() {
+      var digits = nip.value.replace(/\D/g, "");
+      if (digits.length !== 10 || digits === lastNip || !nipPoprawny(digits)) return;
+      lastNip = digits;
+      nipHint.textContent = "Szukam danych firmy…";
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 8000);
+      fetch(nipEndpoint + "?nip=" + digits, { signal: ctrl ? ctrl.signal : undefined, headers: { "Accept": "application/json" } })
+        .then(odczytajJson)
+        .then(function (dane) {
+          if (!dane) { nipHint.textContent = NIP_BLAD; return; }
+          if (!dane.ok) { nipHint.textContent = (dane.komunikat || "Nie znaleziono firmy.") + " Wpisz nazwę i adres ręcznie."; return; }
+          var company = q("aiol-f-company"), address = q("aiol-f-address");
+          if (dane.nazwa && !company.value.trim()) { company.value = dane.nazwa; setErr(company, "aiol-e-company", ""); }
+          if (dane.adres && !address.value.trim()) { address.value = dane.adres; setErr(address, "aiol-e-address", ""); }
+          nipHint.textContent = "Dane z " + (dane.zrodlo || "rejestru") + ". Sprawdź je i popraw, jeśli trzeba.";
+        })
+        .catch(function () { nipHint.textContent = NIP_BLAD; })
+        .then(function () { clearTimeout(timer); });
+    }
+    nip.addEventListener("blur", lookupNip);
+    nip.addEventListener("input", function () {
+      if (nip.value.replace(/\D/g, "").length === 10) lookupNip();
+      else nipHint.textContent = NIP_HINT;
+    });
+
+    [["aiol-f-name", "aiol-e-name"], ["aiol-f-email", "aiol-e-email"], ["aiol-f-phone", "aiol-e-phone"],
+     ["aiol-f-nip", "aiol-e-nip"], ["aiol-f-company", "aiol-e-company"], ["aiol-f-address", "aiol-e-address"],
+     ["aiol-f-rodo", "aiol-e-rodo"]].forEach(function (pair) { clearOn(q(pair[0]), pair[1]); });
+    count.addEventListener("change", refreshSummary);
+    form.addEventListener("change", function (e) {
+      if (e.target.name === "platnik") { refreshPayer(); syncChoices(); }
+    });
+    refreshSummary();
+    refreshPayer();
+    syncChoices();
+
+    var submit = q("aiol-f-submit"), status = q("aiol-f-status"), done = q("aiol-done");
+    var SUBMIT_HTML = submit.innerHTML;
+    function showDone() {
+      form.hidden = true;
+      done.hidden = false;
+      done.focus({ preventScroll: true });
+      done.scrollIntoView({ block: "center", behavior: reduceMotion ? "auto" : "smooth" });
+    }
+    function reset(msg) {
+      submit.disabled = false;
+      submit.innerHTML = SUBMIT_HTML;
+      status.textContent = msg;
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      status.textContent = "";
+      if (q("aiol-f-www").value) { showDone(); return; }
+      if (!validate()) return;
+      form.querySelector("[data-aiol-zegar]").value = String(Date.now() - otwarto);
+      submit.disabled = true;
+      submit.textContent = "Wysyłam…";
+      fetch(endpoint, { method: "POST", body: new FormData(form), headers: { "Accept": "application/json" } })
+        .then(odczytajJson)
+        .then(function (dane) {
+          if (dane && dane.ok) {
+            showDone();
+            if (window.dataLayer && window.dataLayer.push) {
+              window.dataLayer.push({ event: "aiol_zgloszenie", liczba_osob: parseInt(count.value, 10) || 1 });
+            }
+            return;
+          }
+          reset((dane && dane.komunikat) || BLAD_WYSYLKI);
+        })
+        .catch(function () { reset(BLAD_WYSYLKI); });
+    });
+  })();
 
   // 2) Zdjęcie prowadzącej
   var photoUrl = String(cfg.photoUrl || "").trim();
@@ -1367,7 +1787,6 @@
   }
 
   // 3) Płynne przewijanie do sekcji tej strony
-  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   root.addEventListener("click", function (e) {
     var link = e.target.closest ? e.target.closest('a[href^="#aiol-"]') : null;
     if (!link) return;
@@ -1386,21 +1805,22 @@
     }
   });
 
-  // 5) Pływający pasek: widoczny po hero, ukryty przy sekcji z ceną i na końcu strony
+  // 5) Pływający pasek: widoczny po hero, ukryty przy cenie, formularzu i na końcu strony
   var bar = root.querySelector("[data-aiol-sticky]");
   if (!bar) return;
   if (cfg.stickyBar === false) { bar.parentNode.removeChild(bar); return; }
   var hero = root.querySelector(".aiol-hero");
   var price = document.getElementById("aiol-cena");
+  var signup = document.getElementById("aiol-formularz");
   var finale = document.getElementById("aiol-zapisy");
   var ticking = false;
+  function onScreen(el, vh) { var r = el.getBoundingClientRect(); return r.top < vh && r.bottom > 0; }
   function update() {
     ticking = false;
     var vh = window.innerHeight || document.documentElement.clientHeight;
-    var p = price.getBoundingClientRect();
     var show = hero.getBoundingClientRect().bottom < 0 &&
                finale.getBoundingClientRect().top > vh &&
-               !(p.top < vh && p.bottom > 0);
+               !onScreen(price, vh) && !onScreen(signup, vh);
     bar.classList.toggle("is-visible", show);
   }
   function onScroll() { if (!ticking) { ticking = true; window.requestAnimationFrame(update); } }

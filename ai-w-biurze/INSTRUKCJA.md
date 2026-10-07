@@ -1,10 +1,26 @@
-# AIOfficeLab / 01 FUNDAMENT – landing page
+# AIOfficeLab / 01 FUNDAMENT – landing page z formularzem zgłoszeń
 
 Adres: https://www.officeinfluencers.pl/ai-w-biurze
 
-Plik do wklejenia: **`aiofficelab-fundament-elementor.html`**. To cały kod strony: treść, style, skrypt i dane strukturalne dla Google. Style działają tylko wewnątrz bloku `#aiol`, więc nie zmieniają nagłówka, stopki ani innych stron serwisu.
+Wdrożenie ma dwie części:
 
-## Wklejenie do Elementora
+| Co | Plik | Gdzie trafia |
+|---|---|---|
+| Strona | `aiofficelab-fundament-elementor.html` | widżet **HTML** w Elementorze |
+| Wysyłka zgłoszeń | `formularz-aiol.zip` (folder `formularz-aiol/`) | serwer officeinfluencers.pl (Zenbox) |
+
+Formularz wysyła zgłoszenia na **office@officeinfluencers.pl** przez ten sam sprawdzony skrypt co formularz szkolenia dla asystentek zarządu. Zmieniły się tylko pola i temat wiadomości.
+
+## 1. Wgraj folder `formularz-aiol` na serwer
+
+1. Zaloguj się do panelu Zenbox → **Menedżer plików**. Możesz też użyć FTP, np. FileZilla.
+2. Otwórz główny katalog strony officeinfluencers.pl, czyli ten, w którym są `wp-config.php`, `wp-content` i `wp-admin`.
+3. Wgraj `formularz-aiol.zip` i **rozpakuj**. Powstanie folder `formularz-aiol` z czterema plikami: `formularz.php`, `nip.php`, `bezpieczenstwo.php`, `.htaccess`.
+4. Sprawdzenie: otwórz w przeglądarce `https://www.officeinfluencers.pl/formularz-aiol/formularz.php`. Prawidłowa odpowiedź to komunikat `{"ok":false,"komunikat":"Dozwolona jest tylko metoda POST."}`. Oznacza on, że skrypt działa.
+
+> Folderu **nie nazywaj** `ai-w-biurze`. Zasłoniłby stronę WordPressa o tym adresie. Jeśli wybierzesz inną nazwę, popraw ustawienie `formularz` w kodzie strony.
+
+## 2. Wklej stronę do Elementora
 
 1. WordPress → **Strony** → strona ze slugiem `ai-w-biurze` → **Edytuj w Elementorze**.
 2. **Ustawienia strony** (ikona koła zębatego):
@@ -18,24 +34,39 @@ Plik do wklejenia: **`aiofficelab-fundament-elementor.html`**. To cały kod stro
 
 > Wklejaj kod z konta **administratora**. Konta o niższych uprawnieniach usuwają z kodu `<style>` i `<script>`.
 
-## Ustawienia (na samej górze kodu)
+## 3. Wyślij zgłoszenie testowe
+
+1. Na stronie kliknij „Zapisuję się” i wypełnij formularz swoimi danymi.
+2. Po wysłaniu powinien pojawić się komunikat „Zgłoszenie przyjęte”.
+3. Sprawdź skrzynkę **office@officeinfluencers.pl** i folder spam. Wiadomość ma temat „Zgłoszenie: AIOfficeLab FUNDAMENT (AI w biurze)”. Przycisk „Odpowiedz” trafia do osoby, która się zgłosiła.
+
+## Ustawienia (na samej górze kodu strony)
 
 ```js
 window.AIOL_CONFIG = {
-  signupUrl: "",        // link do formularza zapisów
-  signupNewTab: false,  // true = formularz otwiera się w nowej karcie
-  photoUrl: "",         // adres zdjęcia prowadzącej
-  stickyBar: true       // pływający pasek z przyciskiem przy przewijaniu
+  formularz: "/formularz-aiol/formularz.php", // skrypt wysyłający zgłoszenie
+  termin: "",                                 // np. "12 listopada 2026, 10:00-12:00"
+  photoUrl: "",                               // adres zdjęcia prowadzącej
+  stickyBar: true                             // pływający pasek z przyciskiem
 };
 ```
 
-- **signupUrl**: wklej link do formularza zapisów lub koszyka, np. `"https://www.officeinfluencers.pl/zapisy-fundament"`. Wszystkie 5 przycisków **„Zapisuję się”** zacznie prowadzić pod ten adres. Dopóki pole jest puste, przyciski przewijają stronę do sekcji z ceną.
+- **termin**: wpisz datę i godzinę edycji. Pojawi się w podsumowaniu obok formularza i w mailu ze zgłoszeniem. Puste pole = bez terminu.
 - **photoUrl**: Media → Biblioteka → wybierz zdjęcie → „Kopiuj adres URL do schowka” i wklej między cudzysłowy. Najlepiej zdjęcie pionowe (4:5). Bez zdjęcia w tym miejscu wyświetlają się inicjały „AK”.
 - **stickyBar**: `false` wyłącza pływający pasek z ceną i przyciskiem.
 
-## Kolory
+Wszystkie przyciski **„Zapisuję się”** przewijają stronę do formularza.
 
-Kolory są zebrane na początku sekcji `<style>`:
+## Jak działa formularz
+
+- **Pola:** imię i nazwisko, e-mail, telefon, stanowisko, liczba osób (1–10), płatnik (firma albo osoba prywatna), NIP, nazwa firmy, adres do faktury, uwagi, zgoda RODO (wymagana) i zgoda marketingowa (dobrowolna).
+- **NIP:** po wpisaniu 10 cyfr strona sama pobiera nazwę i adres firmy z wykazu podatników VAT Ministerstwa Finansów.
+- **Podsumowanie:** obok formularza cena liczy się na żywo (liczba osób × 290 zł netto). Ta sama kwota trafia do maila.
+- **Kilka osób:** przy liczbie osób większej niż 1 podpowiedź w polu „Uwagi” prosi o dane pozostałych uczestników.
+- **Ochrona przed spamem** (jak w poprzednim formularzu): ukryte pole-pułapka, odrzucanie zbyt szybkich wysyłek, limit wysyłek z jednego adresu IP, blokada powtarzanej treści, odrzucanie adresów jednorazowych i zmyślonych domen.
+- **Bezpieczeństwo:** adres odbiorcy i temat są na sztywno w kodzie, a skrypt przyjmuje zgłoszenia tylko ze strony officeinfluencers.pl. Treść jest oczyszczona z ukrytych poleceń dla AI (prompt injection). Nic nie jest zapisywane na serwerze.
+
+## Kolory
 
 | Zmienna | Do czego | Wartość |
 |---|---|---|
@@ -54,11 +85,24 @@ Kolory są zebrane na początku sekcji `<style>`:
 
 ## Analityka (opcjonalnie)
 
-Po kliknięciu „Zapisuję się” do `dataLayer` (Google Tag Manager) trafia zdarzenie `aiol_cta_click` z parametrem `cta_location`. Wartości: `hero`, `efekty`, `cena`, `final`, `pasek`. Dzięki temu w GA4 widać, który przycisk działa najlepiej.
+Do `dataLayer` (Google Tag Manager) trafiają dwa zdarzenia:
+
+- `aiol_cta_click`: kliknięcie „Zapisuję się”, z parametrem `cta_location` (`hero`, `efekty`, `cena`, `final`, `pasek`),
+- `aiol_zgloszenie`: wysłane zgłoszenie, z parametrem `liczba_osob`. Ustaw je w GA4 jako konwersję.
 
 ## Gdyby coś nie działało
 
-- **Strona jest wąska albo ma ramki po bokach:** kontener nie ma pełnej szerokości albo ma padding (krok 3).
-- **Przyciski nie prowadzą do formularza:** sprawdź `signupUrl`. Jeśli używasz optymalizacji JavaScriptu (WP Rocket „Opóźnij JavaScript”, LiteSpeed Cache, Autoptimize), dodaj do wyjątków `AIOL_CONFIG` oraz `aiol`.
+- **Po kliknięciu „Zapisuję się” w formularzu pojawia się „Nie udało się wysłać zgłoszenia”:** sprawdź krok 1.4. Adres skryptu musi zgadzać się z ustawieniem `formularz`.
+- **Pojawia się „Żądanie spoza strony officeinfluencers.pl”:** strona i folder `formularz-aiol` muszą być w tej samej domenie (`www.officeinfluencers.pl`). Ustawienie `formularz` zaczyna się od `/`, bez `https://`.
+- **Formularz pokazuje „Zgłoszenie przyjęte”, ale mail nie dochodzi:** sprawdź spam. Następnie w panelu Zenbox sprawdź, czy istnieje skrzynka office@officeinfluencers.pl i czy rekord SPF domeny obejmuje serwer Zenbox.
+- **NIP nie uzupełnia danych:** rejestr Ministerstwa Finansów bywa chwilowo niedostępny. Wtedy nazwę i adres wpisuje się ręcznie, a zgłoszenie i tak dochodzi.
+- **Strona jest wąska albo ma ramki po bokach:** kontener nie ma pełnej szerokości albo ma padding (krok 2.3).
+- **Przyciski nie przewijają do formularza przy optymalizacji JavaScriptu** (WP Rocket „Opóźnij JavaScript”, LiteSpeed Cache, Autoptimize): dodaj do wyjątków `AIOL_CONFIG` oraz `aiol`.
 - **Po kliknięciu sekcja chowa się pod przyklejonym nagłówkiem:** zwiększ `scroll-margin-top: 100px` przy `.aiol-sec`.
 - **Fonty:** kod ładuje Inter i Playfair Display z Google Fonts. Jeśli serwis ładuje te fonty lokalnie (Elementor → Ustawienia → Wydajność), możesz usunąć 3 linie `<link …fonts.googleapis.com…>` z początku kodu.
+
+## Pliki w repozytorium
+
+- `aiofficelab-fundament-elementor.html`: kod strony do Elementora,
+- `formularz-aiol.zip`: paczka do wgrania na serwer (ta sama zawartość co `serwer/formularz-aiol/`),
+- `serwer/formularz-aiol/`: źródła skryptów PHP.
