@@ -28,7 +28,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 
 <style>
 /* ---------- Zmienne: kolory i fonty (wszystko w jednym miejscu) ---------- */
@@ -36,18 +36,17 @@
   --aiol-cta: #f7c531;          /* przyciski "Zapisuję się" - żółty */
   --aiol-cta-hover: #eab308;
   --aiol-cta-text: #141414;
-  --aiol-gold: #bf9a5a;         /* złoty akcent marki Office Influencers */
+  --aiol-gold: #ad8644;         /* złoty akcent marki Office Influencers */
   --aiol-gold-dark: #8a6a32;    /* złoty do drobnego tekstu (czytelniejszy) */
-  --aiol-gold-soft: #f6efe2;
+  --aiol-gold-soft: #f7f1e6;
   --aiol-ink: #141414;
   --aiol-text: #3f3f3f;
   --aiol-muted: #6b6b6b;
-  --aiol-line: #ebe5d9;
-  --aiol-soft: #faf7f1;
-  --aiol-dark: #191713;
+  --aiol-line: #e6e6e6;
+  --aiol-soft: #f7f7f7;
+  --aiol-dark: #191713;      /* tylko pływający pasek */
   --aiol-on-dark: #cfc9bd;
   --aiol-live: #e5484d;
-  --aiol-serif: "Playfair Display", Georgia, "Times New Roman", serif;
   --aiol-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --aiol-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
   --aiol-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
@@ -81,8 +80,8 @@
 #aiol fieldset { min-width: 0; }
 #aiol [hidden] { display: none !important; }
 #aiol h1, #aiol h2, #aiol h3, #aiol h4 {
-  font-family: var(--aiol-serif); font-weight: 700; font-style: normal;
-  color: var(--aiol-ink); line-height: 1.15; letter-spacing: -0.005em; text-transform: none;
+  font-family: var(--aiol-sans); font-weight: 700; font-style: normal;
+  color: var(--aiol-ink); line-height: 1.2; letter-spacing: -0.02em; text-transform: none;
 }
 #aiol p, #aiol li { font-size: inherit; line-height: inherit; color: inherit; }
 #aiol ul, #aiol ol { list-style: none; }
@@ -98,29 +97,20 @@
 
 /* ---------- Układ ---------- */
 #aiol .aiol-wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 20px; }
-#aiol .aiol-sec { position: relative; padding: 72px 0; scroll-margin-top: 100px; }
-#aiol .aiol-sec--soft { background: var(--aiol-soft); }
-#aiol .aiol-sec--dark { background: var(--aiol-dark); color: var(--aiol-on-dark); overflow: hidden; }
-#aiol .aiol-sec--dark h2, #aiol .aiol-sec--dark h3, #aiol .aiol-sec--dark strong { color: #fff; }
-#aiol .aiol-sec--dark::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(ellipse 60% 70% at 85% 0%, rgba(191,154,90,.22), transparent 70%),
-              radial-gradient(ellipse 50% 60% at 0% 100%, rgba(247,197,49,.08), transparent 70%);
-}
-#aiol .aiol-sec--dark > .aiol-wrap { position: relative; z-index: 1; }
+#aiol .aiol-sec { position: relative; padding: 72px 0; background: #fff; border-top: 1px solid var(--aiol-line); scroll-margin-top: 100px; }
 @media (min-width: 768px) { #aiol .aiol-wrap { padding: 0 32px; } }
-@media (min-width: 992px) { #aiol .aiol-sec { padding: 112px 0; } }
+@media (min-width: 992px) { #aiol .aiol-sec { padding: 96px 0; } }
 
 /* ---------- Typografia ---------- */
 #aiol .aiol-eyebrow {
   display: block; margin-bottom: 18px;
   font-family: var(--aiol-sans); font-size: 12.5px; font-weight: 700; line-height: 1.7;
-  letter-spacing: .28em; text-transform: uppercase; color: var(--aiol-gold-dark);
+  letter-spacing: .16em; text-transform: uppercase; color: var(--aiol-gold-dark);
 }
-#aiol .aiol-sec--dark .aiol-eyebrow { color: var(--aiol-gold); }
-#aiol .aiol-h1 { font-size: clamp(38px, 5.6vw, 66px); line-height: 1.08; margin-bottom: 28px; }
-#aiol .aiol-h2 { font-size: clamp(30px, 3.8vw, 48px); }
+#aiol .aiol-h1 { font-size: clamp(36px, 5.2vw, 60px); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 28px; }
+#aiol .aiol-h2 { font-size: clamp(28px, 3.4vw, 42px); font-weight: 800; letter-spacing: -0.025em; }
 #aiol .aiol-gold { color: var(--aiol-gold); }
+#aiol .aiol-h1 .aiol-gold { white-space: nowrap; }
 #aiol .aiol-lead { font-size: clamp(17px, 1.6vw, 19px); line-height: 1.7; }
 #aiol .aiol-head { max-width: 780px; margin-bottom: 48px; }
 #aiol .aiol-head > p:not(.aiol-eyebrow) { margin-top: 18px; }
@@ -158,7 +148,7 @@
 #aiol .aiol-ic .aiol-i { width: 22px; height: 22px; }
 
 /* ---------- HERO ---------- */
-#aiol .aiol-hero { position: relative; padding: 56px 0 72px; background: linear-gradient(180deg, #fbf8f2 0%, #fff 70%); }
+#aiol .aiol-hero { position: relative; padding: 56px 0 72px; background: #fff; }
 #aiol .aiol-hero__grid { display: grid; gap: 48px; align-items: center; }
 #aiol .aiol-hero__lead { max-width: 640px; margin-bottom: 30px; padding-left: 24px; border-left: 3px solid var(--aiol-gold); }
 #aiol .aiol-facts { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }
@@ -179,15 +169,15 @@
 }
 
 /* Karta w hero */
-#aiol .aiol-card { position: relative; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; box-shadow: 0 40px 70px -40px rgba(60,45,15,.35); }
+#aiol .aiol-card { position: relative; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; box-shadow: 0 40px 70px -40px rgba(20,20,20,.35); }
 #aiol .aiol-labcard { padding: 28px; }
 #aiol .aiol-labcard::before { content: ""; position: absolute; left: 28px; right: 28px; top: -1px; height: 3px; background: var(--aiol-gold); border-radius: 0 0 3px 3px; }
 #aiol .aiol-labcard__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 22px; }
-#aiol .aiol-live { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--aiol-ink); }
+#aiol .aiol-live { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aiol-ink); }
 #aiol .aiol-live__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--aiol-live); animation: aiol-pulse 2s infinite; }
 @keyframes aiol-pulse { 0% { box-shadow: 0 0 0 0 rgba(229,72,77,.5); } 70% { box-shadow: 0 0 0 9px rgba(229,72,77,0); } 100% { box-shadow: 0 0 0 0 rgba(229,72,77,0); } }
-#aiol .aiol-labcard__id { font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--aiol-muted); }
-#aiol .aiol-labcard__title { font-family: var(--aiol-serif); font-size: 24px; font-weight: 700; line-height: 1.25; color: var(--aiol-ink); margin-bottom: 14px; }
+#aiol .aiol-labcard__id { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--aiol-muted); }
+#aiol .aiol-labcard__title { font-size: 22px; font-weight: 700; line-height: 1.25; color: var(--aiol-ink); margin-bottom: 14px; }
 #aiol .aiol-labcard__list li { border-top: 1px solid var(--aiol-line); }
 #aiol .aiol-labcard__list a { display: flex; align-items: center; gap: 14px; padding: 13px 0; font-weight: 600; line-height: 1.35; color: var(--aiol-ink); transition: color .2s ease; }
 #aiol .aiol-labcard__list a:hover { color: var(--aiol-gold-dark); }
@@ -198,18 +188,18 @@
 #aiol .aiol-labcard__tools ul { display: flex; flex-wrap: wrap; gap: 6px; }
 #aiol .aiol-labcard__tools li { padding: 5px 11px; border-radius: 4px; background: #fff; border: 1px solid var(--aiol-line); font-size: 13.5px; font-weight: 600; line-height: 1.3; color: var(--aiol-ink); }
 #aiol .aiol-labcard__foot { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-top: 20px; padding-top: 18px; border-top: 1px dashed var(--aiol-line); }
-#aiol .aiol-labcard__price { font-family: var(--aiol-serif); font-size: 32px; font-weight: 700; line-height: 1; color: var(--aiol-ink); }
+#aiol .aiol-labcard__price { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; color: var(--aiol-ink); }
 #aiol .aiol-labcard__price small { font-family: var(--aiol-sans); font-size: 14px; font-weight: 600; color: var(--aiol-muted); }
 #aiol .aiol-labcard__extra { font-size: 13.5px; color: var(--aiol-muted); }
 @media (min-width: 768px) { #aiol .aiol-labcard { padding: 34px; } #aiol .aiol-labcard::before { left: 34px; right: 34px; } }
 
 /* ---------- O szkoleniu ---------- */
 #aiol .aiol-intro { display: grid; gap: 36px; }
-#aiol .aiol-statement { font-family: var(--aiol-serif); font-size: clamp(25px, 2.9vw, 36px); font-weight: 700; line-height: 1.3; color: var(--aiol-ink); }
+#aiol .aiol-statement { font-size: clamp(23px, 2.6vw, 32px); font-weight: 700; line-height: 1.35; color: var(--aiol-ink); }
 #aiol .aiol-statement em { color: var(--aiol-gold); }
 #aiol .aiol-nocards { display: grid; gap: 12px; margin-top: 56px; }
-#aiol .aiol-nocard { display: flex; align-items: center; gap: 16px; padding: 18px 20px; background: var(--aiol-soft); border: 1px solid var(--aiol-line); border-radius: 10px; font-weight: 600; line-height: 1.4; color: var(--aiol-ink); }
-#aiol .aiol-nocard .aiol-ic { width: 38px; height: 38px; border-radius: 50%; background: #fff; color: var(--aiol-gold-dark); }
+#aiol .aiol-nocard { display: flex; align-items: center; gap: 16px; padding: 18px 20px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 10px; font-weight: 600; line-height: 1.4; color: var(--aiol-ink); }
+#aiol .aiol-nocard .aiol-ic { width: 38px; height: 38px; border-radius: 50%; background: var(--aiol-gold-soft); color: var(--aiol-gold-dark); }
 #aiol .aiol-nocard .aiol-ic .aiol-i { width: 18px; height: 18px; stroke-width: 2.5; }
 @media (min-width: 768px) { #aiol .aiol-nocards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (min-width: 992px) { #aiol .aiol-intro { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; } }
@@ -220,16 +210,16 @@
 #aiol .aiol-chips { display: flex; flex-wrap: wrap; gap: 10px; }
 #aiol .aiol-chips li { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 6px; font-size: 16px; font-weight: 600; line-height: 1.3; color: var(--aiol-ink); }
 #aiol .aiol-chips li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--aiol-gold); }
-#aiol .aiol-callout { display: flex; align-items: center; gap: 16px; margin-top: 24px; padding: 18px 22px; border-radius: 10px; background: var(--aiol-ink); color: #fff; font-weight: 600; line-height: 1.45; }
-#aiol .aiol-callout .aiol-ic { background: rgba(255,255,255,.1); color: var(--aiol-cta); width: 40px; height: 40px; }
+#aiol .aiol-callout { display: flex; align-items: center; gap: 16px; margin-top: 24px; padding: 18px 22px; border-radius: 10px; background: #fff; border: 1px solid var(--aiol-line); border-left: 4px solid var(--aiol-cta); color: var(--aiol-ink); font-weight: 600; line-height: 1.45; }
+#aiol .aiol-callout .aiol-ic { background: var(--aiol-gold-soft); color: var(--aiol-gold-dark); width: 40px; height: 40px; }
 @media (min-width: 992px) { #aiol .aiol-who { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 72px; align-items: start; } }
 
 /* ---------- Program ---------- */
 #aiol .aiol-modules { display: grid; gap: 20px; }
 #aiol .aiol-module { position: relative; padding: 28px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; transition: border-color .2s ease, box-shadow .2s ease; }
-#aiol .aiol-module:hover { border-color: #ddd0b6; box-shadow: 0 30px 60px -40px rgba(60,45,15,.35); }
+#aiol .aiol-module:hover { border-color: #cfcfcf; box-shadow: 0 30px 60px -40px rgba(20,20,20,.35); }
 #aiol .aiol-module__top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
-#aiol .aiol-module__num { font-size: 12.5px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--aiol-gold-dark); }
+#aiol .aiol-module__num { font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aiol-gold-dark); }
 #aiol .aiol-module h3 { font-size: clamp(23px, 2.2vw, 28px); margin-bottom: 10px; }
 #aiol .aiol-module__intro { margin-bottom: 18px; color: var(--aiol-muted); }
 #aiol .aiol-module__intro strong { color: var(--aiol-ink); }
@@ -246,7 +236,7 @@
 
 /* Łańcuch: kontekst -> zadanie -> materiał -> wymagania -> rezultat */
 #aiol .aiol-chain { display: grid; gap: 14px; }
-#aiol .aiol-chain li { position: relative; display: flex; align-items: center; gap: 14px; padding: 16px 18px; background: var(--aiol-soft); border: 1px solid var(--aiol-line); border-radius: 8px; font-size: 17px; font-weight: 700; line-height: 1.3; color: var(--aiol-ink); }
+#aiol .aiol-chain li { position: relative; display: flex; align-items: center; gap: 14px; padding: 16px 18px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 8px; font-size: 17px; font-weight: 700; line-height: 1.3; color: var(--aiol-ink); }
 #aiol .aiol-chain li:last-child { background: var(--aiol-ink); border-color: var(--aiol-ink); color: #fff; }
 #aiol .aiol-chain__n { font-size: 12px; font-weight: 700; letter-spacing: .14em; color: var(--aiol-gold-dark); }
 #aiol .aiol-chain li:last-child .aiol-chain__n { color: var(--aiol-cta); }
@@ -264,56 +254,54 @@
 
 /* ---------- Ciemny pas: zadanie zamiast promptu ---------- */
 #aiol .aiol-task { display: grid; gap: 32px; align-items: end; }
-#aiol .aiol-task h2 { font-size: clamp(32px, 4.4vw, 56px); line-height: 1.12; }
+#aiol .aiol-task h2 { font-size: clamp(30px, 4vw, 50px); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; }
 #aiol .aiol-task h2 .aiol-gold { display: block; }
 #aiol .aiol-task__text { font-size: 18px; }
 #aiol .aiol-task__text p + p { margin-top: 16px; }
-#aiol .aiol-task__first { font-family: var(--aiol-serif); font-size: 24px; font-weight: 700; color: #fff; line-height: 1.3; }
+#aiol .aiol-task__first { font-size: 22px; font-weight: 700; color: var(--aiol-ink); line-height: 1.35; }
 @media (min-width: 992px) { #aiol .aiol-task { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 80px; } }
 
 /* ---------- Po szkoleniu ---------- */
 #aiol .aiol-outcomes { display: grid; gap: 16px; }
 #aiol .aiol-outcome { display: flex; flex-direction: column; gap: 18px; padding: 26px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; }
-#aiol .aiol-outcome p { font-family: var(--aiol-serif); font-size: 21px; font-weight: 700; line-height: 1.3; color: var(--aiol-ink); }
+#aiol .aiol-outcome p { font-size: 19px; font-weight: 700; line-height: 1.35; color: var(--aiol-ink); }
 #aiol .aiol-outcome p::first-letter { text-transform: uppercase; }
-#aiol .aiol-bridge { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; margin-top: 40px; padding: 28px; border-radius: 12px; background: var(--aiol-soft); border: 1px solid var(--aiol-line); }
+#aiol .aiol-bridge { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; margin-top: 40px; padding: 28px; border-radius: 12px; background: #fff; border: 1px solid var(--aiol-line); }
 #aiol .aiol-bridge p { max-width: 560px; font-size: 18px; font-weight: 600; color: var(--aiol-ink); }
 @media (min-width: 640px) { #aiol .aiol-outcomes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1100px) { #aiol .aiol-outcomes { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (min-width: 768px) { #aiol .aiol-bridge { padding: 32px 40px; } }
 
 /* ---------- Cena ---------- */
-#aiol .aiol-price { display: grid; max-width: 1040px; margin: 0 auto; overflow: hidden; background: #fff; border: 1px solid var(--aiol-line); border-radius: 14px; box-shadow: 0 50px 90px -50px rgba(60,45,15,.45); }
-#aiol .aiol-price__main { position: relative; padding: 36px 26px; background: var(--aiol-dark); color: var(--aiol-on-dark); }
-#aiol .aiol-price__main::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 80% 60% at 100% 0%, rgba(191,154,90,.25), transparent 70%); }
-#aiol .aiol-price__main > * { position: relative; }
-#aiol .aiol-price__name { font-size: 12.5px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--aiol-gold); }
-#aiol .aiol-price__title { margin-top: 6px; font-family: var(--aiol-serif); font-size: 30px; font-weight: 700; line-height: 1.2; color: #fff; }
+#aiol .aiol-price { display: grid; max-width: 1040px; margin: 0 auto; overflow: hidden; background: #fff; border: 1px solid var(--aiol-line); border-radius: 14px; box-shadow: 0 50px 90px -50px rgba(20,20,20,.45); }
+#aiol .aiol-price__main { position: relative; padding: 36px 26px; background: #fff; border-bottom: 1px solid var(--aiol-line); }
+#aiol .aiol-price__name { font-size: 12.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--aiol-gold-dark); }
+#aiol .aiol-price__title { margin-top: 6px; font-size: 28px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; color: var(--aiol-ink); }
 #aiol .aiol-price__amount { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin: 26px 0 6px; }
-#aiol .aiol-price__value { font-family: var(--aiol-serif); font-size: clamp(54px, 6vw, 72px); font-weight: 700; line-height: 1; color: #fff; }
-#aiol .aiol-price__tax { font-size: 18px; font-weight: 600; color: #fff; }
+#aiol .aiol-price__value { font-size: clamp(52px, 6vw, 68px); font-weight: 800; line-height: 1; letter-spacing: -0.03em; color: var(--aiol-ink); }
+#aiol .aiol-price__tax { font-size: 18px; font-weight: 600; color: var(--aiol-ink); }
 #aiol .aiol-price__meta { margin-bottom: 30px; }
 #aiol .aiol-price__notes { display: grid; gap: 8px; margin-top: 22px; font-size: 14.5px; line-height: 1.45; }
 #aiol .aiol-price__notes li { display: flex; align-items: center; gap: 10px; }
 #aiol .aiol-price__notes .aiol-i { width: 16px; height: 16px; color: var(--aiol-gold); stroke-width: 2.5; }
 #aiol .aiol-price__incl { padding: 36px 26px; }
-#aiol .aiol-price__label { margin-bottom: 20px; font-size: 12.5px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--aiol-gold-dark); }
+#aiol .aiol-price__label { margin-bottom: 20px; font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aiol-gold-dark); }
 #aiol .aiol-incl { display: grid; gap: 14px; }
 #aiol .aiol-incl li { display: flex; align-items: center; gap: 16px; font-weight: 600; line-height: 1.4; color: var(--aiol-ink); }
 #aiol .aiol-incl .aiol-ic { width: 42px; height: 42px; }
 #aiol .aiol-incl .aiol-ic .aiol-i { width: 20px; height: 20px; }
 @media (min-width: 768px) { #aiol .aiol-price__main, #aiol .aiol-price__incl { padding: 48px; } }
-@media (min-width: 900px) { #aiol .aiol-price { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); } }
+@media (min-width: 900px) { #aiol .aiol-price { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); } #aiol .aiol-price__main { border-bottom: 0; border-right: 1px solid var(--aiol-line); } }
 
 /* ---------- Ścieżka: FUNDAMENT -> SYSTEM ---------- */
 #aiol .aiol-path { display: grid; gap: 16px; align-items: stretch; }
 #aiol .aiol-step { padding: 30px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; }
-#aiol .aiol-step--now { background: var(--aiol-soft); }
+#aiol .aiol-step--now { background: #fff; }
 #aiol .aiol-step--next { border: 2px solid var(--aiol-gold); }
-#aiol .aiol-step__tag { display: inline-block; margin-bottom: 18px; padding: 6px 12px; border-radius: 4px; background: var(--aiol-ink); color: #fff; font-size: 11.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; line-height: 1.3; }
+#aiol .aiol-step__tag { display: inline-block; margin-bottom: 18px; padding: 6px 12px; border-radius: 4px; background: var(--aiol-ink); color: #fff; font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; line-height: 1.3; }
 #aiol .aiol-step--next .aiol-step__tag { background: var(--aiol-gold); color: #fff; }
-#aiol .aiol-step__code { font-size: 12.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--aiol-muted); }
-#aiol .aiol-step h3 { margin: 4px 0 14px; font-size: 34px; letter-spacing: .02em; }
+#aiol .aiol-step__code { font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aiol-muted); }
+#aiol .aiol-step h3 { margin: 4px 0 14px; font-size: 30px; font-weight: 800; letter-spacing: -0.01em; }
 #aiol .aiol-step__q { font-size: 19px; font-weight: 600; line-height: 1.45; color: var(--aiol-ink); }
 #aiol .aiol-step__more { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--aiol-line); font-size: 16px; }
 #aiol .aiol-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
@@ -328,18 +316,18 @@
 
 /* ---------- Prowadząca ---------- */
 #aiol .aiol-trainer { display: grid; gap: 40px; }
-#aiol .aiol-photo { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 5; max-width: 440px; overflow: hidden; border-radius: 12px; background: linear-gradient(160deg, #e9dcc1 0%, var(--aiol-gold) 55%, #7d6033 100%); }
-#aiol .aiol-photo__initials { font-family: var(--aiol-serif); font-size: 110px; font-weight: 700; line-height: 1; color: rgba(255,255,255,.92); }
+#aiol .aiol-photo { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 5; max-width: 440px; overflow: hidden; border-radius: 12px; background: var(--aiol-soft); border: 1px solid var(--aiol-line); }
+#aiol .aiol-photo__initials { font-size: 96px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: #d0d0d0; }
 #aiol .aiol-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 #aiol .aiol-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 440px; margin-top: 14px; }
 #aiol .aiol-stat { padding: 18px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 10px; }
-#aiol .aiol-stat strong { display: block; font-family: var(--aiol-serif); font-size: clamp(26px, 7vw, 34px); white-space: nowrap; line-height: 1.1; color: var(--aiol-ink); }
+#aiol .aiol-stat strong { display: block; font-size: clamp(26px, 7vw, 32px); font-weight: 800; letter-spacing: -0.02em; white-space: nowrap; line-height: 1.1; color: var(--aiol-ink); }
 #aiol .aiol-stat span { display: block; margin-top: 6px; font-size: 14px; line-height: 1.4; color: var(--aiol-muted); }
 #aiol .aiol-roles { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 28px; }
 #aiol .aiol-roles li { padding: 7px 12px; border-radius: 4px; background: #fff; border: 1px solid var(--aiol-line); font-size: 14px; font-weight: 600; line-height: 1.3; color: var(--aiol-ink); }
-#aiol .aiol-pull { margin: 28px 0; padding: 4px 0 4px 24px; border-left: 3px solid var(--aiol-gold); font-family: var(--aiol-serif); font-size: clamp(20px, 2vw, 24px); font-weight: 600; line-height: 1.45; color: var(--aiol-ink); }
+#aiol .aiol-pull { margin: 28px 0; padding: 4px 0 4px 24px; border-left: 3px solid var(--aiol-gold); font-size: clamp(19px, 1.8vw, 22px); font-weight: 600; line-height: 1.5; color: var(--aiol-ink); }
 #aiol .aiol-clients { margin-top: 64px; padding-top: 36px; border-top: 1px solid var(--aiol-line); }
-#aiol .aiol-clients__label { margin-bottom: 22px; text-align: center; font-size: 12.5px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--aiol-gold-dark); }
+#aiol .aiol-clients__label { margin-bottom: 22px; text-align: center; font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aiol-gold-dark); }
 #aiol .aiol-clients ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 32px; }
 #aiol .aiol-clients li { font-size: 17px; font-weight: 700; line-height: 1.3; letter-spacing: -.01em; color: #8b857a; white-space: nowrap; }
 @media (min-width: 992px) { #aiol .aiol-trainer { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 80px; align-items: start; } }
@@ -349,7 +337,7 @@
 #aiol .aiol-quote { display: flex; flex-direction: column; justify-content: space-between; gap: 28px; padding: 32px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; }
 #aiol .aiol-quote__mark { width: 38px; height: 38px; color: var(--aiol-gold); fill: var(--aiol-gold-soft); }
 #aiol .aiol-quote blockquote { margin-top: 18px; }
-#aiol .aiol-quote blockquote p { font-family: var(--aiol-serif); font-size: clamp(19px, 1.8vw, 22px); font-weight: 600; line-height: 1.5; color: var(--aiol-ink); }
+#aiol .aiol-quote blockquote p { font-size: clamp(17px, 1.6vw, 19px); font-weight: 500; line-height: 1.6; color: var(--aiol-ink); }
 #aiol .aiol-quote figcaption { display: flex; align-items: center; gap: 14px; padding-top: 22px; border-top: 1px solid var(--aiol-line); line-height: 1.4; }
 #aiol .aiol-avatar { display: grid; place-items: center; flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; background: var(--aiol-gold-soft); color: var(--aiol-gold-dark); font-weight: 700; font-size: 15px; letter-spacing: .04em; }
 #aiol .aiol-quote__name { display: block; font-weight: 700; color: var(--aiol-ink); }
@@ -360,7 +348,7 @@
 #aiol .aiol-b2b { display: grid; gap: 40px; }
 #aiol .aiol-b2b__ask { font-size: 20px; font-weight: 600; color: var(--aiol-ink); margin-bottom: 16px; }
 #aiol .aiol-b2b .aiol-chips { margin-top: 28px; }
-#aiol .aiol-contact { padding: 28px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; box-shadow: 0 40px 70px -45px rgba(60,45,15,.35); }
+#aiol .aiol-contact { padding: 28px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; box-shadow: 0 40px 70px -45px rgba(20,20,20,.35); }
 #aiol .aiol-contact h3 { margin-bottom: 4px; font-size: 28px; }
 #aiol .aiol-contact__block { padding: 22px 0; border-bottom: 1px solid var(--aiol-line); }
 #aiol .aiol-contact__label { margin-bottom: 6px; font-size: 11.5px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--aiol-gold-dark); }
@@ -381,7 +369,7 @@
 #aiol .aiol-faq__nav { display: none; }
 #aiol .aiol-faq__group + .aiol-faq__group { margin-top: 48px; }
 #aiol .aiol-faq__group { scroll-margin-top: 100px; }
-#aiol .aiol-faq__group h3 { margin-bottom: 10px; font-family: var(--aiol-sans); font-size: 12.5px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--aiol-gold-dark); }
+#aiol .aiol-faq__group h3 { margin-bottom: 10px; font-family: var(--aiol-sans); font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aiol-gold-dark); }
 #aiol .aiol-qa { border-bottom: 1px solid var(--aiol-line); }
 #aiol .aiol-qa summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 0; cursor: pointer; list-style: none; font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--aiol-ink); transition: color .2s ease; }
 #aiol .aiol-qa summary::-webkit-details-marker { display: none; }
@@ -402,10 +390,10 @@
 
 /* ---------- Finał ---------- */
 #aiol .aiol-final { text-align: center; }
-#aiol .aiol-final h2 { font-size: clamp(36px, 5.4vw, 64px); }
+#aiol .aiol-final h2 { font-size: clamp(34px, 5vw, 56px); font-weight: 800; letter-spacing: -0.03em; }
 #aiol .aiol-final__facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 26px 0 38px; }
-#aiol .aiol-final__facts li { padding: 9px 18px; border-radius: 4px; border: 1px solid rgba(255,255,255,.2); font-weight: 600; line-height: 1.3; color: #fff; }
-#aiol .aiol-final__small { margin-top: 22px; font-size: 14.5px; color: #a49d90; }
+#aiol .aiol-final__facts li { padding: 9px 18px; border-radius: 4px; border: 1px solid var(--aiol-line); font-weight: 600; line-height: 1.3; color: var(--aiol-ink); }
+#aiol .aiol-final__small { margin-top: 22px; font-size: 14.5px; color: var(--aiol-muted); }
 
 /* ---------- Pływający pasek ---------- */
 #aiol .aiol-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9990; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); transform: translateY(120%); visibility: hidden; transition: transform .3s ease, visibility .3s ease; }
@@ -419,7 +407,7 @@
 #aiol .aiol-link { color: var(--aiol-ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--aiol-gold); text-underline-offset: 3px; }
 #aiol .aiol-link:hover { color: var(--aiol-gold-dark); }
 #aiol .aiol-signup { display: grid; gap: 24px; align-items: start; }
-#aiol .aiol-form, #aiol .aiol-done { padding: 26px 22px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; box-shadow: 0 40px 70px -45px rgba(60,45,15,.35); }
+#aiol .aiol-form, #aiol .aiol-done { padding: 26px 22px; background: #fff; border: 1px solid var(--aiol-line); border-radius: 12px; box-shadow: 0 40px 70px -45px rgba(20,20,20,.35); }
 #aiol .aiol-fields { display: grid; gap: 18px 20px; }
 #aiol .aiol-label {
   display: block; float: none; width: auto; margin: 0 0 7px;
@@ -430,7 +418,7 @@
 #aiol .aiol-input {
   display: block; width: 100%; max-width: 100%; height: auto; min-height: 50px; margin: 0; padding: 12px 14px;
   font-family: var(--aiol-sans); font-size: 16px; font-weight: 400; line-height: 1.4; letter-spacing: 0; text-transform: none;
-  color: var(--aiol-ink); background: #fff; border: 1px solid #d6cebe; border-radius: 6px; box-shadow: none; outline: 0;
+  color: var(--aiol-ink); background: #fff; border: 1px solid #d4d4d4; border-radius: 6px; box-shadow: none; outline: 0;
   -webkit-appearance: none; appearance: none; transition: border-color .2s ease, box-shadow .2s ease;
 }
 #aiol textarea.aiol-input { min-height: 80px; resize: vertical; }
@@ -438,15 +426,15 @@
   padding-right: 42px; cursor: pointer;
   background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23141414' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center / 16px;
 }
-#aiol .aiol-input:hover { border-color: #b9ad97; }
-#aiol .aiol-input:focus { border-color: var(--aiol-gold); box-shadow: 0 0 0 3px rgba(191,154,90,.28); }
+#aiol .aiol-input:hover { border-color: #a3a3a3; }
+#aiol .aiol-input:focus { border-color: var(--aiol-gold); box-shadow: 0 0 0 3px rgba(173,134,68,.28); }
 #aiol .aiol-input[aria-invalid="true"] { border-color: #b42318; box-shadow: 0 0 0 3px rgba(180,35,24,.12); }
 #aiol .aiol-hint { margin-top: 6px; font-size: 13.5px; line-height: 1.45; color: var(--aiol-muted); }
 #aiol .aiol-err { margin-top: 6px; font-size: 13.5px; font-weight: 600; line-height: 1.45; color: #b42318; }
 #aiol .aiol-err:empty, #aiol .aiol-form-status:empty { display: none; }
 #aiol .aiol-choices { display: grid; gap: 10px; }
 #aiol .aiol-choice, #aiol .aiol-consent { cursor: pointer; font-family: var(--aiol-sans); text-transform: none; letter-spacing: 0; }
-#aiol .aiol-choice { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 12px 16px; border: 1px solid #d6cebe; border-radius: 6px; background: #fff; font-size: 15.5px; font-weight: 600; line-height: 1.3; color: var(--aiol-ink); transition: border-color .2s ease, background-color .2s ease; }
+#aiol .aiol-choice { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 12px 16px; border: 1px solid #d4d4d4; border-radius: 6px; background: #fff; font-size: 15.5px; font-weight: 600; line-height: 1.3; color: var(--aiol-ink); transition: border-color .2s ease, background-color .2s ease; }
 #aiol .aiol-choice.is-on { border-color: var(--aiol-gold); background: var(--aiol-gold-soft); box-shadow: inset 0 0 0 1px var(--aiol-gold); }
 #aiol .aiol-choice input, #aiol .aiol-consent input {
   display: inline-block; visibility: visible; position: static; clip: auto; clip-path: none;
@@ -468,24 +456,23 @@
 #aiol .aiol-done h3 { font-size: 30px; margin-bottom: 12px; }
 #aiol .aiol-done p { max-width: 460px; margin: 10px auto 0; }
 
-#aiol .aiol-summary { padding: 28px; border-radius: 12px; background: var(--aiol-dark); color: var(--aiol-on-dark); }
-#aiol .aiol-summary__label { font-size: 12px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--aiol-gold); }
-#aiol .aiol-summary__name { margin-top: 8px; font-family: var(--aiol-serif); font-size: 24px; font-weight: 700; line-height: 1.25; color: #fff; }
-#aiol .aiol-summary__name strong { color: #fff; }
+#aiol .aiol-summary { padding: 28px; border-radius: 12px; background: #fff; border: 1px solid var(--aiol-line); color: var(--aiol-text); }
+#aiol .aiol-summary__label { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--aiol-gold-dark); }
+#aiol .aiol-summary__name { margin-top: 8px; font-size: 22px; font-weight: 700; line-height: 1.3; color: var(--aiol-ink); }
 #aiol .aiol-summary__rows { margin-top: 18px; }
-#aiol .aiol-summary__rows > div { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-top: 1px solid rgba(255,255,255,.12); font-size: 15px; line-height: 1.4; }
-#aiol .aiol-summary dt { color: #a49d90; font-weight: 500; }
-#aiol .aiol-summary dd { color: #fff; font-weight: 600; text-align: right; }
-#aiol .aiol-summary__total { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.22); }
-#aiol .aiol-summary__total span { flex-basis: 100%; font-size: 13px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #a49d90; }
-#aiol .aiol-summary__total strong { font-family: var(--aiol-serif); font-size: 42px; line-height: 1.05; color: #fff; }
-#aiol .aiol-summary__total small { font-size: 15px; font-weight: 600; color: #fff; }
+#aiol .aiol-summary__rows > div { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-top: 1px solid var(--aiol-line); font-size: 15px; line-height: 1.4; }
+#aiol .aiol-summary dt { color: var(--aiol-muted); font-weight: 500; }
+#aiol .aiol-summary dd { color: var(--aiol-ink); font-weight: 600; text-align: right; }
+#aiol .aiol-summary__total { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; padding-top: 16px; border-top: 1px solid var(--aiol-ink); }
+#aiol .aiol-summary__total span { flex-basis: 100%; font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--aiol-muted); }
+#aiol .aiol-summary__total strong { font-size: 40px; font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; color: var(--aiol-ink); }
+#aiol .aiol-summary__total small { font-size: 15px; font-weight: 600; color: var(--aiol-ink); }
 #aiol .aiol-summary__incl { display: grid; gap: 8px; margin-top: 20px; font-size: 14.5px; }
 #aiol .aiol-summary__incl li { display: flex; align-items: center; gap: 10px; }
 #aiol .aiol-summary__incl .aiol-i { width: 16px; height: 16px; color: var(--aiol-gold); stroke-width: 2.5; }
-#aiol .aiol-summary__help { margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.12); font-size: 14px; line-height: 1.7; }
-#aiol .aiol-summary__help a { color: #fff; font-weight: 600; overflow-wrap: anywhere; }
-#aiol .aiol-summary__help a:hover { color: var(--aiol-cta); }
+#aiol .aiol-summary__help { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--aiol-line); font-size: 14px; line-height: 1.7; }
+#aiol .aiol-summary__help a { color: var(--aiol-ink); font-weight: 600; overflow-wrap: anywhere; }
+#aiol .aiol-summary__help a:hover { color: var(--aiol-gold-dark); }
 @media (min-width: 640px) {
   #aiol .aiol-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   #aiol .aiol-field--full { grid-column: 1 / -1; }
@@ -617,7 +604,7 @@
   </section>
 
   <!-- ===================== DLA KOGO ===================== -->
-  <section class="aiol-sec aiol-sec--soft" id="aiol-dla-kogo" aria-labelledby="aiol-h-who">
+  <section class="aiol-sec" id="aiol-dla-kogo" aria-labelledby="aiol-h-who">
     <div class="aiol-wrap aiol-who">
       <div>
         <p class="aiol-eyebrow">Dla kogo?</p>
@@ -720,7 +707,7 @@
   </section>
 
   <!-- ===================== ZADANIE, NIE PROMPT ===================== -->
-  <section class="aiol-sec aiol-sec--dark" id="aiol-podejscie" aria-labelledby="aiol-h-task">
+  <section class="aiol-sec" id="aiol-podejscie" aria-labelledby="aiol-h-task">
     <div class="aiol-wrap aiol-task">
       <div>
         <p class="aiol-eyebrow">Podejście</p>
@@ -755,7 +742,7 @@
   </section>
 
   <!-- ===================== CENA ===================== -->
-  <section class="aiol-sec aiol-sec--soft" id="aiol-cena" aria-labelledby="aiol-h-price">
+  <section class="aiol-sec" id="aiol-cena" aria-labelledby="aiol-h-price">
     <div class="aiol-wrap">
       <div class="aiol-head aiol-head--center">
         <p class="aiol-eyebrow">Cena i&nbsp;zapisy</p>
@@ -976,7 +963,7 @@
   </section>
 
   <!-- ===================== PROWADZĄCA ===================== -->
-  <section class="aiol-sec aiol-sec--soft" id="aiol-prowadzaca" aria-labelledby="aiol-h-trainer">
+  <section class="aiol-sec" id="aiol-prowadzaca" aria-labelledby="aiol-h-trainer">
     <div class="aiol-wrap">
       <div class="aiol-trainer">
         <div>
@@ -1053,7 +1040,7 @@
   </section>
 
   <!-- ===================== DLA FIRMY + KONTAKT ===================== -->
-  <section class="aiol-sec aiol-sec--soft" id="aiol-dla-firm" aria-labelledby="aiol-h-b2b">
+  <section class="aiol-sec" id="aiol-dla-firm" aria-labelledby="aiol-h-b2b">
     <div class="aiol-wrap aiol-b2b">
       <div>
         <p class="aiol-eyebrow">Szkolenia zamknięte</p>
@@ -1285,7 +1272,7 @@
   </section>
 
   <!-- ===================== FINAŁ ===================== -->
-  <section class="aiol-sec aiol-sec--dark aiol-final" id="aiol-zapisy" aria-labelledby="aiol-h-final">
+  <section class="aiol-sec aiol-final" id="aiol-zapisy" aria-labelledby="aiol-h-final">
     <div class="aiol-wrap">
       <p class="aiol-eyebrow">AIOfficeLab / 01 &nbsp;|&nbsp; Fundament</p>
       <h2 id="aiol-h-final">Zacznij od <span class="aiol-gold">fundamentu</span></h2>
