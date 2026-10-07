@@ -1,0 +1,113 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+.oiof{
+  --paper:#FFFFFF;
+  --ink:#1A1A1A;
+  --gold:#C5A059;        /* TWÓJ kolor złota — podmień po wyborze próbki */
+  --gold-text:#C5A059;   /* złoto do tekstu */
+  --graphite:#54504B;
+  --line:#E8E4DE;
+  --card:#FFFFFF;
+  font-family:'Manrope','Inter',system-ui,sans-serif;
+  background:var(--paper);color:var(--ink);
+  padding:84px 0;
+}
+.oiof *{box-sizing:border-box;margin:0;padding:0;}
+.oiof .wrap{max-width:1200px;margin:0 auto;padding:0 24px;}
+.oiof .eyebrow{display:block;font-size:.72rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-text);margin-bottom:14px;}
+.oiof h2{font-weight:800;letter-spacing:-.02em;line-height:1.08;font-size:clamp(1.85rem,3.4vw,2.7rem);}
+.oiof h3{font-weight:800;letter-spacing:-.01em;font-size:1.3rem;line-height:1.25;margin:16px 0 8px;}
+.oiof p{color:var(--graphite);font-weight:400;line-height:1.65;}
+.oiof .sec-head{max-width:680px;margin-bottom:48px;}
+.oiof .sec-head p{margin-top:14px;font-size:1.05rem;}
+
+/* Trzy szkolenia w trzech równych kolumnach, wszystkie kafelki tej samej szerokości i wysokości */
+.oiof .bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+.oiof .tile{
+  background:var(--card);border:1px solid var(--line);border-radius:24px;padding:30px;
+  display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:.25s ease;
+  box-shadow:0 2px 4px rgba(0,0,0,.03),0 18px 44px -22px rgba(0,0,0,.10);
+}
+.oiof a.tile:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 30px 60px -28px rgba(0,0,0,.20);}
+.oiof .tile__top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:auto;}
+.oiof .ico{
+  width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  color:var(--gold-text);font-weight:800;font-size:.85rem;
+  background:rgba(0,0,0,.05);
+  background:color-mix(in srgb, var(--gold) 16%, transparent);
+}
+.oiof .tag{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:var(--gold);color:var(--ink);}
+.oiof .tile p{font-size:.95rem;line-height:1.6;}
+.oiof .tile__meta{display:flex;align-items:center;gap:14px;margin-top:20px;padding-top:18px;border-top:1px solid var(--line);}
+.oiof .tile__price{font-weight:800;font-size:1.15rem;letter-spacing:-.02em;}
+.oiof .tile__date{font-size:.8rem;color:var(--graphite);}
+.oiof .tile__arrow{margin-left:auto;color:var(--gold-text);font-weight:700;}
+/* "Termin pewny": złota ramka, ale ten sam rozmiar co pozostałe kafelki */
+.oiof .tile--flag{border:1.5px solid var(--gold);background:linear-gradient(180deg,#fff,#FFFDF8);}
+/* Pasek "Chcę zobaczyć wszystkie szkolenia" na całą szerokość pod kafelkami */
+.oiof .tile--cta{grid-column:1 / -1;background:var(--ink);align-items:center;justify-content:center;text-align:center;padding:30px;}
+.oiof .tile--cta .cta-line{color:var(--paper);font-size:clamp(1.05rem,2.2vw,1.32rem);font-weight:500;line-height:1.55;}
+.oiof .cta-line a{color:var(--gold);font-weight:800;text-decoration:none;white-space:nowrap;border-bottom:2px solid var(--gold);padding-bottom:1px;}
+.oiof .cta-line a:hover{opacity:.85;}
+
+@media(max-width:880px){
+  .oiof{padding:56px 0;}
+  .oiof .bento{grid-template-columns:minmax(0,1fr);}
+  .oiof .cta-line a{white-space:normal;}
+}
+</style>
+
+<section class="oiof" aria-label="Szkolenia otwarte 2026">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Szkolenia otwarte 2026</span>
+      <h2>Konkretne kompetencje, które wdrożysz po powrocie do biurka</h2>
+      <p>Każde szkolenie kończysz z narzędziami gotowymi do użycia.</p>
+    </div>
+
+    <div class="bento">
+      <a href="https://www.officeinfluencers.pl/asystentka-personalna-executive-assistant/" class="tile tile--flag">
+        <div class="tile__top">
+          <div class="ico">★</div>
+          <span class="tag">Termin pewny</span>
+        </div>
+        <h3>Executive Assistant/Asystentka Zarządu</h3>
+        <p>Masterclass, 17 września 2026, godz. 10.00-14.00</p>
+        <div class="tile__meta">
+          <span class="tile__price">790 zł</span>
+          <span class="tile__date">online · 4h</span>
+          <span class="tile__arrow">→</span>
+        </div>
+      </a>
+
+      <a href="https://www.officeinfluencers.pl/szkolenie-profesjonalna-recepcja/" class="tile">
+        <div class="tile__top"><div class="ico">R</div></div>
+        <h3>Profesjonalna recepcja</h3>
+        <p>Masterclass, online, 30 września 2026, godz. 10.00-14.00.</p>
+        <div class="tile__meta">
+          <span class="tile__price">790 zł</span>
+          <span class="tile__arrow">→</span>
+        </div>
+      </a>
+
+      <a href="https://www.officeinfluencers.pl/ai-w-biurze/" class="tile tile--flag">
+        <div class="tile__top">
+          <div class="ico">★</div>
+          <span class="tag">Termin pewny</span>
+        </div>
+        <h3>AI Office Lab: Fundament</h3>
+        <p>5 listopada 2026, godz. 10.00-12.00</p>
+        <div class="tile__meta">
+          <span class="tile__price">290 zł</span>
+          <span class="tile__date">online · 2h</span>
+          <span class="tile__arrow">→</span>
+        </div>
+      </a>
+
+      <div class="tile tile--cta">
+        <p class="cta-line"><a href="https://www.officeinfluencers.pl/kalendarz-szkolen-szkolenia-dla-asystentki-recepcjonistki-office-managerki/">Chcę zobaczyć wszystkie szkolenia →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
