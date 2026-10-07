@@ -64,8 +64,7 @@ window.AIOL_CONFIG = {
   formularz: "/formularz-aiol/formularz.php", // skrypt wysyłający zgłoszenie
   platnosc: "https://easl.ink/XD2bl",         // link do płatności online
   termin: "czwartek, 5 listopada 2026, godz. 10.00–12.00", // data i godziny edycji
-  heroPhotoUrl: "",                           // inne zdjęcie w hero (puste = wbudowane)
-  photoUrl: "",                               // inne zdjęcie w sekcji „Prowadząca” (puste = wbudowane)
+  photoUrl: "",                               // inne zdjęcie prowadzącej (puste = wbudowane)
   stickyBar: true                             // pływający pasek z przyciskiem
 };
 ```
@@ -73,8 +72,8 @@ window.AIOL_CONFIG = {
 - **formularz**: adres skryptu na tej samej stronie, zaczyna się od `/`. Adresu z inną domeną strona nie przyjmie, żeby dane ze zgłoszeń nie mogły trafić gdzie indziej.
 - **termin**: data i godziny edycji, teraz „czwartek, 5 listopada 2026, godz. 10.00–12.00”. Termin pojawia się w pasku na górze, w hero, w karcie z ceną, w finale, w pływającym pasku i w mailu ze zgłoszeniem. Puste pole = bez terminu.
   Po zmianie terminu popraw też `"startDate": "2026-11-05T10:00:00+01:00"` i `"endDate": "2026-11-05T12:00:00+01:00"` w bloku `application/ld+json` na dole kodu (rok-miesiąc-dzień, godzina; `+01:00` zimą, `+02:00` latem).
-- **Zdjęcia prowadzącej** są wbudowane w kod strony: portret w hero i zdjęcie z konferencji w sekcji „Prowadząca”. Nie trzeba ich nigdzie wgrywać.
-- **heroPhotoUrl** / **photoUrl**: jeśli chcesz inne zdjęcie, wejdź w Media → Biblioteka → wybierz zdjęcie → „Kopiuj adres URL do schowka” i wklej między cudzysłowy. Adres musi zaczynać się od `https://` albo `/`. Najlepiej zdjęcie pionowe (4:5) z twarzą w górnej części kadru.
+- **Zdjęcie prowadzącej** (z konferencji) jest wbudowane w kod strony w sekcji „Prowadząca”. Nie trzeba go nigdzie wgrywać. Hero jest bez zdjęcia.
+- **photoUrl**: jeśli chcesz inne zdjęcie, wejdź w Media → Biblioteka → wybierz zdjęcie → „Kopiuj adres URL do schowka” i wklej między cudzysłowy. Adres musi zaczynać się od `https://` albo `/`. Najlepiej zdjęcie pionowe (4:5) z twarzą w górnej części kadru.
 - **platnosc**: link do płatności online, otwierany przez przyciski „Kupuję i przechodzę do płatności”. Musi zaczynać się od `https://`. Pusty cudzysłów `""` usuwa te przyciski ze strony, np. gdy sprzedaż online jest zamknięta.
 - **stickyBar**: `false` wyłącza pływający pasek z ceną i przyciskiem.
 
@@ -123,7 +122,7 @@ Pływający pasek, pasek na górze i przyciski w środku strony prowadzą tylko 
 
 ## Wygląd
 
-Strona ma białe tło, czarne sekcje i żółte akcenty, bez beżu. Całość używa jednego prostego kroju: **Inter**. Czarne są: hero z paskiem klientów, opinie, pytania z sali i sekcja końcowa. W białych sekcjach kafelki są białe z ramką, szare, czarne albo żółte. Żółte są przyciski „Zapisuję się”, pasek z terminem na górze, plakietki nad nagłówkami i kilka kafelków. Wyróżnione słowa w nagłówkach mają na białym tle żółte zakreślenie, a na czarnym są żółte z cienkim podkreśleniem.
+Strona ma białe tło, czarne sekcje i żółte akcenty, bez beżu. Całość używa jednego prostego kroju: **Inter**. Hero jest białe, bez zdjęcia: nagłówek po lewej, opis i przyciski po prawej. Czarne są: opinie, pytania z sali i sekcja końcowa. W białych sekcjach kafelki są białe z ramką, szare, czarne albo żółte. Żółte są przyciski „Zapisuję się”, pasek z terminem na górze, plakietki nad nagłówkami i kilka kafelków. Wyróżnione słowa w nagłówkach mają na białym tle żółte zakreślenie, a na czarnym są żółte z cienkim podkreśleniem.
 
 Kolejność sekcji: pasek z terminem → hero → klienci (przewijana taśma) → dla kogo i o szkoleniu → puenta „Nie jak napisać prompt” → opinie → program (4 moduły) → po szkoleniu i dalsza ścieżka → pytania z sali → prowadząca → cena z formularzem zgłoszenia → dla firm i kontakt → FAQ w dwóch kolumnach → finał.
 
