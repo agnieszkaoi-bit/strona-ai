@@ -51,7 +51,7 @@ window.AIOL_CONFIG = {
 };
 ```
 
-- **termin**: wpisz datę i godzinę edycji. Pojawi się w podsumowaniu obok formularza i w mailu ze zgłoszeniem. Puste pole = bez terminu.
+- **termin**: wpisz datę i godzinę edycji. Pojawi się w żółtym pasku na górze, w podsumowaniu obok formularza i w mailu ze zgłoszeniem. Puste pole = bez terminu.
 - **photoUrl**: Media → Biblioteka → wybierz zdjęcie → „Kopiuj adres URL do schowka” i wklej między cudzysłowy. Najlepiej zdjęcie pionowe (4:5). Bez zdjęcia w tym miejscu wyświetlają się inicjały „AK”.
 - **stickyBar**: `false` wyłącza pływający pasek z ceną i przyciskiem.
 
@@ -68,7 +68,7 @@ Wszystkie przyciski **„Zapisuję się”** przewijają stronę do formularza.
 
 ## Kolory i krój pisma
 
-Cała strona jest na białym tle i używa jednego prostego kroju: **Inter**.
+Cała strona jest na białym tle i używa jednego prostego kroju: **Inter**. Kolejność sekcji i skala pisma są wzorowane na stronie kursu „4 warstwy prezentacji + AI”: żółty pasek → hero → klienci → dla kogo → problem → puenta → opinie → program → po szkoleniu → dalsza ścieżka → pytania z sali → prowadząca → cena → formularz → dla firm → FAQ → finał.
 
 | Zmienna | Do czego | Wartość |
 |---|---|---|
@@ -89,7 +89,7 @@ Cała strona jest na białym tle i używa jednego prostego kroju: **Inter**.
 
 Do `dataLayer` (Google Tag Manager) trafiają dwa zdarzenia:
 
-- `aiol_cta_click`: kliknięcie „Zapisuję się”, z parametrem `cta_location` (`hero`, `efekty`, `cena`, `final`, `pasek`),
+- `aiol_cta_click`: kliknięcie „Zapisuję się”, z parametrem `cta_location` (`pasek-gora`, `hero`, `opinie`, `program`, `efekty`, `cena`, `final`, `pasek`),
 - `aiol_zgloszenie`: wysłane zgłoszenie, z parametrem `liczba_osob`. Ustaw je w GA4 jako konwersję.
 
 ## Gdyby coś nie działało
