@@ -1,6 +1,6 @@
 <!-- =====================================================================
-  AIOfficeLab / 01 FUNDAMENT - landing page
-  Adres strony: https://www.officeinfluencers.pl/ai-w-biurze
+  AIOfficeLab / 02 SYSTEM - landing page
+  Adres strony: https://www.officeinfluencers.pl/ai-w-biurze-system/
 
   JAK UŻYĆ: skopiuj CAŁY ten plik i wklej do widżetu "HTML" w Elementorze.
   Szczegóły: plik INSTRUKCJA.md w tym samym folderze.
@@ -9,15 +9,20 @@
 <!-- ===================== USTAWIENIA (zmieniaj tylko tutaj) ===================== -->
 <script>
   window.AIOL_CONFIG = {
-    // Skrypt wysyłający zgłoszenie na office@officeinfluencers.pl (folder "formularz-aiol"
-    // na serwerze). Adres musi zaczynać się od "/", czyli być na tej samej stronie.
+    // Skrypt wysyłający zgłoszenie na office@officeinfluencers.pl (ten sam folder
+    // "formularz-aiol" co dla FUNDAMENTU). Adres musi zaczynać się od "/".
     formularz: "/formularz-aiol/formularz.php",
 
-    // Link do płatności online (musi zaczynać się od https://). Puste "" = bez przycisków płatności.
-    platnosc: "https://easl.ink/XD2bl",
+    // Link do płatności online za SYSTEM (musi zaczynać się od https://).
+    // Puste "" = bez przycisków "Kupuję i przechodzę do płatności".
+    platnosc: "",
 
-    // Termin szkolenia widoczny na stronie i w mailu ze zgłoszeniem. Puste "" = bez terminu.
-    termin: "czwartek, 5 listopada 2026, godz. 10.00–12.00",
+    // Terminy trzech spotkań: widoczne na stronie i w mailu ze zgłoszeniem.
+    // Kafelki w sekcji "Terminy" zmieniasz osobno, w treści strony.
+    termin: "24 listopada, 3 i 9 grudnia 2026, godz. 10.00–12.00",
+
+    // Termin spotkania follow-up. Puste "" = bez follow-upu w podsumowaniu.
+    followUp: "14 stycznia 2027, godz. 10.00–12.00",
 
     // Zdjęcie prowadzącej w sekcji "Prowadząca" jest wbudowane w stronę. Inne zdjęcie: adres
     // z Biblioteki mediów WordPressa (https://... albo /wp-content/...). Puste "" = wbudowane.
@@ -536,13 +541,45 @@
   #aiol details::details-content { block-size: 0; overflow: clip; transition: block-size .35s var(--aiol-ease), content-visibility .35s allow-discrete; }
   #aiol details[open]::details-content { block-size: auto; }
 }
+
+/* ---------- SYSTEM: dodatki ---------- */
+#aiol .aiol-nw { white-space: nowrap; }
+/* Na telefonie pasek górny bez terminów: są tuż niżej, w hero */
+@media (max-width: 600px) { #aiol .aiol-bar [data-aiol-bar-termin] { display: none; } }
+#aiol .aiol-tile .aiol-list + .aiol-tile__p { margin-top: 16px; }
+#aiol .aiol-start__list { margin-top: 14px; }
+#aiol .aiol-module__note { margin-top: 14px; font-size: 15.5px; line-height: 1.55; color: var(--aiol-muted); }
+@media (min-width: 1024px) { #aiol .aiol-list--cols4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+/* Sześć kroków po spotkaniu */
+@media (min-width: 768px) { #aiol .aiol-chain--6 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { #aiol .aiol-chain--6 { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+/* Terminy spotkań */
+#aiol .aiol-session { display: flex; flex-direction: column; }
+@media (min-width: 700px) { #aiol .aiol-session { min-height: 220px; } }
+#aiol .aiol-session__label { margin-bottom: auto; padding-bottom: 20px; font-size: 15px; font-weight: 500; color: var(--aiol-hi); }
+#aiol .aiol-session__day { font-size: clamp(56px, 5.4vw, 76px); font-weight: 300; line-height: 1; letter-spacing: -.04em; color: var(--aiol-ink); font-variant-numeric: tabular-nums; }
+#aiol .aiol-session__month { margin-top: 8px; font-size: 19px; font-weight: 500; line-height: 1.3; color: var(--aiol-ink); }
+#aiol .aiol-session__meta { margin-top: 2px; font-size: 15.5px; line-height: 1.4; color: var(--aiol-muted); }
+#aiol .aiol-tile--yellow .aiol-session__label, #aiol .aiol-tile--yellow .aiol-session__day,
+#aiol .aiol-tile--yellow .aiol-session__month, #aiol .aiol-tile--yellow .aiol-session__meta { color: var(--aiol-on-yellow); }
+#aiol .aiol-session__note { max-width: 860px; font-size: 17px; line-height: 1.6; }
+/* Materiały w cenie */
+#aiol .aiol-materials { margin-top: 16px; }
+/* Ścieżka: trzy poziomy, bieżący na żółto */
+@media (min-width: 768px) { #aiol .aiol-path--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+#aiol .aiol-step--here { background: var(--aiol-cta); }
+#aiol .aiol-step--here .aiol-step__tag, #aiol .aiol-step--here .aiol-step__code,
+#aiol .aiol-step--here .aiol-step__name, #aiol .aiol-step--here .aiol-step__q { color: var(--aiol-on-yellow); }
+/* Lista w odpowiedzi FAQ */
+#aiol .aiol-qa__a .aiol-list { margin-top: 8px; }
+#aiol .aiol-qa__a .aiol-list li + li { margin-top: 4px; }
 </style>
 
 <div id="aiol" lang="pl">
 
   <!-- ===================== PASEK GÓRNY ===================== -->
   <div class="aiol-bar" role="note">
-    <span><strong>AIOfficeLab / 01 FUNDAMENT</strong> · 2 godziny online LIVE · 290 zł netto + VAT<span data-aiol-bar-termin hidden></span></span>
+    <span><strong>AIOfficeLab / 02 SYSTEM</strong> · 3&nbsp;×&nbsp;2&nbsp;godziny online LIVE · 1190&nbsp;zł netto + VAT<span data-aiol-bar-termin hidden></span></span>
     <a class="aiol-bar__link" href="#aiol-formularz" data-aiol-cta="pasek-gora">Zapisuję się</a>
   </div>
   <div class="aiol-progress" aria-hidden="true"><span data-aiol-progress></span></div>
@@ -552,28 +589,28 @@
     <div class="aiol-wrap aiol-hero__grid">
       <div>
         <p class="aiol-eyebrow" data-r>Szkolenie online LIVE</p>
-        <p class="aiol-hero__name" data-r>AIOfficeLab / 01 <b>FUNDAMENT</b></p>
-        <h1 class="aiol-h1" id="aiol-h1" data-r>Bezpieczna i&nbsp;skuteczna praca z&nbsp;<span class="aiol-mark">AI w&nbsp;biurze</span></h1>
+        <p class="aiol-hero__name" data-r>AIOfficeLab / 02 <b>SYSTEM</b></p>
+        <h1 class="aiol-h1" id="aiol-h1" data-r>AI w&nbsp;zarządzaniu informacją, projektami i <span class="aiol-mark">codzienną pracą</span></h1>
       </div>
       <div>
-        <p class="aiol-hero__lead" data-r>AIOfficeLab FUNDAMENT to praktyczne szkolenie z&nbsp;AI przygotowane dla działów administracji biurowej: asystentek i&nbsp;asystentów, office managerów, sekretariatów, biur zarządu i&nbsp;zespołów wsparcia administracyjnego.</p>
+        <p class="aiol-hero__lead" data-r>AIOfficeLab SYSTEM to szkolenie dla Executive Assistants, Asystentek Zarządu, Office Managerów i&nbsp;osób pracujących w&nbsp;administracji, które korzystają już z&nbsp;AI i&nbsp;chcą wykorzystać je do zarządzania większą częścią swojej pracy.</p>
         <ul class="aiol-facts" data-r>
           <li data-aiol-termin-wiersz hidden><span data-aiol-termin></span></li>
-          <li>2&nbsp;godziny online LIVE</li>
-          <li>Poziom podstawowy</li>
-          <li>290&nbsp;zł netto + VAT</li>
+          <li data-aiol-followup-wiersz hidden><span class="aiol-nw">Follow-up</span>: <span data-aiol-followup></span></li>
+          <li>3&nbsp;×&nbsp;2&nbsp;godziny online LIVE</li>
+          <li>1190&nbsp;zł netto + VAT</li>
         </ul>
         <div class="aiol-hero__cta" data-r>
           <div class="aiol-btns">
             <a class="aiol-btn" href="#aiol-formularz" data-aiol-cta="hero">Zapisuję się</a>
-            <a class="aiol-btn aiol-btn--pay" href="https://easl.ink/XD2bl" data-aiol-pay="hero">Kupuję i&nbsp;przechodzę do płatności</a>
+            <a class="aiol-btn aiol-btn--pay" href="#aiol-formularz" data-aiol-pay="hero" hidden>Kupuję i&nbsp;przechodzę do płatności</a>
           </div>
-          <p class="aiol-hero__note">Nagranie przez 30&nbsp;dni, materiały i&nbsp;imienny certyfikat w&nbsp;cenie.</p>
+          <p class="aiol-hero__note">Nagrania przez 60&nbsp;dni, materiały wdrożeniowe, <span class="aiol-nw">follow-up</span> i&nbsp;imienny certyfikat w&nbsp;cenie.</p>
         </div>
         <ul class="aiol-nos" data-r>
-          <li>Bez technicznego języka</li>
-          <li>Bez programowania</li>
-          <li>Bez konieczności wcześniejszego doświadczenia z&nbsp;AI</li>
+          <li>Bez kolejnej listy promptów</li>
+          <li>Bez zaawansowanego Excela</li>
+          <li>Bez udostępniania dokumentów firmy</li>
         </ul>
       </div>
     </div>
@@ -585,76 +622,74 @@
       <p class="aiol-trust__label">Realizowałam projekty m.in. dla:</p>
       <div class="aiol-marquee">
         <ul class="aiol-marquee__track">
-          <li>Mercedes-Benz</li>
+          <li><span class="aiol-nw">Mercedes-Benz</span></li>
           <li>ABB</li>
           <li>Polska Akademia Nauk</li>
           <li>3M Poland</li>
           <li>Grupa Maspex</li>
           <li>ArcelorMittal</li>
-          <li>T-Mobile</li>
+          <li><span class="aiol-nw">T-Mobile</span></li>
           <li>PGNiG</li>
-          <li class="aiol-marquee__dup" aria-hidden="true">Mercedes-Benz</li>
+          <li class="aiol-marquee__dup" aria-hidden="true"><span class="aiol-nw">Mercedes-Benz</span></li>
           <li class="aiol-marquee__dup" aria-hidden="true">ABB</li>
           <li class="aiol-marquee__dup" aria-hidden="true">Polska Akademia Nauk</li>
           <li class="aiol-marquee__dup" aria-hidden="true">3M Poland</li>
           <li class="aiol-marquee__dup" aria-hidden="true">Grupa Maspex</li>
           <li class="aiol-marquee__dup" aria-hidden="true">ArcelorMittal</li>
-          <li class="aiol-marquee__dup" aria-hidden="true">T-Mobile</li>
+          <li class="aiol-marquee__dup" aria-hidden="true"><span class="aiol-nw">T-Mobile</span></li>
           <li class="aiol-marquee__dup" aria-hidden="true">PGNiG</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- ===================== DLA KOGO + O SZKOLENIU (kafelki) ===================== -->
+  <!-- ===================== DLA KOGO (kafelki) ===================== -->
   <section class="aiol-sec" id="aiol-o-szkoleniu" aria-labelledby="aiol-h-who">
     <div class="aiol-wrap aiol-bento">
       <div class="aiol-tile s-8 t-2" data-r>
         <p class="aiol-eyebrow">Dla kogo?</p>
-        <h2 class="aiol-tile__title aiol-tile__title--lg" id="aiol-h-who">Dla działów administracji biurowej, które chcą korzystać z&nbsp;AI <span class="aiol-accent">świadomie i&nbsp;bezpiecznie</span></h2>
-        <p class="aiol-who__label">Szkolenie jest przeznaczone wyłącznie dla pracowników działów administracji biurowej, w&nbsp;szczególności dla:</p>
+        <h2 class="aiol-tile__title aiol-tile__title--lg" id="aiol-h-who">Dla osób, które korzystają już z&nbsp;AI i&nbsp;chcą wykorzystać je <span class="aiol-accent">do&nbsp;zarządzania swoją pracą</span></h2>
+        <p class="aiol-who__label">Program przygotowaliśmy przede wszystkim dla:</p>
         <ul class="aiol-chips">
-          <li>asystentek i&nbsp;asystentów</li>
-          <li>office managerów</li>
-          <li>sekretariatów</li>
+          <li>Executive Assistants</li>
+          <li>Asystentek Zarządu</li>
+          <li>Office Managerów</li>
+          <li>osób pracujących w&nbsp;administracji</li>
           <li>biur zarządu</li>
-          <li>zespołów wsparcia administracyjnego</li>
+          <li>osób koordynujących wiele projektów, informacji i&nbsp;terminów jednocześnie</li>
         </ul>
       </div>
 
       <div class="aiol-tile aiol-tile--yellow aiol-tile--end s-4" data-r>
         <div>
-          <p class="aiol-tile__kicker">Poziom podstawowy</p>
-          <p class="aiol-tile__big">Nie musisz mieć wcześniejszego doświadczenia z&nbsp;AI.</p>
+          <p class="aiol-tile__kicker">Poziom 02</p>
+          <p class="aiol-tile__big">Nie jest to kurs od zera.</p>
         </div>
       </div>
 
       <div class="aiol-tile aiol-tile--soft s-7" data-r>
-        <p class="aiol-eyebrow">O&nbsp;szkoleniu</p>
-        <h2 class="aiol-h2 aiol-h2--xl">AI jest już częścią <span class="aiol-accent">pracy biurowej</span>.</h2>
-        <p class="aiol-prob__lead">Pytanie nie brzmi więc: „czy z&nbsp;niego korzystać?”, ale: <b>jak robić to dobrze, bezpiecznie i&nbsp;z&nbsp;realnym pożytkiem dla swojej pracy?</b></p>
+        <p class="aiol-eyebrow">Na start</p>
+        <h3 class="aiol-tile__title">Co warto umieć przed szkoleniem?</h3>
+        <ul class="aiol-list aiol-start__list">
+          <li>korzystać z&nbsp;AI w&nbsp;codziennej pracy</li>
+          <li>znać podstawy bezpieczeństwa</li>
+          <li>przekazać modelowi zadanie wraz z&nbsp;odpowiednim kontekstem</li>
+        </ul>
+        <p class="aiol-tile__p">Dopiero zaczynasz? Rekomendowanym pierwszym krokiem jest <a class="aiol-link" href="https://www.officeinfluencers.pl/ai-w-biurze/">AIOfficeLab / 01 FUNDAMENT</a>.</p>
       </div>
 
       <div class="aiol-tile aiol-dark aiol-tile--end s-5 t-2" data-r>
-        <p class="aiol-tile__big"><strong>AIOfficeLab FUNDAMENT</strong> to dwugodzinne szkolenie dla osób pracujących w&nbsp;administracji biurowej, które chcą uporządkować podstawy i&nbsp;zobaczyć, jak wykorzystywać AI do pracy z&nbsp;informacją, dokumentami i&nbsp;codziennymi zadaniami.</p>
-      </div>
-
-      <div class="aiol-tile aiol-tile--soft s-12 t-2" data-r>
-        <ul class="aiol-nos3">
-          <li>Bez technicznego języka.</li>
-          <li>Bez przeglądu dziesiątek narzędzi.</li>
-          <li>Bez uczenia się sztuczek i&nbsp;„magicznych promptów”.</li>
-        </ul>
+        <p class="aiol-tile__big"><strong>Nie musisz wcześniej ukończyć FUNDAMENTU.</strong> Liczą się kompetencje, nie certyfikat z&nbsp;poprzedniego poziomu.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===================== ZADANIE, NIE PROMPT ===================== -->
+  <!-- ===================== SYSTEM, NIE PROMPTY ===================== -->
   <section class="aiol-sec" id="aiol-podejscie" aria-labelledby="aiol-h-task">
     <div class="aiol-wrap">
       <div class="aiol-punch__box aiol-dark" data-r>
-        <h2 class="aiol-punch__text" id="aiol-h-task">Nie „jak napisać prompt”.<br><span class="aiol-mark">Tylko: jak rozwiązać zadanie.</span></h2>
-        <p class="aiol-punch__sub">To szkolenie nie jest kursem obsługi jednego programu. <strong>Najpierw jest Twoje zadanie.</strong> Dopiero potem wybieramy sposób, w&nbsp;jaki AI może Ci pomóc je wykonać szybciej, lepiej lub bardziej systematycznie.</p>
+        <h2 class="aiol-punch__text" id="aiol-h-task">To nie jest kurs do tworzenia kolejnych promptów.<br><span class="aiol-mark">To program budowania systemu pracy wspieranego przez AI.</span></h2>
+        <p class="aiol-punch__sub">Punktem wyjścia są realne procesy pracy: briefing, kontrola projektów, dashboard, wyszukiwanie rozproszonych informacji, spotkania, <span class="aiol-nw">follow-up</span> i&nbsp;monitoring. <strong>AI jest narzędziem służącym do zbudowania lepszego systemu pracy.</strong></p>
       </div>
     </div>
   </section>
@@ -697,11 +732,11 @@
       <div class="aiol-head aiol-head--stack">
         <div data-r>
           <p class="aiol-eyebrow">Program</p>
-          <h2 class="aiol-h2" id="aiol-h-program">Czego nauczysz się w&nbsp;<span class="aiol-mark">2&nbsp;godziny?</span></h2>
+          <h2 class="aiol-h2" id="aiol-h-program">Czego nauczysz się na <span class="aiol-mark">3&nbsp;spotkaniach?</span></h2>
         </div>
         <div class="aiol-head__side" data-r>
-          <p>W&nbsp;ciągu 2 godzin dowiesz się, jak bezpiecznie i&nbsp;skutecznie korzystać z&nbsp;ChatGPT, Microsoft Copilot, Claude i&nbsp;Gemini w&nbsp;codziennej pracy. Nauczysz się przekazywać AI właściwy kontekst, pracować z&nbsp;dokumentami i&nbsp;większą ilością informacji, wykonywać research, porównywać dane oraz zamieniać nieuporządkowane materiały w&nbsp;podsumowania, tabele, checklisty i&nbsp;plany działania.</p>
-          <p>Poznasz również ograniczenia AI, zasady ochrony danych firmowych oraz sposoby ograniczania halucynacji i&nbsp;weryfikowania odpowiedzi.</p>
+          <p>Program pokazuje, jak za pomocą AI przygotować dzienny briefing dla siebie i&nbsp;przełożonego, kontrolować stan projektów, tworzyć dashboardy, identyfikować opóźnienia, ryzyka i&nbsp;blokery oraz odnajdować informacje rozproszone w&nbsp;<span class="aiol-nw">e-mailach</span>, dokumentach, notatkach, spotkaniach i&nbsp;innych kanałach komunikacji.</p>
+          <p>Nauczysz się także przekładać spotkania na decyzje, zadania, odpowiedzialności, terminy i&nbsp;<span class="aiol-nw">follow-up</span> oraz rozpoznawać procesy, które warto automatyzować.</p>
         </div>
       </div>
 
@@ -710,13 +745,11 @@
           <div class="aiol-module__top">
             <span class="aiol-module__num"><span class="aiol-sr">Moduł </span>01</span>
           </div>
-          <h3>AI bez mitów</h3>
-          <p class="aiol-module__intro">Dowiesz się:</p>
+          <h3>Briefing dla siebie i&nbsp;przełożonego</h3>
+          <p class="aiol-module__intro">Zobaczysz, jak z&nbsp;pomocą AI przygotować:</p>
           <ul class="aiol-list">
-            <li>co współczesne AI rzeczywiście potrafi</li>
-            <li>czego nie należy mu powierzać</li>
-            <li>czym w&nbsp;praktyce różnią się ChatGPT, Copilot, Claude i&nbsp;Gemini</li>
-            <li>kiedy AI pomoże, a&nbsp;kiedy lepiej wybrać inne narzędzie</li>
+            <li>poranny briefing: priorytety, terminy, sprawy oczekujące, spotkania wymagające przygotowania i&nbsp;kwestie wymagające reakcji</li>
+            <li>krótkie podsumowanie dla Executive: co się zmieniło, co wymaga decyzji, jakie są najważniejsze ryzyka i&nbsp;gdzie potrzebna jest reakcja</li>
           </ul>
         </article>
 
@@ -724,54 +757,82 @@
           <div class="aiol-module__top">
             <span class="aiol-module__num"><span class="aiol-sr">Moduł </span>02</span>
           </div>
-          <h3>Bezpieczeństwo i&nbsp;wiarygodność</h3>
-          <p class="aiol-module__intro">Zobaczysz:</p>
+          <h3>Informacje rozproszone w&nbsp;wielu miejscach</h3>
+          <p class="aiol-module__intro">Dowiesz się:</p>
           <ul class="aiol-list">
-            <li>jakich danych nie należy przekazywać do AI</li>
-            <li>na co zwracać uwagę przy korzystaniu z&nbsp;narzędzi firmowych i&nbsp;publicznych</li>
-            <li>czym są halucynacje AI</li>
-            <li>jak sprawdzać odpowiedzi</li>
-            <li>jak wymagać źródeł i&nbsp;weryfikować informacje</li>
+            <li>jak AI pomaga łączyć informacje o&nbsp;jednym temacie z&nbsp;różnych dokumentów, wiadomości, notatek i&nbsp;systemów</li>
+            <li>jak pracować z&nbsp;informacją w&nbsp;środowiskach biurowych i&nbsp;łączyć kontekst</li>
+            <li>czym różnią się możliwości modelu od możliwości konkretnej integracji i&nbsp;licencji</li>
           </ul>
+        </article>
+
+        <article class="aiol-tile aiol-tile--soft aiol-module s-12 t-2" data-r>
+          <div class="aiol-module__top">
+            <span class="aiol-module__num"><span class="aiol-sr">Moduł </span>03</span>
+          </div>
+          <h3>Projekty i&nbsp;dashboardy</h3>
+          <p class="aiol-module__intro">Poznasz strukturę dashboardu i&nbsp;zobaczysz, jak wykorzystać AI do analizy statusów projektów, m.in.:</p>
+          <ul class="aiol-list aiol-list--cols aiol-list--cols4">
+            <li>status projektu</li>
+            <li>terminy</li>
+            <li>opóźnienia</li>
+            <li>blokery</li>
+            <li>brakujące decyzje</li>
+            <li>kolejne kroki</li>
+            <li>odpowiedzialności</li>
+            <li>sprawy wymagające eskalacji</li>
+          </ul>
+          <p class="aiol-module__note">Otrzymasz szablon dashboardu, który dostosujesz do własnej pracy. Nie potrzebujesz zaawansowanej znajomości Excela.</p>
         </article>
 
         <article class="aiol-tile aiol-module s-12 t-2" data-r>
           <div class="aiol-module__top">
-            <span class="aiol-module__num"><span class="aiol-sr">Moduł </span>03</span>
+            <span class="aiol-module__num"><span class="aiol-sr">Moduł </span>04</span>
           </div>
-          <h3>Jak skutecznie zlecać zadania AI</h3>
-          <p class="aiol-module__intro"><strong>Nie potrzebujesz skomplikowanych formuł promptowych.</strong> Poznasz prosty sposób przekazywania AI:</p>
-          <ol class="aiol-chain" aria-label="Sposób przekazywania zadania AI">
-            <li><span class="aiol-chain__n">01</span>kontekst</li>
-            <li><span class="aiol-chain__n">02</span>zadanie</li>
-            <li><span class="aiol-chain__n">03</span>materiał</li>
-            <li><span class="aiol-chain__n">04</span>wymagania</li>
-            <li><span class="aiol-chain__n">05</span>oczekiwany rezultat</li>
+          <h3>Spotkania i&nbsp;<span class="aiol-nw">follow-up</span></h3>
+          <p class="aiol-module__intro"><strong>Transkrypcja nie jest głównym tematem.</strong> Interesuje nas przede wszystkim to, co dzieje się po spotkaniu:</p>
+          <ol class="aiol-chain aiol-chain--6" aria-label="Co dzieje się po spotkaniu">
+            <li><span class="aiol-chain__n">01</span>decyzje</li>
+            <li><span class="aiol-chain__n">02</span>zadania</li>
+            <li><span class="aiol-chain__n">03</span>odpowiedzialni</li>
+            <li><span class="aiol-chain__n">04</span>terminy</li>
+            <li><span class="aiol-chain__n">05</span><span class="aiol-nw">follow-up</span></li>
+            <li><span class="aiol-chain__n">06</span>kontrola realizacji</li>
           </ol>
         </article>
 
-        <article class="aiol-tile aiol-tile--soft aiol-module s-8 t-2" data-r>
+        <article class="aiol-tile aiol-module s-4" data-r>
           <div class="aiol-module__top">
-            <span class="aiol-module__num"><span class="aiol-sr">Moduł </span>04</span>
+            <span class="aiol-module__num"><span class="aiol-sr">Moduł </span>05</span>
           </div>
-          <h3>AI w&nbsp;realnej pracy biurowej</h3>
-          <p class="aiol-module__intro">Na konkretnych przykładach zobaczysz, jak wykorzystać AI do:</p>
-          <ul class="aiol-list aiol-list--cols">
-            <li>analizy długiego dokumentu</li>
-            <li>wyszukania najważniejszych informacji</li>
-            <li>streszczenia materiału</li>
-            <li>wydobycia decyzji, zadań i&nbsp;terminów</li>
-            <li>porównania kilku ofert lub rozwiązań</li>
-            <li>przygotowania researchu</li>
-            <li>uporządkowania chaotycznych informacji</li>
-            <li>zamiany materiału w&nbsp;tabelę, checklistę, plan lub rekomendację</li>
+          <h3>Procesy do automatyzacji</h3>
+          <p class="aiol-module__intro">Nauczysz się:</p>
+          <ul class="aiol-list">
+            <li>rozpoznawać procesy, które warto automatyzować</li>
+            <li>projektować ich podstawowy przepływ</li>
+            <li>określać, gdzie potrzebna jest kontrola człowieka</li>
           </ul>
+          <p class="aiol-module__note">Narzędzie, np. Power Automate, Make czy Zapier, wybiera się dopiero potem.</p>
+        </article>
+
+        <article class="aiol-tile aiol-module s-4" data-r>
+          <div class="aiol-module__top">
+            <span class="aiol-module__num"><span class="aiol-sr">Moduł </span>06</span>
+          </div>
+          <h3>Bezpieczeństwo przy pracy z&nbsp;wieloma źródłami</h3>
+          <p class="aiol-module__intro">Szczególnie ważne są:</p>
+          <ul class="aiol-list">
+            <li>uprawnienia</li>
+            <li>zasady dostępu do informacji</li>
+            <li>polityka AI obowiązująca w&nbsp;organizacji</li>
+          </ul>
+          <p class="aiol-module__note">Program nie zachęca do obchodzenia zabezpieczeń ani przekazywania danych do narzędzi, których firma nie zatwierdziła.</p>
         </article>
 
         <div class="aiol-tile aiol-dark aiol-tile--col s-4 t-2" data-r>
           <div>
-            <p class="aiol-tile__kicker">4 moduły · 2&nbsp;godziny online LIVE</p>
-            <p class="aiol-tile__big">Nagranie przez 30&nbsp;dni, materiały szkoleniowe i&nbsp;imienny certyfikat w&nbsp;cenie.</p>
+            <p class="aiol-tile__kicker">6&nbsp;modułów · 3&nbsp;×&nbsp;2&nbsp;godziny online LIVE</p>
+            <p class="aiol-tile__big">Nagrania przez 60&nbsp;dni, materiały wdrożeniowe, <span class="aiol-nw">follow-up</span> i&nbsp;imienny certyfikat w&nbsp;cenie.</p>
           </div>
           <a class="aiol-btn aiol-btn--block" href="#aiol-formularz" data-aiol-cta="program">Zapisuję się</a>
         </div>
@@ -779,64 +840,120 @@
     </div>
   </section>
 
-  <!-- ===================== PO SZKOLENIU + DALSZA ŚCIEŻKA ===================== -->
+  <!-- ===================== TERMINY ===================== -->
+  <section class="aiol-sec" id="aiol-terminy" aria-labelledby="aiol-h-dates">
+    <div class="aiol-wrap">
+      <div class="aiol-head aiol-head--split">
+        <div data-r>
+          <p class="aiol-eyebrow">Terminy</p>
+          <h2 class="aiol-h2" id="aiol-h-dates">3&nbsp;spotkania i <span class="aiol-mark"><span class="aiol-nw">follow-up</span></span></h2>
+        </div>
+        <div class="aiol-head__side" data-r>
+          <p>Wszystkie spotkania odbywają się online LIVE w&nbsp;godz.&nbsp;10.00–12.00. Nagrania są dostępne przez 60&nbsp;dni.</p>
+        </div>
+      </div>
+
+      <div class="aiol-bento">
+        <div class="aiol-tile aiol-session s-3" data-r>
+          <p class="aiol-session__label">Spotkanie 1</p>
+          <p class="aiol-session__day"><time datetime="2026-11-24T10:00+01:00">24</time></p>
+          <p class="aiol-session__month">listopada 2026</p>
+          <p class="aiol-session__meta">wtorek, 10.00–12.00</p>
+        </div>
+        <div class="aiol-tile aiol-session s-3" data-r>
+          <p class="aiol-session__label">Spotkanie 2</p>
+          <p class="aiol-session__day"><time datetime="2026-12-03T10:00+01:00">3</time></p>
+          <p class="aiol-session__month">grudnia 2026</p>
+          <p class="aiol-session__meta">czwartek, 10.00–12.00</p>
+        </div>
+        <div class="aiol-tile aiol-session s-3" data-r>
+          <p class="aiol-session__label">Spotkanie 3</p>
+          <p class="aiol-session__day"><time datetime="2026-12-09T10:00+01:00">9</time></p>
+          <p class="aiol-session__month">grudnia 2026</p>
+          <p class="aiol-session__meta">środa, 10.00–12.00</p>
+        </div>
+        <div class="aiol-tile aiol-tile--yellow aiol-session s-3" data-r>
+          <p class="aiol-session__label"><span class="aiol-nw">Follow-up</span></p>
+          <p class="aiol-session__day"><time datetime="2027-01-14T10:00+01:00">14</time></p>
+          <p class="aiol-session__month">stycznia 2027</p>
+          <p class="aiol-session__meta">czwartek, 10.00–12.00</p>
+        </div>
+        <div class="aiol-tile aiol-tile--soft s-12 t-2" data-r>
+          <p class="aiol-session__note"><strong>Grupowy <span class="aiol-nw">follow-up</span> online po około 30&nbsp;dniach jest w&nbsp;cenie.</strong> Omawiamy na nim doświadczenia z&nbsp;wdrożenia i&nbsp;problemy, które pojawiły się już w&nbsp;realnej pracy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PO SZKOLENIU + MATERIAŁY + ŚCIEŻKA ===================== -->
   <section class="aiol-sec" id="aiol-efekty" aria-labelledby="aiol-h-outcomes">
     <div class="aiol-wrap">
       <div class="aiol-head" data-r>
         <p class="aiol-eyebrow">Po szkoleniu</p>
-        <h2 class="aiol-h2" id="aiol-h-outcomes">Będziesz wiedzieć:</h2>
+        <h2 class="aiol-h2" id="aiol-h-outcomes">Będziesz umieć:</h2>
       </div>
 
       <div class="aiol-bento">
         <div class="aiol-tile aiol-outcome s-3" data-r>
           <span class="aiol-outcome__n" aria-hidden="true">01</span>
-          <p>co możesz zlecić AI</p>
+          <p>przygotować poranny briefing dla siebie i&nbsp;przełożonego</p>
         </div>
         <div class="aiol-tile aiol-outcome s-3" data-r>
           <span class="aiol-outcome__n" aria-hidden="true">02</span>
-          <p>czego mu nie powierzać</p>
+          <p>kontrolować stan projektów i&nbsp;wychwytywać opóźnienia, ryzyka i&nbsp;blokery</p>
         </div>
         <div class="aiol-tile aiol-outcome s-3" data-r>
           <span class="aiol-outcome__n" aria-hidden="true">03</span>
-          <p>jak przekazać mu zadanie</p>
+          <p>odnajdować informacje rozproszone w&nbsp;<span class="aiol-nw">e-mailach</span>, dokumentach i&nbsp;notatkach</p>
         </div>
         <div class="aiol-tile aiol-outcome s-3" data-r>
           <span class="aiol-outcome__n" aria-hidden="true">04</span>
-          <p>jak sprawdzić rezultat, zanim wykorzystasz go w&nbsp;pracy</p>
+          <p>przekładać spotkania na decyzje, zadania, terminy i&nbsp;<span class="aiol-nw">follow-up</span></p>
         </div>
 
         <div class="aiol-tile aiol-dark aiol-tile--col s-5 t-2" data-r>
-          <p class="aiol-tile__big aiol-tile__big--xl">To fundament, na którym można bezpiecznie budować dalsze kompetencje.</p>
+          <p class="aiol-tile__big aiol-tile__big--xl">Rozpoznasz też procesy, które warto automatyzować, i&nbsp;określisz, gdzie potrzebna jest kontrola człowieka.</p>
           <a class="aiol-btn" href="#aiol-formularz" data-aiol-cta="efekty">Zapisuję się</a>
         </div>
 
         <div class="aiol-tile s-7 t-2" data-r>
+          <p class="aiol-eyebrow">W&nbsp;cenie</p>
+          <h3 class="aiol-tile__title">Materiały do wdrożenia</h3>
+          <ul class="aiol-list aiol-list--cols aiol-materials">
+            <li>workbook wdrożeniowy</li>
+            <li>szablon porannego briefingu</li>
+            <li>szablon briefingu dla przełożonego</li>
+            <li>szablon dashboardu projektów</li>
+            <li>struktura raportu statusowego</li>
+            <li>schemat pracy z&nbsp;informacją z&nbsp;wielu źródeł</li>
+            <li>model spotkanie → decyzje → zadania → <span class="aiol-nw">follow-up</span></li>
+            <li>checklista procesów do automatyzacji</li>
+          </ul>
+        </div>
+
+        <div class="aiol-tile s-12 t-2" data-r>
           <p class="aiol-eyebrow">Ścieżka AIOfficeLab</p>
-          <h3 class="aiol-tile__title">Chcesz pójść dalej?</h3>
-          <p class="aiol-tile__p">Poziom FUNDAMENT uczy skutecznie korzystać z&nbsp;AI. Kolejny etap to AIOfficeLab / 02 SYSTEM.</p>
-          <div class="aiol-path">
+          <h3 class="aiol-tile__title">Gdzie jest SYSTEM?</h3>
+          <div class="aiol-path aiol-path--3">
             <div class="aiol-step">
-              <span class="aiol-step__tag">Ten poziom</span>
+              <span class="aiol-step__tag">Pierwszy krok</span>
               <p class="aiol-step__code">AIOfficeLab / 01</p>
               <h4 class="aiol-step__name">FUNDAMENT</h4>
               <p class="aiol-step__q">Jak prawidłowo pracować z&nbsp;AI?</p>
             </div>
-            <div class="aiol-step aiol-step--next">
-              <span class="aiol-step__tag">Kolejny etap</span>
+            <div class="aiol-step aiol-step--here">
+              <span class="aiol-step__tag">Ten poziom</span>
               <p class="aiol-step__code">AIOfficeLab / 02</p>
               <h4 class="aiol-step__name">SYSTEM</h4>
-              <p class="aiol-step__q">Jak wykorzystać AI do zarządzania informacją, projektami i&nbsp;codzienną pracą?</p>
+              <p class="aiol-step__q">Jak wykorzystać AI do zarządzania moją pracą?</p>
+            </div>
+            <div class="aiol-step aiol-step--next">
+              <span class="aiol-step__tag">Kolejny poziom</span>
+              <p class="aiol-step__code">AIOfficeLab / 03</p>
+              <h4 class="aiol-step__name">AUTONOMIA</h4>
+              <p class="aiol-step__q">Jak zaprojektować proces, który AI może wykonywać lub monitorować bez mojego każdorazowego polecenia?</p>
             </div>
           </div>
-          <p class="aiol-tile__p">Tam przechodzimy od pojedynczych zastosowań AI do zarządzania:</p>
-          <ul class="aiol-tags">
-            <li>informacją</li>
-            <li>briefingami</li>
-            <li>projektami</li>
-            <li>zadaniami</li>
-            <li>terminami</li>
-            <li>przepływem pracy</li>
-          </ul>
         </div>
       </div>
     </div>
@@ -852,27 +969,27 @@
 
       <div class="aiol-bento">
         <div class="aiol-tile aiol-qcard s-4" data-r>
-          <h3 class="aiol-qcard__q">„Czy muszę mieć płatną wersję ChatGPT, Copilota lub innego narzędzia?”</h3>
+          <h3 class="aiol-qcard__q">„Czy muszę znać Excel?”</h3>
           <div class="aiol-qcard__a">
-            <p>Nie jest to konieczne do uczestnictwa w&nbsp;poziomie FUNDAMENT.</p>
-            <p>Zakres poszczególnych funkcji może różnić się w&nbsp;zależności od posiadanej wersji i&nbsp;licencji, dlatego podczas szkolenia omawiane są również te różnice.</p>
+            <p>Nie jest potrzebna zaawansowana znajomość Excela.</p>
+            <p>Celem szkolenia nie jest nauka arkuszy kalkulacyjnych, lecz wykorzystanie danych o&nbsp;projektach do szybszego uzyskania obrazu sytuacji.</p>
           </div>
         </div>
 
         <div class="aiol-tile aiol-tile--yellow aiol-qcard s-4" data-r>
-          <h3 class="aiol-qcard__q">„Czy na szkoleniu będzie mowa o&nbsp;bezpieczeństwie danych i&nbsp;RODO?”</h3>
+          <h3 class="aiol-qcard__q">„Czy AI może znaleźć informacje rozproszone w&nbsp;wielu miejscach?”</h3>
           <div class="aiol-qcard__a">
-            <p>Tak. Bezpieczna praca z&nbsp;AI jest jednym z&nbsp;podstawowych elementów programu.</p>
-            <p>Dowiesz się, jakiego rodzaju informacji nie należy przekazywać do publicznych narzędzi AI, na co zwracać uwagę przy pracy z&nbsp;dokumentami firmowymi i&nbsp;dlaczego możliwość technicznego wgrania pliku nie oznacza automatycznie, że można to zrobić zgodnie z&nbsp;zasadami organizacji.</p>
-            <p class="aiol-qcard__note">Szkolenie ma charakter edukacyjny i&nbsp;nie zastępuje polityki bezpieczeństwa, decyzji działu IT ani indywidualnej analizy prawnej organizacji.</p>
+            <p>To jeden z&nbsp;kluczowych tematów programu.</p>
+            <p>Pokazujemy logikę pracy, w&nbsp;której AI pomaga łączyć informacje dotyczące jednego tematu pochodzące z&nbsp;różnych dokumentów, wiadomości, notatek i&nbsp;systemów.</p>
+            <p class="aiol-qcard__note">Rzeczywisty zakres takiego wyszukiwania zależy od środowiska firmy, dostępnych integracji, licencji i&nbsp;uprawnień użytkownika.</p>
           </div>
         </div>
 
         <div class="aiol-tile aiol-qcard s-4 t-2" data-r>
-          <h3 class="aiol-qcard__q">„Czy podczas szkolenia trzeba udostępniać dane lub dokumenty firmy?”</h3>
+          <h3 class="aiol-qcard__q">„Czy szkolenie zastępuje wdrożenie technologiczne?”</h3>
           <div class="aiol-qcard__a">
             <p>Nie.</p>
-            <p>Demonstracje mogą być prowadzone na neutralnych materiałach i&nbsp;przykładowych danych. Nie ma potrzeby udostępniania poufnych informacji firmy.</p>
+            <p>Szkolenie rozwija kompetencje uczestników i&nbsp;pokazuje możliwe rozwiązania. Konfiguracja firmowych integracji, uprawnień czy zaawansowanych automatyzacji może wymagać osobnego projektu wdrożeniowego oraz współpracy z&nbsp;IT.</p>
           </div>
         </div>
       </div>
@@ -905,7 +1022,7 @@
 
       <div class="aiol-tile aiol-tile--soft s-12 t-2" data-r>
         <ul class="aiol-facts4">
-          <li><span>Od ponad 25 lat rozwijam kompetencje osób pracujących w&nbsp;<strong>administracji, biurach zarządu i&nbsp;zespołach wsparcia</strong>. Przez moje szkolenia przeszło ponad 10&nbsp;000 osób.</span></li>
+          <li><span>Od ponad 25&nbsp;lat rozwijam kompetencje osób pracujących w <strong>administracji, biurach zarządu i&nbsp;zespołach wsparcia</strong>. Przez moje szkolenia przeszło ponad 10&nbsp;000&nbsp;osób.</span></li>
           <li><span>Jestem <strong>dyplomowanym trenerem biznesu, psychologiem społecznym SWPS</strong> oraz <strong>certyfikowaną Edukatorką AI CampusAI</strong>.</span></li>
           <li><span>Udzielałam eksperckich wywiadów m.in. dla <strong>TVN, TVP, Polsat i&nbsp;Polskiego Radia</strong>.</span></li>
           <li><span>Jestem <strong>prelegentką konferencji i&nbsp;kongresów branżowych</strong>.</span></li>
@@ -923,36 +1040,37 @@
           <h2 class="aiol-h2" id="aiol-h-price">Co otrzymujesz?</h2>
         </div>
         <div class="aiol-head__side" data-r>
-          <p>Zapisz się w&nbsp;jeden z&nbsp;dwóch sposobów: wypełnij formularz zgłoszenia albo kup udział od razu i&nbsp;przejdź do płatności online. Możesz też napisać na <a class="aiol-link" href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a>.</p>
+          <p>Wypełnij formularz zgłoszenia<span data-aiol-pay-box hidden> albo kup udział od razu i&nbsp;przejdź do płatności online</span>. Możesz też napisać na <a class="aiol-link" href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a>.</p>
         </div>
       </div>
 
       <div class="aiol-signup">
         <aside class="aiol-pricecard" aria-label="Cena i podsumowanie zgłoszenia" data-r>
           <div class="aiol-pricecard__top aiol-dark">
-            <p class="aiol-pricecard__name">AIOfficeLab / 01 <strong>FUNDAMENT</strong></p>
-            <p class="aiol-pricecard__amount"><span class="aiol-pricecard__value">290&nbsp;zł</span><span>netto + VAT za osobę</span></p>
-            <p class="aiol-pricecard__meta">2&nbsp;godziny online LIVE · poziom podstawowy</p>
-            <div data-aiol-pay-box>
-              <a class="aiol-btn aiol-btn--pay aiol-btn--block aiol-pricecard__pay" href="https://easl.ink/XD2bl" data-aiol-pay="cena">Kupuję i&nbsp;przechodzę do płatności</a>
+            <p class="aiol-pricecard__name">AIOfficeLab / 02 <strong>SYSTEM</strong></p>
+            <p class="aiol-pricecard__amount"><span class="aiol-pricecard__value">1190&nbsp;zł</span><span>netto + VAT za osobę</span></p>
+            <p class="aiol-pricecard__meta">3&nbsp;×&nbsp;2&nbsp;godziny online LIVE + <span class="aiol-nw">follow-up</span></p>
+            <div data-aiol-pay-box hidden>
+              <a class="aiol-btn aiol-btn--pay aiol-btn--block aiol-pricecard__pay" href="#aiol-formularz" data-aiol-pay="cena" hidden>Kupuję i&nbsp;przechodzę do płatności</a>
               <p class="aiol-pricecard__or">albo <a href="#aiol-formularz">wypełnij formularz zgłoszenia</a></p>
             </div>
           </div>
           <div class="aiol-pricecard__body">
             <dl class="aiol-summary__rows">
-              <div data-aiol-termin-wiersz hidden><dt>Termin</dt><dd data-aiol-termin></dd></div>
-              <div><dt>Forma</dt><dd>online LIVE, 2&nbsp;godziny</dd></div>
+              <div data-aiol-termin-wiersz hidden><dt>Terminy</dt><dd data-aiol-termin></dd></div>
+              <div data-aiol-followup-wiersz hidden><dt><span class="aiol-nw">Follow-up</span></dt><dd data-aiol-followup></dd></div>
+              <div><dt>Forma</dt><dd>online LIVE, 3&nbsp;×&nbsp;2&nbsp;godziny</dd></div>
               <div><dt>Liczba osób</dt><dd id="aiol-s-count">1</dd></div>
             </dl>
-            <p class="aiol-summary__total"><span>Razem</span><strong id="aiol-s-total">290&nbsp;zł</strong><small>netto + VAT</small></p>
+            <p class="aiol-summary__total"><span>Razem</span><strong id="aiol-s-total">1190&nbsp;zł</strong><small>netto + VAT</small></p>
             <p class="aiol-pricecard__label">W&nbsp;cenie:</p>
             <ul class="aiol-incl">
-              <li>2&nbsp;godziny szkolenia online LIVE</li>
-              <li>Praktyczne demonstracje</li>
-              <li>Dostęp do nagrania przez 30&nbsp;dni</li>
-              <li>Materiały szkoleniowe</li>
-              <li>Checklista bezpiecznej pracy z&nbsp;AI</li>
-              <li>Zestaw przykładowych zastosowań AI w&nbsp;pracy biurowej</li>
+              <li>3&nbsp;spotkania online LIVE po 2&nbsp;godziny</li>
+              <li>Grupowy <span class="aiol-nw">follow-up</span> online po około 30&nbsp;dniach</li>
+              <li>Dostęp do nagrań przez 60&nbsp;dni</li>
+              <li>Workbook wdrożeniowy</li>
+              <li>Szablony porannego briefingu, briefingu dla przełożonego i&nbsp;dashboardu projektów</li>
+              <li>Struktura raportu statusowego i&nbsp;checklista procesów do automatyzacji</li>
               <li>Imienny certyfikat</li>
             </ul>
             <ul class="aiol-price__notes">
@@ -967,8 +1085,9 @@
           <form class="aiol-form" id="aiol-form" method="post" action="/formularz-aiol/formularz.php" novalidate>
             <h3 class="aiol-form__title">Formularz zgłoszenia</h3>
             <input type="hidden" name="formularz" value="zgloszenie">
-            <input type="hidden" name="szkolenie" value="fundament">
+            <input type="hidden" name="szkolenie" value="system">
             <input type="hidden" name="termin" value="" data-aiol-termin-pole>
+            <input type="hidden" name="follow_up" value="" data-aiol-followup-pole>
             <div class="aiol-fields">
               <div class="aiol-field--full">
                 <label class="aiol-label" for="aiol-f-name">Imię i&nbsp;nazwisko<span class="aiol-req" aria-hidden="true">*</span></label>
@@ -977,7 +1096,7 @@
               </div>
 
               <div>
-                <label class="aiol-label" for="aiol-f-email">E-mail<span class="aiol-req" aria-hidden="true">*</span></label>
+                <label class="aiol-label" for="aiol-f-email"><span class="aiol-nw">E-mail</span><span class="aiol-req" aria-hidden="true">*</span></label>
                 <input class="aiol-input" type="email" id="aiol-f-email" name="email" autocomplete="email" maxlength="120" required aria-describedby="aiol-e-email">
                 <p class="aiol-err" id="aiol-e-email" role="alert"></p>
               </div>
@@ -992,24 +1111,24 @@
               <div>
                 <label class="aiol-label" for="aiol-f-role">Stanowisko</label>
                 <input class="aiol-input" type="text" id="aiol-f-role" name="stanowisko" autocomplete="organization-title" maxlength="80" aria-describedby="aiol-h-role">
-                <p class="aiol-hint" id="aiol-h-role">Szkolenie jest dla działów administracji biurowej.</p>
+                <p class="aiol-hint" id="aiol-h-role">Np. Executive Assistant, Asystentka Zarządu, Office Manager.</p>
               </div>
 
               <div>
                 <label class="aiol-label" for="aiol-f-count">Liczba osób<span class="aiol-req" aria-hidden="true">*</span></label>
                 <select class="aiol-input" id="aiol-f-count" name="liczba_osob" required aria-describedby="aiol-h-count">
                   <option value="1" selected>1 osoba</option>
-                  <option value="2">2 osoby</option>
-                  <option value="3">3 osoby</option>
-                  <option value="4">4 osoby</option>
-                  <option value="5">5 osób</option>
-                  <option value="6">6 osób</option>
-                  <option value="7">7 osób</option>
-                  <option value="8">8 osób</option>
-                  <option value="9">9 osób</option>
-                  <option value="10">10 osób</option>
+                  <option value="2">2&nbsp;osoby</option>
+                  <option value="3">3&nbsp;osoby</option>
+                  <option value="4">4&nbsp;osoby</option>
+                  <option value="5">5&nbsp;osób</option>
+                  <option value="6">6&nbsp;osób</option>
+                  <option value="7">7&nbsp;osób</option>
+                  <option value="8">8&nbsp;osób</option>
+                  <option value="9">9&nbsp;osób</option>
+                  <option value="10">10&nbsp;osób</option>
                 </select>
-                <p class="aiol-hint" id="aiol-h-count">Większa grupa? Zapytaj o&nbsp;<a class="aiol-link" href="#aiol-dla-firm">szkolenie zamknięte dla firmy</a>.</p>
+                <p class="aiol-hint" id="aiol-h-count">Większa grupa? Zapytaj o <a class="aiol-link" href="#aiol-dla-firm">szkolenie zamknięte dla firmy</a>.</p>
               </div>
 
               <div class="aiol-field--full">
@@ -1061,7 +1180,7 @@
             <div class="aiol-consents">
               <label class="aiol-consent">
                 <input type="checkbox" id="aiol-f-rodo" name="zgoda_rodo" value="tak" required aria-describedby="aiol-e-rodo">
-                <span>Akceptuję regulamin szkolenia i&nbsp;wiem, że moje dane będą przetwarzane w&nbsp;celu obsługi zgłoszenia, zgodnie z&nbsp;<a class="aiol-link" href="https://www.officeinfluencers.pl/polityka-prywatnosci" target="_blank" rel="noopener noreferrer">polityką prywatności</a>. Administratorem danych jest ARK Consulting Agnieszka Korach.<span class="aiol-req" aria-hidden="true">*</span></span>
+                <span>Akceptuję regulamin szkolenia i&nbsp;wiem, że moje dane będą przetwarzane w&nbsp;celu obsługi zgłoszenia, zgodnie z <a class="aiol-link" href="https://www.officeinfluencers.pl/polityka-prywatnosci" target="_blank" rel="noopener noreferrer">polityką prywatności</a>. Administratorem danych jest ARK Consulting Agnieszka Korach.<span class="aiol-req" aria-hidden="true">*</span></span>
               </label>
               <p class="aiol-err" id="aiol-e-rodo" role="alert"></p>
               <label class="aiol-consent">
@@ -1078,7 +1197,7 @@
 
           <div class="aiol-done" id="aiol-done" hidden tabindex="-1">
             <h3>Zgłoszenie przyjęte</h3>
-            <p>Dziękujemy. Potwierdzenie udziału wyślemy na Twój adres e-mail w&nbsp;ciągu jednego dnia roboczego.</p>
+            <p>Dziękujemy. Potwierdzenie udziału wyślemy na Twój adres <span class="aiol-nw">e-mail</span> w&nbsp;ciągu jednego dnia roboczego.</p>
             <p>Jeśli wiadomość nie dotrze, sprawdź folder spam albo napisz na <a class="aiol-link" href="mailto:office@officeinfluencers.pl">office@officeinfluencers.pl</a>.</p>
           </div>
         </div>
@@ -1091,14 +1210,14 @@
     <div class="aiol-wrap aiol-bento">
       <div class="aiol-tile aiol-dark aiol-b2b s-7 t-2" data-r>
         <p class="aiol-eyebrow">Szkolenia zamknięte</p>
-        <h2 class="aiol-h2" id="aiol-h-b2b">AIOfficeLab FUNDAMENT <span class="aiol-accent">dla firmy</span></h2>
-        <p class="aiol-b2b__ask">Chcesz przeszkolić większą grupę pracowników?</p>
-        <p>Poziom FUNDAMENT może zostać zrealizowany jako zamknięte szkolenie dla firmy, online lub stacjonarnie.</p>
-        <p>Przykłady i&nbsp;demonstracje możemy dopasować do charakteru pracy zespołu oraz środowiska wykorzystywanego w&nbsp;organizacji.</p>
+        <h2 class="aiol-h2" id="aiol-h-b2b">AIOfficeLab SYSTEM <span class="aiol-accent">dla firmy</span></h2>
+        <p class="aiol-b2b__ask">Chcesz przeszkolić większy zespół?</p>
+        <p>W&nbsp;szkoleniu zamkniętym przykłady możemy dopasować do realnych procesów i&nbsp;środowiska organizacji.</p>
+        <p>Program dostosujemy do zespołu asystenckiego, Office Management, administracji, biura zarządu lub innych funkcji operacyjnych.</p>
         <ul class="aiol-chips">
-          <li>Online lub stacjonarnie</li>
-          <li>Przykłady dopasowane do pracy zespołu</li>
-          <li>Microsoft 365 lub Google Workspace</li>
+          <li>Microsoft 365 i&nbsp;Copilot</li>
+          <li>Google Workspace</li>
+          <li>Przykłady z&nbsp;procesów Twojej firmy</li>
         </ul>
       </div>
 
@@ -1139,112 +1258,208 @@
           <div class="aiol-faq__group" data-r>
             <h3>O&nbsp;programie</h3>
             <details class="aiol-qa" open>
-              <summary><span>Dla kogo jest AIOfficeLab FUNDAMENT?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Dla kogo jest AIOfficeLab SYSTEM?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>AIOfficeLab FUNDAMENT to szkolenie z&nbsp;AI wyłącznie dla pracowników działów administracji biurowej: asystentek i&nbsp;asystentów, office managerów, sekretariatów, biur zarządu i&nbsp;zespołów wsparcia administracyjnego.</p>
-                <p>Program został przygotowany dla osób początkujących oraz tych, które korzystają już z&nbsp;AI, ale robią to intuicyjnie i&nbsp;chcą uporządkować podstawy.</p>
+                <p>AIOfficeLab SYSTEM został przygotowany przede wszystkim dla Executive Assistants, Asystentek Zarządu, Office Managerów, osób pracujących w&nbsp;administracji, biurach zarządu oraz pracowników koordynujących wiele projektów, informacji i&nbsp;terminów jednocześnie.</p>
               </div>
             </details>
             <details class="aiol-qa">
-              <summary><span>Czy na szkolenie mogą zapisać się osoby z&nbsp;innych działów?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Czy AIOfficeLab SYSTEM jest szkoleniem AI dla Asystentki Zarządu?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Nie. To szkolenie jest przeznaczone wyłącznie dla pracowników działów administracji biurowej.</p>
+                <p>Tak. Jednym z&nbsp;głównych zastosowań programu jest wykorzystanie AI w&nbsp;pracy Asystentki Zarządu i&nbsp;Executive Assistant&nbsp;— m.in. do briefingów dla przełożonego, przygotowania do spotkań, kontroli ustaleń, pracy z&nbsp;informacją i&nbsp;monitorowania projektów.</p>
               </div>
             </details>
             <details class="aiol-qa">
-              <summary><span>Czy muszę wcześniej korzystać z&nbsp;ChatGPT?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Czy program jest również dla Office Managera?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Nie. Szkolenie zaczyna się od podstaw i&nbsp;nie wymaga wcześniejszego doświadczenia z&nbsp;ChatGPT, Copilotem, Claude czy Gemini.</p>
+                <p>Tak. Office Manager może wykorzystać omawiane rozwiązania m.in. do kontroli projektów, dashboardów, przepływu informacji, raportowania statusów, spotkań i&nbsp;prostych automatyzacji.</p>
               </div>
             </details>
             <details class="aiol-qa">
-              <summary><span>Czy szkolenie jest odpowiednie dla osób, które już korzystają z&nbsp;AI?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Czy SYSTEM jest dla początkujących?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Tak, jeśli korzystasz z&nbsp;AI głównie intuicyjnie, nie masz pewności, jak weryfikować odpowiedzi, pracować z&nbsp;dokumentami, chronić dane lub skutecznie przekazywać AI bardziej złożone zadania.</p>
-                <p>Jeżeli te umiejętności masz już opanowane, bardziej odpowiedni będzie AIOfficeLab SYSTEM.</p>
+                <p>Nie jest to kurs od zera.</p>
+                <p>Uczestnik powinien umieć korzystać z&nbsp;AI, znać podstawy bezpieczeństwa i&nbsp;potrafić przekazać modelowi zadanie wraz z&nbsp;odpowiednim kontekstem.</p>
+                <p>Jeśli dopiero zaczynasz, rekomendowanym pierwszym krokiem jest <a class="aiol-link" href="https://www.officeinfluencers.pl/ai-w-biurze/">AIOfficeLab FUNDAMENT</a>.</p>
               </div>
             </details>
             <details class="aiol-qa">
-              <summary><span>Czego konkretnie nauczę się podczas dwóch godzin?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Czy muszę wcześniej ukończyć FUNDAMENT?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Poznasz zasady bezpiecznej pracy z&nbsp;AI, ograniczenia modeli, sposoby weryfikowania informacji oraz prostą metodę zlecania AI zadań.</p>
-                <p>Na przykładach zobaczysz również, jak wykorzystać AI do analizy dokumentów, researchu, porównywania informacji, tworzenia podsumowań, tabel, checklist i&nbsp;planów działania.</p>
+                <p>Nie. Liczą się kompetencje, nie certyfikat z&nbsp;poprzedniego poziomu.</p>
               </div>
             </details>
             <details class="aiol-qa">
-              <summary><span>Czy będziemy uczyć się pisania promptów?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Czym SYSTEM różni się od zwykłego szkolenia z&nbsp;ChatGPT?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Tak, ale bez rozbudowanej teorii „prompt engineeringu”.</p>
-                <p>Celem jest nauczenie prostego sposobu przekazywania AI kontekstu, materiału, zadania, wymagań i&nbsp;oczekiwanego rezultatu tak, aby można było zastosować tę metodę do różnych modeli i&nbsp;różnych zadań.</p>
-              </div>
-            </details>
-            <details class="aiol-qa">
-              <summary><span>Jakie narzędzia AI będą omawiane?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
-              <div class="aiol-qa__a">
-                <p>Szkolenie pokazuje praktyczne różnice między najpopularniejszymi modelami wykorzystywanymi w&nbsp;pracy biurowej, m.in. ChatGPT, Microsoft Copilot, Claude i&nbsp;Gemini.</p>
-                <p>Nie jest to jednak kurs obsługi czterech aplikacji. Uczysz się przede wszystkim sposobu pracy, który można przenieść między narzędziami.</p>
-              </div>
-            </details>
-            <details class="aiol-qa">
-              <summary><span>Czy muszę mieć płatną wersję ChatGPT, Copilota lub innego narzędzia?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
-              <div class="aiol-qa__a">
-                <p>Nie jest to konieczne do uczestnictwa w&nbsp;poziomie FUNDAMENT.</p>
-                <p>Zakres poszczególnych funkcji może różnić się w&nbsp;zależności od posiadanej wersji i&nbsp;licencji, dlatego podczas szkolenia omawiane są również te różnice.</p>
+                <p>Nie koncentruje się na pojedynczych promptach.</p>
+                <p>Punktem wyjścia są realne procesy pracy: briefing, kontrola projektów, dashboard, wyszukiwanie rozproszonych informacji, spotkania, <span class="aiol-nw">follow-up</span> i&nbsp;monitoring.</p>
+                <p>AI jest narzędziem służącym do zbudowania lepszego systemu pracy.</p>
               </div>
             </details>
           </div>
 
           <div class="aiol-faq__group" data-r>
-            <h3>Bezpieczeństwo i&nbsp;dane firmowe</h3>
+            <h3>Briefingi i&nbsp;informacja</h3>
             <details class="aiol-qa">
-              <summary><span>Czy na szkoleniu będzie mowa o&nbsp;bezpieczeństwie danych i&nbsp;RODO?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Czy nauczę się przygotowywać poranny briefing z&nbsp;AI?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Tak. Bezpieczna praca z&nbsp;AI jest jednym z&nbsp;podstawowych elementów programu.</p>
-                <p>Dowiesz się, jakiego rodzaju informacji nie należy przekazywać do publicznych narzędzi AI, na co zwracać uwagę przy pracy z&nbsp;dokumentami firmowymi i&nbsp;dlaczego możliwość technicznego wgrania pliku nie oznacza automatycznie, że można to zrobić zgodnie z&nbsp;zasadami organizacji.</p>
-                <p>Szkolenie ma charakter edukacyjny i&nbsp;nie zastępuje polityki bezpieczeństwa, decyzji działu IT ani indywidualnej analizy prawnej organizacji.</p>
+                <p>Tak.</p>
+                <p>Jednym z&nbsp;głównych zastosowań programu jest przygotowanie porannego briefingu pokazującego m.in. priorytety, terminy, sprawy oczekujące, spotkania wymagające przygotowania i&nbsp;kwestie wymagające reakcji.</p>
               </div>
             </details>
             <details class="aiol-qa">
-              <summary><span>Czy podczas szkolenia trzeba udostępniać dane lub dokumenty firmy?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Czy szkolenie obejmuje briefing dla przełożonego lub członka zarządu?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Nie.</p>
-                <p>Demonstracje mogą być prowadzone na neutralnych materiałach i&nbsp;przykładowych danych. Nie ma potrzeby udostępniania poufnych informacji firmy.</p>
+                <p>Tak.</p>
+                <p>Zobaczysz, jak z&nbsp;większej liczby informacji przygotować krótkie podsumowanie dla Executive: co się zmieniło, co wymaga decyzji, jakie są najważniejsze ryzyka i&nbsp;gdzie potrzebna jest reakcja.</p>
               </div>
             </details>
             <details class="aiol-qa">
-              <summary><span>Czy dowiem się, jak sprawdzać, czy AI nie podaje nieprawdziwych informacji?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Czy AI może znaleźć informacje rozproszone w&nbsp;wielu miejscach?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Tak. Omawiamy halucynacje modeli, pracę ze źródłami oraz sposoby weryfikowania odpowiedzi przed wykorzystaniem ich w&nbsp;pracy.</p>
+                <p>To jeden z&nbsp;kluczowych tematów programu.</p>
+                <p>Pokazujemy logikę pracy, w&nbsp;której AI pomaga łączyć informacje dotyczące jednego tematu pochodzące z&nbsp;różnych dokumentów, wiadomości, notatek i&nbsp;systemów.</p>
+                <p>Rzeczywisty zakres takiego wyszukiwania zależy jednak od środowiska firmy, dostępnych integracji, licencji i&nbsp;uprawnień użytkownika.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy szkolenie pokaże, jak szukać informacji w&nbsp;Outlooku, Teamsie i&nbsp;dokumentach?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <div class="aiol-qa__a">
+                <p>Pokazujemy sposoby pracy z&nbsp;informacją w&nbsp;środowiskach biurowych oraz rozwiązania umożliwiające łączenie kontekstu.</p>
+                <p>Nie każda funkcja jest dostępna w&nbsp;każdej licencji Microsoft 365 lub innym środowisku, dlatego podczas szkolenia wyraźnie rozróżniamy możliwości modelu od możliwości konkretnej integracji.</p>
+              </div>
+            </details>
+          </div>
+
+          <div class="aiol-faq__group" data-r>
+            <h3>Projekty i&nbsp;dashboardy</h3>
+            <details class="aiol-qa">
+              <summary><span>Czy na szkoleniu powstaje dashboard projektów?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <div class="aiol-qa__a">
+                <p>Pokazujemy strukturę dashboardu oraz sposób wykorzystania AI do analizy statusów projektów.</p>
+                <p>Uczestnik otrzymuje także szablon dashboardu, który może dostosować do własnej pracy.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Co AI może analizować w&nbsp;dashboardzie?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <div class="aiol-qa__a">
+                <p>Między innymi: status projektu, terminy, opóźnienia, blokery, brakujące decyzje, kolejne kroki, odpowiedzialności i&nbsp;sprawy wymagające eskalacji.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy muszę znać Excel?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <div class="aiol-qa__a">
+                <p>Nie jest potrzebna zaawansowana znajomość Excela.</p>
+                <p>Celem szkolenia nie jest nauka arkuszy kalkulacyjnych, lecz wykorzystanie danych o&nbsp;projektach do szybszego uzyskania obrazu sytuacji.</p>
+              </div>
+            </details>
+          </div>
+
+          <div class="aiol-faq__group" data-r>
+            <h3>Spotkania i&nbsp;<span class="aiol-nw">follow-up</span></h3>
+            <details class="aiol-qa">
+              <summary><span>Czy szkolenie obejmuje transkrypcję spotkań?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <div class="aiol-qa__a">
+                <p>Transkrypcja może być elementem procesu, ale nie jest głównym tematem.</p>
+                <p>Interesuje nas przede wszystkim to, co dzieje się później:</p>
+                <p><strong>decyzje → zadania → odpowiedzialni → terminy → <span class="aiol-nw">follow-up</span> → kontrola realizacji</strong>.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy AI może pilnować realizacji ustaleń?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <div class="aiol-qa__a">
+                <p>Może wspierać monitoring i&nbsp;identyfikowanie zaległych lub otwartych spraw, jeżeli ma dostęp do odpowiednich informacji.</p>
+                <p>Sposób realizacji zależy od narzędzi wykorzystywanych w&nbsp;danej organizacji.</p>
               </div>
             </details>
           </div>
         </div>
         <div class="aiol-faq__col">
           <div class="aiol-faq__group" data-r>
+            <h3>Automatyzacja</h3>
+            <details class="aiol-qa">
+              <summary><span>Czy na tym poziomie uczymy Power Automate, Make lub Zapier?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <div class="aiol-qa__a">
+                <p>Nie jako osobnego kursu obsługi narzędzia.</p>
+                <p>Najpierw uczymy identyfikować proces nadający się do automatyzacji i&nbsp;projektować jego logikę.</p>
+                <p>Dopiero wtedy można zdecydować, jakie rozwiązanie technologiczne jest odpowiednie dla danej firmy.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy po szkoleniu będę potrafić automatyzować procesy?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <div class="aiol-qa__a">
+                <p>Będziesz rozumieć, jak rozpoznać proces nadający się do automatyzacji, zaprojektować jego podstawowy przepływ i&nbsp;określić, gdzie potrzebna jest kontrola człowieka.</p>
+                <p>Zaawansowane procesy agentowe są przedmiotem poziomu AUTONOMIA.</p>
+              </div>
+            </details>
+          </div>
+
+          <div class="aiol-faq__group" data-r>
+            <h3>Bezpieczeństwo</h3>
+            <details class="aiol-qa">
+              <summary><span>Czy szkolenie uwzględnia bezpieczeństwo danych firmowych?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <div class="aiol-qa__a">
+                <p>Tak.</p>
+                <p>Przy pracy wieloźródłowej szczególnie ważne są uprawnienia, zasady dostępu do informacji oraz polityka AI obowiązująca w&nbsp;organizacji.</p>
+                <p>Program nie zachęca do obchodzenia zabezpieczeń ani przekazywania danych do narzędzi, których firma nie zatwierdziła.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy muszę udostępniać dokumenty firmowe?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <div class="aiol-qa__a">
+                <p>Nie. W&nbsp;szkoleniu otwartym można pracować na materiałach demonstracyjnych.</p>
+              </div>
+            </details>
+          </div>
+
+          <div class="aiol-faq__group" data-r>
             <h3>Organizacja</h3>
             <details class="aiol-qa">
-              <summary><span>Jaka jest forma szkolenia?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Ile trwa AIOfficeLab SYSTEM?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Szkolenie odbywa się online LIVE i&nbsp;trwa 2&nbsp;godziny.</p>
-                <p>Program ma formę instruktażową i&nbsp;demonstracyjną. Nie ma obowiązkowych ćwiczeń wykonywanych przez uczestników podczas spotkania.</p>
+                <p>Program obejmuje 3&nbsp;spotkania online LIVE po 2&nbsp;godziny, czyli łącznie 6&nbsp;godzin.</p>
               </div>
             </details>
             <details class="aiol-qa">
-              <summary><span>Czy otrzymam nagranie?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Czy na szkoleniu są ćwiczenia?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Tak. Uczestnicy otrzymują dostęp do nagrania przez 30&nbsp;dni.</p>
+                <p>Program ma przede wszystkim formę instruktażową i&nbsp;demonstracyjną, bez obowiązkowych ćwiczeń wykonywanych przez uczestników na żywo.</p>
               </div>
             </details>
             <details class="aiol-qa">
-              <summary><span>Czy otrzymam materiały po szkoleniu?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Czy są nagrania?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Tak. W&nbsp;cenie znajdują się materiały szkoleniowe, checklista bezpiecznej pracy z&nbsp;AI oraz przykłady praktycznych zastosowań AI w&nbsp;pracy biurowej.</p>
+                <p>Tak. Nagrania są dostępne przez 60&nbsp;dni.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Czy jest <span class="aiol-nw">follow-up</span> po szkoleniu?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <div class="aiol-qa__a">
+                <p>Tak. W&nbsp;cenie znajduje się grupowy <span class="aiol-nw">follow-up</span> online po około 30&nbsp;dniach.</p>
+                <p>Jego celem jest omówienie doświadczeń z&nbsp;wdrożenia i&nbsp;problemów, które pojawiły się już w&nbsp;realnej pracy.</p>
+              </div>
+            </details>
+            <details class="aiol-qa">
+              <summary><span>Jakie materiały otrzymam?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <div class="aiol-qa__a">
+                <p>Między innymi:</p>
+                <ul class="aiol-list">
+                  <li>workbook wdrożeniowy</li>
+                  <li>szablon porannego briefingu</li>
+                  <li>szablon briefingu dla przełożonego</li>
+                  <li>szablon dashboardu projektów</li>
+                  <li>strukturę raportu statusowego</li>
+                  <li>schemat pracy z&nbsp;informacją z&nbsp;wielu źródeł</li>
+                  <li>model spotkanie → decyzje → zadania → <span class="aiol-nw">follow-up</span></li>
+                  <li>checklistę procesów do automatyzacji</li>
+                </ul>
               </div>
             </details>
             <details class="aiol-qa">
               <summary><span>Czy otrzymam certyfikat?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Tak. Uczestnicy otrzymują imienny certyfikat ukończenia szkolenia.</p>
+                <p>Tak. Uczestnicy otrzymują imienny certyfikat.</p>
               </div>
             </details>
           </div>
@@ -1252,42 +1467,37 @@
           <div class="aiol-faq__group" data-r>
             <h3>Dla firmy i&nbsp;HR</h3>
             <details class="aiol-qa">
-              <summary><span>Ile kosztuje AIOfficeLab FUNDAMENT?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Ile kosztuje AIOfficeLab SYSTEM?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Cena udziału w&nbsp;szkoleniu otwartym wynosi <strong>290&nbsp;zł netto + VAT za osobę</strong>.</p>
+                <p>Cena szkolenia otwartego wynosi <strong>1190&nbsp;zł netto + VAT za osobę</strong>.</p>
               </div>
             </details>
             <details class="aiol-qa">
-              <summary><span>Czy firma otrzyma fakturę VAT?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Czy firma może zgłosić kilku uczestników?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Tak. Udział w&nbsp;szkoleniu może zostać zakupiony przez firmę i&nbsp;rozliczony na podstawie faktury VAT.</p>
+                <p>Tak.</p>
+                <p>W&nbsp;przypadku większego zespołu warto rozważyć szkolenie zamknięte, ponieważ przykłady mogą być wtedy dopasowane do realnych procesów i&nbsp;środowiska organizacji.</p>
               </div>
             </details>
             <details class="aiol-qa">
-              <summary><span>Czy możemy zgłosić kilka osób z&nbsp;jednej firmy?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Czy SYSTEM można zrealizować jako szkolenie zamknięte dla administracji lub biura zarządu?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Tak. Firma może zgłosić kilku pracowników na tę samą edycję.</p>
-                <p>Przy większej grupie warto zapytać również o&nbsp;zamkniętą wersję szkolenia przygotowaną dla jednej organizacji.</p>
+                <p>Tak.</p>
+                <p>Program zamknięty może zostać dostosowany do zespołu asystenckiego, Office Management, administracji, biura zarządu lub innych funkcji operacyjnych.</p>
               </div>
             </details>
             <details class="aiol-qa">
-              <summary><span>Czy szkolenie można zrealizować dla całego zespołu?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Czy można dopasować szkolenie do Microsoft 365 i&nbsp;Copilota?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Tak. AIOfficeLab FUNDAMENT może zostać przeprowadzony jako szkolenie zamknięte online lub w&nbsp;siedzibie firmy.</p>
-                <p>Zakres przykładów może zostać dopasowany do rodzaju pracy zespołu i&nbsp;środowiska wykorzystywanego w&nbsp;organizacji.</p>
+                <p>Tak, w&nbsp;szkoleniu zamkniętym możemy uwzględnić środowisko Microsoft 365, posiadane licencje oraz zasady obowiązujące w&nbsp;organizacji.</p>
+                <p>Analogicznie program może zostać dostosowany do Google Workspace lub innego środowiska.</p>
               </div>
             </details>
             <details class="aiol-qa">
-              <summary><span>Dlaczego firma powinna przeszkolić pracowników z&nbsp;podstaw korzystania z&nbsp;AI?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Czy szkolenie zastępuje wdrożenie technologiczne?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Celem szkolenia jest stworzenie wspólnego minimum kompetencyjnego: pracownik powinien wiedzieć, do czego AI można wykorzystać, jak prawidłowo przekazać mu zadanie, jak oceniać wynik i&nbsp;jak nie narażać danych firmy.</p>
-                <p>To szczególnie ważne w&nbsp;organizacjach, w&nbsp;których pracownicy zaczęli korzystać z&nbsp;narzędzi AI samodzielnie.</p>
-              </div>
-            </details>
-            <details class="aiol-qa">
-              <summary><span>Czy program można dopasować do Microsoft 365 lub Google Workspace?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
-              <div class="aiol-qa__a">
-                <p>W&nbsp;przypadku szkolenia zamkniętego zakres może zostać dostosowany do środowiska wykorzystywanego przez organizację.</p>
+                <p>Nie.</p>
+                <p>Szkolenie rozwija kompetencje uczestników i&nbsp;pokazuje możliwe rozwiązania. Konfiguracja firmowych integracji, uprawnień czy zaawansowanych automatyzacji może wymagać osobnego projektu wdrożeniowego oraz współpracy z&nbsp;IT.</p>
               </div>
             </details>
           </div>
@@ -1295,18 +1505,16 @@
           <div class="aiol-faq__group" data-r>
             <h3>Dalsza ścieżka</h3>
             <details class="aiol-qa">
-              <summary><span>Co po poziomie FUNDAMENT?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Czym SYSTEM różni się od AUTONOMII?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Kolejnym etapem jest <strong>AIOfficeLab SYSTEM</strong>.</p>
-                <p>FUNDAMENT odpowiada na pytanie: <strong>Jak prawidłowo pracować z&nbsp;AI?</strong></p>
-                <p>SYSTEM: <strong>Jak wykorzystać AI do zarządzania informacją, projektami i&nbsp;codzienną pracą?</strong></p>
+                <p>SYSTEM odpowiada na pytanie: <strong>Jak wykorzystać AI do zarządzania moją pracą?</strong></p>
+                <p>AUTONOMIA: <strong>Jak zaprojektować proces, który AI może wykonywać lub monitorować bez mojego każdorazowego polecenia?</strong></p>
               </div>
             </details>
             <details class="aiol-qa">
-              <summary><span>Czy muszę ukończyć FUNDAMENT, żeby zapisać się na SYSTEM?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
+              <summary><span>Kiedy jestem gotowa/gotowy na AUTONOMIĘ?</span><span class="aiol-qa__ico" aria-hidden="true"></span></summary>
               <div class="aiol-qa__a">
-                <p>Nie.</p>
-                <p>Jeżeli samodzielnie korzystasz już z&nbsp;AI, rozumiesz podstawy bezpieczeństwa i&nbsp;potrafisz skutecznie zlecać modelowi zadania, możesz rozpocząć bezpośrednio od poziomu SYSTEM.</p>
+                <p>Jeśli regularnie korzystasz z&nbsp;AI, potrafisz opisać własne procesy, rozumiesz pracę z&nbsp;informacją i&nbsp;chcesz przejść od ręcznego inicjowania zadań do monitoringu, automatyzacji i&nbsp;agentów AI.</p>
               </div>
             </details>
           </div>
@@ -1319,18 +1527,19 @@
   <section class="aiol-sec aiol-final aiol-dark" id="aiol-zapisy" aria-labelledby="aiol-h-final">
     <div class="aiol-wrap">
       <div class="aiol-final__box" data-r>
-        <p class="aiol-eyebrow">AIOfficeLab / 01 &nbsp;|&nbsp; Fundament</p>
-        <h2 id="aiol-h-final">Zacznij od <span class="aiol-accent">fundamentu</span></h2>
+        <p class="aiol-eyebrow">AIOfficeLab / 02 | System</p>
+        <h2 id="aiol-h-final">Od promptów do <span class="aiol-accent">systemu pracy</span></h2>
         <ul class="aiol-final__facts">
           <li data-aiol-termin-wiersz hidden><span data-aiol-termin></span></li>
-          <li>2&nbsp;godziny online LIVE</li>
-          <li>290&nbsp;zł netto + VAT</li>
+          <li data-aiol-followup-wiersz hidden><span class="aiol-nw">Follow-up</span>: <span data-aiol-followup></span></li>
+          <li>3&nbsp;×&nbsp;2&nbsp;godziny online LIVE</li>
+          <li>1190&nbsp;zł netto + VAT</li>
         </ul>
         <div class="aiol-btns aiol-btns--center">
           <a class="aiol-btn" href="#aiol-formularz" data-aiol-cta="final">Zapisuję się</a>
-          <a class="aiol-btn aiol-btn--pay" href="https://easl.ink/XD2bl" data-aiol-pay="final">Kupuję i&nbsp;przechodzę do płatności</a>
+          <a class="aiol-btn aiol-btn--pay" href="#aiol-formularz" data-aiol-pay="final" hidden>Kupuję i&nbsp;przechodzę do płatności</a>
         </div>
-        <p class="aiol-final__small">Nagranie przez 30&nbsp;dni · materiały szkoleniowe · imienny certyfikat</p>
+        <p class="aiol-final__small">Nagrania przez 60&nbsp;dni · materiały wdrożeniowe · <span class="aiol-nw">follow-up</span> · imienny certyfikat</p>
       </div>
     </div>
   </section>
@@ -1339,8 +1548,8 @@
   <div class="aiol-sticky" data-aiol-sticky>
     <div class="aiol-sticky__in">
       <div class="aiol-sticky__txt">
-        <strong>290&nbsp;zł netto + VAT</strong>
-        <span>AIOfficeLab FUNDAMENT · 2&nbsp;h online LIVE<span data-aiol-termin-wiersz hidden> · <span data-aiol-termin></span></span></span>
+        <strong>1190&nbsp;zł netto + VAT</strong>
+        <span>AIOfficeLab SYSTEM · 3&nbsp;×&nbsp;2&nbsp;h online LIVE<span data-aiol-termin-wiersz hidden> · <span data-aiol-termin></span></span></span>
       </div>
       <a class="aiol-btn aiol-btn--sm" href="#aiol-formularz" data-aiol-cta="pasek">Zapisuję się</a>
     </div>
@@ -1354,26 +1563,27 @@
   "@graph": [
     {
       "@type": "Course",
-      "@id": "https://www.officeinfluencers.pl/ai-w-biurze#kurs",
-      "name": "AIOfficeLab / 01 FUNDAMENT: Bezpieczna i skuteczna praca z AI w biurze",
-      "description": "Dwugodzinne szkolenie online LIVE na poziomie podstawowym dla działów administracji biurowej: jak bezpiecznie i skutecznie korzystać z ChatGPT, Microsoft Copilot, Claude i Gemini w pracy biurowej. Przekazywanie AI kontekstu, praca z dokumentami, research, porównywanie danych, ochrona danych firmowych, ograniczanie halucynacji i weryfikowanie odpowiedzi.",
-      "url": "https://www.officeinfluencers.pl/ai-w-biurze",
+      "@id": "https://www.officeinfluencers.pl/ai-w-biurze-system/#kurs",
+      "name": "AIOfficeLab / 02 SYSTEM: AI w zarządzaniu informacją, projektami i codzienną pracą",
+      "description": "Szkolenie online LIVE (3 spotkania po 2 godziny i follow-up) dla Executive Assistants, Asystentek Zarządu, Office Managerów i osób pracujących w administracji, które korzystają już z AI. Briefing dla siebie i przełożonego, kontrola projektów i dashboardy, opóźnienia, ryzyka i blokery, informacje rozproszone w wielu źródłach, spotkania przekładane na decyzje, zadania i follow-up oraz procesy do automatyzacji.",
+      "url": "https://www.officeinfluencers.pl/ai-w-biurze-system/",
       "inLanguage": "pl",
-      "educationalLevel": "Podstawowy",
+      "educationalLevel": "Średniozaawansowany",
+      "coursePrerequisites": "Umiejętność korzystania z AI, znajomość podstaw bezpieczeństwa i przekazywania modelowi zadania wraz z odpowiednim kontekstem",
       "isAccessibleForFree": false,
       "teaches": [
-        "Bezpieczne korzystanie z AI w pracy biurowej",
-        "Ochrona danych firmowych przy pracy z narzędziami AI",
-        "Rozpoznawanie halucynacji AI i weryfikowanie odpowiedzi",
-        "Zlecanie zadań AI: kontekst, zadanie, materiał, wymagania, oczekiwany rezultat",
-        "Analiza dokumentów, research i porównywanie informacji z pomocą AI",
-        "Różnice między ChatGPT, Microsoft Copilot, Claude i Gemini"
+        "Poranny briefing i briefing dla przełożonego przygotowany z pomocą AI",
+        "Kontrola stanu projektów i dashboardy z analizą statusów",
+        "Identyfikowanie opóźnień, ryzyk i blokerów w projektach",
+        "Łączenie informacji rozproszonych w e-mailach, dokumentach, notatkach i spotkaniach",
+        "Przekładanie spotkań na decyzje, zadania, odpowiedzialności, terminy i follow-up",
+        "Rozpoznawanie procesów, które warto automatyzować"
       ],
       "audience": {
         "@type": "Audience",
-        "audienceType": "Pracownicy działów administracji biurowej: asystentki i asystenci, office managerowie, sekretariaty, biura zarządu, zespoły wsparcia administracyjnego"
+        "audienceType": "Executive Assistants, Asystentki Zarządu, Office Managerowie, pracownicy administracji i biur zarządu, osoby koordynujące wiele projektów, informacji i terminów"
       },
-      "educationalCredentialAwarded": "Imienny certyfikat ukończenia szkolenia",
+      "educationalCredentialAwarded": "Imienny certyfikat",
       "provider": {
         "@type": "Organization",
         "@id": "https://www.officeinfluencers.pl/#organization",
@@ -1385,9 +1595,9 @@
       "hasCourseInstance": {
         "@type": "CourseInstance",
         "courseMode": "Online",
-        "startDate": "2026-11-05T10:00:00+01:00",
-        "endDate": "2026-11-05T12:00:00+01:00",
-        "courseWorkload": "PT2H",
+        "startDate": "2026-11-24T10:00:00+01:00",
+        "endDate": "2026-12-09T12:00:00+01:00",
+        "courseWorkload": "PT6H",
         "inLanguage": "pl",
         "instructor": {
           "@type": "Person",
@@ -1402,132 +1612,212 @@
       "offers": {
         "@type": "Offer",
         "category": "Paid",
-        "price": "290",
+        "price": "1190",
         "priceCurrency": "PLN",
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
-          "price": "290",
+          "price": "1190",
           "priceCurrency": "PLN",
           "valueAddedTaxIncluded": false
         },
-        "url": "https://www.officeinfluencers.pl/ai-w-biurze"
+        "url": "https://www.officeinfluencers.pl/ai-w-biurze-system/"
       }
     },
     {
       "@type": "FAQPage",
-      "@id": "https://www.officeinfluencers.pl/ai-w-biurze#faq",
-      "url": "https://www.officeinfluencers.pl/ai-w-biurze",
+      "@id": "https://www.officeinfluencers.pl/ai-w-biurze-system/#faq",
+      "url": "https://www.officeinfluencers.pl/ai-w-biurze-system/",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Dla kogo jest AIOfficeLab FUNDAMENT?",
+          "name": "Dla kogo jest AIOfficeLab SYSTEM?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "AIOfficeLab FUNDAMENT to szkolenie z AI wyłącznie dla pracowników działów administracji biurowej: asystentek i asystentów, office managerów, sekretariatów, biur zarządu i zespołów wsparcia administracyjnego.\n\nProgram został przygotowany dla osób początkujących oraz tych, które korzystają już z AI, ale robią to intuicyjnie i chcą uporządkować podstawy."
+            "text": "AIOfficeLab SYSTEM został przygotowany przede wszystkim dla Executive Assistants, Asystentek Zarządu, Office Managerów, osób pracujących w administracji, biurach zarządu oraz pracowników koordynujących wiele projektów, informacji i terminów jednocześnie."
           }
         },
         {
           "@type": "Question",
-          "name": "Czy na szkolenie mogą zapisać się osoby z innych działów?",
+          "name": "Czy AIOfficeLab SYSTEM jest szkoleniem AI dla Asystentki Zarządu?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nie. To szkolenie jest przeznaczone wyłącznie dla pracowników działów administracji biurowej."
+            "text": "Tak. Jednym z głównych zastosowań programu jest wykorzystanie AI w pracy Asystentki Zarządu i Executive Assistant — m.in. do briefingów dla przełożonego, przygotowania do spotkań, kontroli ustaleń, pracy z informacją i monitorowania projektów."
           }
         },
         {
           "@type": "Question",
-          "name": "Czy muszę wcześniej korzystać z ChatGPT?",
+          "name": "Czy program jest również dla Office Managera?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nie. Szkolenie zaczyna się od podstaw i nie wymaga wcześniejszego doświadczenia z ChatGPT, Copilotem, Claude czy Gemini."
+            "text": "Tak. Office Manager może wykorzystać omawiane rozwiązania m.in. do kontroli projektów, dashboardów, przepływu informacji, raportowania statusów, spotkań i prostych automatyzacji."
           }
         },
         {
           "@type": "Question",
-          "name": "Czy szkolenie jest odpowiednie dla osób, które już korzystają z AI?",
+          "name": "Czy SYSTEM jest dla początkujących?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tak, jeśli korzystasz z AI głównie intuicyjnie, nie masz pewności, jak weryfikować odpowiedzi, pracować z dokumentami, chronić dane lub skutecznie przekazywać AI bardziej złożone zadania.\n\nJeżeli te umiejętności masz już opanowane, bardziej odpowiedni będzie AIOfficeLab SYSTEM."
+            "text": "Nie jest to kurs od zera.\n\nUczestnik powinien umieć korzystać z AI, znać podstawy bezpieczeństwa i potrafić przekazać modelowi zadanie wraz z odpowiednim kontekstem.\n\nJeśli dopiero zaczynasz, rekomendowanym pierwszym krokiem jest AIOfficeLab FUNDAMENT."
           }
         },
         {
           "@type": "Question",
-          "name": "Czego konkretnie nauczę się podczas dwóch godzin?",
+          "name": "Czy muszę wcześniej ukończyć FUNDAMENT?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Poznasz zasady bezpiecznej pracy z AI, ograniczenia modeli, sposoby weryfikowania informacji oraz prostą metodę zlecania AI zadań.\n\nNa przykładach zobaczysz również, jak wykorzystać AI do analizy dokumentów, researchu, porównywania informacji, tworzenia podsumowań, tabel, checklist i planów działania."
+            "text": "Nie. Liczą się kompetencje, nie certyfikat z poprzedniego poziomu."
           }
         },
         {
           "@type": "Question",
-          "name": "Czy będziemy uczyć się pisania promptów?",
+          "name": "Czym SYSTEM różni się od zwykłego szkolenia z ChatGPT?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tak, ale bez rozbudowanej teorii „prompt engineeringu”.\n\nCelem jest nauczenie prostego sposobu przekazywania AI kontekstu, materiału, zadania, wymagań i oczekiwanego rezultatu tak, aby można było zastosować tę metodę do różnych modeli i różnych zadań."
+            "text": "Nie koncentruje się na pojedynczych promptach.\n\nPunktem wyjścia są realne procesy pracy: briefing, kontrola projektów, dashboard, wyszukiwanie rozproszonych informacji, spotkania, follow-up i monitoring.\n\nAI jest narzędziem służącym do zbudowania lepszego systemu pracy."
           }
         },
         {
           "@type": "Question",
-          "name": "Jakie narzędzia AI będą omawiane?",
+          "name": "Czy nauczę się przygotowywać poranny briefing z AI?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Szkolenie pokazuje praktyczne różnice między najpopularniejszymi modelami wykorzystywanymi w pracy biurowej, m.in. ChatGPT, Microsoft Copilot, Claude i Gemini.\n\nNie jest to jednak kurs obsługi czterech aplikacji. Uczysz się przede wszystkim sposobu pracy, który można przenieść między narzędziami."
+            "text": "Tak.\n\nJednym z głównych zastosowań programu jest przygotowanie porannego briefingu pokazującego m.in. priorytety, terminy, sprawy oczekujące, spotkania wymagające przygotowania i kwestie wymagające reakcji."
           }
         },
         {
           "@type": "Question",
-          "name": "Czy muszę mieć płatną wersję ChatGPT, Copilota lub innego narzędzia?",
+          "name": "Czy szkolenie obejmuje briefing dla przełożonego lub członka zarządu?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nie jest to konieczne do uczestnictwa w poziomie FUNDAMENT.\n\nZakres poszczególnych funkcji może różnić się w zależności od posiadanej wersji i licencji, dlatego podczas szkolenia omawiane są również te różnice."
+            "text": "Tak.\n\nZobaczysz, jak z większej liczby informacji przygotować krótkie podsumowanie dla Executive: co się zmieniło, co wymaga decyzji, jakie są najważniejsze ryzyka i gdzie potrzebna jest reakcja."
           }
         },
         {
           "@type": "Question",
-          "name": "Czy na szkoleniu będzie mowa o bezpieczeństwie danych i RODO?",
+          "name": "Czy AI może znaleźć informacje rozproszone w wielu miejscach?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tak. Bezpieczna praca z AI jest jednym z podstawowych elementów programu.\n\nDowiesz się, jakiego rodzaju informacji nie należy przekazywać do publicznych narzędzi AI, na co zwracać uwagę przy pracy z dokumentami firmowymi i dlaczego możliwość technicznego wgrania pliku nie oznacza automatycznie, że można to zrobić zgodnie z zasadami organizacji.\n\nSzkolenie ma charakter edukacyjny i nie zastępuje polityki bezpieczeństwa, decyzji działu IT ani indywidualnej analizy prawnej organizacji."
+            "text": "To jeden z kluczowych tematów programu.\n\nPokazujemy logikę pracy, w której AI pomaga łączyć informacje dotyczące jednego tematu pochodzące z różnych dokumentów, wiadomości, notatek i systemów.\n\nRzeczywisty zakres takiego wyszukiwania zależy jednak od środowiska firmy, dostępnych integracji, licencji i uprawnień użytkownika."
           }
         },
         {
           "@type": "Question",
-          "name": "Czy podczas szkolenia trzeba udostępniać dane lub dokumenty firmy?",
+          "name": "Czy szkolenie pokaże, jak szukać informacji w Outlooku, Teamsie i dokumentach?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nie.\n\nDemonstracje mogą być prowadzone na neutralnych materiałach i przykładowych danych. Nie ma potrzeby udostępniania poufnych informacji firmy."
+            "text": "Pokazujemy sposoby pracy z informacją w środowiskach biurowych oraz rozwiązania umożliwiające łączenie kontekstu.\n\nNie każda funkcja jest dostępna w każdej licencji Microsoft 365 lub innym środowisku, dlatego podczas szkolenia wyraźnie rozróżniamy możliwości modelu od możliwości konkretnej integracji."
           }
         },
         {
           "@type": "Question",
-          "name": "Czy dowiem się, jak sprawdzać, czy AI nie podaje nieprawdziwych informacji?",
+          "name": "Czy na szkoleniu powstaje dashboard projektów?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tak. Omawiamy halucynacje modeli, pracę ze źródłami oraz sposoby weryfikowania odpowiedzi przed wykorzystaniem ich w pracy."
+            "text": "Pokazujemy strukturę dashboardu oraz sposób wykorzystania AI do analizy statusów projektów.\n\nUczestnik otrzymuje także szablon dashboardu, który może dostosować do własnej pracy."
           }
         },
         {
           "@type": "Question",
-          "name": "Jaka jest forma szkolenia?",
+          "name": "Co AI może analizować w dashboardzie?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Szkolenie odbywa się online LIVE i trwa 2 godziny.\n\nProgram ma formę instruktażową i demonstracyjną. Nie ma obowiązkowych ćwiczeń wykonywanych przez uczestników podczas spotkania."
+            "text": "Między innymi: status projektu, terminy, opóźnienia, blokery, brakujące decyzje, kolejne kroki, odpowiedzialności i sprawy wymagające eskalacji."
           }
         },
         {
           "@type": "Question",
-          "name": "Czy otrzymam nagranie?",
+          "name": "Czy muszę znać Excel?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tak. Uczestnicy otrzymują dostęp do nagrania przez 30 dni."
+            "text": "Nie jest potrzebna zaawansowana znajomość Excela.\n\nCelem szkolenia nie jest nauka arkuszy kalkulacyjnych, lecz wykorzystanie danych o projektach do szybszego uzyskania obrazu sytuacji."
           }
         },
         {
           "@type": "Question",
-          "name": "Czy otrzymam materiały po szkoleniu?",
+          "name": "Czy szkolenie obejmuje transkrypcję spotkań?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tak. W cenie znajdują się materiały szkoleniowe, checklista bezpiecznej pracy z AI oraz przykłady praktycznych zastosowań AI w pracy biurowej."
+            "text": "Transkrypcja może być elementem procesu, ale nie jest głównym tematem.\n\nInteresuje nas przede wszystkim to, co dzieje się później:\n\ndecyzje → zadania → odpowiedzialni → terminy → follow-up → kontrola realizacji."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy AI może pilnować realizacji ustaleń?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Może wspierać monitoring i identyfikowanie zaległych lub otwartych spraw, jeżeli ma dostęp do odpowiednich informacji.\n\nSposób realizacji zależy od narzędzi wykorzystywanych w danej organizacji."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy na tym poziomie uczymy Power Automate, Make lub Zapier?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nie jako osobnego kursu obsługi narzędzia.\n\nNajpierw uczymy identyfikować proces nadający się do automatyzacji i projektować jego logikę.\n\nDopiero wtedy można zdecydować, jakie rozwiązanie technologiczne jest odpowiednie dla danej firmy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy po szkoleniu będę potrafić automatyzować procesy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Będziesz rozumieć, jak rozpoznać proces nadający się do automatyzacji, zaprojektować jego podstawowy przepływ i określić, gdzie potrzebna jest kontrola człowieka.\n\nZaawansowane procesy agentowe są przedmiotem poziomu AUTONOMIA."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy szkolenie uwzględnia bezpieczeństwo danych firmowych?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak.\n\nPrzy pracy wieloźródłowej szczególnie ważne są uprawnienia, zasady dostępu do informacji oraz polityka AI obowiązująca w organizacji.\n\nProgram nie zachęca do obchodzenia zabezpieczeń ani przekazywania danych do narzędzi, których firma nie zatwierdziła."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy muszę udostępniać dokumenty firmowe?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nie. W szkoleniu otwartym można pracować na materiałach demonstracyjnych."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ile trwa AIOfficeLab SYSTEM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Program obejmuje 3 spotkania online LIVE po 2 godziny, czyli łącznie 6 godzin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy na szkoleniu są ćwiczenia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Program ma przede wszystkim formę instruktażową i demonstracyjną, bez obowiązkowych ćwiczeń wykonywanych przez uczestników na żywo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy są nagrania?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak. Nagrania są dostępne przez 60 dni."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Czy jest follow-up po szkoleniu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tak. W cenie znajduje się grupowy follow-up online po około 30 dniach.\n\nJego celem jest omówienie doświadczeń z wdrożenia i problemów, które pojawiły się już w realnej pracy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Jakie materiały otrzymam?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Między innymi:\n\n- workbook wdrożeniowy\n- szablon porannego briefingu\n- szablon briefingu dla przełożonego\n- szablon dashboardu projektów\n- strukturę raportu statusowego\n- schemat pracy z informacją z wielu źródeł\n- model spotkanie → decyzje → zadania → follow-up\n- checklistę procesów do automatyzacji"
           }
         },
         {
@@ -1535,71 +1825,63 @@
           "name": "Czy otrzymam certyfikat?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tak. Uczestnicy otrzymują imienny certyfikat ukończenia szkolenia."
+            "text": "Tak. Uczestnicy otrzymują imienny certyfikat."
           }
         },
         {
           "@type": "Question",
-          "name": "Ile kosztuje AIOfficeLab FUNDAMENT?",
+          "name": "Ile kosztuje AIOfficeLab SYSTEM?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Cena udziału w szkoleniu otwartym wynosi 290 zł netto + VAT za osobę."
+            "text": "Cena szkolenia otwartego wynosi 1190 zł netto + VAT za osobę."
           }
         },
         {
           "@type": "Question",
-          "name": "Czy firma otrzyma fakturę VAT?",
+          "name": "Czy firma może zgłosić kilku uczestników?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tak. Udział w szkoleniu może zostać zakupiony przez firmę i rozliczony na podstawie faktury VAT."
+            "text": "Tak.\n\nW przypadku większego zespołu warto rozważyć szkolenie zamknięte, ponieważ przykłady mogą być wtedy dopasowane do realnych procesów i środowiska organizacji."
           }
         },
         {
           "@type": "Question",
-          "name": "Czy możemy zgłosić kilka osób z jednej firmy?",
+          "name": "Czy SYSTEM można zrealizować jako szkolenie zamknięte dla administracji lub biura zarządu?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tak. Firma może zgłosić kilku pracowników na tę samą edycję.\n\nPrzy większej grupie warto zapytać również o zamkniętą wersję szkolenia przygotowaną dla jednej organizacji."
+            "text": "Tak.\n\nProgram zamknięty może zostać dostosowany do zespołu asystenckiego, Office Management, administracji, biura zarządu lub innych funkcji operacyjnych."
           }
         },
         {
           "@type": "Question",
-          "name": "Czy szkolenie można zrealizować dla całego zespołu?",
+          "name": "Czy można dopasować szkolenie do Microsoft 365 i Copilota?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tak. AIOfficeLab FUNDAMENT może zostać przeprowadzony jako szkolenie zamknięte online lub w siedzibie firmy.\n\nZakres przykładów może zostać dopasowany do rodzaju pracy zespołu i środowiska wykorzystywanego w organizacji."
+            "text": "Tak, w szkoleniu zamkniętym możemy uwzględnić środowisko Microsoft 365, posiadane licencje oraz zasady obowiązujące w organizacji.\n\nAnalogicznie program może zostać dostosowany do Google Workspace lub innego środowiska."
           }
         },
         {
           "@type": "Question",
-          "name": "Dlaczego firma powinna przeszkolić pracowników z podstaw korzystania z AI?",
+          "name": "Czy szkolenie zastępuje wdrożenie technologiczne?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Celem szkolenia jest stworzenie wspólnego minimum kompetencyjnego: pracownik powinien wiedzieć, do czego AI można wykorzystać, jak prawidłowo przekazać mu zadanie, jak oceniać wynik i jak nie narażać danych firmy.\n\nTo szczególnie ważne w organizacjach, w których pracownicy zaczęli korzystać z narzędzi AI samodzielnie."
+            "text": "Nie.\n\nSzkolenie rozwija kompetencje uczestników i pokazuje możliwe rozwiązania. Konfiguracja firmowych integracji, uprawnień czy zaawansowanych automatyzacji może wymagać osobnego projektu wdrożeniowego oraz współpracy z IT."
           }
         },
         {
           "@type": "Question",
-          "name": "Czy program można dopasować do Microsoft 365 lub Google Workspace?",
+          "name": "Czym SYSTEM różni się od AUTONOMII?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "W przypadku szkolenia zamkniętego zakres może zostać dostosowany do środowiska wykorzystywanego przez organizację."
+            "text": "SYSTEM odpowiada na pytanie: Jak wykorzystać AI do zarządzania moją pracą?\n\nAUTONOMIA: Jak zaprojektować proces, który AI może wykonywać lub monitorować bez mojego każdorazowego polecenia?"
           }
         },
         {
           "@type": "Question",
-          "name": "Co po poziomie FUNDAMENT?",
+          "name": "Kiedy jestem gotowa/gotowy na AUTONOMIĘ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Kolejnym etapem jest AIOfficeLab SYSTEM.\n\nFUNDAMENT odpowiada na pytanie: Jak prawidłowo pracować z AI?\n\nSYSTEM: Jak wykorzystać AI do zarządzania informacją, projektami i codzienną pracą?"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Czy muszę ukończyć FUNDAMENT, żeby zapisać się na SYSTEM?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Nie.\n\nJeżeli samodzielnie korzystasz już z AI, rozumiesz podstawy bezpieczeństwa i potrafisz skutecznie zlecać modelowi zadania, możesz rozpocząć bezpośrednio od poziomu SYSTEM."
+            "text": "Jeśli regularnie korzystasz z AI, potrafisz opisać własne procesy, rozumiesz pracę z informacją i chcesz przejść od ręcznego inicjowania zadań do monitoringu, automatyzacji i agentów AI."
           }
         }
       ]
@@ -1621,7 +1903,7 @@
   (function () {
     var form = document.getElementById("aiol-form");
     if (!form) return;
-    var CENA = 290;
+    var CENA = 1190;
     var MAIL = "office@officeinfluencers.pl";
     var BLAD_WYSYLKI = "Nie udało się wysłać zgłoszenia. Spróbuj ponownie albo napisz na " + MAIL + ".";
     // Zgłoszenie idzie wyłącznie na tę samą stronę: adres z ustawień musi zaczynać się od "/".
@@ -1642,17 +1924,21 @@
       input.addEventListener(input.type === "checkbox" ? "change" : "input", function () { setErr(input, errId, ""); });
     }
 
-    // Termin z ustawień: w podsumowaniu i w mailu
-    var termin = String(cfg.termin || "").trim();
-    if (termin) {
+    // Terminy z ustawień: na stronie, w podsumowaniu i w mailu
+    function pokazTermin(nazwa, wartosc) {
+      var tekst = String(wartosc || "").trim();
+      if (!tekst) return "";
       // Godzina "10.00–12.00" nie łamie się na dwie linie
-      var terminTekst = termin.replace(/godz\. /g, "godz.\u00a0").replace(/\s*–\s*/g, "\u2060–\u2060");
-      [].forEach.call(root.querySelectorAll("[data-aiol-termin]"), function (el) { el.textContent = terminTekst; });
-      [].forEach.call(root.querySelectorAll("[data-aiol-termin-wiersz]"), function (el) { el.hidden = false; });
-      root.querySelector("[data-aiol-termin-pole]").value = termin;
-      var barTermin = root.querySelector("[data-aiol-bar-termin]");
-      if (barTermin) { barTermin.textContent = " · Termin: " + terminTekst; barTermin.hidden = false; }
+      var czytelny = tekst.replace(/godz\. /g, "godz.\u00a0").replace(/\s*–\s*/g, "\u2060–\u2060");
+      [].forEach.call(root.querySelectorAll("[data-aiol-" + nazwa + "]"), function (el) { el.textContent = czytelny; });
+      [].forEach.call(root.querySelectorAll("[data-aiol-" + nazwa + "-wiersz]"), function (el) { el.hidden = false; });
+      root.querySelector("[data-aiol-" + nazwa + "-pole]").value = tekst;
+      return czytelny;
     }
+    var terminTekst = pokazTermin("termin", cfg.termin);
+    pokazTermin("followup", cfg.followUp);
+    var barTermin = root.querySelector("[data-aiol-bar-termin]");
+    if (barTermin && terminTekst) { barTermin.textContent = " · " + terminTekst; barTermin.hidden = false; }
 
     // Podsumowanie: liczba osób i cena
     var count = q("aiol-f-count");
@@ -1842,13 +2128,11 @@
     if (window.history && history.replaceState) history.replaceState(null, "", link.getAttribute("href"));
   });
 
-  // 4) Przyciski "Kupuję i przechodzę do płatności": link z ustawień, puste "" = bez płatności online
-  if (typeof cfg.platnosc === "string") {
-    var payUrl = cfg.platnosc.trim();
-    [].forEach.call(root.querySelectorAll("[data-aiol-pay]"), function (a) {
-      if (/^https:\/\//i.test(payUrl)) a.href = payUrl;
-      else (a.closest("[data-aiol-pay-box]") || a).hidden = true;
-    });
+  // 4) Przyciski "Kupuję i przechodzę do płatności" pokazujemy dopiero, gdy w ustawieniach jest link https://
+  var payUrl = String(cfg.platnosc || "").trim();
+  if (/^https:\/\//i.test(payUrl)) {
+    [].forEach.call(root.querySelectorAll("[data-aiol-pay]"), function (a) { a.href = payUrl; a.hidden = false; });
+    [].forEach.call(root.querySelectorAll("[data-aiol-pay-box]"), function (el) { el.hidden = false; });
   }
 
   // Zdarzenia dla Google Tag Managera / GA4: "Zapisuję się" i "Kupuję i przechodzę do płatności"

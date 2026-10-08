@@ -6,7 +6,8 @@ Wdrożenie ma dwie części:
 
 | Co | Plik | Gdzie trafia |
 |---|---|---|
-| Strona | `aiofficelab-fundament-elementor.html` | widżet **HTML** w Elementorze |
+| Strona FUNDAMENT | `aiofficelab-fundament-elementor.html` | widżet **HTML** w Elementorze, strona `ai-w-biurze` |
+| Strona SYSTEM | `aiofficelab-system-elementor.html` | widżet **HTML** w Elementorze, strona `ai-w-biurze-system` (zob. „Strona SYSTEM” niżej) |
 | Wysyłka zgłoszeń | `formularz-aiol.zip` (folder `formularz-aiol/`) | serwer officeinfluencers.pl (Zenbox) |
 
 Formularz wysyła zgłoszenia na **office@officeinfluencers.pl** przez ten sam sprawdzony skrypt co formularz szkolenia dla asystentek zarządu. Zmieniły się tylko pola i temat wiadomości.
@@ -56,6 +57,29 @@ Gdy CEIDG nie odpowiada albo token jest zły, formularz dalej działa: nazwę i 
 1. Na stronie kliknij „Zapisuję się” i wypełnij formularz swoimi danymi.
 2. Po wysłaniu powinien pojawić się komunikat „Zgłoszenie przyjęte”.
 3. Sprawdź skrzynkę **office@officeinfluencers.pl** i folder spam. Wiadomość ma temat „Zgłoszenie: AIOfficeLab FUNDAMENT (AI w biurze)”. Przycisk „Odpowiedz” trafia do osoby, która się zgłosiła.
+
+## Strona SYSTEM (AIOfficeLab / 02)
+
+Druga strona, na tym samym szablonie co FUNDAMENT. Proponowany adres: https://www.officeinfluencers.pl/ai-w-biurze-system/
+
+1. **Serwer:** wgraj aktualny `formularz-aiol.zip` tak jak w kroku 1 (zastąp pliki; `klucze.php` z wpisanym tokenem zostaw). Nowy `formularz.php` obsługuje oba szkolenia: rozpoznaje je po ukrytym polu `szkolenie` i sam dobiera nazwę, cenę i temat maila. Strony nie mogą podać własnej ceny.
+2. **Strona:** WordPress → Strony → **Dodaj nową**, slug `ai-w-biurze-system`. Dalej jak w kroku 2, tylko wklejasz plik `aiofficelab-system-elementor.html`.
+   Jeśli wybierzesz inny adres, popraw go w trzech miejscach kodu: komentarz na górze oraz `"url"` i `"@id"` w bloku `application/ld+json` na dole (wyszukaj `ai-w-biurze-system`).
+3. **Płatność online:** w ustawieniach na górze kodu wklej link z EasyTools do SYSTEMU w `platnosc: ""`. Dopóki pole jest puste, strona nie pokazuje przycisków „Kupuję i przechodzę do płatności”, tylko formularz.
+4. **Test:** wyślij zgłoszenie. Mail ma temat „Zgłoszenie: AIOfficeLab SYSTEM (AI w biurze)”, w treści: terminy, follow-up i wartość liczba osób × 1190 zł.
+
+**Zmiana terminów** (są w trzech miejscach):
+
+- ustawienia na górze kodu: `termin` (trzy spotkania) i `followUp`: z nich biorą się terminy w hero, karcie z ceną, na końcu strony, w pasku i w mailu,
+- sekcja „Terminy” (kafelki z dniami): wyszukaj w kodzie `aiol-session`; każdy kafelek ma dzień, miesiąc z rokiem, dzień tygodnia i `datetime`,
+- dane strukturalne na dole kodu: `startDate` (pierwsze spotkanie) i `endDate` (koniec trzeciego).
+
+**SEO (Yoast / Rank Math):**
+
+- Tytuł SEO: `AI w zarządzaniu informacją i projektami – szkolenie online | AIOfficeLab SYSTEM`
+- Opis meta: `Szkolenie online LIVE (3 × 2 h + follow-up) dla Executive Assistants, Asystentek Zarządu i Office Managerów: briefingi, dashboardy projektów, informacje z wielu źródeł i follow-up ze spotkań. 1190 zł netto + VAT.`
+- Fraza kluczowa: `AI dla asystentki zarządu`
+- FAQ ma 32 pytania i jest w danych strukturalnych. Po zmianie pytania na stronie popraw je także w bloku `application/ld+json`.
 
 ## Ustawienia (na samej górze kodu strony)
 
@@ -179,6 +203,7 @@ Do `dataLayer` (Google Tag Manager) trafiają trzy zdarzenia:
 
 ## Pliki w repozytorium
 
-- `aiofficelab-fundament-elementor.html`: kod strony do Elementora,
+- `aiofficelab-fundament-elementor.html`: kod strony FUNDAMENT do Elementora,
+- `aiofficelab-system-elementor.html`: kod strony SYSTEM do Elementora,
 - `formularz-aiol.zip`: paczka do wgrania na serwer (ta sama zawartość co `serwer/formularz-aiol/`),
 - `serwer/formularz-aiol/`: źródła skryptów PHP.
