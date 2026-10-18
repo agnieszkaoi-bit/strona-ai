@@ -175,8 +175,9 @@ Czarne sekcje i kafelki mają klasę `aiol-dark`. Ich kolory (tło `#0c0c0c`, ka
 
 ## SEO (Yoast / Rank Math)
 
-- **Tytuł SEO:** `AI w biurze – szkolenie online LIVE | AIOfficeLab FUNDAMENT`
-- **Opis meta:** `Szkolenie online na żywo (3 h), 24 listopada 2026: jak z dokumentów i wiadomości wydobyć terminy i sprawy do dopilnowania oraz przygotować instrukcję do powtarzalnego zadania. 390 zł netto + VAT.`
+- **Tytuł SEO:** `AI w biurze — szkolenie dla administracji | AIOfficeLab` (55 znaków)
+- **Opis meta:** `Zobacz pracę z dokumentami, ustaleniami i powtarzalnymi zadaniami. 3 godziny pokazów AI, nagranie na 30 dni, wzory i certyfikat. 390 zł netto + VAT.` (148 znaków)
+- Gdzie wpisać: WordPress → strona `ai-w-biurze` → edycja → pole wtyczki SEO pod treścią strony (Yoast: „Tytuł SEO” i „Opis meta”; Rank Math: „Edytuj snippet”). Kod w widżecie HTML nie ustawia tytułu ani opisu.
 - **Fraza kluczowa:** `AI w biurze`
 - Dane strukturalne **Course** i **FAQPage** są już w kodzie (blok `application/ld+json`). Nie dodawaj osobnego schematu FAQ we wtyczce, bo powstanie duplikat.
 - Po zmianie pytań lub odpowiedzi w FAQ popraw ten sam tekst w bloku `application/ld+json` na dole kodu.
