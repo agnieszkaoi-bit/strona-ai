@@ -18,8 +18,8 @@ const NAZWA_NADAWCY = 'Formularz officeinfluencers.pl';
  */
 const SZKOLENIA = [
     'fundament' => [
-        'nazwa' => 'AIOfficeLab / 01 FUNDAMENT, online LIVE, 2 godziny',
-        'cena'  => 290,
+        'nazwa' => 'AIOfficeLab / 01 FUNDAMENT, online na żywo, 3 godziny',
+        'cena'  => 390,
         'temat' => 'Zgłoszenie: AIOfficeLab FUNDAMENT (AI w biurze)',
     ],
     'system' => [

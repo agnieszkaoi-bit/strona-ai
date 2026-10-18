@@ -87,33 +87,33 @@ Druga strona, na tym samym szablonie co FUNDAMENT. Proponowany adres: https://ww
 window.AIOL_CONFIG = {
   formularz: "/formularz-aiol/formularz.php", // skrypt wysyłający zgłoszenie
   platnosc: "https://easl.ink/XD2bl",         // link do płatności online
-  termin: "czwartek, 5 listopada 2026, godz. 10.00–12.00", // data i godziny edycji
+  termin: "wtorek, 24 listopada 2026, godz. 10.00–13.00", // data i godziny edycji
   photoUrl: "",                               // inne zdjęcie prowadzącej (puste = wbudowane)
   stickyBar: true                             // pływający pasek z przyciskiem
 };
 ```
 
 - **formularz**: adres skryptu na tej samej stronie, zaczyna się od `/`. Adresu z inną domeną strona nie przyjmie, żeby dane ze zgłoszeń nie mogły trafić gdzie indziej.
-- **termin**: data i godziny edycji, teraz „czwartek, 5 listopada 2026, godz. 10.00–12.00”. Termin pojawia się w pasku na górze, w hero, w karcie z ceną, w finale, w pływającym pasku i w mailu ze zgłoszeniem. Puste pole = bez terminu.
-  Po zmianie terminu popraw też `"startDate": "2026-11-05T10:00:00+01:00"` i `"endDate": "2026-11-05T12:00:00+01:00"` w bloku `application/ld+json` na dole kodu (rok-miesiąc-dzień, godzina; `+01:00` zimą, `+02:00` latem).
+- **termin**: data i godziny edycji, teraz „wtorek, 24 listopada 2026, godz. 10.00–13.00”. Termin pojawia się w pasku na górze, w hero, w karcie z ceną, w finale, w pływającym pasku i w mailu ze zgłoszeniem. Puste pole = bez terminu.
+  Po zmianie terminu popraw też `"startDate": "2026-11-24T10:00:00+01:00"` i `"endDate": "2026-11-24T13:00:00+01:00"` w bloku `application/ld+json` na dole kodu (rok-miesiąc-dzień, godzina; `+01:00` zimą, `+02:00` latem).
 - **Zdjęcie prowadzącej** (z konferencji) jest wbudowane w kod strony w sekcji „Prowadząca”. Nie trzeba go nigdzie wgrywać. Hero jest bez zdjęcia.
 - **photoUrl**: jeśli chcesz inne zdjęcie, wejdź w Media → Biblioteka → wybierz zdjęcie → „Kopiuj adres URL do schowka” i wklej między cudzysłowy. Adres musi zaczynać się od `https://` albo `/`. Najlepiej zdjęcie pionowe (4:5) z twarzą w górnej części kadru.
-- **platnosc**: link do płatności online, otwierany przez przyciski „Kupuję i przechodzę do płatności”. Musi zaczynać się od `https://`. Pusty cudzysłów `""` usuwa te przyciski ze strony, np. gdy sprzedaż online jest zamknięta.
+- **platnosc**: link do płatności online, otwierany przez przyciski „Kupuję udział”. Musi zaczynać się od `https://`. Pusty cudzysłów `""` usuwa te przyciski ze strony, np. gdy sprzedaż online jest zamknięta.
 - **stickyBar**: `false` wyłącza pływający pasek z ceną i przyciskiem.
 
 ## Dwa sposoby zapisu
 
 1. **Formularz zgłoszenia.** Wszystkie żółte przyciski **„Zapisuję się”** przewijają stronę do formularza, a zgłoszenie trafia na office@officeinfluencers.pl.
-2. **Płatność online.** Przyciski z cienkim obrysem **„Kupuję i przechodzę do płatności”** prowadzą do linku z ustawienia `platnosc`. Są w trzech miejscach: w hero obok „Zapisuję się”, w karcie z ceną nad formularzem i w sekcji końcowej.
+2. **Płatność online.** Przyciski z cienkim obrysem **„Kupuję udział”** prowadzą do linku z ustawienia `platnosc`. Są w dwóch miejscach: w hero obok „Zapisuję się” i w karcie „Informacje organizacyjne” obok formularza.
 
-Pływający pasek, pasek na górze i przyciski w środku strony prowadzą tylko do formularza.
+Pływający pasek, pasek na górze, przyciski w środku strony, „Zgłaszam pracownika” i przycisk na końcu prowadzą do formularza.
 
 ## Jak działa formularz
 
-- **Grupa docelowa:** szkolenie jest przeznaczone wyłącznie dla działów administracji biurowej. Mówią o tym hero, kafelek „Dla kogo?”, FAQ i podpowiedź przy polu „Stanowisko”.
+- **Grupa docelowa:** osoby pracujące w administracji biurowej. Mówią o tym kafelek „Dla kogo?” i podpowiedź przy polu „Stanowisko”.
 - **Pola:** imię i nazwisko, e-mail, telefon, stanowisko, liczba osób (1–10), płatnik (firma albo osoba prywatna), NIP, nazwa firmy, adres do faktury, uwagi, zgoda RODO (wymagana) i zgoda marketingowa (dobrowolna).
 - **NIP:** po wpisaniu 10 cyfr strona sama pobiera nazwę i adres firmy z wykazu podatników VAT Ministerstwa Finansów.
-- **Podsumowanie:** w karcie z ceną obok formularza kwota liczy się na żywo (liczba osób × 290 zł netto). Ta sama kwota trafia do maila.
+- **Podsumowanie:** w karcie z ceną obok formularza kwota liczy się na żywo (liczba osób × 390 zł netto). Ta sama kwota trafia do maila.
 - **Kilka osób:** przy liczbie osób większej niż 1 podpowiedź w polu „Uwagi” prosi o dane pozostałych uczestników.
 - **Ochrona przed spamem** (jak w poprzednim formularzu): ukryte pole-pułapka, odrzucanie zbyt szybkich wysyłek, limit wysyłek z jednego adresu IP, blokada powtarzanej treści, odrzucanie adresów jednorazowych i zmyślonych domen.
 - **Dane:** na serwerze nie zostaje nic ze zgłoszeń. Skrypt zapisuje tylko liczniki prób (skrót adresu IP i godzina) w katalogu tymczasowym i regularnie usuwa te starsze niż dwie godziny.
@@ -176,7 +176,7 @@ Czarne sekcje i kafelki mają klasę `aiol-dark`. Ich kolory (tło `#0c0c0c`, ka
 ## SEO (Yoast / Rank Math)
 
 - **Tytuł SEO:** `AI w biurze – szkolenie online LIVE | AIOfficeLab FUNDAMENT`
-- **Opis meta:** `Szkolenie online LIVE (2 h) dla działów administracji biurowej, 5 listopada 2026: jak bezpiecznie i skutecznie korzystać z ChatGPT, Copilota, Claude i Gemini. 290 zł netto + VAT.`
+- **Opis meta:** `Szkolenie online na żywo (3 h), 24 listopada 2026: jak z dokumentów i wiadomości wydobyć terminy i sprawy do dopilnowania oraz przygotować instrukcję do powtarzalnego zadania. 390 zł netto + VAT.`
 - **Fraza kluczowa:** `AI w biurze`
 - Dane strukturalne **Course** i **FAQPage** są już w kodzie (blok `application/ld+json`). Nie dodawaj osobnego schematu FAQ we wtyczce, bo powstanie duplikat.
 - Po zmianie pytań lub odpowiedzi w FAQ popraw ten sam tekst w bloku `application/ld+json` na dole kodu.
@@ -185,8 +185,8 @@ Czarne sekcje i kafelki mają klasę `aiol-dark`. Ich kolory (tło `#0c0c0c`, ka
 
 Do `dataLayer` (Google Tag Manager) trafiają trzy zdarzenia:
 
-- `aiol_cta_click`: kliknięcie „Zapisuję się”, z parametrem `cta_location` (`pasek-gora`, `hero`, `opinie`, `program`, `efekty`, `final`, `pasek`),
-- `aiol_platnosc_click`: kliknięcie „Kupuję i przechodzę do płatności”, z parametrem `cta_location` (`hero`, `cena`, `final`),
+- `aiol_cta_click`: kliknięcie „Zapisuję się” albo „Zgłaszam pracownika”, z parametrem `cta_location` (`pasek-gora`, `hero`, `program`, `efekty`, `firma`, `opinie`, `final`, `pasek`),
+- `aiol_platnosc_click`: kliknięcie „Kupuję udział”, z parametrem `cta_location` (`hero`, `cena`),
 - `aiol_zgloszenie`: wysłane zgłoszenie, z parametrem `liczba_osob`. Ustaw je w GA4 jako konwersję.
 
 ## Gdyby coś nie działało
